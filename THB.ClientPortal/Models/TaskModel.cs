@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using Shared.Core;
 
 namespace Frontend.Web.Models
 {
     public class TaskModel: DTOBase
     {
+        public int Id { get; set; }
         [Required]
         public string TaskName { get; set; }
         [Required]

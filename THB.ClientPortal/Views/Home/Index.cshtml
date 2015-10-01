@@ -28,7 +28,7 @@
     <h2>All Users</h2>
     <ul data-bind="foreach: tasks">
         <li>
-            <p><span data-bind="text: Id"></span>. <span data-bind="text: Name"></span></p>
+            <p><span data-bind="text: TaskName"></span></p>
         </li>
     </ul>
 </script>
@@ -37,12 +37,12 @@
     <h2>Dodaj zlecenie</h2>
     <form data-bind="submit: addTask" class="form-group">
         <div class="form-group">
-            <label for="TaskName" class="col-sm-12 control-label">Nazwa zlecenia</label>
-            <div class="col-sm-12">
+            <label for="TaskName" class="col-md-10 control-label">Nazwa zlecenia</label>
+            <div class="col-md-10">
                 <input data-bind="value: TaskName" id="TaskName" class="form-control" required />
             </div>
-            <label for="Type" class="col-sm-12 control-label">Rodzaj/przedmiot zlecenia</label>
-            <div class="col-sm-12">
+            <label for="Type" class="col-md-10 control-label">Rodzaj/przedmiot zlecenia</label>
+            <div class="col-md-10">
                 <input data-bind="value: Type" id="Type" class="form-control" />
             </div>
                 <input data-bind="value: Date" class="form-control">

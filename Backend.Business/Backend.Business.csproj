@@ -91,14 +91,15 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Context\ITHBContext.cs" />
+    <Compile Include="Context\THBContext.cs" />
+    <Compile Include="Entities\TaskEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\ITaskRepository.cs" />
+    <Compile Include="Repository\TaskRepository.cs" />
     <Compile Include="Services\TaskRESTService.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Context\" />
-    <Folder Include="Entities\" />
-    <Folder Include="Repository\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Backend.Core\Backend.Core.csproj">
       <Project>{92b1a1f0-6fd6-411a-bd00-0cdefb829782}</Project>
