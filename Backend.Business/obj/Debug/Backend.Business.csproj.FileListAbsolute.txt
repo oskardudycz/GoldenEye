@@ -31,3 +31,5 @@ D:\THBClientPortal\THB.ClientPortal\Backend.Business\bin\pt\FluentValidation.res
 D:\THBClientPortal\THB.ClientPortal\Backend.Business\bin\ru\FluentValidation.resources.dll
 D:\THBClientPortal\THB.ClientPortal\Backend.Business\bin\sv\FluentValidation.resources.dll
 D:\THBClientPortal\THB.ClientPortal\Backend.Business\bin\tr\FluentValidation.resources.dll
+D:\THBClientPortal\THB.ClientPortal\Backend.Business\bin\Shared.Business.dll
+D:\THBClientPortal\THB.ClientPortal\Backend.Business\bin\Shared.Business.pdb

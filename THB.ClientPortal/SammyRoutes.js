@@ -3,7 +3,7 @@
     this.element_selector = 'body';
 
     $(document).ready(function () {
-        app.run('#Home');
+        app.run('#Zlecenia');
     });
 
     this.get('#:view', function () {

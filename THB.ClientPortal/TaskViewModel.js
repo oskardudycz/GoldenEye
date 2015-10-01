@@ -13,7 +13,7 @@
     this.Id = undefined;
 
     this.currentView = ko.observable();
-    this.views = ko.observableArray(["Home", "Add", "Edit", "Find"]);
+    this.views = ko.observableArray(["Zlecenia", "Dodaj"]);
 };
 
 TaskViewModel.prototype.save = function () {

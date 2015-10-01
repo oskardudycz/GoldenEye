@@ -6,7 +6,10 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    <script src="~/Scripts/knockout.mapping-latest.js"></script>
+    <script src="~/Scripts/sammy-0.7.5.js"></script>
+    <script src="~/SammyRoutes.js"></script>
+    <script src="~/TaskViewModel.js"></script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -20,10 +23,10 @@
                 @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                <ul class="nav navbar-nav" data-bind="foreach:views">
+                    <li data-bind="css: {active: $root.currentView() == $data}">
+                        <a data-bind="text:$data, attr:{href:'#' + $data}"></a>
+                    </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -33,7 +36,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Sandra Śmietana</p>
         </footer>
     </div>
 

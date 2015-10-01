@@ -84,3 +84,5 @@ D:\THBClientPortal\THB.ClientPortal\THB.ClientPortal\bin\pt\FluentValidation.res
 D:\THBClientPortal\THB.ClientPortal\THB.ClientPortal\bin\ru\FluentValidation.resources.dll
 D:\THBClientPortal\THB.ClientPortal\THB.ClientPortal\bin\sv\FluentValidation.resources.dll
 D:\THBClientPortal\THB.ClientPortal\THB.ClientPortal\bin\tr\FluentValidation.resources.dll
+D:\THBClientPortal\THB.ClientPortal\THB.ClientPortal\bin\Shared.Business.dll
+D:\THBClientPortal\THB.ClientPortal\THB.ClientPortal\bin\Shared.Business.pdb

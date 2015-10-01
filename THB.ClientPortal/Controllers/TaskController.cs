@@ -6,10 +6,11 @@ using System.Net.Http;
 using System.Web.Http;
 using Frontend.Web.Models;
 using Backend.Business.Services;
+using Shared.Business.DTOs;
 
 namespace Frontend.Web.Controllers
 {
-    public class TaskController : ApiController //RestControllerBase<TaskRESTService, TaskModel>
+    public class TaskController: RestControllerBase<ITaskRESTService, TaskDTO>
     {
     }
 }

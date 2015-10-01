@@ -8,13 +8,7 @@
 <script src="~/Scripts/sammy-0.7.5.js"></script>
 <script src="~/RestMethods.js"></script>
 <script src="~/SammyRoutes.js"></script>
-<script src="~/ViewModel.js"></script>
-
-<ul class="nav nav-tabs" data-bind="foreach:views">
-    <li data-bind="css: {active: $root.currentView() == $data}">
-        <a data-bind="text:$data, attr:{href:'#' + $data}"></a>
-    </li>
-</ul>
+<script src="~/TaskViewModel.js"></script>
 
 <div class="container">
     <div class="row">
@@ -24,7 +18,7 @@
     </div>
 </div>
 
-<script type="text/html" id="Home">
+<script type="text/html" id="Zlecenia">
     <h2>All Users</h2>
     <ul data-bind="foreach: tasks">
         <li>
@@ -33,20 +27,29 @@
     </ul>
 </script>
 
-<script type="text/html" id="Add">
+<script type="text/html" id="Dodaj">
     <h2>Dodaj zlecenie</h2>
     <form data-bind="submit: addTask" class="form-group">
         <div class="form-group">
-            <label for="TaskName" class="col-md-10 control-label">Nazwa zlecenia</label>
-            <div class="col-md-10">
-                <input data-bind="value: TaskName" id="TaskName" class="form-control" required />
-            </div>
-            <label for="Type" class="col-md-10 control-label">Rodzaj/przedmiot zlecenia</label>
-            <div class="col-md-10">
-                <input data-bind="value: Type" id="Type" class="form-control" />
-            </div>
-                <input data-bind="value: Date" class="form-control">
+                <label for="TaskName" class="col-md-10 control-label">Nazwa zlecenia</label>
+                <div class="col-md-10">
+                    <input data-bind="value: TaskName" id="TaskName" class="form-control" required />
+                </div>
+                <label for="TaskName" class="col-md-10 control-label">Numer zlecenia</label>
+                <div class="col-md-10">
+                    <input data-bind="value: Number" id="Number" class="form-control" required />
+                </div>
+                <label for="Type" class="col-md-10 control-label">Rodzaj/przedmiot zlecenia</label>
+                <div class="col-md-10">
+                    <input data-bind="value: Type" id="Type" class="form-control" />
+                </div>
+                <label for="Date" class="col-md-10 control-label">Data przyjęcia</label>
+                <div class="col-md-10">
+                    <input data-bind="value: Date" id="Date" class="form-control">
+                </div>
+                <div class="col-md-10">
                 <button type="submit" class="btn btn-default">Dodaj</button>
+                </div>
             </div>
     </form>
 </script>

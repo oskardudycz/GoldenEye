@@ -228,7 +228,7 @@
     <Content Include="Scripts\sammy-0.7.5.js" />
     <Content Include="Scripts\sammy-0.7.5.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="ViewModel.js" />
+    <Content Include="TaskViewModel.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -275,6 +275,10 @@
     <ProjectReference Include="..\Backend.Core\Backend.Core.csproj">
       <Project>{92b1a1f0-6fd6-411a-bd00-0cdefb829782}</Project>
       <Name>Backend.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shared.Business\Shared.Business.csproj">
+      <Project>{fe4c8d80-c8b9-45b4-9ce3-bb94280bc223}</Project>
+      <Name>Shared.Business</Name>
     </ProjectReference>
     <ProjectReference Include="..\Shared.Core\Shared.Core.csproj">
       <Project>{b4e800e8-f352-448d-86fe-fa467bd9e7a6}</Project>
