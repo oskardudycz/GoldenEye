@@ -2,13 +2,13 @@
     ViewBag.Title = "Home Page";
 }
 
-<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
-<script type='text/javascript' src='http://knockoutjs.com/downloads/knockout-3.3.0.js'></script>
-<script src="~/Scripts/knockout.mapping-latest.js"></script>
-<script src="~/Scripts/sammy-0.7.5.js"></script>
-<script src="~/RestMethods.js"></script>
-<script src="~/SammyRoutes.js"></script>
-<script src="~/TaskViewModel.js"></script>
+<script type='text/javascript' src="~/Scripts/jquery-2.1.4.js"></script>
+<script type='text/javascript' src="~/Scripts/knockout-3.3.0.js"></script>
+<script type='text/javascript' src="~/Scripts/knockout.mapping-latest.js"></script>
+<script type='text/javascript' src="~/Scripts/sammy-0.7.5.js"></script>
+<script type='text/javascript' src="~/RestMethods.js"></script>
+<script type='text/javascript' src="~/SammyRoutes.js"></script>
+<script type='text/javascript' src="~/TaskViewModel.js"></script>
 
 <div class="container">
     <div class="row">
@@ -19,7 +19,7 @@
 </div>
 
 <script type="text/html" id="Zlecenia">
-    <h2>All Users</h2>
+    <h2>Zlecenia</h2>
     <ul data-bind="foreach: tasks">
         <li>
             <p><span data-bind="text: TaskName"></span></p>
@@ -28,69 +28,90 @@
 </script>
 <script type="text/html" id="Dodaj">
     <h2>Dodaj zlecenie</h2>
-    <form data-bind="submit: addTask" class="form-group">
-            <div class="col-md-12">
-                <label for="TaskName" class="col-md-12 control-label">Nazwa zlecenia</label>
-                <input data-bind="value: TaskName" id="TaskName" class="form-control" required />
-            </div>
 
-            <div class="col-md-12">
-                <label for="TaskName" class="col-md-12 control-label">Numer zlecenia</label>
-                <input data-bind="value: Number" id="Number" class="form-control" required />
+    <form data-bind="submit: addTask" class="form-horizontal">
+        <div class="form-group">
+            <label for="TaskName" class="col-sm-2 control-label">Nazwa zlecenia</label>
+            <div class="col-sm-10">
+                <input type="text" data-bind="value: TaskName" class="form-control" id="TaskName" required />
             </div>
-
-            <div class="col-md-10">
-                <label for="Type" class="col-md-12 control-label">Rodzaj/przedmiot</label>
-                <input data-bind="value: Type" id="Type" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="Number" class="col-sm-2 control-label">Numer zlecenia</label>
+            <div class="col-sm-10">
+                <input type="number" data-bind="value: Number" class="form-control" id="Number" required />
             </div>
-
-            <div class="col-md-10">
-                <label for="Date" class="col-md-10 control-label">Data przyjęcia</label>
-                <input type="date" data-bind="value: Date" id="Date" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="Type" class="col-sm-2 control-label">Rodzaj/przedmiot</label>
+            <div class="col-sm-10">
+                <input type="text" data-bind="value: Type" class="form-control" id="Type">
             </div>
-
-            <div class="col-md-10">
-                <label for="IsInternal" class="col-md-10 control-label">Czy wewnętrzne?</label>
-                <input type="checkbox" data-bind="value: IsInternal" id="IsInternal" class="checkbox">
+        </div>
+        <div class="form-group">
+            <label for="Date" class="col-sm-2 control-label">Data przyjęcia</label>
+            <div class="col-sm-10">
+                <input type="date" data-bind="value: Date" class="form-control" id="Date">
             </div>
-
-            <div class="col-md-10">
-                <label for="Amount" class="col-sm-12 control-label">Ilość</label>
-                <input type="number" data-bind="value: Amount" id="Amount" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="Amount" class="col-sm-2 control-label">Ilość</label>
+            <div class="col-sm-10">
+                <input type="number" data-bind="value: Amount" class="form-control" id="Amount">
             </div>
-
-            <div class="col-md-10">
-                <label for="Time" class="col-sm-12 control-label">Planowany czas trwania</label>
-                <input type="time" data-bind="value: Time" id="Time" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="Time" class="col-sm-2 control-label">Planowany czas trwania</label>
+            <div class="col-sm-10">
+                <input type="time" data-bind="value: Time" class="form-control" id="Time">
             </div>
-
-            <div class="col-md-10">
-                <label for="StartDate" class="col-md-10 control-label">Planowana data rozpoczęcia</label>
-                <input type="date" data-bind="value: StartDate" id="StartDate" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="StartDate" class="col-sm-2 control-label">Planowana data rozpoczęcia</label>
+            <div class="col-sm-10">
+                <input type="date" data-bind="value: StartDate" class="form-control" id="StartDate">
             </div>
-
-            <div class="col-md-10">
-                <label for="EndDate" class="col-md-10 control-label">Planowana data zakończenia</label>
-                <input type="date" data-bind="value: EndDate" id="EndDate" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="EndDate" class="col-sm-2 control-label">Planowana data zakończenia</label>
+            <div class="col-sm-10">
+                <input type="date" data-bind="value: EndDate" class="form-control" id="EndDate">
             </div>
-
-            <div class="col-md-10">
-                <label for="PlanDate" class="col-md-10 control-label">Data zaplanowania</label>
-                <input type="date" data-bind="value: PlanDate" id="PlanDate" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <label for="PlanDate" class="col-sm-2 control-label">Data zaplanowania</label>
+            <div class="col-sm-10">
+                <input type="date" data-bind="value: PlanDate" class="form-control" id="PlanDate" required />
             </div>
-
-            <div class="col-md-10">
-                <label for="Description" class="col-md-10 control-label">Opis</label>
-                <textarea rows="5" typeof="text" data-bind="value: Description" id="Description" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="Description" class="col-sm-2 control-label">Opis</label>
+            <div class="col-sm-10">
+                <textarea rows="5" data-bind="value: Description" id="Description" class="form-control" />
             </div>
-
-            <div class="col-md-10">
-                <label for="Color" class="col-md-10 control-label">Kolor</label>
-                <input type="color" data-bind="value: Color" id="Color" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="Color" class="col-sm-2 control-label">Kolor</label>
+            <div class="col-sm-10">
+                <input type="color" data-bind="value: Color" class="form-control" id="Color">
             </div>
-
-            <button type="submit" class="btn btn-default">Dodaj</button>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" data-bind="value: IsInternal"> Czy wewnętrzne?
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">Dodaj</button>
+            </div>
+        </div>
     </form>
+
 </script>
 
 @*<script type="text/html" id="Edit">

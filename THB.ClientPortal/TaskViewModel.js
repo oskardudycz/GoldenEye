@@ -9,6 +9,10 @@
     this.Amount = ko.observable();
     this.Time = ko.observable();
     this.StartDate = ko.observable();
+    this.PlanDate = ko.observable();
+    this.EndDate = ko.observable();
+    this.Description = ko.observable();
+    this.Color = ko.observable();
 
     this.Id = undefined;
 

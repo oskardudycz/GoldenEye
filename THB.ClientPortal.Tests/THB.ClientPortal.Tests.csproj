@@ -112,6 +112,8 @@
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\knockout-3.3.0.debug.js" />
     <Content Include="Scripts\knockout-3.3.0.js" />
+    <Content Include="Scripts\knockout.mapping-latest.debug.js" />
+    <Content Include="Scripts\knockout.mapping-latest.js" />
     <Content Include="Scripts\knockout.x-editable.js" />
     <Content Include="Scripts\knockout.x-editable.min.js" />
     <Content Include="Scripts\sammy-0.7.5.js" />
