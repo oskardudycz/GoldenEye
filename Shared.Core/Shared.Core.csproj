@@ -65,6 +65,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Scripts\AsyncComputed.js" />
+    <Content Include="Scripts\Grid\Modules\Columns.js" />
+    <Content Include="Scripts\Grid\Modules\FixedHeaders.js" />
+    <Content Include="Scripts\jquery-2.1.4.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -73,9 +80,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Scripts\jquery-1.4.1-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.4.1.js" />
-    <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="Scripts\knockout-3.3.0.debug.js" />
     <Content Include="Scripts\knockout-3.3.0.js" />
     <Content Include="Scripts\knockout.x-editable.js" />
@@ -85,10 +89,16 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\BaseContract.cs" />
+    <Compile Include="Contracts\IBaseContract.cs" />
     <Compile Include="DTOs\DTOBase.cs" />
     <Compile Include="DTOs\IDTO.cs" />
     <Compile Include="IHasId.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validatable.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scripts\Knockout\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

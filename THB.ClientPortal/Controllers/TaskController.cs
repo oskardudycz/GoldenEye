@@ -10,7 +10,15 @@ using Shared.Business.DTOs;
 
 namespace Frontend.Web.Controllers
 {
-    public class TaskController: RestControllerBase<ITaskRESTService, TaskDTO>
+    public class TaskController: RestControllerBase<ITaskService, TaskDTO>
     {
+        public TaskController()
+        {
+        }
+
+        public TaskController(ITaskService service)
+            : base(service)
+        {
+        }
     }
 }

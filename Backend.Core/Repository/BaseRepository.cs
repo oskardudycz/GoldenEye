@@ -19,7 +19,6 @@ namespace Backend.Core.Repository
         {
             Context = context;
             DbSet = dbSet;
-
         }
 
         public TEntity GetById(int id)
@@ -35,12 +34,6 @@ namespace Backend.Core.Repository
             return DbSet.AsQueryable();
         }
 
-        /*
-        public IQueryable<TEntity> GetAllPaged(int page = 1, int numberOfItemsOnPage = 20)
-        {
-            return DbSet.Page(page, numberOfItemsOnPage).AsQueryable();
-        }
-        */
         public TEntity Add(TEntity entity)
         {
             return DbSet.Add(entity);

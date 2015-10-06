@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 using Backend.Core.Service;
 using Shared.Business.DTOs;
 
 namespace Backend.Business.Services
 {
-    public interface ITaskRESTService: IRestService<TaskDTO>
+    public class TaskService: RestServiceBase<TaskDTO>
     {
+
     }
 }

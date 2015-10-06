@@ -26,31 +26,70 @@
         </li>
     </ul>
 </script>
-
 <script type="text/html" id="Dodaj">
     <h2>Dodaj zlecenie</h2>
     <form data-bind="submit: addTask" class="form-group">
-        <div class="form-group">
-                <label for="TaskName" class="col-md-10 control-label">Nazwa zlecenia</label>
-                <div class="col-md-10">
-                    <input data-bind="value: TaskName" id="TaskName" class="form-control" required />
-                </div>
-                <label for="TaskName" class="col-md-10 control-label">Numer zlecenia</label>
-                <div class="col-md-10">
-                    <input data-bind="value: Number" id="Number" class="form-control" required />
-                </div>
-                <label for="Type" class="col-md-10 control-label">Rodzaj/przedmiot zlecenia</label>
-                <div class="col-md-10">
-                    <input data-bind="value: Type" id="Type" class="form-control" />
-                </div>
-                <label for="Date" class="col-md-10 control-label">Data przyjęcia</label>
-                <div class="col-md-10">
-                    <input data-bind="value: Date" id="Date" class="form-control">
-                </div>
-                <div class="col-md-10">
-                <button type="submit" class="btn btn-default">Dodaj</button>
-                </div>
+            <div class="col-md-12">
+                <label for="TaskName" class="col-md-12 control-label">Nazwa zlecenia</label>
+                <input data-bind="value: TaskName" id="TaskName" class="form-control" required />
             </div>
+
+            <div class="col-md-12">
+                <label for="TaskName" class="col-md-12 control-label">Numer zlecenia</label>
+                <input data-bind="value: Number" id="Number" class="form-control" required />
+            </div>
+
+            <div class="col-md-10">
+                <label for="Type" class="col-md-12 control-label">Rodzaj/przedmiot</label>
+                <input data-bind="value: Type" id="Type" class="form-control" />
+            </div>
+
+            <div class="col-md-10">
+                <label for="Date" class="col-md-10 control-label">Data przyjęcia</label>
+                <input type="date" data-bind="value: Date" id="Date" class="form-control">
+            </div>
+
+            <div class="col-md-10">
+                <label for="IsInternal" class="col-md-10 control-label">Czy wewnętrzne?</label>
+                <input type="checkbox" data-bind="value: IsInternal" id="IsInternal" class="checkbox">
+            </div>
+
+            <div class="col-md-10">
+                <label for="Amount" class="col-sm-12 control-label">Ilość</label>
+                <input type="number" data-bind="value: Amount" id="Amount" class="form-control">
+            </div>
+
+            <div class="col-md-10">
+                <label for="Time" class="col-sm-12 control-label">Planowany czas trwania</label>
+                <input type="time" data-bind="value: Time" id="Time" class="form-control">
+            </div>
+
+            <div class="col-md-10">
+                <label for="StartDate" class="col-md-10 control-label">Planowana data rozpoczęcia</label>
+                <input type="date" data-bind="value: StartDate" id="StartDate" class="form-control">
+            </div>
+
+            <div class="col-md-10">
+                <label for="EndDate" class="col-md-10 control-label">Planowana data zakończenia</label>
+                <input type="date" data-bind="value: EndDate" id="EndDate" class="form-control">
+            </div>
+
+            <div class="col-md-10">
+                <label for="PlanDate" class="col-md-10 control-label">Data zaplanowania</label>
+                <input type="date" data-bind="value: PlanDate" id="PlanDate" class="form-control" required />
+            </div>
+
+            <div class="col-md-10">
+                <label for="Description" class="col-md-10 control-label">Opis</label>
+                <textarea rows="5" typeof="text" data-bind="value: Description" id="Description" class="form-control"/>
+            </div>
+
+            <div class="col-md-10">
+                <label for="Color" class="col-md-10 control-label">Kolor</label>
+                <input type="color" data-bind="value: Color" id="Color" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-default">Dodaj</button>
     </form>
 </script>
 

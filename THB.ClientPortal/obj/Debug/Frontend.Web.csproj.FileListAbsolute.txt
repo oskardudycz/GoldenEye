@@ -86,3 +86,5 @@ D:\THBClientPortal\THB.ClientPortal\THB.ClientPortal\bin\sv\FluentValidation.res
 D:\THBClientPortal\THB.ClientPortal\THB.ClientPortal\bin\tr\FluentValidation.resources.dll
 D:\THBClientPortal\THB.ClientPortal\THB.ClientPortal\bin\Shared.Business.dll
 D:\THBClientPortal\THB.ClientPortal\THB.ClientPortal\bin\Shared.Business.pdb
+D:\THBClientPortal\THB.ClientPortal\THB.ClientPortal\obj\Debug\Frontend.Web.Resources.resources
+D:\THBClientPortal\THB.ClientPortal\THB.ClientPortal\obj\Debug\Frontend.Web.csproj.GenerateResource.Cache

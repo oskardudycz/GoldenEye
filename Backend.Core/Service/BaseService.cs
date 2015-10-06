@@ -1,0 +1,94 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using Backend.Core.Repository;
+using Shared.Core;
+using Backend.Core.Entity;
+using Shared.Core.Contracts;
+
+namespace Backend.Core.Service
+{
+    public abstract class BaseService<TEntity, TContract> : IServiceBase<TContract>
+        where TContract : Validatable, IHasId
+        where TEntity : Validatable, IHasId
+    {
+        protected readonly IRepository<TEntity> Repository;
+
+        protected BaseService(IRepository<TEntity> repository)
+        {
+            Repository = repository;
+        }
+
+
+        public TContract GetById(int id)
+        {
+            return Mapper.Map<TEntity, TContract>(Repository.GetById(id));
+        }
+
+        public virtual IQueryable<TContract> GetAll()
+        {
+            return Repository.GetAll().ProjectTo<TContract>();
+        }
+        /*
+        public IQueryable<TContract> GetAllPaged(int page = 1, int numberOfItemsOnPage = 20)
+        {
+            return Mapper.Map<IQueryable<TEntity>, IQueryable<TContract>>(Repository.GetAllPaged(page, numberOfItemsOnPage));
+        }*/
+        public TContract Add(TContract contract)
+        {
+            var entity = Mapper.Map<TContract, TEntity>(contract);
+            /*
+            if (!contract.Validate().IsValid)
+            {
+                throw new Exception(contract.Validate().ToString());
+            }
+            */
+            var added = Repository.Add(entity);
+
+            Repository.SaveChanges();
+            return Mapper.Map<TEntity, TContract>(Repository.GetById(added.Id));
+        }
+
+        public IQueryable<TContract> AddAll(IQueryable<TContract> contracts)
+        {
+
+            foreach (var contract in contracts)
+            {
+                if (contract.Validate() != null)
+                {
+                    throw new Exception(contract.Validate().ToString());
+                }
+            }
+            var addedContracts = Repository.AddAll(Mapper.Map<IQueryable<TContract>, IQueryable<TEntity>>(contracts));
+            Repository.SaveChanges();
+            return Mapper.Map<IQueryable<TEntity>, IQueryable<TContract>>(addedContracts);
+        }
+
+        public TContract Update(TContract contract)
+        {
+            var entity = Mapper.Map<TContract, TEntity>(contract);
+            /*
+            if (!contract.Validate().IsValid)
+            {
+                throw new Exception(contract.Validate().ToString());
+            }
+            */
+            var updated = Repository.Update(entity);
+            Repository.SaveChanges();
+            return Mapper.Map<TEntity, TContract>(Repository.GetById(updated.Id));
+        }
+
+        public bool Remove(int id)
+        {
+            return Repository.Delete(id);
+        }
+
+        public void Dispose()
+        {
+            Repository.Dispose();
+        }
+    }
+}

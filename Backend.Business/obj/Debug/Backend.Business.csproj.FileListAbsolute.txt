@@ -33,3 +33,5 @@ D:\THBClientPortal\THB.ClientPortal\Backend.Business\bin\sv\FluentValidation.res
 D:\THBClientPortal\THB.ClientPortal\Backend.Business\bin\tr\FluentValidation.resources.dll
 D:\THBClientPortal\THB.ClientPortal\Backend.Business\bin\Shared.Business.dll
 D:\THBClientPortal\THB.ClientPortal\Backend.Business\bin\Shared.Business.pdb
+D:\THBClientPortal\THB.ClientPortal\Backend.Business\bin\AutoMapper.dll
+D:\THBClientPortal\THB.ClientPortal\Backend.Business\bin\AutoMapper.xml

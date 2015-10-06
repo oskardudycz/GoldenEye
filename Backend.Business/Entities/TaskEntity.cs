@@ -22,5 +22,11 @@ namespace Backend.Business.Entities
         public string Description { get; set; }
         public string Color { get; set; }
         public float DonePercentage { get; set; }
+        public int Status { get; set; }
+        public int CreatedBy { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public int ModifiedBy { get; set; }
+        public DateTime ModifiedDate { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

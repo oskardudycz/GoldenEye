@@ -29,3 +29,5 @@ D:\THBClientPortal\THB.ClientPortal\Backend.Core\bin\pt\FluentValidation.resourc
 D:\THBClientPortal\THB.ClientPortal\Backend.Core\bin\ru\FluentValidation.resources.dll
 D:\THBClientPortal\THB.ClientPortal\Backend.Core\bin\sv\FluentValidation.resources.dll
 D:\THBClientPortal\THB.ClientPortal\Backend.Core\bin\tr\FluentValidation.resources.dll
+D:\THBClientPortal\THB.ClientPortal\Backend.Core\bin\AutoMapper.dll
+D:\THBClientPortal\THB.ClientPortal\Backend.Core\bin\AutoMapper.xml

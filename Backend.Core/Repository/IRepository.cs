@@ -9,7 +9,6 @@ namespace Backend.Core.Repository
     {
         TEntity GetById(int id);
         IQueryable<TEntity> GetAll();
-        // IQueryable<TEntity> GetAllPaged(int page, int numberOfItemsOnPage);
         TEntity Add(TEntity entity);
         IQueryable<TEntity> AddAll(IQueryable<TEntity> entities);
         TEntity Update(TEntity entity);
