@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Shared.Core;
+using Backend.Core.Entity;
 
 namespace Backend.Business.Entities
 {
-    public class TaskEntity: IHasId
+    public class TaskEntity: IHasId, IEntity
     {
         public int Id { get; set; }
         public string TaskName { get; set; }

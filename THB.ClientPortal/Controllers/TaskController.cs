@@ -10,15 +10,27 @@ using Shared.Business.DTOs;
 
 namespace Frontend.Web.Controllers
 {
-    public class TaskController: RestControllerBase<ITaskService, TaskDTO>
+    public class TaskController : RestControllerBase<ITaskRestService, TaskDTO>
     {
+        private readonly ITaskService _service;
+        /*
+        static List<TaskDTO> tasks = new List<TaskDTO> 
+        {
+            new TaskDTO { Id = 1, TaskName = "Batman" },
+            new TaskDTO { Id = 2, TaskName = "Natasha" },
+            new TaskDTO { Id = 3, TaskName = "Daredevil" } 
+        };
+        */
+
         public TaskController()
         {
         }
 
-        public TaskController(ITaskService service)
-            : base(service)
+        public TaskController(ITaskRestService service)
+
         {
+            Service = service;
+
         }
     }
 }

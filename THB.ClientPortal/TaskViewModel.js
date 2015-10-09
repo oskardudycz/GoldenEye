@@ -1,49 +1,49 @@
 ﻿var TaskViewModel = function () {
-    this.tasks = ko.observableArray([]);
+    var self = this;
+    self.tasks = ko.observableArray([]);
 
-    this.TaskName = ko.observable();
-    this.Number = ko.observable();
-    this.Date = ko.observable();
-    this.Type = ko.observable();
-    this.IsInternal = ko.observable();
-    this.Amount = ko.observable();
-    this.Time = ko.observable();
-    this.StartDate = ko.observable();
-    this.PlanDate = ko.observable();
-    this.EndDate = ko.observable();
-    this.Description = ko.observable();
-    this.Color = ko.observable();
+    self.TaskName = ko.observable();
+    self.Number = ko.observable();
+    self.Date = ko.observable();
+    self.Type = ko.observable();
+    self.IsInternal = ko.observable();
+    self.Amount = ko.observable();
+    self.Time = ko.observable();
+    self.StartDate = ko.observable();
+    self.PlanDate = ko.observable();
+    self.EndDate = ko.observable();
+    self.Description = ko.observable();
+    self.Color = ko.observable();
 
-    this.Id = undefined;
+    self.Id = ko.observable();
 
-    this.currentView = ko.observable();
-    this.views = ko.observableArray(["Zlecenia", "Dodaj"]);
+    self.currentView = ko.observable();
+    self.views = ko.observableArray(["Zlecenia", "Dodaj"]);
+    
+    self.viewModelName = "Dodaj";
+    self.viewName = "Dodaj";
 };
 
 TaskViewModel.prototype.save = function () {
-    var taskname = this.TaskName();
-    $.ajax("http://localhost:1299/api/task", {
-        data: { TaskName: taskname },
+    var self = this;
+    var taskname = self.TaskName();
+    var number = self.Number();
+    $.ajax("http://localhost:35761/api/task", {
+        data: { TaskName: taskname, Number: number },
         type: "PUT",
         success: function (data) { }
     });
 };
 
 TaskViewModel.prototype.addTask = function () {
-    this.tasks.push({ Id: this.id(), Name: this.name() });
-    this.save();
+    var self = this;
+    self.tasks.push({ TaskName: self.Taskname, Number: self.Number });
+    self.save();
 };
 
 var loadTasks = function (model) {
-    $.getJSON("http://localhost:1299/api/task", function (data) {
+    $.getJSON("http://localhost:35761/api/task", function (data) {
         var newTasks = ko.mapping.fromJS(data);
         model.tasks(newTasks());
     });
 };
-
-var vm = new TaskViewModel();
-loadTasks(vm);
-
-$(function () {
-    ko.applyBindings(vm);
-});

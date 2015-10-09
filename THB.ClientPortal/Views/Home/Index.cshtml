@@ -2,30 +2,54 @@
     ViewBag.Title = "Home Page";
 }
 
-<script type='text/javascript' src="~/Scripts/jquery-2.1.4.js"></script>
-<script type='text/javascript' src="~/Scripts/knockout-3.3.0.js"></script>
-<script type='text/javascript' src="~/Scripts/knockout.mapping-latest.js"></script>
-<script type='text/javascript' src="~/Scripts/sammy-0.7.5.js"></script>
-<script type='text/javascript' src="~/RestMethods.js"></script>
-<script type='text/javascript' src="~/SammyRoutes.js"></script>
-<script type='text/javascript' src="~/TaskViewModel.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+<script type='text/javascript' src='http://knockoutjs.com/downloads/knockout-3.3.0.js'></script>
+<script type="text/javascript" src="~/Scripts/knockout.mapping-latest.js"></script>
+<script type="text/javascript" src="~/Scripts/sammy-0.7.5.js"></script>
+<script type="text/javascript" src="~/RestMethods.js"></script>
+<script type="text/javascript" src="~/SammyRoutes.js"></script>
+<script src="~/Scripts/knockout-bootstrap.min.js"></script>
+<script src="~/TaskViewModel.js"></script>
+<script src="~/knockoutgrid.js"></script>
+<script src="~/common.js"></script>
+<script src="~/ViewModelLocator.js"></script>
+<script src="~/app.js"></script>
+<link rel="stylesheet" type="text/css" href="~/Content/misc.css">
 
 <div class="container">
     <div class="row">
         <div class="span12">
-            <div data-bind="template: {name: currentView()}"></div>
+            <div data-bind="template: {name: viewName}"></div>
         </div>
     </div>
 </div>
 
 <script type="text/html" id="Zlecenia">
-    <h2>Zlecenia</h2>
-    <ul data-bind="foreach: tasks">
-        <li>
-            <p><span data-bind="text: TaskName"></span></p>
-        </li>
-    </ul>
+
+    <h2>Zlecenia</h2><br />
+    <div class="col-lg-12 grid">
+        <table data-bind='visible: tasklist' class="table table-bordered" cellspacing="0">
+            <thead>
+                <tr class="grid-header">
+                    <th><i class="glyphicon glyphicon-sort-by-order"></i> Numer</th>
+                    <th><i class="glyphicon glyphicon-sort-by-alphabet"></i> Nazwa</th>
+                    <th><i class="glyphicon glyphicon-calendar"></i> Data</th>
+                    <th><i class="glyphicon glyphicon-tasks"></i> Stopień realizacji</th>
+                </tr>
+            </thead>
+            <tbody data-bind='foreach: tasklist'>
+                <tr>
+                    <td><span data-bind='text: number, uniqueName: true' class="col-md-1" /></td>
+                    <td><span data-bind='text: name' class="col-md-6" /></td>
+                    <td><span data-bind='text: date' class="col-md-3" /></td>
+                    <td><span data-bind="text: progress"></span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
 </script>
+
 <script type="text/html" id="Dodaj">
     <h2>Dodaj zlecenie</h2>
 
@@ -63,7 +87,7 @@
         <div class="form-group">
             <label for="Time" class="col-sm-2 control-label">Planowany czas trwania</label>
             <div class="col-sm-10">
-                <input type="time" data-bind="value: Time" class="form-control" id="Time">
+                <input type="number" data-bind="value: Time" class="form-control" id="Time">
             </div>
         </div>
         <div class="form-group">
@@ -81,7 +105,7 @@
         <div class="form-group">
             <label for="PlanDate" class="col-sm-2 control-label">Data zaplanowania</label>
             <div class="col-sm-10">
-                <input type="date" data-bind="value: PlanDate" class="form-control" id="PlanDate" required />
+                <input type="date" data-bind="value: PlanDate" class="form-control" id="PlanDate"/>
             </div>
         </div>
         <div class="form-group">

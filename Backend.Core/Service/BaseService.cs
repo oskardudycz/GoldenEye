@@ -11,9 +11,9 @@ using Shared.Core.Contracts;
 
 namespace Backend.Core.Service
 {
-    public abstract class BaseService<TEntity, TContract> : IServiceBase<TContract>
-        where TContract : Validatable, IHasId
-        where TEntity : Validatable, IHasId
+    public abstract class BaseService<TEntity, TContract> : IBaseService<TContract>
+        where TContract : class, IBaseContract
+        where TEntity : class, IEntity
     {
         protected readonly IRepository<TEntity> Repository;
 
@@ -54,14 +54,6 @@ namespace Backend.Core.Service
 
         public IQueryable<TContract> AddAll(IQueryable<TContract> contracts)
         {
-
-            foreach (var contract in contracts)
-            {
-                if (contract.Validate() != null)
-                {
-                    throw new Exception(contract.Validate().ToString());
-                }
-            }
             var addedContracts = Repository.AddAll(Mapper.Map<IQueryable<TContract>, IQueryable<TEntity>>(contracts));
             Repository.SaveChanges();
             return Mapper.Map<IQueryable<TEntity>, IQueryable<TContract>>(addedContracts);
