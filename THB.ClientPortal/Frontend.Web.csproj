@@ -235,7 +235,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="GridViewModel.js" />
     <Content Include="knockoutgrid.js" />
     <Content Include="RestMethods.js" />
     <Content Include="SammyRoutes.js" />
@@ -247,6 +246,8 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Scripts\app\MainViewModel.js" />
+    <Content Include="Scripts\app\TopMenuViewModel.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />

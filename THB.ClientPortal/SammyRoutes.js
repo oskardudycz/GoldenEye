@@ -1,18 +1,15 @@
 ﻿var routing = $.sammy(function () {
 
-    this.element_selector = 'body';
+    this.element_selector = "body";
 
     $(document).ready(function () {
-        routing.run('#Zlecenia');
+        routing.run("#Zlecenia");
     });
 
-    this.get('#:view', function () {
-        app.changeViewModel();
-        //if (this.params.view == "Dodaj")
-       //     app.viewModel = ViewModelLocator.Get(common.getPath());
-       // else if (this.params.view == "Zlecenia")
-        //    ;
-
-        //vm.currentView(this.params.view);
+    this.get("#:view", function () {
+        if (this.params.view === "Dodaj")
+            app.current("add-new-task");
+        else if (this.params.view === "Zlecenia")
+            app.current("tasks-list");
     });
 });

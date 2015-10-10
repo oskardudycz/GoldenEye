@@ -2,15 +2,18 @@
 
 var app = (function () {
     function init() {
-        this.viewModel = ko.observable(ViewModelLocator.Get(common.getPath()));
+        //this.viewModel = ko.observable(ViewModelLocator.Get(common.getPath()));
 
-        if (this.viewModel) {
-            Sammy().run();
-            ko.applyBindings(this.viewModel(), $('#viewContainer')[0]);
-        }
-        else {
-            console.log('Warning: No view model was defined');
-        }
+        //if (this.viewModel) {
+        //    Sammy().run();
+        //    ko.applyBindings(this.viewModel(), $('#viewContainer')[0]);
+        //}
+        //else {
+        //    console.log('Warning: No view model was defined');
+        //}
+
+        Sammy().run();
+        ko.applyBindings();
     }
 
     ko.unapplyBindings = function ($node, remove) {
@@ -39,9 +42,7 @@ var app = (function () {
 
         Init: init,
 
-        changeViewModel: changeViewModel,
-        
-        ViewModels: ko.observableArray(["Zlecenia", "Dodaj"])
+        current: ko.observable()
     };
 
 })();

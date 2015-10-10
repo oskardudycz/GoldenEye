@@ -47,3 +47,8 @@ var loadTasks = function (model) {
         model.tasks(newTasks());
     });
 };
+
+ko.components.register("add-new-task", {
+    viewModel: TaskViewModel,
+    template: { element: "Dodaj" }
+});

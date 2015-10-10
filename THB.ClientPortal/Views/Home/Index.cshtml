@@ -13,20 +13,28 @@
 <script src="~/knockoutgrid.js"></script>
 <script src="~/common.js"></script>
 <script src="~/ViewModelLocator.js"></script>
+<script src="~/Scripts/app/TopMenuViewModel.js"></script>
+<script src="~/Scripts/app/MainViewModel.js"></script>
 <script src="~/app.js"></script>
 <link rel="stylesheet" type="text/css" href="~/Content/misc.css">
+
+
+<template id="main-view">
+    <div data-bind="component: app.current"></div>
+</template>
 
 <div class="container">
     <div class="row">
         <div class="span12">
-            <div data-bind="template: {name: viewName}"></div>
+            <div data-bind="component: 'main'"></div>
         </div>
     </div>
 </div>
 
-<script type="text/html" id="Zlecenia">
+<template id="Zlecenia">
 
-    <h2>Zlecenia</h2><br />
+    <h2>Zlecenia</h2>
+    <br />
     <div class="col-lg-12 grid">
         <table data-bind='visible: tasklist' class="table table-bordered" cellspacing="0">
             <thead>
@@ -48,9 +56,9 @@
         </table>
     </div>
 
-</script>
+</template>
 
-<script type="text/html" id="Dodaj">
+<template id="Dodaj">
     <h2>Dodaj zlecenie</h2>
 
     <form data-bind="submit: addTask" class="form-horizontal">
@@ -105,7 +113,7 @@
         <div class="form-group">
             <label for="PlanDate" class="col-sm-2 control-label">Data zaplanowania</label>
             <div class="col-sm-10">
-                <input type="date" data-bind="value: PlanDate" class="form-control" id="PlanDate"/>
+                <input type="date" data-bind="value: PlanDate" class="form-control" id="PlanDate" />
             </div>
         </div>
         <div class="form-group">
@@ -136,16 +144,18 @@
         </div>
     </form>
 
-</script>
+</template>
+
+
 
 @*<script type="text/html" id="Edit">
-    <h2>Edit User</h2>
-    <form class="form-inline">
-        <div class="form-group">
-            <input type="text" id="editId" placeholder="User Id" size="5" class="form-control" />
-            <input type="text" id="editName" placeholder="Username" size="5" class="form-control" />
-            <input type="button" value="Edit" onclick="edit();" class="btn btn-default" />
-            <p id="user" />
-        </div>
-    </form>
-</script>*@
+            <h2>Edit User</h2>
+            <form class="form-inline">
+                <div class="form-group">
+                    <input type="text" id="editId" placeholder="User Id" size="5" class="form-control" />
+                    <input type="text" id="editName" placeholder="Username" size="5" class="form-control" />
+                    <input type="button" value="Edit" onclick="edit();" class="btn btn-default" />
+                    <p id="user" />
+                </div>
+            </form>
+        </script>*@
