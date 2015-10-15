@@ -1,0 +1,156 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+<script type='text/javascript' src='http://knockoutjs.com/downloads/knockout-3.3.0.js'></script>
+<script type="text/javascript" src="~/Scripts/knockout.mapping-latest.js"></script>
+<script type="text/javascript" src="~/Scripts/sammy-0.7.5.js"></script>
+<script type="text/javascript" src="~/RestMethods.js"></script>
+<script type="text/javascript" src="~/SammyRoutes.js"></script>
+<script src="~/common.js"></script>
+<script src="~/ViewModelLocator.js"></script>
+<script src="~/Scripts/app/TopMenuViewModel.js"></script>
+<script src="~/Scripts/app/MainViewModel.js"></script>
+<script src="~/app.js"></script>
+<link rel="stylesheet" type="text/css" href="~/Content/misc.css">
+
+
+<template id="main-view">
+    <div data-bind="component: app.current"></div>
+</template>
+
+<div class="container">
+    <div class="row">
+        <div class="span12">
+            <div data-bind="component: 'main'"></div>
+        </div>
+    </div>
+</div>
+
+<template id="Zlecenia">
+
+    <h2>Zlecenia</h2>
+    <br />
+    <div class="col-lg-12 grid">
+        <table data-bind='with: TaskListModel' class="table table-bordered" cellspacing="0">
+            <thead>
+                <tr class="grid-header">
+                    <th><i class="glyphicon glyphicon-sort-by-order"></i> Numer</th>
+                    <th><i class="glyphicon glyphicon-sort-by-alphabet"></i> Nazwa</th>
+                    <th><i class="glyphicon glyphicon-calendar"></i> Data</th>
+                    <th><i class="glyphicon glyphicon-tasks"></i> Stopień realizacji</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody data-bind='foreach: tasklist'>
+                <tr>
+                    <td><span data-bind='text: number, uniqueName: true' class="col-md-1" /></td>
+                    <td><span data-bind='text: name' class="col-md-6" /></td>
+                    <td><span data-bind='text: date' class="col-md-3" /></td>
+                    <td><span data-bind="text: progress" class="col-md-2"></span></td>
+                    <td><a data-bind="attr: { href: Number }" class="col-md-2">Detale</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</template>
+
+<template id="Dodaj">
+    <h2>Dodaj zlecenie</h2>
+
+    <form data-bind="submit: addTask" class="form-horizontal">
+        <div class="form-group">
+            <label for="TaskName" class="col-sm-2 control-label">Nazwa zlecenia</label>
+            <div class="col-sm-10">
+                <input type="text" data-bind="value: TaskName" class="form-control" id="TaskName" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Number" class="col-sm-2 control-label">Numer zlecenia</label>
+            <div class="col-sm-10">
+                <input type="number" data-bind="value: Number" class="form-control" id="Number" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Type" class="col-sm-2 control-label">Rodzaj/przedmiot</label>
+            <div class="col-sm-10">
+                <input type="text" data-bind="value: Type" class="form-control" id="Type">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Date" class="col-sm-2 control-label">Data przyjęcia</label>
+            <div class="col-sm-10">
+                <input type="date" data-bind="value: Date" class="form-control" id="Date">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Amount" class="col-sm-2 control-label">Ilość</label>
+            <div class="col-sm-10">
+                <input type="number" data-bind="value: Amount" class="form-control" id="Amount">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Time" class="col-sm-2 control-label">Planowany czas trwania</label>
+            <div class="col-sm-10">
+                <input type="number" data-bind="value: Time" class="form-control" id="Time">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="StartDate" class="col-sm-2 control-label">Planowana data rozpoczęcia</label>
+            <div class="col-sm-10">
+                <input type="date" data-bind="value: StartDate" class="form-control" id="StartDate">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="EndDate" class="col-sm-2 control-label">Planowana data zakończenia</label>
+            <div class="col-sm-10">
+                <input type="date" data-bind="value: EndDate" class="form-control" id="EndDate">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="PlanDate" class="col-sm-2 control-label">Data zaplanowania</label>
+            <div class="col-sm-10">
+                <input type="date" data-bind="value: PlanDate" class="form-control" id="PlanDate" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Description" class="col-sm-2 control-label">Opis</label>
+            <div class="col-sm-10">
+                <textarea rows="5" data-bind="value: Description" id="Description" class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Color" class="col-sm-2 control-label">Kolor</label>
+            <div class="col-sm-10">
+                <input type="color" data-bind="value: Color" class="form-control" id="Color">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" data-bind="value: IsInternal"> Czy wewnętrzne?
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">Dodaj</button>
+            </div>
+        </div>
+    </form>
+
+</template>
+
+
+<template id="Detale">
+    <h2>Szczegóły zlecenia</h2>
+    <br />
+    <span data-bind='text: number'/>
+    <span data-bind='text: name'/>
+    <span data-bind='text: date'/>
+    <span data-bind="text: progress"></span>
+</template>
