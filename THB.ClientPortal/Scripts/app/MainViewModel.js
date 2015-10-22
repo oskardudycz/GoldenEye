@@ -14,6 +14,7 @@
     self.EndDate = ko.observable();
     self.Description = ko.observable();
     self.Color = ko.observable();
+    self.Progress = ko.observable();
 
     self.Id = ko.observable();
 
@@ -28,9 +29,12 @@ AddTaskModel.prototype.save = function () {
     var self = this;
     var taskname = self.TaskName();
     var number = self.Number();
-    $.ajax("http://localhost:35761/api/task", {
+    if (taskname = null) {
+        console.log("taskname is null!");
+    }
+    $.ajax("http://localhost:35761/api/Task", {
         dataType: "json",
-        data:  { TaskName: "test", Number: "1" },
+        data:  { TaskName: taskname, Number: number },
         type: "PUT",
         success: function (data) {
         }
@@ -39,7 +43,7 @@ AddTaskModel.prototype.save = function () {
 
 AddTaskModel.prototype.addTask = function () {
     var self = this;
-    self.tasks.push({ TaskName: self.Taskname, Number: self.Number });
+    self.tasks.push({ TaskName: self.Taskname, Number: self.Number, Date: self.Date });
     self.save();
 };
 
@@ -66,6 +70,7 @@ var TaskListModel = function (tasklist) {
         ko.utils.postJson($("form")[0], self.tasklist);
     };
 
+
     self.viewModelName = "Zlecenia";
     self.viewName = "Zlecenia";
 };
@@ -78,6 +83,45 @@ function MainViewModel() {
     self.current = ko.observable();
     self.AddTaskModel = new AddTaskModel();
     self.TaskListModel = new TaskListModel();
+}
+
+
+function DetailViewModel(id) {
+    var self = this;
+    self.Id = ko.observable(id);
+    self.tasks = ko.observableArray([]);
+
+    self.TaskName = ko.observable();
+    self.Number = ko.observable();
+    self.Date = ko.observable();
+    self.Type = ko.observable();
+    self.IsInternal = ko.observable();
+    self.Amount = ko.observable();
+    self.Time = ko.observable();
+    self.StartDate = ko.observable();
+    self.PlanDate = ko.observable();
+    self.EndDate = ko.observable();
+    self.Description = ko.observable();
+    self.Color = ko.observable();
+    self.Progress = ko.observable();
+
+    self.getTask = function (id) {
+        $.ajax({
+            url: 'http://localhost:35761/api/task',
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                $.each(data, function (i, item) {
+                    if (item.Id == id) {
+                        self.TaskName(item.TaskName);
+                        self.Number(item.Number);
+                        self.Date(item.Date);
+                        self.Type(item.Type);
+                    }
+                });
+            }
+        });
+    };
 }
 
 ko.components.register("main", {
@@ -95,7 +139,11 @@ ko.components.register("add-new-task", {
     template: { element: "Dodaj" }
 });
 
-ko.components.register("tasks-details", {
-    viewModel: TaskListModel,
+ko.components.register("task-details", {
+    viewModel: {
+        createViewModel: function (params, componentInfo) {
+            return new DetailViewModel(params);
+        }
+    },
     template: { element: "Detale" }
 });

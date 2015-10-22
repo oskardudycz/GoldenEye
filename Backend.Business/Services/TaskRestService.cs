@@ -19,12 +19,10 @@ namespace Backend.Business.Services
         {
             _service = service;
         }
-        /*
         public override void Dispose()
         {
           _service.Dispose();
         }
-        */
         public override IQueryable<TaskDTO> Get()
         {
 

@@ -1,16 +1,16 @@
-﻿/*
+﻿
 $(document).ready(function () {
     $.ajax({
         url: 'http://localhost:35761/api/task',
         type: "GET",
         success: function (data) {
             $.each(data, function (key, item) {
-                $('<li>', { text: formatItem(item) }).appendTo($('#tasks'));
+              //  $('<li>', { text: formatItem(item) }).appendTo($('#tasks'));
             });
         }
     });
 });
-*/
+
 function formatItem(item) {
     return item.Id + '. ' + item.Name;
 }

@@ -39,6 +39,7 @@ namespace Backend.Core.Service
         }*/
         public TContract Add(TContract contract)
         {
+            Mapper.CreateMap<TContract, TEntity>();
             var entity = Mapper.Map<TContract, TEntity>(contract);
             /*
             if (!contract.Validate().IsValid)

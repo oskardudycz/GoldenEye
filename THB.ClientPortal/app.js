@@ -42,7 +42,8 @@ var app = (function () {
 
         Init: init,
 
-        current: ko.observable()
+        current: ko.observable(),
+        params: ko.observable()
     };
 
 })();

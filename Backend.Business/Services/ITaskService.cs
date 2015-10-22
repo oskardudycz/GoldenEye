@@ -9,7 +9,7 @@ using Shared.Business.Contracts;
 
 namespace Backend.Business.Services
 {
-    public interface ITaskService: IServiceBase<TaskContract>
+    public interface ITaskService: IBaseService<TaskContract>
     {
     }
 }
