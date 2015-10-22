@@ -107,18 +107,14 @@ function DetailViewModel(id) {
 
     self.getTask = function (id) {
         $.ajax({
-            url: 'http://localhost:35761/api/task',
+            url: 'http://localhost:35761/api/task/' + id,
             type: "GET",
             dataType: "json",
             success: function (data) {
-                $.each(data, function (i, item) {
-                    if (item.Id == id) {
-                        self.TaskName(item.TaskName);
-                        self.Number(item.Number);
-                        self.Date(item.Date);
-                        self.Type(item.Type);
-                    }
-                });
+                self.TaskName(data.TaskName);
+                self.Number(data.Number);
+                self.Date(data.Date);
+                self.Type(data.Type);
             }
         });
     };
