@@ -1,6 +1,5 @@
 ﻿var AddTaskModel = function () {
     var self = this;
-    self.tasks = ko.observableArray([]);
 
     self.TaskName = ko.observable();
     self.Number = ko.observable();
@@ -29,47 +28,52 @@ AddTaskModel.prototype.save = function () {
     var self = this;
     var taskname = self.TaskName();
     var number = self.Number();
-    if (taskname = null) {
-        console.log("taskname is null!");
-    }
+    var date = self.Date();
+    var progress = self.Progress();
+    var type = self.Type();
+    var amount = self.Amount();
+    var isInternal = self.IsInternal();
+    var desc = self.Description();
+    var color = self.Color();
+
     $.ajax("http://localhost:35761/api/Task", {
         dataType: "json",
-        data:  { TaskName: taskname, Number: number },
+        data:  { TaskName: taskname, Number: number, Date: date, Progress: progress, Type: type, IsInternal: isInternal, Description: desc, Amount: amount, Color: color },
         type: "PUT",
         success: function (data) {
+            alert("Added successfully!");
         }
     });
 };
 
 AddTaskModel.prototype.addTask = function () {
     var self = this;
-    self.tasks.push({ TaskName: self.Taskname, Number: self.Number, Date: self.Date });
     self.save();
 };
 
 var TaskListModel = function (tasklist) {
+
+    var self = this;
+    self.tasklist = ko.observableArray(tasklist);
+
+    self.loadTaskList = function () {
+        $.getJSON("http://localhost:35761/api/task", function (data) {
+            var newTasks = ko.mapping.fromJS(data);
+            self.tasklist(newTasks());
+        });
+    }
+
+    self.loadTaskList();
+    /*
     if (!tasklist)
         tasklist = [
             { name: "test", number: "1", date: "02.08.2015", progress: "50%" },
             { name: "another test", number: "2", date: "05.09.2015", progress: "100%" }
         ];
-
-    var self = this;
-    self.tasklist = ko.observableArray(tasklist);
-
-    self.addTasks = function () {
-        self.tasklist.push({
-            name: "",
-            number: "",
-            date: "",
-            progress: ""
-        });
-    };
-
+        */
     self.save = function (form) {
         ko.utils.postJson($("form")[0], self.tasklist);
     };
-
 
     self.viewModelName = "Zlecenia";
     self.viewName = "Zlecenia";
@@ -89,7 +93,6 @@ function MainViewModel() {
 function DetailViewModel(id) {
     var self = this;
     self.Id = ko.observable(id);
-    self.tasks = ko.observableArray([]);
 
     self.TaskName = ko.observable();
     self.Number = ko.observable();
@@ -115,9 +118,22 @@ function DetailViewModel(id) {
                 self.Number(data.Number);
                 self.Date(data.Date);
                 self.Type(data.Type);
+                self.IsInternal(data.IsInternal);
+                self.Amount(data.Amount);
+                self.Time(data.Time);
+                self.StartDate(data.StartDate);
+                self.PlanDate(data.PlanDate);
+                self.EndDate(data.EndDate);
+                self.Description(data.Description);
+                self.Color(data.Color);
+                self.Progress(data.Progress);
             }
         });
     };
+
+    self.viewModelName = "Detale";
+    self.viewName = "Detale";
+
 }
 
 ko.components.register("main", {
@@ -138,7 +154,11 @@ ko.components.register("add-new-task", {
 ko.components.register("task-details", {
     viewModel: {
         createViewModel: function (params, componentInfo) {
-            return new DetailViewModel(params);
+            var viewModel = new DetailViewModel(params);
+
+            viewModel.getTask(viewModel.Id());
+
+            return viewModel;
         }
     },
     template: { element: "Detale" }

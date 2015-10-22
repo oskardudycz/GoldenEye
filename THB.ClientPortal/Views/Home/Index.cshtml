@@ -46,12 +46,12 @@
             </thead>
             <tbody data-bind='foreach: tasklist'>
                 <tr>
-                    <td><span data-bind='text: number, uniqueName: true' class="col-md-1" /></td>
-                    <td><span data-bind='text: name' class="col-md-6" /></td>
-                    <td><span data-bind='text: date' class="col-md-3" /></td>
-                    <td><span data-bind='text: progress' class="col-md-2" /></td>
+                    <td><span data-bind='text: Number, uniqueName: true' class="col-md-1" /></td>
+                    <td><span data-bind='text: TaskName' class="col-md-6" /></td>
+                    <td><span data-bind='text: Date' class="col-md-3" /></td>
+                    <td><span data-bind='text: Progress' class="col-md-2" /></td>
                     @*<td><div data-bind="progress: { value: progress }"></div></td>*@
-                    <td><a data-bind="attr: { href: '#Zlecenia/'+number }" class="col-md-2">Detale</a></td>
+                    <td><a data-bind="attr: { href: '#Detale/' + Id() }" class="col-md-2">Detale</a></td>
                 </tr>
             </tbody>
         </table>
@@ -151,11 +151,10 @@
 <template id="Detale">
     <h2>Szczegóły zlecenia</h2>
     <br />
-    
-    <div id="details" data-bind="visible: getTask">
-        <span data-bind='text: Number' />
-        <span data-bind='text: TaskName' />
-        <span data-bind='text: Date' />
-        <span data-bind="text: Progress" />
+    <div class="container" data-bind="visible: getTask">
+        <span data-bind='text: TaskName' class="text-info"></span>
+        <label>Numer: </label><span data-bind='text: Number'></span>
+        <span data-bind='text: Date'></span>
+        <span data-bind='text: Progress'></span>
     </div>
 </template>

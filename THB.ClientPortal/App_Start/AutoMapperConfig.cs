@@ -14,12 +14,13 @@ namespace Frontend.Web.App_Start
     {
         public static void RegisterMappings()
         {
-
             Mapper.CreateMap<TaskEntity, TaskDTO>().IgnoreNonExistingProperties<TaskEntity, TaskDTO>();
             Mapper.CreateMap<TaskDTO, TaskEntity>().IgnoreNonExistingProperties<TaskDTO, TaskEntity>();
             Mapper.CreateMap<TaskEntity, TaskContract>().IgnoreNonExistingProperties<TaskEntity, TaskContract>();
             Mapper.CreateMap<TaskContract, TaskDTO>().IgnoreNonExistingProperties<TaskContract, TaskDTO>();
             Mapper.CreateMap<TaskDTO, TaskContract>().IgnoreNonExistingProperties<TaskDTO, TaskContract>();
+           // Mapper.CreateMap<I_NEWS, TaskDTO>().ForMember(x => x.Date,
+             //    opt => opt.MapFrom(src => ((DateTime)src.Date).ToShortDateString()));
         }
     }
 }
