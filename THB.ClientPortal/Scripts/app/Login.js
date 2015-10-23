@@ -78,7 +78,12 @@
         self.user('');
         sessionStorage.removeItem(tokenKey)
     }
+
+    self.viewModelName = "Login";
+    self.viewName = "Login";
 }
 
-var app = new ViewModel();
-ko.applyBindings(app);
+ko.components.register("user-login-register", {
+    viewModel: ViewModel,
+    template: { element: "Login" }
+});

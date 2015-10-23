@@ -11,6 +11,8 @@
             app.current("add-new-task");
         else if (this.params.view === "Zlecenia")
             app.current("tasks-list");
+        else if (this.params.view === "Login")
+            app.current("user-login-register");
     });
 
     this.get("#:view/:id", function () {
