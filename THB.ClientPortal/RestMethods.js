@@ -1,7 +1,7 @@
 ﻿
 $(document).ready(function () {
     $.ajax({
-        url: 'http://localhost:35761/api/task',
+        url: 'https://localhost:44300/api/task',
         type: "GET",
         success: function (data) {
             $.each(data, function (key, item) {
@@ -19,7 +19,7 @@ function add() {
     var name = $('#name').val();
     var id = $('#addId').val();
     $.ajax({
-        url: 'http://localhost:35761/api/task',
+        url: 'https://localhost:44300/api/task',
         type: "PUT",
         data: { id: id, name: name },
         success: function (data) {
@@ -31,7 +31,7 @@ function add() {
 $("#deleteApi").click(function () {
     var id = $("#userId").val();
     $.ajax({
-        url: "http://localhost:35761/api/task/" + id,
+        url: "https://localhost:44300/api/task/" + id,
         type: "DELETE",
         data: data,
         success: function (data) {
@@ -44,7 +44,7 @@ function edit() {
     var id = $("#editId").val();
     var name = $("#editName").val();
     $.ajax({
-        url: "http://localhost:35761/api/task/",
+        url: "https://localhost:44300/api/task/",
         type: "POST",
         data: { id: id, name: name },
         success: function (data) {

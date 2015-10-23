@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Web.Http;
+using Microsoft.Owin.Security.OAuth;
+using Newtonsoft.Json.Serialization;
 
 namespace Frontend.Web
 {
@@ -10,7 +13,8 @@ namespace Frontend.Web
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-
+            config.SuppressDefaultHostAuthentication();
+            config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
             // Web API routes
             config.MapHttpAttributeRoutes();
 
@@ -19,6 +23,8 @@ namespace Frontend.Web
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+            // Enforce HTTPS
+            config.Filters.Add(new Frontend.Web.Filters.RequireHttpsAttribute());
         }
     }
 }

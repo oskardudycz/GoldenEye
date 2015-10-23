@@ -30,6 +30,7 @@
 .table > thead > tr {
     background-color: #eeeeee;
     height: 30px;
+    white-space: nowrap;
 }
 
     /*.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
@@ -40,15 +41,21 @@
 
 .table > thead > tr {
     border-top: 1px solid #F4F4F4;
+    white-space: nowrap;
 }
 
     .table > thead > tr > th {
         border-bottom: 2px solid #777;
         font-weight: 600;
         padding: 4px 8px;
+        white-space: nowrap;
     }
 
 
 tr:nth-child(even) {
     background-color: #f7f7f7;
+}
+
+.customprogress {
+    padding-bottom: -10px;
 }
