@@ -9,7 +9,7 @@ namespace Backend.Core.Service
     {
         private bool _disposed;
 
-        public void Dispose()
+        public virtual void Dispose()
         {
             Dispose(true);
 

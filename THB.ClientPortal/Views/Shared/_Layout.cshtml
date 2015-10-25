@@ -6,8 +6,8 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
-    <script type='text/javascript' src='http://knockoutjs.com/downloads/knockout-3.3.0.js'></script>
+    <script type="text/javascript" src="~/Scripts/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="~/Scripts/knockout-3.3.0.js"></script>
     <script src="~/Scripts/knockout.mapping-latest.js"></script>
     <script src="~/Scripts/sammy-0.7.5.js"></script>
 
@@ -15,7 +15,7 @@
 
 <template id="top-menu-view">
     <ul class="nav navbar-nav" data-bind="foreach: viewModels">
-        <li @*data-bind="css: {active: $root.viewModelName == $data}"*@>
+        <li>
             <a data-bind="text: $data, attr:{href:'#' + $data}"></a>
         </li>
     </ul>

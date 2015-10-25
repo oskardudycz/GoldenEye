@@ -44,7 +44,7 @@ ViewModelLocator.Register({
 ViewModelLocator.Register({
     path: '/#Zlecenia',
     viewModel: function () {
-        return new TaskListModel([
+        return new MainViewModel.TaskListModel([
             { name: "test", number: "1", date: "02.08.2015", progress: "50%" },
             { name: "another test", number: "2", date: "05.09.2015", progress: "100%" }
         ]);

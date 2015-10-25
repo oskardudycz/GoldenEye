@@ -1,26 +1,30 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
-<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
-<script type='text/javascript' src='http://knockoutjs.com/downloads/knockout-3.3.0.js'></script>
+<script type="text/javascript" src="~/Scripts/jquery-2.1.4.js"></script>
+<script type="text/javascript" src="~/Scripts/knockout-3.3.0.js"></script>
 <script type="text/javascript" src="~/Scripts/knockout.mapping-latest.js"></script>
 <script type="text/javascript" src="~/Scripts/sammy-0.7.5.js"></script>
 <script type="text/javascript" src="~/RestMethods.js"></script>
 <script type="text/javascript" src="~/SammyRoutes.js"></script>
-<script src="~/Scripts/knockout-bootstrap.min.js"></script>
-<script src="~/TaskViewModel.js"></script>
-<script src="~/knockoutgrid.js"></script>
+<script type="text/javascript" src="~/Scripts/knockstrap.js"></script>
+<script type="text/javascript" src="~/Scripts/moment.js"></script>
 <script src="~/common.js"></script>
-<script src="~/ViewModelLocator.js"></script>
+
+<script src="~/Scripts/app/Login.js"></script>
 <script src="~/Scripts/app/TopMenuViewModel.js"></script>
+<script src="~/Scripts/app/AddTaskModel.js"></script>
+<script src="~/Scripts/app/DetailViewModel.js"></script>
+<script src="~/Scripts/app/TaskListModel.js"></script>
 <script src="~/Scripts/app/MainViewModel.js"></script>
+<script src="~/ViewModelLocator.js"></script>
 <script src="~/app.js"></script>
+
 <link rel="stylesheet" type="text/css" href="~/Content/misc.css">
 
 
 <template id="main-view">
-    <div data-bind="component: app.current"></div>
+    <div data-bind="component: { name: app.current, params: app.params }"></div>
 </template>
 
 <div class="container">
@@ -35,26 +39,66 @@
 
     <h2>Zlecenia</h2>
     <br />
-    <div class="col-lg-12 grid">
-        <table data-bind='visible: tasklist' class="table table-bordered" cellspacing="0">
+
+    @*<div class="table table-bordered" data-bind="with: TaskListModel">
+        <div class="row">
+            <div class="col-md-1">
+                <i class="glyphicon glyphicon-sort-by-order"></i> Numer
+            </div>
+            <div class="col-md-4">
+                <i class="glyphicon glyphicon-sort-by-alphabet"></i> Nazwa
+            </div>
+            <div class="col-md-3">
+                <i class="glyphicon glyphicon-calendar"></i> Data
+            </div>
+            <div class="col-md-2">
+                <i class="glyphicon glyphicon-tasks"></i> Stopień realizacji
+            </div>
+            <div class="col-md-1">
+            </div>
+        </div>
+        <div class="row" data-bind="foreach: tasklist">
+            <div class="col-md-1">
+                <span data-bind='text: Number, uniqueName: true' />
+            </div>
+            <div class="col-md-4">
+                <span data-bind='text: TaskName' />
+            </div>
+            <div class="col-md-3">
+                <span data-bind="text: moment(Date()).format('DD.MM.YYYY')" />
+            </div>
+            <div class="col-md-2">
+                <span data-bind='text: Progress' /> 
+            </div>
+            <div class="col-md-1">
+                <a data-bind="attr: { href: '#Detale/' + Id() }">Detale</a>
+             </div>
+         </div>
+    </div>*@
+
+    <div class="grid">
+        <table data-bind='with: TaskListModel' class="table table-bordered" cellspacing="0">
             <thead>
                 <tr class="grid-header">
                     <th><i class="glyphicon glyphicon-sort-by-order"></i> Numer</th>
                     <th><i class="glyphicon glyphicon-sort-by-alphabet"></i> Nazwa</th>
                     <th><i class="glyphicon glyphicon-calendar"></i> Data</th>
                     <th><i class="glyphicon glyphicon-tasks"></i> Stopień realizacji</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody data-bind='foreach: tasklist'>
                 <tr>
-                    <td><span data-bind='text: number, uniqueName: true' class="col-md-1" /></td>
-                    <td><span data-bind='text: name' class="col-md-6" /></td>
-                    <td><span data-bind='text: date' class="col-md-3" /></td>
-                    <td><span data-bind="text: progress" class="col-md-2"></span></td>
+                    <td><span data-bind='text: Number, uniqueName: true'/></td>
+                    <td><span data-bind='text: TaskName'/></td>
+                    <td><span data-bind="text: moment(Date()).format('DD.MM.YYYY')"/></td>
+                    <td><div data-bind="progress: { value: Progress, textHidden: false }" class="customprogress"></div></td>
+                    <td><a data-bind="attr: { href: '#Detale/' + Id() }">Detale</a></td>
                 </tr>
             </tbody>
         </table>
     </div>
+
 
 </template>
 
@@ -72,6 +116,12 @@
             <label for="Number" class="col-sm-2 control-label">Numer zlecenia</label>
             <div class="col-sm-10">
                 <input type="number" data-bind="value: Number" class="form-control" id="Number" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Progress" class="col-sm-2 control-label">Stopień realizacji</label>
+            <div class="col-sm-10">
+                <input type="number" data-bind="value: Progress" class="form-control" id="Progress" required />
             </div>
         </div>
         <div class="form-group">
@@ -119,7 +169,7 @@
         <div class="form-group">
             <label for="Description" class="col-sm-2 control-label">Opis</label>
             <div class="col-sm-10">
-                <textarea rows="5" data-bind="value: Description" id="Description" class="form-control" />
+                <textarea rows="5" data-bind="value: Description" id="Description" class="form-control"></textarea>
             </div>
         </div>
         <div class="form-group">
@@ -147,15 +197,70 @@
 </template>
 
 
+<template id="Detale">
+    <div class="container">
+        <div class="page-header">
+            <h2>Szczegóły zlecenia</h2>
+        </div>
+        <div class="details" data-bind="visible: getTask">
+            <p><label>Nazwa zlecenia:</label> <span data-bind='text: TaskName'></span></p>
+            <p><label>Numer:</label> <span data-bind='text: Number'></span></p>
+            <p><label>Data przyjęcia:</label> <span data-bind="text: moment(Date()).format('DD.MM.YYYY')"></span></p>
+            <p><label>Rodzaj/przedmiot: </label> <span data-bind='text: Type'></span></p>
+            <p><label>Ilość: </label> <span data-bind='text: Amount'></span></p>
+            <p><label>Planowany czas trwania: </label> <span data-bind='text: Time'></span></p>
+            <p><label>Planowana data rozpoczęcia: </label> <span data-bind='text: StartDate'></span></p>
+            <p><label>Planowana data zakończenia: </label> <span data-bind='text: EndDate'></span></p>
+            <p><label>Data zaplanowania: </label> <span data-bind='text: PlanDate'></span></p>
+            <p><label>Opis: </label> <span data-bind='text: Description'></span></p>
+            <p><label>Stopień realizacji: </label> <span data-bind='text: Progress'></span>%</p>
+        </div>
+    </div>
 
-@*<script type="text/html" id="Edit">
-            <h2>Edit User</h2>
-            <form class="form-inline">
+</template>
+
+<template id="Login">
+
+    <div class="row">
+        <div class="col-sm-4">
+            <h3>Logowanie</h3>
+            <form data-bind="submit: login">
                 <div class="form-group">
-                    <input type="text" id="editId" placeholder="User Id" size="5" class="form-control" />
-                    <input type="text" id="editName" placeholder="Username" size="5" class="form-control" />
-                    <input type="button" value="Edit" onclick="edit();" class="btn btn-default" />
-                    <p id="user" />
+                    <label>Email</label>
+                    <input class="form-control" type="text" data-bind="value: loginEmail" />
+                </div>
+                <div class="form-group">
+                    <label>Hasło</label>
+                    <input class="form-control" type="password" data-bind="value: loginPassword" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default">Zaloguj</button>
+                    <button data-bind="click: logout" class="btn btn-default">Wyloguj</button>
                 </div>
             </form>
-        </script>*@
+        </div>
+
+        <div class="col-sm-4">
+            <form data-bind="submit: register">
+                <h3>Zarejestruj się</h3>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input class="form-control" type="text" data-bind="value: registerEmail" />
+                </div>
+                <div class="form-group">
+                    <label>Hasło</label>
+                    <input class="form-control" type="password" data-bind="value: registerPassword" />
+                </div>
+                <div class="form-group">
+                    <label>Potwierdź hasło</label>
+                    <input class="form-control" type="password" data-bind="value: registerPassword2" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default">Zarejestruj</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+</template>
