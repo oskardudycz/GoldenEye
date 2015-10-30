@@ -1,0 +1,13 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace Shared.Business.DTOs
+{
+    public class TaskTypeDTO
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
+}

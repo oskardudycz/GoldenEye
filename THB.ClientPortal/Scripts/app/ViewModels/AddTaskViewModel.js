@@ -1,10 +1,10 @@
-﻿var AddTaskModel = function () {
+﻿var AddTaskViewModel = function () {
     var self = this;
 
     self.TaskName = ko.observable();
     self.Number = ko.observable();
     self.Date = ko.observable();
-    self.Type = ko.observable();
+    self.Type = ko.observableArray(['Typ1', 'Typ2', 'Typ3'])
     self.IsInternal = ko.observable();
     self.Amount = ko.observable();
     self.Time = ko.observable();
@@ -23,9 +23,10 @@
     self.viewModelName = "Dodaj";
     self.viewName = "Dodaj";
 }
-
-AddTaskModel.prototype.save = function () {
+/*
+AddTaskViewModel.prototype.save = function () {
     var self = this;
+
     var taskname = self.TaskName();
     var number = self.Number();
     var date = self.Date();
@@ -36,22 +37,28 @@ AddTaskModel.prototype.save = function () {
     var desc = self.Description();
     var color = self.Color();
 
+    
+    /*
     $.ajax("https://localhost:44300/api/Task", {
         dataType: "json",
         data: { TaskName: taskname, Number: number, Date: date, Progress: progress, Type: type, IsInternal: isInternal, Description: desc, Amount: amount, Color: color },
         type: "PUT",
+        headers: {
+            'Authorization': "Bearer " + token
+        },
         success: function (data) {
-            alert("Added successfully!");
+            app.current("tasks-list");
         }
     });
+    
 };
-
-AddTaskModel.prototype.addTask = function () {
+*/
+AddTaskViewModel.prototype.addTask = function () {
     var self = this;
-    self.save();
+    service.addTask(self);
 };
 
 ko.components.register("add-new-task", {
-    viewModel: AddTaskModel,
+    viewModel: AddTaskViewModel,
     template: { element: "Dodaj" }
 });

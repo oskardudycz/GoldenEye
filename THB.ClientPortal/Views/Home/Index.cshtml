@@ -5,20 +5,21 @@
 <script type="text/javascript" src="~/Scripts/knockout-3.3.0.js"></script>
 <script type="text/javascript" src="~/Scripts/knockout.mapping-latest.js"></script>
 <script type="text/javascript" src="~/Scripts/sammy-0.7.5.js"></script>
-<script type="text/javascript" src="~/RestMethods.js"></script>
-<script type="text/javascript" src="~/SammyRoutes.js"></script>
+<script type="text/javascript" src="~/Scripts/app/SammyRoutes.js"></script>
+
 <script type="text/javascript" src="~/Scripts/knockstrap.js"></script>
 <script type="text/javascript" src="~/Scripts/moment.js"></script>
-<script src="~/common.js"></script>
+<script src="~/Scripts/app/common.js"></script>
 
-<script src="~/Scripts/app/Login.js"></script>
-<script src="~/Scripts/app/TopMenuViewModel.js"></script>
-<script src="~/Scripts/app/AddTaskModel.js"></script>
-<script src="~/Scripts/app/DetailViewModel.js"></script>
-<script src="~/Scripts/app/TaskListModel.js"></script>
-<script src="~/Scripts/app/MainViewModel.js"></script>
-<script src="~/ViewModelLocator.js"></script>
-<script src="~/app.js"></script>
+<script src="~/Scripts/app/ViewModels/LoginViewModel.js"></script>
+<script src="~/Scripts/app/ViewModels/TopMenuViewModel.js"></script>
+<script src="~/Scripts/app/ViewModels/AddTaskViewModel.js"></script>
+<script src="~/Scripts/app/ViewModels/DetailViewModel.js"></script>
+<script src="~/Scripts/app/ViewModels/TaskListViewModel.js"></script>
+<script src="~/Scripts/app/ViewModels/MainViewModel.js"></script>
+<script src="~/Scripts/app/ViewModelLocator.js"></script>
+<script src="~/Scripts/app/app.js"></script>
+<script type="text/javascript" src="~/Scripts/app/RestService.js"></script>
 
 <link rel="stylesheet" type="text/css" href="~/Content/misc.css">
 
@@ -40,7 +41,7 @@
     <h2>Zlecenia</h2>
     <br />
 
-    @*<div class="table table-bordered" data-bind="with: TaskListModel">
+    @*<div class="table table-bordered" data-bind="with: TaskListViewModel">
         <div class="row">
             <div class="col-md-1">
                 <i class="glyphicon glyphicon-sort-by-order"></i> Numer
@@ -77,7 +78,7 @@
     </div>*@
 
     <div class="grid">
-        <table data-bind='with: TaskListModel' class="table table-bordered" cellspacing="0">
+        <table data-bind='with: TaskListViewModel' class="table table-bordered" cellspacing="0">
             <thead>
                 <tr class="grid-header">
                     <th><i class="glyphicon glyphicon-sort-by-order"></i> Numer</th>
@@ -127,7 +128,7 @@
         <div class="form-group">
             <label for="Type" class="col-sm-2 control-label">Rodzaj/przedmiot</label>
             <div class="col-sm-10">
-                <input type="text" data-bind="value: Type" class="form-control" id="Type">
+                <select data-bind="options: Type" class="form-control" id="Type"></select>
             </div>
         </div>
         <div class="form-group">

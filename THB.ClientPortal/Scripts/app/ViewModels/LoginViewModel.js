@@ -1,4 +1,4 @@
-﻿function ViewModel() {
+﻿function LoginViewModel() {
     var self = this;
 
     var tokenKey = 'accessToken';
@@ -28,7 +28,7 @@
 
         $.ajax({
             type: 'GET',
-            url: '/api/values',
+            url: 'https://localhost:44300/api/values',
             headers: headers
         }).done(function (data) {
             self.result(data);
@@ -46,7 +46,7 @@
 
         $.ajax({
             type: 'POST',
-            url: '/api/Account/Register',
+            url: 'https://localhost:44300/api/Account/Register',
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(data)
         }).done(function (data) {
@@ -65,7 +65,7 @@
 
         $.ajax({
             type: 'POST',
-            url: '/Token',
+            url: 'https://localhost:44300/Token',
             data: loginData
         }).done(function (data) {
             self.user(data.userName);
@@ -84,6 +84,6 @@
 }
 
 ko.components.register("user-login-register", {
-    viewModel: ViewModel,
+    viewModel: LoginViewModel,
     template: { element: "Login" }
 });

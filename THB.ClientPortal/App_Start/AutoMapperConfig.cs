@@ -19,6 +19,10 @@ namespace Frontend.Web.App_Start
             Mapper.CreateMap<TaskEntity, TaskContract>().IgnoreNonExistingProperties<TaskEntity, TaskContract>();
             Mapper.CreateMap<TaskContract, TaskDTO>().IgnoreNonExistingProperties<TaskContract, TaskDTO>();
             Mapper.CreateMap<TaskDTO, TaskContract>().IgnoreNonExistingProperties<TaskDTO, TaskContract>();
+            Mapper.CreateMap<ClientEntity, ClientDTO>().IgnoreNonExistingProperties<ClientEntity, ClientDTO>();
+            Mapper.CreateMap<ClientDTO, ClientEntity>().IgnoreNonExistingProperties<ClientDTO, ClientEntity>();
+            Mapper.CreateMap<TaskTypeEntity, TaskTypeDTO>().IgnoreNonExistingProperties<TaskTypeEntity, TaskTypeDTO>();
+            Mapper.CreateMap<TaskTypeDTO, TaskTypeEntity>().IgnoreNonExistingProperties<TaskTypeDTO, TaskTypeEntity>();
            // Mapper.CreateMap<I_NEWS, TaskDTO>().ForMember(x => x.Date,
              //    opt => opt.MapFrom(src => ((DateTime)src.Date).ToShortDateString()));
         }

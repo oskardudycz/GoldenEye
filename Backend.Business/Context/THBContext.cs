@@ -11,5 +11,25 @@ namespace Backend.Business.Context
     public class THBContext: DataContext<THBContext>, ITHBContext
     {
         public IDbSet<TaskEntity> Tasks { get; set; }
+        public IDbSet<ClientEntity> Clients { get; set; }
+        public IDbSet<TaskTypeEntity> TaskTypes { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+
+            modelBuilder.Entity<ClientEntity>()
+                        .HasMany<TaskTypeEntity>(c => c.TaskTypes)
+                        .WithMany(t => t.Clients)
+                        .Map(ct =>
+                        {
+                            ct.MapLeftKey("ClientId");
+                            ct.MapRightKey("TaskTypeId");
+                            ct.ToTable("ClientTaskType");
+                        });
+            modelBuilder.Entity<ClientEntity>()
+                    .HasMany<UserEntity>(c => c.Users)
+                    .WithRequired(u => u.Client)
+                    .HasForeignKey(u => u.ClientRefId);
+        }
     }
 }

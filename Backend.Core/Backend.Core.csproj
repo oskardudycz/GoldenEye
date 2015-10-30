@@ -100,7 +100,6 @@
     <Compile Include="Service\IBaseService.cs" />
     <Compile Include="Service\IRestService.cs" />
     <Compile Include="Service\IService.cs" />
-    <Compile Include="Service\IServiceBase.cs" />
     <Compile Include="Service\RestServiceBase.cs" />
     <Compile Include="Service\BaseService.cs" />
     <Compile Include="Service\ServiceBase.cs" />

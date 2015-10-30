@@ -1,4 +1,6 @@
-﻿@using Microsoft.AspNet.Identity
+﻿<script src="~/Scripts/app/ViewModels/LoginViewModel.js"></script>
+
+@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
@@ -7,16 +9,16 @@
 
     <ul class="nav navbar-nav navbar-right">
         <li>
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
+            @Html.ActionLink("Witaj " + User.Identity.GetUserName() + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        <li><form data-bind="with: LoginViewModel"><a href="/#Login">Wyloguj</a></form></li>
     </ul>
     }
 }
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Zarejestruj się", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Zaloguj", "https://localhost:44300/#Login" )</li>
+        <li><a href="https://localhost:44300/#Login">Zarejestruj się</a></li>
+        <li><a href="https://localhost:44300/#Login">Zaloguj</a></li>
     </ul>
 }

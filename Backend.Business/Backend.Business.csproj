@@ -93,7 +93,10 @@
   <ItemGroup>
     <Compile Include="Context\ITHBContext.cs" />
     <Compile Include="Context\THBContext.cs" />
+    <Compile Include="Entities\ClientEntity.cs" />
     <Compile Include="Entities\TaskEntity.cs" />
+    <Compile Include="Entities\TaskTypeEntity.cs" />
+    <Compile Include="Entities\UserEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\ITaskRepository.cs" />
     <Compile Include="Repository\TaskRepository.cs" />

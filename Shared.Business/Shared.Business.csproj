@@ -58,7 +58,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\TaskContract.cs" />
+    <Compile Include="DTOs\ClientDTO.cs" />
+    <Compile Include="DTOs\UserDTO.cs" />
     <Compile Include="DTOs\TaskDTO.cs" />
+    <Compile Include="DTOs\TaskTypeDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
