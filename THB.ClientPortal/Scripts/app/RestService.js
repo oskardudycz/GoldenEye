@@ -23,6 +23,7 @@
             dataType: "json",
             type: "PUT",
             data: ko.toJSON(model),
+            contentType: "application/json; charset=utf-8",
             headers: {
                 'Authorization': "Bearer " + token
             },
