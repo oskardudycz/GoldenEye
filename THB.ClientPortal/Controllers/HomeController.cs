@@ -9,6 +9,13 @@ namespace Frontend.Web.Controllers
     //[Authorize]
     public class HomeController : Controller
     {
+
+        [AllowAnonymous]
+        public ActionResult Login()
+        {
+            return View("Index");
+        }
+
         public ActionResult Index()
         {
             return View();
