@@ -48,7 +48,7 @@ namespace Frontend.Web
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/#Login"),
+                LoginPath = new PathString("/Home/Login"),
                 Provider = new CookieAuthenticationProvider()
                 {
                     OnApplyRedirect = ctx =>
