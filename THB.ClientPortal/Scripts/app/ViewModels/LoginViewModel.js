@@ -51,7 +51,10 @@
             data: JSON.stringify(data)
         }).done(function (data) {
             self.result("Done!");
-        }).fail(showError);
+            alert("Rejestracja przebiegła pomyślnie. Możesz się teraz zalogować.")
+        }).fail(function () {
+            $("#register-error-message").text("Błędne hasło.").fadeIn();
+        });
     }
 
     self.login = function () {
@@ -71,7 +74,10 @@
             self.user(data.userName);
             // Cache the access token in session storage.
             sessionStorage.setItem(tokenKey, data.access_token);
-        }).fail(showError);
+            //app.current("tasks-list");
+        }).fail(function () {
+            $("#login-error-message").text("Błędny login lub hasło.").fadeIn();
+        });
     }
 
     self.logout = function () {
