@@ -21,4 +21,5 @@
         if (this.params.view === "Detale")
             app.current("task-details");
     });
+
 });

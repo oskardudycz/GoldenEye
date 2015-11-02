@@ -33,17 +33,18 @@
         });
     }
 
-    self.getTask = function (id) {
+    self.getTask = function (id, details) {
             $.ajax({
                 url: 'https://localhost:44300/api/task/' + id,
+                dataType: "json",
                 type: "GET",
                 data: { get_param: 'value' },
                 headers: {
                     'Authorization': "Bearer " + token
                 },
-                dataType: "json",
                 success: function (data) {
-                    
+                    var task = ko.mapping.fromJS(data);
+                    details(task());
                 }
             });
         };

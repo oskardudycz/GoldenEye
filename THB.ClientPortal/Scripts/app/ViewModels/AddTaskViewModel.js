@@ -4,7 +4,7 @@
     self.TaskName = ko.observable();
     self.Number = ko.observable();
     self.Date = ko.observable();
-    self.Type = ko.observableArray(['Typ1', 'Typ2', 'Typ3'])
+   // self.Type = ko.observableArray(['Typ1', 'Typ2', 'Typ3'])
     self.IsInternal = ko.observable();
     self.Amount = ko.observable();
     self.Time = ko.observable();

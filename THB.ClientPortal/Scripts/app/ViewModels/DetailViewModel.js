@@ -1,6 +1,7 @@
 ﻿function DetailViewModel(id) {
     var self = this;
     self.Id = ko.observable(id);
+    self.Details = ko.observableArray();
 
     self.TaskName = ko.observable();
     self.Number = ko.observable();
@@ -16,28 +17,11 @@
     self.Color = ko.observable();
     self.Progress = ko.observable();
 
-    self.getTask = function (id) {
-        $.ajax({
-            url: 'https://localhost:44300/api/task/' + id,
-            type: "GET",
-            dataType: "json",
-            success: function (data) {
-                self.TaskName(data.TaskName);
-                self.Number(data.Number);
-                self.Date(data.Date);
-                self.Type(data.Type);
-                self.IsInternal(data.IsInternal);
-                self.Amount(data.Amount);
-                self.Time(data.Time);
-                self.StartDate(data.StartDate);
-                self.PlanDate(data.PlanDate);
-                self.EndDate(data.EndDate);
-                self.Description(data.Description);
-                self.Color(data.Color);
-                self.Progress(data.Progress);
-            }
-        });
-    };
+    self.getTask = function () {
+        service.getTask(id, self.Details);
+    }
+
+    self.getTask();
 
     self.viewModelName = "Detale";
     self.viewName = "Detale";
