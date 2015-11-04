@@ -45,7 +45,7 @@
         };
 
         $.ajax({
-            type: 'POST',
+            type: "POST",
             url: 'https://localhost:44300/api/Account/Register',
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(data)
@@ -58,13 +58,13 @@
         self.result('');
 
         var loginData = {
-            grant_type: 'password',
+            grant_type: "password",
             username: self.loginEmail(),
             password: self.loginPassword()
         };
 
         $.ajax({
-            type: 'POST',
+            type: "POST",
             url: 'https://localhost:44300/Token',
             data: loginData
         }).done(function (data) {
@@ -75,15 +75,11 @@
     }
 
     self.logout = function () {
-        self.user('');
+        self.user("");
         localStorage.removeItem(tokenKey);
     }
-
-    self.viewModelName = "Login";
-    self.viewName = "Login";
 }
-
-ko.components.register("user-login-register", {
+ko.components.register("login", {
     viewModel: LoginViewModel,
-    template: { element: "Login" }
+    template: { fromUrl: "Login/LoginView.html" }
 });

@@ -11,13 +11,13 @@
     
     this.get("#:view", function () {
         if (!authManager.getToken() || this.params.view === "Login")
-            app.current("user-login-register");
+            app.current("login");
         else if (this.params.view === "Dodaj")
             app.current("add-new-task");
         else if (this.params.view === "Zlecenia")
             app.current("tasks-list");
         else if (this.params.view === "Login")
-            app.current("user-login-register");
+            app.current("login");
     });
 
     this.get("#:view/:id", function () {
