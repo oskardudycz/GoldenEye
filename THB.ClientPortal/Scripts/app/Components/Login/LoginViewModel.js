@@ -79,7 +79,4 @@
         localStorage.removeItem(tokenKey);
     }
 }
-ko.components.register("login", {
-    viewModel: LoginViewModel,
-    template: { fromUrl: "Login/LoginView.html" }
-});
+ko.components.register("login-nc", {});

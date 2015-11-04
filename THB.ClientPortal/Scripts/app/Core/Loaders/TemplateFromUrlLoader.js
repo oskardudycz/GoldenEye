@@ -2,8 +2,12 @@
 var templateFromUrlLoader = (function () {
     var componentsPrefix = "Scripts/app/Components/";
 
-    function getTemplatePathFromNamingConvention(templateName) {
-        return name + "/" + templateName + "View.html";
+    function getViewPathFromComponentName(name) {
+        return name + "/" + name + "View.html";
+    }
+
+    function getViewModelPathFromComponentName(name) {
+        return name + "/" + name + "ViewModel.js";
     }
 
     function shouldUseNamingConvention(templateConfig) {
@@ -28,7 +32,7 @@ var templateFromUrlLoader = (function () {
             return;
         }
 
-        var url = templateConfig.fromUrl || getTemplatePathFromNamingConvention(name);
+        var url = templateConfig.fromUrl || getViewPathFromComponentName(name);
 
         loadTemplateFromUrl({
             name: name,
@@ -37,7 +41,7 @@ var templateFromUrlLoader = (function () {
             callback: callback
         });
     }
-    
+
     return {
         getConfig: function (name, callback) {
             if (name.indexOf("-nc") === -1) {
@@ -45,9 +49,17 @@ var templateFromUrlLoader = (function () {
                 return;
             }
 
-            
+            var nameWithoutNc = name.replace("-nc", "");
+            var capitalizedName = nameWithoutNc.charAt(0).toUpperCase() + nameWithoutNc.slice(1);
+
+            //provide configuration for how to load the template/widget
+            callback({
+                viewModel: window[capitalizedName + "ViewModel"],
+                template: { fromUrl: getViewPathFromComponentName(capitalizedName) }
+            });
+
         },
-        loadTemplate: loadTemplate
+        loadTemplate: loadTemplate,
     };
 })();
 
