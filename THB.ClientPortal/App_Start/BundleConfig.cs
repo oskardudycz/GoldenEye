@@ -29,7 +29,7 @@ namespace Frontend.Web
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
                       "~/Scripts/knockout-{version}.js",
-                      "~/Scripts/app/Login.js"));
+                      "~/Scripts/app/ViewModels/LoginViewModel.js"));
 
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862
