@@ -20,7 +20,7 @@
     self.callApi = function () {
         self.result('');
 
-        var token = sessionStorage.getItem(tokenKey);
+        var token = localStorage.getItem(tokenKey);
         var headers = {};
         if (token) {
             headers.Authorization = 'Bearer ' + token;
@@ -70,13 +70,13 @@
         }).done(function (data) {
             self.user(data.userName);
             // Cache the access token in session storage.
-            sessionStorage.setItem(tokenKey, data.access_token);
+            localStorage.setItem(tokenKey, data.access_token);
         }).fail(showError);
     }
 
     self.logout = function () {
         self.user('');
-        sessionStorage.removeItem(tokenKey)
+        localStorage.removeItem(tokenKey);
     }
 
     self.viewModelName = "Login";

@@ -3,15 +3,14 @@
     this.element_selector = "body";
 
     $(document).ready(function () {
-        routing.run("#Zlecenia");
+        if(authManager.getToken())
+            routing.run("#Zlecenia");
+        else
+            routing.run("#Login");
     });
-
-    function authorize() {
-        
-    }
-
+    
     this.get("#:view", function () {
-        if (window.location.pathname.indexOf("Login") !== -1)
+        if (!authManager.getToken() || this.params.view === "Login")
             app.current("user-login-register");
         else if (this.params.view === "Dodaj")
             app.current("add-new-task");
