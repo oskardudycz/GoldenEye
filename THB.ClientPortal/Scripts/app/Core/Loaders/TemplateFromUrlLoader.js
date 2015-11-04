@@ -26,6 +26,23 @@ var templateFromUrlLoader = (function () {
         });
     }
 
+    function getConfig(name, callback) {
+        if (name.indexOf("-nc") === -1) {
+            callback(null);
+            return;
+        }
+
+        var nameWithoutNc = name.replace("-nc", "");
+        var capitalizedName = nameWithoutNc.charAt(0).toUpperCase() + nameWithoutNc.slice(1);
+
+        //provide configuration for how to load the template/widget
+        callback({
+            viewModel: window[capitalizedName + "ViewModel"],
+            template: { fromUrl: getViewPathFromComponentName(capitalizedName) }
+        });
+
+    }
+
     function loadTemplate(name, templateConfig, callback) {
         if (!shouldUseNamingConvention(templateConfig)) {
             callback(null);
@@ -43,23 +60,8 @@ var templateFromUrlLoader = (function () {
     }
 
     return {
-        getConfig: function (name, callback) {
-            if (name.indexOf("-nc") === -1) {
-                callback(null);
-                return;
-            }
-
-            var nameWithoutNc = name.replace("-nc", "");
-            var capitalizedName = nameWithoutNc.charAt(0).toUpperCase() + nameWithoutNc.slice(1);
-
-            //provide configuration for how to load the template/widget
-            callback({
-                viewModel: window[capitalizedName + "ViewModel"],
-                template: { fromUrl: getViewPathFromComponentName(capitalizedName) }
-            });
-
-        },
-        loadTemplate: loadTemplate,
+        getConfig: getConfig,
+        loadTemplate: loadTemplate
     };
 })();
 

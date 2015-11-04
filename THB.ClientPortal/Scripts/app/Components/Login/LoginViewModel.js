@@ -55,7 +55,7 @@
     }
 
     self.login = function () {
-        self.result('');
+        self.result("");
 
         var loginData = {
             grant_type: "password",
