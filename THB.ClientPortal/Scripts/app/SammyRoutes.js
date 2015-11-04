@@ -3,22 +3,21 @@
     this.element_selector = "body";
 
     $(document).ready(function () {
-        routing.run("#Zlecenia");
+        if(authManager.getToken())
+            routing.run("#Zlecenia");
+        else
+            routing.run("#Login");
     });
-
-    function authorize() {
-        
-    }
-
+    
     this.get("#:view", function () {
-        if (window.location.pathname.indexOf("Login") !== -1)
-            app.current("user-login-register");
+        if (!authManager.getToken() || this.params.view === "Login")
+            app.current("login");
         else if (this.params.view === "Dodaj")
             app.current("add-new-task");
         else if (this.params.view === "Zlecenia")
             app.current("tasks-list");
         else if (this.params.view === "Login")
-            app.current("user-login-register");
+            app.current("login");
     });
 
     this.get("#:view/:id", function () {

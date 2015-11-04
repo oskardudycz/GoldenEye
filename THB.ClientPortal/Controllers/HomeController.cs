@@ -16,6 +16,7 @@ namespace Frontend.Web.Controllers
             return View("Index");
         }
 
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();

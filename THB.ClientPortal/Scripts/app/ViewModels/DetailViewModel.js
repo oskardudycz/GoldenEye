@@ -19,9 +19,7 @@
 
     self.getTask = function () {
         service.getTask(id, self.Details);
-    }
-
-    self.getTask();
+    };
 
     self.viewModelName = "Detale";
     self.viewName = "Detale";

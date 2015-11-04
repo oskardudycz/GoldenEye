@@ -1,15 +1,14 @@
 ﻿function RestService() {
 
     var self = this;
-    var token = sessionStorage.getItem('accessToken');
 
     self.loadList = function (list) {
         $.ajax("https://localhost:44300/api/Task", {
             dataType: "json",
             type: "GET",
-            data: { get_param: 'value' },
+            data: { get_param: "value" },
             headers: {
-                'Authorization': "Bearer " + token
+                'Authorization': "Bearer " + authManager.getToken()
             },
             success: function (data) {
                 var tasks = ko.mapping.fromJS(data);
@@ -25,7 +24,7 @@
             data: ko.toJSON(model),
             contentType: "application/json; charset=utf-8",
             headers: {
-                'Authorization': "Bearer " + token
+                'Authorization': "Bearer " + authManager.getToken()
             },
             success: function (data) {
                 app.current("tasks-list");
@@ -40,7 +39,7 @@
                 type: "GET",
                 data: { get_param: 'value' },
                 headers: {
-                    'Authorization': "Bearer " + token
+                    'Authorization': "Bearer " + authManager.getToken()
                 },
                 success: function (data) {
                     var task = ko.mapping.fromJS(data);
@@ -51,3 +50,19 @@
 }
 
 var service = new RestService();
+
+function AuthManager() {
+    var self = this;
+    var tokenKey = "accessToken";
+
+
+    self.getToken = function (){
+        return localStorage.getItem(tokenKey);
+    }
+
+    self.clearToken = function() {
+        localStorage.removeItem(tokenKey);
+    }
+}
+
+var authManager = new AuthManager();
