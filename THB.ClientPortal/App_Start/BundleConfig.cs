@@ -28,6 +28,7 @@ namespace Frontend.Web
                       "~/Content/site.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/app")
+                .IncludeDirectory("~/Scripts/app/", "*.js", false)
                 .IncludeDirectory("~/Scripts/app/Core", "*.js", true));
 
 #if DEBUG

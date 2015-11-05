@@ -261,10 +261,9 @@
     <Content Include="Scripts\app\Components\Main\MainView.html" />
     <Content Include="Scripts\app\Components\TaskDetail\TaskDetailView.html" />
     <Content Include="Scripts\app\Components\TaskList\TaskListView.html" />
-    <Content Include="Scripts\app\Core\Loaders\ComponentByNamingConvention.js" />
-    <Content Include="Scripts\app\Core\Loaders\TemplateFromUrlLoader.js" />
+    <Content Include="Scripts\app\Core\jQuery\GetScript.js" />
+    <Content Include="Scripts\app\Core\Loaders\ComponentByNamingConventionLoader.js" />
     <Content Include="Scripts\app\RestService.js" />
-    <Content Include="Scripts\app\SammyRoutes.js" />
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>

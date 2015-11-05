@@ -28,6 +28,7 @@ ko.components.loaders.unshift((function () {
 
     function loadViewFromUrl(options) {
         var fullUrl = componentsPrefix + options.relativeUrl + "?cacheAge=" + (options.maxCacheAge || 1234);
+
         $.get(fullUrl, function (markupString) {
             ko.components.defaultLoader.loadTemplate(options.name, markupString, options.callback);
         }).fail(function () {
@@ -38,12 +39,13 @@ ko.components.loaders.unshift((function () {
     function loadViewModelFromUrl(options) {
         var fullUrl = componentsPrefix + options.relativeUrl;
 
-        $.cachedScript(fullUrl).done(function () {
-            var viewModelConstructor = window[options.viewModelName];
-            ko.components.defaultLoader.loadViewModel(options.name, viewModelConstructor, options.callback);
-        }).fail(function () {
-            callDefaultBehaviour(options.callback);
-        });
+        $.cachedScript(fullUrl)
+            .done(function () {
+                var viewModelConstructor = window[options.viewModelName];
+                ko.components.defaultLoader.loadViewModel(options.name, viewModelConstructor, options.callback);
+            }).fail(function () {
+                callDefaultBehaviour(options.callback);
+            });
     }
 
     ////////////////////////////////////////////////////////

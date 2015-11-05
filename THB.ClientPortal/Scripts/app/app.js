@@ -2,7 +2,7 @@
 
 var app = (function () {
     function init() {
-        Sammy().run();
+        routing.run();
         ko.applyBindings();
     }
 
