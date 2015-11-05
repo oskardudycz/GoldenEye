@@ -13,6 +13,7 @@
             <div class="form-group">
                 <button type="submit" class="btn btn-default">Zaloguj</button>
                 <button data-bind="click: logout" class="btn btn-default">Wyloguj</button>
+                <div class="error-messages" id="login-error-message" style="display:none;"></div>
             </div>
         </form>
     </div>
@@ -26,7 +27,8 @@
             </div>
             <div class="form-group">
                 <label>Hasło</label>
-                <input class="form-control" type="password" data-bind="value: registerPassword" />
+                <input class="form-control" type="password" data-bind="value: registerPassword" aria-describedby="helpBlock" />
+                <span id="helpBlock" class="help-block">Hasło musi składać się z conajmniej 6 znaków, w tym małej i dużej litery, cyfry i znaku specjalnego.</span>
             </div>
             <div class="form-group">
                 <label>Potwierdź hasło</label>
@@ -34,6 +36,7 @@
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-default">Zarejestruj</button>
+                <div class="error-messages" id="register-error-message" style="display:none;"></div>
             </div>
         </form>
     </div>

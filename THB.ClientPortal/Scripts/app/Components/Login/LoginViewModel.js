@@ -6,11 +6,24 @@
     self.result = ko.observable();
     self.user = ko.observable();
 
-    self.registerEmail = ko.observable();
-    self.registerPassword = ko.observable();
-    self.registerPassword2 = ko.observable();
+    self.registerEmail = ko.observable().extend({
+        email: true,
+        required: true
+    });
+    self.registerPassword = ko.observable().extend({
+        minLength: 6,
+        maxLength: 15,
+        required: true
+    });
+    self.registerPassword2 = ko.observable().extend({
+        equal: self.registerPassword,
+        required: true
+    });
 
-    self.loginEmail = ko.observable();
+    self.loginEmail = ko.observable().extend({
+        email: true,
+        required: true
+    });
     self.loginPassword = ko.observable();
 
     function showError(jqXHR) {
@@ -73,16 +86,11 @@
         }).done(function (data) {
             self.user(data.userName);
             // Cache the access token in session storage.
-<<<<<<< HEAD:THB.ClientPortal/Scripts/app/ViewModels/LoginViewModel.js
-            sessionStorage.setItem(tokenKey, data.access_token);
-            //app.current("tasks-list");
+            localStorage.setItem(tokenKey, data.access_token);
+            app.current("tasks-list");
         }).fail(function () {
             $("#login-error-message").text("Błędny login lub hasło.").fadeIn();
         });
-=======
-            localStorage.setItem(tokenKey, data.access_token);
-        }).fail(showError);
->>>>>>> 67920c807205b746328a266fac66b81c691bdf19:THB.ClientPortal/Scripts/app/Components/Login/LoginViewModel.js
     }
 
     self.logout = function () {
@@ -90,6 +98,7 @@
         localStorage.removeItem(tokenKey);
     }
 }
+
 ko.components.register("login", {
     viewModel: LoginViewModel,
     template: { fromUrl: "Login/LoginView.html" }
