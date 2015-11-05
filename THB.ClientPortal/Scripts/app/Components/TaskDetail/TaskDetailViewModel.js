@@ -1,4 +1,4 @@
-﻿function DetailViewModel(id) {
+﻿function TaskDetailViewModel(id) {
     var self = this;
     self.Id = ko.observable(id);
     self.Details = ko.observableArray();
@@ -26,15 +26,15 @@
 
 }
 
-ko.components.register("task-details", {
+ko.components.register("TaskDetail-nc", {
     viewModel: {
         createViewModel: function (params, componentInfo) {
-            var viewModel = new DetailViewModel(params);
+            var viewModel = new TaskDetailViewModel(params);
 
             viewModel.getTask(viewModel.Id());
 
             return viewModel;
         }
     },
-    template: { element: "Detale" }
+    template: { element: "TaskDetail-nc" }
 });

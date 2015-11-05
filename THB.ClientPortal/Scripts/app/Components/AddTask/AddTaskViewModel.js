@@ -6,14 +6,14 @@
         required: true,
         number: true
     });
-    self.Date = ko.observable();
+    self.Date = ko.observable().extend({ date: true });
    // self.Type = ko.observableArray(['Typ1', 'Typ2', 'Typ3'])
     self.IsInternal = ko.observable();
-    self.Amount = ko.observable();
+    self.Amount = ko.observable().extend({ number: true });
     self.Time = ko.observable();
-    self.StartDate = ko.observable();
-    self.PlanDate = ko.observable();
-    self.EndDate = ko.observable();
+    self.StartDate = ko.observable().extend({ date: true });
+    self.PlanDate = ko.observable().extend({ date: true });
+    self.EndDate = ko.observable().extend({ date: true });
     self.Description = ko.observable();
     self.Color = ko.observable();
     self.Progress = ko.observable();
@@ -32,7 +32,4 @@ AddTaskViewModel.prototype.addTask = function () {
     service.addTask(self);
 };
 
-ko.components.register("add-new-task", {
-    viewModel: AddTaskViewModel,
-    template: { element: "Dodaj" }
-});
+ko.components.register("AddTask-nc", {});

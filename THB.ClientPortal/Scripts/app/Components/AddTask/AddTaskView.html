@@ -1,0 +1,85 @@
+﻿<h2>Dodaj zlecenie</h2>
+
+<form data-bind="submit: addTask" class="form-horizontal">
+    <div class="form-group">
+        <label for="TaskName" class="col-sm-2 control-label">Nazwa zlecenia</label>
+        <div class="col-sm-10">
+            <input type="text" data-bind="value: TaskName" class="form-control" id="TaskName" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Number" class="col-sm-2 control-label">Numer zlecenia</label>
+        <div class="col-sm-10">
+            <input type="number" data-bind="value: Number" class="form-control" id="Number" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Progress" class="col-sm-2 control-label">Stopień realizacji</label>
+        <div class="col-sm-10">
+            <input type="number" data-bind="value: Progress" class="form-control" id="Progress" required />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="Date" class="col-sm-2 control-label">Data przyjęcia</label>
+        <div class="col-sm-10">
+            <input type="date" data-bind="value: Date" class="form-control" id="Date">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Amount" class="col-sm-2 control-label">Ilość</label>
+        <div class="col-sm-10">
+            <input type="number" data-bind="value: Amount" class="form-control" id="Amount">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Time" class="col-sm-2 control-label">Planowany czas trwania</label>
+        <div class="col-sm-10">
+            <input type="number" data-bind="value: Time" class="form-control" id="Time">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="StartDate" class="col-sm-2 control-label">Planowana data rozpoczęcia</label>
+        <div class="col-sm-10">
+            <input type="date" data-bind="value: StartDate" class="form-control" id="StartDate">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="EndDate" class="col-sm-2 control-label">Planowana data zakończenia</label>
+        <div class="col-sm-10">
+            <input type="date" data-bind="value: EndDate" class="form-control" id="EndDate">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="PlanDate" class="col-sm-2 control-label">Data zaplanowania</label>
+        <div class="col-sm-10">
+            <input type="date" data-bind="value: PlanDate" class="form-control" id="PlanDate" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Description" class="col-sm-2 control-label">Opis</label>
+        <div class="col-sm-10">
+            <textarea rows="5" data-bind="value: Description" id="Description" class="form-control"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Color" class="col-sm-2 control-label">Kolor</label>
+        <div class="col-sm-10">
+            <input type="color" data-bind="value: Color" class="form-control" id="Color">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" data-bind="value: IsInternal"> Czy wewnętrzne?
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">Dodaj</button>
+        </div>
+    </div>
+</form>

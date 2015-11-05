@@ -256,7 +256,10 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Compile Include="IoC\NinjectScope.cs" />
+    <Content Include="Scripts\app\Components\AddTask\AddTaskView.html" />
     <Content Include="Scripts\app\Components\Login\LoginView.html" />
+    <Content Include="Scripts\app\Components\TaskDetail\TaskDetail.html" />
+    <Content Include="Scripts\app\Components\TaskList\TaskListView.html" />
     <Content Include="Scripts\app\Core\Loaders\TemplateFromUrlLoader.js" />
     <Content Include="Scripts\app\RestMethods.js" />
     <Content Include="Scripts\app\RestService.js" />
@@ -271,11 +274,11 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
-    <Content Include="Scripts\app\ViewModels\AddTaskViewModel.js" />
-    <Content Include="Scripts\app\ViewModels\DetailViewModel.js" />
+    <Content Include="Scripts\app\Components\AddTask\AddTaskViewModel.js" />
+    <Content Include="Scripts\app\Components\TaskDetail\TaskDetailViewModel.js" />
     <Content Include="Scripts\app\Components\Login\LoginViewModel.js" />
     <Content Include="Scripts\app\ViewModels\MainViewModel.js" />
-    <Content Include="Scripts\app\ViewModels\TaskListViewModel.js" />
+    <Content Include="Scripts\app\Components\TaskList\TaskListViewModel.js" />
     <Content Include="Scripts\app\ViewModels\TopMenuViewModel.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

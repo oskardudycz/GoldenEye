@@ -13,9 +13,9 @@
         if (!authManager.getToken() || this.params.view === "Login")
             app.current("login-nc");
         else if (this.params.view === "Dodaj")
-            app.current("add-new-task");
+            app.current("AddTask-nc");
         else if (this.params.view === "Zlecenia")
-            app.current("tasks-list");
+            app.current("TaskList-nc");
         else if (this.params.view === "Login")
             app.current("login-nc");
     });
@@ -24,7 +24,7 @@
         app.params(this.params.id);
 
         if (this.params.view === "Detale")
-            app.current("task-details");
+            app.current("TaskDetail-nc");
     });
 
 });
