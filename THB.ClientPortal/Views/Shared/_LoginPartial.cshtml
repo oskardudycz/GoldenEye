@@ -1,10 +1,23 @@
-﻿
-@using Microsoft.AspNet.Identity
+﻿<script src="~/Scripts/app/TopMenuOptions.js"></script>
+
+<ul class="nav navbar-nav navbar-right" id="loggedIn">
+    <li><a href="https://localhost:44300/#Login">Witaj!</a></li>
+    <li><a href="https://localhost:44300/#Login">Wyloguj</a></li>
+</ul>
+
+<ul class="nav navbar-nav navbar-right" id="notLoggedIn">
+    <li><a href="https://localhost:44300/#Login">Zarejestruj się</a></li>
+    <li><a href="https://localhost:44300/#Login">Zaloguj</a></li>
+</ul>
+
+
+@*@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-    {
-    @Html.AntiForgeryToken()
+    {*@
+
+    @*@Html.AntiForgeryToken()
 
     <ul class="nav navbar-nav navbar-right">
         <li>
@@ -16,8 +29,8 @@
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav navbar-right" id="notLoggedIn">
         <li><a href="https://localhost:44300/#Login">Zarejestruj się</a></li>
         <li><a href="https://localhost:44300/#Login">Zaloguj</a></li>
     </ul>
-}
+}*@
