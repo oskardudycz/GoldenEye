@@ -6,7 +6,10 @@
         required: true,
         number: true
     });
-    self.Date = ko.observable().extend({ date: true });
+    self.Date = ko.observable().extend({
+        required: true,
+        date: true
+    });
    // self.Type = ko.observableArray(['Typ1', 'Typ2', 'Typ3'])
     self.IsInternal = ko.observable();
     self.Amount = ko.observable().extend({ number: true });

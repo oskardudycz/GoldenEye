@@ -2,8 +2,8 @@
     ViewBag.Title = "Home Page";
 }
 <script type="text/javascript" src="~/Scripts/knockout.mapping-latest.js"></script>
-<script type="text/javascript" src="~/Scripts/knockout.validation.js"></script>
 <script type="text/javascript" src="~/Scripts/sammy-0.7.5.js"></script>
+<script type="text/javascript" src="~/Scripts/app/AuthManager.js"></script>
 <script type="text/javascript" src="~/Scripts/app/SammyRoutes.js"></script>
 
 
@@ -12,10 +12,9 @@
 <script src="~/Scripts/app/common.js"></script>
 
 <script src="~/Scripts/app/ViewModels/TopMenuViewModel.js"></script>
-<script src="~/Scripts/app/ViewModels/MainViewModel.js"></script>
 <script src="~/Scripts/app/ViewModelLocator.js"></script>
 <script src="~/Scripts/app/app.js"></script>
-<script type="text/javascript" src="~/Scripts/app/RestService.js"></script>
+<script type="text/javascript" src="~/Scripts/app/TasksService.js"></script>
 <script src="~/Scripts/pl-PL.js"></script>
 
 <link rel="stylesheet" type="text/css" href="~/Content/misc.css">
@@ -24,14 +23,10 @@
     ko.validation.locale('pl-PL');
 </script>
 
-<template id="main-view">
-    <div data-bind="component: { name: app.current, params: app.params }"></div>
-</template>
-
 <div class="container">
     <div class="row">
         <div class="span12">
-            <div data-bind="component: 'main'"></div>
+            <div data-bind="component: 'Main-nc'"></div>
         </div>
     </div>
 </div>

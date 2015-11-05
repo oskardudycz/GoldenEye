@@ -87,7 +87,7 @@
             self.user(data.userName);
             // Cache the access token in session storage.
             localStorage.setItem(tokenKey, data.access_token);
-            app.current("tasks-list");
+            app.current("TaskList-nc");
         }).fail(function () {
             $("#login-error-message").text("Błędny login lub hasło.").fadeIn();
         });
