@@ -19,7 +19,7 @@ namespace Frontend.Web.Controllers
     {
         protected TService Service;
 
-        protected RestControllerBase(TService service)
+        public RestControllerBase(TService service)
         {
             Service = service;
         }

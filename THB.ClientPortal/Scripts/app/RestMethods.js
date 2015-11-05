@@ -1,4 +1,4 @@
-﻿
+﻿/*
 $(document).ready(function () {
     $.ajax({
         url: 'https://localhost:44300/api/task',
@@ -52,7 +52,6 @@ function edit() {
         }
     });
 }
-
 function find() {
     var id = $('#userId').val();
     $.getJSON('api/task' + '/' + id)
@@ -63,3 +62,4 @@ function find() {
             $('#task').text('Error: ' + err);
         });
 }
+*/

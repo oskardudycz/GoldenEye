@@ -2,8 +2,10 @@
     ViewBag.Title = "Home Page";
 }
 <script type="text/javascript" src="~/Scripts/knockout.mapping-latest.js"></script>
+<script type="text/javascript" src="~/Scripts/knockout.validation.js"></script>
 <script type="text/javascript" src="~/Scripts/sammy-0.7.5.js"></script>
 <script type="text/javascript" src="~/Scripts/app/SammyRoutes.js"></script>
+
 
 <script type="text/javascript" src="~/Scripts/knockstrap.js"></script>
 <script type="text/javascript" src="~/Scripts/moment.js"></script>
@@ -18,9 +20,13 @@
 <script src="~/Scripts/app/ViewModelLocator.js"></script>
 <script src="~/Scripts/app/app.js"></script>
 <script type="text/javascript" src="~/Scripts/app/RestService.js"></script>
+<script src="~/Scripts/pl-PL.js"></script>
 
 <link rel="stylesheet" type="text/css" href="~/Content/misc.css">
 
+<script>
+    ko.validation.locale('pl-PL');
+</script>
 
 <template id="main-view">
     <div data-bind="component: { name: app.current, params: app.params }"></div>
@@ -218,4 +224,3 @@
     </div>
 
 </template>
-

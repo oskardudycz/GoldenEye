@@ -10,7 +10,6 @@ using Shared.Business.DTOs;
 
 namespace Frontend.Web.Controllers
 {
-    [Authorize]
     public class TaskController : RestControllerBase<ITaskRestService, TaskDTO>
     {
         ITaskRestService _service;

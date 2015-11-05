@@ -6,11 +6,24 @@
     self.result = ko.observable();
     self.user = ko.observable();
 
-    self.registerEmail = ko.observable();
-    self.registerPassword = ko.observable();
-    self.registerPassword2 = ko.observable();
+    self.registerEmail = ko.observable().extend({
+        email: true,
+        required: true
+    });
+    self.registerPassword = ko.observable().extend({
+        minLength: 6,
+        maxLength: 15,
+        required: true
+    });
+    self.registerPassword2 = ko.observable().extend({
+        equal: self.registerPassword,
+        required: true
+    });
 
-    self.loginEmail = ko.observable();
+    self.loginEmail = ko.observable().extend({
+        email: true,
+        required: true
+    });
     self.loginPassword = ko.observable();
 
     function showError(jqXHR) {
@@ -51,7 +64,10 @@
             data: JSON.stringify(data)
         }).done(function (data) {
             self.result("Done!");
-        }).fail(showError);
+            alert("Rejestracja przebiegła pomyślnie. Możesz się teraz zalogować.")
+        }).fail(function () {
+            $("#register-error-message").text("Błędne hasło.").fadeIn();
+        });
     }
 
     self.login = function () {
@@ -71,7 +87,10 @@
             self.user(data.userName);
             // Cache the access token in session storage.
             localStorage.setItem(tokenKey, data.access_token);
-        }).fail(showError);
+            app.current("tasks-list");
+        }).fail(function () {
+            $("#login-error-message").text("Błędny login lub hasło.").fadeIn();
+        });
     }
 
     self.logout = function () {
