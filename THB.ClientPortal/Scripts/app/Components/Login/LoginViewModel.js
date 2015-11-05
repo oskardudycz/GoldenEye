@@ -71,7 +71,7 @@
     }
 
     self.login = function () {
-        self.result('');
+        self.result("");
 
         var loginData = {
             grant_type: "password",
@@ -98,8 +98,4 @@
         localStorage.removeItem(tokenKey);
     }
 }
-
-ko.components.register("login", {
-    viewModel: LoginViewModel,
-    template: { fromUrl: "Login/LoginView.html" }
-});
+ko.components.register("login-nc", {});
