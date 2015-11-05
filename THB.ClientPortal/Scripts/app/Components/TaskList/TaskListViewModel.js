@@ -13,7 +13,4 @@
     self.viewName = "Zlecenia";
 };
 
-ko.components.register("TaskList-nc", {
-    viewModel: TaskListViewModel,
-    template: { element: "Zlecenia" }
-});
+ko.components.register("TaskList-nc", {});
