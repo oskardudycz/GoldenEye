@@ -260,11 +260,10 @@
     <Content Include="Scripts\app\Components\Login\LoginView.html" />
     <Content Include="Scripts\app\Components\TaskDetail\TaskDetailView.html" />
     <Content Include="Scripts\app\Components\TaskList\TaskListView.html" />
-    <Content Include="Scripts\app\Core\Loaders\ComponentByNamingConvention.js" />
-    <Content Include="Scripts\app\Core\Loaders\TemplateFromUrlLoader.js" />
+    <Content Include="Scripts\app\Core\jQuery\GetScript.js" />
+    <Content Include="Scripts\app\Core\Loaders\ComponentByNamingConventionLoader.js" />
     <Content Include="Scripts\app\RestMethods.js" />
     <Content Include="Scripts\app\RestService.js" />
-    <Content Include="Scripts\app\SammyRoutes.js" />
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
@@ -278,6 +277,7 @@
     <Content Include="Scripts\app\Components\AddTask\AddTaskViewModel.js" />
     <Content Include="Scripts\app\Components\TaskDetail\TaskDetailViewModel.js" />
     <Content Include="Scripts\app\Components\Login\LoginViewModel.js" />
+    <Content Include="Scripts\app\SammyRoutes.js" />
     <Content Include="Scripts\app\ViewModels\MainViewModel.js" />
     <Content Include="Scripts\app\Components\TaskList\TaskListViewModel.js" />
     <Content Include="Scripts\app\ViewModels\TopMenuViewModel.js" />
