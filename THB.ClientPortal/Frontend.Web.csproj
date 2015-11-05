@@ -257,7 +257,8 @@
     <Content Include="Content\Site.css" />
     <Compile Include="IoC\NinjectScope.cs" />
     <Content Include="Scripts\app\Components\Login\LoginView.html" />
-    <Content Include="Scripts\app\Core\Loaders\TemplateFromUrlLoader.js" />
+    <Content Include="Scripts\app\Core\jQuery\GetScript.js" />
+    <Content Include="Scripts\app\Core\Loaders\ComponentByNamingConvention.js" />
     <Content Include="Scripts\app\RestMethods.js" />
     <Content Include="Scripts\app\RestService.js" />
     <Content Include="Scripts\app\SammyRoutes.js" />

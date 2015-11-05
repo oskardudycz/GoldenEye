@@ -6,10 +6,11 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <script type="text/javascript" src="~/Scripts/jquery-2.1.4.js"></script>
+    @Scripts.Render("~/bundles/jquery")
     <script type="text/javascript" src="~/Scripts/knockout-3.3.0.js"></script>
     <script src="~/Scripts/knockout.mapping-latest.js"></script>
     <script src="~/Scripts/sammy-0.7.5.js"></script>
+    @Scripts.Render("~/bundles/app")
 
 </head>
 
@@ -48,7 +49,6 @@
         </div>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
