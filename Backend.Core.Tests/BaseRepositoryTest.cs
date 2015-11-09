@@ -58,17 +58,62 @@ namespace Backend.Core.Tests
                     Progress = 70,
                     Id = 3
                 });
+            repository.SaveChanges();
 
             var count = tasklist.Count();
             //Assert.AreEqual(3, count);
-            var obj = repository.GetById(2);
+            var obj = repository.GetById(3);
             Assert.IsNotNull(obj);
+        }
+
+        [TestMethod]
+        public void CheckIfTaskExists()
+        {
+            var tasklist = new List<TaskEntity>
+            {
+                new TaskEntity() { Id = 1, TaskName = "daydreaming" },
+                new TaskEntity() { Id = 2, TaskName = "whistling" },
+                new TaskEntity() { Id = 3, TaskName = "dancing" }
+            };
+
+            var repository = new Mock<ITaskRepository>();
+
+            repository.Setup(x => x.GetById(It.IsAny<int>()))
+                .Returns((int i) => tasklist.Single(x => x.Id == i));
+
+            var testRepository = repository.Object;
+
+            var task = testRepository.GetById(2);
+
+            Assert.IsNotNull(task);
+            Assert.AreEqual(task.Id, 2);
+            Assert.AreEqual(task.TaskName, "whistling");
         }
 
         [TestMethod]
         public void DeleteTask()
         {
-            var dbset = new Mock<IDbSet<TaskEntity>>();
+            var tasklist = new List<TaskEntity>
+            {
+                new TaskEntity() { Id = 1, TaskName = "daydreaming" },
+                new TaskEntity() { Id = 2, TaskName = "whistling" },
+                new TaskEntity() { Id = 3, TaskName = "dancing" }
+            };
+
+            var repository = new Mock<ITaskRepository>();
+
+            int id = 3;
+
+            repository.Setup(x => x.Delete(It.IsAny<TaskEntity>())).Callback(new Action<TaskEntity>(x =>
+            {
+                var i = tasklist.FindIndex(q => q.Id.Equals(id));
+                tasklist.RemoveAt(i);
+            }));
+
+            var testRepository = repository.Object;
+
+            testRepository.Delete(id);
+            Assert.IsNull(testRepository.GetById(3));
         }
     }
 }
