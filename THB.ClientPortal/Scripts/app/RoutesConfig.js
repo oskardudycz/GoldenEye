@@ -1,43 +1,55 @@
 ﻿var routing = $.sammy(function () {
+    var mappings = [];
 
-    this.element_selector = "body";
+    var loginComponentName;
 
-    /*
-    this.get("#:view", function () {
-        if (!authManager.getToken() || this.params.view === "Login")
-            app.current("login-nc");
-        else if (this.params.view === "Dodaj")
-            app.current("AddTask-nc");
-        else if (this.params.view === 'Zlecenia')
-            app.current("TaskList-nc");
-    });
-    */
-    this.changeRoute = function (view, component) {
-        routing.get(view, function () {
-            if(authManager.getToken())
-                app.current(component);
-            else
-                app.current("login-nc");
-        });
+    var defaultViewName;
+
+    var changeRoute = function (view, params) {
+        app.params(params);
+
+        if (!authManager.getToken())
+            app.current(loginComponentName);
+        else {
+            var matched = mappings.filter(function (el) { return el.view === view; });
+            if (!matched || matched.length === 0)
+                throw "RoutesConfig - component for view: " + view + " not found!";
+
+            var componentName = matched[0].component;
+
+            app.current(componentName);
+        }
+
     }
 
     this.get("#:view/:id", function () {
-        app.params(this.params.id);
+        changeRoute(this.params.view, this.params.id);
+    });
 
-        if (this.params.view === "Detale")
-            app.current("TaskDetail-nc");
+    this.get("#:view", function () {
+        changeRoute(this.params.view);
     });
-    /*
-    this.get('', function () {
-        if (!authManager.getToken())
-            app.current("login-nc");
-        else
-            app.current("TaskList-nc");
+
+    this.get("", function () {
+        changeRoute(defaultViewName);
     });
-    */
+    
+    this.init = function (options) {
+        loginComponentName = options.loginComponentName || "login-nc";
+        defaultViewName = options.defaultViewName;
+
+        mappings = options.mappings;
+    }
 
 });
 
-routing.changeRoute("#Zlecenia", "TaskList-nc");
-routing.changeRoute("#Dodaj", "AddTask-nc");
-routing.changeRoute("", "TaskList-nc");
+routing.init({
+    loginComponentName: "login-nc",
+    defaultViewName: "Zlecenia",
+    mappings: [
+        { view: "Login", component: "login-nc" },
+        { view: "Zlecenia", component: "TaskList-nc" },
+        { view: "Dodaj", component: "AddTask-nc" },
+        { view: "Detale", component: "TaskDetail-nc" }
+    ]
+});
