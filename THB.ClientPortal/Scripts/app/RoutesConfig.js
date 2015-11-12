@@ -2,13 +2,7 @@
 
     this.element_selector = "body";
 
-    $(document).ready(function () {
-        if(authManager.getToken())
-            routing.run('#Zlecenia');
-        else
-            routing.run('#Login');
-    });
-
+    /*
     this.get("#:view", function () {
         if (!authManager.getToken() || this.params.view === "Login")
             app.current("login-nc");
@@ -16,9 +10,16 @@
             app.current("AddTask-nc");
         else if (this.params.view === 'Zlecenia')
             app.current("TaskList-nc");
-        else if (this.params.view === "Login")
-            app.current("login-nc");
     });
+    */
+    this.changeRoute = function (view, component) {
+        routing.get(view, function () {
+            if(authManager.getToken())
+                app.current(component);
+            else
+                app.current("login-nc");
+        });
+    }
 
     this.get("#:view/:id", function () {
         app.params(this.params.id);
@@ -26,12 +27,17 @@
         if (this.params.view === "Detale")
             app.current("TaskDetail-nc");
     });
-
+    /*
     this.get('', function () {
         if (!authManager.getToken())
             app.current("login-nc");
         else
             app.current("TaskList-nc");
     });
+    */
 
 });
+
+routing.changeRoute("#Zlecenia", "TaskList-nc");
+routing.changeRoute("#Dodaj", "AddTask-nc");
+routing.changeRoute("", "TaskList-nc");
