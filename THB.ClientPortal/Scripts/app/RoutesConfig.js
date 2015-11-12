@@ -4,17 +4,17 @@
 
     $(document).ready(function () {
         if(authManager.getToken())
-            routing.run("#Zlecenia");
+            routing.run('#Zlecenia');
         else
-            routing.run("#Login");
+            routing.run('#Login');
     });
-    
+
     this.get("#:view", function () {
         if (!authManager.getToken() || this.params.view === "Login")
             app.current("login-nc");
         else if (this.params.view === "Dodaj")
             app.current("AddTask-nc");
-        else if (this.params.view === "Zlecenia")
+        else if (this.params.view === 'Zlecenia')
             app.current("TaskList-nc");
         else if (this.params.view === "Login")
             app.current("login-nc");
@@ -25,6 +25,13 @@
 
         if (this.params.view === "Detale")
             app.current("TaskDetail-nc");
+    });
+
+    this.get('', function () {
+        if (!authManager.getToken())
+            app.current("login-nc");
+        else
+            app.current("TaskList-nc");
     });
 
 });
