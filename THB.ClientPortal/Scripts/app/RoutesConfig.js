@@ -8,6 +8,10 @@
         else
             routing.run("#Login");
     });
+
+    this.get("", function() {
+        app.current("TaskList-nc");
+    });
     
     this.get("#:view", function () {
         if (!authManager.getToken() || this.params.view === "Login")

@@ -61,6 +61,8 @@
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -91,7 +93,12 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Cechy.cs" />
+    <Compile Include="Entities\C_Zlecenie__nietabelaryczne.cs" />
+    <Compile Include="Entities\C_Zlecenie__nietabelaryczne_Cechy_Hist.cs" />
     <Compile Include="Context\ITHBContext.cs" />
+    <Compile Include="Context\ModelerContext.cs" />
+    <Compile Include="Entities\Task.cs" />
     <Compile Include="Context\THBContext.cs" />
     <Compile Include="Entities\ClientEntity.cs" />
     <Compile Include="Entities\TaskEntity.cs" />

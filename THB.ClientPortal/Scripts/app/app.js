@@ -17,6 +17,6 @@ var app = (function () {
     };
 
 })();
-$(function () {
+$(document).ready(function () {
     app.Init();
 });
