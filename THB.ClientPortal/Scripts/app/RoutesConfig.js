@@ -34,13 +34,13 @@
         changeRoute(defaultViewName);
     });
     
-
     this.init = function (options) {
         loginComponentName = options.loginComponentName || "login-nc";
         defaultViewName = options.defaultViewName;
 
         mappings = options.mappings;
     }
+
 });
 
 routing.init({
