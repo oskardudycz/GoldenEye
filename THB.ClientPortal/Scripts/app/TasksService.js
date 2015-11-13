@@ -43,7 +43,7 @@
                 },
                 success: function (data) {
                     var task = ko.mapping.fromJS(data);
-                    details.push(task);
+                    details(task());
                 }
             });
         };
