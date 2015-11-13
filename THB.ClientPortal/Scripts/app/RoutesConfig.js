@@ -1,34 +1,55 @@
 ﻿var routing = $.sammy(function () {
+    var mappings = [];
 
-    this.element_selector = "body";
+    var loginComponentName;
 
-    $(document).ready(function () {
-        if(authManager.getToken())
-            routing.run("#Zlecenia");
-        else
-            routing.run("#Login");
-    });
+    var defaultViewName;
 
-    this.get("", function() {
-        app.current("TaskList-nc");
-    });
-    
-    this.get("#:view", function () {
-        if (!authManager.getToken() || this.params.view === "Login")
-            app.current("login-nc");
-        else if (this.params.view === "Dodaj")
-            app.current("AddTask-nc");
-        else if (this.params.view === "Zlecenia")
-            app.current("TaskList-nc");
-        else if (this.params.view === "Login")
-            app.current("login-nc");
-    });
+    var changeRoute = function (view, params) {
+        app.params(params);
+
+        if (!authManager.getToken())
+            app.current(loginComponentName);
+        else {
+            var matched = mappings.filter(function (el) { return el.view === view; });
+            if (!matched || matched.length === 0)
+                throw "RoutesConfig - component for view: " + view + " not found!";
+
+            var componentName = matched[0].component;
+
+            app.current(componentName);
+        }
+
+    }
 
     this.get("#:view/:id", function () {
-        app.params(this.params.id);
-
-        if (this.params.view === "Detale")
-            app.current("TaskDetail-nc");
+        changeRoute(this.params.view, this.params.id);
     });
 
+    this.get("#:view", function () {
+        changeRoute(this.params.view);
+    });
+
+    this.get("", function () {
+        changeRoute(defaultViewName);
+    });
+    
+
+    this.init = function (options) {
+        loginComponentName = options.loginComponentName || "login-nc";
+        defaultViewName = options.defaultViewName;
+
+        mappings = options.mappings;
+    }
+});
+
+routing.init({
+    loginComponentName: "login-nc",
+    defaultViewName: "Zlecenia",
+    mappings: [
+        { view: "Login", component: "login-nc" },
+        { view: "Zlecenia", component: "TaskList-nc" },
+        { view: "Dodaj", component: "AddTask-nc" },
+        { view: "Detale", component: "TaskDetail-nc" }
+    ]
 });

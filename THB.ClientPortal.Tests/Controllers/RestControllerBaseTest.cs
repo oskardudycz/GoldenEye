@@ -25,13 +25,25 @@ namespace THB.ClientPortal.Tests.Controllers
         {
             var service = new Mock<IRestService<TaskDTO>>();
             var dto = new Mock<TaskDTO>();
-            var repository = new Mock<ITaskRepository>();
+            //var repository = new Mock<ITaskRepository>();
 
-            var controller = new RestControllerBase(service.Object);
+            //var controller = new RestControllerBase(service.Object);
         }
 
         [TestMethod]
         public void Put()
+        {
+            var service = new Mock<IRestService<TaskDTO>>();
+        }
+
+        [TestMethod]
+        public void Post()
+        {
+            var service = new Mock<IRestService<TaskDTO>>();
+        }
+
+        [TestMethod]
+        public void Delete()
         {
             var service = new Mock<IRestService<TaskDTO>>();
         }

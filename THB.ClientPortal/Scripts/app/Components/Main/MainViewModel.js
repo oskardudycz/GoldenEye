@@ -1,5 +1,4 @@
-﻿
-function MainViewModel() {
+﻿function MainViewModel() {
     var self = this;
 
     app.mainViewModel = self;
