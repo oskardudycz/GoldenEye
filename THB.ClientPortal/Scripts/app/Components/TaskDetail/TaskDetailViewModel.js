@@ -17,9 +17,7 @@
     self.Color = ko.observable();
     self.Progress = ko.observable();
 
-    self.getTask = function () {
-        service.getTask(id, self.Details);
-    };
+    service.getTask(self.Id, self.Details);
 
     self.viewModelName = "Detale";
     self.viewName = "Detale";
@@ -30,8 +28,6 @@ ko.components.register("TaskDetail-nc", {
     viewModel: {
         createViewModel: function (params, componentInfo) {
             var viewModel = new TaskDetailViewModel(params);
-
-            viewModel.getTask(viewModel.Id());
 
             return viewModel;
         }
