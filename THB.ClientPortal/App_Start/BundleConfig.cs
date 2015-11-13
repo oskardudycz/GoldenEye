@@ -29,7 +29,8 @@ namespace Frontend.Web
 
             bundles.Add(new ScriptBundle("~/bundles/app")
                 .IncludeDirectory("~/Scripts/app/", "*.js", false)
-                .IncludeDirectory("~/Scripts/app/Core", "*.js", true));
+                .IncludeDirectory("~/Scripts/app/Core", "*.js", true)
+                .Include("~/Scripts/app/Components/ComponentsConfig.js"));
 
 #if DEBUG
             BundleTable.EnableOptimizations = false;

@@ -34,5 +34,3 @@ AddTaskViewModel.prototype.addTask = function () {
     var self = this;
     service.addTask(self);
 };
-
-ko.components.register("AddTask-nc", {});

@@ -98,10 +98,3 @@
         localStorage.removeItem(tokenKey);
     }
 }
-
-ko.components.register("login-nc", {});
-
-ko.components.register('login-partial', {
-    viewModel: LoginViewModel,
-    template: { element: 'LoginPartial' }
-});

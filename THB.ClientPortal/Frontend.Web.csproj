@@ -258,6 +258,8 @@
     <Content Include="Content\Site.css" />
     <Compile Include="IoC\NinjectScope.cs" />
     <Content Include="Scripts\app\Components\AddTask\AddTaskView.html" />
+    <Content Include="Scripts\app\Components\ComponentsConfig.js" />
+    <Content Include="Scripts\app\Components\Login\LoginTopMenuView.html" />
     <Content Include="Scripts\app\Components\Login\LoginView.html" />
     <Content Include="Scripts\app\Components\Main\MainView.html" />
     <Content Include="Scripts\app\Components\TaskDetail\TaskDetailView.html" />
@@ -347,7 +349,6 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\List.cshtml" />
     <Content Include="Scripts\knockout.validation.min.js.map" />
   </ItemGroup>

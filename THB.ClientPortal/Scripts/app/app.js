@@ -2,6 +2,7 @@
 
 var app = (function () {
     function init() {
+        componentsConfig.init();
         routing.run();
         ko.applyBindings();
     }
