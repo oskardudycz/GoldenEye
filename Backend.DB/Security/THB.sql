@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [THB]
+    AUTHORIZATION [THBZasoby];
+

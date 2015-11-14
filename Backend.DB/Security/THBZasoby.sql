@@ -1,0 +1,6 @@
+﻿CREATE LOGIN [THBZasoby] 
+    WITH PASSWORD = '1Qazwsxedc';
+GO
+
+CREATE USER [THBZasoby] FOR LOGIN [THBZasoby];
+

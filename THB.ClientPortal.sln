@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontend.Web", "THB.ClientPortal\Frontend.Web.csproj", "{B374A4D9-5C51-4DC3-A14A-D7686BB484F0}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -35,6 +35,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Business", "Shared.Business\Shared.Business.csproj", "{FE4C8D80-C8B9-45B4-9CE3-BB94280BC223}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend.Core.Tests", "Backend.Core.Tests\Backend.Core.Tests.csproj", "{77A638DE-2F2A-46AD-B396-F4EF2C1579B0}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Backend.DB", "Backend.DB\Backend.DB.sqlproj", "{C84A395B-BFFB-47CE-879E-85B94C4D56AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -118,6 +120,18 @@ Global
 		{77A638DE-2F2A-46AD-B396-F4EF2C1579B0}.Release|ARM.ActiveCfg = Release|Any CPU
 		{77A638DE-2F2A-46AD-B396-F4EF2C1579B0}.Release|x64.ActiveCfg = Release|Any CPU
 		{77A638DE-2F2A-46AD-B396-F4EF2C1579B0}.Release|x86.ActiveCfg = Release|Any CPU
+		{C84A395B-BFFB-47CE-879E-85B94C4D56AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C84A395B-BFFB-47CE-879E-85B94C4D56AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C84A395B-BFFB-47CE-879E-85B94C4D56AA}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{C84A395B-BFFB-47CE-879E-85B94C4D56AA}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{C84A395B-BFFB-47CE-879E-85B94C4D56AA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C84A395B-BFFB-47CE-879E-85B94C4D56AA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C84A395B-BFFB-47CE-879E-85B94C4D56AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C84A395B-BFFB-47CE-879E-85B94C4D56AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C84A395B-BFFB-47CE-879E-85B94C4D56AA}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{C84A395B-BFFB-47CE-879E-85B94C4D56AA}.Release|ARM.ActiveCfg = Release|Any CPU
+		{C84A395B-BFFB-47CE-879E-85B94C4D56AA}.Release|x64.ActiveCfg = Release|Any CPU
+		{C84A395B-BFFB-47CE-879E-85B94C4D56AA}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
