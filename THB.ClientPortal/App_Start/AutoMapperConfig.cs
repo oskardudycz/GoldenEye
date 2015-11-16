@@ -7,6 +7,7 @@ using Backend.Business.Entities;
 using Shared.Business.DTOs;
 using Frontend.Web.Extensions;
 using Shared.Business.Contracts;
+using Frontend.Web.Models;
 
 namespace Frontend.Web.App_Start
 {
@@ -23,8 +24,8 @@ namespace Frontend.Web.App_Start
             Mapper.CreateMap<ClientDTO, ClientEntity>().IgnoreNonExistingProperties<ClientDTO, ClientEntity>();
             Mapper.CreateMap<TaskTypeEntity, TaskTypeDTO>().IgnoreNonExistingProperties<TaskTypeEntity, TaskTypeDTO>();
             Mapper.CreateMap<TaskTypeDTO, TaskTypeEntity>().IgnoreNonExistingProperties<TaskTypeDTO, TaskTypeEntity>();
-           // Mapper.CreateMap<I_NEWS, TaskDTO>().ForMember(x => x.Date,
-             //    opt => opt.MapFrom(src => ((DateTime)src.Date).ToShortDateString()));
+            Mapper.CreateMap<RegisterBindingModel, UserDTO>().IgnoreNonExistingProperties<RegisterBindingModel, UserDTO>();
+            Mapper.CreateMap<UserDTO, UserEntity>().IgnoreNonExistingProperties<UserDTO, UserEntity>();
         }
     }
 }
