@@ -8,6 +8,7 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using System.Threading.Tasks;
 using Shared.Business.Contracts;
+using Shared.Business.Validators;
 
 namespace Backend.Business.Services
 {
@@ -38,6 +39,14 @@ namespace Backend.Business.Services
 
         public override Task<TaskDTO> Put(TaskDTO dto)
         {
+            var validator = new TaskValidator();
+            var results = validator.Validate(dto);
+
+            if (!results.IsValid)
+            {
+                return null;
+            }
+
             return Task.Run(() =>
                 Mapper.Map<TaskContract, TaskDTO>(
                     _service.Add(Mapper.Map<TaskDTO, TaskContract>(dto))));
@@ -45,6 +54,14 @@ namespace Backend.Business.Services
 
         public override Task<TaskDTO> Post(TaskDTO dto)
         {
+            var validator = new TaskValidator();
+            var results = validator.Validate(dto);
+
+            if (!results.IsValid)
+            {
+                return null;
+            }
+
             return Task.Run(() =>
                 Mapper.Map<TaskContract, TaskDTO>(
                     _service.Update(Mapper.Map<TaskDTO, TaskContract>(dto))));

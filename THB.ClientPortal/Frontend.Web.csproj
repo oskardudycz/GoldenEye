@@ -240,6 +240,8 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
     <Content Include="Scripts\app\app.js" />
     <Content Include="Scripts\app\AuthManager.js" />
     <Content Include="Scripts\app\common.js" />
@@ -280,6 +282,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\app\Components\AddTask\AddTaskViewModel.js" />
     <Content Include="Scripts\app\Components\TaskDetail\TaskDetailViewModel.js" />
@@ -319,6 +323,8 @@
     <Content Include="Scripts\sammy-0.7.5.js" />
     <Content Include="Scripts\sammy-0.7.5.min.js" />
     <Content Include="Scripts\app\TopMenuOptions.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Scripts\app\ViewModelLocator.js" />
     <Content Include="Web.config" />
