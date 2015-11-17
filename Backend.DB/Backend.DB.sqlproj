@@ -1465,7 +1465,7 @@
     <Build Include="Security\Portal.sql" />
     <Build Include="Portal\View\Customers.sql" />
     <Build Include="Portal\View\Tasks.sql" />
-    <Build Include="Portal\View\TaskType.sql" />
+    <Build Include="Portal\View\TaskTypes.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="PostDeployment\Script.PostDeployment.sql" />

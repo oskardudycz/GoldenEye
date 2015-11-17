@@ -25,7 +25,13 @@ namespace Backend.Business.Tests.Entities
                 Number = "123",
                 Date = DateTime.Now,
                 Description = "test",
-                Color = 123
+                Color = 123,
+                CustomerId = 1,
+                CustomerColor = 234,
+                Amount = 3,
+                IsInternal = false,
+                PlannedTime = 3,
+                TypeId = 4
             };
 
             var userId = 1;
@@ -33,7 +39,49 @@ namespace Backend.Business.Tests.Entities
             //WHEN
             var result = serializer.Serialize(new TaskSaveRequest(userId, task));
 
+            //THEN
             result.Should().Not.Be.Null();
+        }
+        
+        [TestMethod]
+        public void GivenXmlWithSaveResult_WhenDeserialized_ThenIdIsDeserializedProperly()
+        {
+            //Given
+            var serializer = new TaskXmlSerializer();
+
+            var xml =
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?><Response ResponseType=\"Units_Save\"><Result><Value><Ref Id=\"1\" EntityType=\"Unit\"/></Value></Result></Response>";
+
+            //When
+            var result = serializer.Deserialize(xml);
+
+            //Then
+            result.Should().Not.Be.Null();
+            result.Result.Should().Not.Be.Null();
+            result.Result.Value.Should().Not.Be.Null();
+            result.Result.Value.Ref.Should().Not.Be.Null();
+            result.Result.Value.Ref.Id.Should().Be.EqualTo(1);
+        }
+
+        [TestMethod]
+        public void GivenXmlWithSaveResultWithError_WhenDeserialized_ThenErrorMessageIsDeserializedProperly()
+        {
+            //Given
+            var serializer = new TaskXmlSerializer();
+
+            const string errorMessage = "Some crazy exception appeared!";
+
+            var xml =
+                string.Format("<?xml version=\"1.0\" encoding=\"utf-8\"?><Response ResponseType=\"Units_Save\"><Result><Error ErrorMessage=\"{0}\"></Error></Result></Response>", errorMessage);
+
+            //When
+            var result = serializer.Deserialize(xml);
+
+            //Then
+            result.Should().Not.Be.Null();
+            result.Result.Should().Not.Be.Null();
+            result.Result.Error.Should().Not.Be.Null();
+            result.Result.Error.ErrorMessage.Should().Be.EqualTo(errorMessage);
         }
     }
 }

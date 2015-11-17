@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Xml;
 using System.Xml.Serialization;
 using Backend.Business.Context;
 using Shared.Core.Extensions;
@@ -12,7 +11,6 @@ namespace Backend.Business.Utils.Serialization
     {
         public string Serialize(TaskSaveRequest obj)
         {
-            //GIVEN
             var serializer = new XmlSerializer(typeof(TaskSaveRequest), new[] { typeof(Val<int>), typeof(Val<string>), typeof(ValDateTime), typeof(ValDictionary) });
 
             var ns = new XmlSerializerNamespaces();
@@ -22,11 +20,21 @@ namespace Backend.Business.Utils.Serialization
 
             using (var writer = new StringWriter())
             {
-                //WHEN
                 serializer.Serialize(writer, obj, ns);
 
-                //THEN
                 var result = writer.GetStringBuilder().ToString().Replace("<?xml version=\"1.0\" encoding=\"utf-16\"?>", string.Empty).Trim();
+
+                return result;
+            }
+        }
+
+        public Response<SaveValue> Deserialize(string xml)
+        {
+            var serializer = new XmlSerializer(typeof(Response<SaveValue>));
+
+            using (var reader = new StringReader(xml))
+            {
+                var result = (Response<SaveValue>)serializer.Deserialize(reader);
 
                 return result;
             }
@@ -93,10 +101,42 @@ namespace Backend.Business.Utils.Serialization
         }
     }
 
-    public class TaskSaveResponse
-    {
 
+    [XmlRoot("Response")]
+    public class Response<T>
+    {
+        [XmlElement("Result")]
+        public Result<T> Result { get; set; }
+        //<?xml version="1.0" encoding="utf-8"?><Response ResponseType="Units_Save"><Result><Value><Ref Id="1" EntityType="Unit"/></Value></Result></Response>
     }
+
+    public class Result<T>
+    {
+        [XmlElement("Value")]
+        public ResultValue<T> Value { get; set; }
+
+        [XmlElement("Error")]
+        public ResponseError Error { get; set; }
+    }
+
+    public class ResultValue<T>
+    {
+        [XmlElement("Ref")]
+        public T Ref { get; set; }
+    }
+
+    public class ResponseError
+    {
+        [XmlAttribute]
+        public string ErrorMessage { get; set; }
+    }
+
+    public class SaveValue
+    {
+        [XmlAttribute]
+        public int Id { get; set; }
+    }
+
 
     [XmlRoot("Unit")]
     public class TaskXml

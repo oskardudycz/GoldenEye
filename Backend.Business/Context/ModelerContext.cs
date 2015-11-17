@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
 using System.Data.SqlClient;
 using Backend.Business.Entities;
@@ -13,7 +14,7 @@ namespace Backend.Business.Context
         public ModelerContext()
             : base("name=THB-B2B")
         {
-
+            Database.SetInitializer<ModelerContext>(null);
         }
 
         public virtual DbSet<ClientEntity> ClientEntities { get; set; }
@@ -24,18 +25,39 @@ namespace Backend.Business.Context
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<TaskType> TaskTypes { get; set; }
 
-        public bool SaveTask(Task task)
+        public int SaveTask(Task task)
         {
-            var xmlDataIn = new SqlParameter("XMLDataIn", SqlDbType.NVarChar, -1) { Value = new TaskXmlSerializer().Serialize(new TaskSaveRequest(1, task)) };
+            var request = new TaskSaveRequest(1, task);
+
+            var serializer = new TaskXmlSerializer();
+
+            var xmlDataIn = new SqlParameter("XMLDataIn", SqlDbType.NVarChar, -1) { Value = serializer.Serialize(request) };
             var xmlDataOut = new SqlParameter("XMLDataOut", SqlDbType.NVarChar, -1) { Direction = ParameterDirection.Output };
 
-            var result = Database.ExecuteSqlCommand("THB.Units_Save @XMLDataIn, @XMLDataOut OUT", xmlDataIn, xmlDataOut);
+            Database.ExecuteSqlCommand("THB.Units_Save @XMLDataIn, @XMLDataOut OUT", xmlDataIn, xmlDataOut);
+            
+            var response = serializer.Deserialize((string)xmlDataOut.Value);
+ 
+            if(response.Result.Error != null)
+                throw new DataException(response.Result.Error.ErrorMessage);
 
-            return result == 1;
+            return response.Result.Value.Ref.Id;
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Customer>()
+                .ToTable("Portal.Customers");
+
+            modelBuilder.Entity<TaskType>()
+                .ToTable("Portal.TaskTypes");
+
+            modelBuilder.Entity<Task>()
+                .ToTable("Portal.Tasks")
+                .HasKey(o => o.Id)
+                .Ignore(o => o.ModificationDate)
+                .Property(s => s.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+
             //modelBuilder.Entity<ClientEntity>()
             //    .HasMany(e => e.UserEntities)
             //    .WithRequired(e => e.ClientEntity)

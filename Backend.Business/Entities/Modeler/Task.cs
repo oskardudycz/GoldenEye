@@ -7,7 +7,7 @@ namespace Backend.Business.Context
 
     public class Task
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+
         public int Id { get; set; }
 
         public string Name { get; set; }
