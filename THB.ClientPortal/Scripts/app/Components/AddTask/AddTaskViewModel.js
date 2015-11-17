@@ -1,6 +1,7 @@
-﻿var AddTaskViewModel = function () {
+﻿var currentDate = new Date();
+
+var AddTaskViewModel = function () {
     var self = this;
-    var currentDate = new Date();
 
     self.TaskName = ko.observable().extend({ required: true });
     self.Number = ko.observable().extend({

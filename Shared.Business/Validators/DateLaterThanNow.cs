@@ -15,7 +15,7 @@ namespace Shared.Business.Validators
         {
             var addTask = context.ParentContext.InstanceToValidate as TaskDTO;
             var convertedDate = addTask.StartDate ?? DateTime.Now;
-            return addTask.StartDate != null && (convertedDate - System.DateTime.Now).TotalHours > 0;
+            return addTask != null && (convertedDate - System.DateTime.Now).TotalDays > 0;
         }
     }
 }
