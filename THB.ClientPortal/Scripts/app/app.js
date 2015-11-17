@@ -2,6 +2,7 @@
 
 var app = (function () {
     function init() {
+        componentsConfig.init();
         routing.run();
         ko.applyBindings();
     }
@@ -17,7 +18,6 @@ var app = (function () {
     };
 
 })();
-
-$(function () {
+$(document).ready(function () {
     app.Init();
 });

@@ -1,0 +1,3 @@
+﻿GRANT CONNECT TO [THBZasoby];
+GO
+

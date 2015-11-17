@@ -64,9 +64,9 @@
             data: JSON.stringify(data)
         }).done(function (data) {
             self.result("Done!");
-            alert("Rejestracja przebiegła pomyślnie. Możesz się teraz zalogować.")
+            toastr.success('Możesz się teraz zalogować.', 'Rejestracja przebiegła pomyślnie');
         }).fail(function () {
-            $("#register-error-message").text("Błędne hasło.").fadeIn();
+            toastr.error('Nieprawidłowe hasło.', 'Błąd');
         });
     }
 
@@ -89,7 +89,7 @@
             localStorage.setItem(tokenKey, data.access_token);
             app.current("TaskList-nc");
         }).fail(function () {
-            $("#login-error-message").text("Błędny login lub hasło.").fadeIn();
+            toastr.error('Błędny login lub hasło.', 'Błąd');
         });
     }
 
@@ -98,10 +98,3 @@
         localStorage.removeItem(tokenKey);
     }
 }
-
-ko.components.register("login-nc", {});
-
-ko.components.register('login-partial', {
-    viewModel: LoginViewModel,
-    template: { element: 'LoginPartial' }
-});

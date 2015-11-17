@@ -15,14 +15,6 @@
     <script src="~/Scripts/app/Components/TopMenu/TopMenuViewModel.js"></script>
 </head>
 
-<template id="top-menu-view">
-    <ul class="nav navbar-nav" data-bind="foreach: viewModels">
-        <li>
-            <a data-bind="text: $data, attr:{href:'#' + $data}"></a>
-        </li>
-    </ul>
-</template>
-
 <body>
     <div id="viewContainer">
         <div class="navbar navbar-inverse navbar-fixed-top">
@@ -36,8 +28,10 @@
                     @Html.ActionLink("THB B2B - Portal Klienta", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 </div>
                 <div class="navbar-collapse collapse">
-                    <top-menu></top-menu>
-                    @Html.Partial("_LoginPartial")
+                    <!-- ko component: "TopMenu-nc" -->
+                    <!-- /ko -->
+                    <!-- ko component: "LoginTopMenu" -->
+                    <!-- /ko -->
                 </div>
             </div>
         </div>

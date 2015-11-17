@@ -6,11 +6,26 @@ ko.components.loaders.unshift((function () {
     ///                     PRIVATE                      ///   
     ////////////////////////////////////////////////////////
 
-    function getViewPathFromComponentName(name) {
+    function getClearComponentName(componentName) {
+        var nameWithoutNc = componentName.replace("-nc", "");
+        var capitalizedName = nameWithoutNc.charAt(0).toUpperCase() + nameWithoutNc.slice(1);
+
+        return capitalizedName;
+    }
+
+    function getViewModelNameFromUrl(url) {
+        var indexOfNameStart = url.lastIndexOf("/") + 1;
+
+        return url.substring(indexOfNameStart).replace(".js", "");
+    }
+
+    function getViewPathFromComponentName(componentName) {
+        var name = getClearComponentName(componentName);
         return name + "/" + name + "View.html";
     }
 
-    function getViewModelPathFromComponentName(name) {
+    function getViewModelPathFromComponentName(componentName) {
+        var name = getClearComponentName(componentName);
         return name + "/" + name + "ViewModel.js";
     }
 
@@ -41,7 +56,7 @@ ko.components.loaders.unshift((function () {
 
         $.cachedScript(fullUrl)
             .done(function () {
-                var viewModelConstructor = window[options.viewModelName];
+                var viewModelConstructor = window[getViewModelNameFromUrl(options.relativeUrl)];
                 ko.components.defaultLoader.loadViewModel(options.name, viewModelConstructor, options.callback);
             }).fail(function () {
                 callDefaultBehaviour(options.callback);
@@ -57,14 +72,11 @@ ko.components.loaders.unshift((function () {
             callDefaultBehaviour(callback);
             return;
         }
-
-        var nameWithoutNc = name.replace("-nc", "");
-        var capitalizedName = nameWithoutNc.charAt(0).toUpperCase() + nameWithoutNc.slice(1);
-
+        
         //provide configuration for how to load the template/widget
         callback({
-            template: { fromUrl: getViewPathFromComponentName(capitalizedName), name: capitalizedName + "View" },
-            viewModel: { fromUrl: getViewModelPathFromComponentName(capitalizedName), name: capitalizedName + "ViewModel" }
+            template: { fromUrl: getViewPathFromComponentName(name)},
+            viewModel: { fromUrl: getViewModelPathFromComponentName(name) }
         });
     }
 
@@ -80,8 +92,7 @@ ko.components.loaders.unshift((function () {
             name: name,
             relativeUrl: url,
             maxCacheAge: viewModelConfig.maxCacheAge,
-            callback: callback,
-            viewModelName: viewModelConfig.name
+            callback: callback
         });
     }
 
@@ -97,8 +108,7 @@ ko.components.loaders.unshift((function () {
             name: name,
             relativeUrl: url,
             maxCacheAge: templateConfig.maxCacheAge,
-            callback: callback,
-            viewName: templateConfig.name
+            callback: callback
         });
     }
 

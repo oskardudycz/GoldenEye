@@ -12,5 +12,3 @@
     self.viewModelName = "Zlecenia";
     self.viewName = "Zlecenia";
 };
-
-ko.components.register("TaskList-nc", {});

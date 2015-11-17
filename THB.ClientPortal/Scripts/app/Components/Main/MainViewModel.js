@@ -5,5 +5,3 @@
 
     self.current = ko.observable();
 }
-
-ko.components.register("Main-nc", {});
