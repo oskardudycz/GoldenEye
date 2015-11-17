@@ -12,64 +12,18 @@ using Shared.Business.Validators;
 
 namespace Backend.Business.Services
 {
-    public class TaskRestService: RestServiceBase<TaskDTO>, ITaskRestService
+    public class TaskRestService: RestServiceBase<TaskDTO, TaskContract>, ITaskRestService
     {
         private readonly ITaskService _service;
 
         public TaskRestService(ITaskService service)
+            : base(service)
         {
             _service = service;
         }
         public override void Dispose()
         {
           _service.Dispose();
-        }
-        public override IQueryable<TaskDTO> Get()
-        {
-
-            return _service.GetAll().ProjectTo<TaskDTO>(); 
-        }
-
-        public override Task<TaskDTO> Get(int id)
-        {
-
-            return Task.Run(() => Mapper.Map<TaskContract, TaskDTO>(_service.GetById(id)));
-
-        }
-
-        public override Task<TaskDTO> Put(TaskDTO dto)
-        {
-            var validator = new TaskValidator();
-            var results = validator.Validate(dto);
-
-            if (!results.IsValid)
-            {
-                return null;
-            }
-
-            return Task.Run(() =>
-                Mapper.Map<TaskContract, TaskDTO>(
-                    _service.Add(Mapper.Map<TaskDTO, TaskContract>(dto))));
-        }
-
-        public override Task<TaskDTO> Post(TaskDTO dto)
-        {
-            var validator = new TaskValidator();
-            var results = validator.Validate(dto);
-
-            if (!results.IsValid)
-            {
-                return null;
-            }
-
-            return Task.Run(() =>
-                Mapper.Map<TaskContract, TaskDTO>(
-                    _service.Update(Mapper.Map<TaskDTO, TaskContract>(dto))));
-        }
-
-        public override Task<bool> Delete(int id)
-        {
-            return Task.Run(() => _service.Remove(id));
         }
     }
 }

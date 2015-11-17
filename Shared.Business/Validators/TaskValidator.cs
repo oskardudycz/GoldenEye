@@ -15,8 +15,8 @@ namespace Shared.Business.Validators
             RuleFor(task => task.Number).NotEmpty().GreaterThan(0);
             RuleFor(task => task.Amount).GreaterThan(0);
             RuleFor(task => task.Date).NotEmpty();
-            RuleFor(task => task.StartDate.Value).SetValidator(new DateLaterThanNow());
-            RuleFor(task => task.EndDate.Value).GreaterThan(task => task.StartDate.Value).When(task => task.StartDate.HasValue);
+            RuleFor(task => task.StartDate).SetValidator(new DateLaterThanNow());
+            RuleFor(task => task.EndDate).GreaterThan(task => task.StartDate.Value).When(task => task.StartDate.HasValue);
         }
     }
 }

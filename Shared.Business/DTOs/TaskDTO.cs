@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Shared.Core.DTOs;
+using FluentValidation.Attributes;
+using Shared.Business.Validators;
 
 namespace Shared.Business.DTOs
 {
+    [Validator(typeof(TaskValidator))]
     public class TaskDTO: DTOBase
     {
         public int Id { get; set; }
