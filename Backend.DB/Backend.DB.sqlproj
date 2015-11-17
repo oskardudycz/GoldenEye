@@ -120,6 +120,8 @@
     <Folder Include="dbo\XMLSchemaCollections\" />
     <Folder Include="PostDeployment" />
     <Folder Include="PostDeployment\DataMigration" />
+    <Folder Include="Portal" />
+    <Folder Include="Portal\View" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\_Operacja  nietabelaryczna_Cechy_Hist.sql">
@@ -471,10 +473,6 @@
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
     <Build Include="dbo\Tables\_Czynności - Struktura, Koniec-Operacja_Cechy_Hist.sql">
-      <AnsiNulls>On</AnsiNulls>
-      <QuotedIdentifier>On</QuotedIdentifier>
-    </Build>
-    <Build Include="dbo\Views\Tasks.sql">
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
@@ -1464,6 +1462,10 @@
     <Build Include="dbo\XMLSchemaCollections\Schema_ValRef.sql" />
     <Build Include="Security\Permissions.sql" />
     <Build Include="dbo\Tables\Migration.sql" />
+    <Build Include="Security\Portal.sql" />
+    <Build Include="Portal\View\Customers.sql" />
+    <Build Include="Portal\View\Tasks.sql" />
+    <Build Include="Portal\View\TaskType.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="PostDeployment\Script.PostDeployment.sql" />

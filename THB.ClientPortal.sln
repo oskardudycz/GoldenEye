@@ -38,6 +38,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend.Core.Tests", "Backe
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Backend.DB", "Backend.DB\Backend.DB.sqlproj", "{C84A395B-BFFB-47CE-879E-85B94C4D56AA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend.Business.Tests", "Backend.Business.Tests\Backend.Business.Tests.csproj", "{B2CF626B-DC41-49BC-A99C-7FA9462C9187}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -132,6 +134,16 @@ Global
 		{C84A395B-BFFB-47CE-879E-85B94C4D56AA}.Release|ARM.ActiveCfg = Release|Any CPU
 		{C84A395B-BFFB-47CE-879E-85B94C4D56AA}.Release|x64.ActiveCfg = Release|Any CPU
 		{C84A395B-BFFB-47CE-879E-85B94C4D56AA}.Release|x86.ActiveCfg = Release|Any CPU
+		{B2CF626B-DC41-49BC-A99C-7FA9462C9187}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2CF626B-DC41-49BC-A99C-7FA9462C9187}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2CF626B-DC41-49BC-A99C-7FA9462C9187}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{B2CF626B-DC41-49BC-A99C-7FA9462C9187}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B2CF626B-DC41-49BC-A99C-7FA9462C9187}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B2CF626B-DC41-49BC-A99C-7FA9462C9187}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2CF626B-DC41-49BC-A99C-7FA9462C9187}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2CF626B-DC41-49BC-A99C-7FA9462C9187}.Release|ARM.ActiveCfg = Release|Any CPU
+		{B2CF626B-DC41-49BC-A99C-7FA9462C9187}.Release|x64.ActiveCfg = Release|Any CPU
+		{B2CF626B-DC41-49BC-A99C-7FA9462C9187}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Data.Entity;
 
 namespace Backend.Core.Context
@@ -13,6 +10,10 @@ namespace Backend.Core.Context
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<T>());
         }
 
+        protected DataContext(string name) : base(name)
+        {
+        }
+        
         public new void Dispose()
         {
             base.Dispose();

@@ -87,6 +87,7 @@
     <Compile Include="Contracts\IBaseContract.cs" />
     <Compile Include="DTOs\DTOBase.cs" />
     <Compile Include="DTOs\IDTO.cs" />
+    <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="IHasId.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validatable.cs" />
