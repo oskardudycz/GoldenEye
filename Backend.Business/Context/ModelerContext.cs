@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
+using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using Backend.Business.Entities;
 using Backend.Business.Utils.Serialization;
@@ -22,8 +23,21 @@ namespace Backend.Business.Context
         public virtual DbSet<TaskTypeEntity> TaskTypeEntities { get; set; }
         public virtual DbSet<UserEntity> UserEntities { get; set; }
         public virtual DbSet<Task> Tasks { get; set; }
-        public virtual DbSet<Customer> Customers { get; set; }
-        public virtual DbSet<TaskType> TaskTypes { get; set; }
+
+        public DbQuery<Customer> Customers
+        {
+            get
+            {
+                return Set<Customer>().AsNoTracking();
+            }
+        }
+        public DbQuery<TaskType> TaskTypes
+        {
+            get
+            {
+                return Set<TaskType>().AsNoTracking();
+            }
+        }
 
         public int SaveTask(Task task)
         {

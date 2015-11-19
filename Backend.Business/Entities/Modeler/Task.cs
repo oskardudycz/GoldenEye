@@ -3,8 +3,6 @@ using System;
 
 namespace Backend.Business.Context
 {
-    using System.ComponentModel.DataAnnotations.Schema;
-
     public class Task
     {
 

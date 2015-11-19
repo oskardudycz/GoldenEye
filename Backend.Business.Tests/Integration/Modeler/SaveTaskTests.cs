@@ -41,13 +41,36 @@ namespace Backend.Business.Tests.Modeler
                     };
 
                     //WHEN
-                    var result = db.SaveTask(task);
+                    var insertedId = db.SaveTask(task);
                    
                     //THEN
-                    result.Should().Be.GreaterThan(0);
+                    insertedId.Should().Be.GreaterThan(0);
 
 
-                    var taskFromDB = db.Tasks.Find(result);
+                    var taskFromDb = db.Tasks.Find(insertedId);
+
+                    taskFromDb.Should().Not.Be.Null();
+                    taskFromDb.Id.Should().Be.EqualTo(taskFromDb.Id);
+                    taskFromDb.PlannedStartDate.Should().Be.EqualTo(task.PlannedStartDate);
+                    taskFromDb.PlannedEndDate.Should().Be.EqualTo(task.PlannedEndDate);
+                    taskFromDb.PlanningDate.Should().Be.EqualTo(task.PlanningDate);
+                    taskFromDb.Number.Should().Be.EqualTo(task.Number);
+                    taskFromDb.Date.Should().Be.EqualTo(task.Date);
+                    taskFromDb.Description.Should().Be.EqualTo(task.Description);
+
+                    taskFromDb.Color.Should().Be.EqualTo(task.Color);
+                    taskFromDb.CustomerColor.Should().Be.EqualTo(task.CustomerColor);
+                    taskFromDb.Amount.Should().Be.EqualTo(task.Amount);
+                    taskFromDb.IsInternal.Should().Be.EqualTo(task.IsInternal);
+                    taskFromDb.PlannedTime.Should().Be.EqualTo(task.PlannedTime);
+                    taskFromDb.CustomerId.Should().Be.EqualTo(task.CustomerId);
+                    taskFromDb.TypeId.Should().Be.EqualTo(task.Id);
+
+                    taskFromDb.Name += "testtest";
+
+                    db.SaveTask(task);
+
+                    var tes = db.Tasks.ToList();
                 }
             }
         }
