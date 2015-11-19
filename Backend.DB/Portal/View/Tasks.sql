@@ -17,14 +17,16 @@ SELECT
     , CAST( MIN([Zlecenie - kolor Zlecenia])		AS INT)			   AS [Color]
     , CAST( MIN([Zlecenie - data zaplanowania])		AS DATETIME)	   AS [PlanningDate]
     , CAST( MIN([Zlecenie - opis])					AS NVARCHAR(MAX))  AS [Description]
+    , CAST( MIN([ModificationDate])					AS DATETIME)	   AS [ModificationDate]
 FROM																	  
 (
   SELECT  
-        zc.[Id]
-      , zc.[ObiektId]
-      , zc.[CechaId]
-      , c.[Nazwa]
-      , z.[Nazwa]    AS TaskName
+        zc.[Id]       AS [Id]
+      , zc.[ObiektId] AS [ObiektId]
+      , zc.[CechaId]  AS [CechaId]
+      , c.[Nazwa]     AS [Nazwa]
+      , z.[Nazwa]     AS [TaskName]
+      , z.[ValidFrom] AS [ModificationDate]
       , CAST(
             ISNULL( 
                 CAST(zc.[ColumnsSet] AS XML).value('(node())[1]', 'varchar(50)'), 

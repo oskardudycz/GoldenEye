@@ -149,7 +149,7 @@ namespace Backend.Business.Utils.Serialization
         public TaskXml(Task obj)
         {
             Id = obj.Id;
-            LastModifiedOn = obj.ModificationDate.ToUTCTime();
+            LastModifiedOn = obj.ModificationDate.Value.ToUTCTime();
             Name = obj.Name;
 
 

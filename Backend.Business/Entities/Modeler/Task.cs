@@ -36,6 +36,6 @@ namespace Backend.Business.Context
 
         public string Description { get; set; }
 
-        public DateTime ModificationDate { get; set; }
+        public DateTime? ModificationDate { get; set; }
     }
 }

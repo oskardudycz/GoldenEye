@@ -42,7 +42,8 @@ namespace Backend.Business.Context
 
         public int SaveTask(Task task)
         {
-            task.ModificationDate = DateTime.Now;
+            if(!task.ModificationDate.HasValue)
+                task.ModificationDate = DateTime.Now;
             
             var request = new TaskSaveRequest(1, task);
 
@@ -72,7 +73,6 @@ namespace Backend.Business.Context
             modelBuilder.Entity<Task>()
                 .ToTable("Portal.Tasks")
                 .HasKey(o => o.Id)
-                .Ignore(o => o.ModificationDate)
                 .Property(s => s.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             //modelBuilder.Entity<ClientEntity>()
