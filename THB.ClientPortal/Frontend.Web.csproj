@@ -118,11 +118,13 @@
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Ninject">
-      <HintPath>..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Ninject.Web.Common">
-      <HintPath>..\packages\Ninject.Web.Common.3.2.0.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+    <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.3.2.3.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Ninject.Web.WebApi">
       <HintPath>..\packages\Ninject.Web.WebApi.3.2.4.0\lib\net45-full\Ninject.Web.WebApi.dll</HintPath>
@@ -268,9 +270,8 @@
     <Content Include="Scripts\app\Components\TaskList\TaskListView.html" />
     <Content Include="Scripts\app\Components\TopMenu\TopMenuView.html" />
     <Content Include="Scripts\app\Core\jQuery\GetScript.js" />
-    <Content Include="Scripts\app\Core\Loaders\ComponentByNamingConvention.js" />
     <Content Include="Scripts\app\Core\Loaders\ComponentByNamingConventionLoader.js" />
-    <Content Include="Scripts\app\Core\Loaders\TemplateFromUrlLoader.js" />
+    <Content Include="Scripts\app\Core\ViewModels\ViewModelHelpers.js" />
     <Content Include="Scripts\app\TasksService.js" />
     <Content Include="Scripts\app\RoutesConfig.js" />
     <Content Include="packages.config">
@@ -284,7 +285,6 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
-    <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\app\Components\AddTask\AddTaskViewModel.js" />
     <Content Include="Scripts\app\Components\TaskDetail\TaskDetailViewModel.js" />
     <Content Include="Scripts\app\Components\Login\LoginViewModel.js" />
@@ -293,6 +293,7 @@
     <Content Include="Scripts\app\Components\TopMenu\TopMenuViewModel.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />

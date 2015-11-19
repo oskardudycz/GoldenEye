@@ -9,7 +9,7 @@ SELECT
     , CAST( MIN([Zlecenie - Data przyjęcia])	    AS DATETIME)	   AS [Date]
     , CAST( MIN([Zlecenie - rodzaj/przedmiot])      AS INT)			   AS [TypeId]
     , CAST( CASE MIN([Zlecenie - Czy wewnętrzne]) 
-        WHEN 1 THEN 0 ELSE 1 END			        AS BIT)			   AS [IsInternal]
+        WHEN 1 THEN 1 ELSE 0 END			        AS BIT)			   AS [IsInternal]
     , CAST( MIN([Zlecenie - Ilość])				    AS INT)		       AS [Amount]
     , CAST( MIN([Zlecenie - plan czas trwania])	    AS INT)	           AS [PlannedTime]
     , CAST( MIN([Zlecenie - Termin rozp planowany])	AS DATETIME)	   AS [PlannedStartDate]

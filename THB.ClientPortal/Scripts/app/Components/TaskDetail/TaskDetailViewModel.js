@@ -1,7 +1,6 @@
-﻿function TaskDetailViewModel(id) {
+﻿function TaskDetailViewModel() {
     var self = this;
-    self.Id = ko.observable(id);
-    self.Details = ko.observableArray();
+    self.Id = ko.observable();
 
     self.TaskName = ko.observable();
     self.Number = ko.observable();
@@ -17,20 +16,12 @@
     self.Color = ko.observable();
     self.Progress = ko.observable();
 
-    service.getTask(self.Id, self.Details);
+    function fill(data) {
+        ko.ext.updateViewModel(self, data);
+    }
 
-    self.viewModelName = "Detale";
-    self.viewName = "Detale";
+    self.init = function (id) {
+        service.getTask(id, fill);
+    }
 
 }
-
-ko.components.register("TaskDetail-nc", {
-    viewModel: {
-        createViewModel: function (params, componentInfo) {
-            var viewModel = new TaskDetailViewModel(params);
-
-            return viewModel;
-        }
-    },
-    template: { element: "TaskDetail-nc" }
-});

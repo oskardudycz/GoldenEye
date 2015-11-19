@@ -2,6 +2,7 @@
 using System.Linq;
 using Backend.Business.Context;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Shared.Core.Extensions;
 using SharpTestsEx;
 
 namespace Backend.Business.Tests.Modeler
@@ -27,52 +28,93 @@ namespace Backend.Business.Tests.Modeler
                         PlannedStartDate = DateTime.Now,
                         PlannedEndDate = DateTime.Now,
                         PlanningDate = DateTime.Now,
-                        Number = "123",
+                        Number = "test",
                         Date = DateTime.Now,
                         Description = "test",
-                        Color = 123,
-                        CustomerColor = 234,
+                        Color = 3,
+                        CustomerColor = 3,
                         Amount = 3,
-                        IsInternal = false,
+                        IsInternal = true,
                         PlannedTime = 3,
 
                         CustomerId = customer.Id,
                         TypeId = taskType.Id
                     };
 
-                    //WHEN
-                    var insertedId = db.SaveTask(task);
-                   
-                    //THEN
-                    insertedId.Should().Be.GreaterThan(0);
+                    var insertedTask = TestInsert(db, task);
 
-
-                    var taskFromDb = db.Tasks.Find(insertedId);
-
-                    taskFromDb.Should().Not.Be.Null();
-                    taskFromDb.Id.Should().Be.EqualTo(taskFromDb.Id);
-                    taskFromDb.PlannedStartDate.Should().Be.EqualTo(task.PlannedStartDate);
-                    taskFromDb.PlannedEndDate.Should().Be.EqualTo(task.PlannedEndDate);
-                    taskFromDb.PlanningDate.Should().Be.EqualTo(task.PlanningDate);
-                    taskFromDb.Number.Should().Be.EqualTo(task.Number);
-                    taskFromDb.Date.Should().Be.EqualTo(task.Date);
-                    taskFromDb.Description.Should().Be.EqualTo(task.Description);
-
-                    taskFromDb.Color.Should().Be.EqualTo(task.Color);
-                    taskFromDb.CustomerColor.Should().Be.EqualTo(task.CustomerColor);
-                    taskFromDb.Amount.Should().Be.EqualTo(task.Amount);
-                    taskFromDb.IsInternal.Should().Be.EqualTo(task.IsInternal);
-                    taskFromDb.PlannedTime.Should().Be.EqualTo(task.PlannedTime);
-                    taskFromDb.CustomerId.Should().Be.EqualTo(task.CustomerId);
-                    taskFromDb.TypeId.Should().Be.EqualTo(task.Id);
-
-                    taskFromDb.Name += "testtest";
-
-                    db.SaveTask(task);
-
-                    var tes = db.Tasks.ToList();
+                    TestUpdate(db, insertedTask);
                 }
             }
+        }
+
+        private static Task TestInsert(ModelerContext db, Task task)
+        {
+            var previousTasksCount = db.Tasks.Count();
+
+            //WHEN
+            var insertedId = db.SaveTask(task);
+
+            //THEN
+            insertedId.Should().Be.GreaterThan(0);
+            db.Tasks.Count().Should().Be.EqualTo(previousTasksCount + 1);
+
+            var insertedTask = db.Tasks.Find(insertedId);
+
+            CheckIfAreTheSame(task, insertedTask);
+
+            return insertedTask;
+        }
+
+        private static void TestUpdate(ModelerContext db, Task task)
+        {
+            var customer = db.Customers.OrderBy(el => el.Id).Skip(1).First();
+            var taskType = db.TaskTypes.OrderBy(el => el.Id).Skip(1).First();
+
+            task.PlannedStartDate = DateTime.Now;
+            task.PlannedEndDate = DateTime.Now;
+            task.PlanningDate = DateTime.Now;
+            task.Number = "testtest";
+            task.Date = DateTime.Now;
+            task.Description = "testtest";
+
+            task.Color = 9;
+            task.CustomerColor = 9;
+            task.Amount = 9;
+            task.IsInternal = false;
+            task.PlannedTime = 9;
+            task.CustomerId = customer.Id;
+            task.TypeId = taskType.Id;
+
+            //WHEN
+            var insertedId = db.SaveTask(task);
+
+            //THEN
+            insertedId.Should().Be.GreaterThan(0);
+
+            var updatedTask = db.Tasks.Find(insertedId);
+
+            CheckIfAreTheSame(task, updatedTask);
+        }
+
+        private static void CheckIfAreTheSame(Task task, Task insertedTask)
+        {
+            insertedTask.Should().Not.Be.Null();
+            insertedTask.Id.Should().Be.EqualTo(insertedTask.Id);
+            insertedTask.PlannedStartDate.Truncate(TimeSpan.TicksPerSecond).Should().Be.EqualTo(task.PlannedStartDate.Truncate(TimeSpan.TicksPerSecond));
+            insertedTask.PlannedEndDate.Truncate(TimeSpan.TicksPerSecond).Should().Be.EqualTo(task.PlannedEndDate.Truncate(TimeSpan.TicksPerSecond));
+            insertedTask.PlanningDate.Truncate(TimeSpan.TicksPerSecond).Should().Be.EqualTo(task.PlanningDate.Truncate(TimeSpan.TicksPerSecond));
+            insertedTask.Number.Should().Be.EqualTo(task.Number);
+            insertedTask.Date.Truncate(TimeSpan.TicksPerSecond).Should().Be.EqualTo(task.Date.Truncate(TimeSpan.TicksPerSecond));
+            insertedTask.Description.Should().Be.EqualTo(task.Description);
+
+            insertedTask.Color.Should().Be.EqualTo(task.Color);
+            insertedTask.CustomerColor.Should().Be.EqualTo(task.CustomerColor);
+            insertedTask.Amount.Should().Be.EqualTo(task.Amount);
+            insertedTask.IsInternal.Should().Be.EqualTo(task.IsInternal);
+            insertedTask.PlannedTime.Should().Be.EqualTo(task.PlannedTime);
+            insertedTask.CustomerId.Should().Be.EqualTo(task.CustomerId);
+            insertedTask.TypeId.Should().Be.EqualTo(task.TypeId);
         }
     }
 }
