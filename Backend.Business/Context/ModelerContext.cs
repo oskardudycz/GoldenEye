@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
 using System.Data.Entity.Infrastructure;
@@ -41,6 +42,8 @@ namespace Backend.Business.Context
 
         public int SaveTask(Task task)
         {
+            task.ModificationDate = DateTime.Now;
+            
             var request = new TaskSaveRequest(1, task);
 
             var serializer = new TaskXmlSerializer();

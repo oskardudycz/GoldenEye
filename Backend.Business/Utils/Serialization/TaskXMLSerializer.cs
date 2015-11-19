@@ -181,7 +181,7 @@ namespace Backend.Business.Utils.Serialization
             if (obj.PlanningDate.HasValue)
                 Attributes.Add(new TaskAttributeXml(79, 0, new ValDateTime(obj.PlanningDate.Value), LastModifiedOn));
             if (!string.IsNullOrEmpty(obj.Description))
-                Attributes.Add(new TaskAttributeXml(90, 0, new Val<string>(obj.Description), LastModifiedOn));
+                Attributes.Add(new TaskAttributeXml(80, 0, new Val<string>(obj.Description), LastModifiedOn));
         }
 
         [XmlElement("Attribute")]
