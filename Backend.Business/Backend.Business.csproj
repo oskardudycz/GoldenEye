@@ -115,9 +115,7 @@
     <Compile Include="Repository\ITaskRepository.cs" />
     <Compile Include="Repository\TaskRepository.cs" />
     <Compile Include="Services\ITaskRestService.cs" />
-    <Compile Include="Services\ITaskService.cs" />
     <Compile Include="Services\TaskRestService.cs" />
-    <Compile Include="Services\TaskService.cs" />
     <Compile Include="Utils\Serialization\TaskXmlSerializer.cs" />
   </ItemGroup>
   <ItemGroup />

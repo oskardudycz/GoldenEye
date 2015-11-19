@@ -7,23 +7,19 @@ using Shared.Business.DTOs;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using System.Threading.Tasks;
-using Shared.Business.Contracts;
 using Shared.Business.Validators;
+using Backend.Business.Entities;
+using Backend.Business.Repository;
 
 namespace Backend.Business.Services
 {
-    public class TaskRestService: RestServiceBase<TaskDTO, TaskContract>, ITaskRestService
+    public class TaskRestService: RestServiceBase<TaskDTO, TaskEntity>, ITaskRestService
     {
-        private readonly ITaskService _service;
-
-        public TaskRestService(ITaskService service)
-            : base(service)
+        private readonly ITaskRepository _repository;
+        public TaskRestService(ITaskRepository repository)
+            : base(repository)
         {
-            _service = service;
-        }
-        public override void Dispose()
-        {
-          _service.Dispose();
+            _repository = repository;
         }
     }
 }
