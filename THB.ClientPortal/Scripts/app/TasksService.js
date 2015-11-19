@@ -36,7 +36,7 @@
         });
     }
 
-    self.getTask = function (id, details) {
+    self.getTask = function (id, callback) {
             $.ajax({
                 url: 'https://localhost:44300/api/task/' + id,
                 dataType: "json",
@@ -46,8 +46,7 @@
                     'Authorization': "Bearer " + authManager.getToken()
                 },
                 success: function (data) {
-                    var task = ko.mapping.fromJS(data);
-                    details(task());
+                    callback(data);
                 }
             });
         };

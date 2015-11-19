@@ -49,12 +49,8 @@
       <HintPath>..\packages\SharpTest.1.1.1\lib\net40\SharpTest.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SharpTestsEx, Version=1.1.1.0, Culture=neutral, PublicKeyToken=8c60d8070630b1c1, processorArchitecture=MSIL">
-      <HintPath>..\packages\SharpTestsEx.1.1.1\lib\SharpTestsEx.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="SharpTestsEx.Mvc, Version=1.1.1.0, Culture=neutral, PublicKeyToken=8c60d8070630b1c1, processorArchitecture=MSIL">
-      <HintPath>..\packages\SharpTestsEx.1.1.1\lib\SharpTestsEx.Mvc.dll</HintPath>
+    <Reference Include="SharpTestsEx, Version=1.2.1.0, Culture=neutral, PublicKeyToken=8c60d8070630b1c1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpTestsEx.1.2.1\lib\SharpTestsEx.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

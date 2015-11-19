@@ -42,7 +42,7 @@ ko.components.loaders.unshift((function () {
     }
 
     function loadViewFromUrl(options) {
-        var fullUrl = componentsPrefix + options.relativeUrl + "?cacheAge=" + (options.maxCacheAge || 1234);
+        var fullUrl = componentsPrefix + options.relativeUrl;// + "?cacheAge=" + (options.maxCacheAge || 1234);
 
         $.get(fullUrl, function (markupString) {
             ko.components.defaultLoader.loadTemplate(options.name, markupString, options.callback);
@@ -57,7 +57,17 @@ ko.components.loaders.unshift((function () {
         $.cachedScript(fullUrl)
             .done(function () {
                 var viewModelConstructor = window[getViewModelNameFromUrl(options.relativeUrl)];
-                ko.components.defaultLoader.loadViewModel(options.name, viewModelConstructor, options.callback);
+
+                var viewModelInitialization = function (data) {
+                    var viewModel = new viewModelConstructor();
+
+                    if (viewModel.init)
+                        viewModel.init(data);
+
+                    return viewModel;
+                };
+
+                ko.components.defaultLoader.loadViewModel(options.name, viewModelInitialization, options.callback);
             }).fail(function () {
                 callDefaultBehaviour(options.callback);
             });

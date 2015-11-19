@@ -1,13 +1,8 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Frontend.Web.Controllers;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Frontend.Web.App_Start;
-using Shared.Business.Contracts;
 using Shared.Business.DTOs;
-using Backend.Business.Services;
 using Backend.Core.Service;
 using Moq;
-using FizzWare.NBuilder;
 
 namespace THB.ClientPortal.Tests.Controllers
 {

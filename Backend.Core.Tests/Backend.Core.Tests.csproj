@@ -54,8 +54,9 @@
     <Reference Include="Moq">
       <HintPath>..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
     </Reference>
-    <Reference Include="SharpTestsEx">
-      <HintPath>..\packages\SharpTestsEx.1.1.1\lib\SharpTestsEx.dll</HintPath>
+    <Reference Include="SharpTestsEx, Version=1.2.1.0, Culture=neutral, PublicKeyToken=8c60d8070630b1c1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpTestsEx.1.2.1\lib\SharpTestsEx.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="SharpTestsEx.Mvc">
       <HintPath>..\packages\SharpTestsEx.MVC.1.1.1\lib\SharpTestsEx.Mvc.dll</HintPath>
