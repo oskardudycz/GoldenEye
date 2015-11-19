@@ -15,7 +15,8 @@ namespace Shared.Business.Validators
             RuleFor(task => task.Number).NotEmpty().GreaterThan(0);
             RuleFor(task => task.Amount).GreaterThan(0);
             RuleFor(task => task.Date).NotEmpty();
-            RuleFor(task => task.StartDate).SetValidator(new DateLaterThanNow());
+            RuleFor(task => task.Progress).InclusiveBetween(1, 100);
+            RuleFor(task => task.StartDate).SetValidator(new DateLaterThanNow()).WithMessage("Data musi być równa lub późniejsza od dzisiejszej");
             RuleFor(task => task.EndDate).GreaterThan(task => task.StartDate.Value).When(task => task.StartDate.HasValue);
         }
     }

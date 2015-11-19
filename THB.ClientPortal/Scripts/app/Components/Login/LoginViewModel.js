@@ -5,6 +5,16 @@
 
     self.result = ko.observable();
     self.user = ko.observable();
+    self.loggedIn = ko.observable(false);
+
+    self.showMenu = function() {
+        if (authManager.getToken())
+            self.loggedIn(true);
+        else
+            self.loggedIn(false);
+    }
+
+    self.showMenu();
 
     self.registerEmail = ko.observable().extend({
         email: true,
@@ -85,6 +95,7 @@
             data: loginData
         }).done(function (data) {
             self.user(data.userName);
+            self.loggedIn(true);
             // Cache the access token in session storage.
             localStorage.setItem(tokenKey, data.access_token);
             app.current("TaskList-nc");
@@ -95,6 +106,8 @@
 
     self.logout = function () {
         self.user("");
+        self.loggedIn(false);
         localStorage.removeItem(tokenKey);
+        app.current("Login-nc")
     }
 }

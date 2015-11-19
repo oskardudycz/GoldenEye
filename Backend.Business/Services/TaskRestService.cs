@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Shared.Business.Validators;
 using Backend.Business.Entities;
 using Backend.Business.Repository;
+using FluentValidation;
 
 namespace Backend.Business.Services
 {
@@ -20,6 +21,11 @@ namespace Backend.Business.Services
             : base(repository)
         {
             _repository = repository;
+        }
+
+        protected override AbstractValidator<TaskDTO> GetValidator()
+        {
+            return new TaskValidator();
         }
     }
 }

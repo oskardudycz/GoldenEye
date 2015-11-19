@@ -9,7 +9,7 @@ namespace Shared.Business.Validators
 {
     public class DateLaterThanNow: PropertyValidator
     {
-        public DateLaterThanNow():base("Data musi być późniejsza od dzisiejszej") { }
+        public DateLaterThanNow():base("Data musi być równa lub późniejsza od dzisiejszej") { }
 
         protected override bool IsValid(PropertyValidatorContext context)
         {

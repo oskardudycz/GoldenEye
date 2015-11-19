@@ -21,11 +21,7 @@ var AddTaskViewModel = function () {
     });
     self.Time = ko.observable();
     self.StartDate = ko.observable().extend({
-        date: true,
-        min: {
-            params: currentDate,
-            message: "Data musi być późniejsza od dzisiejszej."
-        }
+        date: true
     });
     self.PlanDate = ko.observable().extend({ date: true });
     self.EndDate = ko.observable().extend({
@@ -37,7 +33,10 @@ var AddTaskViewModel = function () {
     });
     self.Description = ko.observable();
     self.Color = ko.observable();
-    self.Progress = ko.observable();
+    self.Progress = ko.observable().extend({
+        min: 1,
+        max: 100
+    });
 
     self.Id = ko.observable();
 

@@ -4,9 +4,12 @@ using System.Linq;
 using System.Web;
 using Shared.Core;
 using Backend.Core.Entity;
+using Shared.Business.Validators;
+using FluentValidation.Attributes;
 
 namespace Backend.Business.Entities
 {
+    [Validator(typeof(TaskValidator))]
     public class TaskEntity: IHasId, IEntity
     {
         public int Id { get; set; }
