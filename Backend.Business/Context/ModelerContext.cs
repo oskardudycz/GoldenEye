@@ -40,7 +40,7 @@ namespace Backend.Business.Context
             }
         }
 
-        public int AdOrUpdateTask(Task task)
+        public int AddOrUpdateTask(Task task)
         {
             if(!task.ModificationDate.HasValue)
                 task.ModificationDate = DateTime.Now;
