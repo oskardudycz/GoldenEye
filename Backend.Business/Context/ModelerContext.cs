@@ -40,7 +40,7 @@ namespace Backend.Business.Context
             }
         }
 
-        public int SaveTask(Task task)
+        public int AdOrUpdateTask(Task task)
         {
             if(!task.ModificationDate.HasValue)
                 task.ModificationDate = DateTime.Now;
@@ -49,10 +49,11 @@ namespace Backend.Business.Context
 
             var serializer = new TaskXmlSerializer();
 
+            var id = new SqlParameter("Id", SqlDbType.Int) { Value = task.Id };
             var xmlDataIn = new SqlParameter("XMLDataIn", SqlDbType.NVarChar, -1) { Value = serializer.Serialize(request) };
             var xmlDataOut = new SqlParameter("XMLDataOut", SqlDbType.NVarChar, -1) { Direction = ParameterDirection.Output };
 
-            Database.ExecuteSqlCommand("THB.Units_Save @XMLDataIn, @XMLDataOut OUT", xmlDataIn, xmlDataOut);
+            Database.ExecuteSqlCommand("[Portal].[AddOrUpdateTask] @Id, @XMLDataIn, @XMLDataOut OUT", id, xmlDataIn, xmlDataOut);
             
             var response = serializer.Deserialize((string)xmlDataOut.Value);
  
