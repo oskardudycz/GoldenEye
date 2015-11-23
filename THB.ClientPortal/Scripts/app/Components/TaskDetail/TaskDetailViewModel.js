@@ -2,7 +2,7 @@
     var self = this;
     self.Id = ko.observable();
 
-    self.TaskName = ko.observable();
+    self.Name = ko.observable();
     self.Number = ko.observable();
     self.Date = ko.observable();
     self.Type = ko.observable();

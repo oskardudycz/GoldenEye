@@ -1,5 +1,4 @@
 ﻿using Backend.Core.Repository;
-using Backend.Business.Entities;
 using Backend.Business.Context;
 
 namespace Backend.Business.Repository
@@ -10,5 +9,21 @@ namespace Backend.Business.Repository
         {
         }
 
+        public override Task Add(Task entity)
+        {
+            return AddOrUpdate(entity);
+        }
+
+        public override Task Update(Task entity)
+        {
+            return AddOrUpdate(entity);
+        }
+
+        private Task AddOrUpdate(Task entity)
+        {
+            var taskId = ((ITHBContext)Context).AddOrUpdateTask(entity);
+
+            return GetById(taskId);
+        }
     }
 }

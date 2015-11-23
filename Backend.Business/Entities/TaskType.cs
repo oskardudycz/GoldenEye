@@ -5,7 +5,6 @@ namespace Backend.Business.Entities
 {
     public class TaskType : EntityBase
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public override int Id { get; set; }
         public string Name { get; set; }
     }

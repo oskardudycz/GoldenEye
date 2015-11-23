@@ -3,11 +3,9 @@
 var AddTaskViewModel = function () {
     var self = this;
 
-    self.TaskName = ko.observable().extend({ required: true });
+    self.Name = ko.observable().extend({ required: true });
     self.Number = ko.observable().extend({
-        required: true,
-        number: true,
-        min: 1
+        required: true
     });
     self.Date = ko.observable().extend({
         required: true,
@@ -19,12 +17,12 @@ var AddTaskViewModel = function () {
         number: true,
         min: 1
     });
-    self.Time = ko.observable();
-    self.StartDate = ko.observable().extend({
+    self.PlannedTime = ko.observable();
+    self.PlanningDate = ko.observable().extend({ date: true });
+    self.PlannedStartDate = ko.observable().extend({
         date: true
     });
-    self.PlanDate = ko.observable().extend({ date: true });
-    self.EndDate = ko.observable().extend({
+    self.PlannedEndDate = ko.observable().extend({
         date: true,
         min: {
             params: self.StartDate,

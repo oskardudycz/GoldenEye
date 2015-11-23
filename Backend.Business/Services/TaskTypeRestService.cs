@@ -5,7 +5,7 @@ using Backend.Business.Repository;
 
 namespace Backend.Business.Services
 {
-    public class TaskTypeRestService : ReadonlyRestServiceBase<TaskTypeDTO, TaskTypeEntity>, ITaskTypeRestService
+    public class TaskTypeRestService : ReadonlyRestServiceBase<TaskTypeDTO, TaskType>, ITaskTypeRestService
     {
         public TaskTypeRestService(ITaskTypeRepository repository)
             : base(repository)

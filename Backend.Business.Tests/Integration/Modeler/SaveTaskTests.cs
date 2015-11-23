@@ -13,7 +13,7 @@ namespace Backend.Business.Tests.Modeler
         [TestMethod]
         public void GivenFilledTask_WhenSaveTaskMethodIsBeingCalled_ThenSavesProperlyAndReturnsSameTask()
         {
-            using (var db = new ModelerContext())
+            using (var db = new THBContext())
             {
                 using (db.BeginTransaction())
                 {
@@ -48,7 +48,7 @@ namespace Backend.Business.Tests.Modeler
             }
         }
 
-        private static Task TestInsert(ModelerContext db, Task task)
+        private static Task TestInsert(THBContext db, Task task)
         {
             var previousTasksCount = db.Tasks.Count();
 
@@ -66,7 +66,7 @@ namespace Backend.Business.Tests.Modeler
             return insertedTask;
         }
 
-        private static void TestUpdate(ModelerContext db, Task task)
+        private static void TestUpdate(THBContext db, Task task)
         {
             var customer = db.Customers.OrderBy(el => el.Id).Skip(1).First();
             var taskType = db.TaskTypes.OrderBy(el => el.Id).Skip(1).First();

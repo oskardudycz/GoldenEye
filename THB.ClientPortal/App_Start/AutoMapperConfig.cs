@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using AutoMapper;
+﻿using AutoMapper;
+using Backend.Business.Context;
 using Backend.Business.Entities;
 using Shared.Business.DTOs;
 using Frontend.Web.Extensions;
@@ -14,14 +11,18 @@ namespace Frontend.Web.App_Start
     {
         public static void RegisterMappings()
         {
-            Mapper.CreateMap<TaskEntity, TaskDTO>().IgnoreNonExistingProperties<TaskEntity, TaskDTO>();
-            Mapper.CreateMap<TaskDTO, TaskEntity>().IgnoreNonExistingProperties<TaskDTO, TaskEntity>();
-            Mapper.CreateMap<ClientEntity, ClientDTO>().IgnoreNonExistingProperties<ClientEntity, ClientDTO>();
-            Mapper.CreateMap<ClientDTO, ClientEntity>().IgnoreNonExistingProperties<ClientDTO, ClientEntity>();
-            Mapper.CreateMap<TaskTypeEntity, TaskTypeDTO>().IgnoreNonExistingProperties<TaskTypeEntity, TaskTypeDTO>();
-            Mapper.CreateMap<TaskTypeDTO, TaskTypeEntity>().IgnoreNonExistingProperties<TaskTypeDTO, TaskTypeEntity>();
-            Mapper.CreateMap<RegisterBindingModel, UserDTO>().IgnoreNonExistingProperties<RegisterBindingModel, UserDTO>();
-            Mapper.CreateMap<UserDTO, UserEntity>().IgnoreNonExistingProperties<UserDTO, UserEntity>();
+            Mapper.CreateMap<Task, TaskDTO>()
+                .ForMember(el=>el.Progress, opt=>opt.Ignore())
+                .IgnoreNonExistingProperties();
+            Mapper.CreateMap<TaskDTO, Task>()
+                .ForMember(el => el.Progress, opt => opt.Ignore())
+                .IgnoreNonExistingProperties();
+            Mapper.CreateMap<ClientEntity, ClientDTO>().IgnoreNonExistingProperties();
+            Mapper.CreateMap<ClientDTO, ClientEntity>().IgnoreNonExistingProperties();
+            Mapper.CreateMap<TaskTypeEntity, TaskTypeDTO>().IgnoreNonExistingProperties();
+            Mapper.CreateMap<TaskTypeDTO, TaskTypeEntity>().IgnoreNonExistingProperties();
+            Mapper.CreateMap<RegisterBindingModel, UserDTO>().IgnoreNonExistingProperties();
+            Mapper.CreateMap<UserDTO, UserEntity>().IgnoreNonExistingProperties();
         }
     }
 }

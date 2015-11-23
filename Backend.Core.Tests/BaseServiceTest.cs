@@ -53,7 +53,7 @@ namespace Backend.Core.Tests
             Mapper.AssertConfigurationIsValid();
             repository.Verify(x => x.GetById(It.IsAny<Int32>()), Times.Exactly(1));
             Assert.IsNotNull(task);
-            Assert.AreEqual("repair", task.TaskName);
+            Assert.AreEqual("repair", task.Name);
             Assert.AreEqual(1, task.Number);
             Assert.AreEqual(60, task.Progress);
         }

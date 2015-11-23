@@ -37,7 +37,6 @@ namespace Backend.Business.Context
 
         public DateTime? ModificationDate { get; set; }
 
-        [NotMapped]
         public int Progress { get; set; }
     }
 }

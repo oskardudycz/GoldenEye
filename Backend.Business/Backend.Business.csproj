@@ -98,10 +98,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\ITHBContext.cs" />
-    <Compile Include="Context\ModelerContext.cs" />
-    <Compile Include="Entities\Modeler\TaskType.cs" />
-    <Compile Include="Entities\Modeler\Customer.cs" />
-    <Compile Include="Entities\Modeler\Task.cs" />
+    <Compile Include="Entities\TaskType.cs" />
+    <Compile Include="Entities\Customer.cs" />
+    <Compile Include="Entities\Task.cs" />
     <Compile Include="Context\THBContext.cs" />
     <Compile Include="Entities\ClientEntity.cs" />
     <Compile Include="Entities\TaskEntity.cs" />

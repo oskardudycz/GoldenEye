@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using Shared.Core.DTOs;
 using FluentValidation.Attributes;
 using Shared.Business.Validators;
@@ -12,24 +9,37 @@ namespace Shared.Business.DTOs
     public class TaskDTO: DTOBase
     {
         public int Id { get; set; }
-        public string TaskName { get; set; }
-        public int Number { get; set; }
-        public DateTime? Date { get; set; }
-        public string Type { get; set; }
-        public bool IsInternal { get; set; }
-        public int Amount { get; set; }
-        public TimeSpan Time { get; set; }
-        public DateTime? StartDate { get; set; }
-        public DateTime? EndDate { get; set; }
-        public DateTime? PlanDate { get; set; }
+
+        public int? CustomerId { get; set; }
+
+        public int? TypeId { get; set; }
+
+        public string Name { get; set; }
+
+        public int? CustomerColor { get; set; }
+
+        public DateTime Date { get; set; }
+
+        public string Number { get; set; }
+
+        public bool? IsInternal { get; set; }
+
+        public int? Amount { get; set; }
+
+        public int? PlannedTime { get; set; }
+
+        public DateTime? PlannedStartDate { get; set; }
+
+        public DateTime? PlannedEndDate { get; set; }
+
+        public int? Color { get; set; }
+
+        public DateTime? PlanningDate { get; set; }
+
         public string Description { get; set; }
-        public string Color { get; set; }
-        public float Progress { get; set; }
-        public int Status { get; set; }
-        public int CreatedBy { get; set; }
-        public DateTime? CreatedDate { get; set; }
-        public int ModifiedBy { get; set; }
-        public DateTime? ModifiedDate { get; set; }
-        public bool IsDeleted { get; set; }
+
+        public DateTime? ModificationDate { get; set; }
+
+        public int Progress { get; set; }
     }
 }
