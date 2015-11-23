@@ -40,18 +40,20 @@ namespace Backend.Business.Context
             }
         }
 
-        public int SaveTask(Task task)
+        public int AddOrUpdateTask(Task task)
         {
-            task.ModificationDate = DateTime.Now;
+            if(!task.ModificationDate.HasValue)
+                task.ModificationDate = DateTime.Now;
             
             var request = new TaskSaveRequest(1, task);
 
             var serializer = new TaskXmlSerializer();
 
+            var id = new SqlParameter("Id", SqlDbType.Int) { Value = task.Id };
             var xmlDataIn = new SqlParameter("XMLDataIn", SqlDbType.NVarChar, -1) { Value = serializer.Serialize(request) };
             var xmlDataOut = new SqlParameter("XMLDataOut", SqlDbType.NVarChar, -1) { Direction = ParameterDirection.Output };
 
-            Database.ExecuteSqlCommand("THB.Units_Save @XMLDataIn, @XMLDataOut OUT", xmlDataIn, xmlDataOut);
+            Database.ExecuteSqlCommand("[Portal].[AddOrUpdateTask] @Id, @XMLDataIn, @XMLDataOut OUT", id, xmlDataIn, xmlDataOut);
             
             var response = serializer.Deserialize((string)xmlDataOut.Value);
  
@@ -72,7 +74,6 @@ namespace Backend.Business.Context
             modelBuilder.Entity<Task>()
                 .ToTable("Portal.Tasks")
                 .HasKey(o => o.Id)
-                .Ignore(o => o.ModificationDate)
                 .Property(s => s.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             //modelBuilder.Entity<ClientEntity>()

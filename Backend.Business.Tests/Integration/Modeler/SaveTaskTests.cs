@@ -53,7 +53,7 @@ namespace Backend.Business.Tests.Modeler
             var previousTasksCount = db.Tasks.Count();
 
             //WHEN
-            var insertedId = db.SaveTask(task);
+            var insertedId = db.AddOrUpdateTask(task);
 
             //THEN
             insertedId.Should().Be.GreaterThan(0);
@@ -87,7 +87,7 @@ namespace Backend.Business.Tests.Modeler
             task.TypeId = taskType.Id;
 
             //WHEN
-            var insertedId = db.SaveTask(task);
+            var insertedId = db.AddOrUpdateTask(task);
 
             //THEN
             insertedId.Should().Be.GreaterThan(0);
