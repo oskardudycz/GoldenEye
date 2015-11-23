@@ -38,7 +38,7 @@ namespace Backend.Core.Service
 
         public virtual Task<TDTO> Put(TDTO dto)
         {
-            if (!Validation(dto))
+            if (!Validate(dto))
                 return Task.Run(() => null as TDTO);
 
             var entity = Mapper.Map<TDTO, TEntity>(dto);
@@ -52,11 +52,12 @@ namespace Backend.Core.Service
 
         public virtual Task<TDTO> Post(TDTO dto)
         {
-            if (!Validation(dto))
+            if (!Validate(dto))
                 return Task.Run(() => null as TDTO);
 
             var entity = Mapper.Map<TDTO, TEntity>(dto);
             var updated = Repository.Update(entity);
+
             Repository.SaveChanges();
             return Task.Run(() =>
                 Mapper.Map<TEntity, TDTO>(Repository.GetById(updated.Id)));
@@ -67,11 +68,18 @@ namespace Backend.Core.Service
             return Task.Run(() => Repository.Delete(id));
         }
 
-        protected abstract AbstractValidator<TDTO> GetValidator();
+        protected virtual AbstractValidator<TDTO> GetValidator()
+        {
+            return null;
+        }
 
-        protected bool Validation(TDTO dto)
+        protected bool Validate(TDTO dto)
         {
             var validator = GetValidator();
+
+            if (validator == null)
+                return true;
+
             var results = validator.Validate(dto);
 
             return !results.IsValid;

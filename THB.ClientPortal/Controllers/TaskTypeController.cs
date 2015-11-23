@@ -9,17 +9,15 @@ using Backend.Business.Services;
 
 namespace Frontend.Web.Controllers
 {
-    public class TaskTypeController : RestControllerBase<ITaskRestService, TaskTypeDTO>
+    public class TaskTypeController : RestControllerBase<ITaskTypeRestService, TaskTypeDTO>
     {
-        ITaskRestService _service;
         public TaskTypeController()
         {
         }
 
-        public TaskTypeController(ITaskRestService service)
+        public TaskTypeController(ITaskTypeRestService service)
             : base(service)
         {
-            _service = service;
         }
     }
 }

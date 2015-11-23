@@ -12,7 +12,6 @@ namespace Frontend.Web.Controllers
 {
     public class TaskController : RestControllerBase<ITaskRestService, TaskDTO>
     {
-        ITaskRestService _service;
         public TaskController()
         {
         }
@@ -20,7 +19,6 @@ namespace Frontend.Web.Controllers
         public TaskController(ITaskRestService service)
             : base(service)
         {
-            _service = service;
         }
     }
 }

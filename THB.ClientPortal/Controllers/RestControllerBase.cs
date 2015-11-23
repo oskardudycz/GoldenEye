@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
-using System.Web.Helpers;
 using System.Threading.Tasks;
 using Backend.Core.Service;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using Shared.Core.DTOs;
 
 namespace Frontend.Web.Controllers
@@ -19,7 +13,7 @@ namespace Frontend.Web.Controllers
     {
         protected TService Service;
 
-        public RestControllerBase(TService service)
+        protected RestControllerBase(TService service)
         {
             Service = service;
         }
