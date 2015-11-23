@@ -96,7 +96,8 @@
     <Compile Include="Entity\EntityBase.cs" />
     <Compile Include="Entity\IEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\BaseRepository.cs" />
+    <Compile Include="Repository\ReadonlyRepositoryBase.cs" />
+    <Compile Include="Repository\RepositoryBase.cs" />
     <Compile Include="Repository\IReadonlyRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Service\IReadonlyRestService.cs" />

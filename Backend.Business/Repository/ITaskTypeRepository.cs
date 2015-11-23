@@ -3,7 +3,7 @@ using Backend.Business.Entities;
 
 namespace Backend.Business.Repository
 {
-    public interface ITaskTypeRepository : IRepository<TaskTypeEntity>
+    public interface ITaskTypeRepository : IReadonlyRepository<TaskTypeEntity>
     {
     }
 }

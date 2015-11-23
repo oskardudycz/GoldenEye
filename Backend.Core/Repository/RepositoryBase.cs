@@ -5,36 +5,16 @@ using Shared.Core;
 
 namespace Backend.Core.Repository
 {
-    public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : class, IHasId
+    public abstract class RepositoryBase<TEntity> : ReadonlyRepositoryBase<TEntity> where TEntity : class, IHasId
     {
-
         protected readonly IDbSet<TEntity> DbSet;
-
-        protected readonly IDataContext Context;
-
-        protected bool Disposed;
-
-
-        protected BaseRepository(IDataContext context, IDbSet<TEntity> dbSet)
+        
+        protected RepositoryBase(IDataContext context, IDbSet<TEntity> dbSet) : base(context, dbSet.AsNoTracking())
         {
-            Context = context;
             DbSet = dbSet;
         }
 
-        public TEntity GetById(int id)
-        {
-            var dbQueryable = DbSet.AsQueryable();
-
-            return dbQueryable.FirstOrDefault(r => r.Id == id);
-
-        }
-
-        public IQueryable<TEntity> GetAll()
-        {
-            return DbSet.AsQueryable();
-        }
-
-        public TEntity Add(TEntity entity)
+        public virtual TEntity Add(TEntity entity)
         {
             return DbSet.Add(entity);
         }
@@ -44,7 +24,7 @@ namespace Backend.Core.Repository
             return entities.Select(entity => DbSet.Add(entity)).AsQueryable();
         }
 
-        public TEntity Update(TEntity entity)
+        public virtual TEntity Update(TEntity entity)
         {
             var oldEntity = Context.Entry(entity);
             if (oldEntity.State != EntityState.Detached)
@@ -67,23 +47,6 @@ namespace Backend.Core.Repository
         public bool Delete(int id)
         {
             return DbSet.Remove(GetById(id)) != null;
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!Disposed)
-            {
-                if (disposing)
-                {
-                    Context.Dispose();
-                }
-            }
-            Disposed = true;
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
         }
     }
 }
