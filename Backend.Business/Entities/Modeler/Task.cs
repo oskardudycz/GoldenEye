@@ -1,12 +1,12 @@
 
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using Backend.Core.Entity;
 
 namespace Backend.Business.Context
 {
-    public class Task
+    public class Task : EntityBase
     {
-        public int Id { get; set; }
-
         public int? CustomerId { get; set; }
 
         public int? TypeId { get; set; }
@@ -36,5 +36,8 @@ namespace Backend.Business.Context
         public string Description { get; set; }
 
         public DateTime? ModificationDate { get; set; }
+
+        [NotMapped]
+        public int Progress { get; set; }
     }
 }

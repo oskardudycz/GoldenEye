@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using Backend.Core.Context;
 using Backend.Business.Entities;
 using System.Data.Entity;
 
 namespace Backend.Business.Context
 {
-    public interface ITHBContext: IDataContext, IDisposable
+    public interface ITHBContext: IDataContext
     {
-        IDbSet<TaskEntity> Tasks { get; set; }
+        IDbSet<Task> Tasks { get; set; }
         IDbSet<TaskTypeEntity> TaskTypes { get; set; }
     }
 }

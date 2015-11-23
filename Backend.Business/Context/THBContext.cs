@@ -10,7 +10,7 @@ namespace Backend.Business.Context
 {
     public class THBContext: DataContext<THBContext>, ITHBContext
     {
-        public IDbSet<TaskEntity> Tasks { get; set; }
+        public IDbSet<Task> Tasks { get; set; }
         public IDbSet<ClientEntity> Clients { get; set; }
         public IDbSet<TaskTypeEntity> TaskTypes { get; set; }
 
