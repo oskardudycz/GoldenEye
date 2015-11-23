@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
 using Backend.Business.Context;
+using Backend.Business.Entities;
 using Shared.Core.Extensions;
 
 namespace Backend.Business.Utils.Serialization
@@ -93,7 +94,7 @@ namespace Backend.Business.Utils.Serialization
 
         }
 
-        public TaskSaveRequest(int userId, Task task)
+        public TaskSaveRequest(int userId, TaskEntity task)
         {
             AppDate = DateTime.Now;
             Task = new TaskXml(task);
@@ -146,7 +147,7 @@ namespace Backend.Business.Utils.Serialization
 
         }
 
-        public TaskXml(Task obj)
+        public TaskXml(TaskEntity obj)
         {
             Id = obj.Id;
             LastModifiedOn = obj.ModificationDate.Value.ToUTCTime();

@@ -7,8 +7,8 @@ namespace Backend.Business.Context
 {
     public interface ITHBContext: IDataContext
     {
-        IDbSet<Task> Tasks { get; }
-        IQueryable<TaskType> TaskTypes { get; }
-        int AddOrUpdateTask(Task task);
+        IDbSet<TaskEntity> Tasks { get; }
+        IQueryable<TaskTypeEntity> TaskTypes { get; }
+        int AddOrUpdateTask(TaskEntity task);
     }
 }

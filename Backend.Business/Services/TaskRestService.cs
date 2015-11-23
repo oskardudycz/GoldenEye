@@ -1,4 +1,5 @@
 ﻿using Backend.Business.Context;
+using Backend.Business.Entities;
 using Backend.Core.Service;
 using Shared.Business.DTOs;
 using Shared.Business.Validators;
@@ -7,7 +8,7 @@ using FluentValidation;
 
 namespace Backend.Business.Services
 {
-    public class TaskRestService: RestServiceBase<TaskDTO, Task>, ITaskRestService
+    public class TaskRestService: RestServiceBase<TaskDTO, TaskEntity>, ITaskRestService
     {
         public TaskRestService(ITaskRepository repository)
             : base(repository)

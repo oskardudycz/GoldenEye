@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Backend.Business.Context;
+using Backend.Business.Entities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Shared.Core.Extensions;
 using SharpTestsEx;
@@ -21,7 +22,7 @@ namespace Backend.Business.Tests.Modeler
                     var customer = db.Customers.First();
                     var taskType = db.TaskTypes.First();
 
-                    var task = new Task
+                    var task = new TaskEntity
                     {
                         Name = "test",
                         ModificationDate = DateTime.Now,
@@ -48,7 +49,7 @@ namespace Backend.Business.Tests.Modeler
             }
         }
 
-        private static Task TestInsert(THBContext db, Task task)
+        private static TaskEntity TestInsert(THBContext db, TaskEntity task)
         {
             var previousTasksCount = db.Tasks.Count();
 
@@ -66,7 +67,7 @@ namespace Backend.Business.Tests.Modeler
             return insertedTask;
         }
 
-        private static void TestUpdate(THBContext db, Task task)
+        private static void TestUpdate(THBContext db, TaskEntity task)
         {
             var customer = db.Customers.OrderBy(el => el.Id).Skip(1).First();
             var taskType = db.TaskTypes.OrderBy(el => el.Id).Skip(1).First();
@@ -97,7 +98,7 @@ namespace Backend.Business.Tests.Modeler
             CheckIfAreTheSame(task, updatedTask);
         }
 
-        private static void CheckIfAreTheSame(Task task, Task insertedTask)
+        private static void CheckIfAreTheSame(TaskEntity task, TaskEntity insertedTask)
         {
             insertedTask.Should().Not.Be.Null();
             insertedTask.Id.Should().Be.EqualTo(insertedTask.Id);

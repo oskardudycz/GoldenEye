@@ -1,5 +1,6 @@
 ﻿using System;
 using Backend.Business.Context;
+using Backend.Business.Entities;
 using Backend.Business.Utils.Serialization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SharpTestsEx;
@@ -15,7 +16,7 @@ namespace Backend.Business.Tests.Entities
             //GIVEN
             var serializer = new TaskXmlSerializer();
 
-            var task = new Task
+            var task = new TaskEntity
             {
                 Name = "test", 
                 ModificationDate = DateTime.Now,

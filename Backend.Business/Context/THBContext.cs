@@ -19,7 +19,7 @@ namespace Backend.Business.Context
             Database.SetInitializer<THBContext>(null);
         }
 
-        public IDbSet<Task> Tasks { get; set; }
+        public IDbSet<TaskEntity> Tasks { get; set; }
         public IDbSet<ClientEntity> Clients { get; set; }
 
         public DbQuery<Customer> Customers
@@ -29,25 +29,16 @@ namespace Backend.Business.Context
                 return Set<Customer>().AsNoTracking();
             }
         }
-        public IQueryable<TaskType> TaskTypes
+        public IQueryable<TaskTypeEntity> TaskTypes
         {
             get
             {
-                return Set<TaskType>().AsNoTracking();
+                return Set<TaskTypeEntity>().AsNoTracking();
             }
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ClientEntity>()
-                        .HasMany(c => c.TaskTypes)
-                        .WithMany(t => t.Clients)
-                        .Map(ct =>
-                        {
-                            ct.MapLeftKey("ClientId");
-                            ct.MapRightKey("TaskTypeId");
-                            ct.ToTable("ClientTaskType");
-                        });
             modelBuilder.Entity<ClientEntity>()
                     .HasMany(c => c.Users)
                     .WithRequired(u => u.Client)
@@ -58,18 +49,18 @@ namespace Backend.Business.Context
                 .ToTable("Portal.Customers")
                 .Property(s => s.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            modelBuilder.Entity<TaskType>()
+            modelBuilder.Entity<TaskTypeEntity>()
                 .ToTable("Portal.TaskTypes")
                 .Property(s => s.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            modelBuilder.Entity<Task>()
+            modelBuilder.Entity<TaskEntity>()
                 .ToTable("Portal.Tasks")
                 .Ignore(s => s.Progress)
                 .HasKey(o => o.Id)
                 .Property(s => s.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
         }
         
-        public int AddOrUpdateTask(Task task)
+        public int AddOrUpdateTask(TaskEntity task)
         {
             if (!task.ModificationDate.HasValue)
                 task.ModificationDate = DateTime.Now;

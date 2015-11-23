@@ -1,11 +1,9 @@
-
 using System;
-using System.ComponentModel.DataAnnotations.Schema;
 using Backend.Core.Entity;
 
-namespace Backend.Business.Context
+namespace Backend.Business.Entities
 {
-    public class Task : EntityBase
+    public class TaskEntity : EntityBase
     {
         public int? CustomerId { get; set; }
 

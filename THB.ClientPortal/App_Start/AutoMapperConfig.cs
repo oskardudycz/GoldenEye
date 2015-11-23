@@ -11,10 +11,10 @@ namespace Frontend.Web.App_Start
     {
         public static void RegisterMappings()
         {
-            Mapper.CreateMap<Task, TaskDTO>()
+            Mapper.CreateMap<TaskEntity, TaskDTO>()
                 .ForMember(el=>el.Progress, opt=>opt.Ignore())
                 .IgnoreNonExistingProperties();
-            Mapper.CreateMap<TaskDTO, Task>()
+            Mapper.CreateMap<TaskDTO, TaskEntity>()
                 .ForMember(el => el.Progress, opt => opt.Ignore())
                 .IgnoreNonExistingProperties();
             Mapper.CreateMap<ClientEntity, ClientDTO>().IgnoreNonExistingProperties();

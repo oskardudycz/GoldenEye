@@ -20,17 +20,17 @@ namespace Backend.Core.Tests
         [TestMethod]
         public void AddTask()
         {
-            var dbset = new Mock<IDbSet<Task>>();
-            var tasklist = new List<Task>()
+            var dbset = new Mock<IDbSet<TaskEntity>>();
+            var tasklist = new List<TaskEntity>()
             {
-                new Task()
+                new TaskEntity()
                 {
                     Name = "repair",
                     Number = "1",
                     Progress = 50,
                     Id = 1
                 },
-                new Task()
+                new TaskEntity()
                 {
                     Name = "painting",
                     Number = "2",
@@ -51,7 +51,7 @@ namespace Backend.Core.Tests
 
             var repository = new TaskRepository(mockDbContext.Object);
 
-            repository.Add(new Task()
+            repository.Add(new TaskEntity()
                 {
                     Name = "sleepwalking",
                     Number = "3",
@@ -69,11 +69,11 @@ namespace Backend.Core.Tests
         [TestMethod]
         public void CheckIfTaskExists()
         {
-            var tasklist = new List<Task>
+            var tasklist = new List<TaskEntity>
             {
-                new Task() { Id = 1, Name = "daydreaming" },
-                new Task() { Id = 2, Name = "whistling" },
-                new Task() { Id = 3, Name = "dancing" }
+                new TaskEntity() { Id = 1, Name = "daydreaming" },
+                new TaskEntity() { Id = 2, Name = "whistling" },
+                new TaskEntity() { Id = 3, Name = "dancing" }
             };
 
             var repository = new Mock<ITaskRepository>();
@@ -93,18 +93,18 @@ namespace Backend.Core.Tests
         [TestMethod]
         public void DeleteTask()
         {
-            var tasklist = new List<Task>
+            var tasklist = new List<TaskEntity>
             {
-                new Task() { Id = 1, Name = "daydreaming" },
-                new Task() { Id = 2, Name = "whistling" },
-                new Task() { Id = 3, Name = "dancing" }
+                new TaskEntity() { Id = 1, Name = "daydreaming" },
+                new TaskEntity() { Id = 2, Name = "whistling" },
+                new TaskEntity() { Id = 3, Name = "dancing" }
             };
 
             var repository = new Mock<ITaskRepository>();
 
             int id = 3;
 
-            repository.Setup(x => x.Delete(It.IsAny<Task>())).Callback(new Action<Task>(x =>
+            repository.Setup(x => x.Delete(It.IsAny<TaskEntity>())).Callback(new Action<TaskEntity>(x =>
             {
                 var i = tasklist.FindIndex(q => q.Id.Equals(id));
                 tasklist.RemoveAt(i);

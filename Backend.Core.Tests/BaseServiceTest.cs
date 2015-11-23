@@ -17,7 +17,7 @@ namespace Backend.Core.Tests
     [TestClass]
     public class BaseServiceTest
     {
-        private static IList<Task> objects;
+        private static IList<TaskEntity> objects;
         private static int size;
         [ClassInitialize]
         public static void MapperInit(TestContext context)
@@ -28,7 +28,7 @@ namespace Backend.Core.Tests
         public void PopulateDatabase()
         {
             size = 3;
-            objects = Builder<Task>.CreateListOfSize(size).Build();
+            objects = Builder<TaskEntity>.CreateListOfSize(size).Build();
         }
 
         [TestMethod]
@@ -37,7 +37,7 @@ namespace Backend.Core.Tests
             var repository = new Mock<ITaskRepository>();
             const int id = 2;
 
-            objects[1] = Builder<Task>.CreateNew()
+            objects[1] = Builder<TaskEntity>.CreateNew()
                 .With(x => x.Name = "repair")
                 .With(x => x.Number = "1")
                 .With(x => x.Progress = 60)
@@ -65,7 +65,7 @@ namespace Backend.Core.Tests
 
             const int id = 2;
 
-            objects[1] = Builder<Task>.CreateNew()
+            objects[1] = Builder<TaskEntity>.CreateNew()
                 .With(x => x.Name = "repair")
                 .With(x => x.Number = "1")
                 .With(x => x.Progress = 60)
@@ -85,7 +85,7 @@ namespace Backend.Core.Tests
             var repository = new Mock<ITaskRepository>();
             int id = 2;
             objects[1].Id = id;
-            repository.Setup(x => x.Delete(It.IsAny<Task>())).Callback(new Action<TaskEntity>(x =>
+            repository.Setup(x => x.Delete(It.IsAny<TaskEntity>())).Callback(new Action<TaskEntity>(x =>
             {
                 var element = objects.FirstOrDefault(q => q.Id.Equals(id));
                 objects.Remove(element);
