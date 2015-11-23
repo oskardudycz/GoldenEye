@@ -45,6 +45,10 @@ var AddTaskViewModel = function () {
 
     self.viewModelName = "Dodaj";
     self.viewName = "Dodaj";
+
+    self.init = function () {
+
+    }
 }
 
 AddTaskViewModel.prototype.addTask = function () {

@@ -53,7 +53,7 @@
 
     self.getTaskTypes = function (list) {
         $.ajax({
-            url: 'https://localhost:44300/api/tasktype/' + id,
+            url: 'https://localhost:44300/api/tasktype/',
             dataType: "json",
             type: "GET",
             data: { get_param: 'value' },
