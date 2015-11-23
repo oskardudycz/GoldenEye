@@ -11,5 +11,6 @@ namespace Backend.Business.Context
     public interface ITHBContext: IDataContext, IDisposable
     {
         IDbSet<TaskEntity> Tasks { get; set; }
+        IDbSet<TaskTypeEntity> TaskTypes { get; set; }
     }
 }

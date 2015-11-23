@@ -29,6 +29,16 @@
         equal: self.registerPassword,
         required: true
     });
+    self.firstName = ko.observable().extend({
+        required: true,
+        minLength: 3,
+        maxLength: 15
+    });
+    self.lastName = ko.observable().extend({
+        required: true,
+        minLength: 3,
+        maxLength: 15
+    });
 
     self.loginEmail = ko.observable().extend({
         email: true,
@@ -64,7 +74,9 @@
         var data = {
             Email: self.registerEmail(),
             Password: self.registerPassword(),
-            ConfirmPassword: self.registerPassword2()
+            ConfirmPassword: self.registerPassword2(),
+            FirstName: self.firstName(),
+            LastName: self.lastName()
         };
 
         $.ajax({

@@ -49,7 +49,22 @@
                     callback(data);
                 }
             });
-        };
+    };
+
+    self.getTaskTypes = function (list) {
+        $.ajax({
+            url: 'https://localhost:44300/api/tasktype/' + id,
+            dataType: "json",
+            type: "GET",
+            data: { get_param: 'value' },
+            headers: {
+                'Authorization': "Bearer " + authManager.getToken()
+            },
+            success: function (data) {
+                list.push(data);
+            }
+        });
+    }
 }
 
 var service = new TasksService();

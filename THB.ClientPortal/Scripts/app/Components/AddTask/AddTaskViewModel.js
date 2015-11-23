@@ -13,7 +13,7 @@ var AddTaskViewModel = function () {
         required: true,
         date: true
     });
-   // self.Type = ko.observableArray(['Typ1', 'Typ2', 'Typ3'])
+    self.Type = ko.observableArray();
     self.IsInternal = ko.observable();
     self.Amount = ko.observable().extend({
         number: true,
