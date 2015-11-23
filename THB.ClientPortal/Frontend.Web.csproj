@@ -218,7 +218,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\RestControllerBase.cs" />
+    <Compile Include="Core\Controllers\ReadonlyRestControllerBase.cs" />
+    <Compile Include="Core\Controllers\RestControllerBase.cs" />
     <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Controllers\TaskTypeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />

@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using Shared.Business.DTOs;
+﻿using Shared.Business.DTOs;
 using Backend.Business.Services;
+using Frontend.Web.Core.Controllers;
 
 namespace Frontend.Web.Controllers
 {
-    public class TaskTypeController : RestControllerBase<ITaskTypeRestService, TaskTypeDTO>
+    public class TaskTypeController : ReadonlyRestControllerBase<ITaskTypeRestService, TaskTypeDTO>
     {
         public TaskTypeController()
         {

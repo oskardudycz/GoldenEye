@@ -18,7 +18,7 @@ namespace Backend.Business.Context
         {
 
             modelBuilder.Entity<ClientEntity>()
-                        .HasMany<TaskTypeEntity>(c => c.TaskTypes)
+                        .HasMany(c => c.TaskTypes)
                         .WithMany(t => t.Clients)
                         .Map(ct =>
                         {
@@ -27,7 +27,7 @@ namespace Backend.Business.Context
                             ct.ToTable("ClientTaskType");
                         });
             modelBuilder.Entity<ClientEntity>()
-                    .HasMany<UserEntity>(c => c.Users)
+                    .HasMany(c => c.Users)
                     .WithRequired(u => u.Client)
                     .HasForeignKey(u => u.ClientRefId);
         }

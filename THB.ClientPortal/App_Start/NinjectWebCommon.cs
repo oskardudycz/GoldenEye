@@ -74,12 +74,9 @@ namespace Frontend.Web.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<ITaskRepository>().To<TaskRepository>();
-            kernel.Bind<IRestService<TaskDTO>>().To<RestServiceBase<TaskDTO, TaskEntity>>();
             kernel.Bind<ITaskRestService>().To<TaskRestService>();
-           // kernel.Bind<IBaseService<TaskContract>>().To<BaseService<TaskEntity,TaskContract>>();
-            // kernel.Bind<IBaseContract>().To<BaseContract>();
+            kernel.Bind<ITaskTypeRestService>().To<TaskTypeRestService>();
             kernel.Bind<ITHBContext>().To<THBContext>();
-           // kernel.Bind<ITaskService>().To<TaskService>();
         }
     }
 }

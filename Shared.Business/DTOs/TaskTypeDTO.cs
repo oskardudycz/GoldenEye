@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Shared.Core.DTOs;
+﻿using Shared.Core.DTOs;
 
 namespace Shared.Business.DTOs
 {

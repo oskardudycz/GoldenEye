@@ -5,20 +5,19 @@ namespace Backend.Business.Context
 {
     public class Task
     {
-
         public int Id { get; set; }
 
-        public string Name { get; set; }
-
         public int? CustomerId { get; set; }
+
+        public int? TypeId { get; set; }
+
+        public string Name { get; set; }
 
         public int? CustomerColor { get; set; }
 
         public DateTime Date { get; set; }
 
         public string Number { get; set; }
-
-        public int? TypeId { get; set; }
 
         public bool? IsInternal { get; set; }
 

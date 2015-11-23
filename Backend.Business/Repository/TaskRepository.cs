@@ -9,5 +9,6 @@ namespace Backend.Business.Repository
         public TaskRepository(ITHBContext context): base(context, context.Tasks)
         {
         }
+
     }
 }

@@ -76,16 +76,6 @@ namespace Backend.Business.Context
                 .HasKey(o => o.Id)
                 .Property(s => s.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            //modelBuilder.Entity<ClientEntity>()
-            //    .HasMany(e => e.UserEntities)
-            //    .WithRequired(e => e.ClientEntity)
-            //    .HasForeignKey(e => e.ClientRefId);
-
-            //modelBuilder.Entity<ClientEntity>()
-            //    .HasMany(e => e.TaskTypeEntities)
-            //    .WithMany(e => e.ClientEntities)
-            //    .Map(m => m.ToTable("ClientTaskType").MapLeftKey("ClientId").MapRightKey("TaskTypeId"));
-
         }
     }
 }

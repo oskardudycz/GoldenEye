@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Shared.Core;
 using Backend.Core.Entity;
 using Shared.Business.Validators;
 using FluentValidation.Attributes;
@@ -10,9 +6,8 @@ using FluentValidation.Attributes;
 namespace Backend.Business.Entities
 {
     [Validator(typeof(TaskValidator))]
-    public class TaskEntity: IHasId, IEntity
+    public class TaskEntity : EntityBase
     {
-        public int Id { get; set; }
         public string TaskName { get; set; }
         public int Number { get; set; }
         public DateTime? Date { get; set; }

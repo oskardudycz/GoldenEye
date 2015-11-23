@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using Frontend.Web.Models;
-using Backend.Business.Services;
+﻿using Backend.Business.Services;
+using Frontend.Web.Core.Controllers;
 using Shared.Business.DTOs;
 
 namespace Frontend.Web.Controllers

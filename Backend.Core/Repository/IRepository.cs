@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Shared.Core;
 
 namespace Backend.Core.Repository
 {
-    public interface IRepository<TEntity> : IDisposable where TEntity : class, IHasId
+    public interface IRepository<TEntity> : IReadonlyRepository<TEntity> where TEntity : class, IHasId
     {
-        TEntity GetById(int id);
-        IQueryable<TEntity> GetAll();
         TEntity Add(TEntity entity);
         IQueryable<TEntity> AddAll(IQueryable<TEntity> entities);
         TEntity Update(TEntity entity);

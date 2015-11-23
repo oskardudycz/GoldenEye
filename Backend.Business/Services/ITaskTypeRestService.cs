@@ -3,7 +3,7 @@ using Backend.Core.Service;
 
 namespace Backend.Business.Services
 {
-    public interface ITaskTypeRestService: IRestService<TaskTypeDTO>
+    public interface ITaskTypeRestService: IReadonlyRestService<TaskTypeDTO>
     {
     }
 }
