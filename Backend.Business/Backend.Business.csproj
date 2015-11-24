@@ -115,7 +115,6 @@
     <Compile Include="Services\CustomerRestService.cs" />
     <Compile Include="Services\ITaskRestService.cs" />
     <Compile Include="Services\ITaskTypeRestService.cs" />
-    <Compile Include="Services\IClientRestService.cs" />
     <Compile Include="Services\ModelerAuthorizationService.cs" />
     <Compile Include="Services\ICustomerRestService.cs" />
     <Compile Include="Services\TaskRestService.cs" />
