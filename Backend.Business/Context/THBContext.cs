@@ -29,7 +29,7 @@ namespace Backend.Business.Context
                 return Set<Customer>().AsNoTracking();
             }
         }
-        public IQueryable<TaskTypeEntity> TaskTypes
+        public DbQuery<TaskTypeEntity> TaskTypes
         {
             get
             {

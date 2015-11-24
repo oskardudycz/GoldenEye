@@ -37,10 +37,10 @@ var AddTaskViewModel = function () {
     });
 
     self.Types = ko.observableArray();
-    self.SelectedType = ko.observable();
+    self.TypeId = ko.observable();
 
-    self.Clients = ko.observableArray();
-    self.SelectedClient = ko.observable();
+    self.Customers = ko.observableArray();
+    self.CustomerId = ko.observable();
 
     self.Id = ko.observable();
 
@@ -52,7 +52,7 @@ var AddTaskViewModel = function () {
 
     self.init = function () {
         service.getTaskTypes(self.Types);
-        service.getClients(self.Clients);
+        service.getClients(self.Customers);
     }
 }
 
