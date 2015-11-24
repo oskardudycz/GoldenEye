@@ -53,7 +53,7 @@
 
     self.getTaskTypes = function (list) {
         $.ajax({
-            url: 'https://localhost:44300/api/tasktype/',
+            url: 'https://localhost:44300/api/tasktype',
             dataType: "json",
             type: "GET",
             data: { get_param: 'value' },
@@ -61,7 +61,24 @@
                 'Authorization': "Bearer " + authManager.getToken()
             },
             success: function (data) {
-                list.push(data);
+                var taskTypes = ko.mapping.fromJS(data);
+                list(taskTypes());
+            }
+        });
+    }
+
+    self.getClients = function (list) {
+        $.ajax({
+            url: 'https://localhost:44300/api/Customer',
+            dataType: "json",
+            type: "GET",
+            data: { get_param: 'value' },
+            headers: {
+                'Authorization': "Bearer " + authManager.getToken()
+            },
+            success: function (data) {
+                var clients = ko.mapping.fromJS(data);
+                list(clients());
             }
         });
     }

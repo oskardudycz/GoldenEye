@@ -8,7 +8,7 @@ using Shared.Business.DTOs;
 
 namespace Backend.Business.Services
 {
-    public interface IClientRestService : IReadonlyRestService<ClientDTO>
+    public interface ICustomerRestService : IReadonlyRestService<CustomerDTO>
     {
     }
 }

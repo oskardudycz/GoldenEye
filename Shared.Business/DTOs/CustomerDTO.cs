@@ -6,7 +6,7 @@ using Shared.Core.DTOs;
 
 namespace Shared.Business.DTOs
 {
-    public class ClientDTO: DTOBase
+    public class CustomerDTO: DTOBase
     {
         public int Id { get; set; }
         public string Name { get; set; }

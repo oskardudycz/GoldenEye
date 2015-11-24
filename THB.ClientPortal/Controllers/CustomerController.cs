@@ -10,13 +10,13 @@ using Backend.Business.Services;
 
 namespace Frontend.Web.Controllers
 {
-    public class ClientController : ReadonlyRestControllerBase<IClientRestService, ClientDTO>
+    public class CustomerController : ReadonlyRestControllerBase<ICustomerRestService, CustomerDTO>
     {
-        public ClientController()
+        public CustomerController()
         {
         }
 
-        public ClientController(IClientRestService service)
+        public CustomerController(ICustomerRestService service)
             : base(service)
         {
         }

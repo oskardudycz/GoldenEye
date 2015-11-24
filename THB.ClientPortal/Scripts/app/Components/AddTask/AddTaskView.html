@@ -33,6 +33,23 @@
         </div>
     </div>
     <div class="form-group">
+        <label for="Type" class="col-sm-2 control-label">Typ</label>
+        <div class="col-sm-10">
+            <select id="Type" class="form-control" data-bind="options: Types,
+                       value: SelectedType"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Client" class="col-sm-2 control-label">Klient</label>
+        <div class="col-sm-10">
+            <select id="Client" class="form-control" data-bind="options: Clients,
+                      optionsText: function(item) {
+                       return item.Name()
+                            },
+                       value: SelectedClient"></select>
+        </div>
+    </div>
+    <div class="form-group">
         <label for="PlannedTime" class="col-sm-2 control-label">Planowany czas trwania</label>
         <div class="col-sm-10">
             <input type="number" data-bind="value: PlannedTime" class="form-control" id="PlannedTime">
