@@ -9,6 +9,7 @@ namespace Backend.Business.Context
     {
         IDbSet<TaskEntity> Tasks { get; }
         IQueryable<TaskTypeEntity> TaskTypes { get; }
+        IDbSet<ClientEntity> Clients { get; }
         int AddOrUpdateTask(TaskEntity task);
     }
 }
