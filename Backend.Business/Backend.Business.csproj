@@ -98,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\ITHBContext.cs" />
+    <Compile Include="Entities\ModelerUser.cs" />
     <Compile Include="Entities\TaskTypeEntity.cs" />
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="Entities\Task.cs" />
