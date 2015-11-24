@@ -66,7 +66,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DTOs\ClientDTO.cs" />
+    <Compile Include="DTOs\CustomerDTO.cs" />
     <Compile Include="DTOs\UserDTO.cs" />
     <Compile Include="DTOs\TaskDTO.cs" />
     <Compile Include="DTOs\TaskTypeDTO.cs" />

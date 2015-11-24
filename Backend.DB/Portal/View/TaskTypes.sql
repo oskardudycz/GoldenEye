@@ -5,4 +5,4 @@ AS
 		c.[Nazwa]     AS [Name],
 		c.[IsDeleted] AS [IsDeleted]
 	FROM
-		dbo._Slownik_Zleceniodawca c;
+		dbo.[_Slownik_Typy Zasobów] c;

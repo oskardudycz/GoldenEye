@@ -5,10 +5,10 @@ using Backend.Business.Context;
 
 namespace Backend.Business.Repository
 {
-    public class ClientRepository : ReadonlyRepositoryBase<ClientEntity>, IClientRepository
+    public class CustomerRepository : ReadonlyRepositoryBase<Customer>, ICustomerRepository
     {
-        public ClientRepository(ITHBContext context)
-            : base(context, context.Clients)
+        public CustomerRepository(ITHBContext context)
+            : base(context, context.Customers)
         {
         }
     }

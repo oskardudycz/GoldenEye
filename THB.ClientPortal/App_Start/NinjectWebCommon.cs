@@ -75,7 +75,10 @@ namespace Frontend.Web.App_Start
         {
             kernel.Bind<ITaskRepository>().To<TaskRepository>();
             kernel.Bind<ITaskRestService>().To<TaskRestService>();
+            kernel.Bind<ITaskTypeRepository>().To<TaskTypeRepository>();
             kernel.Bind<ITaskTypeRestService>().To<TaskTypeRestService>();
+            kernel.Bind<ICustomerRepository>().To<CustomerRepository>();
+            kernel.Bind<ICustomerRestService>().To<CustomerRestService>();
             kernel.Bind<ITHBContext>().To<THBContext>();
         }
     }

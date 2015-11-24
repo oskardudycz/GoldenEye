@@ -9,9 +9,9 @@ using Backend.Business.Repository;
 
 namespace Backend.Business.Services
 {
-    public class ClientRestService : ReadonlyRestServiceBase<ClientDTO, ClientEntity>, IClientRestService
+    public class CustomerRestService : ReadonlyRestServiceBase<CustomerDTO, Customer>, ICustomerRestService
     {
-        public ClientRestService(IClientRepository repository)
+        public CustomerRestService(ICustomerRepository repository)
             : base(repository)
         {
         }

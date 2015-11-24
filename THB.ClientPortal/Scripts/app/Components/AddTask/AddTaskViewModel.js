@@ -11,7 +11,7 @@ var AddTaskViewModel = function () {
         required: true,
         date: true
     });
-    self.Type = ko.observableArray();
+    
     self.IsInternal = ko.observable();
     self.Amount = ko.observable().extend({
         number: true,
@@ -36,6 +36,12 @@ var AddTaskViewModel = function () {
         max: 100
     });
 
+    self.Types = ko.observableArray();
+    self.TypeId = ko.observable();
+
+    self.Customers = ko.observableArray();
+    self.CustomerId = ko.observable();
+
     self.Id = ko.observable();
 
     self.currentView = ko.observable();
@@ -45,7 +51,8 @@ var AddTaskViewModel = function () {
     self.viewName = "Dodaj";
 
     self.init = function () {
-
+        service.getTaskTypes(self.Types);
+        service.getClients(self.Customers);
     }
 }
 
