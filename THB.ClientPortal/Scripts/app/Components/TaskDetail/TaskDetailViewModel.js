@@ -8,10 +8,11 @@
     self.Type = ko.observable();
     self.IsInternal = ko.observable();
     self.Amount = ko.observable();
-    self.Time = ko.observable();
-    self.StartDate = ko.observable();
-    self.PlanDate = ko.observable();
-    self.EndDate = ko.observable();
+    self.TypeId = ko.observable();
+    self.PlannedTime = ko.observable();
+    self.PlanningDate = ko.observable();
+    self.PlannedStartDate = ko.observable();
+    self.PlannedEndDate = ko.observable();
     self.Description = ko.observable();
     self.Color = ko.observable();
     self.Progress = ko.observable();
