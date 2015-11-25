@@ -4,7 +4,7 @@ using Shared.Core.Utils;
 
 namespace Backend.Business.Services
 {
-    public class ModelerAuthorizationService
+    public class ModelerAuthorizationService : IAuthorizationService
     {
         public bool Authorize(string email, string password)
         {

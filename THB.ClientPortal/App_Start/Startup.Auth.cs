@@ -1,17 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
-using System;
 using Frontend.Web.Models;
 using Frontend.Web.Providers;
-using System.Web;
+using Backend.Business.Services;
 
 namespace Frontend.Web
 {
@@ -26,7 +21,7 @@ namespace Frontend.Web
         {
             // Configure the db context and user manager to use a single instance per request
             app.CreatePerOwinContext(ApplicationDbContext.Create);
-            app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
+            app.CreatePerOwinContext<ApplicationUserManager>((options, context) => ApplicationUserManager.Create(options, context, new ModelerAuthorizationService()));
 
             // Enable the application to use a cookie to store information for the signed in user
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider
@@ -34,7 +29,7 @@ namespace Frontend.Web
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
                 LoginPath = new PathString("/Home/Login"),
-                Provider = new CookieAuthenticationProvider()
+                Provider = new CookieAuthenticationProvider
                 {
                     OnApplyRedirect = ctx =>
                     {
@@ -55,7 +50,6 @@ namespace Frontend.Web
                 Provider = new ApplicationOAuthProvider(PublicClientId),
                 AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(14)
-                //AllowInsecureHttp = true
             };
 
             // Enable the application to use bearer tokens to authenticate users
@@ -85,20 +79,13 @@ namespace Frontend.Web
         }
         private static bool IsAjaxRequest(IOwinRequest request)
         {
-            IReadableStringCollection query = request.Query;
+            var query = request.Query;
             if ((query != null) && (query["X-Requested-With"] == "XMLHttpRequest"))
             {
                 return true;
             }
-            IHeaderDictionary headers = request.Headers;
+            var headers = request.Headers;
             return ((headers != null) && (headers["X-Requested-With"] == "XMLHttpRequest"));
         }
-        /*
-        private static bool IsApiRequest(IOwinRequest request)
-        {
-            string apiPath = VirtualPathUtility.ToAbsolute("~/api/");
-            return request.Uri.LocalPath.StartsWith(apiPath);
-        }
-         * */
     }
 }

@@ -2,13 +2,25 @@
     var self = this;
     var tokenKey = "accessToken";
 
+    var notifier = ko.observable();
 
-    self.getToken = function () {
-        return localStorage.getItem(tokenKey);
+    this.getToken = function () {
+        notifier();
+        return cache.Get(tokenKey);
     }
 
-    self.clearToken = function () {
-        localStorage.removeItem(tokenKey);
+    this.clearToken = function () {
+        cache.Clear(tokenKey);
+        notifier.valueHasMutated();
+    }
+
+    this.setToken = function (token) {
+        cache.Set(tokenKey, token);
+        notifier.valueHasMutated();
+    };
+
+    this.isLogged = function () {
+        return self.getToken() != undefined;
     }
 }
 
