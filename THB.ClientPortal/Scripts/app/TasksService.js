@@ -27,8 +27,8 @@
                 'Authorization': "Bearer " + authManager.getToken()
             },
             success: function (data) {
-                toastr.success('Dodano zlecenie.', 'Sukces');
-                app.current("TaskList-nc");
+                //toastr.success('Dodano zlecenie.', 'Sukces');
+               // app.current("TaskList-nc");
             },
             error: function (data) {
                 toastr.error('Wprowadzono nieprawidłowe wartości.', 'Błąd');
