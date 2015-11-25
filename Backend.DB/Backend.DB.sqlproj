@@ -1468,7 +1468,7 @@
     <Build Include="Portal\View\Tasks.sql" />
     <Build Include="Portal\View\TaskTypes.sql" />
     <Build Include="Portal\Stored Procedures\AddOrUpdateTask.sql" />
-    <Build Include="Portal\View\ModelerUser.sql" />
+    <Build Include="Portal\View\ModelerUsers.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="PostDeployment\Script.PostDeployment.sql" />

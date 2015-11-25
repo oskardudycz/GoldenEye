@@ -98,7 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\ITHBContext.cs" />
-    <Compile Include="Entities\ModelerUser.cs" />
+    <Compile Include="Entities\ModelerUserEntity.cs" />
     <Compile Include="Entities\TaskTypeEntity.cs" />
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="Entities\Task.cs" />
@@ -113,8 +113,10 @@
     <Compile Include="Repository\TaskRepository.cs" />
     <Compile Include="Repository\TaskTypeRepository.cs" />
     <Compile Include="Services\CustomerRestService.cs" />
+    <Compile Include="Services\IAuthorizationService.cs" />
     <Compile Include="Services\ITaskRestService.cs" />
     <Compile Include="Services\ITaskTypeRestService.cs" />
+    <Compile Include="Services\ModelerAuthorizationService.cs" />
     <Compile Include="Services\ICustomerRestService.cs" />
     <Compile Include="Services\TaskRestService.cs" />
     <Compile Include="Services\TaskTypeRestService.cs" />

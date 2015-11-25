@@ -36,6 +36,13 @@ namespace Backend.Business.Context
                 return Set<TaskTypeEntity>().AsNoTracking();
             }
         }
+        public IQueryable<ModelerUserEntity> ModelerUsers
+        {
+            get
+            {
+                return Set<ModelerUserEntity>().AsNoTracking();
+            }
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -56,6 +63,12 @@ namespace Backend.Business.Context
             modelBuilder.Entity<TaskEntity>()
                 .ToTable("Portal.Tasks")
                 .Ignore(s => s.Progress)
+                .HasKey(o => o.Id)
+                .Property(s => s.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+
+            modelBuilder.Entity<ModelerUserEntity>()
+                .ToTable("Portal.ModelerUsers")
+                .Ignore(s => s.CanLogin)
                 .HasKey(o => o.Id)
                 .Property(s => s.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
         }

@@ -1,21 +1,14 @@
 ﻿function LoginViewModel() {
     var self = this;
-
-    var tokenKey = 'accessToken';
-
+    
     self.result = ko.observable();
     self.user = ko.observable();
-    self.loggedIn = ko.observable(false);
+    self.loggedIn = ko.computed(authManager.isLogged);
 
-    self.showMenu = function() {
-        if (authManager.getToken())
-            self.loggedIn(true);
-        else
-            self.loggedIn(false);
-    }
-
-    self.showMenu();
-
+    self.loggedInUserFirstName = ko.computed(function() {
+        return userData.Get().FirstName;
+    });
+    
     self.registerEmail = ko.observable().extend({
         email: true,
         required: true
@@ -107,9 +100,9 @@
             data: loginData
         }).done(function (data) {
             self.user(data.userName);
-            self.loggedIn(true);
+            userData.Set(data.userName);
             // Cache the access token in session storage.
-            localStorage.setItem(tokenKey, data.access_token);
+            authManager.setToken(data.access_token);
             app.current("TaskList-nc");
         }).fail(function () {
             toastr.error('Błędny login lub hasło.', 'Błąd');
@@ -118,8 +111,8 @@
 
     self.logout = function () {
         self.user("");
-        self.loggedIn(false);
-        localStorage.removeItem(tokenKey);
-        app.current("Login-nc")
+        authManager.clearToken();
+        userData.Clear();
+        app.current("Login-nc");
     }
 }

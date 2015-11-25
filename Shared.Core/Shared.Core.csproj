@@ -88,6 +88,7 @@
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="IHasId.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\StringEncoder.cs" />
     <Compile Include="Validatable.cs" />
   </ItemGroup>
   <ItemGroup />
