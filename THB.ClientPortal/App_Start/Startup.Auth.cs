@@ -23,7 +23,7 @@ namespace Frontend.Web
         {
             // Configure the db context and user manager to use a single instance per request
             app.CreatePerOwinContext(ApplicationDbContext.Create);
-            app.CreatePerOwinContext<ApplicationUserManager>((options, context) => ApplicationUserManager.Create(options, context, new ModelerAuthorizationService(new ModelerUserRepository(new THBContext()))));
+            app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
 
             // Enable the application to use a cookie to store information for the signed in user
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider

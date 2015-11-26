@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Backend.Business.Services;
+using Frontend.Web.App_Start;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Frontend.Web.Models;
+using Ninject;
 
 namespace Frontend.Web
 {
@@ -13,17 +15,14 @@ namespace Frontend.Web
 
     public class ApplicationUserManager : UserManager<ApplicationUser>
     {
-        private readonly IAuthorizationService _externalAuthorizationService;
-
-        public ApplicationUserManager(IUserStore<ApplicationUser> store, IAuthorizationService externalAuthorizationService)
+        public ApplicationUserManager(IUserStore<ApplicationUser> store)
             : base(store)
         {
-            _externalAuthorizationService = externalAuthorizationService;
         }
 
-        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context, IAuthorizationService externalAuthorizationService)
+        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
         {
-            var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationDbContext>()), externalAuthorizationService);
+            var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationDbContext>()));
             // Configure validation logic for usernames
             manager.UserValidator = new UserValidator<ApplicationUser>(manager)
             {
@@ -60,11 +59,14 @@ namespace Frontend.Web
 
             if (user != null) return user;
 
-            if (_externalAuthorizationService == null 
-                || !_externalAuthorizationService.Authorize(userName, password))
+            var externalAuthorizationService = NinjectWebCommon.Kernel.Get<IAuthorizationService>();
+
+
+            if (externalAuthorizationService == null
+                || !externalAuthorizationService.Authorize(userName, password))
                 return null;
 
-            var externalUser = _externalAuthorizationService.Find(userName, password);
+            var externalUser = externalAuthorizationService.Find(userName, password);
 
             user = new ApplicationUser { UserName = externalUser.UserName, Email = externalUser.Email };
 

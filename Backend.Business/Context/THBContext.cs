@@ -20,6 +20,12 @@ namespace Backend.Business.Context
             Database.SetInitializer<THBContext>(null);
         }
 
+        public THBContext(IConnectionProvider connectionProvider)
+            : base(connectionProvider)
+        {
+            Database.SetInitializer<THBContext>(null);
+        }
+
         public IDbSet<TaskEntity> Tasks { get; set; }
         public IDbSet<ClientEntity> Clients { get; set; }
 

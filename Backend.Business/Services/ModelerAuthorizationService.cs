@@ -17,8 +17,7 @@ namespace Backend.Business.Services
         {
             return _modelerUserRepository.Authorize(username, password);
         }
-
-
+        
         public UserDTO Find(string username, string password)
         {
             var user = _modelerUserRepository.Find(username, password);

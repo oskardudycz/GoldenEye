@@ -34,6 +34,8 @@ namespace Frontend.Web.App_Start
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 
+        public static IKernel Kernel;
+
         /// <summary>
         /// Starts the application
         /// </summary>
@@ -50,6 +52,7 @@ namespace Frontend.Web.App_Start
         public static void Stop()
         {
             bootstrapper.ShutDown();
+            Kernel = null;
         }
 
         /// <summary>
@@ -65,7 +68,7 @@ namespace Frontend.Web.App_Start
             RegisterServices(kernel);
 
             GlobalConfiguration.Configuration.DependencyResolver = new NinjectResolver(kernel);
-
+            Kernel = kernel;
             return kernel;
         }
 
@@ -85,6 +88,7 @@ namespace Frontend.Web.App_Start
             kernel.Bind<IAuthorizationService>().To<ModelerAuthorizationService>();
             kernel.Bind<ITHBContext>().To<THBContext>();
             kernel.Bind<IUserInfoProvider>().To<UserInfoProvider>();
+            kernel.Bind<IConnectionProvider>().To<ConnectionProvider>().InRequestScope();
         }
     }
 }

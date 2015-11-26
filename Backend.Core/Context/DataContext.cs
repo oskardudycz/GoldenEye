@@ -13,6 +13,12 @@ namespace Backend.Core.Context
         protected DataContext(string name) : base(name)
         {
         }
+
+        protected DataContext(IConnectionProvider connectionProvider)
+            : base(connectionProvider.Open(), false)
+        {
+            
+        }
         
         public new void Dispose()
         {
