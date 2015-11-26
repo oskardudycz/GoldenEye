@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using Backend.Core.Service;
 using Shared.Core.DTOs;
+using NLog;
 
 namespace Frontend.Web.Core.Controllers
 {

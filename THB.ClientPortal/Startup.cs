@@ -1,4 +1,5 @@
 ﻿using Microsoft.Owin;
+using System.Web.Http;
 using Owin;
 
 [assembly: OwinStartupAttribute(typeof(Frontend.Web.Startup))]

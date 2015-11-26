@@ -27,8 +27,8 @@
                 'Authorization': "Bearer " + authManager.getToken()
             },
             success: function (data) {
-                toastr.success('Dodano zlecenie.', 'Sukces');
-                app.current("TaskList-nc");
+                //toastr.success('Dodano zlecenie.', 'Sukces');
+               // app.current("TaskList-nc");
             },
             error: function (data) {
                 toastr.error('Wprowadzono nieprawidłowe wartości.', 'Błąd');
@@ -63,22 +63,6 @@
             success: function (data) {
                 var taskTypes = ko.mapping.fromJS(data);
                 list(taskTypes());
-            }
-        });
-    }
-
-    self.getClients = function (list) {
-        $.ajax({
-            url: 'https://localhost:44300/api/Customer',
-            dataType: "json",
-            type: "GET",
-            data: { get_param: 'value' },
-            headers: {
-                'Authorization': "Bearer " + authManager.getToken()
-            },
-            success: function (data) {
-                var clients = ko.mapping.fromJS(data);
-                list(clients());
             }
         });
     }

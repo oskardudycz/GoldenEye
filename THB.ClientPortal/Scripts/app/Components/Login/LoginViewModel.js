@@ -42,25 +42,7 @@
     function showError(jqXHR) {
         self.result(jqXHR.status + ': ' + jqXHR.statusText);
     }
-
-    self.callApi = function () {
-        self.result('');
-
-        var token = localStorage.getItem(tokenKey);
-        var headers = {};
-        if (token) {
-            headers.Authorization = 'Bearer ' + token;
-        }
-
-        $.ajax({
-            type: 'GET',
-            url: 'https://localhost:44300/api/values',
-            headers: headers
-        }).done(function (data) {
-            self.result(data);
-        }).fail(showError);
-    }
-
+    
     self.register = function () {
         self.result('');
 

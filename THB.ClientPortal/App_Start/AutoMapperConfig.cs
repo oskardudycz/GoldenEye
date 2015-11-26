@@ -21,6 +21,8 @@ namespace Frontend.Web.App_Start
             Mapper.CreateMap<CustomerDTO, Customer>().IgnoreNonExistingProperties();
             Mapper.CreateMap<TaskTypeEntity, TaskTypeDTO>().IgnoreNonExistingProperties();
             Mapper.CreateMap<TaskTypeDTO, TaskTypeEntity>().IgnoreNonExistingProperties();
+            Mapper.CreateMap<ModelerUserEntity, ModelerUserDTO>().IgnoreNonExistingProperties();
+            Mapper.CreateMap<ModelerUserDTO, ModelerUserEntity>().IgnoreNonExistingProperties();
             Mapper.CreateMap<RegisterBindingModel, UserDTO>().IgnoreNonExistingProperties();
             Mapper.CreateMap<UserDTO, UserEntity>().IgnoreNonExistingProperties();
             Mapper.CreateMap<ModelerUserEntity, UserDTO>().IgnoreNonExistingProperties();
