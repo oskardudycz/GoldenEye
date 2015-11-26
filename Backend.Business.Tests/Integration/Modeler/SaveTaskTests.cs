@@ -39,7 +39,8 @@ namespace Backend.Business.Tests.Modeler
                         PlannedTime = 3,
 
                         CustomerId = customer.Id,
-                        TypeId = taskType.Id
+                        TypeId = taskType.Id,
+                        ModificationBy = "THBAdmina"
                     };
 
                     var insertedTask = TestInsert(db, task);

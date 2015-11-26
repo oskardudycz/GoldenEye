@@ -1,44 +1,29 @@
-﻿using System.Linq;
-using AutoMapper;
-using Backend.Business.Context;
+﻿using AutoMapper;
+using Backend.Business.Repository;
 using Shared.Business.DTOs;
-using Shared.Core.Utils;
 
 namespace Backend.Business.Services
 {
     public class ModelerAuthorizationService : IAuthorizationService
     {
+        private readonly IModelerUserRepository _modelerUserRepository;
+
+        public ModelerAuthorizationService(IModelerUserRepository modelerUserRepository)
+        {
+            _modelerUserRepository = modelerUserRepository;
+        }
+
         public bool Authorize(string username, string password)
         {
-            var encodedPassword = StringEncoder.Encrypt(password);
-
-            using (var db = new THBContext())
-            {
-                return db.ModelerUsers
-                    .Any(
-                        el =>
-                            el.UserName == username
-                            && el.Password == encodedPassword
-                            && el.IsActive && !el.IsDeleted && el.IsValid);
-            }
+            return _modelerUserRepository.Authorize(username, password);
         }
 
 
         public UserDTO Find(string username, string password)
         {
-            var encodedPassword = StringEncoder.Encrypt(password);
+            var user = _modelerUserRepository.Find(username, password);
 
-            using (var db = new THBContext())
-            {
-                var user = db.ModelerUsers.OrderByDescending(el => el.ModificationDate)
-                    .FirstOrDefault(
-                        el =>
-                            el.UserName == username
-                            && el.Password == encodedPassword
-                            && el.IsActive && !el.IsDeleted && el.IsValid);
-
-                return Mapper.Map<UserDTO>(user);
-            }
+            return user != null ? Mapper.Map<UserDTO>(user) : null;
         }
     }
 }

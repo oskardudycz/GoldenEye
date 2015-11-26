@@ -55,6 +55,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <Choose>
@@ -71,7 +72,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Entities\TaskTests.cs" />
-    <Compile Include="Integration\Modeler\ModelerAuthorizationServiceTests.cs" />
+    <Compile Include="Integration\Modeler\ModelerUserRepositoryTests.cs" />
     <Compile Include="Integration\Modeler\SaveTaskTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

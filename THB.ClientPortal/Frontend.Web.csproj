@@ -224,6 +224,7 @@
     <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Controllers\TaskTypeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Core\Security\UserInfoProvider.cs" />
     <Compile Include="Extensions\HtmlExtensions.cs" />
     <Compile Include="Extensions\MapperExtensions.cs" />
     <Compile Include="Filters\RequireHttpsAttribute.cs" />

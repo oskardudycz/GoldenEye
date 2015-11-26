@@ -36,5 +36,7 @@ namespace Backend.Business.Entities
         public DateTime? ModificationDate { get; set; }
 
         public int Progress { get; set; }
+
+        public string ModificationBy { get; set; }
     }
 }

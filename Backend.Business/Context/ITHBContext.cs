@@ -3,7 +3,6 @@ using Backend.Business.Entities;
 using System.Data.Entity;
 using System.Linq;
 using System.Data.Entity.Infrastructure;
-using System.Data.SqlClient;
 
 namespace Backend.Business.Context
 {
@@ -13,6 +12,7 @@ namespace Backend.Business.Context
         DbQuery<TaskTypeEntity> TaskTypes { get; }
         IDbSet<ClientEntity> Clients { get; }
         DbQuery<Customer> Customers { get; }
+        DbQuery<ModelerUserEntity> ModelerUsers { get; }
         int AddOrUpdateTask(TaskEntity task);
     }
 }

@@ -18,6 +18,7 @@ SELECT
     , CAST( MIN([Zlecenie - data zaplanowania])		AS DATETIME)	   AS [PlanningDate]
     , CAST( MIN([Zlecenie - opis])					AS NVARCHAR(MAX))  AS [Description]
     , CAST( MIN([ModificationDate])					AS DATETIME)	   AS [ModificationDate]
+    , CAST( MIN([UserName])					        AS NVARCHAR(MAX))  AS [ModificationBy]
 FROM																	  
 (
   SELECT  
@@ -27,6 +28,7 @@ FROM
       , c.[Nazwa]     AS [Nazwa]
       , z.[Nazwa]     AS [TaskName]
       , z.[ValidFrom] AS [ModificationDate]
+      , u.[Login]     AS [UserName]
       , CAST(
             ISNULL( 
                 CAST(zc.[ColumnsSet] AS XML).value('(node())[1]', 'varchar(50)'), 
@@ -39,6 +41,8 @@ FROM
     ON z.Id = zc.ObiektId
   INNER JOIN [dbo].[Cechy] c
     ON zc.CechaID = c.Cecha_ID
+  LEFT OUTER JOIN [dbo].[Uzytkownicy] u
+    ON zc.CreatedBy = u.[Id]
   WHERE zc.IsValid = 1 And zc.IsDeleted = 0
 ) AS p
 PIVOT 

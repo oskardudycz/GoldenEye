@@ -22,6 +22,8 @@ using Backend.Business.Entities;
 using Backend.Business.Context;
 using Backend.Core.Context;
 using Backend.Core.Repository;
+using Frontend.Web.Core.Security;
+using Shared.Core.Security;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Frontend.Web.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Frontend.Web.App_Start.NinjectWebCommon), "Stop")]
@@ -78,9 +80,11 @@ namespace Frontend.Web.App_Start
             kernel.Bind<ITaskTypeRepository>().To<TaskTypeRepository>();
             kernel.Bind<ITaskTypeRestService>().To<TaskTypeRestService>();
             kernel.Bind<ICustomerRepository>().To<CustomerRepository>();
+            kernel.Bind<IModelerUserRepository>().To<ModelerUserRepository>();
             kernel.Bind<ICustomerRestService>().To<CustomerRestService>();
             kernel.Bind<IAuthorizationService>().To<ModelerAuthorizationService>();
             kernel.Bind<ITHBContext>().To<THBContext>();
+            kernel.Bind<IUserInfoProvider>().To<UserInfoProvider>();
         }
     }
 }

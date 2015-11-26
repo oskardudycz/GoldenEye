@@ -7,6 +7,7 @@ using Backend.Business.Entities;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
+using Backend.Business.Repository;
 using Backend.Business.Utils.Serialization;
 
 namespace Backend.Business.Context
@@ -36,7 +37,7 @@ namespace Backend.Business.Context
                 return Set<TaskTypeEntity>().AsNoTracking();
             }
         }
-        public IQueryable<ModelerUserEntity> ModelerUsers
+        public DbQuery<ModelerUserEntity> ModelerUsers
         {
             get
             {
@@ -78,7 +79,11 @@ namespace Backend.Business.Context
             if (!task.ModificationDate.HasValue)
                 task.ModificationDate = DateTime.Now;
 
-            var request = new TaskSaveRequest(1, task);
+            var repository = new ModelerUserRepository(this);
+
+            var userId = repository.FindId(task.ModificationBy);
+
+            var request = new TaskSaveRequest(userId, task);
 
             var serializer = new TaskXmlSerializer();
 

@@ -11,6 +11,8 @@ using SharpTestsEx;
 using Backend.Business.Entities;
 using Backend.Business.Context;
 using Backend.Business.Repository;
+using Frontend.Web.Core.Security;
+using Shared.Core.Security;
 
 namespace Backend.Core.Tests
 {
@@ -49,7 +51,7 @@ namespace Backend.Core.Tests
                 .Setup(x => x.Tasks)
                 .Returns(dbset.Object);
 
-            var repository = new TaskRepository(mockDbContext.Object);
+            var repository = new TaskRepository(mockDbContext.Object, new Mock<IUserInfoProvider>().Object);
 
             repository.Add(new TaskEntity()
                 {

@@ -107,9 +107,11 @@
     <Compile Include="Entities\UserEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\CustomerRepository.cs" />
+    <Compile Include="Repository\IModelerUserRepository.cs" />
     <Compile Include="Repository\ICustomerRepository.cs" />
     <Compile Include="Repository\ITaskRepository.cs" />
     <Compile Include="Repository\ITaskTypeRepository.cs" />
+    <Compile Include="Repository\ModelerUserRepository.cs" />
     <Compile Include="Repository\TaskRepository.cs" />
     <Compile Include="Repository\TaskTypeRepository.cs" />
     <Compile Include="Services\CustomerRestService.cs" />
