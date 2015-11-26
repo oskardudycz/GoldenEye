@@ -4,7 +4,7 @@ using Frontend.Web.Core.Controllers;
 
 namespace Frontend.Web.Controllers
 {
-    public class ModelerUserController : ReadonlyRestControllerBase<IModelerUserRestService, ModelerUserDTO>
+    public class ModelerUserController : ReadonlyRestControllerBase<IModelerUserRestService, UserDTO>
     {
         public ModelerUserController()
         {

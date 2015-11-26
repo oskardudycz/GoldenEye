@@ -3,7 +3,7 @@ using Backend.Core.Service;
 
 namespace Backend.Business.Services
 {
-    public interface IModelerUserRestService : IReadonlyRestService<ModelerUserDTO>
+    public interface IModelerUserRestService : IReadonlyRestService<UserDTO>
     {
     }
 }
