@@ -66,6 +66,22 @@
             }
         });
     }
+
+    self.getClients = function (list) {
+        $.ajax({
+            url: 'https://localhost:44300/api/Customer',
+            dataType: "json",
+            type: "GET",
+            data: { get_param: 'value' },
+            headers: {
+                'Authorization': "Bearer " + authManager.getToken()
+            },
+            success: function (data) {
+                var clients = ko.mapping.fromJS(data);
+                list(clients());
+            }
+        });
+    }
 }
 
 var service = new TasksService();
