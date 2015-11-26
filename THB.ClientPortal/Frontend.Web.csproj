@@ -222,6 +222,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ModelerUserController.cs" />
     <Compile Include="Core\Controllers\ReadonlyRestControllerBase.cs" />
     <Compile Include="Core\Controllers\RestControllerBase.cs" />
     <Compile Include="Controllers\TaskController.cs" />

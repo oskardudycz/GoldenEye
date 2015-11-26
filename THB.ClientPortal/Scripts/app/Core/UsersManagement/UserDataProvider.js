@@ -15,8 +15,23 @@
         if (cached) {
             return cached;
         }
-        //add here reading from REST
-        cached = { FirstName: "Jan", LastName: "Kowalski", Email: userName }
+
+        $.ajax({
+                url: 'https://localhost:44300/api/modeleruser/1',
+                dataType: "json",
+                contentType: 'application/json; charset=utf-8',
+                type: "GET",
+                data: { get_param: 'value' },
+                headers: {
+                    'Authorization': "Bearer " + authManager.getToken()
+                },
+                success: function (data) {
+                    var user = ko.mapping.fromJS(data);
+                    cached = { FirstName: user.FirstName, LastName: user.LastName, Email: user.userName }
+                }
+            });
+
+        //cached = { FirstName: "Jan", LastName: "Kowalski", Email: userName }
         cache.Set(cached);
 
         return cached;

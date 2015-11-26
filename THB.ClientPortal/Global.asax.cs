@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.ExceptionHandling;
 using System.Web.Mvc;
@@ -22,10 +23,9 @@ namespace Frontend.Web
         }
         protected void Application_Error()
         {
-            // missing reference?
-            // Exception lastException = Server.GetLastError();
-            // NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
-            // logger.Fatal(lastException);
+            Exception lastException = Server.GetLastError();
+            NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+            logger.Fatal(lastException);
         }
     }
 }

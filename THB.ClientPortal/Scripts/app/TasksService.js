@@ -67,6 +67,21 @@
         });
     }
 
+    self.getTaskType = function (type, id) {
+        $.ajax({
+            url: 'https://localhost:44300/api/tasktype/' + id,
+            dataType: "json",
+            type: "GET",
+            //data: { Name: type },
+            headers: {
+                'Authorization': "Bearer " + authManager.getToken()
+            },
+            success: function (data) {
+                type(data.Name);
+            }
+        });
+    }
+
     self.getClients = function (list) {
         $.ajax({
             url: 'https://localhost:44300/api/Customer',
