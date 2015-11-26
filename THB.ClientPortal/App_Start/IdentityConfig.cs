@@ -60,11 +60,13 @@ namespace Frontend.Web
 
             if (user != null) return user;
 
-            if (_externalAuthorizationService != null 
-                && !_externalAuthorizationService.Authorize(userName, password))
+            if (_externalAuthorizationService == null 
+                || !_externalAuthorizationService.Authorize(userName, password))
                 return null;
 
-            user = new ApplicationUser { UserName = userName, Email = userName };
+            var externalUser = _externalAuthorizationService.Find(userName, password);
+
+            user = new ApplicationUser { UserName = externalUser.UserName, Email = externalUser.Email };
 
             var result = await CreateAsync(user, password);
 

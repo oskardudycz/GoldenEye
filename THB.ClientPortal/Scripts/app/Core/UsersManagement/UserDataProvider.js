@@ -6,10 +6,13 @@
     var userName = undefined;
 
     var notifier = ko.observable();
-    
 
     self.Get = function () {
         notifier();
+
+        if (authManager.isLogged())
+            return {};
+
         var cached = cache.Get(userDataKey);
 
         if (cached) {
@@ -18,6 +21,7 @@
         //add here reading from REST
         cached = { FirstName: "Jan", LastName: "Kowalski", Email: userName }
         cache.Set(cached);
+        //add here reading from REST
 
         return cached;
     }

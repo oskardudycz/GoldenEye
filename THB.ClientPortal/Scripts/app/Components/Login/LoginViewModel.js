@@ -34,7 +34,7 @@
     });
 
     self.loginEmail = ko.observable().extend({
-        email: true,
+        //email: true,
         required: true
     });
     self.loginPassword = ko.observable();
