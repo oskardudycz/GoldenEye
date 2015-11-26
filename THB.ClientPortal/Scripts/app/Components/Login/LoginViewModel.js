@@ -5,8 +5,13 @@
     self.user = ko.observable();
     self.loggedIn = ko.computed(authManager.isLogged);
 
-    self.loggedInUserFirstName = ko.computed(function() {
-        return userData.Get().FirstName;
+    self.loggedInUserFirstName = ko.computed(function () {
+        var user = userData.Get();
+
+        if (user == undefined)
+            return undefined;
+
+        return user.FirstName;
     });
     
     self.registerEmail = ko.observable().extend({

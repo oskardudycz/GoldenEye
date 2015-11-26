@@ -85,7 +85,6 @@ namespace Frontend.Web.App_Start
             kernel.Bind<ICustomerRepository>().To<CustomerRepository>();
             kernel.Bind<IModelerUserRepository>().To<ModelerUserRepository>();
             kernel.Bind<ICustomerRestService>().To<CustomerRestService>();
-            kernel.Bind<IModelerUserRepository>().To<ModelerUserRepository>();
             kernel.Bind<IModelerUserRestService>().To<ModelerUserRestService>();
             kernel.Bind<IAuthorizationService>().To<ModelerAuthorizationService>();
             kernel.Bind<ITHBContext>().To<THBContext>();

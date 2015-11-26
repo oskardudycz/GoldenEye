@@ -2,6 +2,19 @@
 
     var self = this;
 
+    function handleLogOut() {
+        toastr.error("Zostałeś wylogowany!", "Błąd");
+        routing.refresh();
+    }
+
+    function handleStandardError(jqXHR, exception) {
+        if (jqXHR.status === 401) {
+            handleLogOut();
+            return true;
+        }
+        return false;
+    }
+
     self.loadList = function (list) {
         $.ajax("https://localhost:44300/api/Task", {
             dataType: "json",
@@ -30,8 +43,9 @@
                 //toastr.success('Dodano zlecenie.', 'Sukces');
                // app.current("TaskList-nc");
             },
-            error: function (data) {
-                toastr.error('Wprowadzono nieprawidłowe wartości.', 'Błąd');
+            error: function (jqXHR, exception) {
+                if(!handleStandardError(jqXHR, exception))
+                    toastr.error('Wprowadzono nieprawidłowe wartości.', 'Błąd');
             }
         });
     }
@@ -47,7 +61,8 @@
                 },
                 success: function (data) {
                     callback(data);
-                }
+                },
+                error: handleStandardError
             });
     };
 
@@ -63,7 +78,8 @@
             success: function (data) {
                 var taskTypes = ko.mapping.fromJS(data);
                 list(taskTypes());
-            }
+            },
+            error: handleStandardError
         });
     }
 
@@ -79,7 +95,8 @@
             success: function (data) {
                 var clients = ko.mapping.fromJS(data);
                 list(clients());
-            }
+            },
+            error: handleStandardError
         });
     }
 }

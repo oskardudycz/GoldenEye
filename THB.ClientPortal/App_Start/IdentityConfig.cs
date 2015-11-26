@@ -60,8 +60,7 @@ namespace Frontend.Web
             if (user != null) return user;
 
             var externalAuthorizationService = NinjectWebCommon.Kernel.Get<IAuthorizationService>();
-
-
+            
             if (externalAuthorizationService == null
                 || !externalAuthorizationService.Authorize(userName, password))
                 return null;

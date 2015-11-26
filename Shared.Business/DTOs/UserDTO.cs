@@ -1,6 +1,8 @@
-﻿namespace Shared.Business.DTOs
+﻿using Shared.Core.DTOs;
+
+namespace Shared.Business.DTOs
 {
-    public class UserDTO
+    public class UserDTO : IDTO
     {
         public int Id { get; set; }
         public string UserName { get; set; }
