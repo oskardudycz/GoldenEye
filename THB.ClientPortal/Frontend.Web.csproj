@@ -234,7 +234,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="IoC\NinjectResolver.cs" />
-    <Compile Include="Loggers\NLogExceptionLogger.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ContractorModel.cs" />
