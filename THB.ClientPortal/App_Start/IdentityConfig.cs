@@ -60,14 +60,21 @@ namespace Frontend.Web
             if (user != null) return user;
 
             var externalAuthorizationService = NinjectWebCommon.Kernel.Get<IAuthorizationService>();
-            
+
             if (externalAuthorizationService == null
                 || !externalAuthorizationService.Authorize(userName, password))
                 return null;
 
             var externalUser = externalAuthorizationService.Find(userName, password);
 
-            user = new ApplicationUser { UserName = externalUser.UserName, Email = externalUser.Email };
+            user = new ApplicationUser
+            {
+                ModelerId = externalUser.Id,
+                FirstName = externalUser.FirstName,
+                LastName = externalUser.LastName,
+                UserName = externalUser.UserName,
+                Email = externalUser.Email
+            };
 
             var result = await CreateAsync(user, password);
 

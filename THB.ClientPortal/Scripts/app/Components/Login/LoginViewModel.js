@@ -61,7 +61,7 @@
 
         $.ajax({
             type: "POST",
-            url: 'https://localhost:44300/api/Account/Register',
+            url: '/api/Account/Register',
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(data)
         }).done(function (data) {
@@ -83,7 +83,7 @@
 
         $.ajax({
             type: "POST",
-            url: 'https://localhost:44300/Token',
+            url: '/Token',
             data: loginData
         }).done(function (data) {
             self.user(data.userName);

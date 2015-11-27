@@ -20,7 +20,7 @@
         }
 
         $.ajax({
-                url: 'https://localhost:44300/api/modeleruser/1',
+                url: '/api/modeleruser/1',
                 dataType: "json",
                 contentType: 'application/json; charset=utf-8',
                 type: "GET",

@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - THB B2B Portal Klienta</title>
+    <base href='@(Request.ApplicationPath.Length == 1 ? Request.ApplicationPath : Request.ApplicationPath + "/")' />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")

@@ -255,14 +255,10 @@
     <Content Include="Scripts\app\app.js" />
     <Content Include="Scripts\app\AuthManager.js" />
     <Content Include="Scripts\app\common.js" />
-    <Content Include="Content\bootstrap-responsive.css" />
-    <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\images\glyphicons-halflings-white.png" />
-    <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\misc.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -279,9 +275,7 @@
     <Content Include="Scripts\app\Components\TopMenu\TopMenuView.html" />
     <Content Include="Scripts\app\Core\Cache\CacheManager.js" />
     <Content Include="Scripts\app\Core\jQuery\GetScript.js" />
-    <Content Include="Scripts\app\Core\Loaders\ComponentByNamingConvention.js" />
     <Content Include="Scripts\app\Core\Loaders\ComponentByNamingConventionLoader.js" />
-    <Content Include="Scripts\app\Core\Loaders\TemplateFromUrlLoader.js" />
     <Content Include="Scripts\app\Core\UsersManagement\UserDataProvider.js" />
     <Content Include="Scripts\app\Core\ViewModels\ViewModelHelpers.js" />
     <Content Include="Scripts\app\TasksService.js" />
@@ -303,6 +297,7 @@
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Properties\PublishProfiles\THBDev.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\app\Components\AddTask\AddTaskViewModel.js" />
     <Content Include="Scripts\app\Components\TaskDetail\TaskDetailViewModel.js" />
@@ -373,7 +368,6 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Home\List.cshtml" />
     <Content Include="Scripts\knockout.validation.min.js.map" />
   </ItemGroup>
   <ItemGroup>

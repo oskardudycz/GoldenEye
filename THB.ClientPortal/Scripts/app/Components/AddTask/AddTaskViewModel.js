@@ -22,7 +22,7 @@ var AddTaskViewModel = function () {
     self.PlannedStartDate = ko.observable().extend({
         date: true,
         min: {
-            params: currentDate,
+            params: moment(Date()).format("YYYY-MM-DD"),
             message: "Data musi być równa lub późniejsza od dzisiejszej."
         }
     });
@@ -47,20 +47,14 @@ var AddTaskViewModel = function () {
     self.CustomerId = ko.observable();
 
     self.Id = ko.observable();
-
-    self.currentView = ko.observable();
-    self.views = ko.observableArray(["Zlecenia", "Dodaj"]);
-
-    self.viewModelName = "Dodaj";
-    self.viewName = "Dodaj";
-
+    
+    self.addTask = function() {
+        service.addTask(self, function(data) {
+            window.location = "#Zlecenia";
+        });
+    }
     self.init = function () {
         service.getTaskTypes(self.Types);
         service.getClients(self.Customers);
     }
 }
-
-AddTaskViewModel.prototype.addTask = function () {
-    var self = this;
-    service.addTask(self);
-};

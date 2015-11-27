@@ -123,6 +123,7 @@
     <Folder Include="Portal" />
     <Folder Include="Portal\View" />
     <Folder Include="Portal\Stored Procedures" />
+    <Folder Include="dbo\Tables\ASPNET" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\_Operacja  nietabelaryczna_Cechy_Hist.sql">
@@ -1469,6 +1470,11 @@
     <Build Include="Portal\View\TaskTypes.sql" />
     <Build Include="Portal\Stored Procedures\AddOrUpdateTask.sql" />
     <Build Include="Portal\View\ModelerUsers.sql" />
+    <Build Include="dbo\Tables\ASPNET\AspNetRoles.sql" />
+    <Build Include="dbo\Tables\ASPNET\AspNetUserClaims.sql" />
+    <Build Include="dbo\Tables\ASPNET\AspNetUserLogins.sql" />
+    <Build Include="dbo\Tables\ASPNET\AspNetUserRoles.sql" />
+    <Build Include="dbo\Tables\ASPNET\AspNetUsers.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="PostDeployment\Script.PostDeployment.sql" />
