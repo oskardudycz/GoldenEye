@@ -26,7 +26,8 @@
             success: function (data) {
                 var tasks = ko.mapping.fromJS(data);
                 list(tasks());
-            }
+            },
+            error: handleStandardError
         });
     }
 
