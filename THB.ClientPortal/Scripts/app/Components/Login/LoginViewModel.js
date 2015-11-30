@@ -58,18 +58,7 @@
             FirstName: self.firstName(),
             LastName: self.lastName()
         };
-
-        $.ajax({
-            type: "POST",
-            url: 'https://localhost:44300/api/Account/Register',
-            contentType: 'application/json; charset=utf-8',
-            data: JSON.stringify(data)
-        }).done(function (data) {
-            self.result("Done!");
-            toastr.success('Możesz się teraz zalogować.', 'Rejestracja przebiegła pomyślnie');
-        }).fail(function () {
-            toastr.error('Nieprawidłowe hasło.', 'Błąd');
-        });
+        loginService.Register();
     }
 
     self.login = function () {
