@@ -61,7 +61,7 @@
 
         $.ajax({
             type: "POST",
-            url: '/api/Account/Register',
+            url: $("base").attr("href") + "api/Account/Register",
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(data)
         }).done(function (data) {
@@ -83,7 +83,7 @@
 
         $.ajax({
             type: "POST",
-            url: '/Token',
+            url: $("base").attr("href") + "Token",
             data: loginData
         }).done(function (data) {
             self.user(data.userName);

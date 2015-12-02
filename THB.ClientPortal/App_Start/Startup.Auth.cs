@@ -9,6 +9,7 @@ using Owin;
 using Frontend.Web.Models;
 using Frontend.Web.Providers;
 using Backend.Business.Services;
+using Shared.Core.Configuration;
 
 namespace Frontend.Web
 {
@@ -53,6 +54,11 @@ namespace Frontend.Web
                 AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(14)
             };
+
+
+            if (ConfigHelper.IsInTestMode)
+                OAuthOptions.AllowInsecureHttp = true;
+                
 
             // Enable the application to use bearer tokens to authenticate users
 

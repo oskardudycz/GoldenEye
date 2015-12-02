@@ -20,7 +20,7 @@
         }
 
         $.ajax({
-                url: '/api/modeleruser/1',
+            url: $("base").attr("href") + "api/modeleruser/1",
                 dataType: "json",
                 contentType: 'application/json; charset=utf-8',
                 type: "GET",
