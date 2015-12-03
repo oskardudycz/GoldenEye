@@ -16,7 +16,7 @@
     }
 
     self.loadList = function (list) {
-        $.ajax("https://localhost:44300/api/Task", {
+        $.ajax("/api/Task", {
             dataType: "json",
             type: "GET",
             data: { get_param: "value" },
@@ -31,8 +31,8 @@
         });
     }
 
-    self.addTask = function (model) {
-        $.ajax("https://localhost:44300/api/Task", {
+    self.addTask = function (model, callback) {
+        $.ajax("/api/Task", {
             dataType: "json",
             type: "PUT",
             data: ko.toJSON(model),
@@ -41,8 +41,7 @@
                 'Authorization': "Bearer " + authManager.getToken()
             },
             success: function (data) {
-                //toastr.success('Dodano zlecenie.', 'Sukces');
-               // app.current("TaskList-nc");
+                callback(data);
             },
             error: function (jqXHR, exception) {
                 if(!handleStandardError(jqXHR, exception))
@@ -53,7 +52,7 @@
 
     self.getTask = function (id, callback) {
             $.ajax({
-                url: 'https://localhost:44300/api/task/' + id,
+                url: '/api/task/' + id,
                 dataType: "json",
                 type: "GET",
                 data: { get_param: 'value' },
@@ -69,7 +68,7 @@
 
     self.getTaskTypes = function (list) {
         $.ajax({
-            url: 'https://localhost:44300/api/tasktype',
+            url: '/api/tasktype',
             dataType: "json",
             type: "GET",
             data: { get_param: 'value' },
@@ -86,7 +85,7 @@
 
     self.getClients = function (list) {
         $.ajax({
-            url: 'https://localhost:44300/api/Customer',
+            url: '/api/Customer',
             dataType: "json",
             type: "GET",
             data: { get_param: 'value' },

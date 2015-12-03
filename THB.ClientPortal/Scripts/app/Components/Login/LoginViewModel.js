@@ -1,6 +1,6 @@
 ﻿function LoginViewModel() {
     var self = this;
-    
+
     self.result = ko.observable();
     self.user = ko.observable();
     self.loggedIn = ko.computed(authManager.isLogged);
@@ -13,7 +13,7 @@
 
         return user.FirstName;
     });
-    
+
     self.registerEmail = ko.observable().extend({
         email: true,
         required: true
@@ -47,7 +47,7 @@
     function showError(jqXHR) {
         self.result(jqXHR.status + ': ' + jqXHR.statusText);
     }
-    
+
     self.register = function () {
         self.result('');
 
@@ -58,7 +58,20 @@
             FirstName: self.firstName(),
             LastName: self.lastName()
         };
-        loginService.Register();
+
+       // loginService.register();
+
+        $.ajax({
+            type: "POST",
+            url: '/api/Account/Register',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(data)
+        }).done(function (data) {
+            self.result("Done!");
+            toastr.success('Możesz się teraz zalogować.', 'Rejestracja przebiegła pomyślnie');
+        }).fail(function () {
+            toastr.error('Nieprawidłowe hasło.', 'Błąd');
+        });
     }
 
     self.login = function () {
@@ -70,9 +83,11 @@
             password: self.loginPassword()
         };
 
+       // loginService.login();
+
         $.ajax({
             type: "POST",
-            url: 'https://localhost:44300/Token',
+            url: '/Token',
             data: loginData
         }).done(function (data) {
             self.user(data.userName);
