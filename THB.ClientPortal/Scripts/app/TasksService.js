@@ -15,8 +15,12 @@
         return false;
     }
 
+    function getUrlPrefix() {
+        return $("base").attr("href");
+    }
+
     self.loadList = function (list) {
-        $.ajax("/api/Task", {
+        $.ajax(getUrlPrefix()+ "api/Task", {
             dataType: "json",
             type: "GET",
             data: { get_param: "value" },
@@ -32,7 +36,7 @@
     }
 
     self.addTask = function (model, callback) {
-        $.ajax("/api/Task", {
+        $.ajax(getUrlPrefix() + "api/Task", {
             dataType: "json",
             type: "PUT",
             data: ko.toJSON(model),
@@ -40,7 +44,7 @@
             headers: {
                 'Authorization': "Bearer " + authManager.getToken()
             },
-            success: function (data) {
+            success: function (data, textStatus, jqXHR) {
                 callback(data);
             },
             error: function (jqXHR, exception) {
@@ -52,7 +56,7 @@
 
     self.getTask = function (id, callback) {
             $.ajax({
-                url: '/api/task/' + id,
+                url: getUrlPrefix()+ "api/task/" + id,
                 dataType: "json",
                 type: "GET",
                 data: { get_param: 'value' },
@@ -68,7 +72,7 @@
 
     self.getTaskTypes = function (list) {
         $.ajax({
-            url: '/api/tasktype',
+            url: getUrlPrefix() + "api/tasktype",
             dataType: "json",
             type: "GET",
             data: { get_param: 'value' },
@@ -85,7 +89,7 @@
 
     self.getClients = function (list) {
         $.ajax({
-            url: '/api/Customer',
+            url: getUrlPrefix() + "api/Customer",
             dataType: "json",
             type: "GET",
             data: { get_param: 'value' },

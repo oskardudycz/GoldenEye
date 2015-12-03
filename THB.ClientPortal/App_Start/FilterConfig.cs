@@ -1,5 +1,6 @@
 ﻿using System.Web;
 using System.Web.Mvc;
+using Shared.Core.Configuration;
 
 namespace Frontend.Web
 {
@@ -8,7 +9,8 @@ namespace Frontend.Web
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
-            filters.Add(new RequireHttpsAttribute());
+            if(!ConfigHelper.IsInTestMode)
+                filters.Add(new RequireHttpsAttribute());
         }
     }
 }

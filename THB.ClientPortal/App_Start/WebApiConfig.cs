@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
+using Shared.Core.Configuration;
 
 namespace Frontend.Web
 {
@@ -24,7 +25,8 @@ namespace Frontend.Web
                 defaults: new { id = RouteParameter.Optional }
             );
             // Enforce HTTPS
-            config.Filters.Add(new Frontend.Web.Filters.RequireHttpsAttribute());
+            if (!ConfigHelper.IsInTestMode)
+                config.Filters.Add(new Frontend.Web.Filters.RequireHttpsAttribute());
         }
     }
 }
