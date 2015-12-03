@@ -306,6 +306,7 @@
     <Content Include="Scripts\app\Components\Main\MainViewModel.js" />
     <Content Include="Scripts\app\Components\TaskList\TaskListViewModel.js" />
     <Content Include="Scripts\app\Components\TopMenu\TopMenuViewModel.js" />
+    <Content Include="Scripts\app\UserService.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
