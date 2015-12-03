@@ -278,7 +278,6 @@
     <Content Include="Scripts\app\Core\Loaders\ComponentByNamingConventionLoader.js" />
     <Content Include="Scripts\app\Core\UsersManagement\UserDataProvider.js" />
     <Content Include="Scripts\app\Core\ViewModels\ViewModelHelpers.js" />
-    <Content Include="Scripts\app\LoginService.js" />
     <Content Include="Scripts\app\TasksService.js" />
     <Content Include="Scripts\app\RoutesConfig.js" />
     <Content Include="packages.config">
