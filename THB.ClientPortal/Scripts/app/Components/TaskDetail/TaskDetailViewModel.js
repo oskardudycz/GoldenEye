@@ -23,7 +23,7 @@
     }
 
     self.init = function (id) {
-        service.getTask(id, fill);
+        taskService.getTask(id, fill);
     }
 
 }

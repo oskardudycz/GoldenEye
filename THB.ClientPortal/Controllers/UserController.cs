@@ -6,13 +6,13 @@ using Frontend.Web.Core.Controllers;
 namespace Frontend.Web.Controllers
 {
     [Authorize]
-    public class ModelerUserController : ReadonlyRestControllerBase<IModelerUserRestService, UserDTO>
+    public class UserController : ReadonlyRestControllerBase<IModelerUserRestService, UserDTO>
     {
-        public ModelerUserController()
+        public UserController()
         {
         }
 
-        public ModelerUserController(IModelerUserRestService service)
+        public UserController(IModelerUserRestService service)
             : base(service)
         {
         }

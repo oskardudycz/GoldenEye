@@ -49,12 +49,12 @@ var AddTaskViewModel = function () {
     self.Id = ko.observable();
     
     self.addTask = function() {
-        service.addTask(self, function(data) {
+        taskService.addTask(self, function (data) {
             window.location = "#Zlecenia";
         });
     }
     self.init = function () {
-        service.getTaskTypes(self.Types);
-        service.getClients(self.Customers);
+        taskService.getTaskTypes(self.Types);
+        taskService.getClients(self.Customers);
     }
 }

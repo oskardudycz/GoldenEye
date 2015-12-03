@@ -4,6 +4,6 @@
     self.tasklist = ko.observableArray(tasklist);
 
     self.init = function () {
-        service.loadList(self.tasklist);
+        taskService.loadList(self.tasklist);
     }
 };
