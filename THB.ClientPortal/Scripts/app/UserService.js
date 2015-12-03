@@ -10,7 +10,7 @@
         return false;
     }
 
-    self.getUser = function (cached) {
+    self.getUser = function (cached, callback) {
         $.ajax({
             url: '/api/user/1',
             dataType: "json",
@@ -21,7 +21,7 @@
                 'Authorization': "Bearer " + authManager.getToken()
             }
         }).done(function (data) {
-            cached = { FirstName: data.FirstName, LastName: data.LastName, Email: data.UserName }
+            callback(cached, data);
         });
     }
 }

@@ -7,6 +7,10 @@
 
     var notifier = ko.observable();
 
+    function UpdateUser(cachedUser, data) {
+        cachedUser = data;
+    }
+
     self.Get = function () {
         notifier();
 
@@ -16,14 +20,14 @@
 
         var cached = cache.Get(userDataKey);
 
-        if (cached) {
+        if (cached)
             return cached;
-        }
 
-        userService.getUser(cached);
+        cached = { FirstName: "Jan", LastName: "Kowalski", Email: userName }
 
-        //cached = { FirstName: "Jan", LastName: "Kowalski", Email: userName }
-        cache.Set(cached);
+        userService.getUser(cached, UpdateUser);
+
+       // cache.Set(cached);
 
         notifier();
 
