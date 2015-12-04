@@ -2,6 +2,7 @@
 AS 
     SELECT 
        u.[Id]          AS [Id]
+	  ,u.[IdArch]      AS [IdArch]
       ,u.[Login]       AS [UserName]
       ,u.[Imie]        AS [FirstName]
       ,u.[Nazwisko]    AS [LastName]

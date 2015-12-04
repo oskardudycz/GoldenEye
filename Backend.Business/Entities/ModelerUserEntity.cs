@@ -5,6 +5,7 @@ namespace Backend.Business.Entities
 {
     public class ModelerUserEntity : EntityBase
     {
+        public int? IdArch { get; set; }
         public string UserName {get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -17,7 +18,7 @@ namespace Backend.Business.Entities
 
         public bool CanLogin
         {
-            get { return IsActive && IsValid && !IsDeleted; }
+            get { return IsActive && IsValid && !IsDeleted && !IdArch.HasValue; }
         }
     }
 }

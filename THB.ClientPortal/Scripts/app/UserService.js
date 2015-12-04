@@ -2,6 +2,19 @@
 
     var self = this;
 
+    function handleLogOut() {
+        toastr.error("Zostałeś wylogowany!", "Błąd");
+        routing.refresh();
+    }
+
+    function handleStandardError(jqXHR, exception) {
+        if (jqXHR.status === 401) {
+            handleLogOut();
+            return true;
+        }
+        return false;
+    }
+
     self.getUser = function (username, callback) {
         $.ajax({
             url: "/api/user?$filter=(UserName eq '" + username  + "')",
@@ -13,7 +26,8 @@
             },
             success: function(data) {
                 callback(data[0]);
-            }
+            },
+            error: handleStandardError
         });
     }
 };

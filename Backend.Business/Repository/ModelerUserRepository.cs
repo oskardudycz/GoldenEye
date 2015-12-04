@@ -15,7 +15,7 @@ namespace Backend.Business.Repository
 
         public IQueryable<ModelerUserEntity> GetActive()
         {
-            return ((ITHBContext)Context).ModelerUsers.Where(el => el.IsActive && !el.IsDeleted && el.IsValid);
+            return ((ITHBContext)Context).ModelerUsers.Where(el => !el.IdArch.HasValue &&el.IsActive && !el.IsDeleted && el.IsValid);
         }
 
         public bool Authorize(string username, string password)
