@@ -2,9 +2,9 @@
 
     var self = this;
 
-    self.getUser = function (callback) {
+    self.getUser = function (username, callback) {
         $.ajax({
-            url: '/api/user/1',
+            url: "/api/user?$filter=UserName eq '" + username + "'",
             dataType: "json",
             contentType: 'application/json; charset=utf-8',
             type: "GET",

@@ -12,7 +12,7 @@ namespace Backend.Business.Context
         DbQuery<TaskTypeEntity> TaskTypes { get; }
         IDbSet<ClientEntity> Clients { get; }
         DbQuery<Customer> Customers { get; }
-        DbQuery<ModelerUserEntity> ModelerUsers { get; }
+        IQueryable<ModelerUserEntity> ModelerUsers { get; }
         int AddOrUpdateTask(TaskEntity task);
     }
 }

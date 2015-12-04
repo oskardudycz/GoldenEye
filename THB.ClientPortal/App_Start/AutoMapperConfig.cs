@@ -24,8 +24,6 @@ namespace Frontend.Web.App_Start
             Mapper.CreateMap<ModelerUserEntity, UserDTO>().IgnoreNonExistingProperties();
             Mapper.CreateMap<UserDTO, ModelerUserEntity>().IgnoreNonExistingProperties();
             Mapper.CreateMap<RegisterBindingModel, UserDTO>().IgnoreNonExistingProperties();
-            Mapper.CreateMap<UserDTO, UserEntity>().IgnoreNonExistingProperties();
-            Mapper.CreateMap<ModelerUserEntity, UserDTO>().IgnoreNonExistingProperties();
         }
     }
 }

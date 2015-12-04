@@ -25,7 +25,7 @@
             return cached;
         }
 
-        userService.getUser(UpdateUser);
+        userService.getUser("THBAdmina", UpdateUser);
 
         return cached;
     }

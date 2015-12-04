@@ -43,7 +43,7 @@ namespace Backend.Business.Context
                 return Set<TaskTypeEntity>().AsNoTracking();
             }
         }
-        public DbQuery<ModelerUserEntity> ModelerUsers
+        public IQueryable<ModelerUserEntity> ModelerUsers
         {
             get
             {
