@@ -1,6 +1,8 @@
 ﻿function LoginViewModel() {
     var self = this;
 
+    var notifier = ko.observable();
+
     self.result = ko.observable();
     self.user = ko.observable();
     self.loggedIn = ko.computed(authManager.isLogged);

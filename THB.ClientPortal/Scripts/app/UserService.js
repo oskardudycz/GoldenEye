@@ -2,15 +2,7 @@
 
     var self = this;
 
-    function handleStandardError(jqXHR, exception) {
-        if (jqXHR.status === 401) {
-            handleLogOut();
-            return true;
-        }
-        return false;
-    }
-
-    self.getUser = function (cached, callback) {
+    self.getUser = function (callback) {
         $.ajax({
             url: '/api/user/1',
             dataType: "json",
@@ -19,11 +11,12 @@
             data: { get_param: 'value' },
             headers: {
                 'Authorization': "Bearer " + authManager.getToken()
+            },
+            success: function (data) {
+                callback(data);
             }
-        }).done(function (data) {
-            callback(cached, data);
-        });
+        })
     }
-}
+};
 
 var userService = new UserService();

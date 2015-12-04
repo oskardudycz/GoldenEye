@@ -7,29 +7,25 @@
 
     var notifier = ko.observable();
 
-    function UpdateUser(cachedUser, data) {
-        cachedUser = data;
+    function UpdateUser(data) {
+        cache.Set(userDataKey, data);
+        notifier.valueHasMutated();
     }
 
     self.Get = function () {
         notifier();
 
         if (authManager.isLogged()) {
-            notifier();
+            notifier.valueHasMutated();
         }
 
         var cached = cache.Get(userDataKey);
 
-        if (cached)
+        if (cached) {
             return cached;
+        }
 
-        cached = { FirstName: "Jan", LastName: "Kowalski", Email: userName }
-
-        userService.getUser(cached, UpdateUser);
-
-       // cache.Set(cached);
-
-        notifier();
+        userService.getUser(UpdateUser);
 
         return cached;
     }
