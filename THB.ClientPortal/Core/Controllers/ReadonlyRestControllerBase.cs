@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.OData;
 using Backend.Core.Service;
 using Shared.Core.DTOs;
 
@@ -18,10 +19,10 @@ namespace Frontend.Web.Core.Controllers
         protected ReadonlyRestControllerBase()
         {
         }
-
-        public IQueryable<TDto> Get()
+        [EnableQuery]
+        public virtual IQueryable<TDto> Get()
         {
-            return Service.Get();
+            return Service.Get().AsQueryable();
         }
 
         public async Task<IHttpActionResult> Get(int id)

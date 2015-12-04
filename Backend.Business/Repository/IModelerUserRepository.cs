@@ -1,4 +1,5 @@
-﻿using Backend.Core.Repository;
+﻿using System.Linq;
+using Backend.Core.Repository;
 using Backend.Business.Entities;
 
 namespace Backend.Business.Repository
@@ -7,5 +8,6 @@ namespace Backend.Business.Repository
     {
         bool Authorize(string username, string password);
         ModelerUserEntity Find(string username, string password);
+        IQueryable<ModelerUserEntity> GetActive();
     }
 }

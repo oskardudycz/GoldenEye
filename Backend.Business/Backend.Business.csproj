@@ -119,7 +119,6 @@
     <Compile Include="Services\IModelerUserRestService.cs" />
     <Compile Include="Services\ITaskRestService.cs" />
     <Compile Include="Services\ITaskTypeRestService.cs" />
-    <Compile Include="Services\ModelerAuthorizationService.cs" />
     <Compile Include="Services\ICustomerRestService.cs" />
     <Compile Include="Services\ModelerUserRestService.cs" />
     <Compile Include="Services\TaskRestService.cs" />

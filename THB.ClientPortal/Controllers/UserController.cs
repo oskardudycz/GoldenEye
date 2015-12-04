@@ -2,11 +2,9 @@
 using Shared.Business.DTOs;
 using Backend.Business.Services;
 using Frontend.Web.Core.Controllers;
-using System.Threading.Tasks;
 using System.Linq;
+using System.Web.Http.OData;
 using Backend.Business.Context;
-using AutoMapper;
-using Backend.Business.Entities;
 
 namespace Frontend.Web.Controllers
 {
@@ -21,6 +19,13 @@ namespace Frontend.Web.Controllers
             : base(service)
         {
         }
+
+        [EnableQuery]
+        public override IQueryable<UserDTO> Get()
+        {
+            return Service.GetActive();
+        }
+
         public IQueryable<UserDTO> GetByName(string username)
         {
             THBContext db = new THBContext();
