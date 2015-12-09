@@ -118,10 +118,6 @@
     <Compile Include="Service\RestServiceBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Shared.Business\Shared.Business.csproj">
-      <Project>{fe4c8d80-c8b9-45b4-9ce3-bb94280bc223}</Project>
-      <Name>Shared.Business</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Shared.Core\Shared.Core.csproj">
       <Project>{b4e800e8-f352-448d-86fe-fa467bd9e7a6}</Project>
       <Name>Shared.Core</Name>

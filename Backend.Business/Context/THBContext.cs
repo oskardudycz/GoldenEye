@@ -15,7 +15,7 @@ namespace Backend.Business.Context
     public class THBContext: DataContext<THBContext>, ITHBContext
     {
         public THBContext()
-            : base("name=THB-B2B")
+            : base("name=DBConnectionString")
         {
             Database.SetInitializer<THBContext>(null);
         }

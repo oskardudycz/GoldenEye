@@ -1,0 +1,103 @@
+﻿<h2>Dodaj zlecenie</h2>
+
+<form class="form-horizontal">
+    <div class="form-group">
+        <label for="Name" class="col-sm-2 control-label">Nazwa zlecenia</label>
+        <div class="col-sm-10">
+            <input type="text" data-bind="value: Name" class="form-control" id="Name" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Number" class="col-sm-2 control-label">Numer zlecenia</label>
+        <div class="col-sm-10">
+            <input type="text" data-bind="value: Number" class="form-control" id="Number" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Progress" class="col-sm-2 control-label">Stopień realizacji</label>
+        <div class="col-sm-10">
+            <input type="number" data-bind="value: Progress" class="form-control" id="Progress" required />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="Date" class="col-sm-2 control-label">Data przyjęcia</label>
+        <div class="col-sm-10">
+            <input type="date" data-bind="value: Date" class="form-control" id="Date">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Amount" class="col-sm-2 control-label">Ilość</label>
+        <div class="col-sm-10">
+            <input type="number" data-bind="value: Amount" class="form-control" id="Amount">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Type" class="col-sm-2 control-label">Typ</label>
+        <div class="col-sm-10">
+            <select id="Type" class="form-control" data-bind="options: Types,
+                          optionsText: 'Name',
+                           optionsValue: 'Id',
+                       value: TypeId"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Customer" class="col-sm-2 control-label">Klient</label>
+        <div class="col-sm-10">
+            <select id="Customer" class="form-control" data-bind="options: Customers,
+                      optionsText: 'Name',
+                       optionsValue: 'Id',
+                       value: CustomerId"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="PlannedTime" class="col-sm-2 control-label">Planowany czas trwania</label>
+        <div class="col-sm-10">
+            <input type="number" data-bind="value: PlannedTime" class="form-control" id="PlannedTime">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="PlannedStartDate" class="col-sm-2 control-label">Planowana data rozpoczęcia</label>
+        <div class="col-sm-10">
+            <input type="date" data-bind="value: PlannedStartDate" class="form-control" id="PlannedStartDate">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="PlannedEndDate" class="col-sm-2 control-label">Planowana data zakończenia</label>
+        <div class="col-sm-10">
+            <input type="date" data-bind="value: PlannedEndDate" class="form-control" id="PlannedEndDate">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="PlanningDate" class="col-sm-2 control-label">Data zaplanowania</label>
+        <div class="col-sm-10">
+            <input type="date" data-bind="value: PlanningDate" class="form-control" id="PlanningDate" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Description" class="col-sm-2 control-label">Opis</label>
+        <div class="col-sm-10">
+            <textarea rows="5" data-bind="value: Description" id="Description" class="form-control"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Color" class="col-sm-2 control-label">Kolor</label>
+        <div class="col-sm-10">
+            <input type="color" data-bind="value: Color" class="form-control" id="Color">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" data-bind="value: IsInternal"> Czy wewnętrzne?
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="button" class="btn btn-default" data-bind="click: addTask">Dodaj</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,18 @@
+﻿<div class="container">
+    <div class="page-header">
+        <h2>Szczegóły zlecenia</h2>
+    </div>
+    <div class="details">
+        <p><label>Nazwa zlecenia:</label> <span data-bind="text: Name"></span></p>
+        <p><label>Numer:</label> <span data-bind="text: Number"></span></p>
+        <p><label>Data przyjęcia:</label> <span data-bind="text: moment(Date()).format('DD.MM.YYYY')"></span></p>
+        <p><label>Rodzaj/przedmiot: </label> <span data-bind="text: TypeId"></span></p>
+        <p><label>Ilość: </label> <span data-bind="text: Amount"></span></p>
+        <p><label>Planowany czas trwania: </label> <span data-bind="text: PlannedTime"></span></p>
+        <p><label>Planowana data rozpoczęcia: </label> <span data-bind="text: moment(PlannedStartDate()).format('DD.MM.YYYY')"></span></p>
+        <p><label>Planowana data zakończenia: </label> <span data-bind="text: moment(PlannedEndDate()).format('DD.MM.YYYY')"></span></p>
+        <p><label>Data zaplanowania: </label> <span data-bind="text: moment(PlanningDate()).format('DD.MM.YYYY')"></span></p>
+        <p><label>Opis: </label> <span data-bind="text: Description"></span></p>
+        <p><label>Stopień realizacji: </label> <span data-bind="text: Progress"></span>%</p>
+    </div>
+</div>

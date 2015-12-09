@@ -62,7 +62,7 @@ namespace Backend.Core.Context
 
                 _wasDisposed = false;
 
-                _dbConnection = new SqlConnection(ConfigHelper.GetSettingAsString("THB-B2B"));
+                _dbConnection = new SqlConnection(ConfigHelper.GetSettingAsString("DBConnectionString"));
 
                 return _dbConnection;
             }

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>GoldenEye.Shared.Core</id>
+    <version>1.0.0</version>
+    <title>GoldenEye.Shared.Core</title>
+    <authors>odudycz</authors>
+    <owners>odudycz</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Description</description>
+    <copyright>Copyright ©  2015</copyright>
+  </metadata>
+</package>
