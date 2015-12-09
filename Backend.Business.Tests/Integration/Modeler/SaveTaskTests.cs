@@ -11,6 +11,7 @@ namespace Backend.Business.Tests.Modeler
     [TestClass]
     public class SaveTaskTests
     {
+        [Ignore]
         [TestMethod]
         public void GivenFilledTask_WhenSaveTaskMethodIsBeingCalled_ThenSavesProperlyAndReturnsSameTask()
         {

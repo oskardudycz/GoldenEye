@@ -18,6 +18,7 @@ namespace Backend.Core.Tests
     [TestClass]
     public class BaseRepositoryTest
     {
+        [Ignore]
         [TestMethod]
         public void AddTask()
         {

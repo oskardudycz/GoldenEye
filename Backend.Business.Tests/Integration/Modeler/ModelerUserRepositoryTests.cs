@@ -9,6 +9,7 @@ namespace Backend.Business.Tests.Integration.Modeler
     [TestClass]
     public class ModelerAuthorizationServiceTests
     {
+        [Ignore]
         [TestMethod]
         public void GivenExistingUserWithCorrectPassword_WhenAuthorizeMethodIsBeingCalled_ThenReturnsTrue()
         {
@@ -28,6 +29,7 @@ namespace Backend.Business.Tests.Integration.Modeler
             }
         }
 
+        [Ignore]
         [TestMethod]
         public void GivenExistingUserWithIncorrectPassword_WhenAuthorizeMethodIsBeingCalled_ThenReturnsFalse()
         {

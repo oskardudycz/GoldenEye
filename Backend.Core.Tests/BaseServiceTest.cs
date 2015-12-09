@@ -30,6 +30,7 @@ namespace Backend.Core.Tests
             objects = Builder<TaskEntity>.CreateListOfSize(size).Build();
         }
 
+        [Ignore]
         [TestMethod]
         public void GetByIdReturnTask()
         {
