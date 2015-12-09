@@ -11,7 +11,6 @@ using SharpTestsEx;
 using Backend.Business.Entities;
 using Backend.Business.Context;
 using Backend.Business.Repository;
-using Frontend.Web.Core.Security;
 using Shared.Core.Security;
 
 namespace Backend.Core.Tests

@@ -98,10 +98,6 @@
       <Project>{b4e800e8-f352-448d-86fe-fa467bd9e7a6}</Project>
       <Name>Shared.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\THB.ClientPortal\Frontend.Web.csproj">
-      <Project>{b374a4d9-5c51-4dc3-a14a-d7686bb484f0}</Project>
-      <Name>Frontend.Web</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

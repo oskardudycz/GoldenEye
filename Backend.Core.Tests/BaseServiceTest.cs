@@ -10,7 +10,6 @@ using Moq;
 using FizzWare.NBuilder;
 using AutoMapper;
 using Backend.Business.Context;
-using Frontend.Web.App_Start;
 
 namespace Backend.Core.Tests
 {
@@ -22,7 +21,7 @@ namespace Backend.Core.Tests
         [ClassInitialize]
         public static void MapperInit(TestContext context)
         {
-            AutoMapperConfig.RegisterMappings();
+            //AutoMapperConfig.RegisterMappings();
         }
         [TestInitialize]
         public void PopulateDatabase()
