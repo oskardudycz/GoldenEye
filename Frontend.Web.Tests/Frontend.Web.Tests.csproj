@@ -9,8 +9,8 @@
     <ProjectGuid>{F0D7C5EB-0313-4FA8-A7B0-D517731E12B0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>THB.ClientPortal.Tests</RootNamespace>
-    <AssemblyName>THB.ClientPortal.Tests</AssemblyName>
+    <RootNamespace>GoldenEye.Frontend.Web.Tests</RootNamespace>
+    <AssemblyName>GoldenEye.Frontend.Web.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
