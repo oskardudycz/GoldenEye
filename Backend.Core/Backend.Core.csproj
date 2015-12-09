@@ -111,9 +111,6 @@
     <Compile Include="Repository\RepositoryBase.cs" />
     <Compile Include="Repository\IReadonlyRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
-    <Compile Include="Service\IReadonlyRestService.cs" />
-    <Compile Include="Service\IRestService.cs" />
-    <Compile Include="Service\IService.cs" />
     <Compile Include="Service\ReadonlyRestServiceBase.cs" />
     <Compile Include="Service\RestServiceBase.cs" />
   </ItemGroup>

@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontend.Web.Tests", "Front
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample", "Sample", "{9FEF4DB5-3C5C-4812-BB54-CE35DA76C6EF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontend.Core.Web", "Frontend.Core.Web\Frontend.Core.Web.csproj", "{339E53FF-ACDE-4E68-A862-B9E7F10E2DED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -127,6 +129,16 @@ Global
 		{F0D7C5EB-0313-4FA8-A7B0-D517731E12B0}.Release|ARM.ActiveCfg = Release|Any CPU
 		{F0D7C5EB-0313-4FA8-A7B0-D517731E12B0}.Release|x64.ActiveCfg = Release|Any CPU
 		{F0D7C5EB-0313-4FA8-A7B0-D517731E12B0}.Release|x86.ActiveCfg = Release|Any CPU
+		{339E53FF-ACDE-4E68-A862-B9E7F10E2DED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{339E53FF-ACDE-4E68-A862-B9E7F10E2DED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{339E53FF-ACDE-4E68-A862-B9E7F10E2DED}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{339E53FF-ACDE-4E68-A862-B9E7F10E2DED}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{339E53FF-ACDE-4E68-A862-B9E7F10E2DED}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{339E53FF-ACDE-4E68-A862-B9E7F10E2DED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{339E53FF-ACDE-4E68-A862-B9E7F10E2DED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{339E53FF-ACDE-4E68-A862-B9E7F10E2DED}.Release|ARM.ActiveCfg = Release|Any CPU
+		{339E53FF-ACDE-4E68-A862-B9E7F10E2DED}.Release|x64.ActiveCfg = Release|Any CPU
+		{339E53FF-ACDE-4E68-A862-B9E7F10E2DED}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

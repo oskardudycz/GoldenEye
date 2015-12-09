@@ -2,9 +2,9 @@
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
-using Backend.Core.Service;
 using Shared.Core.DTOs;
 using NLog;
+using Backend.Core.Service;
 
 namespace Frontend.Web.Core.Controllers
 {

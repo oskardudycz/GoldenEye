@@ -239,11 +239,8 @@
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="Core\Controllers\ReadonlyRestControllerBase.cs" />
-    <Compile Include="Core\Controllers\RestControllerBase.cs" />
     <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Controllers\TaskTypeController.cs" />
-    <Compile Include="Core\Security\UserInfoProvider.cs" />
     <Compile Include="Extensions\HtmlExtensions.cs" />
     <Compile Include="Extensions\MapperExtensions.cs" />
     <Compile Include="Filters\RequireHttpsAttribute.cs" />
@@ -403,6 +400,10 @@
     <ProjectReference Include="..\Backend.Core\Backend.Core.csproj">
       <Project>{92b1a1f0-6fd6-411a-bd00-0cdefb829782}</Project>
       <Name>Backend.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Frontend.Core.Web\Frontend.Core.Web.csproj">
+      <Project>{339e53ff-acde-4e68-a862-b9e7f10e2ded}</Project>
+      <Name>Frontend.Core.Web</Name>
     </ProjectReference>
     <ProjectReference Include="..\Shared.Business\Shared.Business.csproj">
       <Project>{fe4c8d80-c8b9-45b4-9ce3-bb94280bc223}</Project>

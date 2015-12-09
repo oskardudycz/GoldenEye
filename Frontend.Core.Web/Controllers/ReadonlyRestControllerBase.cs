@@ -2,8 +2,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.OData;
-using Backend.Core.Service;
 using Shared.Core.DTOs;
+using Backend.Core.Service;
 
 namespace Frontend.Web.Core.Controllers
 {
