@@ -1,8 +1,8 @@
 ﻿using System;
 using FluentValidation.Validators;
-using Shared.Business.DTOs;
+using GoldenEye.Shared.Business.DTOs;
 
-namespace Shared.Business.Validators
+namespace GoldenEye.Shared.Business.Validators
 {
     public class DateLaterThanNow: PropertyValidator
     {

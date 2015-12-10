@@ -1,15 +1,15 @@
-﻿using Backend.Core.Repository;
-using Backend.Business.Context;
-using Backend.Business.Entities;
-using Shared.Core.Security;
+﻿using GoldenEye.Backend.Business.Context;
+using GoldenEye.Backend.Business.Entities;
+using GoldenEye.Backend.Core.Repository;
+using GoldenEye.Shared.Core.Security;
 
-namespace Backend.Business.Repository
+namespace GoldenEye.Backend.Business.Repository
 {
     public class TaskRepository: RepositoryBase<TaskEntity>, ITaskRepository
     {
         private readonly IUserInfoProvider _userInfoProvider;
 
-        public TaskRepository(ITHBContext context, IUserInfoProvider userInfoProvider): base(context, context.Tasks)
+        public TaskRepository(ISampleContext context, IUserInfoProvider userInfoProvider): base(context, context.Tasks)
         {
             _userInfoProvider = userInfoProvider;
         }
@@ -27,7 +27,7 @@ namespace Backend.Business.Repository
         private TaskEntity AddOrUpdate(TaskEntity entity)
         {
             entity.ModificationBy = _userInfoProvider.GetCurrentUserName();
-            var taskId = ((ITHBContext)Context).AddOrUpdateTask(entity);
+            var taskId = ((ISampleContext)Context).AddOrUpdateTask(entity);
 
             return GetById(taskId);
         }

@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using GoldenEye.Frontend.Web.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Frontend.Web;
-using Frontend.Web.Controllers;
 
-namespace Frontend.Web.Tests.Controllers
+namespace GoldenEye.Frontend.Web.Tests.Controllers
 {
     [TestClass]
     public class HomeControllerTest

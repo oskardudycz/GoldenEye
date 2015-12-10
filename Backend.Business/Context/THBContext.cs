@@ -1,29 +1,29 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
-using System.Linq;
-using Backend.Core.Context;
-using Backend.Business.Entities;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
-using Backend.Business.Repository;
-using Backend.Business.Utils.Serialization;
+using System.Linq;
+using GoldenEye.Backend.Business.Entities;
+using GoldenEye.Backend.Business.Repository;
+using GoldenEye.Backend.Business.Utils.Serialization;
+using GoldenEye.Backend.Core.Context;
 
-namespace Backend.Business.Context
+namespace GoldenEye.Backend.Business.Context
 {
-    public class THBContext: DataContext<THBContext>, ITHBContext
+    public class SampleContext: DataContext<SampleContext>, ISampleContext
     {
-        public THBContext()
+        public SampleContext()
             : base("name=DBConnectionString")
         {
-            Database.SetInitializer<THBContext>(null);
+            Database.SetInitializer<SampleContext>(null);
         }
 
-        public THBContext(IConnectionProvider connectionProvider)
+        public SampleContext(IConnectionProvider connectionProvider)
             : base(connectionProvider)
         {
-            Database.SetInitializer<THBContext>(null);
+            Database.SetInitializer<SampleContext>(null);
         }
 
         public IDbSet<TaskEntity> Tasks { get; set; }
@@ -54,9 +54,7 @@ namespace Backend.Business.Context
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ClientEntity>()
-                    .HasMany(c => c.Users)
-                    .WithRequired(u => u.Client)
-                    .HasForeignKey(u => u.ClientRefId);
+                    .HasMany(c => c.Users);
 
 
             modelBuilder.Entity<Customer>()
@@ -85,7 +83,7 @@ namespace Backend.Business.Context
             if (!task.ModificationDate.HasValue)
                 task.ModificationDate = DateTime.Now;
 
-            var repository = new ModelerUserRepository(this);
+            var repository = new UserRepository(this);
 
             var userId = repository.FindId(task.ModificationBy);
 

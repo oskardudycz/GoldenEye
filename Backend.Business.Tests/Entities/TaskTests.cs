@@ -1,7 +1,6 @@
 ﻿using System;
-using Backend.Business.Context;
-using Backend.Business.Entities;
-using Backend.Business.Utils.Serialization;
+using GoldenEye.Backend.Business.Entities;
+using GoldenEye.Backend.Business.Utils.Serialization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SharpTestsEx;
 

@@ -1,13 +1,12 @@
-﻿using System.Data.Entity;
-using Backend.Core.Repository;
-using Backend.Business.Entities;
-using Backend.Business.Context;
+﻿using GoldenEye.Backend.Business.Context;
+using GoldenEye.Backend.Business.Entities;
+using GoldenEye.Backend.Core.Repository;
 
-namespace Backend.Business.Repository
+namespace GoldenEye.Backend.Business.Repository
 {
     public class TaskTypeRepository : ReadonlyRepositoryBase<TaskTypeEntity>, ITaskTypeRepository
     {
-        public TaskTypeRepository(ITHBContext context)
+        public TaskTypeRepository(ISampleContext context)
             : base(context, context.TaskTypes)
         {
         }

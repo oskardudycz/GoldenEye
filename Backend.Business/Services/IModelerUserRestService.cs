@@ -1,8 +1,8 @@
 ﻿using System.Linq;
-using Shared.Business.DTOs;
-using Backend.Core.Service;
+using GoldenEye.Shared.Core.DTOs;
+using GoldenEye.Shared.Core.Services;
 
-namespace Backend.Business.Services
+namespace GoldenEye.Backend.Business.Services
 {
     public interface IModelerUserRestService : IReadonlyRestService<UserDTO>, IAuthorizationService
     {

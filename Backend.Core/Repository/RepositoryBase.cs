@@ -1,9 +1,9 @@
 ﻿using System.Data.Entity;
 using System.Linq;
-using Backend.Core.Context;
-using Shared.Core;
+using GoldenEye.Backend.Core.Context;
+using GoldenEye.Shared.Core;
 
-namespace Backend.Core.Repository
+namespace GoldenEye.Backend.Core.Repository
 {
     public abstract class RepositoryBase<TEntity> : ReadonlyRepositoryBase<TEntity> where TEntity : class, IHasId
     {

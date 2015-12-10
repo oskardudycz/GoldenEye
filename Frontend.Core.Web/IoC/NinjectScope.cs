@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using Ninject;
-using Ninject.Web.Common;
-using Ninject.Web.WebApi;
-using Ninject.Syntax;
+using System.Web.Http.Dependencies;
 using Ninject.Activation;
 using Ninject.Parameters;
-using System.Web.Http.Dependencies;
+using Ninject.Syntax;
 
-namespace Frontend.Web.IoC
+namespace GoldenEye.Frontend.Core.Web.IoC
 {
     public class NinjectScope : IDependencyScope
     {

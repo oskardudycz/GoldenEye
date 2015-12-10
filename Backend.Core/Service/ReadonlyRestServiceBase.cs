@@ -3,11 +3,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Backend.Core.Entity;
-using Backend.Core.Repository;
-using Shared.Core.DTOs;
+using GoldenEye.Backend.Core.Entity;
+using GoldenEye.Backend.Core.Repository;
+using GoldenEye.Shared.Core.DTOs;
+using GoldenEye.Shared.Core.Services;
 
-namespace Backend.Core.Service
+namespace GoldenEye.Backend.Core.Service
 {
     public abstract class ReadonlyRestServiceBase<TDTO, TEntity> : IReadonlyRestService<TDTO> where TDTO : class, IDTO where TEntity : class, IEntity
     {

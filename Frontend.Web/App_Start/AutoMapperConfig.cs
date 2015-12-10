@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
-using Backend.Business.Context;
-using Backend.Business.Entities;
-using Shared.Business.DTOs;
-using Frontend.Web.Extensions;
-using Frontend.Web.Models;
+using GoldenEye.Backend.Business.Entities;
+using GoldenEye.Frontend.Core.Web.Models;
+using GoldenEye.Frontend.Web.Models;
+using GoldenEye.Shared.Business.DTOs;
+using GoldenEye.Shared.Core.DTOs;
+using GoldenEye.Shared.Core.Mappings;
 
-namespace Frontend.Web.App_Start
+namespace GoldenEye.Frontend.Web
 {
     public class AutoMapperConfig
     {

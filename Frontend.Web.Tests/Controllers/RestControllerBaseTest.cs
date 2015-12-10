@@ -1,10 +1,9 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Frontend.Web.App_Start;
-using Shared.Business.DTOs;
-using Backend.Core.Service;
+﻿using GoldenEye.Shared.Business.DTOs;
+using GoldenEye.Shared.Core.Services;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
-namespace THB.ClientPortal.Tests.Controllers
+namespace GoldenEye.Frontend.Web.Tests.Controllers
 {
     [TestClass]
     public class RestControllerBaseTest

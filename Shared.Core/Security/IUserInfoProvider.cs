@@ -1,4 +1,4 @@
-﻿namespace Shared.Core.Security
+﻿namespace GoldenEye.Shared.Core.Security
 {
     public interface IUserInfoProvider
     {

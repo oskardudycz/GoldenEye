@@ -1397,7 +1397,7 @@
           <xs:element name="body" minOccurs="0" maxOccurs="1" type="Layout" />
           <xs:element name="subject" minOccurs="0" maxOccurs="1" type="Layout" />
           <xs:element name="from" minOccurs="0" maxOccurs="1" type="Layout" />
-          <xs:element name="replaceNewlineWithBrTagInHtml" minOccurs="0" maxOccurs="1" type="xs:boolean" />
+          <xs:element name="replaceNewlineWiSamplerTagInHtml" minOccurs="0" maxOccurs="1" type="xs:boolean" />
           <xs:element name="priority" minOccurs="0" maxOccurs="1" type="Layout" />
           <xs:element name="timeout" minOccurs="0" maxOccurs="1" type="xs:integer" />
           <xs:element name="smtpServer" minOccurs="0" maxOccurs="1" type="Layout" />
@@ -1475,7 +1475,7 @@
             <xs:documentation>Sender's email address (e.g. joe@domain.com).</xs:documentation>
           </xs:annotation>
         </xs:attribute>
-        <xs:attribute name="replaceNewlineWithBrTagInHtml" type="xs:boolean">
+        <xs:attribute name="replaceNewlineWiSamplerTagInHtml" type="xs:boolean">
           <xs:annotation>
             <xs:documentation>Indicates whether NewLine characters in the body should be replaced with  tags.</xs:documentation>
           </xs:annotation>

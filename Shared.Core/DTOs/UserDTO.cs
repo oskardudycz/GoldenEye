@@ -1,6 +1,4 @@
-﻿using Shared.Core.DTOs;
-
-namespace Shared.Business.DTOs
+﻿namespace GoldenEye.Shared.Core.DTOs
 {
     public class UserDTO : IDTO
     {

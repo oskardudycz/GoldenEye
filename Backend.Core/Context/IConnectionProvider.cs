@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using System.Data.Common;
 
-namespace Backend.Core.Context
+namespace GoldenEye.Backend.Core.Context
 {
     public interface IConnectionProvider
     {

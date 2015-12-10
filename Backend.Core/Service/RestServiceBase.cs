@@ -1,11 +1,11 @@
 ﻿using System.Threading.Tasks;
-using Shared.Core.DTOs;
 using AutoMapper;
-using Backend.Core.Repository;
-using Backend.Core.Entity;
 using FluentValidation;
+using GoldenEye.Backend.Core.Entity;
+using GoldenEye.Backend.Core.Repository;
+using GoldenEye.Shared.Core.DTOs;
 
-namespace Backend.Core.Service
+namespace GoldenEye.Backend.Core.Service
 {
     public abstract class RestServiceBase<TDTO, TEntity> : ReadonlyRestServiceBase<TDTO, TEntity> 
         where TDTO : class, IDTO

@@ -1,6 +1,6 @@
-﻿using Shared.Business.DTOs;
+﻿using GoldenEye.Shared.Core.DTOs;
 
-namespace Backend.Business.Services
+namespace GoldenEye.Shared.Core.Services
 {
     public interface IAuthorizationService
     {

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Shared.Core;
+﻿using GoldenEye.Shared.Core;
 
-namespace Backend.Core.Entity
+namespace GoldenEye.Backend.Core.Entity
 {
     public interface IEntity: IHasId
     {

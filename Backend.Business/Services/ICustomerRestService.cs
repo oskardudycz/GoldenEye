@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Backend.Core.Service;
-using Shared.Business.DTOs;
+﻿using GoldenEye.Shared.Business.DTOs;
+using GoldenEye.Shared.Core.Services;
 
-namespace Backend.Business.Services
+namespace GoldenEye.Backend.Business.Services
 {
     public interface ICustomerRestService : IReadonlyRestService<CustomerDTO>
     {

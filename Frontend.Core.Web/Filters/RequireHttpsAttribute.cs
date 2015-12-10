@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
 
-namespace Frontend.Web.Filters
+namespace GoldenEye.Frontend.Core.Web.Filters
 {
     public class RequireHttpsAttribute : AuthorizationFilterAttribute
     {

@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using AutoMapper;
-using FluentValidation.Results;
 
-namespace Frontend.Web.Extensions
+namespace GoldenEye.Shared.Core.Mappings
 {
     public static class MapperExtensions
     {

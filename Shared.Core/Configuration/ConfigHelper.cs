@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-namespace Shared.Core.Configuration
+namespace GoldenEye.Shared.Core.Configuration
 {
     public class ConfigHelper
     {

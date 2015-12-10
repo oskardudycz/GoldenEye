@@ -1,6 +1,5 @@
-﻿using Backend.Business.Context;
-using Backend.Business.Repository;
-using Backend.Business.Services;
+﻿using GoldenEye.Backend.Business.Context;
+using GoldenEye.Backend.Business.Repository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SharpTestsEx;
 
@@ -14,12 +13,12 @@ namespace Backend.Business.Tests.Integration.Modeler
         public void GivenExistingUserWithCorrectPassword_WhenAuthorizeMethodIsBeingCalled_ThenReturnsTrue()
         {
             //Given
-            const string email = "THBAdmina";
+            const string email = "SampleAdmina";
             const string password = "1Qazwsxedc";
 
-            using (var db = new THBContext())
+            using (var db = new SampleContext())
             {
-                var sut = new ModelerUserRepository(db);
+                var sut = new UserRepository(db);
 
                 //When
                 var result = sut.Authorize(email, password);
@@ -34,12 +33,12 @@ namespace Backend.Business.Tests.Integration.Modeler
         public void GivenExistingUserWithIncorrectPassword_WhenAuthorizeMethodIsBeingCalled_ThenReturnsFalse()
         {
             //Given
-            const string userName = "THBAdmina";
+            const string userName = "SampleAdmina";
             const string password = "WRONG_PASSWORD";
 
-            using (var db = new THBContext())
+            using (var db = new SampleContext())
             {
-                var sut = new ModelerUserRepository(db);
+                var sut = new UserRepository(db);
 
                 //When
                 var result = sut.Authorize(userName, password);

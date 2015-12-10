@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Frontend.Web.Models
+﻿namespace GoldenEye.Frontend.Web.Models
 {
     public class ContractorModel
     {

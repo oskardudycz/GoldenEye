@@ -1,12 +1,12 @@
-﻿using Backend.Core.Context;
-using Backend.Business.Entities;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Linq;
+using GoldenEye.Backend.Business.Entities;
+using GoldenEye.Backend.Core.Context;
 
-namespace Backend.Business.Context
+namespace GoldenEye.Backend.Business.Context
 {
-    public interface ITHBContext: IDataContext
+    public interface ISampleContext: IDataContext
     {
         IDbSet<TaskEntity> Tasks { get; }
         DbQuery<TaskTypeEntity> TaskTypes { get; }

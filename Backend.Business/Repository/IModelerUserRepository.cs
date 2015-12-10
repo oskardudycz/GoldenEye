@@ -1,8 +1,8 @@
 ﻿using System.Linq;
-using Backend.Core.Repository;
-using Backend.Business.Entities;
+using GoldenEye.Backend.Business.Entities;
+using GoldenEye.Backend.Core.Repository;
 
-namespace Backend.Business.Repository
+namespace GoldenEye.Backend.Business.Repository
 {
     public interface IModelerUserRepository : IReadonlyRepository<ModelerUserEntity>
     {

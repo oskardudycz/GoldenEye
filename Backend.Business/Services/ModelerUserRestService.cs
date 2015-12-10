@@ -1,12 +1,12 @@
 ﻿using System.Linq;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Shared.Business.DTOs;
-using Backend.Business.Entities;
-using Backend.Core.Service;
-using Backend.Business.Repository;
+using GoldenEye.Backend.Business.Entities;
+using GoldenEye.Backend.Business.Repository;
+using GoldenEye.Backend.Core.Service;
+using GoldenEye.Shared.Core.DTOs;
 
-namespace Backend.Business.Services
+namespace GoldenEye.Backend.Business.Services
 {
     public class ModelerUserRestService : ReadonlyRestServiceBase<UserDTO, ModelerUserEntity>, IModelerUserRestService
     {

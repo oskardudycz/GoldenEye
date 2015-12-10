@@ -1,8 +1,7 @@
-﻿using Backend.Business.Context;
-using Backend.Business.Entities;
-using Backend.Core.Repository;
+﻿using GoldenEye.Backend.Business.Entities;
+using GoldenEye.Backend.Core.Repository;
 
-namespace Backend.Business.Repository
+namespace GoldenEye.Backend.Business.Repository
 {
     public interface ITaskRepository: IRepository<TaskEntity>
     {

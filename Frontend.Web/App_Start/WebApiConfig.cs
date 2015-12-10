@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Web.Http;
+﻿using System.Web.Http;
+using GoldenEye.Frontend.Core.Web.Filters;
+using GoldenEye.Shared.Core.Configuration;
 using Microsoft.Owin.Security.OAuth;
-using Newtonsoft.Json.Serialization;
-using Shared.Core.Configuration;
 
-namespace Frontend.Web
+namespace GoldenEye.Frontend.Web
 {
     public static class WebApiConfig
     {
@@ -26,7 +22,7 @@ namespace Frontend.Web
             );
             // Enforce HTTPS
             if (!ConfigHelper.IsInTestMode)
-                config.Filters.Add(new Frontend.Web.Filters.RequireHttpsAttribute());
+                config.Filters.Add(new RequireHttpsAttribute());
         }
     }
 }

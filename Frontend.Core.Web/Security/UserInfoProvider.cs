@@ -1,7 +1,7 @@
 ﻿using System.Web;
-using Shared.Core.Security;
+using GoldenEye.Shared.Core.Security;
 
-namespace Frontend.Web.Core.Security
+namespace GoldenEye.Frontend.Core.Web.Security
 {
     public class UserInfoProvider : IUserInfoProvider
     {

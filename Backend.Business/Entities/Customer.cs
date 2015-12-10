@@ -1,6 +1,6 @@
-﻿using Backend.Core.Entity;
+﻿using GoldenEye.Backend.Core.Entity;
 
-namespace Backend.Business.Entities
+namespace GoldenEye.Backend.Business.Entities
 {
     public class Customer : EntityBase
     {

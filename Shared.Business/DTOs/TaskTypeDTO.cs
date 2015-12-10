@@ -1,6 +1,6 @@
-﻿using Shared.Core.DTOs;
+﻿using GoldenEye.Shared.Core.DTOs;
 
-namespace Shared.Business.DTOs
+namespace GoldenEye.Shared.Business.DTOs
 {
     public class TaskTypeDTO : DTOBase
     {

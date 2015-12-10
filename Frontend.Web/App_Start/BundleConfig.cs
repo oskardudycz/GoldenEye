@@ -1,7 +1,6 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
-namespace Frontend.Web
+namespace GoldenEye.Frontend.Web
 {
     public class BundleConfig
     {

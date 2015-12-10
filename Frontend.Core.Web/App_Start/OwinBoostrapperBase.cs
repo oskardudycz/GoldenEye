@@ -1,17 +1,16 @@
 ﻿using System;
+using GoldenEye.Frontend.Core.Web.Models;
+using GoldenEye.Frontend.Core.Web.Providers;
+using GoldenEye.Shared.Core.Configuration;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
-using Frontend.Web.Models;
-using Frontend.Web.Providers;
-using Shared.Core.Configuration;
 
-namespace Frontend.Web
+namespace GoldenEye.Frontend.Core.Web
 {
-    [assembly: OwinStartupAttribute(typeof(Frontend.Web.Startup))]
-    public class Startup
+    public class OwinBoostrapperBase
     {
 
         public void Configuration(IAppBuilder app)
@@ -24,7 +23,7 @@ namespace Frontend.Web
         public static string PublicClientId { get; private set; }
 
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
-        public void ConfigureAuth(IAppBuilder app)
+        public virtual void ConfigureAuth(IAppBuilder app)
         {
             // Configure the db context and user manager to use a single instance per request
             app.CreatePerOwinContext(ApplicationDbContext.Create);
@@ -89,7 +88,7 @@ namespace Frontend.Web
 
 
         }
-        private static bool IsAjaxRequest(IOwinRequest request)
+        protected static bool IsAjaxRequest(IOwinRequest request)
         {
             var query = request.Query;
             if ((query != null) && (query["X-Requested-With"] == "XMLHttpRequest"))

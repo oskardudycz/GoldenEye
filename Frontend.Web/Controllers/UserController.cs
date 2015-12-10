@@ -1,12 +1,12 @@
-﻿using System.Web.Http;
-using Shared.Business.DTOs;
-using Backend.Business.Services;
-using Frontend.Web.Core.Controllers;
-using System.Linq;
+﻿using System.Linq;
+using System.Web.Http;
 using System.Web.Http.OData;
-using Backend.Business.Context;
+using GoldenEye.Backend.Business.Context;
+using GoldenEye.Backend.Business.Services;
+using GoldenEye.Frontend.Core.Web.Controllers;
+using GoldenEye.Shared.Core.DTOs;
 
-namespace Frontend.Web.Controllers
+namespace GoldenEye.Frontend.Web.Controllers
 {
     [Authorize]
     public class UserController : ReadonlyRestControllerBase<IModelerUserRestService, UserDTO>
@@ -28,7 +28,7 @@ namespace Frontend.Web.Controllers
 
         public IQueryable<UserDTO> GetByName(string username)
         {
-            THBContext db = new THBContext();
+            SampleContext db = new SampleContext();
             var result = db.ModelerUsers.SingleOrDefault(u => u.UserName == username);
             return (IQueryable<UserDTO>)result;
         }

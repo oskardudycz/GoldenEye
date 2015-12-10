@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using Shared.Core.DTOs;
+using GoldenEye.Shared.Core.DTOs;
 
-namespace Backend.Core.Service
+namespace GoldenEye.Shared.Core.Services
 {
     public interface IReadonlyRestService<TDTO> : IService where TDTO : IDTO
     {

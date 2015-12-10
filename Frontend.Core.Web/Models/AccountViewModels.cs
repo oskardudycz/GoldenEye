@@ -1,7 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace Frontend.Web.Models
+namespace GoldenEye.Frontend.Core.Web.Models
 {
     public class ExternalLoginViewModel
     {

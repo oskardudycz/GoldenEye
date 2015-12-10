@@ -1,4 +1,4 @@
-﻿namespace Backend.Core.Entity
+﻿namespace GoldenEye.Backend.Core.Entity
 {
     public class EntityBase : IEntity
     {

@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Web.Http.Dependencies;
 using Ninject;
-using Ninject.Modules;
-using Ninject.Web.Common;
-using System.Web.Http.Dependencies;
 
-namespace Frontend.Web.IoC
+namespace GoldenEye.Frontend.Core.Web.IoC
 {
     public class NinjectResolver : NinjectScope, IDependencyResolver
     {

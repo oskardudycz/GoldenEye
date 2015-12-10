@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
-using Shared.Core;
+using GoldenEye.Shared.Core;
 
-namespace Backend.Core.Repository
+namespace GoldenEye.Backend.Core.Repository
 {
     public interface IReadonlyRepository<out TEntity> :IDisposable where TEntity : class, IHasId
     {

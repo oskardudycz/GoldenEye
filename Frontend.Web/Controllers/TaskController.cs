@@ -1,9 +1,9 @@
 ﻿using System.Web.Http;
-using Backend.Business.Services;
-using Frontend.Web.Core.Controllers;
-using Shared.Business.DTOs;
+using GoldenEye.Backend.Business.Services;
+using GoldenEye.Frontend.Core.Web.Controllers;
+using GoldenEye.Shared.Business.DTOs;
 
-namespace Frontend.Web.Controllers
+namespace GoldenEye.Frontend.Web.Controllers
 {
     [Authorize]
     public class TaskController : RestControllerBase<ITaskRestService, TaskDTO>

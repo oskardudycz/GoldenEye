@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Shared.Core.DTOs;
+﻿using GoldenEye.Shared.Core.DTOs;
 
-namespace Shared.Business.DTOs
+namespace GoldenEye.Shared.Business.DTOs
 {
     public class CustomerDTO: DTOBase
     {

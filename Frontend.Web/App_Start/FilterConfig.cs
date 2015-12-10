@@ -1,8 +1,7 @@
-﻿using System.Web;
-using System.Web.Mvc;
-using Shared.Core.Configuration;
+﻿using System.Web.Mvc;
+using GoldenEye.Shared.Core.Configuration;
 
-namespace Frontend.Web
+namespace GoldenEye.Frontend.Core.Web
 {
     public class FilterConfig
     {

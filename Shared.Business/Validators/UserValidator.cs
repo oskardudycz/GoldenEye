@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using FluentValidation;
-using Shared.Business.DTOs;
+﻿using FluentValidation;
+using GoldenEye.Shared.Core.DTOs;
 
-namespace Shared.Business.Validators
+namespace GoldenEye.Shared.Business.Validators
 {
     public class UserValidator: AbstractValidator<UserDTO>
     {

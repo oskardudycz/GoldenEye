@@ -2,9 +2,9 @@
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
-using Shared.Core.Configuration;
+using GoldenEye.Shared.Core.Configuration;
 
-namespace Backend.Core.Context
+namespace GoldenEye.Backend.Core.Context
 {
     public class ConnectionProvider : IDisposable, IConnectionProvider
     {

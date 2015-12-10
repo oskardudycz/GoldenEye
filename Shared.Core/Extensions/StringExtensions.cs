@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Shared.Core.Extensions
+namespace GoldenEye.Shared.Core.Extensions
 {
     public static class StringExtensions
     {

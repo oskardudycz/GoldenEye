@@ -1,15 +1,13 @@
-﻿using System;
-using System.Threading.Tasks;
-using Backend.Business.Services;
+﻿using System.Threading.Tasks;
+using GoldenEye.Frontend.Core.Web.Models;
+using GoldenEye.Shared.Core.IOC;
+using GoldenEye.Shared.Core.Services;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
-using Frontend.Web.Models;
-using Ninject;
-using Frontend.Web.App_Start;
 
-namespace Frontend.Web
+namespace GoldenEye.Frontend.Core.Web
 {
     // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
 
@@ -59,7 +57,7 @@ namespace Frontend.Web
 
             if (user != null) return user;
 
-            var externalAuthorizationService = NinjectWebCommon.Kernel.Get<IAuthorizationService>();
+            var externalAuthorizationService = IOCContainer.Get<IAuthorizationService>();
 
             if (externalAuthorizationService == null
                 || !externalAuthorizationService.Authorize(userName, password))
@@ -69,7 +67,7 @@ namespace Frontend.Web
 
             user = new ApplicationUser
             {
-                ModelerId = externalUser.Id,
+                ExternalUserId = externalUser.Id,
                 FirstName = externalUser.FirstName,
                 LastName = externalUser.LastName,
                 UserName = externalUser.UserName,

@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using Shared.Core.DTOs;
+﻿using System.Threading.Tasks;
+using GoldenEye.Shared.Core.DTOs;
 
-namespace Backend.Core.Service
+namespace GoldenEye.Shared.Core.Services
 {
     public interface IRestService<TDTO> : IReadonlyRestService<TDTO> where TDTO : IDTO
     {

@@ -1,7 +1,7 @@
-﻿using Shared.Business.DTOs;
-using Backend.Core.Service;
+﻿using GoldenEye.Shared.Business.DTOs;
+using GoldenEye.Shared.Core.Services;
 
-namespace Backend.Business.Services
+namespace GoldenEye.Backend.Business.Services
 {
     public interface ITaskTypeRestService: IReadonlyRestService<TaskTypeDTO>
     {

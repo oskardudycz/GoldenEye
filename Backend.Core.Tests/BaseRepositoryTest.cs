@@ -1,19 +1,15 @@
 ﻿using System;
-using System.Text;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Linq.Expressions;
+using GoldenEye.Backend.Business.Context;
+using GoldenEye.Backend.Business.Entities;
+using GoldenEye.Backend.Business.Repository;
+using GoldenEye.Shared.Core.Security;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using FizzWare.NBuilder;
-using SharpTestsEx;
-using Backend.Business.Entities;
-using Backend.Business.Context;
-using Backend.Business.Repository;
-using Shared.Core.Security;
 
-namespace Backend.Core.Tests
+namespace GoldenEye.Backend.Core.Tests
 {
     [TestClass]
     public class BaseRepositoryTest
@@ -46,7 +42,7 @@ namespace Backend.Core.Tests
             dbset.Setup(m => m.ElementType).Returns(tasklist.ElementType);
             dbset.Setup(m => m.GetEnumerator()).Returns(tasklist.GetEnumerator());
 
-            var mockDbContext = new Mock<ITHBContext>();
+            var mockDbContext = new Mock<ISampleContext>();
             mockDbContext
                 .Setup(x => x.Tasks)
                 .Returns(dbset.Object);

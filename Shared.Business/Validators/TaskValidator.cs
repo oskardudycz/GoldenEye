@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Shared.Business.DTOs;
+using GoldenEye.Shared.Business.DTOs;
 
-namespace Shared.Business.Validators
+namespace GoldenEye.Shared.Business.Validators
 {
     public class TaskValidator : AbstractValidator<TaskDTO>
     {

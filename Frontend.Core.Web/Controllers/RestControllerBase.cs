@@ -1,12 +1,10 @@
-﻿using System.Linq;
-using System.Net;
+﻿using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
-using Shared.Core.DTOs;
-using NLog;
-using Backend.Core.Service;
+using GoldenEye.Shared.Core.DTOs;
+using GoldenEye.Shared.Core.Services;
 
-namespace Frontend.Web.Core.Controllers
+namespace GoldenEye.Frontend.Core.Web.Controllers
 {
     public abstract class RestControllerBase<TService, TDto> : ReadonlyRestControllerBase<TService, TDto> where TDto : IDTO
         where TService : IRestService<TDto>

@@ -2,7 +2,7 @@
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 
-namespace Backend.Core.Context
+namespace GoldenEye.Backend.Core.Context
 {
     public interface IDataContext : IDisposable
     {

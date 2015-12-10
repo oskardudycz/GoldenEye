@@ -1,12 +1,11 @@
-﻿using Backend.Business.Context;
-using Backend.Business.Entities;
-using Backend.Core.Service;
-using Shared.Business.DTOs;
-using Shared.Business.Validators;
-using Backend.Business.Repository;
-using FluentValidation;
+﻿using FluentValidation;
+using GoldenEye.Backend.Business.Entities;
+using GoldenEye.Backend.Business.Repository;
+using GoldenEye.Backend.Core.Service;
+using GoldenEye.Shared.Business.DTOs;
+using GoldenEye.Shared.Business.Validators;
 
-namespace Backend.Business.Services
+namespace GoldenEye.Backend.Business.Services
 {
     public class TaskRestService: RestServiceBase<TaskDTO, TaskEntity>, ITaskRestService
     {

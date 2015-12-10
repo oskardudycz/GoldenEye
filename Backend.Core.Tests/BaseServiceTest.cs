@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Backend.Core.Service;
-using Backend.Business.Entities;
-using Backend.Business.Services;
-using Backend.Business.Repository;
-using Moq;
-using FizzWare.NBuilder;
 using AutoMapper;
-using Backend.Business.Context;
+using FizzWare.NBuilder;
+using GoldenEye.Backend.Business.Entities;
+using GoldenEye.Backend.Business.Repository;
+using GoldenEye.Backend.Business.Services;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 
-namespace Backend.Core.Tests
+namespace GoldenEye.Backend.Core.Tests
 {
     [TestClass]
     public class BaseServiceTest

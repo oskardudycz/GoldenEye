@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Linq;
-using Backend.Business.Context;
-using Backend.Business.Entities;
+using GoldenEye.Backend.Business.Context;
+using GoldenEye.Backend.Business.Entities;
+using GoldenEye.Shared.Core.Extensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Shared.Core.Extensions;
 using SharpTestsEx;
 
-namespace Backend.Business.Tests.Modeler
+namespace Backend.Business.Tests.Integration.Modeler
 {
     [TestClass]
     public class SaveTaskTests
@@ -15,7 +15,7 @@ namespace Backend.Business.Tests.Modeler
         [TestMethod]
         public void GivenFilledTask_WhenSaveTaskMethodIsBeingCalled_ThenSavesProperlyAndReturnsSameTask()
         {
-            using (var db = new THBContext())
+            using (var db = new SampleContext())
             {
                 using (db.BeginTransaction())
                 {
@@ -41,7 +41,7 @@ namespace Backend.Business.Tests.Modeler
 
                         CustomerId = customer.Id,
                         TypeId = taskType.Id,
-                        ModificationBy = "THBAdmina"
+                        ModificationBy = "SampleAdmina"
                     };
 
                     var insertedTask = TestInsert(db, task);
@@ -51,7 +51,7 @@ namespace Backend.Business.Tests.Modeler
             }
         }
 
-        private static TaskEntity TestInsert(THBContext db, TaskEntity task)
+        private static TaskEntity TestInsert(SampleContext db, TaskEntity task)
         {
             var previousTasksCount = db.Tasks.Count();
 
@@ -69,7 +69,7 @@ namespace Backend.Business.Tests.Modeler
             return insertedTask;
         }
 
-        private static void TestUpdate(THBContext db, TaskEntity task)
+        private static void TestUpdate(SampleContext db, TaskEntity task)
         {
             var customer = db.Customers.OrderBy(el => el.Id).Skip(1).First();
             var taskType = db.TaskTypes.OrderBy(el => el.Id).Skip(1).First();

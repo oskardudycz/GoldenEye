@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
-using Backend.Business.Context;
-using Backend.Business.Entities;
-using Shared.Core.Extensions;
+using GoldenEye.Backend.Business.Entities;
+using GoldenEye.Shared.Core.Extensions;
 
-namespace Backend.Business.Utils.Serialization
+namespace GoldenEye.Backend.Business.Utils.Serialization
 {
     public class TaskXmlSerializer
     {

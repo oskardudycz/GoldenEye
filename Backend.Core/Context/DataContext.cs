@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data.Entity;
 
-namespace Backend.Core.Context
+namespace GoldenEye.Backend.Core.Context
 {
     public abstract class DataContext<T> : DbContext, IDataContext where T : DbContext
     {

@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Web;
 using FluentValidation;
 using FluentValidation.Results;
 
-namespace Shared.Core
+namespace GoldenEye.Shared.Core
 {
     public abstract class Validatable
     {
