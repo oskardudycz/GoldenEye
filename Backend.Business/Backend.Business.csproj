@@ -115,7 +115,6 @@
     <Compile Include="Repository\TaskRepository.cs" />
     <Compile Include="Repository\TaskTypeRepository.cs" />
     <Compile Include="Services\CustomerRestService.cs" />
-    <Compile Include="Services\IAuthorizationService.cs" />
     <Compile Include="Services\IModelerUserRestService.cs" />
     <Compile Include="Services\ITaskRestService.cs" />
     <Compile Include="Services\ITaskTypeRestService.cs" />

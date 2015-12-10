@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Backend.Business.Services;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;

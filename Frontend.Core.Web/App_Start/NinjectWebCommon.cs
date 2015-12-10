@@ -13,15 +13,10 @@ using Ninject;
 using Ninject.Syntax;
 using Ninject.Activation;
 using Ninject.Parameters;
-using Backend.Business.Repository;
 using Backend.Business.Services;
 using Frontend.Web.IoC;
 using Backend.Core.Service;
 using Shared.Business.DTOs;
-using Backend.Business.Entities;
-using Backend.Business.Context;
-using Backend.Core.Context;
-using Backend.Core.Repository;
 using Frontend.Web.Core.Security;
 using Shared.Core.Security;
 
@@ -78,18 +73,18 @@ namespace Frontend.Web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<ITaskRepository>().To<TaskRepository>();
-            kernel.Bind<ITaskRestService>().To<TaskRestService>();
-            kernel.Bind<ITaskTypeRepository>().To<TaskTypeRepository>();
-            kernel.Bind<ITaskTypeRestService>().To<TaskTypeRestService>();
-            kernel.Bind<ICustomerRepository>().To<CustomerRepository>();
-            kernel.Bind<IModelerUserRepository>().To<ModelerUserRepository>();
-            kernel.Bind<ICustomerRestService>().To<CustomerRestService>();
-            kernel.Bind<IModelerUserRestService>().To<ModelerUserRestService>();
-            kernel.Bind<IAuthorizationService>().To<ModelerUserRestService>();
-            kernel.Bind<ITHBContext>().To<THBContext>();
-            kernel.Bind<IUserInfoProvider>().To<UserInfoProvider>();
-            kernel.Bind<IConnectionProvider>().To<ConnectionProvider>().InRequestScope();
+            //kernel.Bind<ITaskRepository>().To<TaskRepository>();
+            //kernel.Bind<ITaskRestService>().To<TaskRestService>();
+            //kernel.Bind<ITaskTypeRepository>().To<TaskTypeRepository>();
+            //kernel.Bind<ITaskTypeRestService>().To<TaskTypeRestService>();
+            //kernel.Bind<ICustomerRepository>().To<CustomerRepository>();
+            //kernel.Bind<IModelerUserRepository>().To<ModelerUserRepository>();
+            //kernel.Bind<ICustomerRestService>().To<CustomerRestService>();
+            //kernel.Bind<IModelerUserRestService>().To<ModelerUserRestService>();
+            //kernel.Bind<IAuthorizationService>().To<ModelerUserRestService>();
+            //kernel.Bind<ITHBContext>().To<THBContext>();
+            //kernel.Bind<IUserInfoProvider>().To<UserInfoProvider>();
+            //kernel.Bind<IConnectionProvider>().To<ConnectionProvider>().InRequestScope();
         }
     }
 }

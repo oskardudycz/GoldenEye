@@ -78,11 +78,14 @@
     <Compile Include="Configuration\ConfigHelper.cs" />
     <Compile Include="DTOs\DTOBase.cs" />
     <Compile Include="DTOs\IDTO.cs" />
+    <Compile Include="DTOs\UserDTO.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="IHasId.cs" />
+    <Compile Include="Mappings\MapperExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\IUserInfoProvider.cs" />
+    <Compile Include="Services\IAuthorizationService.cs" />
     <Compile Include="Services\IReadonlyRestService.cs" />
     <Compile Include="Services\IRestService.cs" />
     <Compile Include="Services\IService.cs" />

@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Backend.Business.Services;
-using Frontend.Web.App_Start;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Frontend.Web.Models;
 using Ninject;
+using Frontend.Web.App_Start;
 
 namespace Frontend.Web
 {

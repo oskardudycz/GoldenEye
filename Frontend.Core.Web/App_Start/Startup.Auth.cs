@@ -1,6 +1,4 @@
 ﻿using System;
-using Backend.Business.Context;
-using Backend.Business.Repository;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
@@ -8,13 +6,19 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using Frontend.Web.Models;
 using Frontend.Web.Providers;
-using Backend.Business.Services;
 using Shared.Core.Configuration;
 
 namespace Frontend.Web
 {
-    public partial class Startup
+    [assembly: OwinStartupAttribute(typeof(Frontend.Web.Startup))]
+    public class Startup
     {
+
+        public void Configuration(IAppBuilder app)
+        {
+            ConfigureAuth(app);
+        }
+
         public static OAuthAuthorizationServerOptions OAuthOptions { get; private set; }
 
         public static string PublicClientId { get; private set; }
