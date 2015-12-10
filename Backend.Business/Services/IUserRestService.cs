@@ -4,9 +4,7 @@ using GoldenEye.Shared.Core.Services;
 
 namespace GoldenEye.Backend.Business.Services
 {
-    public interface IModelerUserRestService : IReadonlyRestService<UserDTO>, IAuthorizationService
+    public interface IUserRestService : IReadonlyRestService<UserDTO>
     {
-        IQueryable<UserDTO> GetActive();
-
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Http;
 using System.Web.Http.OData;
 using GoldenEye.Backend.Business.Context;
@@ -9,13 +10,13 @@ using GoldenEye.Shared.Core.DTOs;
 namespace GoldenEye.Frontend.Web.Controllers
 {
     [Authorize]
-    public class UserController : ReadonlyRestControllerBase<IModelerUserRestService, UserDTO>
+    public class UserController : ReadonlyRestControllerBase<IUserRestService, UserDTO>
     {
         public UserController()
         {
         }
 
-        public UserController(IModelerUserRestService service)
+        public UserController(IUserRestService service)
             : base(service)
         {
         }
@@ -23,14 +24,12 @@ namespace GoldenEye.Frontend.Web.Controllers
         [EnableQuery]
         public override IQueryable<UserDTO> Get()
         {
-            return Service.GetActive();
+            return Service.Get();
         }
 
         public IQueryable<UserDTO> GetByName(string username)
         {
-            SampleContext db = new SampleContext();
-            var result = db.ModelerUsers.SingleOrDefault(u => u.UserName == username);
-            return (IQueryable<UserDTO>)result;
+            throw new NotImplementedException();
         }
     }
 }

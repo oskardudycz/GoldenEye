@@ -72,8 +72,6 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Entities\TaskTests.cs" />
-    <Compile Include="Integration\Modeler\ModelerUserRepositoryTests.cs" />
-    <Compile Include="Integration\Modeler\SaveTaskTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

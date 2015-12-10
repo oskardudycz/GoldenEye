@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Web;
 using System.Web.Http;
-using System.Web.Http.ExceptionHandling;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using GoldenEye.Frontend.Core.Web;
-using NLog;
 
 namespace GoldenEye.Frontend.Web
 {

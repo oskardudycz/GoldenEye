@@ -22,8 +22,6 @@ namespace GoldenEye.Frontend.Web
             Mapper.CreateMap<CustomerDTO, Customer>().IgnoreNonExistingProperties();
             Mapper.CreateMap<TaskTypeEntity, TaskTypeDTO>().IgnoreNonExistingProperties();
             Mapper.CreateMap<TaskTypeDTO, TaskTypeEntity>().IgnoreNonExistingProperties();
-            Mapper.CreateMap<ModelerUserEntity, UserDTO>().IgnoreNonExistingProperties();
-            Mapper.CreateMap<UserDTO, ModelerUserEntity>().IgnoreNonExistingProperties();
             Mapper.CreateMap<RegisterBindingModel, UserDTO>().IgnoreNonExistingProperties();
         }
     }

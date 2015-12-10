@@ -47,7 +47,7 @@ namespace GoldenEye.Backend.Core.Tests
                 .Setup(x => x.Tasks)
                 .Returns(dbset.Object);
 
-            var repository = new TaskRepository(mockDbContext.Object, new Mock<IUserInfoProvider>().Object);
+            var repository = new TaskRepository(mockDbContext.Object);
 
             repository.Add(new TaskEntity()
                 {
