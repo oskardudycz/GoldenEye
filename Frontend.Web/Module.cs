@@ -1,6 +1,6 @@
-﻿using GoldenEye.Security.Core;
-using GoldenEye.Security.Core.DataContext;
-using GoldenEye.Security.Core.Model;
+﻿using GoldenEye.Backend.Security.DataContext;
+using GoldenEye.Backend.Security.Model;
+using GoldenEye.Frontend.Security.Web;
 using GoldenEye.Shared.Core.Modules;
 using GoldenEye.Shared.Core.Modules.Attributes;
 using Microsoft.AspNet.Identity.EntityFramework;

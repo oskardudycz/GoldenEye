@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
 
-namespace GoldenEye.Frontend.Core.Web.Results
+namespace GoldenEye.Frontend.Security.Web.Results
 {
         public class ChallengeResult : IHttpActionResult
         {

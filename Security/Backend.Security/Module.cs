@@ -2,7 +2,7 @@
 using GoldenEye.Shared.Core.Modules.Attributes;
 
 [assembly: ProjectAssembly]
-namespace GoldenEye.Security.Core
+namespace GoldenEye.Backend.Security
 {
     public class Module : ModuleBase
     {

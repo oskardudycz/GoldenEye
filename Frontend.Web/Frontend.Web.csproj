@@ -396,9 +396,13 @@
       <Project>{339e53ff-acde-4e68-a862-b9e7f10e2ded}</Project>
       <Name>Frontend.Core.Web</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Security.Core\Security.Core.csproj">
+    <ProjectReference Include="..\Security\Backend.Security\Backend.Security.csproj">
+      <Project>{50414cf7-122f-4a61-8154-62a21009cc07}</Project>
+      <Name>Backend.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Security\Frontend.Security.Web\Frontend.Security.Web.csproj">
       <Project>{97a528cc-56eb-4309-a29f-1d1715b768e6}</Project>
-      <Name>Security.Core</Name>
+      <Name>Frontend.Security.Web</Name>
     </ProjectReference>
     <ProjectReference Include="..\Shared.Business\Shared.Business.csproj">
       <Project>{fe4c8d80-c8b9-45b4-9ce3-bb94280bc223}</Project>

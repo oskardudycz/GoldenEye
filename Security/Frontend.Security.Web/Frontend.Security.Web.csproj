@@ -7,8 +7,8 @@
     <ProjectGuid>{97A528CC-56EB-4309-A29F-1D1715B768E6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GoldenEye.Security.Core</RootNamespace>
-    <AssemblyName>GoldenEye.Security.Core</AssemblyName>
+    <RootNamespace>GoldenEye.Frontend.Security.Web</RootNamespace>
+    <AssemblyName>GoldenEye.Frontend.Security.Web</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
@@ -108,8 +108,6 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\OwinBoostrapper.cs" />
     <Compile Include="Controllers\AccountControllerBase.cs" />
-    <Compile Include="DataContext\UserDataContext.cs" />
-    <Compile Include="Model\User.cs" />
     <Compile Include="Module.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
@@ -120,17 +118,21 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Backend.Core\Backend.Core.csproj">
+    <ProjectReference Include="..\..\Backend.Core\Backend.Core.csproj">
       <Project>{92b1a1f0-6fd6-411a-bd00-0cdefb829782}</Project>
       <Name>Backend.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Frontend.Core.Web\Frontend.Core.Web.csproj">
+    <ProjectReference Include="..\..\Frontend.Core.Web\Frontend.Core.Web.csproj">
       <Project>{339e53ff-acde-4e68-a862-b9e7f10e2ded}</Project>
       <Name>Frontend.Core.Web</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Shared.Core\Shared.Core.csproj">
+    <ProjectReference Include="..\..\Shared.Core\Shared.Core.csproj">
       <Project>{b4e800e8-f352-448d-86fe-fa467bd9e7a6}</Project>
       <Name>Shared.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Backend.Security\Backend.Security.csproj">
+      <Project>{50414cf7-122f-4a61-8154-62a21009cc07}</Project>
+      <Name>Backend.Security</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

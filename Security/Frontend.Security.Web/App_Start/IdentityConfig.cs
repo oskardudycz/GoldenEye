@@ -1,8 +1,6 @@
 ﻿using System.Threading.Tasks;
-using GoldenEye.Backend.Core.Context;
-using GoldenEye.Backend.Core.Entity;
-using GoldenEye.Security.Core.DataContext;
-using GoldenEye.Security.Core.Model;
+using GoldenEye.Backend.Security.DataContext;
+using GoldenEye.Backend.Security.Model;
 using GoldenEye.Shared.Core.IOC;
 using GoldenEye.Shared.Core.Services;
 using Microsoft.AspNet.Identity;
@@ -10,7 +8,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 
-namespace GoldenEye.Security.Core
+namespace GoldenEye.Frontend.Security.Web
 {
     // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
 

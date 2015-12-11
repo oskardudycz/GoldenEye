@@ -1,5 +1,5 @@
 ﻿using System.Web.Http;
-using GoldenEye.Security.Core.Controllers;
+using GoldenEye.Frontend.Security.Web.Controllers;
 
 namespace GoldenEye.Frontend.Web.Controllers
 {

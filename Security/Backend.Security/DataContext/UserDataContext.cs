@@ -1,7 +1,7 @@
-﻿using GoldenEye.Security.Core.Model;
+﻿using GoldenEye.Backend.Security.Model;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace GoldenEye.Security.Core.DataContext
+namespace GoldenEye.Backend.Security.DataContext
 {
     public class UserDataContext : IdentityDbContext<User>
     {

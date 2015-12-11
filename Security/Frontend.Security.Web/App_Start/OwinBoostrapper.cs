@@ -1,7 +1,6 @@
 ﻿using System;
-using GoldenEye.Backend.Core.Entity;
-using GoldenEye.Security.Core.Model;
-using GoldenEye.Security.Core.Providers;
+using GoldenEye.Backend.Security.Model;
+using GoldenEye.Frontend.Security.Web.Providers;
 using GoldenEye.Shared.Core.Configuration;
 using GoldenEye.Shared.Core.IOC;
 using Microsoft.AspNet.Identity;
@@ -11,7 +10,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
 
-namespace GoldenEye.Security.Core
+namespace GoldenEye.Frontend.Security.Web
 {
     public class OwinBoostrapper
     {

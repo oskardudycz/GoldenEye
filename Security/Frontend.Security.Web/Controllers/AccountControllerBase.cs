@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using GoldenEye.Frontend.Core.Web.Models;
-using GoldenEye.Frontend.Core.Web.Results;
-using GoldenEye.Security.Core.Model;
-using GoldenEye.Security.Core.Providers;
+using GoldenEye.Backend.Security.Model;
+using GoldenEye.Frontend.Security.Web.Providers;
+using GoldenEye.Frontend.Security.Web.Results;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -17,7 +17,7 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 
-namespace GoldenEye.Security.Core.Controllers
+namespace GoldenEye.Frontend.Security.Web.Controllers
 {
     [Authorize]
     [RoutePrefix("api/Account")]
@@ -78,7 +78,7 @@ namespace GoldenEye.Security.Core.Controllers
         [Route("ManageInfo")]
         public async Task<ManageInfoViewModel> GetManageInfo(string returnUrl, bool generateState = false)
         {
-            IdentityUser user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
 
             if (user == null)
             {

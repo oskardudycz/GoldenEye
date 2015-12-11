@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace GoldenEye.Security.Core.Model
+namespace GoldenEye.Backend.Security.Model
 {
     public class User : IdentityUser
     {
