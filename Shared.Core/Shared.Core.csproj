@@ -84,10 +84,19 @@
     <Compile Include="DTOs\IDTO.cs" />
     <Compile Include="DTOs\UserDTO.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
+    <Compile Include="Extensions\EnumerableExtensions.cs" />
+    <Compile Include="Extensions\ReflectionExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="IHasId.cs" />
+    <Compile Include="IOC\Attributes\InjectInRequestScopeAttribute.cs" />
+    <Compile Include="IOC\Attributes\InjectInSingletonScopeAttribute.cs" />
+    <Compile Include="IOC\Attributes\NotInjectedWithConventionsAttribute.cs" />
     <Compile Include="IOC\IOCContainer.cs" />
+    <Compile Include="Mappings\IMappingDefinition.cs" />
     <Compile Include="Mappings\MapperExtensions.cs" />
+    <Compile Include="Modules\Attributes\ProjectAssemblyAttribute.cs" />
+    <Compile Include="Modules\IModule.cs" />
+    <Compile Include="Modules\ModuleBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\IUserInfoProvider.cs" />
     <Compile Include="Services\IAuthorizationService.cs" />
@@ -99,6 +108,7 @@
   <ItemGroup>
     <Content Include="Shared.Core.nuspec" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

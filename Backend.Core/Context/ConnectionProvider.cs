@@ -3,9 +3,11 @@ using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using GoldenEye.Shared.Core.Configuration;
+using GoldenEye.Shared.Core.IOC.Attributes;
 
 namespace GoldenEye.Backend.Core.Context
 {
+    [InjectInRequestScope]
     public class ConnectionProvider : IDisposable, IConnectionProvider
     {
         private readonly object _lockObject = new object();
