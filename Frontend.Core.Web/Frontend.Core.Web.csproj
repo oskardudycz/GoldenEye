@@ -215,7 +215,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ReadonlyRestControllerBase.cs" />
     <Compile Include="Controllers\RestControllerBase.cs" />
     <Compile Include="Filters\RequireHttpsAttribute.cs" />
@@ -226,6 +229,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Routes\CustomDirectRouteProvider.cs" />
     <Compile Include="Security\UserInfoProvider.cs" />
+    <Compile Include="WebApplication.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

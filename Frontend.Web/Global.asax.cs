@@ -1,29 +1,14 @@
-﻿using System;
-using System.Web;
-using System.Web.Http;
-using System.Web.Mvc;
-using System.Web.Optimization;
-using System.Web.Routing;
+﻿using System.Web.Optimization;
 using GoldenEye.Frontend.Core.Web;
 
 namespace GoldenEye.Frontend.Web
 {
-    public class MvcApplication : HttpApplication
+    public class MvcApplication : WebApplication
     {
-        protected void Application_Start()
+        protected override void OnBundleConfig()
         {
-            AreaRegistration.RegisterAllAreas();
-            GlobalConfiguration.Configure(WebApiConfig.Register);
-            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            AutoMapperConfig.RegisterMappings();
-        }
-        protected void Application_Error()
-        {
-            var lastException = Server.GetLastError();
-            var logger = NLog.LogManager.GetCurrentClassLogger();
-            logger.Fatal(lastException);
+            base.OnBundleConfig();
         }
     }
 }

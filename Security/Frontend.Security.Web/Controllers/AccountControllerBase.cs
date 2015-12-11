@@ -328,16 +328,17 @@ namespace GoldenEye.Frontend.Security.Web.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new User() { UserName = model.Email, Email = model.Email };
-
-            IdentityResult result = await UserManager.CreateAsync(user, model.Password);
-
-            if (!result.Succeeded)
+            var user = new User
             {
-                return GetErrorResult(result);
-            }
+                UserName = model.Email,
+                Email = model.Email,
+                FirstName = model.FirstName,
+                LastName = model.LastName
+            };
 
-            return Ok();
+            var result = await UserManager.CreateAsync(user, model.Password);
+
+            return !result.Succeeded ? GetErrorResult(result) : Ok();
         }
 
         // POST api/Account/RegisterExternal

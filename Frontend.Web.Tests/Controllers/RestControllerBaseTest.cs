@@ -1,4 +1,6 @@
-﻿using GoldenEye.Shared.Business.DTOs;
+﻿using AutoMapper;
+using GoldenEye.Backend.Business.Mappings;
+using GoldenEye.Shared.Business.DTOs;
 using GoldenEye.Shared.Core.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -12,7 +14,7 @@ namespace GoldenEye.Frontend.Web.Tests.Controllers
         [ClassInitialize]
         public static void MapperInit(TestContext context)
         {
-            AutoMapperConfig.RegisterMappings();
+            Mapper.AddProfile<MappingDefinition>();
         }
         [TestMethod]
         public void Get()

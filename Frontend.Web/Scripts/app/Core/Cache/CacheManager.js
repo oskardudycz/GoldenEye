@@ -2,7 +2,12 @@
     var self = this;
 
     self.Get = function (key) {
-        return JSON.parse(localStorage.getItem(key));
+        var itemJSON = localStorage.getItem(key);
+
+        if (!itemJSON)
+            return undefined;
+
+        return JSON.parse(itemJSON);
     }
 
     self.Set = function (key, obj) {

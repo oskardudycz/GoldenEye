@@ -30,12 +30,6 @@ namespace GoldenEye.Frontend.Web
                 .IncludeDirectory("~/Scripts/app/", "*.js", false)
                 .IncludeDirectory("~/Scripts/app/Core", "*.js", true)
                 .Include("~/Scripts/app/Components/ComponentsConfig.js"));
-
-#if DEBUG
-            BundleTable.EnableOptimizations = false;
-#else
-            BundleTable.EnableOptimizations = true;
-#endif
         }
     }
 }

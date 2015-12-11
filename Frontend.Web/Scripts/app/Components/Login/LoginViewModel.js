@@ -20,7 +20,7 @@
     });
     self.registerPassword = ko.observable().extend({
         minLength: 6,
-        maxLength: 15,
+        maxLength: 30,
         required: true
     });
     self.registerPassword2 = ko.observable().extend({
@@ -90,8 +90,8 @@
             url: $("base").attr("href") + "Token",
             data: loginData
         }).done(function (data) {
-            self.user(data.userName);
-            userData.Set(data.userName);
+            self.user(data.UserName);
+            userData.Set(data.UserName);
             // Cache the access token in session storage.
             authManager.setToken(data.access_token);
             app.current("TaskList-nc");
