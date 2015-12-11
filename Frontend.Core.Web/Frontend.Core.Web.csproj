@@ -215,10 +215,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
-    <Compile Include="App_Start\OwinBoostrapperBase.cs" />
-    <Compile Include="Controllers\AccountControllerBase.cs" />
     <Compile Include="Controllers\ReadonlyRestControllerBase.cs" />
     <Compile Include="Controllers\RestControllerBase.cs" />
     <Compile Include="Filters\RequireHttpsAttribute.cs" />
@@ -226,10 +223,7 @@
     <Compile Include="IoC\NinjectScope.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Providers\ApplicationOAuthProvider.cs" />
-    <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Security\UserInfoProvider.cs" />
   </ItemGroup>
   <ItemGroup>

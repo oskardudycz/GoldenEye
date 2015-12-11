@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using GoldenEye.Frontend.Core.Web.Models;
-using GoldenEye.Frontend.Core.Web.Providers;
 using GoldenEye.Frontend.Core.Web.Results;
+using GoldenEye.Security.Core.Model;
+using GoldenEye.Security.Core.Providers;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -16,31 +17,31 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 
-namespace GoldenEye.Frontend.Core.Web.Controllers
+namespace GoldenEye.Security.Core.Controllers
 {
     [Authorize]
     [RoutePrefix("api/Account")]
     public class AccountControllerBase : ApiController
     {
         private const string LocalLoginProvider = "Local";
-        private ApplicationUserManager _userManager;
+        private UserManager _userManager;
 
         public AccountControllerBase()
         {
         }
 
-        public AccountControllerBase(ApplicationUserManager userManager,
+        public AccountControllerBase(UserManager userManager,
             ISecureDataFormat<AuthenticationTicket> accessTokenFormat)
         {
             UserManager = userManager;
             AccessTokenFormat = accessTokenFormat;
         }
 
-        public ApplicationUserManager UserManager
+        public UserManager UserManager
         {
             get
             {
-                return _userManager ?? Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                return _userManager ?? Request.GetOwinContext().GetUserManager<UserManager>();
             }
             private set
             {
@@ -249,7 +250,7 @@ namespace GoldenEye.Frontend.Core.Web.Controllers
                 return new ChallengeResult(provider, this);
             }
 
-            ApplicationUser user = await UserManager.FindAsync(new UserLoginInfo(externalLogin.LoginProvider,
+            var user = await UserManager.FindAsync(new UserLoginInfo(externalLogin.LoginProvider,
                 externalLogin.ProviderKey));
 
             bool hasRegistered = user != null;
@@ -305,7 +306,7 @@ namespace GoldenEye.Frontend.Core.Web.Controllers
                     {
                         provider = description.AuthenticationType,
                         response_type = "token",
-                        client_id = OwinBoostrapperBase.PublicClientId,
+                        client_id = OwinBoostrapper.PublicClientId,
                         redirect_uri = new Uri(Request.RequestUri, returnUrl).AbsoluteUri,
                         state = state
                     }),
@@ -327,7 +328,7 @@ namespace GoldenEye.Frontend.Core.Web.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            var user = new User() { UserName = model.Email, Email = model.Email };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
@@ -356,7 +357,7 @@ namespace GoldenEye.Frontend.Core.Web.Controllers
                 return InternalServerError();
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            var user = new User() { UserName = model.Email, Email = model.Email };
 
             IdentityResult result = await UserManager.CreateAsync(user);
             if (!result.Succeeded)

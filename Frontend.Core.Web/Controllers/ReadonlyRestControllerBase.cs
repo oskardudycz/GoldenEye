@@ -22,7 +22,7 @@ namespace GoldenEye.Frontend.Core.Web.Controllers
         [EnableQuery]
         public virtual IQueryable<TDto> Get()
         {
-            return Service.Get().AsQueryable();
+            return Service.Get();
         }
 
         public async Task<IHttpActionResult> Get(int id)

@@ -1,16 +1,19 @@
 ﻿using System;
-using GoldenEye.Frontend.Core.Web.Models;
-using GoldenEye.Frontend.Core.Web.Providers;
+using GoldenEye.Backend.Core.Entity;
+using GoldenEye.Security.Core.Model;
+using GoldenEye.Security.Core.Providers;
 using GoldenEye.Shared.Core.Configuration;
+using GoldenEye.Shared.Core.IOC;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
 
-namespace GoldenEye.Frontend.Core.Web
+namespace GoldenEye.Security.Core
 {
-    public class OwinBoostrapperBase
+    public class OwinBoostrapper
     {
 
         public void Configuration(IAppBuilder app)
@@ -26,8 +29,8 @@ namespace GoldenEye.Frontend.Core.Web
         public virtual void ConfigureAuth(IAppBuilder app)
         {
             // Configure the db context and user manager to use a single instance per request
-            app.CreatePerOwinContext(ApplicationDbContext.Create);
-            app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
+            app.CreatePerOwinContext(IOCContainer.Get<IdentityDbContext<User>>);
+            app.CreatePerOwinContext<UserManager>(UserManager.Create);
 
             // Enable the application to use a cookie to store information for the signed in user
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider

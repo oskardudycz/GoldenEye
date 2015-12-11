@@ -234,7 +234,6 @@
     <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\OwinBoostrapper.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -247,6 +246,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ContractorModel.cs" />
+    <Compile Include="Module.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -395,6 +395,10 @@
     <ProjectReference Include="..\Frontend.Core.Web\Frontend.Core.Web.csproj">
       <Project>{339e53ff-acde-4e68-a862-b9e7f10e2ded}</Project>
       <Name>Frontend.Core.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Security.Core\Security.Core.csproj">
+      <Project>{97a528cc-56eb-4309-a29f-1d1715b768e6}</Project>
+      <Name>Security.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Shared.Business\Shared.Business.csproj">
       <Project>{fe4c8d80-c8b9-45b4-9ce3-bb94280bc223}</Project>
