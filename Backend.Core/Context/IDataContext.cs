@@ -8,6 +8,5 @@ namespace GoldenEye.Backend.Core.Context
     {
         DbEntityEntry<T> Entry<T>(T entity) where T : class;
         int SaveChanges();
-        DbContextTransaction BeginTransaction();
     }
 }

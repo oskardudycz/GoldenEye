@@ -106,7 +106,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\ISampleContext.cs" />
@@ -114,32 +116,31 @@
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="Entities\Task.cs" />
     <Compile Include="Context\SampleContext.cs" />
-    <Compile Include="Entities\UserEntity.cs" />
+    <Compile Include="Mappings\MappingDefinition.cs" />
     <Compile Include="Module.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\CustomerRepository.cs" />
     <Compile Include="Repository\ICustomerRepository.cs" />
-    <Compile Include="Repository\IUserRepository.cs" />
     <Compile Include="Repository\ITaskRepository.cs" />
     <Compile Include="Repository\ITaskTypeRepository.cs" />
-    <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="Repository\TaskRepository.cs" />
     <Compile Include="Repository\TaskTypeRepository.cs" />
     <Compile Include="Services\CustomerRestService.cs" />
-    <Compile Include="Services\IUserRestService.cs" />
     <Compile Include="Services\ITaskRestService.cs" />
     <Compile Include="Services\ITaskTypeRestService.cs" />
     <Compile Include="Services\ICustomerRestService.cs" />
-    <Compile Include="Services\UserRestService.cs" />
     <Compile Include="Services\TaskRestService.cs" />
     <Compile Include="Services\TaskTypeRestService.cs" />
-    <Compile Include="Utils\Serialization\TaskXmlSerializer.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Backend.Core\Backend.Core.csproj">
       <Project>{92b1a1f0-6fd6-411a-bd00-0cdefb829782}</Project>
       <Name>Backend.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Security\Backend.Security\Backend.Security.csproj">
+      <Project>{50414cf7-122f-4a61-8154-62a21009cc07}</Project>
+      <Name>Backend.Security</Name>
     </ProjectReference>
     <ProjectReference Include="..\Shared.Business\Shared.Business.csproj">
       <Project>{fe4c8d80-c8b9-45b4-9ce3-bb94280bc223}</Project>

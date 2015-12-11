@@ -15,8 +15,8 @@
     self.Get = function () {
         notifier();
 
-        if (authManager.isLogged()) {
-            notifier.valueHasMutated();
+        if (!authManager.isLogged()) {
+            return {};
         }
 
         var cached = cache.Get(userDataKey);
@@ -25,7 +25,7 @@
             return cached;
         }
 
-        userService.getUser("SampleAdmina", UpdateUser);
+        userService.getUser(userName, UpdateUser);
 
         return cached;
     }

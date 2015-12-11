@@ -4,7 +4,7 @@ using GoldenEye.Shared.Core;
 
 namespace GoldenEye.Backend.Core.Repository
 {
-    public abstract class ReadonlyRepositoryBase<TEntity> : IReadonlyRepository<TEntity> where TEntity : class, IHasId
+    public abstract class ReadonlyRepositoryBase<TEntity> : IReadonlyRepository<TEntity> where TEntity : class, IHasObjectId
     {
         protected readonly IDataContext Context;
 
@@ -18,7 +18,7 @@ namespace GoldenEye.Backend.Core.Repository
             Queryable = queryable;
         }
 
-        public TEntity GetById(int id)
+        public TEntity GetById(object id)
         {
             return Queryable.SingleOrDefault(r => r.Id == id);
 

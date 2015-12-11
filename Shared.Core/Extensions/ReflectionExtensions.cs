@@ -11,8 +11,12 @@ namespace GoldenEye.Shared.Core.Extensions
     {
         public static IList<Assembly> GetProjectAssemblies()
         {
-            return AppDomain.CurrentDomain.GetAssemblies()
-                .Where(el => el.GetCustomAttribute<ProjectAssemblyAttribute>() != null).ToList();
+            var domainAssemblies = AppDomain.CurrentDomain.GetAssemblies();
+
+            var projectAssemblies =
+                domainAssemblies.Where(el => el.GetCustomAttribute<ProjectAssemblyAttribute>() != null).ToList();
+
+            return projectAssemblies;
         }
     }
 }

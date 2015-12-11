@@ -1,8 +1,6 @@
 ﻿function LoginViewModel() {
     var self = this;
-
-    var notifier = ko.observable();
-
+    
     self.result = ko.observable();
     self.user = ko.observable();
     self.loggedIn = ko.computed(authManager.isLogged);
@@ -71,7 +69,7 @@
         }).done(function (data) {
             self.result("Done!");
             toastr.success('Możesz się teraz zalogować.', 'Rejestracja przebiegła pomyślnie');
-        }).fail(function () {
+        }).fail(function (jqXHR, exception) {
             toastr.error('Nieprawidłowe hasło.', 'Błąd');
         });
     }

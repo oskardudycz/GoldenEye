@@ -5,7 +5,7 @@ using GoldenEye.Shared.Core;
 
 namespace GoldenEye.Backend.Core.Repository
 {
-    public abstract class RepositoryBase<TEntity> : ReadonlyRepositoryBase<TEntity> where TEntity : class, IHasId
+    public abstract class RepositoryBase<TEntity> : ReadonlyRepositoryBase<TEntity> where TEntity : class, IHasObjectId
     {
         protected readonly IDbSet<TEntity> DbSet;
         

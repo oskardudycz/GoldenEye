@@ -4,9 +4,9 @@ using GoldenEye.Shared.Core;
 
 namespace GoldenEye.Backend.Core.Repository
 {
-    public interface IReadonlyRepository<out TEntity> :IDisposable where TEntity : class, IHasId
+    public interface IReadonlyRepository<out TEntity> : IDisposable where TEntity : class, IHasObjectId
     {
-        TEntity GetById(int id);
+        TEntity GetById(object id);
         IQueryable<TEntity> GetAll();
     }
 }

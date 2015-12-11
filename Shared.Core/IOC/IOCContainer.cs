@@ -13,7 +13,14 @@ namespace GoldenEye.Shared.Core.IOC
 
         public static T Get<T>()
         {
-            return _kernel.Get<T>();
+            try
+            {
+                return _kernel.Get<T>();
+            }
+            catch (ActivationException)
+            {
+                return default(T);
+            }
         }
     }
 }

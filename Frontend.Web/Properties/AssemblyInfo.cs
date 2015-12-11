@@ -21,7 +21,7 @@ using GoldenEye.Shared.Core.Modules.Attributes;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("4fa23925-0497-4121-b1e1-a1a7ad3c9bc4")]
+[assembly: Guid("8d8bea74-5b7b-4413-92c2-d4a9c8b795a3")]
 
 // Version information for an assembly consists of the following four values:
 //

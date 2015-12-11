@@ -1,11 +1,14 @@
-﻿using System.Security.Claims;
+﻿using System;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using GoldenEye.Backend.Core.Entity;
+using GoldenEye.Shared.Core;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace GoldenEye.Backend.Security.Model
 {
-    public class User : IdentityUser
+    public class User : IdentityUser, IEntity
     {
         public int ExternalUserId { get; set; }
 
@@ -19,6 +22,18 @@ namespace GoldenEye.Backend.Security.Model
             var userIdentity = await manager.CreateIdentityAsync(this, authenticationType);
             // Add custom user claims here
             return userIdentity;
+        }
+
+        object IHasObjectId.Id
+        {
+            get { return Id; }
+            set { Id = value as string; }
+        }
+
+        int IHasId.Id
+        {
+            get { throw new NotImplementedException(); }
+            set { throw new NotImplementedException(); }
         }
     }
 }

@@ -14,7 +14,6 @@ namespace GoldenEye.Frontend.Web
     {
         public override void Load()
         {
-            Kernel.Bind<IdentityDbContext<User>>().To<UserDataContext>();
         }
     }
 }

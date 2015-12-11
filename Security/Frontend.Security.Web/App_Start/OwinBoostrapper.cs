@@ -1,10 +1,8 @@
 ﻿using System;
-using GoldenEye.Backend.Security.Model;
+using GoldenEye.Backend.Security.DataContext;
 using GoldenEye.Frontend.Security.Web.Providers;
 using GoldenEye.Shared.Core.Configuration;
-using GoldenEye.Shared.Core.IOC;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
@@ -14,7 +12,6 @@ namespace GoldenEye.Frontend.Security.Web
 {
     public class OwinBoostrapper
     {
-
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
@@ -28,7 +25,7 @@ namespace GoldenEye.Frontend.Security.Web
         public virtual void ConfigureAuth(IAppBuilder app)
         {
             // Configure the db context and user manager to use a single instance per request
-            app.CreatePerOwinContext(IOCContainer.Get<IdentityDbContext<User>>);
+            app.CreatePerOwinContext(UserDataContext.Create);
             app.CreatePerOwinContext<UserManager>(UserManager.Create);
 
             // Enable the application to use a cookie to store information for the signed in user

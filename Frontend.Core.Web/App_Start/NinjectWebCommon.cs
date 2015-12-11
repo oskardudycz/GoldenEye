@@ -72,7 +72,7 @@ namespace GoldenEye.Frontend.Core.Web
             SetConventions(kernel);
 
             GlobalConfiguration.Configuration.DependencyResolver = new NinjectResolver(kernel);
-            
+
             IOCContainer.Initialize(kernel);
 
             kernel.GetAll<IMappingDefinition>().Cast<Profile>().ForEach(Mapper.AddProfile);

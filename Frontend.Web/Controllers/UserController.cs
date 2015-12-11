@@ -4,6 +4,7 @@ using System.Web.Http;
 using System.Web.Http.OData;
 using GoldenEye.Backend.Business.Context;
 using GoldenEye.Backend.Business.Services;
+using GoldenEye.Backend.Security.Service;
 using GoldenEye.Frontend.Core.Web.Controllers;
 using GoldenEye.Shared.Core.DTOs;
 

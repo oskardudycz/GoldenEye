@@ -21,8 +21,8 @@ namespace GoldenEye.Frontend.Web
         }
         protected void Application_Error()
         {
-            Exception lastException = Server.GetLastError();
-            NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+            var lastException = Server.GetLastError();
+            var logger = NLog.LogManager.GetCurrentClassLogger();
             logger.Fatal(lastException);
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System.Web.Http;
 using GoldenEye.Frontend.Core.Web.Filters;
+using GoldenEye.Frontend.Core.Web.Routes;
 using GoldenEye.Shared.Core.Configuration;
 using Microsoft.Owin.Security.OAuth;
 
@@ -13,7 +14,7 @@ namespace GoldenEye.Frontend.Web
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
             // Web API routes
-            config.MapHttpAttributeRoutes();
+            config.MapHttpAttributeRoutes(new CustomDirectRouteProvider());
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
