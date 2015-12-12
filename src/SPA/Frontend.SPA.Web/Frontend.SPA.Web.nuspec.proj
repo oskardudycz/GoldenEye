@@ -12,6 +12,7 @@
         <ControllerBaseName>Home</ControllerBaseName>
         <RootNamespaceToReplace>GoldenEye.Frontend.SPA.Web</RootNamespaceToReplace>
         <MSBuildCommunityTasksPath>$(MSBuildProjectDirectory)\..\..\.Build</MSBuildCommunityTasksPath>
+        <BuildPackage>true</BuildPackage>
     </PropertyGroup>
 
     <Import Project="CopyController.targets"/>
