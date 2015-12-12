@@ -9,11 +9,6 @@
     </Target>
 
     <Target Name="CopyControllerFile">
-        <PropertyGroup>
-            <OutputDirectory>\Content\</OutputDirectory>
-        </PropertyGroup>
-
-        <MakeDir Directories="$(OutputDirectory)"/>
 
         <!-- Get the controller -->
         <XmlPeek
@@ -39,11 +34,6 @@
     </Target>
 
     <Target Name="CopyModelFiles">
-        <PropertyGroup>
-            <OutputDirectory>\Content\</OutputDirectory>
-        </PropertyGroup>
-
-        <MakeDir Directories="$(OutputDirectory)"/>
         <!-- Get the models -->
         <XmlPeek
          Namespaces="&lt;Namespace Prefix='msb' Uri='http://schemas.microsoft.com/developer/msbuild/2003'/&gt;"
@@ -68,11 +58,6 @@
     </Target>
 
     <Target Name="CopyViewFiles">
-        <PropertyGroup>
-            <OutputDirectory>\Content\</OutputDirectory>
-        </PropertyGroup>
-
-        <MakeDir Directories="$(OutputDirectory)"/>
         <!-- Get the views -->
         <XmlPeek
          Namespaces="&lt;Namespace Prefix='msb' Uri='http://schemas.microsoft.com/developer/msbuild/2003'/&gt;"

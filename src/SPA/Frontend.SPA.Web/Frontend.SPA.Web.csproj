@@ -85,14 +85,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
-    <Content Include="Controllers\HomeController.cs.pp">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="CopyController.targets">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Frontend.SPA.Web.nuspec" />
+    <None Include="Frontend.SPA.Web.nuspec">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Frontend.SPA.Web.nuspec.proj">
       <SubType>Designer</SubType>
     </None>
@@ -124,11 +123,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Content\" />
     <Folder Include="Models\Home\" />
     <Folder Include="Views\Home\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="Frontend.SPA.Web.nuspec.proj" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

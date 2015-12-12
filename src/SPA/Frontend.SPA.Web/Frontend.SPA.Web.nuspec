@@ -20,6 +20,6 @@
     </metadata>
 
     <files>
-        <file src="Content\*" target="content\Controllers" />
+        <file src="content\Controllers\*" target="content\Controllers" />
     </files>
 </package>

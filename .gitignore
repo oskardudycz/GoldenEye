@@ -218,3 +218,4 @@ FakesAssemblies/
 **/*.Server/ModelManifest.xml
 _Pvt_Extensions
 /packages
+/src/SPA/Frontend.SPA.Web/content/Controllers

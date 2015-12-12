@@ -8,11 +8,10 @@
         <ProjectDir>..\Frontend.SPA.Web\</ProjectDir>
         <ProjectName>Frontend.SPA.Web.csproj</ProjectName>
         <ProjectPath>$(ProjectDir)$(ProjectName)</ProjectPath>
-        <TargetDir>Content\</TargetDir>
+        <TargetDir>content\</TargetDir>
         <ControllerBaseName>Home</ControllerBaseName>
         <RootNamespaceToReplace>GoldenEye.Frontend.SPA.Web</RootNamespaceToReplace>
         <MSBuildCommunityTasksPath>$(MSBuildProjectDirectory)\..\..\.Build</MSBuildCommunityTasksPath>
-        <BuildPackage>true</BuildPackage>
     </PropertyGroup>
 
     <Import Project="CopyController.targets"/>
