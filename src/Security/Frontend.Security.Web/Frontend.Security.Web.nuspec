@@ -12,6 +12,7 @@
         <dependencies>
             <dependency id="GoldenEye.Shared.Core" />
             <dependency id="GoldenEye.Backend.Core" />
+            <dependency id="GoldenEye.Frontend.Core.Web" />
             <dependency id="GoldenEye.Backend.Security" />
         </dependencies>
     </metadata>

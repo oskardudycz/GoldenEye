@@ -10,7 +10,7 @@ namespace GoldenEye.Frontend.Web.Tests.Controllers
     [TestClass]
     public class RestControllerBaseTest
     {
-        private static int size;
+        //private static int size;
         [ClassInitialize]
         public static void MapperInit(TestContext context)
         {
