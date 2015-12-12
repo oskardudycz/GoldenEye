@@ -27,7 +27,7 @@
         </Copy>
 
         <!-- Replace the namespace with the $rootnamespace$ project property -->
-        <FileUpdate Files="@(ControllerFilesToUpdate)"
+        <FileUpdate Files="@(ControllerFilesToUpdate)" Condition="Exists(@(ControllerFilesToUpdate))"
          Regex="$(RootNamespaceToReplace)"
          ReplacementText="$rootnamespace$" />
     </Target>
@@ -51,7 +51,7 @@
         </Copy>
 
         <!-- Replace the namespace with the $rootnamespace$ project property -->
-        <FileUpdate Files="@(ModelFilesToUpdate)"
+        <FileUpdate Files="@(ModelFilesToUpdate)" Condition="Exists(@(ModelFilesToUpdate))"
          Regex="$(RootNamespaceToReplace)"
          ReplacementText="$rootnamespace$" />
     </Target>
@@ -75,7 +75,7 @@
         </Copy>
 
         <!-- Replace the namespace with the $rootnamespace$ project property -->
-        <FileUpdate Files="@(ViewFilesToUpdate)"
+        <FileUpdate Files="@(ViewFilesToUpdate)" Condition="Exists(@(ViewFilesToUpdate))"
          Regex="$(RootNamespaceToReplace)"
          ReplacementText="$rootnamespace$" />
     </Target>
