@@ -111,33 +111,33 @@
     <None Include="CopyController.proj">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="app\app.js" />
-    <Content Include="app\AuthManager.js" />
-    <Content Include="app\common.js" />
-    <Content Include="Content\app\RoutesConfig.js" />
-    <Content Include="Content\app\Components\AddTask\AddTaskView.html" />
-    <Content Include="Content\app\Components\AddTask\AddTaskViewModel.js" />
-    <Content Include="Content\app\Components\ComponentsConfig.js" />
-    <Content Include="Content\app\Components\Login\LoginTopMenuView.html" />
-    <Content Include="Content\app\Components\Login\LoginView.html" />
-    <Content Include="Content\app\Components\Login\LoginViewModel.js" />
-    <Content Include="Content\app\Components\Main\MainView.html" />
-    <Content Include="Content\app\Components\Main\MainViewModel.js" />
-    <Content Include="Content\app\Components\TaskDetail\TaskDetailView.html" />
-    <Content Include="Content\app\Components\TaskDetail\TaskDetailViewModel.js" />
-    <Content Include="Content\app\Components\TaskList\TaskListView.html" />
-    <Content Include="Content\app\Components\TaskList\TaskListViewModel.js" />
-    <Content Include="Content\app\Components\TopMenu\TopMenuView.html" />
-    <Content Include="Content\app\Components\TopMenu\TopMenuViewModel.js" />
-    <Content Include="app\Core\Cache\CacheManager.js" />
-    <Content Include="app\Core\jQuery\GetScript.js" />
-    <Content Include="app\Core\Loaders\ComponentByNamingConventionLoader.js" />
-    <Content Include="app\Core\UsersManagement\UserDataProvider.js" />
-    <Content Include="app\Core\ViewModels\ViewModelHelpers.js" />
+    <None Include="app\Core\app.js" />
+    <None Include="app\Core\AuthManager.js" />
+    <None Include="app\Core\common.js" />
     <Content Include="app\RoutesConfig.js" />
-    <Content Include="Content\app\Services\TasksService.js" />
-    <Content Include="Content\app\Services\UserService.js" />
-    <Content Include="app\ViewModelLocator.js" />
+    <Content Include="app\Components\AddTask\AddTaskView.html" />
+    <Content Include="app\Components\AddTask\AddTaskViewModel.js" />
+    <Content Include="app\Components\ComponentsConfig.js" />
+    <Content Include="app\Components\Login\LoginTopMenuView.html" />
+    <Content Include="app\Components\Login\LoginView.html" />
+    <Content Include="app\Components\Login\LoginViewModel.js" />
+    <Content Include="app\Components\Main\MainView.html" />
+    <Content Include="app\Components\Main\MainViewModel.js" />
+    <Content Include="app\Components\TaskDetail\TaskDetailView.html" />
+    <Content Include="app\Components\TaskDetail\TaskDetailViewModel.js" />
+    <Content Include="app\Components\TaskList\TaskListView.html" />
+    <Content Include="app\Components\TaskList\TaskListViewModel.js" />
+    <Content Include="app\Components\TopMenu\TopMenuView.html" />
+    <Content Include="app\Components\TopMenu\TopMenuViewModel.js" />
+    <None Include="app\Core\Cache\CacheManager.js" />
+    <None Include="app\Core\jQuery\GetScript.js" />
+    <None Include="app\Core\Loaders\ComponentByNamingConventionLoader.js" />
+    <None Include="app\Core\UsersManagement\UserDataProvider.js" />
+    <None Include="app\Core\ViewModels\ViewModelHelpers.js" />
+    <None Include="app\Core\RoutesConfig.js" />
+    <Content Include="app\Services\TasksService.js" />
+    <Content Include="app\Services\UserService.js" />
+    <None Include="app\Core\ViewModelLocator.js" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -171,6 +171,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Content\" />
     <Folder Include="Models\Home\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

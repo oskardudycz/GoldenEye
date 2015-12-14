@@ -27,9 +27,9 @@ namespace GoldenEye.Frontend.Web
                       "~/Content/site.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/app")
-                .IncludeDirectory("~/Scripts/app/", "*.js", false)
-                .IncludeDirectory("~/Scripts/app/Core", "*.js", true)
-                .Include("~/Scripts/app/Components/ComponentsConfig.js"));
+                .IncludeDirectory("~/app/Services/", "*.js", false)
+                .Include("~/app/ComponentsConfig.js")
+                .Include("~/Scripts/GoldenEye/GoldenEye.js"));
         }
     }
 }

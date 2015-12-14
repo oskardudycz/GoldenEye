@@ -252,11 +252,65 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\SPA\Frontend.SPA.Web\app\Components\AddTask\AddTaskView.html">
+      <Link>app\Components\AddTask\AddTaskView.html</Link>
+    </Content>
+    <Content Include="..\SPA\Frontend.SPA.Web\app\Components\AddTask\AddTaskViewModel.js">
+      <Link>app\Components\AddTask\AddTaskViewModel.js</Link>
+    </Content>
+    <Content Include="..\SPA\Frontend.SPA.Web\app\Components\ComponentsConfig.js">
+      <Link>app\Components\ComponentsConfig.js</Link>
+    </Content>
+    <Content Include="..\SPA\Frontend.SPA.Web\app\Components\Login\LoginTopMenuView.html">
+      <Link>app\Components\Login\LoginTopMenuView.html</Link>
+    </Content>
+    <Content Include="..\SPA\Frontend.SPA.Web\app\Components\Login\LoginView.html">
+      <Link>app\Components\Login\LoginView.html</Link>
+    </Content>
+    <Content Include="..\SPA\Frontend.SPA.Web\app\Components\Login\LoginViewModel.js">
+      <Link>app\Components\Login\LoginViewModel.js</Link>
+    </Content>
+    <Content Include="..\SPA\Frontend.SPA.Web\app\Components\Main\MainView.html">
+      <Link>app\Components\Main\MainView.html</Link>
+    </Content>
+    <Content Include="..\SPA\Frontend.SPA.Web\app\Components\Main\MainViewModel.js">
+      <Link>app\Components\Main\MainViewModel.js</Link>
+    </Content>
+    <Content Include="..\SPA\Frontend.SPA.Web\app\Components\TaskDetail\TaskDetailView.html">
+      <Link>app\Components\TaskDetail\TaskDetailView.html</Link>
+    </Content>
+    <Content Include="..\SPA\Frontend.SPA.Web\app\Components\TaskDetail\TaskDetailViewModel.js">
+      <Link>app\Components\TaskDetail\TaskDetailViewModel.js</Link>
+    </Content>
+    <Content Include="..\SPA\Frontend.SPA.Web\app\Components\TaskList\TaskListView.html">
+      <Link>app\Components\TaskList\TaskListView.html</Link>
+    </Content>
+    <Content Include="..\SPA\Frontend.SPA.Web\app\Components\TaskList\TaskListViewModel.js">
+      <Link>app\Components\TaskList\TaskListViewModel.js</Link>
+    </Content>
+    <Content Include="..\SPA\Frontend.SPA.Web\app\Components\TopMenu\TopMenuView.html">
+      <Link>app\Components\TopMenu\TopMenuView.html</Link>
+    </Content>
+    <Content Include="..\SPA\Frontend.SPA.Web\app\Components\TopMenu\TopMenuViewModel.js">
+      <Link>app\Components\TopMenu\TopMenuViewModel.js</Link>
+    </Content>
+    <Content Include="..\SPA\Frontend.SPA.Web\content\app\RoutesConfig.js">
+      <Link>app\RoutesConfig.js</Link>
+    </Content>
+    <Content Include="..\SPA\Frontend.SPA.Web\content\app\Services\TasksService.js">
+      <Link>app\Services\TasksService.js</Link>
+    </Content>
+    <Content Include="..\SPA\Frontend.SPA.Web\content\app\Services\UserService.js">
+      <Link>app\Services\UserService.js</Link>
+    </Content>
+    <Content Include="..\SPA\Frontend.SPA.Web\content\Scripts\GoldenEye\GoldenEye.js">
+      <Link>Scripts\GoldenEye\GoldenEye.js</Link>
+    </Content>
+    <Content Include="..\SPA\Frontend.SPA.Web\content\Scripts\GoldenEye\GoldenEye.min.js">
+      <Link>Scripts\GoldenEye\GoldenEye.min.js</Link>
+    </Content>
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
-    <Content Include="Scripts\app\app.js" />
-    <Content Include="Scripts\app\AuthManager.js" />
-    <Content Include="Scripts\app\common.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -266,21 +320,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Scripts\app\Components\AddTask\AddTaskView.html" />
-    <Content Include="Scripts\app\Components\ComponentsConfig.js" />
-    <Content Include="Scripts\app\Components\Login\LoginTopMenuView.html" />
-    <Content Include="Scripts\app\Components\Login\LoginView.html" />
-    <Content Include="Scripts\app\Components\Main\MainView.html" />
-    <Content Include="Scripts\app\Components\TaskDetail\TaskDetailView.html" />
-    <Content Include="Scripts\app\Components\TaskList\TaskListView.html" />
-    <Content Include="Scripts\app\Components\TopMenu\TopMenuView.html" />
-    <Content Include="Scripts\app\Core\Cache\CacheManager.js" />
-    <Content Include="Scripts\app\Core\jQuery\GetScript.js" />
-    <Content Include="Scripts\app\Core\Loaders\ComponentByNamingConventionLoader.js" />
-    <Content Include="Scripts\app\Core\UsersManagement\UserDataProvider.js" />
-    <Content Include="Scripts\app\Core\ViewModels\ViewModelHelpers.js" />
-    <Content Include="Scripts\app\TasksService.js" />
-    <Content Include="Scripts\app\RoutesConfig.js" />
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
@@ -299,13 +338,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
-    <Content Include="Scripts\app\Components\AddTask\AddTaskViewModel.js" />
-    <Content Include="Scripts\app\Components\TaskDetail\TaskDetailViewModel.js" />
-    <Content Include="Scripts\app\Components\Login\LoginViewModel.js" />
-    <Content Include="Scripts\app\Components\Main\MainViewModel.js" />
-    <Content Include="Scripts\app\Components\TaskList\TaskListViewModel.js" />
-    <Content Include="Scripts\app\Components\TopMenu\TopMenuViewModel.js" />
-    <Content Include="Scripts\app\UserService.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
@@ -340,7 +372,6 @@
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Scripts\app\ViewModelLocator.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

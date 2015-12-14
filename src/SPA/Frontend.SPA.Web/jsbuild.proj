@@ -17,10 +17,10 @@
         
         
         <FilesToConcat>
-            $(ProjectDir)app/app.js;
-            $(ProjectDir)app/AuthManager.js;
-            $(ProjectDir)app/RoutesConfig.js;
-            $(ProjectDir)app/ViewModelLocator.js;
+            $(ProjectDir)app/Core/app.js;
+            $(ProjectDir)app/Core/AuthManager.js;
+            $(ProjectDir)app/Core/RoutesConfig.js;
+            $(ProjectDir)app/Core/ViewModelLocator.js;
             $(ProjectDir)app/Core/Cache/CacheManager.js;
             $(ProjectDir)app/Core/jQuery/GetScript.js;
             $(ProjectDir)app/Core/Loaders/ComponentByNamingConventionLoader.js;
