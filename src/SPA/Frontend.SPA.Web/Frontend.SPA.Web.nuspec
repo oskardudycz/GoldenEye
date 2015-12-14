@@ -21,5 +21,6 @@
 
     <files>
         <file src="content\Controllers\*" target="content\Controllers" />
+        <file src="content\Scripts\GoldenEye\*" target="content\Scripts\GoldenEye" />
     </files>
 </package>

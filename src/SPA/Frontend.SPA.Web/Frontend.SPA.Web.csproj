@@ -34,6 +34,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EcmaScript.NET, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\YUICompressor.NET.MSBuild.2.7.0.0\lib\NET20\EcmaScript.NET.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\YUICompressor.NET.2.0.0.0\lib\NET20\Iesi.Collections.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
@@ -82,10 +90,19 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Yahoo.Yui.Compressor, Version=2.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\YUICompressor.NET.MSBuild.2.7.0.0\lib\NET20\Yahoo.Yui.Compressor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Yahoo.Yui.Compressor.Build.MsBuild, Version=2.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\YUICompressor.NET.MSBuild.2.7.0.0\lib\NET20\Yahoo.Yui.Compressor.Build.MsBuild.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Build\jsbuild.proj" />
     <None Include="CopyController.targets">
       <SubType>Designer</SubType>
     </None>
@@ -95,6 +112,32 @@
     <None Include="Frontend.SPA.Web.nuspec.proj">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Scripts\app\app.js" />
+    <Content Include="Scripts\app\AuthManager.js" />
+    <Content Include="Scripts\app\common.js" />
+    <Content Include="Scripts\app\Components\AddTask\AddTaskView.html" />
+    <Content Include="Scripts\app\Components\AddTask\AddTaskViewModel.js" />
+    <Content Include="Scripts\app\Components\ComponentsConfig.js" />
+    <Content Include="Scripts\app\Components\Login\LoginTopMenuView.html" />
+    <Content Include="Scripts\app\Components\Login\LoginView.html" />
+    <Content Include="Scripts\app\Components\Login\LoginViewModel.js" />
+    <Content Include="Scripts\app\Components\Main\MainView.html" />
+    <Content Include="Scripts\app\Components\Main\MainViewModel.js" />
+    <Content Include="Scripts\app\Components\TaskDetail\TaskDetailView.html" />
+    <Content Include="Scripts\app\Components\TaskDetail\TaskDetailViewModel.js" />
+    <Content Include="Scripts\app\Components\TaskList\TaskListView.html" />
+    <Content Include="Scripts\app\Components\TaskList\TaskListViewModel.js" />
+    <Content Include="Scripts\app\Components\TopMenu\TopMenuView.html" />
+    <Content Include="Scripts\app\Components\TopMenu\TopMenuViewModel.js" />
+    <Content Include="Scripts\app\Core\Cache\CacheManager.js" />
+    <Content Include="Scripts\app\Core\jQuery\GetScript.js" />
+    <Content Include="Scripts\app\Core\Loaders\ComponentByNamingConventionLoader.js" />
+    <Content Include="Scripts\app\Core\UsersManagement\UserDataProvider.js" />
+    <Content Include="Scripts\app\Core\ViewModels\ViewModelHelpers.js" />
+    <Content Include="Scripts\app\RoutesConfig.js" />
+    <Content Include="Scripts\app\TasksService.js" />
+    <Content Include="Scripts\app\UserService.js" />
+    <Content Include="Scripts\app\ViewModelLocator.js" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -123,7 +166,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
@@ -131,6 +176,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Import Project="build\jsbuild.proj" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
