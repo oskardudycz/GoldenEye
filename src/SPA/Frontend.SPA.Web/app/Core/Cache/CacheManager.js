@@ -4,7 +4,7 @@
     self.Get = function (key) {
         var itemJSON = localStorage.getItem(key);
 
-        if (!itemJSON)
+        if (!itemJSON || itemJSON === "undefined")
             return undefined;
 
         return JSON.parse(itemJSON);

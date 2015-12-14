@@ -90,8 +90,8 @@
             url: $("base").attr("href") + "Token",
             data: loginData
         }).done(function (data) {
-            self.user(data.UserName);
-            userData.Set(data.UserName);
+            self.user(data.userName);
+            userData.Set(data.userName);
             // Cache the access token in session storage.
             authManager.setToken(data.access_token);
             app.current("TaskList-nc");
