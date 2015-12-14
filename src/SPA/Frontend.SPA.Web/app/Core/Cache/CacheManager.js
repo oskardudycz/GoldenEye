@@ -18,6 +18,10 @@
         localStorage.removeItem(key);
     }
 
+    self.ClearAll = function (key) {
+        localStorage.clear();
+    }
+
     self.Exists = function(key) {
         return localStorage.getItem(key) == undefined;
     }

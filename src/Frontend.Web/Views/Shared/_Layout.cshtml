@@ -6,14 +6,14 @@
     <title>@ViewBag.Title - Sample B2B Portal Klienta</title>
     <base href='@(Request.ApplicationPath.Length == 1 ? Request.ApplicationPath : Request.ApplicationPath + "/")' />
     @Styles.Render("~/Content/css")
+
+    <link href="~/Content/toastr.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/Content/misc.css">
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
-    <script type="text/javascript" src="~/Scripts/knockout-3.3.0.js"></script>
-    <script src="~/Scripts/knockout.mapping-latest.js"></script>
-    <script src="~/Scripts/sammy-0.7.5.js"></script>
+    @Scripts.Render("~/bundles/knockout")
+    @Scripts.Render("~/bundles/libs")
     @Scripts.Render("~/bundles/app")
-    <script src="~/Scripts/knockout.validation.js"></script>
-    <script src="~/Scripts/app/Components/TopMenu/TopMenuViewModel.js"></script>
 </head>
 
 <body>

@@ -8,13 +8,9 @@ using GoldenEye.Shared.Core.DTOs;
 namespace GoldenEye.Frontend.Security.Web.Controllers
 {
     [Authorize]
-    public class UserControllerBase : ReadonlyRestControllerBase<IUserRestService, UserDTO>
+    public abstract class UserControllerBase : ReadonlyRestControllerBase<IUserRestService, UserDTO>
     {
-        public UserControllerBase()
-        {
-        }
-
-        public UserControllerBase(IUserRestService service)
+        protected UserControllerBase(IUserRestService service)
             : base(service)
         {
         }

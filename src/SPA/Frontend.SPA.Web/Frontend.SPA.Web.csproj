@@ -100,6 +100,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="Frontend.SPA.Web.nuspec" />
@@ -137,7 +138,6 @@
     <None Include="app\Core\RoutesConfig.js" />
     <Content Include="app\Services\TasksService.js" />
     <Content Include="app\Services\UserService.js" />
-    <None Include="app\Core\ViewModelLocator.js" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />

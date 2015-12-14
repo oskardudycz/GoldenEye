@@ -66,10 +66,10 @@ namespace GoldenEye.Frontend.Core.Web
         private static void Init(IKernel kernel)
         {
             LoadAssemblies(kernel);
+            
+            SetConventions(kernel);
 
             LoadModules(kernel);
-
-            SetConventions(kernel);
 
             GlobalConfiguration.Configuration.DependencyResolver = new NinjectResolver(kernel);
 

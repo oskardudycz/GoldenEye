@@ -4,6 +4,7 @@
 
     function handleLogOut() {
         toastr.error("Zostałeś wylogowany!", "Błąd");
+        cache.ClearAll();
         routing.refresh();
     }
 

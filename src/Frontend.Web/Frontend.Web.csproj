@@ -22,6 +22,7 @@
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>c5e54f09</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -294,13 +295,13 @@
     <Content Include="..\SPA\Frontend.SPA.Web\app\Components\TopMenu\TopMenuViewModel.js">
       <Link>app\Components\TopMenu\TopMenuViewModel.js</Link>
     </Content>
-    <Content Include="..\SPA\Frontend.SPA.Web\content\app\RoutesConfig.js">
+    <Content Include="..\SPA\Frontend.SPA.Web\app\RoutesConfig.js">
       <Link>app\RoutesConfig.js</Link>
     </Content>
-    <Content Include="..\SPA\Frontend.SPA.Web\content\app\Services\TasksService.js">
+    <Content Include="..\SPA\Frontend.SPA.Web\app\Services\TasksService.js">
       <Link>app\Services\TasksService.js</Link>
     </Content>
-    <Content Include="..\SPA\Frontend.SPA.Web\content\app\Services\UserService.js">
+    <Content Include="..\SPA\Frontend.SPA.Web\app\Services\UserService.js">
       <Link>app\Services\UserService.js</Link>
     </Content>
     <Content Include="..\SPA\Frontend.SPA.Web\content\Scripts\GoldenEye\GoldenEye.js">
@@ -333,6 +334,15 @@
     <Content Include="Content\toastr.less" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\SPA\Frontend.SPA.Web\Views\Home\About.cshtml">
+      <Link>Views\Home\About.cshtml</Link>
+    </Content>
+    <Content Include="..\SPA\Frontend.SPA.Web\Views\Home\Contact.cshtml">
+      <Link>Views\Home\Contact.cshtml</Link>
+    </Content>
+    <Content Include="..\SPA\Frontend.SPA.Web\Views\Home\Index.cshtml">
+      <Link>Views\Home\Index.cshtml</Link>
     </Content>
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
@@ -385,9 +395,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\_RemoveAccountPartial.cshtml" />
@@ -481,7 +488,9 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+    <Error Condition="!Exists('..\packages\MSBuild.WebApplication.CopyContentLinkedFiles.1.0.0\build\MSBuild.WebApplication.CopyContentLinkedFiles.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MSBuild.WebApplication.CopyContentLinkedFiles.1.0.0\build\MSBuild.WebApplication.CopyContentLinkedFiles.targets'))" />
   </Target>
+  <Import Project="..\packages\MSBuild.WebApplication.CopyContentLinkedFiles.1.0.0\build\MSBuild.WebApplication.CopyContentLinkedFiles.targets" Condition="Exists('..\packages\MSBuild.WebApplication.CopyContentLinkedFiles.1.0.0\build\MSBuild.WebApplication.CopyContentLinkedFiles.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

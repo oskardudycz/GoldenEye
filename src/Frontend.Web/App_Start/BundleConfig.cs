@@ -18,6 +18,12 @@ namespace GoldenEye.Frontend.Web
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/libs")
+                .Include("~/Scripts/sammy-0.7.5.js")
+                .Include("~/Scripts/moment.js")
+                .Include("~/Scripts/toastr.js")
+                .Include("~/Scripts/pl-PL.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
@@ -26,10 +32,17 @@ namespace GoldenEye.Frontend.Web
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
+            bundles.Add(new ScriptBundle("~/bundles/knockout")
+                .Include("~/Scripts/knockout-{version}.js")
+                .Include("~/Scripts/knockout.mapping-latest.js")
+                .Include("~/Scripts/knockout.validation.js")
+                .Include("~/Scripts/knockstrap.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/app")
                 .IncludeDirectory("~/app/Services/", "*.js", false)
-                .Include("~/app/ComponentsConfig.js")
-                .Include("~/Scripts/GoldenEye/GoldenEye.js"));
+                .Include("~/app/Components/ComponentsConfig.js")
+                .Include("~/Scripts/GoldenEye/GoldenEye.js")
+                .Include("~/app/RoutesConfig.js"));
         }
     }
 }
