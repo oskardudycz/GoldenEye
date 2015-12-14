@@ -219,7 +219,6 @@ FakesAssemblies/
 _Pvt_Extensions
 /packages
 /src/SPA/Frontend.SPA.Web/content/Controllers
-/src/SPA/Frontend.SPA.Web/content/Scripts/GoldenEye
 /src/SPA/Frontend.SPA.Web/content/Views/Home
 /src/SPA/Frontend.SPA.Web/content/Views/Home/About.cshtml.pp
 /src/SPA/Frontend.SPA.Web/content/Views/Home/Contact.cshtml.pp
