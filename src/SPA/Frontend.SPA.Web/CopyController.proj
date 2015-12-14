@@ -23,6 +23,16 @@
         <RootNamespaceToReplace>GoldenEye.Frontend.SPA.Web</RootNamespaceToReplace>
         <MSBuildCommunityTasksPath>$(SolutionDir).Build</MSBuildCommunityTasksPath>
     </PropertyGroup>
+    
+    <PropertyGroup>
+        <ProjectDir>$(SolutionDir)SPA\Frontend.SPA.Web\</ProjectDir>
+        <ProjectName>Frontend.SPA.Web.csproj</ProjectName>
+        <ProjectPath>$(ProjectDir)$(ProjectName)</ProjectPath>
+        <TargetDir>content\</TargetDir>
+        <ControllerBaseName>Shared</ControllerBaseName>
+        <RootNamespaceToReplace>GoldenEye.Frontend.SPA.Web</RootNamespaceToReplace>
+        <MSBuildCommunityTasksPath>$(SolutionDir).Build</MSBuildCommunityTasksPath>
+    </PropertyGroup>
 
     <Import Project="BuildConfig/CopyController.targets"/>
 
