@@ -1,0 +1,49 @@
+﻿<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <UsingTask TaskName="CssCompressorTask" AssemblyFile="$(SolutionDir)packages\YUICompressor.NET.MSBuild.2.7.0.0\lib\NET20\Yahoo.Yui.Compressor.Build.MsBuild.dll" />
+    <UsingTask TaskName="JavaScriptCompressorTask" AssemblyFile="$(SolutionDir)packages\YUICompressor.NET.MSBuild.2.7.0.0\lib\NET20\Yahoo.Yui.Compressor.Build.MsBuild.dll" />
+    
+    <Target Name="CleanJs">
+        <Message Text="Hello from CleanJs" Importance="high"></Message>
+        <RemoveDir Directories="$(ConcatDir)" Condition="Exists('$(ConcatDir)')">
+            <Output PropertyName="ConcatDirRemoved" TaskParameter="RemovedDirectories"/>
+        </RemoveDir>
+        <RemoveDir Directories="$(MinDir)" Condition="Exists('$(MinDir)')"></RemoveDir>
+        <Message Text="Hello from removed dirs $(ConcatDirRemoved)" Importance="high"></Message>
+    </Target>
+    <Target Name="InitJs">
+        <MakeDir Directories="$(ConcatDir)" Condition="!Exists('$(ConcatDir)')"></MakeDir>
+        <MakeDir Directories="$(MinDir)" Condition="!Exists('$(MinDir)')"></MakeDir>
+    </Target>
+    <Target Name="ConcatenateJsFiles">
+        <ItemGroup>
+            <ConcatFiles Include="$(FilesToConcat)"/>
+        </ItemGroup>
+        <ItemGroup>
+            <FileContents Include="$([System.IO.File]::ReadAllText(%(ConcatFiles.Identity)))"/>
+        </ItemGroup>
+        
+        <WriteLinesToFile File="$(ConcatDir)$(ConcatFileName)" Lines="@(FileContents)" Overwrite="true" />
+    </Target>
+    <Target Name="MinifyJsFiles">
+        <JavaScriptCompressorTask
+          SourceFiles="$(ConcatDir)$(ConcatFileName)"
+          DeleteSourceFiles="false"
+          OutputFile="$(MinDir)$(MinFileName)"
+          CompressionType="Standard"
+          ObfuscateJavaScript="False"
+          PreserveAllSemicolons="True"
+          DisableOptimizations="No"
+          EncodingType="Default"
+          LineBreakPosition="-1"
+          LoggingType="Info"
+          ThreadCulture="pl-PL"
+          IsEvalIgnored="false"
+            />
+    </Target>
+    <Target Name="ConcatenateAndMinify">
+        <CallTarget Targets="CleanJs"></CallTarget>
+        <CallTarget Targets="InitJs"></CallTarget>
+        <CallTarget Targets="ConcatenateJsFiles"></CallTarget>
+        <CallTarget Targets="MinifyJsFiles"></CallTarget>
+    </Target>
+</Project>

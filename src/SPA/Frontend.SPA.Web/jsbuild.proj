@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project
+ ToolsVersion="4.0"
+ DefaultTargets="ConcatenateAndMinify"
+ xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+    <PropertyGroup>
+        <ProjectDir>$(SolutionDir)SPA\Frontend.SPA.Web\</ProjectDir>
+        <ProjectName>Frontend.SPA.Web.csproj</ProjectName>
+        <ProjectPath>$(ProjectDir)$(ProjectName)</ProjectPath>
+        
+        <ConcatDir>$(ProjectDir)Content\Scripts\GoldenEye\</ConcatDir>
+        <ConcatFileName>GoldenEye.js</ConcatFileName>
+        
+        <MinDir>$(ProjectDir)Content\Scripts\GoldenEye\</MinDir>
+        <MinFileName>GoldenEye.min.js</MinFileName>
+        
+        
+        <FilesToConcat>
+            $(ProjectDir)app/app.js;
+            $(ProjectDir)app/AuthManager.js;
+            $(ProjectDir)app/RoutesConfig.js;
+            $(ProjectDir)app/ViewModelLocator.js;
+            $(ProjectDir)app/Core/Cache/CacheManager.js;
+            $(ProjectDir)app/Core/jQuery/GetScript.js;
+            $(ProjectDir)app/Core/Loaders/ComponentByNamingConventionLoader.js;
+            $(ProjectDir)app/Core/UsersManagement/UserDataProvider.js;
+            $(ProjectDir)app/Core/ViewModels/ViewModelHelpers.js;
+        </FilesToConcat>
+
+    </PropertyGroup>
+
+    <Import Project="BuildConfig/jsbuild.targets"/>
+
+</Project>

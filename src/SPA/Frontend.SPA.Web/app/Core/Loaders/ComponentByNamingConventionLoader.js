@@ -1,6 +1,6 @@
 ﻿// Register it
 ko.components.loaders.unshift((function () {
-    var componentsPrefix = "Scripts/app/Components/";
+    var componentsPrefix = "app/Components/";
 
     ////////////////////////////////////////////////////////
     ///                     PRIVATE                      ///   

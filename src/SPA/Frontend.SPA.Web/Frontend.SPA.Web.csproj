@@ -102,41 +102,41 @@
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <None Include="Build\jsbuild.proj" />
-    <None Include="CopyController.targets">
+    <None Include="Frontend.SPA.Web.nuspec" />
+    <None Include="jsbuild.proj" />
+    <None Include="BuildConfig\jsbuild.targets" />
+    <None Include="BuildConfig\CopyController.targets">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Frontend.SPA.Web.nuspec">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Frontend.SPA.Web.nuspec.proj">
+    <None Include="CopyController.proj">
       <SubType>Designer</SubType>
     </None>
     <Content Include="app\app.js" />
     <Content Include="app\AuthManager.js" />
     <Content Include="app\common.js" />
-    <Content Include="app\Components\AddTask\AddTaskView.html" />
-    <Content Include="app\Components\AddTask\AddTaskViewModel.js" />
-    <Content Include="app\Components\ComponentsConfig.js" />
-    <Content Include="app\Components\Login\LoginTopMenuView.html" />
-    <Content Include="app\Components\Login\LoginView.html" />
-    <Content Include="app\Components\Login\LoginViewModel.js" />
-    <Content Include="app\Components\Main\MainView.html" />
-    <Content Include="app\Components\Main\MainViewModel.js" />
-    <Content Include="app\Components\TaskDetail\TaskDetailView.html" />
-    <Content Include="app\Components\TaskDetail\TaskDetailViewModel.js" />
-    <Content Include="app\Components\TaskList\TaskListView.html" />
-    <Content Include="app\Components\TaskList\TaskListViewModel.js" />
-    <Content Include="app\Components\TopMenu\TopMenuView.html" />
-    <Content Include="app\Components\TopMenu\TopMenuViewModel.js" />
+    <Content Include="Content\app\RoutesConfig.js" />
+    <Content Include="Content\app\Components\AddTask\AddTaskView.html" />
+    <Content Include="Content\app\Components\AddTask\AddTaskViewModel.js" />
+    <Content Include="Content\app\Components\ComponentsConfig.js" />
+    <Content Include="Content\app\Components\Login\LoginTopMenuView.html" />
+    <Content Include="Content\app\Components\Login\LoginView.html" />
+    <Content Include="Content\app\Components\Login\LoginViewModel.js" />
+    <Content Include="Content\app\Components\Main\MainView.html" />
+    <Content Include="Content\app\Components\Main\MainViewModel.js" />
+    <Content Include="Content\app\Components\TaskDetail\TaskDetailView.html" />
+    <Content Include="Content\app\Components\TaskDetail\TaskDetailViewModel.js" />
+    <Content Include="Content\app\Components\TaskList\TaskListView.html" />
+    <Content Include="Content\app\Components\TaskList\TaskListViewModel.js" />
+    <Content Include="Content\app\Components\TopMenu\TopMenuView.html" />
+    <Content Include="Content\app\Components\TopMenu\TopMenuViewModel.js" />
     <Content Include="app\Core\Cache\CacheManager.js" />
     <Content Include="app\Core\jQuery\GetScript.js" />
     <Content Include="app\Core\Loaders\ComponentByNamingConventionLoader.js" />
     <Content Include="app\Core\UsersManagement\UserDataProvider.js" />
     <Content Include="app\Core\ViewModels\ViewModelHelpers.js" />
     <Content Include="app\RoutesConfig.js" />
-    <Content Include="app\TasksService.js" />
-    <Content Include="app\UserService.js" />
+    <Content Include="Content\app\Services\TasksService.js" />
+    <Content Include="Content\app\Services\UserService.js" />
     <Content Include="app\ViewModelLocator.js" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
@@ -171,12 +171,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\" />
     <Folder Include="Models\Home\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Import Project="build\jsbuild.proj" />
+  <Import Project="BuildConfig\jsbuild.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
@@ -184,7 +183,9 @@
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
   <Target Name="BeforeBuild">
-    <MSBuild Projects="Frontend.SPA.Web.nuspec.proj">
+    <MSBuild Projects="CopyController.proj">
+    </MSBuild>
+    <MSBuild Projects="jsbuild.proj">
     </MSBuild>
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -5,15 +5,15 @@
  xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
     <PropertyGroup>
-        <ProjectDir>..\Frontend.SPA.Web\</ProjectDir>
+        <ProjectDir>$(SolutionDir)SPA\Frontend.SPA.Web\</ProjectDir>
         <ProjectName>Frontend.SPA.Web.csproj</ProjectName>
         <ProjectPath>$(ProjectDir)$(ProjectName)</ProjectPath>
         <TargetDir>content\</TargetDir>
         <ControllerBaseName>Home</ControllerBaseName>
         <RootNamespaceToReplace>GoldenEye.Frontend.SPA.Web</RootNamespaceToReplace>
-        <MSBuildCommunityTasksPath>$(MSBuildProjectDirectory)\..\..\.Build</MSBuildCommunityTasksPath>
+        <MSBuildCommunityTasksPath>$(SolutionDir).Build</MSBuildCommunityTasksPath>
     </PropertyGroup>
 
-    <Import Project="CopyController.targets"/>
+    <Import Project="BuildConfig/CopyController.targets"/>
 
 </Project>
