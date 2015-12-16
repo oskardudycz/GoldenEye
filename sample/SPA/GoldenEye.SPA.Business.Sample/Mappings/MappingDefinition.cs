@@ -1,11 +1,11 @@
-﻿using AutoMapper;
+using AutoMapper;
 using GoldenEye.Backend.Security.Model;
-using $rootnamespace$.Entities;
-using $rootnamespace$.DTOs;
+using GoldenEye.SPA.Business.Sample.Entities;
 using GoldenEye.Shared.Core.DTOs;
 using GoldenEye.Shared.Core.Mappings;
+using GoldenEye.SPA.Shared.Sample.DTOs;
 
-namespace $rootnamespace$.Mappings
+namespace GoldenEye.SPA.Business.Sample.Mappings
 {
     public class MappingDefinition : Profile, IMappingDefinition
     {

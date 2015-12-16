@@ -1,10 +1,12 @@
-﻿using FluentValidation;
+using FluentValidation;
 using GoldenEye.Backend.Core.Service;
-using $rootnamespace$.Entities;
-using $rootnamespace$.Repository;
-using $rootnamespace$.DTO;
+using GoldenEye.SPA.Business.Sample.Entities;
+using GoldenEye.SPA.Business.Sample.Repository;
+using GoldenEye.SPA.Shared.Sample.DTOs;
+using GoldenEye.SPA.Shared.Sample.Services;
+using GoldenEye.SPA.Shared.Sample.Validators;
 
-namespace $rootnamespace$.Services
+namespace GoldenEye.SPA.Business.Sample.Services
 {
     public class TaskRestService: RestServiceBase<TaskDTO, TaskEntity>, ITaskRestService
     {
