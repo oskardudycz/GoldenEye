@@ -5,11 +5,8 @@
     self.Name = ko.observable();
     self.Number = ko.observable();
     self.Date = ko.observable();
-    self.Type = ko.observable();
     self.IsInternal = ko.observable();
     self.Amount = ko.observable();
-    self.CustomerId = ko.observable();
-    self.TypeId = ko.observable();
     self.PlannedTime = ko.observable();
     self.PlanningDate = ko.observable();
     self.PlannedStartDate = ko.observable();

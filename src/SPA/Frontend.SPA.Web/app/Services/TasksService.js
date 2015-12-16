@@ -66,40 +66,6 @@
                 error: handleStandardError
             });
     };
-
-    self.getTaskTypes = function (list) {
-        $.ajax({
-            url: '/api/tasktype',
-            dataType: "json",
-            type: "GET",
-            data: { get_param: 'value' },
-            headers: {
-                'Authorization': "Bearer " + authManager.getToken()
-            },
-            success: function (data) {
-                var taskTypes = ko.mapping.fromJS(data);
-                list(taskTypes());
-            },
-            error: handleStandardError
-        });
-    }
-
-    self.getClients = function (list) {
-        $.ajax({
-            url: '/api/Customer',
-            dataType: "json",
-            type: "GET",
-            data: { get_param: 'value' },
-            headers: {
-                'Authorization': "Bearer " + authManager.getToken()
-            },
-            success: function (data) {
-                var clients = ko.mapping.fromJS(data);
-                list(clients());
-            },
-            error: handleStandardError
-        });
-    }
 }
 
 var taskService = new TasksService();

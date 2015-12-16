@@ -115,6 +115,7 @@
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="Frontend.SPA.Web.nuspec" />
     <None Include="jsbuild.proj" />
