@@ -56,7 +56,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{23F6E9
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend.SPA.Business", "SPA\Backend.SPA.Business\Backend.SPA.Business.csproj", "{D485758D-7F39-496F-96AE-CF89A158FDD5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend.SPA.Shared", "SPA\Backend.SPA.Shared\Backend.SPA.Shared.csproj", "{C26421E6-2236-4453-BA5F-249C8E7C2CA9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.SPA", "SPA\Backend.SPA.Shared\Shared.SPA.csproj", "{C26421E6-2236-4453-BA5F-249C8E7C2CA9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -7,10 +7,14 @@
     <ProjectGuid>{D485758D-7F39-496F-96AE-CF89A158FDD5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Backend.SPA.Business</RootNamespace>
-    <AssemblyName>Backend.SPA.Business</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <RootNamespace>GoldenEye.Backend.SPA.Business</RootNamespace>
+    <AssemblyName>GoldenEye.Backend.SPA.Business</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <RestorePackages>true</RestorePackages>
+    <BuildPackage>true</BuildPackage>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,6 +34,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,9 +47,50 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Context\ISampleContext.cs.pp" />
+    <Content Include="Context\SampleContext.cs.pp" />
+    <Content Include="Entities\TaskEntity.cs.pp" />
+    <Content Include="Mappings\MappingDefinition.cs.pp" />
+    <Compile Include="Module.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Repository\ITaskRepository.cs.pp" />
+    <Content Include="Repository\TaskRepository.cs.pp" />
+    <Content Include="Services\TaskRestService.cs.pp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Backend.Core\Backend.Core.csproj">
+      <Project>{92b1a1f0-6fd6-411a-bd00-0cdefb829782}</Project>
+      <Name>Backend.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Security\Backend.Security\Backend.Security.csproj">
+      <Project>{50414cf7-122f-4a61-8154-62a21009cc07}</Project>
+      <Name>Backend.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Shared.Core\Shared.Core.csproj">
+      <Project>{b4e800e8-f352-448d-86fe-fa467bd9e7a6}</Project>
+      <Name>Shared.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Backend.SPA.Shared\Shared.SPA.csproj">
+      <Project>{c26421e6-2236-4453-ba5f-249c8e7c2ca9}</Project>
+      <Name>Shared.SPA</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Module.cs.pp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Backend.SPA.Business.nuspec" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

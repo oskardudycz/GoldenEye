@@ -1,0 +1,19 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>Backend.SPA.Business</id>
+        <version>$version$</version>
+        <title>Backend.SPA.Business</title>
+        <authors>odudycz</authors>
+        <owners>odudycz</owners>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Description</description>
+        <copyright>Copyright ©  2015</copyright>
+
+        <dependencies>
+            <dependency id="GoldenEye.Shared.Core" />
+            <dependency id="GoldenEye.Backend.Core" />
+            <dependency id="GoldenEye.Backend.Security" />
+        </dependencies>
+    </metadata>
+</package>
