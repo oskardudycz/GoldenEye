@@ -1,16 +1,19 @@
-/*! knockstrap 1.3.0 http://faulknercs.github.io/Knockstrap/ | (c) 2013-2015 Artem Stepanyuk |  http://www.opensource.org/licenses/mit-license */
+/*! knockstrap 1.3.1 http://faulknercs.github.io/Knockstrap/ | (c) 2013-2015 Artem Stepanyuk |  http://www.opensource.org/licenses/mit-license */
 
 (function (factory) {
     'use strict';
-
-    if (typeof require === 'function' && typeof exports === 'object' && typeof module === 'object') {
+    
+    if (typeof ko !== 'undefined' && typeof jQuery !== 'undefined') {
+        //global knockout and jQuery references already present, so use these regardless of whether this module has been included in CommonJS/AMD
+        factory(ko, jQuery);
+    } else if (typeof require === 'function' && typeof exports === 'object' && typeof module === 'object') {
         // CommonJS/Node.js
         factory(require('knockout'), require('jquery'));
     } else if (typeof define === 'function' && define.amd) {
         // AMD
         define(['knockout', 'jquery'], factory);
     } else {
-        factory(ko, $);
+        throw new Error('Could not locate current context reference to knockout and jQuery in order to load Knockstrap');
     }
 
 })(function (ko, $) {
@@ -32,20 +35,7 @@
             return prefix + prefixesCounts[prefix]++;
         };
     })();
-    ko.utils.unwrapProperties = function (wrappedProperies) {
-    
-        if (wrappedProperies === null || typeof wrappedProperies !== 'object') {
-            return wrappedProperies;
-        }
-    
-        var options = {};
-    
-        ko.utils.objectForEach(wrappedProperies, function (propertyName, propertyValue) {
-            options[propertyName] = ko.unwrap(propertyValue);
-        });
-    
-        return options;
-    };
+    ko.utils.unwrapProperties = ko.toJS;
 
     // inspired by http://www.knockmeout.net/2011/10/ko-13-preview-part-3-template-sources.html
     (function () {
@@ -826,7 +816,7 @@
             if (!popoverData) {
                 $element.popover(options);
     
-                $element.on('shown.bs.popover', function () {
+                $element.on('shown.bs.popover inserted.bs.popover', function () {
                     (options.container ? $(options.container) : $element.parent()).one('click', '[data-dismiss="popover"]', function () {
                         $element.popover('hide');
                     });
