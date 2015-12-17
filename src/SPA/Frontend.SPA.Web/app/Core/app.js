@@ -7,6 +7,11 @@ var app = (function () {
 
         routing.run();
         ko.applyBindings();
+
+        ko.validation.locale('pl-PL');
+        ko.validation.init({
+            errorMessageClass: 'error-messages'
+        });
     }
 
     return {

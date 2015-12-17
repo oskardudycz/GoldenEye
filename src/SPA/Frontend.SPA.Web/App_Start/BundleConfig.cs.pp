@@ -1,6 +1,6 @@
 ﻿using System.Web.Optimization;
 
-namespace GoldenEye.Frontend.Web
+namespace $rootnamespace$
 {
     public class BundleConfig
     {
@@ -30,9 +30,7 @@ namespace GoldenEye.Frontend.Web
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css",
-                      "~/Content/toastr.css",
-                      "~/Content/misc.css"));
+                      "~/Content/site.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/knockout")
                 .Include("~/Scripts/knockout-{version}.js")

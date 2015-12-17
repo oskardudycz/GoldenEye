@@ -9,8 +9,6 @@
     <base href='@(Request.ApplicationPath.Length == 1 ? Request.ApplicationPath : Request.ApplicationPath + "/")' />
     @Styles.Render("~/Content/css")
 
-    <link href="~/Content/toastr.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="~/Content/misc.css">
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/knockout")
