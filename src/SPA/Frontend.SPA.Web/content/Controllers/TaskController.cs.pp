@@ -1,5 +1,5 @@
 ﻿using System.Web.Http;
-using GoldenEye.Backend.Business.Services;
+using $rootnamespace$;
 using GoldenEye.Frontend.Core.Web.Controllers;
 
 namespace $rootnamespace$.Controllers
