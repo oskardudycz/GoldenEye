@@ -160,13 +160,13 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <None Include="Web.config.pp">
+    <Content Include="Web.config.pp">
       <SubType>Designer</SubType>
-    </None>
-    <Content Include="Web.Debug.config">
+    </Content>
+    <Content Include="Web.Debug.config.pp">
       <DependentUpon>Web.config.pp</DependentUpon>
     </Content>
-    <Content Include="Web.Release.config">
+    <Content Include="Web.Release.config.pp">
       <DependentUpon>Web.config.pp</DependentUpon>
     </Content>
   </ItemGroup>
