@@ -117,7 +117,12 @@
     <None Include="Content\Controllers\HomeController.cs.pp" />
     <None Include="Content\Controllers\TaskController.cs.pp" />
     <Content Include="App_Start\BundleConfig.cs.pp" />
+    <Content Include="Global.asax.cs.pp">
+      <DependentUpon>Global.asax.pp</DependentUpon>
+    </Content>
+    <Content Include="Module.cs.pp" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Global.asax.pp" />
     <Content Include="Views\_ViewStart.cshtml.pp" />
     <Content Include="Views\Web.config.pp" />
     <None Include="Frontend.SPA.Web.nuspec" />
