@@ -5,7 +5,7 @@
  xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
     <Target Name="CopyController"
-      DependsOnTargets="LogParams;CopyControllerFile;CopyModelFiles;CopyViewFiles">
+      DependsOnTargets="LogParams;CopyModelFiles;CopyViewFiles">
     </Target>
 
     <Target Name="CopyControllerFile">

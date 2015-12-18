@@ -4,7 +4,7 @@ using GoldenEye.Frontend.Core.Web.Routes;
 using GoldenEye.Shared.Core.Configuration;
 using Microsoft.Owin.Security.OAuth;
 
-namespace GoldenEye.Frontend.Web
+namespace GoldenEye.Frontend.Core.Web
 {
     public static class WebApiConfig
     {

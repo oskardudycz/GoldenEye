@@ -109,9 +109,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Content\Controllers\AccountController.cs.pp" />
-    <None Include="Content\Controllers\HomeController.cs.pp" />
-    <None Include="Content\Controllers\TaskController.cs.pp" />
+    <Content Include="Controllers\AccountController.cs.pp" />
+    <Content Include="Controllers\HomeController.cs.pp" />
+    <Content Include="Controllers\TaskController.cs.pp" />
     <Content Include="App_Start\BundleConfig.cs.pp" />
     <Content Include="Global.asax.cs.pp">
       <DependentUpon>Global.asax.pp</DependentUpon>
@@ -202,7 +202,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <Folder Include="Content\" />
     <Folder Include="Models\Home\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
