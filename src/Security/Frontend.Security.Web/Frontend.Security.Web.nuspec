@@ -14,6 +14,7 @@
             <dependency id="GoldenEye.Backend.Core" />
             <dependency id="GoldenEye.Frontend.Core.Web" />
             <dependency id="GoldenEye.Backend.Security" />
+            <dependency id="Microsoft.Owin.Security.OAuth" version="3.0.1" />
         </dependencies>
     </metadata>
 </package>
