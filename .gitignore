@@ -224,3 +224,4 @@ _Pvt_Extensions
 /src/SPA/Frontend.SPA.Web/content/Views/Home/Index.cshtml.pp
 /src/SPA/Frontend.SPA.Web/content/Controllers/AccountController.cs.pp
 /src/SPA/Frontend.SPA.Web/content/Controllers/HomeController.cs.pp
+/sample/SPA/GoldenEye.SPA.Web.Sample
