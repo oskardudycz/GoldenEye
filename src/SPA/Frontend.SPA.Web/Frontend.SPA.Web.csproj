@@ -118,7 +118,7 @@
       <DependentUpon>Global.asax.pp</DependentUpon>
     </Content>
     <Content Include="Module.cs.pp" />
-    <None Include="Controllers\UserController.cs.pp" />
+    <Content Include="Controllers\UserController.cs.pp" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Global.asax.pp" />
     <Content Include="Scripts\pl-PL.js" />
