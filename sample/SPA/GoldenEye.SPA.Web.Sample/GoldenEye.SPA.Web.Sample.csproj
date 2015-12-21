@@ -121,6 +121,16 @@
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GoldenEye.SPA.Business.Sample\GoldenEye.SPA.Business.Sample.csproj">
+      <Project>{b27cd4aa-efe3-4a35-a036-522d5221463f}</Project>
+      <Name>GoldenEye.SPA.Business.Sample</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GoldenEye.SPA.Shared.Sample\GoldenEye.SPA.Shared.Sample.csproj">
+      <Project>{322ed1e4-8f1f-4b25-8063-4ca203be53e7}</Project>
+      <Name>GoldenEye.SPA.Shared.Sample</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
