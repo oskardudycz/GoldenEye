@@ -1,4 +1,5 @@
 ﻿using $rootnamespace$;
+using GoldenEye.Frontend.Security.Web;
 using GoldenEye.Shared.Core.Modules;
 using GoldenEye.Shared.Core.Modules.Attributes;
 using Microsoft.Owin;

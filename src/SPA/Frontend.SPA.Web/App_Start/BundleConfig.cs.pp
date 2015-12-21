@@ -43,6 +43,13 @@ namespace $rootnamespace$
                 .Include("~/app/Components/ComponentsConfig.js")
                 .Include("~/Scripts/GoldenEye/GoldenEye.js")
                 .Include("~/app/RoutesConfig.js"));
+
+            
+            #if DEBUG
+                BundleTable.EnableOptimizations = false;
+            #else
+                BundleTable.EnableOptimizations = true;
+            #endif
         }
     }
 }

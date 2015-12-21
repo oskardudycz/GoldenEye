@@ -49,11 +49,6 @@ namespace GoldenEye.Frontend.Core.Web
 
         protected virtual void OnBundleConfig()
         {
-            #if DEBUG
-                BundleTable.EnableOptimizations = false;
-            #else
-                BundleTable.EnableOptimizations = true;
-            #endif
         }
 
         protected virtual void OnApplicationError()
