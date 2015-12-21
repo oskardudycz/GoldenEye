@@ -30,7 +30,8 @@ namespace $rootnamespace$
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/toastr.min.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/knockout")
                 .Include("~/Scripts/knockout-{version}.js")

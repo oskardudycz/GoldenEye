@@ -109,6 +109,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\site.css" />
     <Content Include="Controllers\AccountController.cs.pp" />
     <Content Include="Controllers\HomeController.cs.pp" />
     <Content Include="Controllers\TaskController.cs.pp" />
@@ -117,6 +118,7 @@
       <DependentUpon>Global.asax.pp</DependentUpon>
     </Content>
     <Content Include="Module.cs.pp" />
+    <None Include="Controllers\UserController.cs.pp" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Global.asax.pp" />
     <Content Include="Scripts\pl-PL.js" />
@@ -203,7 +205,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\" />
     <Folder Include="Models\Home\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

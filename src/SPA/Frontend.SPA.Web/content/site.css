@@ -1,0 +1,83 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+.grid-header {
+    background-color: #EEEEEE;
+}
+
+.pager {
+    margin: 0;
+}
+
+    .pager li > a {
+        background-color: #e7e7e7;
+        margin-right: 5px;
+        border: none;
+        -ms-border-radius: 0;
+        border-radius: 0;
+        padding: 2px 4px;
+        padding-bottom: 5px;
+    }
+
+    .pager .disabled a {
+        background-color: #EBEBEB;
+    }
+
+    .pager .disabled > a, .pager .disabled > a:hover, .pager .disabled > a:focus, .pager .disabled > span {
+        color: #777;
+        cursor: not-allowed;
+        background-color: #EBEBEB;
+    }
+
+.table > thead > tr {
+    background-color: #eeeeee;
+    height: 30px;
+    white-space: nowrap;
+}
+
+    /*.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+        border-right: 2px solid #F4F4F4;
+        border-bottom: 2px solid #F4F4F4;
+        border-left: 2px solid #F4F4F4;
+    }*/
+
+.table > thead > tr {
+    border-top: 1px solid #F4F4F4;
+    white-space: nowrap;
+}
+
+    .table > thead > tr > th {
+        border-bottom: 2px solid #777;
+        font-weight: 600;
+        padding: 4px 8px;
+        white-space: nowrap;
+    }
+
+
+tr:nth-child(even) {
+    background-color: #f7f7f7;
+}
+
+.customprogress {
+    padding-bottom: -10px;
+}
+
+.error-messages {
+    color: #ff0000;
+}
