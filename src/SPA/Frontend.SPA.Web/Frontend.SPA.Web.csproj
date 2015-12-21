@@ -119,6 +119,7 @@
     <Content Include="Module.cs.pp" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Global.asax.pp" />
+    <Content Include="Scripts\pl-PL.js" />
     <Content Include="Views\_ViewStart.cshtml.pp" />
     <Content Include="Views\Web.config.pp" />
     <None Include="Frontend.SPA.Web.nuspec" />

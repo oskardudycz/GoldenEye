@@ -36,6 +36,7 @@ namespace $rootnamespace$
                 .Include("~/Scripts/knockout-{version}.js")
                 .Include("~/Scripts/knockout.mapping-latest.js")
                 .Include("~/Scripts/knockout.validation.js")
+                .Include("~/Scripts/pl-PL.js")
                 .Include("~/Scripts/knockstrap.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/app")
