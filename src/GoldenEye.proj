@@ -1,0 +1,13 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Both">
+
+    <!-- Calls twice for both configs -->
+    <Target Name="Both">
+        <MSBuild Projects="GoldenEye.sln" Targets="Rebuild" Properties="Configuration=Release-Net451"
+                         StopOnFirstFailure="true">
+        </MSBuild>
+        <MSBuild Projects="GoldenEye.sln" Targets="Rebuild" Properties="Configuration=Release"
+                         StopOnFirstFailure="true">
+        </MSBuild>
+    </Target>
+
+</Project>

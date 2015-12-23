@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
-        <id>Backend.SPA.Business</id>
+        <id>GoldenEye.Backend.SPA.Business</id>
         <version>$version$</version>
-        <title>Backend.SPA.Business</title>
+        <title>GoldenEye.Backend.SPA.Business</title>
         <authors>odudycz</authors>
         <owners>odudycz</owners>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -16,4 +16,8 @@
             <dependency id="GoldenEye.Backend.Security" />
         </dependencies>
     </metadata>
+    <files>
+        <file src="bin\Release\GoldenEye.Backend.SPA.Business.dll" target="lib\net45" />
+        <file src="bin\Release-Net451\GoldenEye.Backend.SPA.Business.dll" target="lib\net451" />
+    </files>
 </package>

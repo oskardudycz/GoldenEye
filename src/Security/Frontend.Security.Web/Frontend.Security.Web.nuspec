@@ -17,4 +17,8 @@
             <dependency id="Microsoft.Owin.Security.OAuth" version="3.0.1" />
         </dependencies>
     </metadata>
+    <files>
+        <file src="bin\Release\GoldenEye.Frontend.Security.Web.dll" target="lib\net45" />
+        <file src="bin\Release-Net451\GoldenEye.Frontend.Security.Web.dll" target="lib\net451" />
+    </files>
 </package>

@@ -13,4 +13,8 @@
             <dependency id="GoldenEye.Shared.Core" />
         </dependencies>
     </metadata>
+    <files>
+        <file src="bin\Release\GoldenEye.Backend.Core.dll" target="lib\net45" />
+        <file src="bin\Release-Net451\GoldenEye.Backend.Core.dll" target="lib\net451" />
+    </files>
 </package>
