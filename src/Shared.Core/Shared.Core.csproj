@@ -80,19 +80,19 @@
     <ItemGroup Condition=" '$(Configuration)'=='Debug-Net451' Or '$(Configuration)'=='Release-Net451'">
         <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
             <SpecificVersion>False</SpecificVersion>
-            <HintPath>..\packages\AutoMapper.4.1.1\lib\net451\AutoMapper.dll</HintPath>
+            <HintPath>..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
         </Reference>
         <Reference Include="FluentValidation, Version=6.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-            <HintPath>..\packages\FluentValidation.6.0.0.0\lib\net451\FluentValidation.dll</HintPath>
+            <HintPath>..\packages\FluentValidation.6.0.0.0\lib\net45\FluentValidation.dll</HintPath>
             <Private>True</Private>
         </Reference>
         <Reference Include="Microsoft.CSharp" />
         <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-            <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net451\Newtonsoft.Json.dll</HintPath>
+            <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
             <Private>True</Private>
         </Reference>
         <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-            <HintPath>..\packages\Ninject.3.2.2.0\lib\net451-full\Ninject.dll</HintPath>
+            <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
             <Private>True</Private>
         </Reference>
         <Reference Include="System.Web.DynamicData" />
