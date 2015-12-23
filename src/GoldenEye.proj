@@ -2,10 +2,10 @@
 
     <!-- Calls twice for both configs -->
     <Target Name="Both">
-        <MSBuild Projects="GoldenEye.sln" Targets="Rebuild" Properties="Configuration=Release-Net451"
+        <MSBuild Projects="GoldenEye.sln" Targets="Rebuild" Properties="Configuration=Release"
                          StopOnFirstFailure="true">
         </MSBuild>
-        <MSBuild Projects="GoldenEye.sln" Targets="Rebuild" Properties="Configuration=Release"
+        <MSBuild Projects="GoldenEye.sln" Targets="Rebuild" Properties="Configuration=Release-Net451"
                          StopOnFirstFailure="true">
         </MSBuild>
     </Target>
