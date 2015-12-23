@@ -5,7 +5,7 @@
         <MSBuild Projects="GoldenEye.sln" Targets="Rebuild" Properties="Configuration=Release"
                          StopOnFirstFailure="true">
         </MSBuild>
-        <MSBuild Projects="GoldenEye.sln" Targets="Rebuild" Properties="Configuration=Release-Net451"
+        <MSBuild Projects="GoldenEye.sln" Targets="Rebuild" Properties="Configuration=Release-Net451-Nuget"
                          StopOnFirstFailure="true">
         </MSBuild>
     </Target>

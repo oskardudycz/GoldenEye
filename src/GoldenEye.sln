@@ -49,7 +49,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{FE009D4F-4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{23F6E9DD-BF1C-4568-A874-344447CD994C}"
 	ProjectSection(SolutionItems) = preProject
-		build.bat = build.bat
+		..\build.bat = ..\build.bat
 		Build.proj = Build.proj
 		GoldenEye.proj = GoldenEye.proj
 		.build\MSBuild.Community.Tasks.dll = .build\MSBuild.Community.Tasks.dll
@@ -78,6 +78,10 @@ Global
 		Release-Net451|ARM = Release-Net451|ARM
 		Release-Net451|x64 = Release-Net451|x64
 		Release-Net451|x86 = Release-Net451|x86
+		Release-Net451-NuGet|Any CPU = Release-Net451-NuGet|Any CPU
+		Release-Net451-NuGet|ARM = Release-Net451-NuGet|ARM
+		Release-Net451-NuGet|x64 = Release-Net451-NuGet|x64
+		Release-Net451-NuGet|x86 = Release-Net451-NuGet|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{019AB4EA-278E-4B78-B849-1B6AAB9D5E92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -100,6 +104,11 @@ Global
 		{019AB4EA-278E-4B78-B849-1B6AAB9D5E92}.Release-Net451|ARM.ActiveCfg = Release-Net451|Any CPU
 		{019AB4EA-278E-4B78-B849-1B6AAB9D5E92}.Release-Net451|x64.ActiveCfg = Release-Net451|Any CPU
 		{019AB4EA-278E-4B78-B849-1B6AAB9D5E92}.Release-Net451|x86.ActiveCfg = Release-Net451|Any CPU
+		{019AB4EA-278E-4B78-B849-1B6AAB9D5E92}.Release-Net451-NuGet|Any CPU.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{019AB4EA-278E-4B78-B849-1B6AAB9D5E92}.Release-Net451-NuGet|Any CPU.Build.0 = Release-Net451-NuGet|Any CPU
+		{019AB4EA-278E-4B78-B849-1B6AAB9D5E92}.Release-Net451-NuGet|ARM.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{019AB4EA-278E-4B78-B849-1B6AAB9D5E92}.Release-Net451-NuGet|x64.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{019AB4EA-278E-4B78-B849-1B6AAB9D5E92}.Release-Net451-NuGet|x86.ActiveCfg = Release-Net451-NuGet|Any CPU
 		{92B1A1F0-6FD6-411A-BD00-0CDEFB829782}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{92B1A1F0-6FD6-411A-BD00-0CDEFB829782}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92B1A1F0-6FD6-411A-BD00-0CDEFB829782}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -120,6 +129,11 @@ Global
 		{92B1A1F0-6FD6-411A-BD00-0CDEFB829782}.Release-Net451|ARM.ActiveCfg = Release-Net451|Any CPU
 		{92B1A1F0-6FD6-411A-BD00-0CDEFB829782}.Release-Net451|x64.ActiveCfg = Release-Net451|Any CPU
 		{92B1A1F0-6FD6-411A-BD00-0CDEFB829782}.Release-Net451|x86.ActiveCfg = Release-Net451|Any CPU
+		{92B1A1F0-6FD6-411A-BD00-0CDEFB829782}.Release-Net451-NuGet|Any CPU.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{92B1A1F0-6FD6-411A-BD00-0CDEFB829782}.Release-Net451-NuGet|Any CPU.Build.0 = Release-Net451-NuGet|Any CPU
+		{92B1A1F0-6FD6-411A-BD00-0CDEFB829782}.Release-Net451-NuGet|ARM.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{92B1A1F0-6FD6-411A-BD00-0CDEFB829782}.Release-Net451-NuGet|x64.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{92B1A1F0-6FD6-411A-BD00-0CDEFB829782}.Release-Net451-NuGet|x86.ActiveCfg = Release-Net451-NuGet|Any CPU
 		{B4E800E8-F352-448D-86FE-FA467BD9E7A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B4E800E8-F352-448D-86FE-FA467BD9E7A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4E800E8-F352-448D-86FE-FA467BD9E7A6}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -140,6 +154,11 @@ Global
 		{B4E800E8-F352-448D-86FE-FA467BD9E7A6}.Release-Net451|ARM.ActiveCfg = Release-Net451|Any CPU
 		{B4E800E8-F352-448D-86FE-FA467BD9E7A6}.Release-Net451|x64.ActiveCfg = Release-Net451|Any CPU
 		{B4E800E8-F352-448D-86FE-FA467BD9E7A6}.Release-Net451|x86.ActiveCfg = Release-Net451|Any CPU
+		{B4E800E8-F352-448D-86FE-FA467BD9E7A6}.Release-Net451-NuGet|Any CPU.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{B4E800E8-F352-448D-86FE-FA467BD9E7A6}.Release-Net451-NuGet|Any CPU.Build.0 = Release-Net451-NuGet|Any CPU
+		{B4E800E8-F352-448D-86FE-FA467BD9E7A6}.Release-Net451-NuGet|ARM.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{B4E800E8-F352-448D-86FE-FA467BD9E7A6}.Release-Net451-NuGet|x64.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{B4E800E8-F352-448D-86FE-FA467BD9E7A6}.Release-Net451-NuGet|x86.ActiveCfg = Release-Net451-NuGet|Any CPU
 		{FE4C8D80-C8B9-45B4-9CE3-BB94280BC223}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FE4C8D80-C8B9-45B4-9CE3-BB94280BC223}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE4C8D80-C8B9-45B4-9CE3-BB94280BC223}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -160,6 +179,11 @@ Global
 		{FE4C8D80-C8B9-45B4-9CE3-BB94280BC223}.Release-Net451|ARM.ActiveCfg = Release-Net451|Any CPU
 		{FE4C8D80-C8B9-45B4-9CE3-BB94280BC223}.Release-Net451|x64.ActiveCfg = Release-Net451|Any CPU
 		{FE4C8D80-C8B9-45B4-9CE3-BB94280BC223}.Release-Net451|x86.ActiveCfg = Release-Net451|Any CPU
+		{FE4C8D80-C8B9-45B4-9CE3-BB94280BC223}.Release-Net451-NuGet|Any CPU.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{FE4C8D80-C8B9-45B4-9CE3-BB94280BC223}.Release-Net451-NuGet|Any CPU.Build.0 = Release-Net451-NuGet|Any CPU
+		{FE4C8D80-C8B9-45B4-9CE3-BB94280BC223}.Release-Net451-NuGet|ARM.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{FE4C8D80-C8B9-45B4-9CE3-BB94280BC223}.Release-Net451-NuGet|x64.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{FE4C8D80-C8B9-45B4-9CE3-BB94280BC223}.Release-Net451-NuGet|x86.ActiveCfg = Release-Net451-NuGet|Any CPU
 		{77A638DE-2F2A-46AD-B396-F4EF2C1579B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{77A638DE-2F2A-46AD-B396-F4EF2C1579B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77A638DE-2F2A-46AD-B396-F4EF2C1579B0}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -180,6 +204,11 @@ Global
 		{77A638DE-2F2A-46AD-B396-F4EF2C1579B0}.Release-Net451|ARM.ActiveCfg = Release-Net451|Any CPU
 		{77A638DE-2F2A-46AD-B396-F4EF2C1579B0}.Release-Net451|x64.ActiveCfg = Release-Net451|Any CPU
 		{77A638DE-2F2A-46AD-B396-F4EF2C1579B0}.Release-Net451|x86.ActiveCfg = Release-Net451|Any CPU
+		{77A638DE-2F2A-46AD-B396-F4EF2C1579B0}.Release-Net451-NuGet|Any CPU.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{77A638DE-2F2A-46AD-B396-F4EF2C1579B0}.Release-Net451-NuGet|Any CPU.Build.0 = Release-Net451-NuGet|Any CPU
+		{77A638DE-2F2A-46AD-B396-F4EF2C1579B0}.Release-Net451-NuGet|ARM.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{77A638DE-2F2A-46AD-B396-F4EF2C1579B0}.Release-Net451-NuGet|x64.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{77A638DE-2F2A-46AD-B396-F4EF2C1579B0}.Release-Net451-NuGet|x86.ActiveCfg = Release-Net451-NuGet|Any CPU
 		{B374A4D9-5C51-4DC3-A14A-D7686BB484F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B374A4D9-5C51-4DC3-A14A-D7686BB484F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B374A4D9-5C51-4DC3-A14A-D7686BB484F0}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -200,6 +229,11 @@ Global
 		{B374A4D9-5C51-4DC3-A14A-D7686BB484F0}.Release-Net451|ARM.ActiveCfg = Release-Net451|Any CPU
 		{B374A4D9-5C51-4DC3-A14A-D7686BB484F0}.Release-Net451|x64.ActiveCfg = Release-Net451|Any CPU
 		{B374A4D9-5C51-4DC3-A14A-D7686BB484F0}.Release-Net451|x86.ActiveCfg = Release-Net451|Any CPU
+		{B374A4D9-5C51-4DC3-A14A-D7686BB484F0}.Release-Net451-NuGet|Any CPU.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{B374A4D9-5C51-4DC3-A14A-D7686BB484F0}.Release-Net451-NuGet|Any CPU.Build.0 = Release-Net451-NuGet|Any CPU
+		{B374A4D9-5C51-4DC3-A14A-D7686BB484F0}.Release-Net451-NuGet|ARM.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{B374A4D9-5C51-4DC3-A14A-D7686BB484F0}.Release-Net451-NuGet|x64.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{B374A4D9-5C51-4DC3-A14A-D7686BB484F0}.Release-Net451-NuGet|x86.ActiveCfg = Release-Net451-NuGet|Any CPU
 		{F0D7C5EB-0313-4FA8-A7B0-D517731E12B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F0D7C5EB-0313-4FA8-A7B0-D517731E12B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F0D7C5EB-0313-4FA8-A7B0-D517731E12B0}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -220,6 +254,11 @@ Global
 		{F0D7C5EB-0313-4FA8-A7B0-D517731E12B0}.Release-Net451|ARM.ActiveCfg = Release-Net451|Any CPU
 		{F0D7C5EB-0313-4FA8-A7B0-D517731E12B0}.Release-Net451|x64.ActiveCfg = Release-Net451|Any CPU
 		{F0D7C5EB-0313-4FA8-A7B0-D517731E12B0}.Release-Net451|x86.ActiveCfg = Release-Net451|Any CPU
+		{F0D7C5EB-0313-4FA8-A7B0-D517731E12B0}.Release-Net451-NuGet|Any CPU.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{F0D7C5EB-0313-4FA8-A7B0-D517731E12B0}.Release-Net451-NuGet|Any CPU.Build.0 = Release-Net451-NuGet|Any CPU
+		{F0D7C5EB-0313-4FA8-A7B0-D517731E12B0}.Release-Net451-NuGet|ARM.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{F0D7C5EB-0313-4FA8-A7B0-D517731E12B0}.Release-Net451-NuGet|x64.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{F0D7C5EB-0313-4FA8-A7B0-D517731E12B0}.Release-Net451-NuGet|x86.ActiveCfg = Release-Net451-NuGet|Any CPU
 		{339E53FF-ACDE-4E68-A862-B9E7F10E2DED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{339E53FF-ACDE-4E68-A862-B9E7F10E2DED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{339E53FF-ACDE-4E68-A862-B9E7F10E2DED}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -240,6 +279,11 @@ Global
 		{339E53FF-ACDE-4E68-A862-B9E7F10E2DED}.Release-Net451|ARM.ActiveCfg = Release-Net451|Any CPU
 		{339E53FF-ACDE-4E68-A862-B9E7F10E2DED}.Release-Net451|x64.ActiveCfg = Release-Net451|Any CPU
 		{339E53FF-ACDE-4E68-A862-B9E7F10E2DED}.Release-Net451|x86.ActiveCfg = Release-Net451|Any CPU
+		{339E53FF-ACDE-4E68-A862-B9E7F10E2DED}.Release-Net451-NuGet|Any CPU.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{339E53FF-ACDE-4E68-A862-B9E7F10E2DED}.Release-Net451-NuGet|Any CPU.Build.0 = Release-Net451-NuGet|Any CPU
+		{339E53FF-ACDE-4E68-A862-B9E7F10E2DED}.Release-Net451-NuGet|ARM.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{339E53FF-ACDE-4E68-A862-B9E7F10E2DED}.Release-Net451-NuGet|x64.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{339E53FF-ACDE-4E68-A862-B9E7F10E2DED}.Release-Net451-NuGet|x86.ActiveCfg = Release-Net451-NuGet|Any CPU
 		{97A528CC-56EB-4309-A29F-1D1715B768E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{97A528CC-56EB-4309-A29F-1D1715B768E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97A528CC-56EB-4309-A29F-1D1715B768E6}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -260,6 +304,11 @@ Global
 		{97A528CC-56EB-4309-A29F-1D1715B768E6}.Release-Net451|ARM.ActiveCfg = Release-Net451|Any CPU
 		{97A528CC-56EB-4309-A29F-1D1715B768E6}.Release-Net451|x64.ActiveCfg = Release-Net451|Any CPU
 		{97A528CC-56EB-4309-A29F-1D1715B768E6}.Release-Net451|x86.ActiveCfg = Release-Net451|Any CPU
+		{97A528CC-56EB-4309-A29F-1D1715B768E6}.Release-Net451-NuGet|Any CPU.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{97A528CC-56EB-4309-A29F-1D1715B768E6}.Release-Net451-NuGet|Any CPU.Build.0 = Release-Net451-NuGet|Any CPU
+		{97A528CC-56EB-4309-A29F-1D1715B768E6}.Release-Net451-NuGet|ARM.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{97A528CC-56EB-4309-A29F-1D1715B768E6}.Release-Net451-NuGet|x64.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{97A528CC-56EB-4309-A29F-1D1715B768E6}.Release-Net451-NuGet|x86.ActiveCfg = Release-Net451-NuGet|Any CPU
 		{50414CF7-122F-4A61-8154-62A21009CC07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{50414CF7-122F-4A61-8154-62A21009CC07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50414CF7-122F-4A61-8154-62A21009CC07}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -280,6 +329,11 @@ Global
 		{50414CF7-122F-4A61-8154-62A21009CC07}.Release-Net451|ARM.ActiveCfg = Release-Net451|Any CPU
 		{50414CF7-122F-4A61-8154-62A21009CC07}.Release-Net451|x64.ActiveCfg = Release-Net451|Any CPU
 		{50414CF7-122F-4A61-8154-62A21009CC07}.Release-Net451|x86.ActiveCfg = Release-Net451|Any CPU
+		{50414CF7-122F-4A61-8154-62A21009CC07}.Release-Net451-NuGet|Any CPU.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{50414CF7-122F-4A61-8154-62A21009CC07}.Release-Net451-NuGet|Any CPU.Build.0 = Release-Net451-NuGet|Any CPU
+		{50414CF7-122F-4A61-8154-62A21009CC07}.Release-Net451-NuGet|ARM.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{50414CF7-122F-4A61-8154-62A21009CC07}.Release-Net451-NuGet|x64.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{50414CF7-122F-4A61-8154-62A21009CC07}.Release-Net451-NuGet|x86.ActiveCfg = Release-Net451-NuGet|Any CPU
 		{1F42635B-5AD0-4A52-BC83-B505C1AEE532}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1F42635B-5AD0-4A52-BC83-B505C1AEE532}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F42635B-5AD0-4A52-BC83-B505C1AEE532}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -300,6 +354,11 @@ Global
 		{1F42635B-5AD0-4A52-BC83-B505C1AEE532}.Release-Net451|ARM.ActiveCfg = Release-Net451|Any CPU
 		{1F42635B-5AD0-4A52-BC83-B505C1AEE532}.Release-Net451|x64.ActiveCfg = Release-Net451|Any CPU
 		{1F42635B-5AD0-4A52-BC83-B505C1AEE532}.Release-Net451|x86.ActiveCfg = Release-Net451|Any CPU
+		{1F42635B-5AD0-4A52-BC83-B505C1AEE532}.Release-Net451-NuGet|Any CPU.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{1F42635B-5AD0-4A52-BC83-B505C1AEE532}.Release-Net451-NuGet|Any CPU.Build.0 = Release-Net451-NuGet|Any CPU
+		{1F42635B-5AD0-4A52-BC83-B505C1AEE532}.Release-Net451-NuGet|ARM.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{1F42635B-5AD0-4A52-BC83-B505C1AEE532}.Release-Net451-NuGet|x64.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{1F42635B-5AD0-4A52-BC83-B505C1AEE532}.Release-Net451-NuGet|x86.ActiveCfg = Release-Net451-NuGet|Any CPU
 		{D485758D-7F39-496F-96AE-CF89A158FDD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D485758D-7F39-496F-96AE-CF89A158FDD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D485758D-7F39-496F-96AE-CF89A158FDD5}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -320,6 +379,11 @@ Global
 		{D485758D-7F39-496F-96AE-CF89A158FDD5}.Release-Net451|ARM.ActiveCfg = Release-Net451|Any CPU
 		{D485758D-7F39-496F-96AE-CF89A158FDD5}.Release-Net451|x64.ActiveCfg = Release-Net451|Any CPU
 		{D485758D-7F39-496F-96AE-CF89A158FDD5}.Release-Net451|x86.ActiveCfg = Release-Net451|Any CPU
+		{D485758D-7F39-496F-96AE-CF89A158FDD5}.Release-Net451-NuGet|Any CPU.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{D485758D-7F39-496F-96AE-CF89A158FDD5}.Release-Net451-NuGet|Any CPU.Build.0 = Release-Net451-NuGet|Any CPU
+		{D485758D-7F39-496F-96AE-CF89A158FDD5}.Release-Net451-NuGet|ARM.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{D485758D-7F39-496F-96AE-CF89A158FDD5}.Release-Net451-NuGet|x64.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{D485758D-7F39-496F-96AE-CF89A158FDD5}.Release-Net451-NuGet|x86.ActiveCfg = Release-Net451-NuGet|Any CPU
 		{C26421E6-2236-4453-BA5F-249C8E7C2CA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C26421E6-2236-4453-BA5F-249C8E7C2CA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C26421E6-2236-4453-BA5F-249C8E7C2CA9}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -340,6 +404,11 @@ Global
 		{C26421E6-2236-4453-BA5F-249C8E7C2CA9}.Release-Net451|ARM.ActiveCfg = Release-Net451|Any CPU
 		{C26421E6-2236-4453-BA5F-249C8E7C2CA9}.Release-Net451|x64.ActiveCfg = Release-Net451|Any CPU
 		{C26421E6-2236-4453-BA5F-249C8E7C2CA9}.Release-Net451|x86.ActiveCfg = Release-Net451|Any CPU
+		{C26421E6-2236-4453-BA5F-249C8E7C2CA9}.Release-Net451-NuGet|Any CPU.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{C26421E6-2236-4453-BA5F-249C8E7C2CA9}.Release-Net451-NuGet|Any CPU.Build.0 = Release-Net451-NuGet|Any CPU
+		{C26421E6-2236-4453-BA5F-249C8E7C2CA9}.Release-Net451-NuGet|ARM.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{C26421E6-2236-4453-BA5F-249C8E7C2CA9}.Release-Net451-NuGet|x64.ActiveCfg = Release-Net451-NuGet|Any CPU
+		{C26421E6-2236-4453-BA5F-249C8E7C2CA9}.Release-Net451-NuGet|x86.ActiveCfg = Release-Net451-NuGet|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
