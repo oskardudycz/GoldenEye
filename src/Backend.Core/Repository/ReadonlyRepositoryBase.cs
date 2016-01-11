@@ -1,3 +1,4 @@
+using System.Data.Entity;
 using System.Linq;
 using GoldenEye.Backend.Core.Context;
 using GoldenEye.Shared.Core;
@@ -18,15 +19,15 @@ namespace GoldenEye.Backend.Core.Repository
             Queryable = queryable;
         }
 
-        public TEntity GetById(object id)
+        public virtual TEntity GetById(object id, bool withNoTracking = true)
         {
-            return Queryable.SingleOrDefault(r => r.Id == id);
+            return (withNoTracking ? Queryable.AsNoTracking() : Queryable).SingleOrDefault(r => r.Id == id);
 
         }
 
-        public IQueryable<TEntity> GetAll()
+        public virtual IQueryable<TEntity> GetAll(bool withNoTracking = true)
         {
-            return Queryable;
+            return withNoTracking ? Queryable.AsNoTracking() : Queryable;
         }
 
         protected virtual void Dispose(bool disposing)
@@ -42,7 +43,7 @@ namespace GoldenEye.Backend.Core.Repository
             Disposed = true;
         }
 
-        public void Dispose()
+        public virtual void Dispose()
         {
             Dispose(true);
         }

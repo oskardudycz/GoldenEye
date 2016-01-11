@@ -76,7 +76,7 @@ namespace GoldenEye.Backend.Core.Tests
 
             var repository = new Mock<ITaskRepository>();
 
-            repository.Setup(x => x.GetById(It.IsAny<int>()))
+            repository.Setup(x => x.GetById(It.IsAny<int>(), It.IsAny<bool>()))
                 .Returns((int i) => tasklist.Single(x => x.Id == i));
 
             var testRepository = repository.Object;

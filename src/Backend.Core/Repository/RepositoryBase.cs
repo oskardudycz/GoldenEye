@@ -9,7 +9,7 @@ namespace GoldenEye.Backend.Core.Repository
     {
         protected readonly IDbSet<TEntity> DbSet;
         
-        protected RepositoryBase(IDataContext context, IDbSet<TEntity> dbSet) : base(context, dbSet.AsNoTracking())
+        protected RepositoryBase(IDataContext context, IDbSet<TEntity> dbSet) : base(context, dbSet)
         {
             DbSet = dbSet;
         }
@@ -19,7 +19,7 @@ namespace GoldenEye.Backend.Core.Repository
             return DbSet.Add(entity);
         }
 
-        public IQueryable<TEntity> AddAll(IQueryable<TEntity> entities)
+        public virtual IQueryable<TEntity> AddAll(IQueryable<TEntity> entities)
         {
             return entities.Select(entity => DbSet.Add(entity)).AsQueryable();
         }
@@ -34,17 +34,17 @@ namespace GoldenEye.Backend.Core.Repository
             return DbSet.Attach(entity);
         }
 
-        public int SaveChanges()
+        public virtual int SaveChanges()
         {
             return Context.SaveChanges();
         }
 
-        public TEntity Delete(TEntity entity)
+        public virtual TEntity Delete(TEntity entity)
         {
             return DbSet.Remove(entity);
         }
 
-        public bool Delete(int id)
+        public virtual bool Delete(int id)
         {
             return DbSet.Remove(GetById(id)) != null;
         }

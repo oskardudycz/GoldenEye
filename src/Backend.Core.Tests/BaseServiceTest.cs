@@ -42,14 +42,14 @@ namespace GoldenEye.Backend.Core.Tests
                 .Build();
             objects[1].Id = id;
 
-            repository.Setup(x => x.GetById(id)).Returns(objects[1]);
+            repository.Setup(x => x.GetById(id, It.IsAny<bool>())).Returns(objects[1]);
 
             var service = new TaskRestService(repository.Object);
 
             var task = (service.Get(id)).Result;
 
             Mapper.AssertConfigurationIsValid();
-            repository.Verify(x => x.GetById(It.IsAny<Int32>()), Times.Exactly(1));
+            repository.Verify(x => x.GetById(It.IsAny<Int32>(), It.IsAny<bool>()), Times.Exactly(1));
             Assert.IsNotNull(task);
             Assert.AreEqual("repair", task.Name);
             Assert.AreEqual(1, task.Number);
