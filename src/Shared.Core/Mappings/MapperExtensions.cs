@@ -1,27 +1,36 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using AutoMapper;
 
 namespace GoldenEye.Shared.Core.Mappings
 {
     public static class MapperExtensions
     {
-        public static IMappingExpression<Source, Destination>
-            IgnoreNonExistingProperties<Source, Destination>(this IMappingExpression<Source, Destination> expression)
-            where Source : class
-            where Destination : class
+        public static IMappingExpression IgnoreNonExistingProperties(
+          this IMappingExpression expression, Type sourceType, Type destinationType)
         {
-            var sourceProperties = (typeof(Source)).GetProperties().ToList();
-            var destinationProperties = (typeof(Destination)).GetProperties().ToList();
+            var existingMaps = Mapper.GetAllTypeMaps().First(x => x.SourceType == sourceType
+                                                                  && x.DestinationType == destinationType);
 
-
-            foreach (var property in destinationProperties)
+            foreach (var property in existingMaps.GetUnmappedPropertyNames())
             {
-                if (!sourceProperties.Exists(x => (x.Name == property.Name && x.PropertyType == property.PropertyType)))
-                {
-                    expression = expression.ForMember(property.Name, opt => opt.Ignore());
-                }
+                expression.ForMember(property, opt => opt.Ignore());
             }
+            return expression;
+        }
 
+        public static IMappingExpression<TSource, TDestination> IgnoreNonExistingProperties<TSource, TDestination>(
+          this IMappingExpression<TSource, TDestination> expression)
+        {
+            var sourceType = typeof(TSource);
+            var destinationType = typeof(TDestination);
+            var existingMaps = Mapper.GetAllTypeMaps().First(x => x.SourceType == sourceType
+                                                                  && x.DestinationType == destinationType);
+
+            foreach (var property in existingMaps.GetUnmappedPropertyNames())
+            {
+                expression.ForMember(property, opt => opt.Ignore());
+            }
             return expression;
         }
 
