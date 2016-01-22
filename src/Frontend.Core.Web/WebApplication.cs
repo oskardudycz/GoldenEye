@@ -1,12 +1,18 @@
-﻿using System.Web;
+﻿using System;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
+using System.Web.Http.ExceptionHandling;
+using System.Web.Http.Tracing;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
 namespace GoldenEye.Frontend.Core.Web
 {
-    public abstract class WebApplication : HttpApplication
+    public abstract class WebApplication : HttpApplication, IExceptionLogger
     {
         protected void Application_Start()
         {
@@ -21,7 +27,7 @@ namespace GoldenEye.Frontend.Core.Web
         protected virtual void OnApplicationStart()
         {
             OnAreaRegistration();
-            OnWebApiConfig();
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             OnFilterConfig();
             OnRouteConfig();
             OnBundleConfig();
@@ -32,9 +38,9 @@ namespace GoldenEye.Frontend.Core.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
 
-        private static void OnWebApiConfig()
+        private static void OnWebApiConfig(HttpConfiguration config)
         {
-            GlobalConfiguration.Configure(WebApiConfig.Register);
+            WebApiConfig.Register(config);
         }
 
         private static void OnFilterConfig()
@@ -54,8 +60,18 @@ namespace GoldenEye.Frontend.Core.Web
         protected virtual void OnApplicationError()
         {
             var lastException = Server.GetLastError();
+            OnUnandledExceptionCaught(lastException);
+        }
+
+        protected virtual void OnUnandledExceptionCaught(Exception exception)
+        {
             var logger = NLog.LogManager.GetCurrentClassLogger();
-            logger.Fatal(lastException);
+            logger.Fatal(exception);
+        }
+
+        public Task LogAsync(ExceptionLoggerContext context, CancellationToken cancellationToken)
+        {
+            return Task.Run(()=>OnUnandledExceptionCaught(context.Exception), cancellationToken);
         }
     }
 }
