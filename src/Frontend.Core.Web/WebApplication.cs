@@ -27,23 +27,24 @@ namespace GoldenEye.Frontend.Core.Web
         protected virtual void OnApplicationStart()
         {
             OnAreaRegistration();
-            GlobalConfiguration.Configure(WebApiConfig.Register);
+            GlobalConfiguration.Configure(OnWebApiConfig);
             OnFilterConfig();
             OnRouteConfig();
             OnBundleConfig();
         }
 
-        private static void OnRouteConfig()
+        protected virtual void OnRouteConfig()
         {
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
 
-        private static void OnWebApiConfig(HttpConfiguration config)
+        protected virtual void OnWebApiConfig(HttpConfiguration config)
         {
             WebApiConfig.Register(config);
+            config.Services.Add(typeof(IExceptionLogger), this);
         }
 
-        private static void OnFilterConfig()
+        protected static void OnFilterConfig()
         {
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
         }
