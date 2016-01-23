@@ -104,7 +104,6 @@
     <Compile Include="DataContext\Base\UserDataContextBase.cs" />
     <Compile Include="DataContext\IUserDataContext.cs" />
     <Compile Include="DataContext\UserDataContext.cs" />
-    <Compile Include="DataContext\UserDataContextProvider.cs" />
     <Compile Include="Managers\IUserManager.cs" />
     <Compile Include="Managers\UserManager.cs" />
     <Compile Include="Mappings\MappingDefinition.cs" />

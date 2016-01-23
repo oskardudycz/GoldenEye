@@ -17,9 +17,14 @@ namespace GoldenEye.Frontend.Security.Web
 {
     public class OwinBoostrapper : OwinBoostrapperBase<User>
     {
+        protected override IUserDataContext<User> CreateUserDataContext(IdentityFactoryOptions<IUserDataContext<User>> options, 
+            IOwinContext context)
+        {
+            return new UserDataContext();
+        }
     }
 
-    public class OwinBoostrapperBase<TUser>
+    public abstract class OwinBoostrapperBase<TUser>
         where TUser : IdentityUser<int, UserLogin, UserRole, UserClaim>, Backend.Security.Model.IUser<int>, new()
     {
         public void Configuration(IAppBuilder app)
@@ -72,10 +77,12 @@ namespace GoldenEye.Frontend.Security.Web
         protected virtual void IniUserDataProviders(IAppBuilder app)
         {
             // Configure the db context and user manager to use a single instance per request
-            app.CreatePerOwinContext(UserDataContextProvider.Create);
-            app.CreatePerOwinContext(UserDataContextProvider.Create);
+            app.CreatePerOwinContext<IUserDataContext<TUser>>(CreateUserDataContext);
             app.CreatePerOwinContext<IUserManager<TUser>>(CreateUserManager);
         }
+
+        protected abstract IUserDataContext<TUser> CreateUserDataContext(IdentityFactoryOptions<IUserDataContext<TUser>> options,
+            IOwinContext context);
 
         protected virtual void InitAuthentication(IAppBuilder app)
         {

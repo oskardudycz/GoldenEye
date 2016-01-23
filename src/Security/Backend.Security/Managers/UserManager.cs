@@ -1,22 +1,11 @@
 ﻿using System.Security.Claims;
 using System.Threading.Tasks;
-using GoldenEye.Backend.Security.Model;
 using GoldenEye.Shared.Core.IOC;
 using GoldenEye.Shared.Core.Services;
 using Microsoft.AspNet.Identity;
 
 namespace GoldenEye.Backend.Security.Managers
 {
-    /// <summary>
-    /// Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
-    /// </summary>
-    public class UserManager : UserManager<User>
-    {
-        public UserManager(IUserStore<User, int> store)
-            : base(store)
-        {
-        }
-    }
     public class UserManager<T> : UserManager<T, int>, IUserManager<T> where T : class, Model.IUser<int>, new()
     {
         public UserManager(IUserStore<T, int> store)
