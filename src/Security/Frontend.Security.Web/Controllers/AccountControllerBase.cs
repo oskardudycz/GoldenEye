@@ -305,7 +305,7 @@ namespace GoldenEye.Frontend.Security.Web.Controllers
                     {
                         provider = description.AuthenticationType,
                         response_type = "token",
-                        client_id = OwinBoostrapper.PublicClientId,
+                        client_id = OwinInfo.PublicClientId,
                         redirect_uri = new Uri(Request.RequestUri, returnUrl).AbsoluteUri,
                         state = state
                     }),
