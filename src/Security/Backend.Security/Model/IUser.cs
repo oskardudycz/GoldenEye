@@ -3,11 +3,6 @@ using System.Collections.Generic;
 
 namespace GoldenEye.Backend.Security.Model
 {
-    public interface IUser : IUser<int>
-    {
-        
-    }
-
     public interface IUser<out TKey> : Microsoft.AspNet.Identity.IUser<TKey>
     {
         int ExternalUserId { get; set; }
