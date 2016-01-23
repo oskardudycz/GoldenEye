@@ -25,7 +25,7 @@ namespace GoldenEye.Frontend.Security.Web
         public virtual void ConfigureAuth(IAppBuilder app)
         {
             // Configure the db context and user manager to use a single instance per request
-            app.CreatePerOwinContext(UserDataContext.Create);
+            app.CreatePerOwinContext(UserDataContextProvider.Create);
             app.CreatePerOwinContext<UserManager>(UserManager.Create);
 
             // Enable the application to use a cookie to store information for the signed in user

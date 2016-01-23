@@ -16,10 +16,5 @@ namespace GoldenEye.Backend.Security.DataContext
         {
 
         }
-
-        public static UserDataContext Create()
-        {
-            return new UserDataContext();
-        }
     }
 }

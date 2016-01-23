@@ -100,6 +100,7 @@
     <Compile Include="DataContext\Base\UserDataContextBase.cs" />
     <Compile Include="DataContext\IUserDataContext.cs" />
     <Compile Include="DataContext\UserDataContext.cs" />
+    <Compile Include="DataContext\UserDataContextProvider.cs" />
     <Compile Include="Model\Role.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UserClaim.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Service\IUserRestService.cs" />
     <Compile Include="Service\UserRestService.cs" />
+    <Compile Include="Stores\IUserStore.cs" />
     <Compile Include="Stores\RoleStore.cs" />
     <Compile Include="Stores\UserStore.cs" />
   </ItemGroup>
