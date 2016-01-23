@@ -20,7 +20,7 @@ namespace GoldenEye.Frontend.Security.Web
 
         public static UserManager Create(IdentityFactoryOptions<UserManager> options, IOwinContext context)
         {
-            var manager = new UserManager(new UserStore(context.Get<UserDataContext>()));
+            var manager = new UserManager(new UserStore(context.Get<IUserDataContext<User>>()));
             // Configure validation logic for usernames
             manager.UserValidator = new UserValidator<User, int>(manager)
             {

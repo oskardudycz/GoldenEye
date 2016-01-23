@@ -6,7 +6,7 @@ namespace GoldenEye.Backend.Security.Repositories
 {
     public class UserRepository : RepositoryBase<User>, IUserRepository
     {
-        public UserRepository(IUserDataContext context) : base(context, context.Users)
+        public UserRepository(IUserDataContext<User> context) : base(context, context.Users)
         {
         }
     }
