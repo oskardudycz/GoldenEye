@@ -11,7 +11,6 @@ using GoldenEye.Backend.Security.Model;
 using GoldenEye.Frontend.Security.Web.Providers;
 using GoldenEye.Frontend.Security.Web.Results;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;

@@ -1,6 +1,5 @@
 ﻿using System;
 using GoldenEye.Backend.Security.DataContext;
-using GoldenEye.Backend.Security.Model;
 using GoldenEye.Frontend.Security.Web.Providers;
 using GoldenEye.Shared.Core.Configuration;
 using Microsoft.AspNet.Identity;
@@ -12,7 +11,8 @@ using Owin;
 
 namespace GoldenEye.Frontend.Security.Web.Base
 {
-    public class OwinBoostrapperBase
+    public class OwinBoostrapperBase<TUser, TUserManager> where TUserManager 
+        : UserManager<TUser, int>, IUserManager<TUser> where TUser : class, IUser<int>, new()
     {
         public void Configuration(IAppBuilder app)
         {
@@ -45,11 +45,11 @@ namespace GoldenEye.Frontend.Security.Web.Base
                             ctx.Response.Redirect(ctx.RedirectUri);
                         }
                     },
-                    OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<UserManager, User, int>(
-                        validateInterval: TimeSpan.FromMinutes(30),
-                        regenerateIdentityCallback: (manager, user) =>
-                            user.GenerateUserIdentityAsync(manager, DefaultAuthenticationTypes.ApplicationCookie),
-                        getUserIdCallback: (id) => (id.GetUserId<int>()))
+                    //OnValidateIdentity = SecurityStampValidator.OnValidateIdentity <TUserManager, TUser, int>(
+                    //    validateInterval: TimeSpan.FromMinutes(30),
+                    //    regenerateIdentityCallback: (manager, user) =>
+                    //        user.GenerateUserIdentityAsync(manager, DefaultAuthenticationTypes.ApplicationCookie),
+                    //    getUserIdCallback: (id) => (id.GetUserId<int>()))
                 }
             });
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);

@@ -1,10 +1,10 @@
 ﻿using GoldenEye.Backend.Core.Context;
+using GoldenEye.Backend.Security.DataContext.Base;
 using GoldenEye.Backend.Security.Model;
-using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace GoldenEye.Backend.Security.DataContext
 {
-    public class UserDataContext : UserDataContext<User>, IUserDataContext
+    public class UserDataContext : UserDataContextBase<User>, IUserDataContext
     {
         public UserDataContext()
         {
@@ -20,27 +20,6 @@ namespace GoldenEye.Backend.Security.DataContext
         public static UserDataContext Create()
         {
             return new UserDataContext();
-        }
-    }
-
-    public abstract class UserDataContext<T> : IdentityDbContext<T, Role, int, UserLogin, UserRole, UserClaim>, IUserDataContext<T> where T : IdentityUser<int, UserLogin, UserRole, UserClaim>
-    {
-        protected UserDataContext()
-            : base("DBConnectionString")
-        {
-
-        }
-
-        protected UserDataContext(string connectionString)
-            : base(connectionString)
-        {
-
-        }
-
-        protected UserDataContext(IConnectionProvider connectionProvider)
-            : base(connectionProvider.Open(), false)
-        {
-
         }
     }
 }

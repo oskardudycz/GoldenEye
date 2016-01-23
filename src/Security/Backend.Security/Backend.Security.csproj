@@ -97,6 +97,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataContext\Base\UserDataContextBase.cs" />
     <Compile Include="DataContext\IUserDataContext.cs" />
     <Compile Include="DataContext\UserDataContext.cs" />
     <Compile Include="Model\Role.cs" />

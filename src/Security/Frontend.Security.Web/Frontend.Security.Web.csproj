@@ -155,8 +155,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\Base\IUserManager.cs" />
     <Compile Include="App_Start\Base\OwinBoostrapperBase.cs" />
-    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\Base\UserManagerBase.cs" />
+    <Compile Include="App_Start\UserManager.cs" />
     <Compile Include="App_Start\OwinBoostrapper.cs" />
     <Compile Include="Controllers\AccountControllerBase.cs" />
     <Compile Include="Controllers\UserControllerBase.cs" />

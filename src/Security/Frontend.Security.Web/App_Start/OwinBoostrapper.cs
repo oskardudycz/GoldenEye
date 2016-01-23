@@ -19,8 +19,6 @@ namespace GoldenEye.Frontend.Security.Web
             ConfigureAuth(app);
         }
 
-        public static OAuthAuthorizationServerOptions OAuthOptions { get; private set; }
-
         public static string PublicClientId { get; private set; }
 
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
@@ -56,7 +54,7 @@ namespace GoldenEye.Frontend.Security.Web
 
             // Configure the application for OAuth based flow
             PublicClientId = "self";
-            OAuthOptions = new OAuthAuthorizationServerOptions
+            var oAuthOptions = new OAuthAuthorizationServerOptions
             {
                 TokenEndpointPath = new PathString("/Token"),
                 Provider = new ApplicationOAuthProvider(PublicClientId),
@@ -66,12 +64,12 @@ namespace GoldenEye.Frontend.Security.Web
 
 
             if (ConfigHelper.IsInTestMode)
-                OAuthOptions.AllowInsecureHttp = true;
+                oAuthOptions.AllowInsecureHttp = true;
 
 
             // Enable the application to use bearer tokens to authenticate users
 
-            app.UseOAuthBearerTokens(OAuthOptions);
+            app.UseOAuthBearerTokens(oAuthOptions);
 
             // Uncomment the following lines to enable logging in with third party login providers
             //app.UseMicrosoftAccountAuthentication(
