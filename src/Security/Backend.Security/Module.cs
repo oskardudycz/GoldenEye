@@ -11,7 +11,7 @@ namespace GoldenEye.Backend.Security
     {
         public override void Load()
         {
-            Kernel.Bind<IdentityDbContext<User>>().To<UserDataContext>();
+            Kernel.Bind<IdentityDbContext<User, Role, int, UserLogin, UserRole, UserClaim>>().To<UserDataContext>();
         }
     }
 }

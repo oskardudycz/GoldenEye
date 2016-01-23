@@ -56,15 +56,15 @@
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-Net451-NuGet|AnyCPU'">
-      <OutputPath>bin\Release-Net451\</OutputPath>
-      <DefineConstants>TRACE</DefineConstants>
-      <Optimize>true</Optimize>
-      <DebugType>pdbonly</DebugType>
-      <PlatformTarget>AnyCPU</PlatformTarget>
-      <ErrorReport>prompt</ErrorReport>
-      <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-      <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
-      <BuildPackage>true</BuildPackage>
+    <OutputPath>bin\Release-Net451\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <BuildPackage>true</BuildPackage>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -99,13 +99,19 @@
   <ItemGroup>
     <Compile Include="DataContext\IUserDataContext.cs" />
     <Compile Include="DataContext\UserDataContext.cs" />
+    <Compile Include="Model\Role.cs" />
     <Compile Include="Model\User.cs" />
+    <Compile Include="Model\UserClaim.cs" />
+    <Compile Include="Model\UserLogin.cs" />
+    <Compile Include="Model\UserRole.cs" />
     <Compile Include="Module.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Service\IUserRestService.cs" />
     <Compile Include="Service\UserRestService.cs" />
+    <Compile Include="Stores\RoleStore.cs" />
+    <Compile Include="Stores\UserStore.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

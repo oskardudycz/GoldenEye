@@ -56,15 +56,15 @@
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-Net451-NuGet|AnyCPU'">
-      <OutputPath>bin\Release-Net451\</OutputPath>
-      <DefineConstants>TRACE</DefineConstants>
-      <Optimize>true</Optimize>
-      <DebugType>pdbonly</DebugType>
-      <PlatformTarget>AnyCPU</PlatformTarget>
-      <ErrorReport>prompt</ErrorReport>
-      <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-      <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
-      <BuildPackage>true</BuildPackage>
+    <OutputPath>bin\Release-Net451\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <BuildPackage>true</BuildPackage>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -155,6 +155,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\Base\OwinBoostrapperBase.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\OwinBoostrapper.cs" />
     <Compile Include="Controllers\AccountControllerBase.cs" />
