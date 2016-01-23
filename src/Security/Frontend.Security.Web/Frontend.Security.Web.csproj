@@ -159,10 +159,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\OwinBoostrapperBase.cs" />
-    <Compile Include="App_Start\OwinInfo.cs" />
     <Compile Include="App_Start\OwinBoostrapper.cs" />
-    <Compile Include="Providers\UserManagerProvider.cs" />
+    <Compile Include="App_Start\OwinInfo.cs" />
+    <Compile Include="Extensions\OwinRequestExtensions.cs" />
     <Compile Include="Controllers\AccountControllerBase.cs" />
     <Compile Include="Controllers\UserControllerBase.cs" />
     <Compile Include="Module.cs" />

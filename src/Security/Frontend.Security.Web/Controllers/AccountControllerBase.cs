@@ -261,18 +261,18 @@ namespace GoldenEye.Frontend.Security.Web.Controllers
             var user = await UserManager.FindAsync(new UserLoginInfo(externalLogin.LoginProvider,
                 externalLogin.ProviderKey));
 
-            bool hasRegistered = user != null;
+            var hasRegistered = user != null;
 
             if (hasRegistered)
             {
                 Authentication.SignOut(DefaultAuthenticationTypes.ExternalCookie);
 
-                ClaimsIdentity oAuthIdentity = await UserManager.GenerateUserIdentityAsync(user,
+                var oAuthIdentity = await UserManager.GenerateUserIdentityAsync(user,
                    OAuthDefaults.AuthenticationType);
-                ClaimsIdentity cookieIdentity = await UserManager.GenerateUserIdentityAsync(user,
+                var cookieIdentity = await UserManager.GenerateUserIdentityAsync(user,
                     CookieAuthenticationDefaults.AuthenticationType);
 
-                AuthenticationProperties properties = ApplicationOAuthProvider<TUser>.CreateProperties(user.UserName);
+                var properties = ApplicationOAuthProvider<TUser>.CreateProperties(user.UserName);
                 Authentication.SignIn(properties, oAuthIdentity, cookieIdentity);
             }
             else

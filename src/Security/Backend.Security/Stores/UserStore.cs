@@ -14,9 +14,9 @@ namespace GoldenEye.Backend.Security.Stores
     }
 
     public class UserStore<TUser> : UserStore<TUser, Role, int, UserLogin, UserRole, UserClaim>, IUserStore<TUser> 
-        where TUser : IdentityUser<int, UserLogin, UserRole, UserClaim>
+        where TUser : IdentityUser<int, UserLogin, UserRole, UserClaim>, IUser<int>
     {
-        protected UserStore(IUserDataContext<TUser> context)
+        public UserStore(IUserDataContext<TUser> context)
             : base((DbContext) context)
         {
         }
