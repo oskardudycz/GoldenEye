@@ -4,8 +4,12 @@ using GoldenEye.Backend.Security.Model;
 
 namespace GoldenEye.Backend.Security.DataContext
 {
-    public interface IUserDataContext : IDataContext
+    public interface IUserDataContext : IUserDataContext<User>
     {
-        IDbSet<User> Users { get; set; }
+    }
+
+    public interface IUserDataContext<T> : IDataContext where T : class
+    {
+        IDbSet<T> Users { get; set; }
     }
 }
