@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Security.Claims;
+using System.Threading.Tasks;
 using GoldenEye.Shared.Core.DTOs;
 using GoldenEye.Shared.Core.IOC;
 using GoldenEye.Shared.Core.Services;
@@ -13,6 +14,14 @@ namespace GoldenEye.Frontend.Security.Web.Base
         protected UserManagerBase(IUserStore<T, int> store)
             : base(store)
         {
+        }
+
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(T user, string authenticationType)
+        {
+            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
+            var userIdentity = await CreateIdentityAsync(user, authenticationType);
+            // Add  user claims here
+            return userIdentity;
         }
 
         /// <summary>

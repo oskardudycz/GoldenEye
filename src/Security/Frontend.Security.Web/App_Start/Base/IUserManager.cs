@@ -7,13 +7,16 @@ using Microsoft.AspNet.Identity;
 
 namespace GoldenEye.Frontend.Security.Web.Base
 {
-    public interface IUserManager<TUser> : IUserManager<TUser, int> where TUser : class, IUser<int>, new()
+    public interface IUserManager<TUser> : IUserManager<TUser, int> 
+        where TUser : class, IUser<int>, new()
     {
         
     }
 
-    public interface IUserManager<TUser, TKey> where TUser : class, IUser<TKey>, new() where TKey : IEquatable<TKey>
+    public interface IUserManager<TUser, TKey>: IDisposable 
+        where TUser : class, IUser<TKey>, new() where TKey : IEquatable<TKey>
     {
+        Task<ClaimsIdentity> GenerateUserIdentityAsync(TUser user, string authenticationType);
         /// <summary>
         /// Finds existing username with password, if not exists checks if external authorization service 
         /// allows to authorize. If yes, creates new user.
@@ -23,7 +26,6 @@ namespace GoldenEye.Frontend.Security.Web.Base
         /// <returns></returns>
         Task<TUser> FindAsync(string userName, string password);
 
-        void Dispose();
         Task<ClaimsIdentity> CreateIdentityAsync(TUser user, string authenticationType);
         Task<IdentityResult> CreateAsync(TUser user);
         Task<IdentityResult> UpdateAsync(TUser user);

@@ -1,5 +1,6 @@
 ﻿using System;
 using GoldenEye.Backend.Security.DataContext;
+using GoldenEye.Backend.Security.Model;
 using GoldenEye.Frontend.Security.Web.Providers;
 using GoldenEye.Shared.Core.Configuration;
 using Microsoft.AspNet.Identity;
@@ -28,7 +29,7 @@ namespace GoldenEye.Frontend.Security.Web.Base
         {
             // Configure the db context and user manager to use a single instance per request
             app.CreatePerOwinContext(UserDataContextProvider.Create);
-            app.CreatePerOwinContext<UserManager>(UserManager.Create);
+            app.CreatePerOwinContext<IUserManager<TUser>>(UserManagerProvider.Create);
 
             // Enable the application to use a cookie to store information for the signed in user
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider

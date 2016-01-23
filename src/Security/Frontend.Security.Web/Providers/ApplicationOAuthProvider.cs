@@ -36,9 +36,9 @@ namespace GoldenEye.Frontend.Security.Web.Providers
                 return;
             }
 
-            ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(userManager,
+            ClaimsIdentity oAuthIdentity = await userManager.GenerateUserIdentityAsync(user,
                OAuthDefaults.AuthenticationType);
-            ClaimsIdentity cookiesIdentity = await user.GenerateUserIdentityAsync(userManager,
+            ClaimsIdentity cookiesIdentity = await userManager.GenerateUserIdentityAsync(user,
                 CookieAuthenticationDefaults.AuthenticationType);
 
             AuthenticationProperties properties = CreateProperties(user.UserName);

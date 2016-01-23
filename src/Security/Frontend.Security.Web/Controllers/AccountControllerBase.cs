@@ -258,9 +258,9 @@ namespace GoldenEye.Frontend.Security.Web.Controllers
             {
                 Authentication.SignOut(DefaultAuthenticationTypes.ExternalCookie);
 
-                ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
+                ClaimsIdentity oAuthIdentity = await UserManager.GenerateUserIdentityAsync(user,
                    OAuthDefaults.AuthenticationType);
-                ClaimsIdentity cookieIdentity = await user.GenerateUserIdentityAsync(UserManager,
+                ClaimsIdentity cookieIdentity = await UserManager.GenerateUserIdentityAsync(user,
                     CookieAuthenticationDefaults.AuthenticationType);
 
                 AuthenticationProperties properties = ApplicationOAuthProvider.CreateProperties(user.UserName);

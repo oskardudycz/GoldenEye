@@ -160,6 +160,7 @@
     <Compile Include="App_Start\Base\UserManagerBase.cs" />
     <Compile Include="App_Start\UserManager.cs" />
     <Compile Include="App_Start\OwinBoostrapper.cs" />
+    <Compile Include="App_Start\UserManagerProvider.cs" />
     <Compile Include="Controllers\AccountControllerBase.cs" />
     <Compile Include="Controllers\UserControllerBase.cs" />
     <Compile Include="Module.cs" />

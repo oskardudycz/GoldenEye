@@ -1,6 +1,7 @@
 ﻿using System;
 using GoldenEye.Backend.Security.DataContext;
 using GoldenEye.Backend.Security.Model;
+using GoldenEye.Frontend.Security.Web.Base;
 using GoldenEye.Frontend.Security.Web.Providers;
 using GoldenEye.Shared.Core.Configuration;
 using Microsoft.AspNet.Identity;
@@ -26,7 +27,7 @@ namespace GoldenEye.Frontend.Security.Web
         {
             // Configure the db context and user manager to use a single instance per request
             app.CreatePerOwinContext<IUserDataContext<User>>(UserDataContextProvider.Create);
-            app.CreatePerOwinContext<UserManager>(UserManager.Create);
+            app.CreatePerOwinContext<IUserManager<User>>(UserManagerProvider.Create);
 
             // Enable the application to use a cookie to store information for the signed in user
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider
@@ -46,7 +47,7 @@ namespace GoldenEye.Frontend.Security.Web
                     OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<UserManager, User, int>(
                         validateInterval: TimeSpan.FromMinutes(30),
                         regenerateIdentityCallback: (manager, user) =>
-                            user.GenerateUserIdentityAsync(manager, DefaultAuthenticationTypes.ApplicationCookie),
+                            manager.GenerateUserIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie),
                         getUserIdCallback: (id) => (id.GetUserId<int>()))
                 }
             });
