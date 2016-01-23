@@ -67,6 +67,10 @@
     <BuildPackage>true</BuildPackage>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -101,6 +105,10 @@
     <Compile Include="DataContext\IUserDataContext.cs" />
     <Compile Include="DataContext\UserDataContext.cs" />
     <Compile Include="DataContext\UserDataContextProvider.cs" />
+    <Compile Include="Managers\IUserManager.cs" />
+    <Compile Include="Managers\UserManager.cs" />
+    <Compile Include="Mappings\MappingDefinition.cs" />
+    <Compile Include="Model\IUser.cs" />
     <Compile Include="Model\Role.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UserClaim.cs" />

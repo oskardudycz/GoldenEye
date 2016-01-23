@@ -6,6 +6,8 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using AutoMapper;
+using GoldenEye.Backend.Security.Managers;
 using GoldenEye.Frontend.Core.Web.Models;
 using GoldenEye.Backend.Security.Model;
 using GoldenEye.Frontend.Security.Web.Providers;
@@ -20,27 +22,34 @@ namespace GoldenEye.Frontend.Security.Web.Controllers
 {
     [Authorize]
     [RoutePrefix("api/Account")]
-    public class AccountControllerBase : ApiController
+    public class AccountControllerBase : AccountControllerBase<User>
+    {
+        
+    }
+
+    [Authorize]
+    [RoutePrefix("api/Account")]
+    public class AccountControllerBase<TUser> : ApiController where TUser : class, Backend.Security.Model.IUser<int>, new()
     {
         private const string LocalLoginProvider = "Local";
-        private UserManager _userManager;
+        private IUserManager<TUser> _userManager;
 
         public AccountControllerBase()
         {
         }
 
-        public AccountControllerBase(UserManager userManager,
+        public AccountControllerBase(IUserManager<TUser> userManager,
             ISecureDataFormat<AuthenticationTicket> accessTokenFormat)
         {
             UserManager = userManager;
             AccessTokenFormat = accessTokenFormat;
         }
 
-        public UserManager UserManager
+        public IUserManager<TUser> UserManager
         {
             get
             {
-                return _userManager ?? Request.GetOwinContext().GetUserManager<UserManager>();
+                return _userManager ?? Request.GetOwinContext().GetUserManager<IUserManager<TUser>>();
             }
             private set
             {
@@ -263,7 +272,7 @@ namespace GoldenEye.Frontend.Security.Web.Controllers
                 ClaimsIdentity cookieIdentity = await UserManager.GenerateUserIdentityAsync(user,
                     CookieAuthenticationDefaults.AuthenticationType);
 
-                AuthenticationProperties properties = ApplicationOAuthProvider.CreateProperties(user.UserName);
+                AuthenticationProperties properties = ApplicationOAuthProvider<TUser>.CreateProperties(user.UserName);
                 Authentication.SignIn(properties, oAuthIdentity, cookieIdentity);
             }
             else
@@ -320,20 +329,14 @@ namespace GoldenEye.Frontend.Security.Web.Controllers
         // POST api/Account/Register
         [AllowAnonymous]
         [Route("Register")]
-        public async Task<IHttpActionResult> Register(RegisterBindingModel model)
+        public virtual async Task<IHttpActionResult> Register(RegisterBindingModel model)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var user = new User
-            {
-                UserName = model.Email,
-                Email = model.Email,
-                FirstName = model.FirstName,
-                LastName = model.LastName
-            };
+            var user = Mapper.Map<TUser>(model);
 
             var result = await UserManager.CreateAsync(user, model.Password);
 
@@ -357,7 +360,7 @@ namespace GoldenEye.Frontend.Security.Web.Controllers
                 return InternalServerError();
             }
 
-            var user = new User() { UserName = model.Email, Email = model.Email };
+            var user = Mapper.Map<TUser>(model);
 
             IdentityResult result = await UserManager.CreateAsync(user);
             if (!result.Succeeded)

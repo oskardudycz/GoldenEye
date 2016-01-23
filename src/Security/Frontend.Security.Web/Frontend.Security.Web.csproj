@@ -67,6 +67,10 @@
     <BuildPackage>true</BuildPackage>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -155,13 +159,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\Base\IUserManager.cs" />
-    <Compile Include="App_Start\Base\OwinBoostrapperBase.cs" />
-    <Compile Include="App_Start\Base\UserManagerBase.cs" />
+    <Compile Include="App_Start\OwinBoostrapperBase.cs" />
     <Compile Include="App_Start\OwinInfo.cs" />
-    <Compile Include="App_Start\UserManager.cs" />
     <Compile Include="App_Start\OwinBoostrapper.cs" />
-    <Compile Include="App_Start\UserManagerProvider.cs" />
+    <Compile Include="Providers\UserManagerProvider.cs" />
     <Compile Include="Controllers\AccountControllerBase.cs" />
     <Compile Include="Controllers\UserControllerBase.cs" />
     <Compile Include="Module.cs" />
@@ -172,6 +173,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Frontend.Security.Web.nuspec" />
+    <Compile Include="Mappings\MappingDefinition.cs" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>

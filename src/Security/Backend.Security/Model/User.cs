@@ -4,7 +4,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace GoldenEye.Backend.Security.Model
 {
-    public class User : IdentityUser<int, UserLogin, UserRole, UserClaim>, IEntity
+    public class User : IdentityUser<int, UserLogin, UserRole, UserClaim>, IEntity, IUser
     {
         public int ExternalUserId { get; set; }
 

@@ -5,7 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 
-namespace GoldenEye.Frontend.Security.Web.Base
+namespace GoldenEye.Backend.Security.Managers
 {
     public interface IUserManager<TUser> : IUserManager<TUser, int> 
         where TUser : class, IUser<int>, new()

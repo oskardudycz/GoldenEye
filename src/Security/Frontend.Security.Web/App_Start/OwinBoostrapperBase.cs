@@ -1,17 +1,19 @@
 ﻿using System;
 using GoldenEye.Backend.Security.DataContext;
+using GoldenEye.Backend.Security.Managers;
 using GoldenEye.Frontend.Security.Web.Providers;
 using GoldenEye.Shared.Core.Configuration;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
 
-namespace GoldenEye.Frontend.Security.Web.Base
+namespace GoldenEye.Frontend.Security.Web
 {
     public class OwinBoostrapperBase<TUser> 
-        where TUser : class, IUser<int>, new()
+        where TUser : class, Backend.Security.Model.IUser<int>, new()
     {
         public void Configuration(IAppBuilder app)
         {
@@ -50,11 +52,11 @@ namespace GoldenEye.Frontend.Security.Web.Base
                             ctx.Response.Redirect(ctx.RedirectUri);
                         }
                     },
-                    //OnValidateIdentity = SecurityStampValidator.OnValidateIdentity <TUserManager, TUser, int>(
-                    //    validateInterval: TimeSpan.FromMinutes(30),
-                    //    regenerateIdentityCallback: (manager, user) =>
-                    //        user.GenerateUserIdentityAsync(manager, DefaultAuthenticationTypes.ApplicationCookie),
-                    //    getUserIdCallback: (id) => (id.GetUserId<int>()))
+                    OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<Backend.Security.Managers.UserManager<TUser>, TUser, int>(
+                        validateInterval: TimeSpan.FromMinutes(30),
+                        regenerateIdentityCallback: (manager, user) =>
+                            manager.GenerateUserIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie),
+                        getUserIdCallback: (id) => (id.GetUserId<int>()))
                 }
             });
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
@@ -98,7 +100,7 @@ namespace GoldenEye.Frontend.Security.Web.Base
             OwinInfo.OAuthOptions = new OAuthAuthorizationServerOptions
             {
                 TokenEndpointPath = new PathString("/Token"),
-                Provider = new ApplicationOAuthProvider(OwinInfo.PublicClientId),
+                Provider = new ApplicationOAuthProvider<TUser>(OwinInfo.PublicClientId),
                 AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(14)
             };

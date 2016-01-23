@@ -1,17 +1,17 @@
 using GoldenEye.Backend.Security.DataContext;
+using GoldenEye.Backend.Security.Managers;
 using GoldenEye.Backend.Security.Model;
 using GoldenEye.Backend.Security.Stores;
-using GoldenEye.Frontend.Security.Web.Base;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 
-namespace GoldenEye.Frontend.Security.Web
+namespace GoldenEye.Frontend.Security.Web.Providers
 {
     public class UserManagerProvider
     {
         public static IUserManager<TUser> Create<TUser>(IdentityFactoryOptions<IUserManager<TUser>> options, IOwinContext context) 
-            where TUser : class, IUser<int>, new()
+            where TUser : class, Backend.Security.Model.IUser<int>, new()
         {
             var manager = new UserManager(new UserStore(context.Get<IUserDataContext<User>>()));
             // Configure validation logic for usernames

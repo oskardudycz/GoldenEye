@@ -5,7 +5,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace GoldenEye.Backend.Security.Stores
 {
-    public class UserStore : UserStoreBase<User>
+    public class UserStore : UserStore<User>
     {
         public UserStore(IUserDataContext<User> context)
             : base(context)
@@ -13,10 +13,10 @@ namespace GoldenEye.Backend.Security.Stores
         }
     }
 
-    public abstract class UserStoreBase<TUser> : UserStore<TUser, Role, int, UserLogin, UserRole, UserClaim>, IUserStore<TUser> 
+    public class UserStore<TUser> : UserStore<TUser, Role, int, UserLogin, UserRole, UserClaim>, IUserStore<TUser> 
         where TUser : IdentityUser<int, UserLogin, UserRole, UserClaim>
     {
-        protected UserStoreBase(IUserDataContext<TUser> context)
+        protected UserStore(IUserDataContext<TUser> context)
             : base((DbContext) context)
         {
         }

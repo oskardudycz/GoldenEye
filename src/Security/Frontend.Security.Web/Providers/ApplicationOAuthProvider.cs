@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using GoldenEye.Backend.Security.Managers;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
@@ -9,7 +11,8 @@ using Microsoft.Owin.Security.OAuth;
 
 namespace GoldenEye.Frontend.Security.Web.Providers
 {
-    public class ApplicationOAuthProvider : OAuthAuthorizationServerProvider
+    public class ApplicationOAuthProvider<TUser> : OAuthAuthorizationServerProvider 
+        where TUser : class, IUser<int>, new()
     {
 
         private readonly string _publicClientId;
@@ -26,7 +29,7 @@ namespace GoldenEye.Frontend.Security.Web.Providers
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
-            var userManager = context.OwinContext.GetUserManager<UserManager>();
+            var userManager = context.OwinContext.GetUserManager<IUserManager<TUser>>();
 
             var user = await userManager.FindAsync(context.UserName, context.Password);
 

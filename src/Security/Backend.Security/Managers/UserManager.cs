@@ -1,17 +1,25 @@
 ﻿using System.Security.Claims;
 using System.Threading.Tasks;
-using GoldenEye.Shared.Core.DTOs;
+using GoldenEye.Backend.Security.Model;
 using GoldenEye.Shared.Core.IOC;
 using GoldenEye.Shared.Core.Services;
 using Microsoft.AspNet.Identity;
 
-namespace GoldenEye.Frontend.Security.Web.Base
+namespace GoldenEye.Backend.Security.Managers
 {
-    // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
-
-    public abstract class UserManagerBase<T> : UserManager<T, int>, IUserManager<T> where T : class, IUser<int>, new()
+    /// <summary>
+    /// Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
+    /// </summary>
+    public class UserManager : UserManager<User>
     {
-        protected UserManagerBase(IUserStore<T, int> store)
+        public UserManager(IUserStore<User, int> store)
+            : base(store)
+        {
+        }
+    }
+    public class UserManager<T> : UserManager<T, int>, IUserManager<T> where T : class, Model.IUser<int>, new()
+    {
+        public UserManager(IUserStore<T, int> store)
             : base(store)
         {
         }
@@ -45,7 +53,14 @@ namespace GoldenEye.Frontend.Security.Web.Base
 
             var externalUser = externalAuthorizationService.Find(userName, password);
 
-            user = CreateNewUserFromExternal(externalUser);
+            user = new T
+            {
+                ExternalUserId = externalUser.Id,
+                FirstName = externalUser.FirstName,
+                LastName = externalUser.LastName,
+                UserName = externalUser.UserName,
+                Email = externalUser.Email
+            };
 
             var result = await CreateAsync(user, password);
 
@@ -54,7 +69,5 @@ namespace GoldenEye.Frontend.Security.Web.Base
 
             return await base.FindAsync(userName, password);
         }
-
-        protected abstract T CreateNewUserFromExternal(UserDTO externalUser);
     }
 }
