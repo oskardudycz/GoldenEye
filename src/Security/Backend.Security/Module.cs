@@ -2,7 +2,6 @@
 using GoldenEye.Backend.Security.Model;
 using GoldenEye.Shared.Core.Modules;
 using GoldenEye.Shared.Core.Modules.Attributes;
-using Microsoft.AspNet.Identity.EntityFramework;
 
 [assembly: ProjectAssembly]
 namespace GoldenEye.Backend.Security
@@ -11,7 +10,7 @@ namespace GoldenEye.Backend.Security
     {
         public override void Load()
         {
-            Kernel.Bind<IdentityDbContext<User, Role, int, UserLogin, UserRole, UserClaim>>().To<UserDataContext>();
+            Kernel.Bind<IUserDataContext<User>>().To<UserDataContext>();
         }
     }
 }

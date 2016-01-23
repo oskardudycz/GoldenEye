@@ -336,7 +336,13 @@ namespace GoldenEye.Frontend.Security.Web.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = Mapper.Map<TUser>(model);
+            var user = new TUser
+            {
+                UserName = model.Email,
+                Email = model.Email,
+                FirstName = model.FirstName,
+                LastName = model.LastName
+            };
 
             var result = await UserManager.CreateAsync(user, model.Password);
 
