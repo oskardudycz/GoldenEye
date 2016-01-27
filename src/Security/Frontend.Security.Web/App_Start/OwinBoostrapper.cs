@@ -13,7 +13,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
 
-namespace GoldenEye.Frontend.Security.Web
+namespace GoldenEye.Frontend.Security.Web.Base
 {
     public class OwinBoostrapper : OwinBoostrapperBase<User>
     {
