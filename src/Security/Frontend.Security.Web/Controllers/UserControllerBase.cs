@@ -10,6 +10,11 @@ namespace GoldenEye.Frontend.Security.Web.Controllers
     [Authorize]
     public abstract class UserControllerBase : ReadonlyRestControllerBase<IUserRestService, UserDTO>
     {
+        protected UserControllerBase()
+        {
+            
+        }
+
         protected UserControllerBase(IUserRestService service)
             : base(service)
         {

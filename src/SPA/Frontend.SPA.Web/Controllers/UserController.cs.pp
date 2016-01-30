@@ -7,6 +7,10 @@ namespace $rootnamespace$.Controllers
     [Authorize]
     public class UserController : UserControllerBase
     {
+        public UserController()
+        {
+        }
+
         public UserController(IUserRestService service) : base(service)
         {
         }

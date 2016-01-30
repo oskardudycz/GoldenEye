@@ -24,7 +24,14 @@ namespace GoldenEye.Frontend.Security.Web.Controllers
     [RoutePrefix("api/Account")]
     public class AccountControllerBase : AccountControllerBase<User>
     {
-        
+        public AccountControllerBase()
+        {
+        }
+
+        public AccountControllerBase(IUserManager<User> userManager,
+            ISecureDataFormat<AuthenticationTicket> accessTokenFormat) : base(userManager, accessTokenFormat)
+        {
+        }
     }
 
     [Authorize]
