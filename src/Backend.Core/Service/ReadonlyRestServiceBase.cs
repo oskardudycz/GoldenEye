@@ -10,6 +10,16 @@ using GoldenEye.Shared.Core.Services;
 
 namespace GoldenEye.Backend.Core.Service
 {
+    public abstract class ReadonlyRestServiceBase<TDTO, TEntity, TRepository> : ReadonlyRestServiceBase<TDTO, TEntity>
+        where TDTO : class, IDTO
+        where TEntity : class, IEntity
+        where TRepository : IReadonlyRepository<TEntity>
+    {
+        protected ReadonlyRestServiceBase(TRepository repository) : base(repository)
+        {
+        }
+    }
+
     public abstract class ReadonlyRestServiceBase<TDTO, TEntity> : IReadonlyRestService<TDTO> where TDTO : class, IDTO where TEntity : class, IEntity
     {
         private bool _disposed;

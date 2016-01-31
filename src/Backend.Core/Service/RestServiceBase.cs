@@ -7,6 +7,21 @@ using GoldenEye.Shared.Core.DTOs;
 
 namespace GoldenEye.Backend.Core.Service
 {
+    public abstract class RestServiceBase<TDTO, TEntity, TRepository> : RestServiceBase<TDTO, TEntity>
+        where TDTO : class, IDTO
+        where TEntity : class, IEntity
+        where TRepository : IRepository<TEntity>
+    {
+        protected new TRepository Repository
+        {
+            get { return (TRepository)base.Repository; }
+        }
+
+        protected RestServiceBase(TRepository repository) : base(repository)
+        {
+        }
+    }
+
     public abstract class RestServiceBase<TDTO, TEntity> : ReadonlyRestServiceBase<TDTO, TEntity> 
         where TDTO : class, IDTO
         where TEntity : class, IEntity
