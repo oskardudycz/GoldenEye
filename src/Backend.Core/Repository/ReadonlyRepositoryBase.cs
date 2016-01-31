@@ -19,15 +19,20 @@ namespace GoldenEye.Backend.Core.Repository
             Queryable = queryable;
         }
 
+        public virtual IQueryable<TEntity> Includes(IQueryable<TEntity> queryable)
+        {
+            return queryable;
+        }
+
         public virtual TEntity GetById(object id, bool withNoTracking = true)
         {
-            return (withNoTracking ? Queryable.AsNoTracking() : Queryable).SingleOrDefault(r => r.Id == id);
+            return Includes(withNoTracking ? Queryable.AsNoTracking() : Queryable).SingleOrDefault(r => r.Id == id);
 
         }
 
         public virtual IQueryable<TEntity> GetAll(bool withNoTracking = true)
         {
-            return withNoTracking ? Queryable.AsNoTracking() : Queryable;
+            return Includes(withNoTracking ? Queryable.AsNoTracking() : Queryable);
         }
 
         protected virtual void Dispose(bool disposing)
