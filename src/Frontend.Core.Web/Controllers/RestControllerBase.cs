@@ -19,7 +19,6 @@ namespace GoldenEye.Frontend.Core.Web.Controllers
 
         public virtual async Task<IHttpActionResult> Put(TDto dto)
         {
-
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

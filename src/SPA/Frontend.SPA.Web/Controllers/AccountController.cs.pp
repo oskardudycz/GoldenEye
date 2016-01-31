@@ -1,5 +1,8 @@
 ﻿using System.Web.Http;
+using GoldenEye.Backend.Security.Managers;
+using GoldenEye.Backend.Security.Model;
 using GoldenEye.Frontend.Security.Web.Controllers;
+using Microsoft.Owin.Security;
 
 namespace $rootnamespace$.Controllers
 {

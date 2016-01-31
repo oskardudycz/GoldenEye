@@ -10,5 +10,10 @@ namespace $rootnamespace$
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             base.OnBundleConfig();
         }
+
+        protected override void OnUnandledExceptionCaught(Exception exception)
+        {
+            base.OnUnandledExceptionCaught(exception);
+        }
     }
 }
