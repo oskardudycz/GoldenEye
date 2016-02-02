@@ -81,7 +81,7 @@ namespace GoldenEye.Backend.Core.Service
 
             var results = validator.Validate(dto);
 
-            return !results.IsValid;
+            return results.IsValid;
         }
     }
 }

@@ -3,7 +3,7 @@ using GoldenEye.Backend.Core.Entity;
 
 namespace GoldenEye.Backend.Business.Entities
 {
-    public class TaskEntity : EntityBase
+    public class TaskEntity : AuditableEntity
     {
         public int? CustomerId { get; set; }
 
@@ -33,10 +33,6 @@ namespace GoldenEye.Backend.Business.Entities
 
         public string Description { get; set; }
 
-        public DateTime? ModificationDate { get; set; }
-
         public int Progress { get; set; }
-
-        public string ModificationBy { get; set; }
     }
 }

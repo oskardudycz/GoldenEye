@@ -1,4 +1,5 @@
 ﻿using Ninject;
+using System.Collections.Generic;
 
 namespace GoldenEye.Shared.Core.IOC
 {
@@ -20,6 +21,18 @@ namespace GoldenEye.Shared.Core.IOC
             catch (ActivationException)
             {
                 return default(T);
+            }
+        }
+
+        public static IEnumerable<T> GetAll<T>()
+        {
+            try
+            {
+                return _kernel.GetAll<T>();
+            }
+            catch (ActivationException)
+            {
+                return new List<T>();
             }
         }
     }

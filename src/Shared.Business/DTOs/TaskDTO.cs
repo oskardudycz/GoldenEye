@@ -38,8 +38,6 @@ namespace GoldenEye.Shared.Business.DTOs
 
         public string Description { get; set; }
 
-        public DateTime? ModificationDate { get; set; }
-
         public int Progress { get; set; }
     }
 }

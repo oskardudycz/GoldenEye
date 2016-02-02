@@ -1,6 +1,8 @@
 ﻿using System.Data.Entity;
 using GoldenEye.Backend.Business.Entities;
 using GoldenEye.Backend.Core.Context;
+using GoldenEye.Backend.Core.Context.SaveChangesHandler.Base;
+using System.Collections.Generic;
 
 namespace GoldenEye.Backend.Business.Context
 {
@@ -13,6 +15,11 @@ namespace GoldenEye.Backend.Business.Context
 
         public SampleContext(IConnectionProvider connectionProvider)
             : base(connectionProvider)
+        {
+        }
+
+        public SampleContext(IConnectionProvider connectionProvider, IEnumerable<ISaveChangesHandler> saveHandlers)
+            : base(connectionProvider, saveHandlers)
         {
         }
 

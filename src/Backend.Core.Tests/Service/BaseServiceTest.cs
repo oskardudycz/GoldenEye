@@ -9,7 +9,7 @@ using GoldenEye.Backend.Business.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
-namespace GoldenEye.Backend.Core.Tests
+namespace GoldenEye.Backend.Core.Tests.Service
 {
     [TestClass]
     public class BaseServiceTest

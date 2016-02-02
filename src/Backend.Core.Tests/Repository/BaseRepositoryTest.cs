@@ -9,7 +9,7 @@ using GoldenEye.Shared.Core.Security;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
-namespace GoldenEye.Backend.Core.Tests
+namespace GoldenEye.Backend.Core.Tests.Repository
 {
     [TestClass]
     public class BaseRepositoryTest
