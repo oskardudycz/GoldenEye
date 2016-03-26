@@ -23,5 +23,9 @@ namespace GoldenEye.Backend.Security.DataContext.Base
         {
 
         }
+
+        protected virtual void SetInitializer()
+        {
+        }
     }
 }
