@@ -6,8 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GoldenEye.Backend.Core.Context.SaveChangesHandlers
 {
@@ -26,6 +24,7 @@ namespace GoldenEye.Backend.Core.Context.SaveChangesHandlers
 
             Handle(addedEntities, updatedEntities, IOCContainer.Get<IUserInfoProvider>());
         }
+
         public void Handle(IEnumerable<AuditableEntity> addedEntities,
             IEnumerable<AuditableEntity> modifiedEntities, IUserInfoProvider userInfoProvider)
         {
