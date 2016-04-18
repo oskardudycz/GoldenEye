@@ -1,4 +1,5 @@
-﻿using System.Web.Optimization;
+﻿using System;
+using System.Web.Optimization;
 using GoldenEye.Frontend.Core.Web;
 
 namespace $rootnamespace$
