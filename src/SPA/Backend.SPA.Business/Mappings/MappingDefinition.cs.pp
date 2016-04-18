@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using GoldenEye.Backend.Security.Model;
 using $rootnamespace$.Entities;
-using $rootnamespace$.DTOs;
+using Shared.Business.DTOs;
 using GoldenEye.Shared.Core.DTOs;
 using GoldenEye.Shared.Core.Mappings;
 

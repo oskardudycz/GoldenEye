@@ -1,9 +1,9 @@
 ﻿using System;
 using FluentValidation.Attributes;
 using GoldenEye.Shared.Core.DTOs;
-using $rootnamespace$.Validators;
+using Shared.Business.Validators;
 
-namespace $rootnamespace$.DTOs
+namespace Shared.Business.DTOs
 {
     [Validator(typeof(TaskValidator))]
     public class TaskDTO: DTOBase

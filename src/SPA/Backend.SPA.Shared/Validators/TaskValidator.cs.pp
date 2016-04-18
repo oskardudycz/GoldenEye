@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using $rootnamespace$.DTOs;
+using Shared.Business.DTOs;
 
-namespace $rootnamespace$.Validators
+namespace Shared.Business.Validators
 {
     public class TaskValidator : AbstractValidator<TaskDTO>
     {

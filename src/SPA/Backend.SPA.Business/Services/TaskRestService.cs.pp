@@ -2,7 +2,10 @@
 using GoldenEye.Backend.Core.Service;
 using $rootnamespace$.Entities;
 using $rootnamespace$.Repository;
-using $rootnamespace$.DTO;
+using Shared.Business.DTOs;
+using Shared.Business.Services;
+using Shared.Business.Validators;
+
 
 namespace $rootnamespace$.Services
 {

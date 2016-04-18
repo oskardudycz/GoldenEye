@@ -1,7 +1,7 @@
 ﻿using GoldenEye.Shared.Core.Services;
-using $rootnamespace$.DTOs;
+using Shared.Business.DTOs;
 
-namespace $rootnamespace$.Services
+namespace Shared.Business.Services
 {
     public interface ITaskRestService: IRestService<TaskDTO>
     {
