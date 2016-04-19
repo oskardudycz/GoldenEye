@@ -1,8 +1,10 @@
-﻿using GoldenEye.Backend.Core.Context.SaveChangesHandler.Base;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using GoldenEye.Backend.Core.Context.SaveChangesHandlers;
+using GoldenEye.Backend.Core.Context.SaveChangesHandlers.Base;
+using GoldenEye.Backend.Core.Entity;
 
 namespace GoldenEye.Backend.Core.Context
 {
@@ -43,8 +45,22 @@ namespace GoldenEye.Backend.Core.Context
         
         public override int SaveChanges()
         {
-            SaveChangesHandlerProvider.Instance.RunAll(this);
+            SaveChangesProcessor.Instance.RunAll(this);
             return base.SaveChanges();
+        }
+
+        public IEnumerable<IEntity> GetAddedEntities()
+        {
+            return ChangeTracker.Entries()
+                .Where(e => e.State == EntityState.Added)
+                .Select(e => e.Entity).OfType<IEntity>();
+        }
+
+        public IEnumerable<IEntity> GetUpdatedEntities()
+        {
+            return ChangeTracker.Entries()
+                .Where(e => e.State == EntityState.Modified)
+                .Select(e => e.Entity).OfType<IEntity>();
         }
     }
 }

@@ -2,9 +2,11 @@
 using GoldenEye.Backend.Security.DataContext;
 using GoldenEye.Backend.Security.Managers;
 using GoldenEye.Backend.Security.Model;
+using GoldenEye.Frontend.Core.Web.Security;
 using GoldenEye.Frontend.Security.Web.Extensions;
 using GoldenEye.Frontend.Security.Web.Providers;
 using GoldenEye.Shared.Core.Configuration;
+using GoldenEye.Shared.Core.Security;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -76,6 +78,7 @@ namespace GoldenEye.Frontend.Security.Web
 
         protected virtual void IniUserDataProviders(IAppBuilder app)
         {
+            UserInfoProvider.Instance.UserInfo = new WebUserInfo();
             // Configure the db context and user manager to use a single instance per request
             app.CreatePerOwinContext<IUserDataContext<TUser>>(CreateUserDataContext);
             app.CreatePerOwinContext<IUserManager<TUser>>(CreateUserManager);

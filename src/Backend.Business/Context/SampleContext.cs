@@ -1,7 +1,6 @@
 ﻿using System.Data.Entity;
 using GoldenEye.Backend.Business.Entities;
 using GoldenEye.Backend.Core.Context;
-using GoldenEye.Backend.Core.Context.SaveChangesHandler.Base;
 using System.Collections.Generic;
 
 namespace GoldenEye.Backend.Business.Context

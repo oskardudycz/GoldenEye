@@ -1,9 +1,9 @@
 ﻿using System;
 namespace GoldenEye.Shared.Core.Security
 {
-    public interface IUserInfoProvider
+    public interface IUserInfo
     {
-        string GetCurrentUserName();
+        string UserName { get; }
         TId GetCurrentUserId<TId>() where TId : IConvertible;
     }
 }

@@ -1,17 +1,12 @@
 ﻿using System;
-using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GoldenEye.Backend.Business.Entities;
 using GoldenEye.Backend.Business.Context;
-using GoldenEye.Backend.Core.Context;
-using System.Data.Entity;
-using GoldenEye.Shared.Core.IOC;
 using GoldenEye.Backend.Core.Context.SaveChangesHandlers;
-using GoldenEye.Backend.Core.Context.SaveChangesHandler.Base;
 using Moq;
 using System.Linq;
-using GoldenEye.Frontend.Core.Web.Security;
+using GoldenEye.Backend.Core.Context;
 using GoldenEye.Shared.Core.Security;
 
 namespace GoldenEye.Backend.Core.Tests.Context.SaveChangesHandlers
@@ -21,16 +16,11 @@ namespace GoldenEye.Backend.Core.Tests.Context.SaveChangesHandlers
     {
         private SampleContext _context;
 
-        public AuditInfoSaveChangesHandlerTest()
-        {
-
-        }
-        
         [TestMethod]
         public void GivenNewTask_WhenRunAuditHandle_ThenShouldAppendAuditInfo()
         {
             //GIVEN
-            var task = new TaskEntity()
+            var task = new TaskEntity
             {
                 Amount = 1,
                 Date = DateTime.Now,
@@ -39,20 +29,28 @@ namespace GoldenEye.Backend.Core.Tests.Context.SaveChangesHandlers
                 Number = "Task1234",
                 Progress = 5
             };
-            var addedEntites = new List<TaskEntity>() {
+            var addedEntites = new List<TaskEntity>
+            {
                 task
             };
             var updatedEntities = new List<TaskEntity>();
 
             var handler = new AuditInfoSaveChangesHandler();
 
-            var userInfoProviderMock = new Mock<IUserInfoProvider>();
+            var userInfoProviderMock = new Mock<IUserInfo>();
 
             userInfoProviderMock.Setup(m => m.GetCurrentUserId<int>())
                 .Returns(2);
 
+            var dataContextMock = new Mock<IDataContext>();
+            dataContextMock.Setup(el => el.GetAddedEntities())
+                .Returns(addedEntites);
+
+            dataContextMock.Setup(el => el.GetUpdatedEntities())
+                .Returns(updatedEntities);
+
             //WHEN
-            handler.Handle(addedEntites, updatedEntities, userInfoProviderMock.Object);
+            handler.Handle(dataContextMock.Object);
             
             //THEN
             var entity = addedEntites.First();
@@ -78,19 +76,27 @@ namespace GoldenEye.Backend.Core.Tests.Context.SaveChangesHandlers
                 LastModified = DateTime.Parse("10/10/2010")
             };
             var addedEntites = new List<TaskEntity>();
-            var updatedEntities = new List<TaskEntity>() {
+            var updatedEntities = new List<TaskEntity>
+            {
                 task
             };
 
             var handler = new AuditInfoSaveChangesHandler();
 
-            var userInfoProviderMock = new Mock<IUserInfoProvider>();
+            var userInfoProviderMock = new Mock<IUserInfo>();
 
             userInfoProviderMock.Setup(m => m.GetCurrentUserId<int>())
                 .Returns(10);
 
+            var dataContextMock = new Mock<IDataContext>();
+            dataContextMock.Setup(el => el.GetAddedEntities())
+                .Returns(addedEntites);
+
+            dataContextMock.Setup(el => el.GetUpdatedEntities())
+                .Returns(updatedEntities);
+
             //WHEN
-            handler.Handle(addedEntites, updatedEntities, userInfoProviderMock.Object);
+            handler.Handle(dataContextMock.Object);
             
             //THEN
             var entity = updatedEntities.First();

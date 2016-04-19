@@ -117,8 +117,8 @@
     <Compile Include="Context\IConnectionProvider.cs" />
     <Compile Include="Context\IDataContext.cs" />
     <Compile Include="Context\SaveChangesHandlers\AuditInfoSaveChangesHandler.cs" />
-    <Compile Include="Context\SaveChangesHandlers\ISaveChangesHandlerProvider.cs" />
-    <Compile Include="Context\SaveChangesHandlers\SaveChangesHandlerProvider.cs" />
+    <Compile Include="Context\SaveChangesHandlers\ISaveChangesProcessor.cs" />
+    <Compile Include="Context\SaveChangesHandlers\SaveChangesProcessor.cs" />
     <Compile Include="Entity\AuditableEntity.cs" />
     <Compile Include="Entity\EntityBase.cs" />
     <Compile Include="Entity\IAuditableEntity.cs" />

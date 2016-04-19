@@ -1,45 +1,34 @@
-﻿using GoldenEye.Backend.Core.Context.SaveChangesHandler.Base;
-using GoldenEye.Backend.Core.Entity;
-using GoldenEye.Shared.Core.IOC;
+﻿using GoldenEye.Backend.Core.Entity;
 using GoldenEye.Shared.Core.Security;
 using System;
-using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
+using GoldenEye.Backend.Core.Context.SaveChangesHandlers.Base;
 
 namespace GoldenEye.Backend.Core.Context.SaveChangesHandlers
 {
     public class AuditInfoSaveChangesHandler : ISaveChangesHandler
     {
-        public void Handle(DbContext context)
+        public void Handle(IDataContext context)
         {
-            var addedEntities = context.ChangeTracker.Entries()
-                            .Where(e => e.State == EntityState.Added)
-                            .Select(e => e.Entity)
+            var addedEntities = context.GetAddedEntities()
                             .OfType<AuditableEntity>();
-            var updatedEntities = context.ChangeTracker.Entries()
-                            .Where(e => e.State == EntityState.Modified)
-                            .Select(e => e.Entity)
+            var updatedEntities = context.GetAddedEntities()
                             .OfType<AuditableEntity>();
 
-            Handle(addedEntities, updatedEntities, IOCContainer.Get<IUserInfoProvider>());
-        }
+            var currentUserId = UserInfoProvider.Instance.GetCurrenUserId();
 
-        public void Handle(IEnumerable<AuditableEntity> addedEntities,
-            IEnumerable<AuditableEntity> modifiedEntities, IUserInfoProvider userInfoProvider)
-        {
+            var currentDate = DateTime.Now;
+
             foreach (var entity in addedEntities)
             {
-                entity.Created = DateTime.Now;
-                entity.CreatedBy = userInfoProvider.GetCurrentUserId<int>();
-                entity.LastModified = entity.Created;
-                entity.LastModifiedBy = userInfoProvider.GetCurrentUserId<int>();
+                entity.Created = currentDate;
+                entity.CreatedBy = currentUserId;
             }
 
-            foreach (var entity in modifiedEntities)
+            foreach (var entity in updatedEntities)
             {
-                entity.LastModified = DateTime.Now;
-                entity.LastModifiedBy = userInfoProvider.GetCurrentUserId<int>();
+                entity.LastModified = currentDate;
+                entity.LastModifiedBy = currentUserId;
             }
         }
     }

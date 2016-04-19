@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GoldenEye.Backend.Core.Context.SaveChangesHandler.Base
+﻿namespace GoldenEye.Backend.Core.Context.SaveChangesHandlers.Base
 {
     public interface ISaveChangesHandler
     {
-        void Handle(DbContext context);
+        void Handle(IDataContext context);
     }
 }

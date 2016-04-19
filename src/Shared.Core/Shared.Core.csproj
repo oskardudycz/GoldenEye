@@ -135,7 +135,8 @@
     <Compile Include="Modules\IModule.cs" />
     <Compile Include="Modules\ModuleBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Security\IUserInfoProvider.cs" />
+    <Compile Include="Security\IUserInfo.cs" />
+    <Compile Include="Security\UserInfoProvider.cs" />
     <Compile Include="Services\IAuthorizationService.cs" />
     <Compile Include="Services\IReadonlyRestService.cs" />
     <Compile Include="Services\IRestService.cs" />

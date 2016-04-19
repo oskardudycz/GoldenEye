@@ -1,5 +1,9 @@
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 using GoldenEye.Backend.Core.Context;
 using GoldenEye.Backend.Core.Context.SaveChangesHandlers;
+using GoldenEye.Backend.Core.Entity;
 using GoldenEye.Backend.Security.Model;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -31,8 +35,22 @@ namespace GoldenEye.Backend.Security.DataContext.Base
 
         public override int SaveChanges()
         {
-            SaveChangesHandlerProvider.Instance.RunAll(this);
+            SaveChangesProcessor.Instance.RunAll(this);
             return base.SaveChanges();
+        }
+
+        public IEnumerable<IEntity> GetAddedEntities()
+        {
+            return ChangeTracker.Entries()
+                .Where(e => e.State == EntityState.Added)
+                .Select(e => e.Entity).OfType<IEntity>();
+        }
+
+        public IEnumerable<IEntity> GetUpdatedEntities()
+        {
+            return ChangeTracker.Entries()
+                .Where(e => e.State == EntityState.Modified)
+                .Select(e => e.Entity).OfType<IEntity>();
         }
     }
 }
