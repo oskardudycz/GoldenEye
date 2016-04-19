@@ -6,7 +6,13 @@ namespace GoldenEye.Backend.Security.DataContext
 {
     public class UserDataContext : UserDataContextBase<User>, IUserDataContext<User>
     {
-        public UserDataContext()
+        protected UserDataContext()
+        {
+
+        }
+
+        protected UserDataContext(string connectionString)
+            : base(connectionString)
         {
 
         }
