@@ -4,9 +4,9 @@ using GoldenEye.Backend.Security.Model;
 
 namespace GoldenEye.Backend.Security.DataContext
 {
-    public class UserDataContext : UserDataContextBase<User>, IUserDataContext<User>
+    public class UserDataContext : UserDataContextBase<User>
     {
-        protected UserDataContext()
+        public UserDataContext()
         {
 
         }

@@ -18,11 +18,6 @@ namespace GoldenEye.Backend.Business.Context
         {
         }
 
-        public SampleContext(IConnectionProvider connectionProvider, IEnumerable<ISaveChangesHandler> saveHandlers)
-            : base(connectionProvider, saveHandlers)
-        {
-        }
-
         public IDbSet<TaskEntity> Tasks { get; set; }
 
         public IDbSet<Customer> Customers { get; set; }

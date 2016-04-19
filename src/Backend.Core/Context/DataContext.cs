@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using GoldenEye.Backend.Core.Context.SaveChangesHandlers;
 
 namespace GoldenEye.Backend.Core.Context
 {
@@ -29,12 +30,6 @@ namespace GoldenEye.Backend.Core.Context
         {
         }
 
-        protected DataContext(IConnectionProvider connectionProvider, IEnumerable<ISaveChangesHandler> saveHandlers)
-            : base(connectionProvider.Open(), false)
-        {
-            _saveHandlers = saveHandlers;
-        }
-        
         public new void Dispose()
         {
             base.Dispose();
@@ -45,21 +40,10 @@ namespace GoldenEye.Backend.Core.Context
         {
             return Database.BeginTransaction();
         }
-
-        private void RunHandlers()
-        {
-            if (_saveHandlers == null) 
-                return;
-
-            foreach (var handler in _saveHandlers)
-            {
-                handler.Handle(this);
-            }
-        }
-
+        
         public override int SaveChanges()
         {
-            RunHandlers();
+            SaveChangesHandlerProvider.Instance.RunAll(this);
             return base.SaveChanges();
         }
     }
