@@ -1,8 +1,8 @@
 ﻿namespace GoldenEye.Shared.Core.Security
 {
-    public class UserInfoProvider
+    public class UserInfoProvider : IUserInfoProvider
     {
-        public static UserInfoProvider Instance = new UserInfoProvider();
+        public static IUserInfoProvider Instance = new UserInfoProvider();
 
         private IUserInfo _userInfo;
 
