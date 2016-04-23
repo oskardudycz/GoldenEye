@@ -17,12 +17,26 @@ namespace GoldenEye.Backend.Core.Repository
 
         public virtual TEntity Add(TEntity entity)
         {
-            return DbSet.Add(entity);
+            return Add(entity, true);
+        }
+
+        private TEntity Add(TEntity entity, bool shouldSaveChanges)
+        {
+            var result = DbSet.Add(entity);
+
+            if (shouldSaveChanges)
+                SaveChanges();
+
+            return result;
         }
 
         public virtual IQueryable<TEntity> AddAll(IEnumerable<TEntity> entities)
         {
-            return entities.Select(entity => DbSet.Add(entity)).ToList().AsQueryable();
+            var result = entities.Select(entity => Add(entity, false)).ToList().AsQueryable();
+            
+            SaveChanges();
+
+            return result;
         }
 
         public virtual TEntity Update(TEntity entity)
