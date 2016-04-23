@@ -19,16 +19,9 @@ namespace GoldenEye.Backend.Core.Context
         {
             lock (_lockObject)
             {
-                if (_sqlTransaction != null)
-                {
-                    _sqlTransaction.Dispose();
-                    _sqlTransaction = null;
-                }
-                if (_dbConnection == null || _dbConnection.State != ConnectionState.Open) return;
+                CloseTransactionIfExists();
 
-                _dbConnection.Close();
-                _dbConnection.Dispose();
-                _dbConnection = null;
+                CloseDbConnectionIfExists();
             }
         }
 
@@ -36,21 +29,10 @@ namespace GoldenEye.Backend.Core.Context
         {
             lock (_lockObject)
             {
-                if (_sqlTransaction != null)
-                {
-                    _sqlTransaction.Commit();
-                }
+                if (_sqlTransaction == null) return;
+
+                _sqlTransaction.Commit();
             }
-        }
-
-        public void Dispose()
-        {
-            if (_wasDisposed)
-                return;
-
-            _wasDisposed = true;
-            Close();
-            GC.SuppressFinalize(this);
         }
 
         public DbConnection Open()
@@ -74,11 +56,7 @@ namespace GoldenEye.Backend.Core.Context
         {
             lock (_lockObject)
             {
-                if (_dbConnection == null) return Open();
-
-                _dbConnection.Close();
-                _dbConnection.Dispose();
-                _dbConnection = null;
+                CloseDbConnectionIfExists();
             }
             return Open();
         }
@@ -87,10 +65,8 @@ namespace GoldenEye.Backend.Core.Context
         {
             lock (_lockObject)
             {
-                if (_sqlTransaction != null)
-                {
-                    _sqlTransaction.Rollback();
-                }
+                if (_sqlTransaction == null) return;
+                _sqlTransaction.Rollback();
             }
         }
 
@@ -98,20 +74,53 @@ namespace GoldenEye.Backend.Core.Context
         {
             lock (_lockObject)
             {
-                if (_sqlTransaction != null && _sqlTransaction.Connection != null)
-                {
-                    if (rollbackPrevious)
-                    {
-                        _sqlTransaction.Rollback();
-                    }
-                    else
-                    {
-                        _sqlTransaction.Commit();
-                    }
-                }
+                CloseTransactionIfExists();
+                Open();
+
+                if (_dbConnection.State != ConnectionState.Open)
+                    _dbConnection.Open();
 
                 _sqlTransaction = _dbConnection.BeginTransaction(isolationLevel);
             }
+        }
+
+        public void Dispose()
+        {
+            if (_wasDisposed)
+                return;
+
+            _wasDisposed = true;
+            Close();
+            GC.SuppressFinalize(this);
+        }
+
+        private void CloseTransactionIfExists(bool shouldCommit = true)
+        {
+            if (_sqlTransaction == null) return;
+
+            if (_sqlTransaction.Connection != null)
+            {
+                if (!shouldCommit)
+                {
+                    _sqlTransaction.Commit();
+                }
+                else
+                {
+                    _sqlTransaction.Rollback();
+                }
+            }
+
+            _sqlTransaction.Dispose();
+            _sqlTransaction = null;
+        }
+
+        private void CloseDbConnectionIfExists()
+        {
+            if (_dbConnection == null || _dbConnection.State != ConnectionState.Open) return;
+
+            _dbConnection.Close();
+            _dbConnection.Dispose();
+            _dbConnection = null;
         }
     }
 }
