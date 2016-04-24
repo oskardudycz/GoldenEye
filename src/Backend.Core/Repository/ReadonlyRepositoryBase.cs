@@ -1,11 +1,11 @@
 using System.Data.Entity;
 using System.Linq;
 using GoldenEye.Backend.Core.Context;
-using GoldenEye.Shared.Core;
+using GoldenEye.Backend.Core.Entity;
 
 namespace GoldenEye.Backend.Core.Repository
 {
-    public abstract class ReadonlyRepositoryBase<TEntity> : IReadonlyRepository<TEntity> where TEntity : class, IHasObjectId
+    public abstract class ReadonlyRepositoryBase<TEntity> : IReadonlyRepository<TEntity> where TEntity : class, IEntity
     {
         protected readonly IDataContext Context;
 
@@ -26,7 +26,7 @@ namespace GoldenEye.Backend.Core.Repository
 
         public virtual TEntity GetById(object id, bool withNoTracking = true)
         {
-            return Includes(withNoTracking ? Queryable.AsNoTracking() : Queryable).SingleOrDefault(r => r.Id == id);
+            return Includes(withNoTracking ? Queryable.AsNoTracking() : Queryable).SingleOrDefault(r => r.Id.Equals(id));
 
         }
 

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using GoldenEye.Frontend.Core.Web.Models;
-using GoldenEye.Shared.Core.DTOs;
 using GoldenEye.Shared.Core.Mappings;
+using GoldenEye.Shared.Core.Objects.DTO;
 
 namespace GoldenEye.Frontend.Web.Mappings
 {

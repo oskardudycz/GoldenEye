@@ -9,6 +9,8 @@ using AutoMapper;
 using GoldenEye.Frontend.Core.Web;
 using GoldenEye.Frontend.Core.Web.IoC;
 using GoldenEye.Shared.Core.Extensions;
+using GoldenEye.Shared.Core.Extensions.Collections;
+using GoldenEye.Shared.Core.Extensions.Reflection;
 using GoldenEye.Shared.Core.IOC;
 using GoldenEye.Shared.Core.IOC.Attributes;
 using GoldenEye.Shared.Core.Mappings;

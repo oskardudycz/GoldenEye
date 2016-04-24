@@ -5,7 +5,7 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using GoldenEye.Backend.Core.Entity;
 using GoldenEye.Backend.Core.Repository;
-using GoldenEye.Shared.Core.DTOs;
+using GoldenEye.Shared.Core.Objects.DTO;
 using GoldenEye.Shared.Core.Services;
 
 namespace GoldenEye.Backend.Core.Service

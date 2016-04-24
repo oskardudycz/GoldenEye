@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
-using GoldenEye.Shared.Core.DTOs;
+using GoldenEye.Shared.Core.Objects.DTO;
 using GoldenEye.Shared.Core.Services;
 
 namespace GoldenEye.Frontend.Core.Web.Controllers

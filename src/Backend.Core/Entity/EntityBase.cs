@@ -1,4 +1,5 @@
 ﻿using GoldenEye.Shared.Core;
+using GoldenEye.Shared.Core.Objects.General;
 
 namespace GoldenEye.Backend.Core.Entity
 {

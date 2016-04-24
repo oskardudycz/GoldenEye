@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using GoldenEye.Shared.Core;
+using GoldenEye.Backend.Core.Entity;
 
 namespace GoldenEye.Backend.Core.Repository
 {
-    public interface IRepository<TEntity> : IReadonlyRepository<TEntity> where TEntity : class, IHasId
+    public interface IRepository<TEntity> : IReadonlyRepository<TEntity> where TEntity : class, IEntity
     {
         TEntity Add(TEntity entity);
         IQueryable<TEntity> AddAll(IEnumerable<TEntity> entities);

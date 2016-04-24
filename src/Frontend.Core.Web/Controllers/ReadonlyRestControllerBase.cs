@@ -2,7 +2,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.OData;
-using GoldenEye.Shared.Core.DTOs;
+using GoldenEye.Shared.Core.Objects.DTO;
 using GoldenEye.Shared.Core.Services;
 
 namespace GoldenEye.Frontend.Core.Web.Controllers

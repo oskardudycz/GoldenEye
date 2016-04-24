@@ -1,7 +1,7 @@
 ﻿using System;
 using FluentValidation.Attributes;
 using GoldenEye.Shared.Business.Validators;
-using GoldenEye.Shared.Core.DTOs;
+using GoldenEye.Shared.Core.Objects.DTO;
 
 namespace GoldenEye.Shared.Business.DTOs
 {

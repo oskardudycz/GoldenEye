@@ -116,15 +116,36 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\ConfigHelper.cs" />
-    <Compile Include="DTOs\DTOBase.cs" />
-    <Compile Include="DTOs\IDTO.cs" />
-    <Compile Include="DTOs\UserDTO.cs" />
-    <Compile Include="Extensions\CompareExtensions.cs" />
-    <Compile Include="Extensions\DateTimeExtensions.cs" />
-    <Compile Include="Extensions\EnumerableExtensions.cs" />
-    <Compile Include="Extensions\ReflectionExtensions.cs" />
-    <Compile Include="Extensions\StringExtensions.cs" />
-    <Compile Include="IHasId.cs" />
+    <Compile Include="Context\ContextValuesProviderWrapper.cs" />
+    <Compile Include="Context\IContextValuesProvider.cs" />
+    <Compile Include="Context\UserContext.cs" />
+    <Compile Include="Extensions\Basic\DateRangeExtensions.cs" />
+    <Compile Include="Extensions\Basic\ObjectExtensions.cs" />
+    <Compile Include="Extensions\Collections\CollectionExtensions.cs" />
+    <Compile Include="Extensions\Collections\DictionaryExtensions.cs" />
+    <Compile Include="Extensions\Dynamic\DynamicExtensions.cs" />
+    <Compile Include="Extensions\Lambda\ExpressionExtensions.cs" />
+    <Compile Include="Extensions\Mapping\AutoMapperExtensions.cs" />
+    <Compile Include="Objects\DTO\DTOBase.cs" />
+    <Compile Include="Objects\DTO\IDTO.cs" />
+    <Compile Include="Objects\DTO\UserDTO.cs" />
+    <Compile Include="Extensions\Basic\BooleanExtensions.cs" />
+    <Compile Include="Extensions\Basic\StringBuilderExtensions.cs" />
+    <Compile Include="Extensions\Basic\StringExtensions.cs" />
+    <Compile Include="Extensions\Collections\ListExtensions.cs" />
+    <Compile Include="Extensions\Collections\QueryableExtensions.cs" />
+    <Compile Include="Extensions\Basic\CompareExtensions.cs" />
+    <Compile Include="Extensions\Basic\DateTimeExtensions.cs" />
+    <Compile Include="Extensions\Collections\EnumerableExtensions.cs" />
+    <Compile Include="Extensions\Enums\EnumExtensions.cs" />
+    <Compile Include="Extensions\Exceptions\ExceptionExtensions.cs" />
+    <Compile Include="Extensions\Lambda\ParameterRebinder.cs" />
+    <Compile Include="Extensions\Naming\ConventionNamesExtensions.cs" />
+    <Compile Include="Extensions\Reflection\ReflectionExtensions.cs" />
+    <Compile Include="Extensions\Reflection\AttributeExtensions.cs" />
+    <Compile Include="Extensions\Streams\StreamExtensions.cs" />
+    <Compile Include="Extensions\Threading\ThreadExtensions.cs" />
+    <Compile Include="Extensions\Validation\ValidationResultExtensions.cs" />
     <Compile Include="IOC\Attributes\InjectInRequestScopeAttribute.cs" />
     <Compile Include="IOC\Attributes\InjectInSingletonScopeAttribute.cs" />
     <Compile Include="IOC\Attributes\NotInjectedWithConventionsAttribute.cs" />
@@ -134,7 +155,51 @@
     <Compile Include="Modules\Attributes\ProjectAssemblyAttribute.cs" />
     <Compile Include="Modules\IModule.cs" />
     <Compile Include="Modules\ModuleBase.cs" />
+    <Compile Include="Objects\Audit\IAuditable.cs" />
+    <Compile Include="Objects\Audit\IHasManuallyUpdated.cs" />
+    <Compile Include="Objects\Dates\DateRange.cs" />
+    <Compile Include="Objects\Dates\IDateRange.cs" />
+    <Compile Include="Objects\DTO\ValidatableDTOBase.cs" />
+    <Compile Include="Objects\DTO\IValidatableDTO.cs" />
+    <Compile Include="Objects\General\IBusinessObject.cs" />
+    <Compile Include="Objects\General\IHasId.cs" />
+    <Compile Include="Objects\General\IHasName.cs" />
+    <Compile Include="Objects\General\IHasParent.cs" />
+    <Compile Include="Objects\General\IIsSelfReferenced.cs" />
+    <Compile Include="Objects\General\ObjectBase.cs" />
+    <Compile Include="Objects\Order\IOrderable.cs" />
+    <Compile Include="Objects\Requests\EmptyRequest.cs" />
+    <Compile Include="Objects\Requests\IEmptyRequest.cs" />
+    <Compile Include="Objects\Requests\IListRequest.cs" />
+    <Compile Include="Objects\Requests\IRequest.cs" />
+    <Compile Include="Objects\Requests\ISingleRequest.cs" />
+    <Compile Include="Objects\Requests\ListRequest.cs" />
+    <Compile Include="Objects\Requests\RequestBase.cs" />
+    <Compile Include="Objects\Requests\SingleRequest.cs" />
+    <Compile Include="Objects\Responses\EmptyResponse.cs" />
+    <Compile Include="Objects\Responses\IEmptyResponse.cs" />
+    <Compile Include="Objects\Responses\IListResponse.cs" />
+    <Compile Include="Objects\Responses\IResponse.cs" />
+    <Compile Include="Objects\Responses\ISingleResponse.cs" />
+    <Compile Include="Objects\Responses\ListResponse.cs" />
+    <Compile Include="Objects\Responses\ResponseBase.cs" />
+    <Compile Include="Objects\Responses\SingleResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\CommonResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CommonResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\DateTimeResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DateTimeResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ValidationResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ValidationResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Security\IUserInfo.cs" />
     <Compile Include="Security\IUserInfoProvider.cs" />
     <Compile Include="Security\UserInfoProvider.cs" />
@@ -142,11 +207,57 @@
     <Compile Include="Services\IReadonlyRestService.cs" />
     <Compile Include="Services\IRestService.cs" />
     <Compile Include="Services\IService.cs" />
+    <Compile Include="Utils\Assemblies\AssembliesProvider.cs" />
+    <Compile Include="Utils\Coding\Switch.cs" />
+    <Compile Include="Utils\Collections\CollectionToCSVConverter.cs" />
+    <Compile Include="Utils\Cryptography\Encryption.cs" />
+    <Compile Include="Utils\Exceptions\ExceptionProvider.cs" />
+    <Compile Include="Utils\Exceptions\Guard.cs" />
+    <Compile Include="Utils\Exceptions\IExceptionHandler.cs" />
+    <Compile Include="Utils\Exceptions\IExceptionProvider.cs" />
+    <Compile Include="Utils\Lambda\PropertyName.cs" />
+    <Compile Include="Utils\Localization\DisplayNameLocalizedAttribute.cs" />
+    <Compile Include="Utils\Localization\ILocalizationUtils.cs" />
+    <Compile Include="Utils\Localization\LocalizationUtils.cs" />
+    <Compile Include="Utils\Localization\ResourceQualifiedKey.cs" />
+    <Compile Include="Utils\MessageBus\IMessage.cs" />
+    <Compile Include="Utils\MessageBus\IMessageBus.cs" />
+    <Compile Include="Utils\MessageBus\IMessageHandler.cs" />
+    <Compile Include="Utils\MessageBus\MessageBus.cs" />
     <Compile Include="Utils\PropertyName.cs" />
-    <Compile Include="Validatable.cs" />
+    <Compile Include="Utils\Serialization\DateTimeJsonConverter.cs" />
+    <Compile Include="Utils\Serialization\JsonSerializer.cs" />
+    <Compile Include="Validation\Validatable.cs" />
+    <Compile Include="Validation\IValidatable.cs" />
+    <Compile Include="Validation\ValidatableObjectBase.cs" />
+    <Compile Include="Validation\ValidationEngine.cs" />
+    <Compile Include="Validation\ValidationExtensions.cs" />
+    <Compile Include="Validation\Validators\CompositeValidator.cs" />
+    <Compile Include="Validation\Validators\DateRangeValidator.cs" />
+    <Compile Include="Validation\Validators\MustNotValidator.cs" />
+    <Compile Include="Validation\Validators\NestedComponentValidator.cs" />
+    <Compile Include="Validation\Validators\SingleRequestValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Shared.Core.nuspec" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\CommonResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CommonResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\DateTimeResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DateTimeResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ValidationResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ValidationResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Runtime.Serialization" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

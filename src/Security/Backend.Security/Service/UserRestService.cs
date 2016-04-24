@@ -1,7 +1,7 @@
 ﻿using GoldenEye.Backend.Core.Service;
 using GoldenEye.Backend.Security.Model;
 using GoldenEye.Backend.Security.Repositories;
-using GoldenEye.Shared.Core.DTOs;
+using GoldenEye.Shared.Core.Objects.DTO;
 
 namespace GoldenEye.Backend.Security.Service
 {

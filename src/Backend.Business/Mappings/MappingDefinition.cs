@@ -2,8 +2,8 @@
 using GoldenEye.Backend.Business.Entities;
 using GoldenEye.Backend.Security.Model;
 using GoldenEye.Shared.Business.DTOs;
-using GoldenEye.Shared.Core.DTOs;
 using GoldenEye.Shared.Core.Mappings;
+using GoldenEye.Shared.Core.Objects.DTO;
 
 namespace GoldenEye.Backend.Business.Mappings
 {

@@ -3,7 +3,7 @@ using System.Web.Http;
 using System.Web.Http.OData;
 using GoldenEye.Backend.Security.Service;
 using GoldenEye.Frontend.Core.Web.Controllers;
-using GoldenEye.Shared.Core.DTOs;
+using GoldenEye.Shared.Core.Objects.DTO;
 
 namespace GoldenEye.Frontend.Security.Web.Controllers
 {

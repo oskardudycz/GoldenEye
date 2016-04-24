@@ -3,7 +3,7 @@ using AutoMapper;
 using FluentValidation;
 using GoldenEye.Backend.Core.Entity;
 using GoldenEye.Backend.Core.Repository;
-using GoldenEye.Shared.Core.DTOs;
+using GoldenEye.Shared.Core.Objects.DTO;
 
 namespace GoldenEye.Backend.Core.Service
 {

@@ -1,5 +1,5 @@
 ﻿using GoldenEye.Backend.Core.Entity;
-using GoldenEye.Shared.Core;
+using GoldenEye.Shared.Core.Objects.General;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace GoldenEye.Backend.Security.Model

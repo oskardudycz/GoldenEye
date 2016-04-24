@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using GoldenEye.Backend.Security.Model;
-using GoldenEye.Shared.Core.DTOs;
 using GoldenEye.Shared.Core.Mappings;
+using GoldenEye.Shared.Core.Objects.DTO;
 
 namespace GoldenEye.Backend.Security.Mappings
 {
