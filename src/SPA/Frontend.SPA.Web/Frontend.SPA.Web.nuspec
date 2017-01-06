@@ -29,6 +29,7 @@
             <dependency id="toastr" version="2.1.1" />
             <dependency id="Twitter.Bootstrap" version="3.0.1.1" />
             <dependency id="Antlr" version="3.5.0.2" />
+            <dependency id="AutoMapper" version="[4.1.1,5.0)"></dependency>
         </dependencies>
     </metadata>
 

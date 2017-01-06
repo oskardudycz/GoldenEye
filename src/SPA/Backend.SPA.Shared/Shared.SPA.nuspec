@@ -12,6 +12,7 @@
 
         <dependencies>
             <dependency id="GoldenEye.Shared.Core" />
+            <dependency id="AutoMapper" version="[4.1.1,5.0)"></dependency>
         </dependencies>
     </metadata>
     <files>

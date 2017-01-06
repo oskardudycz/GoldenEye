@@ -14,6 +14,7 @@
             <dependency id="GoldenEye.Shared.Core" />
             <dependency id="GoldenEye.Backend.Core" />
             <dependency id="GoldenEye.Backend.Security" />
+            <dependency id="AutoMapper" version="[4.1.1,5.0)"></dependency>
         </dependencies>
     </metadata>
     <files>
