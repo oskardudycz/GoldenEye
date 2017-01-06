@@ -10,7 +10,7 @@
         <!-- For more information on Entity Framework configuration, visit http://go.microsoft.com/fwlink/?LinkID=237468 -->
     </configSections>
     <connectionStrings>
-        <add name="DBConnectionString" connectionString="Data Source=.\SQLEXPRESS;Initial Catalog=GoldenEyeSample;Integrated Security=SSPI" providerName="System.Data.SqlClient" />
+        <add name="DBConnectionString" connectionString="Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=GoldenEyeSample;Integrated Security=SSPI" providerName="System.Data.SqlClient" />
     </connectionStrings>
     <appSettings>
         <add key="webpages:Version" value="3.0.0.0" />
