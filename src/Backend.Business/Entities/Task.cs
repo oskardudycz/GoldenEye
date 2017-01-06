@@ -5,13 +5,8 @@ namespace GoldenEye.Backend.Business.Entities
 {
     public class TaskEntity : AuditableEntity
     {
-        public int? CustomerId { get; set; }
-
-        public int? TypeId { get; set; }
 
         public string Name { get; set; }
-
-        public int? CustomerColor { get; set; }
 
         public DateTime Date { get; set; }
 
