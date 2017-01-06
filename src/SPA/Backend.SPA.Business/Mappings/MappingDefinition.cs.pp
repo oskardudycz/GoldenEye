@@ -3,6 +3,7 @@ using GoldenEye.Backend.Security.Model;
 using $rootnamespace$.Entities;
 using Shared.Business.DTOs;
 using GoldenEye.Shared.Core.Mappings;
+using GoldenEye.Shared.Core.Objects.DTO;
 
 namespace $rootnamespace$.Mappings
 {
