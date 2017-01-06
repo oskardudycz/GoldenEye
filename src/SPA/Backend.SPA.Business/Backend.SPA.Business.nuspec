@@ -11,9 +11,9 @@
         <copyright>Copyright ©  2015</copyright>
 
         <dependencies>
-            <dependency id="GoldenEye.Shared.Core" version="1.3.49" />
-            <dependency id="GoldenEye.Backend.Core" version="1.3.49" />
-            <dependency id="GoldenEye.Backend.Security" version="1.3.49" />
+            <dependency id="GoldenEye.Shared.Core" version="1.3.50" />
+            <dependency id="GoldenEye.Backend.Core" version="1.3.50" />
+            <dependency id="GoldenEye.Backend.Security" version="1.3.50" />
             <dependency id="AutoMapper" version="[4.1.1,5.0)"></dependency>
         </dependencies>
     </metadata>

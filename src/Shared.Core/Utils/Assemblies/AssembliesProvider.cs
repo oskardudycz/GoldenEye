@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 
 namespace GoldenEye.Shared.Core.Utils.Assemblies
 {
@@ -6,8 +7,7 @@ namespace GoldenEye.Shared.Core.Utils.Assemblies
     {
         public static Assembly[] GetAll()
         {
-            //AppDomain.CurrentDomain.GetAssemblies()
-            return new Assembly[] { };
+            return AppDomain.CurrentDomain.GetAssemblies();
         }
     }
 }
