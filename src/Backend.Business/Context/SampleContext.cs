@@ -19,19 +19,8 @@ namespace GoldenEye.Backend.Business.Context
 
         public IDbSet<TaskEntity> Tasks { get; set; }
 
-        public IDbSet<Customer> Customers { get; set; }
-        public IDbSet<TaskTypeEntity> TaskTypes { get; set; }
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Customer>()
-                .HasKey(o => o.Id)
-                .ToTable("Customers");
-
-            modelBuilder.Entity<TaskTypeEntity>()
-                .HasKey(o => o.Id)
-                .ToTable("TaskTypes");
-
             modelBuilder.Entity<TaskEntity>()
                 .ToTable("Tasks")
                 .Ignore(s => s.Progress)

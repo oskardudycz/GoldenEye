@@ -26,7 +26,7 @@ namespace GoldenEye.Backend.Core.Repository
 
         public virtual TEntity GetById(object id, bool withNoTracking = true)
         {
-            return Includes(withNoTracking ? Queryable.AsNoTracking() : Queryable).SingleOrDefault(r => r.Id.Equals(id));
+            return Includes(withNoTracking ? Queryable.AsNoTracking() : Queryable).SingleOrDefault(r => r.Id == (int)id);
 
         }
 

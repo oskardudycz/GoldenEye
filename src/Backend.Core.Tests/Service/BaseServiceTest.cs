@@ -37,7 +37,6 @@ namespace GoldenEye.Backend.Core.Tests.Service
 
             objects[1] = Builder<TaskEntity>.CreateNew()
                 .With(x => x.Name = "repair")
-                .With(x => x.Number = "1")
                 .With(x => x.Progress = 60)
                 .Build();
             objects[1].Id = id;
@@ -52,7 +51,6 @@ namespace GoldenEye.Backend.Core.Tests.Service
             repository.Verify(x => x.GetById(It.IsAny<Int32>(), It.IsAny<bool>()), Times.Exactly(1));
             Assert.IsNotNull(task);
             Assert.AreEqual("repair", task.Name);
-            Assert.AreEqual(1, task.Number);
             Assert.AreEqual(60, task.Progress);
         }
 
@@ -65,7 +63,6 @@ namespace GoldenEye.Backend.Core.Tests.Service
 
             objects[1] = Builder<TaskEntity>.CreateNew()
                 .With(x => x.Name = "repair")
-                .With(x => x.Number = "1")
                 .With(x => x.Progress = 60)
                 .Build();
 

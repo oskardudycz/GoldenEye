@@ -3,7 +3,7 @@ using GoldenEye.Backend.Core.Entity;
 
 namespace $rootnamespace$.Entities
 {
-    public class TaskEntity : EntityBase
+    public class TaskEntity : AuditableEntity
     {
         public string Name { get; set; }
 

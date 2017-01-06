@@ -22,11 +22,8 @@ namespace GoldenEye.Backend.Core.Tests.Context.SaveChangesHandlers
             //GIVEN
             var task = new TaskEntity
             {
-                Amount = 1,
                 Date = DateTime.Now,
-                Description = "Test description",
                 Name = "Test task name",
-                Number = "Task1234",
                 Progress = 5
             };
             var addedEntites = new List<TaskEntity>
@@ -64,11 +61,8 @@ namespace GoldenEye.Backend.Core.Tests.Context.SaveChangesHandlers
             var task = new TaskEntity()
             {
                 Id = 2,
-                Amount = 1,
                 Date = DateTime.Now,
-                Description = "Test description",
                 Name = "Test task name",
-                Number = "Task1234",
                 Progress = 5,
                 CreatedBy = 2,
                 LastModifiedBy = 2,

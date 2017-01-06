@@ -24,14 +24,12 @@ namespace GoldenEye.Backend.Core.Tests.Repository
                 new TaskEntity()
                 {
                     Name = "repair",
-                    Number = "1",
                     Progress = 50,
                     Id = 1
                 },
                 new TaskEntity()
                 {
                     Name = "painting",
-                    Number = "2",
                     Progress = 30,
                     Id = 2
                 }
@@ -52,7 +50,6 @@ namespace GoldenEye.Backend.Core.Tests.Repository
             repository.Add(new TaskEntity()
                 {
                     Name = "sleepwalking",
-                    Number = "3",
                     Progress = 70,
                     Id = 3
                 });

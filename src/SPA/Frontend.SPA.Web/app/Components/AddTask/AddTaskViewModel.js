@@ -8,6 +8,11 @@ var AddTaskViewModel = function () {
         required: true,
         date: true
     });
+    self.Progress = ko.observable().extend({
+        min: 0,
+        max:100,
+        required: true
+    });
     self.Description = ko.observable();
     
     self.Id = ko.observable();
