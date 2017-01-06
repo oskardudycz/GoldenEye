@@ -1,6 +1,6 @@
 ﻿using System;
 using FluentValidation.Attributes;
-using GoldenEye.Shared.Core.DTOs;
+using GoldenEye.Shared.Core.Objects.DTO;
 using Shared.Business.Validators;
 
 namespace Shared.Business.DTOs
