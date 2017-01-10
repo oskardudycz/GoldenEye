@@ -10,7 +10,7 @@
     <description>Description</description>
     <copyright>Copyright ©  2015</copyright>
     <dependencies>
-      <dependency id="AutoMapper" version="[4.1.1,5.0)"></dependency>
+      <dependency id="AutoMapper" version="5.1.2"></dependency>
     </dependencies>
   </metadata>
   <files>
