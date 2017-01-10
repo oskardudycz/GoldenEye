@@ -77,7 +77,9 @@ namespace GoldenEye.Frontend.Core.Web
 
             IOCContainer.Initialize(kernel);
 
-            kernel.GetAll<IMappingDefinition>().Cast<Profile>().ForEach(Mapper.AddProfile);
+            Mapper.Initialize(cfg => {
+                kernel.GetAll<IMappingDefinition>().Cast<Profile>().ForEach(cfg.AddProfile);
+            });
         }
 
         private static void SetConventions(IKernel kernel)

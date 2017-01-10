@@ -7,9 +7,9 @@ namespace GoldenEye.Frontend.Web.Mappings
 {
     public class MappingDefinition : Profile, IMappingDefinition
     {
-        protected override void Configure()
+        public MappingDefinition()
         {
-            Mapper.CreateMap<RegisterBindingModel, UserDTO>().IgnoreNonExistingProperties();
+            CreateMap<RegisterBindingModel, UserDTO>(MemberList.None);
         }
     }
 }

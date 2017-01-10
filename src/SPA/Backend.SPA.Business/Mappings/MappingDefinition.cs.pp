@@ -1,24 +1,18 @@
 ﻿using AutoMapper;
+using GoldenEye.Backend.Business.Entities;
 using GoldenEye.Backend.Security.Model;
-using $rootnamespace$.Entities;
-using Shared.Business.DTOs;
+using GoldenEye.Shared.Business.DTOs;
 using GoldenEye.Shared.Core.Mappings;
 using GoldenEye.Shared.Core.Objects.DTO;
 
-namespace $rootnamespace$.Mappings
+namespace GoldenEye.Backend.Business.Mappings
 {
     public class MappingDefinition : Profile, IMappingDefinition
     {
-        protected override void Configure()
+        public MappingDefinition()
         {
-            Mapper.CreateMap<TaskEntity, TaskDTO>()
-                .IgnoreNonExistingProperties();
-            Mapper.CreateMap<TaskDTO, TaskEntity>()
-                .IgnoreNonExistingProperties();
-            Mapper.CreateMap<User, UserDTO>()
-                .IgnoreNonExistingProperties();
-            Mapper.CreateMap<UserDTO, User>()
-                .IgnoreNonExistingProperties();
+            CreateMap<TaskEntity, TaskDTO>(MemberList.None).ReverseMap();
+            CreateMap<User, UserDTO>(MemberList.None).ReverseMap();
         }
     }
 }

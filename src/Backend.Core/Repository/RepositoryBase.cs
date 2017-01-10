@@ -3,7 +3,6 @@ using System.Data.Entity;
 using System.Linq;
 using GoldenEye.Backend.Core.Context;
 using GoldenEye.Backend.Core.Entity;
-using GoldenEye.Shared.Core;
 
 namespace GoldenEye.Backend.Core.Repository
 {

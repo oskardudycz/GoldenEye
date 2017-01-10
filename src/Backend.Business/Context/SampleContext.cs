@@ -23,7 +23,6 @@ namespace GoldenEye.Backend.Business.Context
         {
             modelBuilder.Entity<TaskEntity>()
                 .ToTable("Tasks")
-                .Ignore(s => s.Progress)
                 .HasKey(o => o.Id);
 
         }

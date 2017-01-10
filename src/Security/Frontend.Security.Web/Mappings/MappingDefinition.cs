@@ -7,12 +7,10 @@ namespace GoldenEye.Frontend.Security.Web.Mappings
 {
     public class MappingDefinition : Profile, IMappingDefinition
     {
-        protected override void Configure()
+        public MappingDefinition()
         {
-            Mapper.CreateMap<RegisterBindingModel, User>()
-                .IgnoreNonExistingProperties();
-            Mapper.CreateMap<RegisterExternalBindingModel, User>()
-                .IgnoreNonExistingProperties();
+            CreateMap<RegisterBindingModel, User>(MemberList.None);
+            CreateMap<RegisterExternalBindingModel, User>(MemberList.None);
         }
     }
 }

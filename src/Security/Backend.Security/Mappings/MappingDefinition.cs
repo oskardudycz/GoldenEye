@@ -7,12 +7,9 @@ namespace GoldenEye.Backend.Security.Mappings
 {
     public class MappingDefinition : Profile, IMappingDefinition
     {
-        protected override void Configure()
+        public MappingDefinition()
         {
-            Mapper.CreateMap<UserDTO, User>()
-                .IgnoreNonExistingProperties();
-            Mapper.CreateMap<User, UserDTO>()
-                .IgnoreNonExistingProperties();
+            CreateMap<UserDTO, User>(MemberList.None).ReverseMap();
         }
     }
 }

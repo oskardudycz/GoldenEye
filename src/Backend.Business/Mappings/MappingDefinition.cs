@@ -9,16 +9,10 @@ namespace GoldenEye.Backend.Business.Mappings
 {
     public class MappingDefinition : Profile, IMappingDefinition
     {
-        protected override void Configure()
+        public MappingDefinition()
         {
-            Mapper.CreateMap<TaskEntity, TaskDTO>()
-                .ForMember(el => el.Progress, opt => opt.Ignore())
-                .IgnoreNonExistingProperties();
-            Mapper.CreateMap<TaskDTO, TaskEntity>()
-                .ForMember(el => el.Progress, opt => opt.Ignore())
-                .IgnoreNonExistingProperties();
-            Mapper.CreateMap<User, UserDTO>().IgnoreNonExistingProperties();
-            Mapper.CreateMap<UserDTO, User>().IgnoreNonExistingProperties();
+            CreateMap<TaskEntity, TaskDTO>(MemberList.None).ReverseMap();
+            CreateMap<User, UserDTO>(MemberList.None).ReverseMap();
         }
     }
 }

@@ -14,7 +14,9 @@ namespace GoldenEye.Frontend.Web.Tests.Controllers
         [ClassInitialize]
         public static void MapperInit(TestContext context)
         {
-            Mapper.AddProfile<MappingDefinition>();
+            Mapper.Initialize(cfg => {
+                cfg.AddProfile< MappingDefinition>();
+            });
         }
         [TestMethod]
         public void Get()

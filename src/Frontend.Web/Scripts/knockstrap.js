@@ -1,4 +1,4 @@
-/*! knockstrap 1.3.1 http://faulknercs.github.io/Knockstrap/ | (c) 2013-2015 Artem Stepanyuk |  http://www.opensource.org/licenses/mit-license */
+/*! knockstrap 1.3.2 http://faulknercs.github.io/Knockstrap/ | (c) 2013-2016 Artem Stepanyuk |  http://www.opensource.org/licenses/mit-license */
 
 (function (factory) {
     'use strict';
@@ -388,17 +388,19 @@
                         value = valueAccessor(),
                         data = $checkbox.val(),
                         isChecked = $checkbox.parent().hasClass('active');
+                    
+                    if(!$checkbox.prop('disbled')) {
+                        if (ko.unwrap(value) instanceof Array) {
+                            var index = ko.utils.arrayIndexOf(ko.unwrap(value), (data));
     
-                    if (ko.unwrap(value) instanceof Array) {
-                        var index = ko.utils.arrayIndexOf(ko.unwrap(value), (data));
-    
-                        if (isChecked && (index === -1)) {
-                            value.push(data);
-                        } else if (!isChecked && (index !== -1)) {
-                            value.splice(index, 1);
+                            if (isChecked && (index === -1)) {
+                                value.push(data);
+                            } else if (!isChecked && (index !== -1)) {
+                                value.splice(index, 1);
+                            }
+                        } else {
+                            value(isChecked);
                         }
-                    } else {
-                        value(isChecked);
                     }
                 }, 0);
             };
@@ -888,7 +890,10 @@
                         value = valueAccessor(),
                         newValue = radio.val();
     
-                    value(newValue);
+                    // we shouldn't change value for disables buttons
+                    if (!radio.prop('disabled')) {
+                        value(newValue);
+                    }
                 }, 0);
             });
         },
