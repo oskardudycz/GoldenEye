@@ -11,11 +11,11 @@
         <copyright>Copyright ©  2015</copyright>
 
         <dependencies>
-            <dependency id="GoldenEye.Shared.Core" version="1.4.1" />
-            <dependency id="GoldenEye.Backend.Core" version="1.4.1" />
-            <dependency id="GoldenEye.Frontend.Core.Web" version="1.4.1" />
-            <dependency id="GoldenEye.Backend.Security" version="1.4.1" />
-            <dependency id="GoldenEye.Frontend.Security.Web" version="1.4.1" />
+            <dependency id="GoldenEye.Shared.Core" version="1.4.2" />
+            <dependency id="GoldenEye.Backend.Core" version="1.4.2" />
+            <dependency id="GoldenEye.Frontend.Core.Web" version="1.4.2" />
+            <dependency id="GoldenEye.Backend.Security" version="1.4.2" />
+            <dependency id="GoldenEye.Frontend.Security.Web" version="1.4.2" />
             <dependency id="bootstrap" version="3.3.7" />
             <dependency id="jQuery" version="3.1.1" />
             <dependency id="jQuery.Validation" version="1.16.0" />
@@ -28,6 +28,7 @@
             <dependency id="Sammy.js" version="0.7.5" />
             <dependency id="toastr" version="2.1.1" />
             <dependency id="Twitter.Bootstrap" version="3.0.1.1" />
+            <dependency id="AutoMapper" version="5.1.2"></dependency>
         </dependencies>
     </metadata>
 
