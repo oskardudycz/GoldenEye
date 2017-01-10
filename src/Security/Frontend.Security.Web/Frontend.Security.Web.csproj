@@ -173,9 +173,7 @@
     <None Include="App.config" />
     <None Include="Frontend.Security.Web.nuspec" />
     <Compile Include="Mappings\MappingDefinition.cs" />
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Backend.Core\Backend.Core.csproj">

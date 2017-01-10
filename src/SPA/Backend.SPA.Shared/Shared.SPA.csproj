@@ -56,15 +56,15 @@
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-Net451-NuGet|AnyCPU'">
-      <OutputPath>bin\Release-Net451\</OutputPath>
-      <DefineConstants>TRACE</DefineConstants>
-      <Optimize>true</Optimize>
-      <DebugType>pdbonly</DebugType>
-      <PlatformTarget>AnyCPU</PlatformTarget>
-      <ErrorReport>prompt</ErrorReport>
-      <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-      <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
-      <BuildPackage>true</BuildPackage>
+    <OutputPath>bin\Release-Net451\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <BuildPackage>true</BuildPackage>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
@@ -95,8 +95,8 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <None Include="Shared.SPA.nuspec" />
     <None Include="packages.config" />
+    <None Include="Shared.SPA.nuspec" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
