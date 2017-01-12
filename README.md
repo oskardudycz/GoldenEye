@@ -24,7 +24,6 @@ How do I get started?
 --------------------------------
 Checkout [sample project](https://github.com/oskardudycz/GoldenEye-Sample) build it and play around. If you prefer to do it from scratch follow the steps:
 1. Create new solution with "ASP.NET Empty Web Site" project name it eg. Frontend
-<img src="https://i0.wp.com/oskar-dudycz.pl/wp-content/uploads/2017/01/bl1.png" alt="AutoMapper"> 
 2. Add new Class libraries projects to newly created solution:
 - Backend
 - Shared
@@ -48,10 +47,12 @@ Main bootstrap packages:
 - [GoldenEye.Shared.SPA](https://www.nuget.org/packages/GoldenEye.Shared.SPA/)
 - [GoldenEye.Backend.SPA.Business](https://www.nuget.org/packages/GoldenEye.Backend.SPA.Business/)
 - [Goldeneye.SPA.Web](https://www.nuget.org/packages/GoldenEye.Frontend.SPA.Web/)
+
 Core packages:
 - [GoldenEye.Shared.Core](https://www.nuget.org/packages/GoldenEye.Shared.Core/)
 - [GoldenEye.Backend.Core](https://www.nuget.org/packages/GoldenEye.Backend.Core/)
 - [GoldenEye.Frontend.Core.Web](https://www.nuget.org/packages/GoldenEye.Frontend.Core.Web/)
+
 Security related packages (User management, OAuth etc.)
 - [GoldenEye.Backend.Security](https://www.nuget.org/packages/GoldenEye.Backend.Security/)
 - [GoldenEye.Frontend.Security.Web](https://www.nuget.org/packages/GoldenEye.Frontend.Security.Web/)
