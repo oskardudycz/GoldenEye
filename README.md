@@ -57,7 +57,7 @@ Security related packages (User management, OAuth etc.)
 - [GoldenEye.Backend.Security](https://www.nuget.org/packages/GoldenEye.Backend.Security/)
 - [GoldenEye.Frontend.Security.Web](https://www.nuget.org/packages/GoldenEye.Frontend.Security.Web/)
 
-Do you have an issue or change request?
+I found an issue or I have change request
 --------------------------------
 Feel free to create an issue on GitHub. Contributions, pull requests are more than welcome!
 
