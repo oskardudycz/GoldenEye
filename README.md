@@ -3,17 +3,17 @@
 
 What is GoldenEye?
 --------------------------------
-GoldenEye is Full Stack framework written in .NET and JavaScript. The main aim of GoldenEye is to Speed Up your development process. It gathers most widely used frameworks in .NET world and pack them as a simple bootstrap Nuget packages.
+GoldenEye is a Full Stack framework written in .NET and JavaScript. The main goal of GoldenEye is to speed up your development process. It gathers most widely used frameworks in .NET world and pack them as a simple bootstrap Nuget packages. It also provide lot of base classes, helpers, extensions that will help you with your daily work.
 
 What do I get?
 --------------------------------
-Complete bootstrap bottom down
+Complete solution bootstrap bottom down
 - Entity Framework
 - CRUD Repositories and CRUD Application Services
 - WebApi CRUD controllers with OData being set up
 - Authorization with OAuth
 - Simple SPA Web Frontend Written in Knockout.JS and Sammy.JS
-- Set up Inversion of Control with automatic naming convention binding (Ninject)
+- complete set up of dependency injection with automatic naming convention binding (Ninject)
 - Automapper preconfigured and automatic registration
 - Validation flow with FluentValidation.NET and Knockout.Validation
 - Examples of complete usage (Task list funcionality)
@@ -58,6 +58,6 @@ Security related packages (User management, OAuth etc.)
 
 Do you have an issue or change request?
 --------------------------------
-Feel free to create an issue on github. Contributions and pull requests are more than welcome!
+Feel free to create an issue on github. Contributions, pull requests are more than welcome!
 
 GoldenEye is Copyright &copy; 2015-2017 [Oskar Dudycz](http://oskar-dudycz.pl) and other contributors under the [MIT license](LICENSE.txt).
