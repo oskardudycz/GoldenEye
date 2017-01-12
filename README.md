@@ -23,23 +23,24 @@ Complete solution bootstrap bottom down
 How do I get started?
 --------------------------------
 Checkout [sample project](https://github.com/oskardudycz/GoldenEye-Sample) build it and play around. If you prefer to do it from scratch follow the steps:
+
 1. Create new solution with "ASP.NET Empty Web Site" project name it eg. "Frontend"
 
 2. Add new Class libraries projects to newly created solution:
+
 - Backend
 - Shared
 
 3. Add following references
+
 - Backend and Shared to Frontend project
 - Shared to Backend project
 
 4. Install following Nuget packages to the projects:
-- Shared - GoldenEye.Shared.SPA
-    PM> GoldenEye.Shared.SPA
+
+- Shared - GoldenEye.Shared.SPA    
 - Backend - GoldenEye.Backend.SPA.Business
-    PM> GoldenEye.Backend.SPA.Business
 - Frontend - GoldenEye.Frontend.SPA.Web
-    PM> GoldenEye.Frontend.SPA.Web
 
 5. Run the frontend project.
 
