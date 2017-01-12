@@ -23,13 +23,16 @@ Complete solution bootstrap bottom down
 How do I get started?
 --------------------------------
 Checkout [sample project](https://github.com/oskardudycz/GoldenEye-Sample) build it and play around. If you prefer to do it from scratch follow the steps:
-1. Create new solution with "ASP.NET Empty Web Site" project name it eg. Frontend
+1. Create new solution with "ASP.NET Empty Web Site" project name it eg. "Frontend"
+
 2. Add new Class libraries projects to newly created solution:
 - Backend
 - Shared
+
 3. Add following references
 - Backend and Shared to Frontend project
 - Shared to Backend project
+
 4. Install following Nuget packages to the projects:
 - Shared - GoldenEye.Shared.SPA
     PM> GoldenEye.Shared.SPA
@@ -37,7 +40,9 @@ Checkout [sample project](https://github.com/oskardudycz/GoldenEye-Sample) build
     PM> GoldenEye.Backend.SPA.Business
 - Frontend - GoldenEye.Frontend.SPA.Web
     PM> GoldenEye.Frontend.SPA.Web
+
 5. Run the frontend project.
+
 If you're feeling comportable enough with polish language you can read my [blog post](http://oskar-dudycz.pl/2017/01/06/metallica-skonczyla-sie-na-kill-em-all-a-ja-ide-w-open-sourcey/#comment-44) where I annouced GoldenEye and explained the main goals.
 
 Where can I get it?
@@ -59,6 +64,6 @@ Security related packages (User management, OAuth etc.)
 
 Do you have an issue or change request?
 --------------------------------
-Feel free to create an issue on github. Contributions, pull requests are more than welcome!
+Feel free to create an issue on GitHub. Contributions, pull requests are more than welcome!
 
 GoldenEye is Copyright &copy; 2015-2017 [Oskar Dudycz](http://oskar-dudycz.pl) and other contributors under the [MIT license](LICENSE.txt).
