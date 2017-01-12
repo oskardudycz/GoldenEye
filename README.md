@@ -2,6 +2,7 @@
 ================================
 
 [![Build status](https://ci.appveyor.com/api/projects/status/1mtm4h33cvur6kob?svg=true)](https://ci.appveyor.com/project/oskardudycz/goldeneye-core)
+[![NuGet version](https://badge.fury.io/nu/GoldenEye.Shared.SPA.svg)](https://badge.fury.io/nu/GoldenEye.Shared.SPA)
 [![NuGet](https://img.shields.io/nuget/v/Nuget.Core.svg)](https://www.nuget.org/packages/GoldenEye.Shared.SPA/)
 [![NuGet](https://img.shields.io/nuget/v/Nuget.Core.svg)](https://www.nuget.org/packages/GoldenEye.Frontend.SPA.Web/)
 [![NuGet](https://img.shields.io/nuget/v/Nuget.Core.svg)](https://www.nuget.org/packages/GoldenEye.Backend.SPA.Business/)
