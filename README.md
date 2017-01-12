@@ -26,15 +26,15 @@ Checkout [sample project](https://github.com/oskardudycz/GoldenEye-Sample) build
 
 1. Create new solution with "ASP.NET Empty Web Site" project name it eg. "Frontend"
 2. Add new Class libraries projects to newly created solution:
-  - Backend
-  - Shared
+  * Backend
+  * Shared
 3. Add following references
-  - Backend and Shared to Frontend project
-  - Shared to Backend project
+  * Backend and Shared to Frontend project
+  * Shared to Backend project
 4. Install following Nuget packages to the projects:
-  - Shared - GoldenEye.Shared.SPA    
-  - Backend - GoldenEye.Backend.SPA.Business
-  - Frontend - GoldenEye.Frontend.SPA.Web
+  * Shared - GoldenEye.Shared.SPA    
+  * Backend - GoldenEye.Backend.SPA.Business
+  * Frontend - GoldenEye.Frontend.SPA.Web
 5. Run the frontend project.
 
 If you're feeling comportable enough with polish language you can read my [blog post](http://oskar-dudycz.pl/2017/01/06/metallica-skonczyla-sie-na-kill-em-all-a-ja-ide-w-open-sourcey/#comment-44) where I annouced GoldenEye and explained the main goals.
