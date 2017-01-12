@@ -15,7 +15,7 @@ Complete Solution bootstrap - bottom up:
 - Authorization with OAuth
 - Simple SPA Web Frontend Written in Knockout.JS and Sammy.JS
 - complete set up of dependency injection with automatic naming convention binding (Ninject)
-- Automapper preconfigured and automatic registration
+- Automapper preconfigured and class mappings automatic registration
 - Validation flow with FluentValidation.NET and Knockout.Validation
 - Examples of complete usage (Task list funcionality)
 - logging with NLog
