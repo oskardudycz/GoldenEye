@@ -8,7 +8,7 @@ GoldenEye is a Full Stack framework written in .NET and JavaScript. The main goa
 
 What do I get?
 --------------------------------
-Complete solution bootstrap bottom down
+Complete Solution bootstrap - bottom up:
 - Entity Framework
 - CRUD Repositories and CRUD Application Services
 - WebApi CRUD controllers with OData being set up
