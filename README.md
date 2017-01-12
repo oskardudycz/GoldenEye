@@ -3,6 +3,8 @@
 
 [![Build status](https://ci.appveyor.com/api/projects/status/1mtm4h33cvur6kob?svg=true)](https://ci.appveyor.com/project/oskardudycz/goldeneye-core)
 [![NuGet version](https://badge.fury.io/nu/GoldenEye.Shared.SPA.svg)](https://badge.fury.io/nu/GoldenEye.Shared.SPA)
+--------------------------------
+
 What is GoldenEye?
 --------------------------------
 GoldenEye is a Full Stack framework written in .NET and JavaScript. The main goal of GoldenEye is to speed up your development process. It gathers most widely used frameworks in .NET world and pack them as a simple bootstrap Nuget packages. It also provide lot of base classes, helpers, extensions that will help you with your daily work.
