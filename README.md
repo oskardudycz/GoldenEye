@@ -11,7 +11,7 @@ What do I get?
 Complete Solution bootstrap - bottom up:
 - Entity Framework
 - CRUD Repositories and CRUD Application Services
-- WebApi CRUD controllers with OData being set up
+- WebApi REST controllers with OData being set up
 - Authorization with OAuth
 - Simple SPA Web Frontend Written in Knockout.JS and Sammy.JS
 - complete set up of dependency injection with automatic naming convention binding (Ninject)
