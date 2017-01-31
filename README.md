@@ -1,21 +1,21 @@
-# GoldenEye-Core
+# GoldenEye
 [![Build status](https://ci.appveyor.com/api/projects/status/1mtm4h33cvur6kob?svg=true)](https://ci.appveyor.com/project/oskardudycz/goldeneye-core)
 [![NuGet version](https://badge.fury.io/nu/GoldenEye.Shared.SPA.svg)](https://badge.fury.io/nu/GoldenEye.Shared.SPA)
 
 What is GoldenEye?
 --------------------------------
-GoldenEye is a Full Stack framework written in .NET and JavaScript. The main goal of GoldenEye is to speed up your development process. It gathers most widely used frameworks in .NET world and pack them as a simple bootstrap Nuget packages. It also provide lot of base classes, helpers, extensions that will help you with your daily work.
+GoldenEye is a Full Stack framework written in .NET and JavaScript. The main goal of GoldenEye is to speed up your development process. It gathers most widely used frameworks in .NET world and pack them into a simple bootstrap Nuget packages. It also provide set of base classes, helpers, extensions that will help you with your daily work.
 
 What do I get?
 --------------------------------
-Complete solution bootstrap bottom down
+Complete Solution bootstrap - bottom up:
 - Entity Framework
 - CRUD Repositories and CRUD Application Services
-- WebApi CRUD controllers with OData being set up
+- WebApi REST controllers with OData being set up
 - Authorization with OAuth
 - Simple SPA Web Frontend Written in Knockout.JS and Sammy.JS
 - complete set up of dependency injection with automatic naming convention binding (Ninject)
-- Automapper preconfigured and automatic registration
+- Automapper preconfigured and class mappings automatic registration
 - Validation flow with FluentValidation.NET and Knockout.Validation
 - Examples of complete usage (Task list funcionality)
 - logging with NLog
@@ -57,7 +57,7 @@ Security related packages (User management, OAuth etc.)
 - [GoldenEye.Backend.Security](https://www.nuget.org/packages/GoldenEye.Backend.Security/)
 - [GoldenEye.Frontend.Security.Web](https://www.nuget.org/packages/GoldenEye.Frontend.Security.Web/)
 
-Do you have an issue or change request?
+I found an issue or I have a change request
 --------------------------------
 Feel free to create an issue on GitHub. Contributions, pull requests are more than welcome!
 
