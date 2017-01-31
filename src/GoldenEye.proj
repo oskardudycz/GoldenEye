@@ -11,6 +11,9 @@
     <MSBuild Projects="GoldenEye.sln" Targets="Rebuild" Properties="Configuration=Release-Net452-Nuget"
                      StopOnFirstFailure="true">
     </MSBuild>
+    <MSBuild Projects="GoldenEye.sln" Targets="Rebuild" Properties="Configuration=Release-Net462-Nuget"
+                     StopOnFirstFailure="true">
+    </MSBuild>
   </Target>
 
 </Project>
