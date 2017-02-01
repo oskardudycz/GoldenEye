@@ -9,6 +9,7 @@ using System.Web.Http.Tracing;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Swashbuckle.Application;
 
 namespace GoldenEye.Frontend.Core.Web
 {
