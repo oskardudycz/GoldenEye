@@ -44,18 +44,18 @@ Where can I get it?
 --------------------------------
 Install packages from the Nuget package manager:
 Main bootstrap packages:
-- [GoldenEye.Shared.SPA](https://www.nuget.org/packages/GoldenEye.Shared.SPA/)
-- [GoldenEye.Backend.SPA.Business](https://www.nuget.org/packages/GoldenEye.Backend.SPA.Business/)
-- [Goldeneye.SPA.Web](https://www.nuget.org/packages/GoldenEye.Frontend.SPA.Web/)
+* [GoldenEye.Shared.SPA](https://www.nuget.org/packages/GoldenEye.Shared.SPA/)
+* [GoldenEye.Backend.SPA.Business](https://www.nuget.org/packages/GoldenEye.Backend.SPA.Business/)
+* [Goldeneye.SPA.Web](https://www.nuget.org/packages/GoldenEye.Frontend.SPA.Web/)
 
 Core packages:
-- [GoldenEye.Shared.Core](https://www.nuget.org/packages/GoldenEye.Shared.Core/)
-- [GoldenEye.Backend.Core](https://www.nuget.org/packages/GoldenEye.Backend.Core/)
-- [GoldenEye.Frontend.Core.Web](https://www.nuget.org/packages/GoldenEye.Frontend.Core.Web/)
+* [GoldenEye.Shared.Core](https://www.nuget.org/packages/GoldenEye.Shared.Core/)
+* [GoldenEye.Backend.Core](https://www.nuget.org/packages/GoldenEye.Backend.Core/)
+* [GoldenEye.Frontend.Core.Web](https://www.nuget.org/packages/GoldenEye.Frontend.Core.Web/)
 
 Security related packages (User management, OAuth etc.)
-- [GoldenEye.Backend.Security](https://www.nuget.org/packages/GoldenEye.Backend.Security/)
-- [GoldenEye.Frontend.Security.Web](https://www.nuget.org/packages/GoldenEye.Frontend.Security.Web/)
+* [GoldenEye.Backend.Security](https://www.nuget.org/packages/GoldenEye.Backend.Security/)
+* [GoldenEye.Frontend.Security.Web](https://www.nuget.org/packages/GoldenEye.Frontend.Security.Web/)
 
 I found an issue or I have a change request
 --------------------------------
