@@ -15,11 +15,11 @@
 
   <ItemGroup>
     <Compile Remove="Configuration\ConfigHelper.cs" />
-    <Compile Remove="IOC\IOCContainer.cs" />
     <Compile Remove="Modules\IModule.cs" />
     <Compile Remove="Modules\ModuleBase.cs" />
     <Compile Remove="Objects\DTO\IValidatableDTO.cs" />
     <Compile Remove="Objects\DTO\ValidatableDTOBase.cs" />
+    <Compile Remove="Properties\AssemblyInfo.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,11 +33,14 @@
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
     <PackageReference Include="System.ComponentModel" Version="4.3.0" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.3.0" />
+    <PackageReference Include="System.Reflection.Extensions" Version="4.3.0" />
+    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.3.0" />
     <PackageReference Include="System.Runtime.Serialization.Formatters" Version="4.3.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Configuration\" />
+    <Folder Include="Properties\" />
   </ItemGroup>
 
 </Project>
