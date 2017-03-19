@@ -10,12 +10,6 @@ namespace GoldenEye.Shared.Core.Validation
     [Serializable]
     public class ValidatableObjectBase : IValidatable
     {
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        {
-            return Validate().Errors
-              .Select(e => new ValidationResult(e.ErrorMessage, new[] { e.PropertyName })).ToList();
-        }
-
         public FluentValidation.Results.ValidationResult Validate()
         {
             var validationResult = ValidationEngine.Validate(GetType(), this);
@@ -28,9 +22,18 @@ namespace GoldenEye.Shared.Core.Validation
             return validationResult;
         }
 
-        public FluentValidation.Results.ValidationResult Validate(object additonalContext)
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            var validationResult = ValidationEngine.Validate(GetType(), this, additonalContext);
+            return Validate().Errors
+              .Select(e => new ValidationResult(e.ErrorMessage, new[] { e.PropertyName })).ToList();
+        }
+    }
+
+    public static class ValidatableObjectBaseExtension
+    {
+        public static FluentValidation.Results.ValidationResult Validate(this IValidatable obj, object additonalContext)
+        {
+            var validationResult = ValidationEngine.Validate(obj.GetType(), obj, additonalContext);
 
             if (validationResult == null || validationResult.Errors == null)
             {
@@ -39,10 +42,7 @@ namespace GoldenEye.Shared.Core.Validation
 
             return validationResult;
         }
-    }
 
-    public static class ValidatableObjectBaseExtension
-    {
         public static bool IsValid(this FluentValidation.Results.ValidationResult validationResult)
         {
             return validationResult == null || validationResult.IsValid;
