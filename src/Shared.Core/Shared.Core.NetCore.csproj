@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.5</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Extensions\Threading\**" />
+    <Compile Remove="Validation\**" />
+    <EmbeddedResource Remove="Extensions\Threading\**" />
+    <EmbeddedResource Remove="Validation\**" />
+    <None Remove="Extensions\Threading\**" />
+    <None Remove="Validation\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Configuration\ConfigHelper.cs" />
+    <Compile Remove="IOC\IOCContainer.cs" />
+    <Compile Remove="Modules\IModule.cs" />
+    <Compile Remove="Modules\ModuleBase.cs" />
+    <Compile Remove="Objects\DTO\IValidatableDTO.cs" />
+    <Compile Remove="Objects\DTO\ValidatableDTOBase.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="packages.config" />
+    <None Remove="Shared.Core.nuspec" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.0.1" />
+    <PackageReference Include="FluentValidation" Version="6.4.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+    <PackageReference Include="System.ComponentModel" Version="4.3.0" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.3.0" />
+    <PackageReference Include="System.Runtime.Serialization.Formatters" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Configuration\" />
+  </ItemGroup>
+
+</Project>
