@@ -10,11 +10,8 @@
         <description>Description</description>
         <copyright>Copyright ©  2015</copyright>
         <dependencies>
-            <dependency id="GoldenEye.Shared.Core" />
+            <dependency id="GoldenEye.Shared.Core" version="1.4.29" />
+            <dependency id="GoldenEye.Shared.Core.IOC.Ninject" version="1.4.29" />
         </dependencies>
     </metadata>
-    <files>
-        <file src="bin\Release\GoldenEye.Backend.Core.dll" target="lib\net45" />
-        <file src="bin\Release-Net451\GoldenEye.Backend.Core.dll" target="lib\net451" />
-    </files>
 </package>

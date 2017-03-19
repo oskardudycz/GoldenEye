@@ -13,8 +13,4 @@
       <dependency id="AutoMapper" version="5.1.2"></dependency>
     </dependencies>
   </metadata>
-  <files>
-    <file src="bin\Release\GoldenEye.Shared.Core.dll" target="lib\net45" />
-    <file src="bin\Release-Net451\GoldenEye.Shared.Core.dll" target="lib\net451" />
-  </files>
 </package>

@@ -10,8 +10,6 @@ namespace GoldenEye.Backend.Core.Context
 {
     public abstract class DataContext<T> : DbContext, IDataContext where T : DbContext
     {
-        readonly IEnumerable<ISaveChangesHandler> _saveHandlers;
-
         protected DataContext()
         {
             SetInitializer();

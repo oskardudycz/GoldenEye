@@ -1,24 +1,25 @@
 ﻿<?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
-    <metadata>
-        <id>GoldenEye.Frontend.Security.Web</id>
-        <version>$version$</version>
-        <title>GoldenEye.Frontend.Security.Web</title>
-        <authors>odudycz</authors>
-        <owners>odudycz</owners>
-        <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>Description</description>
-        <copyright>Copyright ©  2015</copyright>
-        <dependencies>
-            <dependency id="GoldenEye.Shared.Core" />
-            <dependency id="GoldenEye.Backend.Core" />
-            <dependency id="GoldenEye.Frontend.Core.Web" />
-            <dependency id="GoldenEye.Backend.Security" />
-            <dependency id="Microsoft.Owin.Security.OAuth" version="3.0.1" />
-        </dependencies>
-    </metadata>
-    <files>
-        <file src="bin\Release\GoldenEye.Frontend.Security.Web.dll" target="lib\net45" />
-        <file src="bin\Release-Net451\GoldenEye.Frontend.Security.Web.dll" target="lib\net451" />
-    </files>
+  <metadata>
+    <id>GoldenEye.Frontend.Security.Web</id>
+    <version>$version$</version>
+    <title>GoldenEye.Frontend.Security.Web</title>
+    <authors>odudycz</authors>
+    <owners>odudycz</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Description</description>
+    <copyright>Copyright ©  2015</copyright>
+    <dependencies>
+      <dependency id="GoldenEye.Shared.Core" version="1.4.29" />
+      <dependency id="GoldenEye.Shared.Core.IOC.Ninject" version="1.4.29" />
+      <dependency id="GoldenEye.Backend.Core" version="1.4.29" />
+      <dependency id="GoldenEye.Frontend.Core.Web" version="1.4.29" />
+      <dependency id="GoldenEye.Backend.Security" version="1.4.29" />
+      <dependency id="Microsoft.Owin.Security.OAuth" version="3.0.1" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\Release\GoldenEye.Frontend.Security.Web.dll" target="lib\net45" />
+    <file src="bin\Release-Net451\GoldenEye.Frontend.Security.Web.dll" target="lib\net451" />
+  </files>
 </package>
