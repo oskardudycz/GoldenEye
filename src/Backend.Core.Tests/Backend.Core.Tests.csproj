@@ -191,6 +191,10 @@
       <Project>{92b1a1f0-6fd6-411a-bd00-0cdefb829782}</Project>
       <Name>Backend.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Core\Shared.Core.IOC.Ninject\Shared.Core.IOC.Ninject.csproj">
+      <Project>{366e6163-743f-4af2-b29e-b3a01600aac3}</Project>
+      <Name>Shared.Core.IOC.Ninject</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Frontend.Core.Web\Frontend.Core.Web.csproj">
       <Project>{339e53ff-acde-4e68-a862-b9e7f10e2ded}</Project>
       <Name>Frontend.Core.Web</Name>

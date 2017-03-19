@@ -14,8 +14,6 @@ namespace GoldenEye.Backend.Core.Tests.Context.SaveChangesHandlers
     [TestClass]
     public class AuditInfoSaveChangesHandlerTest
     {
-        private SampleContext _context;
-
         [Ignore]
         [TestMethod]
         public void GivenNewTask_WhenRunAuditHandle_ThenShouldAppendAuditInfo()

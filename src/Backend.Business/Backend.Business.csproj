@@ -131,6 +131,10 @@
       <Project>{92b1a1f0-6fd6-411a-bd00-0cdefb829782}</Project>
       <Name>Backend.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Core\Shared.Core.IOC.Ninject\Shared.Core.IOC.Ninject.csproj">
+      <Project>{366e6163-743f-4af2-b29e-b3a01600aac3}</Project>
+      <Name>Shared.Core.IOC.Ninject</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Security\Backend.Security\Backend.Security.csproj">
       <Project>{50414cf7-122f-4a61-8154-62a21009cc07}</Project>
       <Name>Backend.Security</Name>
