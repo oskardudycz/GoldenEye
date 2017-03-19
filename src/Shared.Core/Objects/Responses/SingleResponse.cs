@@ -38,13 +38,13 @@ namespace GoldenEye.Shared.Core.Objects.Responses
             return new SingleResponse<T>(item);
         }
 
-        public static SingleResponse<T> Failure(FluentValidation.Results.ValidationResult returnInfo)
-        {
-            return new SingleResponse<T>
-            {
-                ValidationResult = returnInfo
-            };
-        }
+        //public static SingleResponse<T> Failure(FluentValidation.Results.ValidationResult returnInfo)
+        //{
+        //    return new SingleResponse<T>
+        //    {
+        //        ValidationResult = returnInfo
+        //    };
+        //}
 
         object ISingleResponse.Item
         {

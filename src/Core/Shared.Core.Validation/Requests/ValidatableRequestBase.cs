@@ -1,12 +1,12 @@
-﻿using System.Runtime.Serialization;
-using GoldenEye.Shared.Core.Context;
+﻿using GoldenEye.Shared.Core.Context;
+using GoldenEye.Shared.Core.Objects.Requests;
+using System.Runtime.Serialization;
 
-namespace GoldenEye.Shared.Core.Objects.Requests
+namespace GoldenEye.Shared.Core.Validation.Requests
 {
-    [DataContract]
-    public abstract class RequestBase : IRequest
+    public class ValidatableRequestBase : ValidatableObjectBase, IRequest
     {
-        protected RequestBase()
+        protected ValidatableRequestBase()
         {
             //RequesterUserID = StaticManager.User.Id;
             RequesterCultureName = System.Threading.Thread.CurrentThread.CurrentCulture.Name;

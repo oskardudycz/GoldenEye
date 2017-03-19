@@ -1,6 +1,4 @@
 ﻿using System.Runtime.Serialization;
-using FluentValidation.Attributes;
-using GoldenEye.Shared.Core.Validation.Validators;
 
 namespace GoldenEye.Shared.Core.Objects.Requests
 {
@@ -9,7 +7,7 @@ namespace GoldenEye.Shared.Core.Objects.Requests
     /// Allows checkings of not null Item and inner data contract validation
     /// </summary>
     [DataContract]
-    [Validator(typeof(SingleRequestValidator<>))]
+    //[Validator(typeof(SingleRequestValidator<>))]
     public class SingleRequest<T> : RequestBase, ISingleRequest<T>
     {
         /// <summary>

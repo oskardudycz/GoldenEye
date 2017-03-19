@@ -128,7 +128,6 @@
     <Compile Include="Extensions\Reflection\AttributeExtensions.cs" />
     <Compile Include="Extensions\Streams\StreamExtensions.cs" />
     <Compile Include="Extensions\Threading\ThreadExtensions.cs" />
-    <Compile Include="Extensions\Validation\ValidationResultExtensions.cs" />
     <Compile Include="IOC\Attributes\InjectInRequestScopeAttribute.cs" />
     <Compile Include="IOC\Attributes\InjectInSingletonScopeAttribute.cs" />
     <Compile Include="IOC\Attributes\NotInjectedWithConventionsAttribute.cs" />
@@ -142,8 +141,6 @@
     <Compile Include="Objects\Audit\IHasManuallyUpdated.cs" />
     <Compile Include="Objects\Dates\DateRange.cs" />
     <Compile Include="Objects\Dates\IDateRange.cs" />
-    <Compile Include="Objects\DTO\ValidatableDTOBase.cs" />
-    <Compile Include="Objects\DTO\IValidatableDTO.cs" />
     <Compile Include="Objects\General\IBusinessObject.cs" />
     <Compile Include="Objects\General\IHasId.cs" />
     <Compile Include="Objects\General\IHasName.cs" />
@@ -210,16 +207,6 @@
     <Compile Include="Utils\PropertyName.cs" />
     <Compile Include="Utils\Serialization\DateTimeJsonConverter.cs" />
     <Compile Include="Utils\Serialization\JsonSerializer.cs" />
-    <Compile Include="Validation\Validatable.cs" />
-    <Compile Include="Validation\IValidatable.cs" />
-    <Compile Include="Validation\ValidatableObjectBase.cs" />
-    <Compile Include="Validation\ValidationEngine.cs" />
-    <Compile Include="Validation\ValidationExtensions.cs" />
-    <Compile Include="Validation\Validators\CompositeValidator.cs" />
-    <Compile Include="Validation\Validators\DateRangeValidator.cs" />
-    <Compile Include="Validation\Validators\MustNotValidator.cs" />
-    <Compile Include="Validation\Validators\NestedComponentValidator.cs" />
-    <Compile Include="Validation\Validators\SingleRequestValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Shared.Core.nuspec" />
@@ -246,10 +233,6 @@
       <HintPath>..\packages\AutoMapper.6.0.1\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="FluentValidation, Version=6.4.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentValidation.6.4.1\lib\Net45\FluentValidation.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -262,6 +245,9 @@
       <HintPath>..\packages\System.ValueTuple.4.3.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
       <Private>True</Private>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Validation\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

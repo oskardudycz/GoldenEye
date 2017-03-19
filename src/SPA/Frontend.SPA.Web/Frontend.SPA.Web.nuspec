@@ -11,12 +11,13 @@
     <copyright>Copyright ©  2015</copyright>
 
     <dependencies>
-      <dependency id="GoldenEye.Shared.Core" version="1.4.29" />
-      <dependency id="GoldenEye.Shared.Core.IOC.Ninject" version="1.4.29" />
-      <dependency id="GoldenEye.Backend.Core" version="1.4.29" />
-      <dependency id="GoldenEye.Frontend.Core.Web" version="1.4.29" />
-      <dependency id="GoldenEye.Backend.Security" version="1.4.29" />
-      <dependency id="GoldenEye.Frontend.Security.Web" version="1.4.29" />
+      <dependency id="GoldenEye.Shared.Core" version="1.4.31" />
+      <dependency id="GoldenEye.Shared.Core.IOC.Ninject" version="1.4.31" />
+      <dependency id="GoldenEye.Shared.Core.Validation" version="1.4.31" />
+      <dependency id="GoldenEye.Backend.Core" version="1.4.31" />
+      <dependency id="GoldenEye.Frontend.Core.Web" version="1.4.31" />
+      <dependency id="GoldenEye.Backend.Security" version="1.4.31" />
+      <dependency id="GoldenEye.Frontend.Security.Web" version="1.4.31" />
       <dependency id="bootstrap" version="3.3.7" />
       <dependency id="jQuery" version="3.1.1" />
       <dependency id="jQuery.Validation" version="1.16.0" />
