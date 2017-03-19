@@ -1,40 +1,41 @@
 ﻿<?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
-    <metadata>
-        <id>GoldenEye.Frontend.SPA.Web</id>
-        <version>$version$</version>
-        <title>GoldenEye.Frontend.SPA.Web</title>
-        <authors>odudycz</authors>
-        <owners>odudycz</owners>
-        <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>Description</description>
-        <copyright>Copyright ©  2015</copyright>
+  <metadata>
+    <id>GoldenEye.Frontend.SPA.Web</id>
+    <version>$version$</version>
+    <title>GoldenEye.Frontend.SPA.Web</title>
+    <authors>odudycz</authors>
+    <owners>odudycz</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Description</description>
+    <copyright>Copyright ©  2015</copyright>
 
-        <dependencies>
-            <dependency id="GoldenEye.Shared.Core" version="1.4.23" />
-            <dependency id="GoldenEye.Backend.Core" version="1.4.23" />
-            <dependency id="GoldenEye.Frontend.Core.Web" version="1.4.23" />
-            <dependency id="GoldenEye.Backend.Security" version="1.4.23" />
-            <dependency id="GoldenEye.Frontend.Security.Web" version="1.4.23" />
-            <dependency id="bootstrap" version="3.3.7" />
-            <dependency id="jQuery" version="3.1.1" />
-            <dependency id="jQuery.Validation" version="1.16.0" />
-            <dependency id="knockoutjs" version="3.4.0" />
-            <dependency id="Knockstrap" version="1.3.2" />
-            <dependency id="Knockout.Mapping" version="2.4.0" />
-            <dependency id="Knockout.Validation" version="2.0.3" />
-            <dependency id="Modernizr" version="2.8.3" />
-            <dependency id="Moment.js" version="2.17.1" />
-            <dependency id="Sammy.js" version="0.7.5" />
-            <dependency id="toastr" version="2.1.1" />
-            <dependency id="Twitter.Bootstrap" version="3.0.1.1" />
-            <dependency id="AutoMapper" version="5.1.2"></dependency>
-        </dependencies>
-    </metadata>
+    <dependencies>
+      <dependency id="GoldenEye.Shared.Core" version="1.4.29" />
+      <dependency id="GoldenEye.Shared.Core.IOC.Ninject" version="1.4.29" />
+      <dependency id="GoldenEye.Backend.Core" version="1.4.29" />
+      <dependency id="GoldenEye.Frontend.Core.Web" version="1.4.29" />
+      <dependency id="GoldenEye.Backend.Security" version="1.4.29" />
+      <dependency id="GoldenEye.Frontend.Security.Web" version="1.4.29" />
+      <dependency id="bootstrap" version="3.3.7" />
+      <dependency id="jQuery" version="3.1.1" />
+      <dependency id="jQuery.Validation" version="1.16.0" />
+      <dependency id="knockoutjs" version="3.4.0" />
+      <dependency id="Knockstrap" version="1.3.2" />
+      <dependency id="Knockout.Mapping" version="2.4.0" />
+      <dependency id="Knockout.Validation" version="2.0.3" />
+      <dependency id="Modernizr" version="2.8.3" />
+      <dependency id="Moment.js" version="2.17.1" />
+      <dependency id="Sammy.js" version="0.7.5" />
+      <dependency id="toastr" version="2.1.1" />
+      <dependency id="Twitter.Bootstrap" version="3.0.1.1" />
+      <dependency id="AutoMapper" version="5.1.2"></dependency>
+    </dependencies>
+  </metadata>
 
-    <files>
-        <file src="content\Scripts\GoldenEye\*" target="content\Scripts\GoldenEye" />
-        <file src="bin\Release\GoldenEye.Frontend.SPA.Web.dll" target="lib\net45" />
-        <file src="bin\Release-Net451\GoldenEye.Frontend.SPA.Web.dll" target="lib\net451" />
-    </files>
+  <files>
+    <file src="content\Scripts\GoldenEye\*" target="content\Scripts\GoldenEye" />
+    <file src="bin\Release\GoldenEye.Frontend.SPA.Web.dll" target="lib\net45" />
+    <file src="bin\Release-Net451\GoldenEye.Frontend.SPA.Web.dll" target="lib\net451" />
+  </files>
 </package>

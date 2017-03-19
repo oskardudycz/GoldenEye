@@ -1,39 +1,18 @@
-﻿using Ninject;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace GoldenEye.Shared.Core.IOC
 {
-    public static class IOCContainer
+    public abstract class IOCContainer : IIOCContainer
     {
-        private static IKernel _kernel;
+        public static IIOCContainer Instance { get; private set; }
 
-        public static void Initialize(IKernel kernel)
+        public static void Initialize(IIOCContainer instance)
         {
-            _kernel = kernel;
+            Instance = instance;
         }
 
-        public static T Get<T>()
-        {
-            try
-            {
-                return _kernel.Get<T>();
-            }
-            catch (ActivationException)
-            {
-                return default(T);
-            }
-        }
+        public abstract T Get<T>();
 
-        public static IEnumerable<T> GetAll<T>()
-        {
-            try
-            {
-                return _kernel.GetAll<T>();
-            }
-            catch (ActivationException)
-            {
-                return new List<T>();
-            }
-        }
+        public abstract IEnumerable<T> GetAll<T>();
     }
 }

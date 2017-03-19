@@ -1,8 +1,6 @@
-﻿using Ninject.Modules;
-
-namespace GoldenEye.Shared.Core.Modules
+﻿namespace GoldenEye.Shared.Core.Modules
 {
-    public abstract class ModuleBase : NinjectModule, IModule
+    public abstract class ModuleBase : IModule
     {
         public virtual void Initalize()
         {

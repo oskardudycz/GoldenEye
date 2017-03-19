@@ -34,7 +34,7 @@ namespace GoldenEye.Backend.Security.Managers
 
             if (user != null) return user;
 
-            var externalAuthorizationService = IOCContainer.Get<IAuthorizationService>();
+            var externalAuthorizationService = IOCContainer.Instance.Get<IAuthorizationService>();
 
             if (externalAuthorizationService == null
                 || !externalAuthorizationService.Authorize(userName, password))

@@ -75,7 +75,7 @@ namespace GoldenEye.Frontend.Core.Web
 
             GlobalConfiguration.Configuration.DependencyResolver = new NinjectResolver(kernel);
 
-            IOCContainer.Initialize(kernel);
+            IOCContainer.Initialize(new Shared.Core.IOC.Ninject.IOCContainer(kernel));
 
             Mapper.Initialize(cfg => {
                 kernel.GetAll<IMappingDefinition>().Cast<Profile>().ForEach(cfg.AddProfile);

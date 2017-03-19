@@ -10,8 +10,9 @@
         <description>Description</description>
         <copyright>Copyright ©  2015</copyright>
         <dependencies>
-            <dependency id="GoldenEye.Shared.Core" />
-            <dependency id="GoldenEye.Backend.Core" />
+            <dependency id="GoldenEye.Shared.Core" version="1.4.29" />
+            <dependency id="GoldenEye.Shared.Core.IOC.Ninject" version="1.4.29" />
+            <dependency id="GoldenEye.Backend.Core" version="1.4.29" />
         </dependencies>
     </metadata>
     <files>
