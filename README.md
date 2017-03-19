@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/oskardudycz/GoldenEye.png?label=ready&title=Ready)](https://waffle.io/oskardudycz/GoldenEye)
 # GoldenEye
 [![Build status](https://ci.appveyor.com/api/projects/status/1mtm4h33cvur6kob?svg=true)](https://ci.appveyor.com/project/oskardudycz/goldeneye-core)
 [![NuGet version](https://badge.fury.io/nu/GoldenEye.Shared.SPA.svg)](https://badge.fury.io/nu/GoldenEye.Shared.SPA)
