@@ -80,6 +80,10 @@
     <Compile Include="Validators\UserValidator.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Core\Shared.Core.IOC.Ninject\Shared.Core.IOC.Ninject.csproj">
+      <Project>{366e6163-743f-4af2-b29e-b3a01600aac3}</Project>
+      <Name>Shared.Core.IOC.Ninject</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Shared.Core\Shared.Core.csproj">
       <Project>{b4e800e8-f352-448d-86fe-fa467bd9e7a6}</Project>
       <Name>Shared.Core</Name>

@@ -35,7 +35,7 @@ namespace GoldenEye.Shared.Core.Utils.Exceptions
 
         public IEnumerable<IExceptionHandler> ExceptionHandlers
         {
-            get { return IOCContainer.GetAll<IExceptionHandler>(); }
+            get { return IOCContainer.Instance.GetAll<IExceptionHandler>(); }
         }
     }
 }
