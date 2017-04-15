@@ -34,7 +34,7 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
             var isNullable = underlyingType != null;
             var realType = underlyingType ?? type;
 
-            if (obj == null && !isNullable && !type.IsClass)
+            if (obj == null && !isNullable && !type.GetTypeInfo().IsClass)
             {
                 throw new InvalidCastException("Cannot assign null to non-reference type");
             }
@@ -44,7 +44,7 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
                 return default(T);
             }
 
-            if (!realType.IsEnum)
+            if (!realType.GetTypeInfo().IsEnum)
             {
                 return (T)obj;
             }
@@ -95,7 +95,7 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
 
         public static object GetDefault(Type type, object defaultValue = null)
         {
-            return type.IsValueType ? Activator.CreateInstance(type) : defaultValue;
+            return type.GetTypeInfo().IsValueType ? Activator.CreateInstance(type) : defaultValue;
         }
 
         public static T CreateOrDefault<T>()

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using GoldenEye.Shared.Core.Extensions.Collections;
 using GoldenEye.Shared.Core.Extensions.Reflection;
+using System.Reflection;
 
 namespace GoldenEye.Shared.Core.Extensions.Lambda
 {
@@ -135,7 +136,7 @@ namespace GoldenEye.Shared.Core.Extensions.Lambda
         public static bool IsClassSelector<T>(this Expression<Func<T, object>> selector)
         {
             var selectorType = selector.GetValueType();
-            var isClass = selectorType.IsClass || selectorType.Implements<IEnumerable>();
+            var isClass = selectorType.GetTypeInfo().IsClass || selectorType.Implements<IEnumerable>();
 
             return isClass && selectorType != typeof(string); // selector is for class, but not string
         }
@@ -149,7 +150,7 @@ namespace GoldenEye.Shared.Core.Extensions.Lambda
             var selectorType = selector.GetValueType();
             var selectorUnderlyingType = Nullable.GetUnderlyingType(selectorType);
 
-            var isClass = selectorType.IsClass || selectorType.Implements<IEnumerable>();
+            var isClass = selectorType.GetTypeInfo().IsClass || selectorType.Implements<IEnumerable>();
 
             var enumMatch = (matchEnumAndInt    // match Enum to int selector,
                          && value != null       // value is not null

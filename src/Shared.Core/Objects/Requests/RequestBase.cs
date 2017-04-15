@@ -9,7 +9,7 @@ namespace GoldenEye.Shared.Core.Objects.Requests
         protected RequestBase()
         {
             //RequesterUserID = StaticManager.User.Id;
-            RequesterCultureName = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+            //RequesterCultureName = Thread.CurrentThread.CurrentCulture.Name;
             RequesterIP = UserContext.ClientIP;
             RequesterDNS = UserContext.ClientDNS;
             RequesterBrowser = UserContext.ClientBrowser;

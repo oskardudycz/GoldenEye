@@ -5,6 +5,7 @@ using System.Reflection;
 using GoldenEye.Shared.Core.Extensions.Basic;
 using GoldenEye.Shared.Core.Modules.Attributes;
 using GoldenEye.Shared.Core.Utils.Assemblies;
+using ReflectionBridge.Extensions;
 
 namespace GoldenEye.Shared.Core.Extensions.Reflection
 {
@@ -95,7 +96,7 @@ namespace GoldenEye.Shared.Core.Extensions.Reflection
         {
             return type.GetInterfaces()
                 .SelectMany(x => x.GetProperties())
-                .Where(x => x.GetCustomAttributes(typeof(TAttribute), true).Length != 0);
+                .Where(x => x.GetCustomAttributes(typeof(TAttribute), true).Count() != 0);
         }
 
         public static TAttribute GetAttribute<TAttribute>(this PropertyInfo propertyInfo)
@@ -136,14 +137,14 @@ namespace GoldenEye.Shared.Core.Extensions.Reflection
             return Assemblies.Where(el => el.GetCustomAttribute<ProjectAssemblyAttribute>() != null).ToList();
         }
 
-        internal static T GetCustomAttribute<T>(this Assembly assembly) where T : class
+        internal static T GetCustomAttribute<T>(this Assembly assembly) where T : Attribute
         {
-            return assembly.GetCustomAttributes(typeof(T), false).FirstOrDefault() as T;
+            return assembly.GetCustomAttributes<T>().FirstOrDefault() as T;
         }
 
-        public static IList<Assembly> Assemblies
+        public static IEnumerable<Assembly> Assemblies
         {
-            get { return _assemblies ?? (_assemblies = AssembliesProvider.GetAll()); }
+            get { return _assemblies ?? (_assemblies = AssembliesProvider.GetAll().ToList()); }
         }
     }
 }

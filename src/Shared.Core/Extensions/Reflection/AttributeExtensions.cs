@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ReflectionBridge.Extensions;
+using System;
 using System.Linq;
 
 namespace GoldenEye.Shared.Core.Extensions.Reflection

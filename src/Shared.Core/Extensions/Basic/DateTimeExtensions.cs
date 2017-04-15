@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using GoldenEye.Shared.Core.Objects.Dates;
-using GoldenEye.Shared.Core.Resources;
 
 namespace GoldenEye.Shared.Core.Extensions.Basic
 {
@@ -379,19 +378,19 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
 
             if (timespan.TotalHours < 1)
             {
-                returnString = String.Format(DateTimeResources.xMinutesAgo, timespan.Minutes);
+                returnString = String.Format("{0} minutes ago", timespan.Minutes);
             }
             else if (timespan.TotalHours < 24)
             {
-                returnString = String.Format(DateTimeResources.xHoursAgo, timespan.Hours);
+                returnString = String.Format("{0} hours ago", timespan.Hours);
             }
             else if (timespan.TotalDays < 2)
             {
-                returnString = String.Format(DateTimeResources.OneDayxHours, timespan.Hours);
+                returnString = String.Format("1 day and hours ago", timespan.Hours);
             }
             else if (timespan.TotalDays > 2)
             {
-                returnString = String.Format(DateTimeResources.xDaysAgo, timespan.Days);
+                returnString = String.Format("{0} days ago", timespan.Days);
             }
 
             return returnString;

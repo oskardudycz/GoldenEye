@@ -1,7 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.5</TargetFramework>
+    <TargetFramework>netstandard1.6</TargetFramework>
+    <Version>2.0.0</Version>
+    <PackageId>GoldenEye.Shared.Core</PackageId>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Authors>GoldenEye.Shared.Core</Authors>
+    <Company>GoldenEye.Shared.Core</Company>
+    <Product>GoldenEye.Shared.Core</Product>
+    <Copyright>Oskar Dudycz</Copyright>
+    <Description>GoldenEye is a Full Stack framework written in .NET and JavaScript. The main goal of GoldenEye is to speed up your development process. It gathers most widely used frameworks in .NET world and pack them into a simple bootstrap Nuget packages. It also provide set of base classes, helpers, extensions that will help you with your daily work.</Description>
+    <PackageLicenseUrl>https://github.com/oskardudycz/GoldenEye/blob/master/LICENSE.txt</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/oskardudycz/GoldenEye</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/oskardudycz/GoldenEye</RepositoryUrl>
+    <AssemblyName>GoldenEye.Shared.Core.NetCore</AssemblyName>
+    <RootNamespace>GoldenEye.Shared.Core.NetCore</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,8 +28,6 @@
 
   <ItemGroup>
     <Compile Remove="Configuration\ConfigHelper.cs" />
-    <Compile Remove="Modules\IModule.cs" />
-    <Compile Remove="Modules\ModuleBase.cs" />
     <Compile Remove="Objects\DTO\IValidatableDTO.cs" />
     <Compile Remove="Objects\DTO\ValidatableDTOBase.cs" />
     <Compile Remove="Properties\AssemblyInfo.cs" />
@@ -30,12 +41,16 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.0.1" />
     <PackageReference Include="FluentValidation" Version="6.4.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="1.1.1" />
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+    <PackageReference Include="ReflectionBridge" Version="0.0.12" />
     <PackageReference Include="System.ComponentModel" Version="4.3.0" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.3.0" />
     <PackageReference Include="System.Reflection.Extensions" Version="4.3.0" />
     <PackageReference Include="System.Reflection.TypeExtensions" Version="4.3.0" />
     <PackageReference Include="System.Runtime.Serialization.Formatters" Version="4.3.0" />
+    <PackageReference Include="System.Security.Cryptography.Algorithms" Version="4.3.0" />
+    <PackageReference Include="System.Threading.Thread" Version="4.3.0" />
   </ItemGroup>
 
   <ItemGroup>

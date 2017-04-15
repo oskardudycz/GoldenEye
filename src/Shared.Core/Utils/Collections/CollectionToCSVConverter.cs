@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Reflection;
 
 namespace GoldenEye.Shared.Core.Utils.Collections
 {
@@ -60,9 +61,9 @@ namespace GoldenEye.Shared.Core.Utils.Collections
         {
             var result = string.Empty;
 
-            foreach (var prop in typeof(T).GetProperties())
+            foreach (var prop in typeof(T).GetTypeInfo().GetProperties())
             {
-                var value = prop.PropertyType.IsEnum ? ((Enum)prop.GetValue(item, null)).ToString("G") : prop.GetValue(item, null).ToString();
+                var value = prop.PropertyType.GetTypeInfo().IsEnum ? ((Enum)prop.GetValue(item, null)).ToString("G") : prop.GetValue(item, null).ToString();
                 var format = value.Contains(",") ? "\"{0}\"{1}" : "{0}{1}";
                 result += string.Format(format, value, separator);
             }

@@ -10,7 +10,7 @@ namespace GoldenEye.Shared.Core.Utils.Serialization
     {
         public static bool TryDeserializeObject<T>(string json, out T result, CultureInfo culture = null)
         {
-            var jsonSerializerSettings = new JsonSerializerSettings { Culture = culture ?? Thread.CurrentThread.CurrentUICulture };
+            var jsonSerializerSettings = new JsonSerializerSettings { Culture = culture ?? CultureInfo.CurrentUICulture };
             Newtonsoft.Json.JsonSerializer jsonSerializer = Newtonsoft.Json.JsonSerializer.Create(jsonSerializerSettings);
 
             if (json == null)
@@ -25,7 +25,7 @@ namespace GoldenEye.Shared.Core.Utils.Serialization
 
         public static object DeserializeObject(string json, Type type, CultureInfo culture = null)
         {
-            var jsonSerializerSettings = new JsonSerializerSettings { Culture = culture ?? Thread.CurrentThread.CurrentUICulture };
+            var jsonSerializerSettings = new JsonSerializerSettings { Culture = culture ?? CultureInfo.CurrentUICulture };
             Newtonsoft.Json.JsonSerializer jsonSerializer = Newtonsoft.Json.JsonSerializer.Create(jsonSerializerSettings);
 
             return json != null ?
@@ -38,8 +38,8 @@ namespace GoldenEye.Shared.Core.Utils.Serialization
             if (obj == null)
                 return null;
 
-            var jsonSerializerSettings = new JsonSerializerSettings { Culture = culture ?? Thread.CurrentThread.CurrentUICulture };
-            var result = JsonConvert.SerializeObject(obj, jsonSerializerSettings.Formatting, (JsonConverter)DateTimeJsonConverter.Get());
+            var jsonSerializerSettings = new JsonSerializerSettings { Culture = culture ?? CultureInfo.CurrentUICulture };
+            var result = JsonConvert.SerializeObject(obj, jsonSerializerSettings.Formatting, DateTimeJsonConverter.Get());
 
             if (obj is DateTime)
             {
@@ -50,7 +50,7 @@ namespace GoldenEye.Shared.Core.Utils.Serialization
 
         public static T Deserialize<T>(string json, CultureInfo culture = null)
         {
-            var jsonSerializerSettings = new JsonSerializerSettings { Culture = culture ?? Thread.CurrentThread.CurrentUICulture };
+            var jsonSerializerSettings = new JsonSerializerSettings { Culture = culture ?? CultureInfo.CurrentUICulture };
             return JsonConvert.DeserializeObject<T>(json, jsonSerializerSettings);
         }
     }
