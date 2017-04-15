@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity.Infrastructure;
-using GoldenEye.Backend.Core.Entity;
+using System.Linq;
 
 namespace GoldenEye.Backend.Core.Context
 {
     public interface IDataContext : IDisposable
     {
-        DbEntityEntry<T> Entry<T>(T entity) where T : class;
+        TEntity Add<TEntity>(TEntity entity) where TEntity : class;
+        IEnumerable<TEntity> AddRange<TEntity>(params TEntity[] entities) where TEntity : class;
+        TEntity Update<TEntity>(TEntity entity) where TEntity : class;
+        TEntity Remove<TEntity>(TEntity entity) where TEntity : class;
+        IQueryable<TEntity> GetQueryable<TEntity>() where TEntity : class;
 
         int SaveChanges();
-
-        IEnumerable<IEntity> GetAddedEntities();
-        IEnumerable<IEntity> GetUpdatedEntities();
     }
 }

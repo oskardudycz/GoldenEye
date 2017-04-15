@@ -2,7 +2,7 @@
 using System.Linq;
 using GoldenEye.Backend.Core.Entity;
 
-namespace GoldenEye.Backend.Core.Repository
+namespace GoldenEye.Backend.Core.Repositories
 {
     public interface IRepository<TEntity> : IReadonlyRepository<TEntity> where TEntity : class, IEntity
     {

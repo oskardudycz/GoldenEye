@@ -1,18 +1,14 @@
 ﻿using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using GoldenEye.Backend.Core.Context;
 using GoldenEye.Backend.Core.Entity;
 
-namespace GoldenEye.Backend.Core.Repository
+namespace GoldenEye.Backend.Core.Repositories
 {
     public abstract class RepositoryBase<TEntity> : ReadonlyRepositoryBase<TEntity>, IRepository<TEntity> where TEntity : class, IEntity
     {
-        protected readonly IDbSet<TEntity> DbSet;
-        
-        protected RepositoryBase(IDataContext context, IDbSet<TEntity> dbSet) : base(context, dbSet)
+        protected RepositoryBase(IDataContext context) : base(context)
         {
-            DbSet = dbSet;
         }
 
         public virtual TEntity Add(TEntity entity)
@@ -22,7 +18,7 @@ namespace GoldenEye.Backend.Core.Repository
 
         private TEntity Add(TEntity entity, bool shouldSaveChanges)
         {
-            var result = DbSet.Add(entity);
+            var result = Context.Add(entity);
 
             if (shouldSaveChanges)
                 SaveChanges();
@@ -32,21 +28,23 @@ namespace GoldenEye.Backend.Core.Repository
 
         public virtual IQueryable<TEntity> AddAll(IEnumerable<TEntity> entities)
         {
-            var result = entities.Select(entity => Add(entity, false)).ToList().AsQueryable();
+            var result = Context.AddRange(entities.ToArray());
             
             SaveChanges();
 
-            return result;
+            return result.AsQueryable();
         }
 
         public virtual TEntity Update(TEntity entity)
         {
-            var oldEntity = Context.Entry(entity);
-            if (oldEntity.State != EntityState.Detached)
-                return oldEntity.Entity;
-            oldEntity.State = EntityState.Modified;
+            return Update(entity, true);
+        }
+
+        public virtual TEntity Update(TEntity entity, bool shouldSaveChanges)
+        {
+            var result = Context.Update(entity);
             SaveChanges();
-            return DbSet.Attach(entity);
+            return result;
         }
 
         public virtual int SaveChanges()
@@ -56,12 +54,12 @@ namespace GoldenEye.Backend.Core.Repository
 
         public virtual TEntity Delete(TEntity entity)
         {
-            return DbSet.Remove(entity);
+            return Context.Remove(entity);
         }
 
         public virtual bool Delete(int id)
         {
-            return DbSet.Remove(GetById(id)) != null;
+            return Context.Remove(GetById(id)) != null;
         }
     }
 }

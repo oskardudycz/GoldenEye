@@ -8,12 +8,21 @@ namespace GoldenEye.Backend.Core.Context.SaveChangesHandlers
 {
     public class AuditInfoSaveChangesHandler : ISaveChangesHandler
     {
-        public void Handle(IDataContext context)
+        public void Handle(IDataContext dataContext)
         {
-            var addedEntities = context.GetAddedEntities()
-                            .OfType<AuditableEntity>();
-            var updatedEntities = context.GetAddedEntities()
-                            .OfType<AuditableEntity>();
+            if (dataContext as IProvidesAuditInfo == null)
+                return;
+
+            var context = (IProvidesAuditInfo)dataContext;
+
+            var addedEntities = context.Changes
+                            .Where(ch => ch.State == EntityEntryState.Added)
+                            .Select(ch => ch.Entity)
+                            .OfType<IAuditableEntity>();
+            var updatedEntities = context.Changes
+                            .Where(ch => ch.State == EntityEntryState.Modified)
+                            .Select(ch => ch.Entity)
+                            .OfType<IAuditableEntity>();
 
             var currentUserId = UserInfoProvider.Instance.GetCurrenUserId();
 

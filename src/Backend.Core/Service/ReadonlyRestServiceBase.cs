@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using GoldenEye.Backend.Core.Entity;
-using GoldenEye.Backend.Core.Repository;
 using GoldenEye.Shared.Core.Objects.DTO;
 using GoldenEye.Shared.Core.Services;
+using GoldenEye.Backend.Core.Repositories;
 
 namespace GoldenEye.Backend.Core.Service
 {

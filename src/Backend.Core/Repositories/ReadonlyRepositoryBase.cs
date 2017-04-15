@@ -1,9 +1,8 @@
-using System.Data.Entity;
 using System.Linq;
 using GoldenEye.Backend.Core.Context;
 using GoldenEye.Backend.Core.Entity;
 
-namespace GoldenEye.Backend.Core.Repository
+namespace GoldenEye.Backend.Core.Repositories
 {
     public abstract class ReadonlyRepositoryBase<TEntity> : IReadonlyRepository<TEntity> where TEntity : class, IEntity
     {
@@ -13,10 +12,10 @@ namespace GoldenEye.Backend.Core.Repository
 
         protected bool Disposed;
 
-        protected ReadonlyRepositoryBase(IDataContext context, IQueryable<TEntity> queryable)
+        protected ReadonlyRepositoryBase(IDataContext context)
         {
             Context = context;
-            Queryable = queryable;
+            Queryable = context.GetQueryable<TEntity>();
         }
 
         public virtual IQueryable<TEntity> Includes(IQueryable<TEntity> queryable)
@@ -24,15 +23,15 @@ namespace GoldenEye.Backend.Core.Repository
             return queryable;
         }
 
-        public virtual TEntity GetById(object id, bool withNoTracking = true)
+        public virtual TEntity GetById(object id)
         {
-            return Includes(withNoTracking ? Queryable.AsNoTracking() : Queryable).SingleOrDefault(r => r.Id == (int)id);
+            return Queryable.SingleOrDefault(r => r.Id == (int)id);
 
         }
 
-        public virtual IQueryable<TEntity> GetAll(bool withNoTracking = true)
+        public virtual IQueryable<TEntity> GetAll()
         {
-            return Includes(withNoTracking ? Queryable.AsNoTracking() : Queryable);
+            return Queryable;
         }
 
         protected virtual void Dispose(bool disposing)

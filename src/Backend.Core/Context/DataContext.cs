@@ -1,64 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using GoldenEye.Backend.Core.Context.SaveChangesHandlers;
-using GoldenEye.Backend.Core.Context.SaveChangesHandlers.Base;
-using GoldenEye.Backend.Core.Entity;
+using System.Collections.Generic;
 
 namespace GoldenEye.Backend.Core.Context
 {
-    public abstract class DataContext<T> : DbContext, IDataContext where T : DbContext
+    public abstract class DataContext : IDataContext
     {
         protected DataContext()
         {
-            SetInitializer();
         }
 
-        protected virtual void SetInitializer()
+        public void Dispose()
         {
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<T>());
-        }
-
-        protected DataContext(string name) : base(name)
-        {
-        
-        }
-
-        protected DataContext(IConnectionProvider connectionProvider)
-            : base(connectionProvider.Open(), false)
-        {
-        }
-
-        public new void Dispose()
-        {
-            base.Dispose();
             GC.SuppressFinalize(this);
         }
-
-        public DbContextTransaction BeginTransaction()
-        {
-            return Database.BeginTransaction();
-        }
         
-        public override int SaveChanges()
+        public int SaveChanges()
         {
             SaveChangesProcessor.Instance.RunAll(this);
-            return base.SaveChanges();
+            return 0;
         }
 
-        public IEnumerable<IEntity> GetAddedEntities()
-        {
-            return ChangeTracker.Entries()
-                .Where(e => e.State == EntityState.Added)
-                .Select(e => e.Entity).OfType<IEntity>();
-        }
+        public abstract IQueryable<TEntity> GetQueryable<TEntity>() where TEntity : class;
 
-        public IEnumerable<IEntity> GetUpdatedEntities()
-        {
-            return ChangeTracker.Entries()
-                .Where(e => e.State == EntityState.Modified)
-                .Select(e => e.Entity).OfType<IEntity>();
-        }
+        public abstract TEntity Add<TEntity>(TEntity entity) where TEntity : class;
+        public abstract IEnumerable<TEntity> AddRange<TEntity>(params TEntity[] entities) where TEntity : class;
+
+        public abstract TEntity Update<TEntity>(TEntity entity) where TEntity : class;
+
+        public abstract TEntity Remove<TEntity>(TEntity entity) where TEntity : class;
     }
 }
