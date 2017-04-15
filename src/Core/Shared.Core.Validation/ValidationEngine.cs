@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using FluentValidation;
 using FluentValidation.Attributes;
 using ValidationResult = FluentValidation.Results.ValidationResult;
+using System.Reflection;
 
 namespace GoldenEye.Shared.Core.Validation
 {
@@ -15,14 +16,14 @@ namespace GoldenEye.Shared.Core.Validation
 
         public static IValidator GetValidator(Type type, object additionalValue = null)
         {
-            var attribute = Attribute.GetCustomAttribute(type, typeof(ValidatorAttribute)) as ValidatorAttribute;
+            var attribute = type.GetTypeInfo().GetCustomAttribute<ValidatorAttribute>();
 
             if (attribute == null)
                 return null;
 
             var validatorType = attribute.ValidatorType;
 
-            if (validatorType.IsGenericType)
+            if (validatorType.GetTypeInfo().IsGenericType)
             {
                 validatorType = validatorType.MakeGenericType(type);
             }
