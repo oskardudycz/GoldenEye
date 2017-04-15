@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.9
+VisualStudioVersion = 15.0.26228.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{F4F82AA0-8F75-4A08-B420-5C5A3FC812C0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Core.NetCore", "Shared.Core\Shared.Core.NetCore.csproj", "{1128E2BD-E6C9-4836-A92A-7F8F39B949E4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Share.Core.Validation.NetCore", "Core\Shared.Core.Validation\Share.Core.Validation.NetCore.csproj", "{4996E926-2E09-4D65-B34D-40D57D12B18C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,11 +19,16 @@ Global
 		{1128E2BD-E6C9-4836-A92A-7F8F39B949E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1128E2BD-E6C9-4836-A92A-7F8F39B949E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1128E2BD-E6C9-4836-A92A-7F8F39B949E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4996E926-2E09-4D65-B34D-40D57D12B18C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4996E926-2E09-4D65-B34D-40D57D12B18C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4996E926-2E09-4D65-B34D-40D57D12B18C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4996E926-2E09-4D65-B34D-40D57D12B18C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1128E2BD-E6C9-4836-A92A-7F8F39B949E4} = {F4F82AA0-8F75-4A08-B420-5C5A3FC812C0}
+		{4996E926-2E09-4D65-B34D-40D57D12B18C} = {F4F82AA0-8F75-4A08-B420-5C5A3FC812C0}
 	EndGlobalSection
 EndGlobal

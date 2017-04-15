@@ -5,16 +5,16 @@
     <Version>2.0.0</Version>
     <PackageId>GoldenEye.Shared.Core</PackageId>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Authors>GoldenEye.Shared.Core</Authors>
-    <Company>GoldenEye.Shared.Core</Company>
-    <Product>GoldenEye.Shared.Core</Product>
+    <Authors>Oskar Dudycz</Authors>
+    <Company>Oskar Dudycz</Company>
+    <Product>Oskar Dudycz</Product>
     <Copyright>Oskar Dudycz</Copyright>
     <Description>GoldenEye is a Full Stack framework written in .NET and JavaScript. The main goal of GoldenEye is to speed up your development process. It gathers most widely used frameworks in .NET world and pack them into a simple bootstrap Nuget packages. It also provide set of base classes, helpers, extensions that will help you with your daily work.</Description>
     <PackageLicenseUrl>https://github.com/oskardudycz/GoldenEye/blob/master/LICENSE.txt</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/oskardudycz/GoldenEye</PackageProjectUrl>
     <RepositoryUrl>https://github.com/oskardudycz/GoldenEye</RepositoryUrl>
-    <AssemblyName>GoldenEye.Shared.Core.NetCore</AssemblyName>
-    <RootNamespace>GoldenEye.Shared.Core.NetCore</RootNamespace>
+    <AssemblyName>GoldenEye.Shared.Core</AssemblyName>
+    <RootNamespace>GoldenEye.Shared.Core</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -40,7 +40,6 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.0.1" />
-    <PackageReference Include="FluentValidation" Version="6.4.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="1.1.1" />
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
     <PackageReference Include="ReflectionBridge" Version="0.0.12" />
