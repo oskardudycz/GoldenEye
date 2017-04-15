@@ -11,7 +11,7 @@
     <Copyright>Oskar Dudycz</Copyright>
     <Description>GoldenEye is a Full Stack framework written in .NET and JavaScript. The main goal of GoldenEye is to speed up your development process. It gathers most widely used frameworks in .NET world and pack them into a simple bootstrap Nuget packages. It also provide set of base classes, helpers, extensions that will help you with your daily work.</Description>
     <PackageLicenseUrl>https://github.com/oskardudycz/GoldenEye/blob/master/LICENSE.txt</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/oskardudycz/GoldenEye</PackageProjectUrl>
+    <PackageProjectUrl>http://oskardudycz.github.io/GoldenEye/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/oskardudycz/GoldenEye</RepositoryUrl>
     <AssemblyName>GoldenEye.Backend.Core.EntityFramework</AssemblyName>
     <RootNamespace>GoldenEye.Backend.Core.EntityFramework</RootNamespace>
