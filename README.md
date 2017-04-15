@@ -1,7 +1,6 @@
 # GoldenEye
 [![Stories in Ready](https://badge.waffle.io/oskardudycz/GoldenEye.png?label=ready&title=Ready)](https://waffle.io/oskardudycz/GoldenEye)
-[![NuGet version](https://badge.fury.io/nu/GoldenEye.Shared.SPA.svg)](https://badge.fury.io/nu/GoldenEye.Shared.SPA)  
-http://oskardudycz.github.io/GoldenEye/
+[![NuGet version](https://badge.fury.io/nu/GoldenEye.Shared.SPA.svg)](https://badge.fury.io/nu/GoldenEye.Shared.SPA)
 
 What is GoldenEye?
 --------------------------------
