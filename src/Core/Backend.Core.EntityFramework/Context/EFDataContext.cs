@@ -53,11 +53,6 @@ namespace GoldenEye.Backend.Core.Context
             }
         }
 
-        public IQueryable<TEntity> GetQueryable<TEntity>() where TEntity : class
-        {
-            return Set<TEntity>();
-        }
-
         TEntity IDataContext.Add<TEntity>(TEntity entity)
         {
             var entry = base.Add(entity);
@@ -101,6 +96,21 @@ namespace GoldenEye.Backend.Core.Context
         Task<TEntity> IDataContext.RemoveAsync<TEntity>(TEntity entity)
         {
             return Task.Run(() => ((IDataContext)this).Remove(entity));
+        }
+
+        public TEntity GetById<TEntity>(object id) where TEntity : class
+        {
+            return base.Find<TEntity>(id);
+        }
+
+        public Task<TEntity> GetByIdAsync<TEntity>(object id) where TEntity : class
+        {
+            return base.FindAsync<TEntity>(id);
+        }
+
+        public IQueryable<TEntity> GetQueryable<TEntity>() where TEntity : class
+        {
+            return Set<TEntity>();
         }
     }
 }

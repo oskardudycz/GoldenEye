@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using GoldenEye.Backend.Core.Context.SaveChangesHandlers;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace GoldenEye.Backend.Core.Context
@@ -27,8 +26,6 @@ namespace GoldenEye.Backend.Core.Context
             return Task.Run(() => SaveChanges());
         }
 
-        public abstract IQueryable<TEntity> GetQueryable<TEntity>() where TEntity : class;
-
         public abstract TEntity Add<TEntity>(TEntity entity) where TEntity : class;
 
         public abstract Task<TEntity> AddAsync<TEntity>(TEntity entity) where TEntity : class;
@@ -42,5 +39,11 @@ namespace GoldenEye.Backend.Core.Context
         public abstract TEntity Remove<TEntity>(TEntity entity) where TEntity : class;
 
         public abstract Task<TEntity> RemoveAsync<TEntity>(TEntity entity) where TEntity : class;
+
+        public abstract TEntity GetById<TEntity>(object id) where TEntity : class;
+
+        public abstract Task<TEntity> GetByIdAsync<TEntity>(object id) where TEntity : class;
+
+        public abstract IQueryable<TEntity> GetQueryable<TEntity>() where TEntity : class;
     }
 }

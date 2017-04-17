@@ -28,7 +28,6 @@ namespace GoldenEye.Backend.Core.Repositories
         public virtual TEntity GetById(object id)
         {
             return Queryable.SingleOrDefault(r => r.Id == (int)id);
-
         }
 
         public virtual Task<TEntity> GetByIdAsync(object id)
