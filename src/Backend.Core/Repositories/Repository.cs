@@ -7,7 +7,7 @@ using GoldenEye.Backend.Core.Entity;
 
 namespace GoldenEye.Backend.Core.Repositories
 {
-    public abstract class Repository<TEntity> : ReadonlyRepository<TEntity>, IRepository<TEntity> where TEntity : class, IEntity
+    public class Repository<TEntity> : ReadonlyRepository<TEntity>, IRepository<TEntity> where TEntity : class, IEntity
     {
         protected Repository(IDataContext context) : base(context)
         {
