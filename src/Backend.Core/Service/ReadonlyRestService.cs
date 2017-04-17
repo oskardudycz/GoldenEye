@@ -5,27 +5,26 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using GoldenEye.Backend.Core.Entity;
 using GoldenEye.Shared.Core.Objects.DTO;
-using GoldenEye.Shared.Core.Services;
 using GoldenEye.Backend.Core.Repositories;
 
 namespace GoldenEye.Backend.Core.Service
 {
-    public abstract class ReadonlyRestServiceBase<TDTO, TEntity, TRepository> : ReadonlyRestServiceBase<TDTO, TEntity>
+    public class ReadonlyRestService<TDTO, TEntity, TRepository> : ReadonlyRestService<TDTO, TEntity>
         where TDTO : class, IDTO
         where TEntity : class, IEntity
         where TRepository : IReadonlyRepository<TEntity>
     {
-        protected ReadonlyRestServiceBase(TRepository repository) : base(repository)
+        protected ReadonlyRestService(TRepository repository) : base(repository)
         {
         }
     }
 
-    public abstract class ReadonlyRestServiceBase<TDTO, TEntity> : IReadonlyRestService<TDTO> where TDTO : class, IDTO where TEntity : class, IEntity
+    public class ReadonlyRestService<TDTO, TEntity> : IReadonlyRestService<TDTO> where TDTO : class, IDTO where TEntity : class, IEntity
     {
         private bool _disposed;
         protected IReadonlyRepository<TEntity> Repository;
 
-        protected ReadonlyRestServiceBase(IReadonlyRepository<TEntity> repository)
+        protected ReadonlyRestService(IReadonlyRepository<TEntity> repository)
         {
             Repository = repository;
         }

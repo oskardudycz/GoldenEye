@@ -7,7 +7,7 @@ using GoldenEye.Backend.Core.Repositories;
 
 namespace GoldenEye.Backend.Core.Service
 {
-    public abstract class RestServiceBase<TDTO, TEntity, TRepository> : RestServiceBase<TDTO, TEntity>
+    public class RestService<TDTO, TEntity, TRepository> : RestService<TDTO, TEntity>
         where TDTO : class, IDTO
         where TEntity : class, IEntity
         where TRepository : IRepository<TEntity>
@@ -17,12 +17,12 @@ namespace GoldenEye.Backend.Core.Service
             get { return (TRepository)base.Repository; }
         }
 
-        protected RestServiceBase(TRepository repository) : base(repository)
+        protected RestService(TRepository repository) : base(repository)
         {
         }
     }
 
-    public abstract class RestServiceBase<TDTO, TEntity> : ReadonlyRestServiceBase<TDTO, TEntity> 
+    public class RestService<TDTO, TEntity> : ReadonlyRestService<TDTO, TEntity> 
         where TDTO : class, IDTO
         where TEntity : class, IEntity
     {
@@ -31,7 +31,7 @@ namespace GoldenEye.Backend.Core.Service
             get { return (IRepository<TEntity>) base.Repository; }
         }
 
-        protected RestServiceBase(IRepository<TEntity> repository) : base(repository)
+        protected RestService(IRepository<TEntity> repository) : base(repository)
         {
         }
 
