@@ -5,6 +5,8 @@ using GoldenEye.Backend.Core.Context.SaveChangesHandlers;
 using GoldenEye.Backend.Core.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace GoldenEye.Backend.Core.Context
 {
@@ -30,6 +32,18 @@ namespace GoldenEye.Backend.Core.Context
             SaveChangesProcessor.Instance.RunAll(this);
             return base.SaveChanges();
         }
+
+        public Task<int> SaveChangesAsync()
+        {
+            SaveChangesProcessor.Instance.RunAll(this);
+            return base.SaveChangesAsync();
+        }
+
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return SaveChangesAsync();
+        }
+
         public IEnumerable<IEntityEntry> Changes
         {
             get
@@ -46,16 +60,23 @@ namespace GoldenEye.Backend.Core.Context
 
         TEntity IDataContext.Add<TEntity>(TEntity entity)
         {
-            var entry = base.Update(entity);
+            var entry = base.Add(entity);
 
             return entry.Entity;
         }
 
-        IEnumerable<TEntity> IDataContext.AddRange<TEntity>(params TEntity[] entities)
+        async Task<TEntity> IDataContext.AddAsync<TEntity>(TEntity entity)
+        {
+            var entry = await base.AddAsync(entity);
+
+            return entry.Entity;
+        }
+
+        IQueryable<TEntity> IDataContext.AddRange<TEntity>(params TEntity[] entities)
         {
             base.AddRange(entities);
 
-            return entities;
+            return entities.AsQueryable();
         }
 
         TEntity IDataContext.Update<TEntity>(TEntity entity)
@@ -65,11 +86,21 @@ namespace GoldenEye.Backend.Core.Context
             return entry.Entity;
         }
 
+        Task<TEntity> IDataContext.UpdateAsync<TEntity>(TEntity entity)
+        {
+            return Task.Run(() => ((IDataContext)this).Update(entity));
+        }
+
         TEntity IDataContext.Remove<TEntity>(TEntity entity)
         {
             var entry = base.Remove(entity);
 
             return entry.Entity;
+        }
+
+        Task<TEntity> IDataContext.RemoveAsync<TEntity>(TEntity entity)
+        {
+            return Task.Run(() => ((IDataContext)this).Remove(entity));
         }
     }
 }

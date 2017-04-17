@@ -1,10 +1,12 @@
+using System;
 using System.Linq;
+using System.Threading.Tasks;
 using GoldenEye.Backend.Core.Context;
 using GoldenEye.Backend.Core.Entity;
 
 namespace GoldenEye.Backend.Core.Repositories
 {
-    public abstract class ReadonlyRepositoryBase<TEntity> : IReadonlyRepository<TEntity> where TEntity : class, IEntity
+    public class ReadonlyRepository<TEntity> : IReadonlyRepository<TEntity> where TEntity : class, IEntity
     {
         protected readonly IDataContext Context;
 
@@ -12,7 +14,7 @@ namespace GoldenEye.Backend.Core.Repositories
 
         protected bool Disposed;
 
-        protected ReadonlyRepositoryBase(IDataContext context)
+        protected ReadonlyRepository(IDataContext context)
         {
             Context = context;
             Queryable = context.GetQueryable<TEntity>();
@@ -27,6 +29,11 @@ namespace GoldenEye.Backend.Core.Repositories
         {
             return Queryable.SingleOrDefault(r => r.Id == (int)id);
 
+        }
+
+        public virtual Task<TEntity> GetByIdAsync(object id)
+        {
+            return Task.Run(() => GetById(id));
         }
 
         public virtual IQueryable<TEntity> GetAll()
