@@ -19,7 +19,7 @@ namespace GoldenEye.Backend.Core.Service
         }
     }
 
-    public class ReadonlyRestService<TDTO, TEntity> : IReadonlyRestService<TDTO> where TDTO : class, IDTO where TEntity : class, IEntity
+    public class ReadonlyRestService<TDTO, TEntity> : IReadonlyService<TDTO> where TDTO : class, IDTO where TEntity : class, IEntity
     {
         private bool _disposed;
         protected IReadonlyRepository<TEntity> Repository;

@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.6</TargetFramework>
+    <Version>2.0.0</Version>
+    <PackageId>GoldenEye.Backend.Core.WebApi</PackageId>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Authors>Oskar Dudycz</Authors>
+    <Company>Oskar Dudycz</Company>
+    <Product>Oskar Dudycz</Product>
+    <Copyright>Oskar Dudycz</Copyright>
+    <Description>GoldenEye is a Full Stack framework written in .NET and JavaScript. The main goal of GoldenEye is to speed up your development process. It gathers most widely used frameworks in .NET world and pack them into a simple bootstrap Nuget packages. It also provide set of base classes, helpers, extensions that will help you with your daily work.</Description>
+    <PackageLicenseUrl>https://github.com/oskardudycz/GoldenEye/blob/master/LICENSE.txt</PackageLicenseUrl>
+    <PackageProjectUrl>http://oskardudycz.github.io/GoldenEye/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/oskardudycz/GoldenEye</RepositoryUrl>
+    <AssemblyName>GoldenEye.Backend.Core.WebApi</AssemblyName>
+    <RootNamespace>GoldenEye.Backend.Core.WebApi</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Backend.Core\Backend.Core.NetCore.csproj" />
+    <ProjectReference Include="..\Shared.Core.Validation\Share.Core.Validation.NetCore.csproj" />
+    <ProjectReference Include="..\..\Shared.Core\Shared.Core.NetCore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="1.0.0" />
+  </ItemGroup>
+
+</Project>

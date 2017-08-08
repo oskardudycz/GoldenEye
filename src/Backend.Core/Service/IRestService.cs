@@ -4,7 +4,7 @@ using System;
 
 namespace GoldenEye.Backend.Core.Service
 {
-    public interface IRestService<TDTO> : IDisposable where TDTO : class, IDTO
+    public interface IRestService<TDTO> : IReadonlyService<TDTO> where TDTO : class, IDTO
     {
         Task<bool> Delete(int id);
         Task<TDTO> Post(TDTO dto);

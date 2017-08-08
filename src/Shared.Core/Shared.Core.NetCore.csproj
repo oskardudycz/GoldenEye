@@ -31,6 +31,8 @@
     <Compile Remove="Objects\DTO\IValidatableDTO.cs" />
     <Compile Remove="Objects\DTO\ValidatableDTOBase.cs" />
     <Compile Remove="Properties\AssemblyInfo.cs" />
+    <Compile Remove="Services\IReadonlyRestService.cs" />
+    <Compile Remove="Services\IRestService.cs" />
   </ItemGroup>
 
   <ItemGroup>

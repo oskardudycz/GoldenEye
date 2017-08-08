@@ -1,10 +1,11 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using GoldenEye.Shared.Core.Objects.DTO;
+using System;
 
-namespace GoldenEye.Shared.Core.Services
+namespace GoldenEye.Backend.Core.Service
 {
-    public interface IReadonlyRestService<TDTO> : IService where TDTO : IDTO
+    public interface IReadonlyService<TDTO> : IDisposable where TDTO : class, IDTO
     {
         IQueryable<TDTO> Get();
         Task<TDTO> Get(int id);
