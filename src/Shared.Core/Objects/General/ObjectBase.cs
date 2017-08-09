@@ -8,7 +8,7 @@ namespace GoldenEye.Shared.Core.Objects.General
 
     public abstract class ObjectWithIdBase : ObjectBase, IHasObjectId
     {
-        object IHasObjectId.Id { get; set; }
+        object IHasObjectId.Id { get; }
     }
 
     public abstract class ObjectWithIdBase<T> : IHasId<T>
@@ -18,7 +18,6 @@ namespace GoldenEye.Shared.Core.Objects.General
         object IHasObjectId.Id
         {
             get { return Id; }
-            set { Id = (T)value; }
         }
     }
 

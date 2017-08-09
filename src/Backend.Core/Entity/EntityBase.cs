@@ -10,7 +10,6 @@ namespace GoldenEye.Backend.Core.Entity
         object IHasObjectId.Id
         {
             get { return Id; }
-            set { Id = (int) value; }
         }
     }
 }

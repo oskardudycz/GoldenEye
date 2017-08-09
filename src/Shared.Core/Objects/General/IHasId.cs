@@ -4,12 +4,12 @@ namespace GoldenEye.Shared.Core.Objects.General
 {
     public interface IHasObjectId
     {
-        object Id { get; set; }
+        object Id { get; }
     }
 
     public interface IHasId<T> : IHasObjectId
     {
-        new T Id { get; set; }
+        new T Id { get; }
     }
 
     public interface IHasGuidId : IHasId<Guid>

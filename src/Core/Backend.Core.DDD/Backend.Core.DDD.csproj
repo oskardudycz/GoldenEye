@@ -18,7 +18,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Queries\" />
     <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="3.0.1" />
   </ItemGroup>
 
   <ItemGroup>
