@@ -8,7 +8,7 @@ namespace GoldenEye.Backend.Core.DDD.Registration
 {
     public static class Registration
     {
-        public static void UseCQRS(this IServiceCollection services)
+        public static void AddCQRS(this IServiceCollection services)
         {
             services.AddScoped<IMediator, Mediator>();
             services.AddTransient<SingleInstanceFactory>(sp => t => sp.GetService(t));
@@ -16,6 +16,7 @@ namespace GoldenEye.Backend.Core.DDD.Registration
             
             services.AddTransient<ICommandBus, CommandBus>();
             services.AddTransient<IQueryBus, QueryBus>();
+            services.AddTransient<IEventBus, EventBus>();
         }
         
         public static void RegisterCommandHandler<TCommand, TCommandHandler>(this IServiceCollection services)
