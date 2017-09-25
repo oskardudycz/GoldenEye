@@ -8,7 +8,7 @@ namespace GoldenEye.Backend.Core.DDD.Registration
 {
     public static class Registration
     {
-        public static void AddCQRS(this IServiceCollection services)
+        public static void AddDDD(this IServiceCollection services)
         {
             services.AddScoped<IMediator, Mediator>();
             services.AddTransient<SingleInstanceFactory>(sp => t => sp.GetService(t));
