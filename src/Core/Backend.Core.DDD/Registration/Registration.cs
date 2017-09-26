@@ -3,6 +3,9 @@ using MediatR;
 using GoldenEye.Backend.Core.DDD.Commands;
 using GoldenEye.Backend.Core.DDD.Queries;
 using GoldenEye.Backend.Core.DDD.Events;
+using GoldenEye.Backend.Core.DDD.Events.Store;
+using MediatR.Pipeline;
+using GoldenEye.Backend.Core.DDD.Events.Logging;
 
 namespace GoldenEye.Backend.Core.DDD.Registration
 {
@@ -13,10 +16,18 @@ namespace GoldenEye.Backend.Core.DDD.Registration
             services.AddScoped<IMediator, Mediator>();
             services.AddTransient<SingleInstanceFactory>(sp => t => sp.GetService(t));
             services.AddTransient<MultiInstanceFactory>(sp => t => sp.GetServices(t));
-            
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPreProcessorBehavior<,>));
+
             services.AddTransient<ICommandBus, CommandBus>();
             services.AddTransient<IQueryBus, QueryBus>();
             services.AddTransient<IEventBus, EventBus>();
+        }
+
+        public static void AddEventStorePipeline<TEventStore>(this IServiceCollection services)
+            where TEventStore : class, IEventStore
+        {
+            services.AddTransient(typeof(IRequestPreProcessor<>), typeof(EventStorePipeline<>));
+            services.AddScoped<IEventStore, TEventStore>();
         }
         
         public static void RegisterCommandHandler<TCommand, TCommandHandler>(this IServiceCollection services)
