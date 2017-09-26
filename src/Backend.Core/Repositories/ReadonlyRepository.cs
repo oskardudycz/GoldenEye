@@ -14,9 +14,9 @@ namespace GoldenEye.Backend.Core.Repositories
 
         protected bool Disposed;
 
-        protected ReadonlyRepository(IDataContext context)
+        public ReadonlyRepository(IDataContext context)
         {
-            Context = context;
+            Context = context ?? throw new ArgumentException(nameof(context));
             Queryable = context.GetQueryable<TEntity>();
         }
 

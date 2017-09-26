@@ -10,73 +10,81 @@ using System.Threading;
 
 namespace GoldenEye.Backend.Core.Context
 {
-    public abstract class DataContext<T> : DbContext, IDataContext, IProvidesAuditInfo where T : DbContext
+    public class EFDataContext<T> : IDataContext, IProvidesAuditInfo where T : DbContext
     {
-        protected DataContext(DbContextOptions<T> options) : base(options)
+        private readonly DbContext dbContext;
+        private bool wasDisposed;
+
+        public EFDataContext(T dbContext)
         {
+            this.dbContext = dbContext ?? throw new ArgumentException(nameof(dbContext));
         }
 
-        public new void Dispose()
+        public void Dispose()
         {
-            base.Dispose();
+            if (wasDisposed)
+                return;
+
+            wasDisposed = true;
+            dbContext.Dispose();
             GC.SuppressFinalize(this);
         }
 
         public IDbContextTransaction BeginTransaction()
         {
-            return Database.BeginTransaction();
+            return dbContext.Database.BeginTransaction();
         }
 
-        public override int SaveChanges()
+        public int SaveChanges()
         {
             SaveChangesProcessor.Instance.RunAll(this);
-            return base.SaveChanges();
+            return dbContext.SaveChanges();
         }
 
         public Task<int> SaveChangesAsync()
         {
             SaveChangesProcessor.Instance.RunAll(this);
-            return base.SaveChangesAsync();
+            return dbContext.SaveChangesAsync();
         }
 
-        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return SaveChangesAsync();
+            return dbContext.SaveChangesAsync(cancellationToken);
         }
 
         public IEnumerable<IEntityEntry> Changes
         {
             get
             {
-                return ChangeTracker.Entries()
+                return dbContext.ChangeTracker.Entries()
                     .Select(e=> new EntityEntry((EntityEntryState)(int)e.State, (IEntity)e.Entity));
             }
         }
 
         TEntity IDataContext.Add<TEntity>(TEntity entity)
         {
-            var entry = base.Add(entity);
+            var entry = dbContext.Add(entity);
 
             return entry.Entity;
         }
 
         async Task<TEntity> IDataContext.AddAsync<TEntity>(TEntity entity)
         {
-            var entry = await base.AddAsync(entity);
+            var entry = await dbContext.AddAsync(entity);
 
             return entry.Entity;
         }
 
         IQueryable<TEntity> IDataContext.AddRange<TEntity>(params TEntity[] entities)
         {
-            base.AddRange(entities);
+            dbContext.AddRange(entities);
 
             return entities.AsQueryable();
         }
 
         TEntity IDataContext.Update<TEntity>(TEntity entity)
         {
-            var entry = base.Add(entity);
+            var entry = dbContext.Add(entity);
 
             return entry.Entity;
         }
@@ -88,7 +96,7 @@ namespace GoldenEye.Backend.Core.Context
 
         TEntity IDataContext.Remove<TEntity>(TEntity entity)
         {
-            var entry = base.Remove(entity);
+            var entry = dbContext.Remove(entity);
 
             return entry.Entity;
         }
@@ -100,17 +108,17 @@ namespace GoldenEye.Backend.Core.Context
 
         public TEntity GetById<TEntity>(object id) where TEntity : class
         {
-            return base.Find<TEntity>(id);
+            return dbContext.Find<TEntity>(id);
         }
 
         public Task<TEntity> GetByIdAsync<TEntity>(object id) where TEntity : class
         {
-            return base.FindAsync<TEntity>(id);
+            return dbContext.FindAsync<TEntity>(id);
         }
 
         public IQueryable<TEntity> GetQueryable<TEntity>() where TEntity : class
         {
-            return Set<TEntity>();
+            return dbContext.Set<TEntity>();
         }
     }
 }
