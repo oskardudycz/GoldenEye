@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 
 namespace GoldenEye.Backend.Core.DDD.Events.Logging
 {
-    public class EventStorePipeline<TEvent> : IRequestPreProcessor<TEvent> 
+    public class EventStorePipeline<TEvent> : IAsyncEventHandler<TEvent> 
+        where TEvent: IEvent
     {
         private readonly IEventStore eventStore;
 
@@ -14,13 +15,8 @@ namespace GoldenEye.Backend.Core.DDD.Events.Logging
             this.eventStore = eventStore ?? throw new ArgumentException(nameof(eventStore));
         }
 
-        public async Task Process(TEvent request)
+        public async Task Handle(TEvent @event)
         {
-            if (!(request is IEvent))
-                return;
-
-            var @event = (IEvent)request;
-
             await eventStore.StoreAsync(@event.StreamId, @event);
             await eventStore.SaveChangesAsync();
         }

@@ -26,7 +26,7 @@ namespace GoldenEye.Backend.Core.DDD.Registration
         public static void AddEventStorePipeline<TEventStore>(this IServiceCollection services)
             where TEventStore : class, IEventStore
         {
-            services.AddTransient(typeof(IRequestPreProcessor<>), typeof(EventStorePipeline<>));
+            services.AddTransient(typeof(INotificationHandler<>), typeof(EventStorePipeline<>));
             services.AddScoped<IEventStore, TEventStore>();
         }
         

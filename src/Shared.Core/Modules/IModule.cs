@@ -1,7 +1,9 @@
-﻿namespace GoldenEye.Shared.Core.Modules
+﻿using Microsoft.Extensions.DependencyInjection;
+
+namespace GoldenEye.Shared.Core.Modules
 {
     public interface IModule
     {
-        void Initalize();
+        void Configure(IServiceCollection services);
     }
 }
