@@ -30,16 +30,16 @@ namespace GoldenEye.Backend.Core.Marten.Registration
             services.AddEventStorePipeline<MartenEventStore>();
         }
         
-        public static void AddMartenDocumentDataContext<TDbContext>(this IServiceCollection services)
+        public static void AddMartenDocumentDataContext(this IServiceCollection services)
         {
             services.AddScoped(sp => new MartenDocumentDataContext(sp.GetService<IDocumentSession>()));
         }
-        public static void AddMartenDocumentCRUDRepository<TDbContext, TEntity>(this IServiceCollection services)
+        public static void AddMartenDocumentCRUDRepository<TEntity>(this IServiceCollection services)
             where TEntity : class, IEntity
         {
             services.AddCRUDRepository<MartenDocumentDataContext, TEntity>();
         }
-        public static void AddMartenDocumentReadonlyRepository<TDbContext, TEntity>(this IServiceCollection services)
+        public static void AddMartenDocumentReadonlyRepository<TEntity>(this IServiceCollection services)
             where TEntity : class, IEntity
         {
             services.AddReadonlyRepository<MartenDocumentDataContext, TEntity>();
