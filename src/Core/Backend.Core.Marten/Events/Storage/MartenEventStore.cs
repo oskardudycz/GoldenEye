@@ -5,6 +5,7 @@ using GoldenEye.Backend.Core.DDD.Events;
 using GoldenEye.Backend.Core.DDD.Events.Store;
 using Marten;
 using GoldenEye.Shared.Core.Objects.General;
+using System.Linq;
 
 namespace GoldenEye.Backend.Core.Marten.Events.Storage
 {
@@ -29,7 +30,7 @@ namespace GoldenEye.Backend.Core.Marten.Events.Storage
 
         public Guid Store(Guid stream, params IEvent[] events)
         {
-            return documentSession.Events.Append(stream, events).Id;
+            return documentSession.Events.Append(stream, events.Cast<object>().ToArray()).Id;
         }
 
         public Task<Guid> StoreAsync(Guid stream, params IEvent[] events)
