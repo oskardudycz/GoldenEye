@@ -1,8 +1,4 @@
-﻿using GoldenEye.Shared.Core.Modules;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using AutoMapper.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

@@ -1,6 +1,6 @@
-﻿using AutoMapper.Configuration;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 
 namespace GoldenEye.Backend.Core.WebApi.Modules
 {
