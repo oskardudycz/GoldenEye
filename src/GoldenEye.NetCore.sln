@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{F4F82AA0-8F75-4A08-B420-5C5A3FC812C0}"
 EndProject
@@ -11,17 +11,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Share.Core.Validation.NetCo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend.Core.NetCore", "Backend.Core\Backend.Core.NetCore.csproj", "{78662F89-BADC-41DE-95C8-01BE5F0F021F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend.Core.EntityFramework", "Core\Backend.Core.EntityFramework\Backend.Core.EntityFramework.csproj", "{A6112743-8DFE-4165-A5D0-B52408746BC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend.Core.EntityFramework", "Core\Backend.Core.EntityFramework\Backend.Core.EntityFramework.csproj", "{A6112743-8DFE-4165-A5D0-B52408746BC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend.Core.WebApi", "Core\Backend.Core.WebApi\Backend.Core.WebApi.csproj", "{BFB12194-60DC-42C4-838B-A35EB96C9096}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend.Core.WebApi", "Core\Backend.Core.WebApi\Backend.Core.WebApi.csproj", "{BFB12194-60DC-42C4-838B-A35EB96C9096}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldenEye.WebApi.Sample", "Sample\GoldenEye.WebApi.Sample\GoldenEye.WebApi.Sample.csproj", "{B79B8C39-1A30-4E2B-A8D3-A2DC24A8665D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoldenEye.WebApi.Sample", "Sample\GoldenEye.WebApi.Sample\GoldenEye.WebApi.Sample.csproj", "{B79B8C39-1A30-4E2B-A8D3-A2DC24A8665D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample", "Sample", "{23C64FA6-FA22-4A73-8360-D81FD44E7AE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend.Core.DDD", "Core\Backend.Core.DDD\Backend.Core.DDD.csproj", "{F20BF631-413A-4C82-A216-DD7DC193F1A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend.Core.DDD", "Core\Backend.Core.DDD\Backend.Core.DDD.csproj", "{F20BF631-413A-4C82-A216-DD7DC193F1A4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend.Core.Marten", "Core\Backend.Core.Marten\Backend.Core.Marten.csproj", "{1D12A3C0-87BB-4FE8-9960-6ECC6C22D4FD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend.Core.DDD.Tests", "Core\Backend.Core.DDD.Tests\Backend.Core.DDD.Tests.csproj", "{8D93BBF0-0E31-4439-9BB4-71638BF15E90}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +63,10 @@ Global
 		{1D12A3C0-87BB-4FE8-9960-6ECC6C22D4FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D12A3C0-87BB-4FE8-9960-6ECC6C22D4FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D12A3C0-87BB-4FE8-9960-6ECC6C22D4FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D93BBF0-0E31-4439-9BB4-71638BF15E90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D93BBF0-0E31-4439-9BB4-71638BF15E90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D93BBF0-0E31-4439-9BB4-71638BF15E90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D93BBF0-0E31-4439-9BB4-71638BF15E90}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,5 +80,9 @@ Global
 		{B79B8C39-1A30-4E2B-A8D3-A2DC24A8665D} = {23C64FA6-FA22-4A73-8360-D81FD44E7AE1}
 		{F20BF631-413A-4C82-A216-DD7DC193F1A4} = {F4F82AA0-8F75-4A08-B420-5C5A3FC812C0}
 		{1D12A3C0-87BB-4FE8-9960-6ECC6C22D4FD} = {F4F82AA0-8F75-4A08-B420-5C5A3FC812C0}
+		{8D93BBF0-0E31-4439-9BB4-71638BF15E90} = {F4F82AA0-8F75-4A08-B420-5C5A3FC812C0}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8F5394A0-8892-4A22-B6A0-7BBC209FF191}
 	EndGlobalSection
 EndGlobal

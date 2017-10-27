@@ -13,32 +13,36 @@ namespace GoldenEye.Backend.Core.Marten.Registration
     {
         public static void AddMartenContext(this IServiceCollection services, string moduleName, Func<IServiceProvider, string> getConnectionString, Action<StoreOptions> setAdditionalOptions = null)
         {
-            services.AddSingleton(sp =>
+            services.AddScoped(sp =>
             {
                 return CreateDocumentStore(moduleName, getConnectionString(sp), setAdditionalOptions);
             });
 
-            services.AddScoped(sp =>
+            services.AddTransient(sp =>
             {
                 var store = sp.GetService<DocumentStore>();
                 return CreateDocumentSession(store);
             });
+
+            services.AddEventStore<MartenEventStore>();
         }
 
         public static void AddMartenEventStorePipeline(this IServiceCollection services)
         {
-            services.AddEventStorePipeline<MartenEventStore>();
+            services.AddEventStorePipeline();
         }
-        
+
         public static void AddMartenDocumentDataContext(this IServiceCollection services)
         {
             services.AddScoped(sp => new MartenDocumentDataContext(sp.GetService<IDocumentSession>()));
         }
+
         public static void AddMartenDocumentCRUDRepository<TEntity>(this IServiceCollection services)
             where TEntity : class, IEntity
         {
             services.AddCRUDRepository<MartenDocumentDataContext, TEntity>();
         }
+
         public static void AddMartenDocumentReadonlyRepository<TEntity>(this IServiceCollection services)
             where TEntity : class, IEntity
         {

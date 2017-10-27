@@ -23,13 +23,18 @@ namespace GoldenEye.Backend.Core.DDD.Registration
             services.AddTransient<IEventBus, EventBus>();
         }
 
-        public static void AddEventStorePipeline<TEventStore>(this IServiceCollection services)
+        public static void AddEventStore<TEventStore>(this IServiceCollection services)
             where TEventStore : class, IEventStore
         {
-            services.AddTransient(typeof(INotificationHandler<>), typeof(EventStorePipeline<>));
-            services.AddScoped<IEventStore, TEventStore>();
+            services.AddTransient<TEventStore, TEventStore>();
+            services.AddTransient<IEventStore>(sp => sp.GetService<TEventStore>());
         }
-        
+
+        public static void AddEventStorePipeline(this IServiceCollection services)
+        {
+            services.AddTransient(typeof(IAsyncNotificationHandler<>), typeof(EventStorePipeline<>));
+        }
+
         public static void RegisterCommandHandler<TCommand, TCommandHandler>(this IServiceCollection services)
             where TCommand : ICommand
             where TCommandHandler : class, ICommandHandler<TCommand>
