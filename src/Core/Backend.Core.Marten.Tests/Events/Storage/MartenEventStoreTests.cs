@@ -33,7 +33,7 @@ namespace Backend.Core.Marten.Tests.Events.Storage
             public Guid StreamId => UserId;
         }
 
-        [Fact]
+        [Fact(Skip = "Myget can't run it")]
         public void GivenEventStoreWithEvents_WhenQueried_ThenQueriedSuccessful()
         {
             Guid userId = Guid.NewGuid();
