@@ -10,7 +10,7 @@ namespace GoldenEye.Backend.Core.DDD.Events
         public Guid Id { get; protected set; }
         object IHasObjectId.Id => Id;
 
-        public Queue<IEvent> PendingEvents { get; private set; }
+        public Queue<IEvent> PendingEvents { get; }
 
         protected EventSource()
         {

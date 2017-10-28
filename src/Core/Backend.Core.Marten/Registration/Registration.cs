@@ -6,16 +6,17 @@ using GoldenEye.Backend.Core.Registration;
 using Marten;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using GoldenEye.Shared.Core.Extensions.Basic;
 
 namespace GoldenEye.Backend.Core.Marten.Registration
 {
     public static class Registration
     {
-        public static void AddMartenContext(this IServiceCollection services, string moduleName, Func<IServiceProvider, string> getConnectionString, Action<StoreOptions> setAdditionalOptions = null)
+        public static void AddMartenContext(this IServiceCollection services, Func<IServiceProvider, string> getConnectionString, Action<StoreOptions> setAdditionalOptions = null, string schemaName = null)
         {
             services.AddScoped(sp =>
             {
-                return CreateDocumentStore(moduleName, getConnectionString(sp), setAdditionalOptions);
+                return CreateDocumentStore(getConnectionString(sp), setAdditionalOptions, schemaName);
             });
 
             services.AddTransient(sp =>
@@ -25,11 +26,6 @@ namespace GoldenEye.Backend.Core.Marten.Registration
             });
 
             services.AddEventStore<MartenEventStore>();
-        }
-
-        public static void AddMartenEventStorePipeline(this IServiceCollection services)
-        {
-            services.AddEventStorePipeline();
         }
 
         public static void AddMartenDocumentDataContext(this IServiceCollection services)
@@ -49,7 +45,7 @@ namespace GoldenEye.Backend.Core.Marten.Registration
             services.AddReadonlyRepository<MartenDocumentDataContext, TEntity>();
         }
 
-        public static DocumentStore CreateDocumentStore(string moduleName, string connectionString, Action<StoreOptions> setAdditionalOptions = null)
+        public static DocumentStore CreateDocumentStore(string connectionString, Action<StoreOptions> setAdditionalOptions = null, string moduleName = null)
         {
             var store = DocumentStore.For(_ =>
             {
@@ -57,6 +53,9 @@ namespace GoldenEye.Backend.Core.Marten.Registration
                 _.DatabaseSchemaName = _.Events.DatabaseSchemaName = moduleName.ToLower();
                 _.AutoCreateSchemaObjects = AutoCreate.CreateOrUpdate;
                 _.DdlRules.TableCreation = CreationStyle.CreateIfNotExists;
+
+                if (!moduleName.IsNullOrEmpty())
+                    _.DatabaseSchemaName = _.Events.DatabaseSchemaName = moduleName.ToLower();
 
                 setAdditionalOptions?.Invoke(_);
             });
