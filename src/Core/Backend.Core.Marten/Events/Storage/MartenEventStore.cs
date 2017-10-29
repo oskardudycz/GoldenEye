@@ -15,9 +15,12 @@ namespace GoldenEye.Backend.Core.Marten.Events.Storage
     {
         private readonly IDocumentSession documentSession;
 
+        public IEventProjectionStore Projections { get; }
+
         public MartenEventStore(IDocumentSession documentSession)
         {
             this.documentSession = documentSession ?? throw new ArgumentException(nameof(documentSession));
+            Projections = new EventProjectionStore(documentSession);
         }
 
         public void SaveChanges()
@@ -50,24 +53,24 @@ namespace GoldenEye.Backend.Core.Marten.Events.Storage
             return Task.FromResult(Store(stream, version, events));
         }
 
-        public TEntity Aggregate<TEntity>(Guid streamId, int version = 0, DateTime? timestamp = null) where TEntity : class, IHasGuidId, new()
+        public TEntity Aggregate<TEntity>(Guid streamId, int version = 0, DateTime? timestamp = null) where TEntity : class, new()
         {
             return documentSession.Events.AggregateStream<TEntity>(streamId, version, timestamp);
         }
 
-        public Task<TEntity> AggregateAsync<TEntity>(Guid streamId, int version = 0, DateTime? timestamp = null) where TEntity : class, IHasGuidId, new()
+        public Task<TEntity> AggregateAsync<TEntity>(Guid streamId, int version = 0, DateTime? timestamp = null) where TEntity : class, new()
         {
             return documentSession.Events.AggregateStreamAsync<TEntity>(streamId, version, timestamp);
         }
 
         public TEvent GetById<TEvent>(Guid id)
-            where TEvent : class, IEvent
+            where TEvent : class, IEvent, IHasGuidId
         {
             return documentSession.Events.Load<TEvent>(id)?.Data;
         }
 
         public async Task<TEvent> GetByIdAsync<TEvent>(Guid id)
-            where TEvent : class, IEvent
+            where TEvent : class, IEvent, IHasGuidId
         {
             return (await documentSession.Events.LoadAsync<TEvent>(id))?.Data;
         }
@@ -118,6 +121,33 @@ namespace GoldenEye.Backend.Core.Marten.Events.Storage
                 query = query.Where(ev => ev.Timestamp >= timestamp);
 
             return query;
+        }
+
+        public class EventProjectionStore : IEventProjectionStore
+        {
+            private readonly IDocumentSession documentSession;
+
+            public EventProjectionStore(IDocumentSession documentSession)
+            {
+                this.documentSession = documentSession ?? throw new ArgumentException(nameof(documentSession));
+            }
+
+            public IQueryable<TProjection> Query<TProjection>()
+            {
+                return documentSession.Query<TProjection>();
+            }
+
+            TProjection IEventProjectionStore.GetById<TProjection>(Guid id)
+            {
+                return Query<TProjection>()
+                    .SingleOrDefault(p => p.Id == id);
+            }
+
+            Task<TProjection> IEventProjectionStore.GetByIdAsync<TProjection>(Guid id)
+            {
+                return Query<TProjection>()
+                    .SingleOrDefaultAsync(p => p.Id == id);
+            }
         }
     }
 }

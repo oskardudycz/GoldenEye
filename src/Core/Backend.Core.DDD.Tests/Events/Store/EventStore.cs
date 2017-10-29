@@ -3,7 +3,6 @@ using GoldenEye.Backend.Core.DDD.Events.Store;
 using GoldenEye.Backend.Core.DDD.Events;
 using System.Threading;
 using System.Threading.Tasks;
-using GoldenEye.Shared.Core.Objects.General;
 using System.Collections.Generic;
 using Baseline;
 using System.Linq;
@@ -15,6 +14,8 @@ namespace Backend.Core.DDD.Tests.Events.Store
         public class EventStore : IEventStore
         {
             private IList<IEvent> events = new List<IEvent>();
+
+            public IEventProjectionStore Projections => throw new NotImplementedException();
 
             public void SaveChanges()
             {
@@ -37,13 +38,13 @@ namespace Backend.Core.DDD.Tests.Events.Store
             }
 
             public TEntity Aggregate<TEntity>(Guid streamId, int version = 0, DateTime? timestamp = null)
-                where TEntity : class, IHasGuidId, new()
+                where TEntity : class, new()
             {
                 return new TEntity();
             }
 
             public Task<TEntity> AggregateAsync<TEntity>(Guid streamId, int version = 0, DateTime? timestamp = null)
-                where TEntity : class, IHasGuidId, new()
+                where TEntity : class, new()
             {
                 return Task.FromResult(Aggregate<TEntity>(streamId));
             }
@@ -81,6 +82,16 @@ namespace Backend.Core.DDD.Tests.Events.Store
             Task<IList<TEvent>> IEventStore.QueryAsync<TEvent>(Guid? streamId, int? version, DateTime? timestamp)
             {
                 return Task.FromResult<IList<TEvent>>(Query(streamId, version, timestamp).OfType<TEvent>().ToList());
+            }
+
+            TEvent IEventStore.GetById<TEvent>(Guid id)
+            {
+                throw new NotImplementedException();
+            }
+
+            Task<TEvent> IEventStore.GetByIdAsync<TEvent>(Guid id)
+            {
+                throw new NotImplementedException();
             }
         }
     }

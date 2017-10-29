@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using System.Threading.Tasks;
 using System.Threading;
+using GoldenEye.Shared.Core.Objects.Versioning;
 
 namespace GoldenEye.Backend.Core.Context
 {
@@ -26,7 +27,6 @@ namespace GoldenEye.Backend.Core.Context
                 return;
 
             wasDisposed = true;
-            dbContext.Dispose();
             GC.SuppressFinalize(this);
         }
 
@@ -57,7 +57,7 @@ namespace GoldenEye.Backend.Core.Context
             get
             {
                 return dbContext.ChangeTracker.Entries()
-                    .Select(e=> new EntityEntry((EntityEntryState)(int)e.State, (IEntity)e.Entity));
+                    .Select(e => new EntityEntry((EntityEntryState)(int)e.State, (IEntity)e.Entity));
             }
         }
 
@@ -82,36 +82,40 @@ namespace GoldenEye.Backend.Core.Context
             return entities.AsQueryable();
         }
 
-        TEntity IDataContext.Update<TEntity>(TEntity entity)
+        TEntity IDataContext.Update<TEntity>(TEntity entity, int? version = null)
         {
-            var entry = dbContext.Add(entity);
+            CheckVersion(entity, version);
+            var entry = dbContext.Update(entity);
 
             return entry.Entity;
         }
 
-        Task<TEntity> IDataContext.UpdateAsync<TEntity>(TEntity entity)
+        Task<TEntity> IDataContext.UpdateAsync<TEntity>(TEntity entity, int? version = null)
         {
+            CheckVersion(entity, version);
             return Task.Run(() => ((IDataContext)this).Update(entity));
         }
 
-        TEntity IDataContext.Remove<TEntity>(TEntity entity)
+        TEntity IDataContext.Remove<TEntity>(TEntity entity, int? version = null)
         {
+            CheckVersion(entity, version);
             var entry = dbContext.Remove(entity);
 
             return entry.Entity;
         }
 
-        Task<TEntity> IDataContext.RemoveAsync<TEntity>(TEntity entity)
+        Task<TEntity> IDataContext.RemoveAsync<TEntity>(TEntity entity, int? version = null)
         {
+            CheckVersion(entity, version);
             return Task.Run(() => ((IDataContext)this).Remove(entity));
         }
 
-        public TEntity GetById<TEntity>(object id) where TEntity : class
+        public TEntity GetById<TEntity>(object id) where TEntity : class, new()
         {
             return dbContext.Find<TEntity>(id);
         }
 
-        public Task<TEntity> GetByIdAsync<TEntity>(object id) where TEntity : class
+        public Task<TEntity> GetByIdAsync<TEntity>(object id) where TEntity : class, new()
         {
             return dbContext.FindAsync<TEntity>(id);
         }
@@ -119,6 +123,17 @@ namespace GoldenEye.Backend.Core.Context
         public IQueryable<TEntity> GetQueryable<TEntity>() where TEntity : class
         {
             return dbContext.Set<TEntity>();
+        }
+
+        private void CheckVersion<TEntity>(TEntity entity, long? originVersion) where TEntity : class
+        {
+            if (!originVersion.HasValue || !(entity is IVersioned versionedEntity))
+                return;
+
+            var readVersion = dbContext.Entry(versionedEntity).Property(x => x.Version).OriginalValue;
+
+            if (originVersion != readVersion)
+                throw new ArgumentException($"Optimistic Concurrency Version Mistmatch for ${typeof(TEntity).Name}");
         }
     }
 }

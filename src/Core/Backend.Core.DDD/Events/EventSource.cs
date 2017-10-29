@@ -1,11 +1,10 @@
-﻿using GoldenEye.Backend.Core.DDD.Aggregates;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using GoldenEye.Shared.Core.Objects.General;
 
 namespace GoldenEye.Backend.Core.DDD.Events
 {
-    public abstract class EventSource : IAggregate
+    public abstract class EventSource : IEventSource
     {
         public Guid Id { get; protected set; }
         object IHasObjectId.Id => Id;

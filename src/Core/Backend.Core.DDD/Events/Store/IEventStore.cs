@@ -4,22 +4,29 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GoldenEye.Backend.Core.DDD.Events.Store
 {
     public interface IEventStore
     {
-        Guid Store(Guid stream, params IEvent[] events);
+        IEventProjectionStore Projections { get; }
 
-        Guid Store(Guid stream, int version, params IEvent[] events);
+        Guid Store(Guid streamId, params IEvent[] events);
 
-        Task<Guid> StoreAsync(Guid stream, params IEvent[] events);
+        Guid Store(Guid streamId, int version, params IEvent[] events);
 
-        Task<Guid> StoreAsync(Guid stream, int version, params IEvent[] events);
+        Task<Guid> StoreAsync(Guid streamId, params IEvent[] events);
 
-        TEntity Aggregate<TEntity>(Guid streamId, int version = 0, DateTime? timestamp = null) where TEntity : class, IHasGuidId, new();
+        Task<Guid> StoreAsync(Guid streamId, int version, params IEvent[] events);
 
-        Task<TEntity> AggregateAsync<TEntity>(Guid streamId, int version = 0, DateTime? timestamp = null) where TEntity : class, IHasGuidId, new();
+        TEntity Aggregate<TEntity>(Guid streamId, int version = 0, DateTime? timestamp = null) where TEntity : class, new();
+
+        Task<TEntity> AggregateAsync<TEntity>(Guid streamId, int version = 0, DateTime? timestamp = null) where TEntity : class, new();
+
+        TEvent GetById<TEvent>(Guid id) where TEvent : class, IEvent, IHasGuidId;
+
+        Task<TEvent> GetByIdAsync<TEvent>(Guid id) where TEvent : class, IEvent, IHasGuidId;
 
         IList<IEvent> Query(Guid? streamId = null, int? version = null, DateTime? timestamp = null);
 
@@ -32,5 +39,14 @@ namespace GoldenEye.Backend.Core.DDD.Events.Store
         void SaveChanges();
 
         Task SaveChangesAsync(CancellationToken token = default(CancellationToken));
+    }
+
+    public interface IEventProjectionStore
+    {
+        TProjection GetById<TProjection>(Guid id) where TProjection : class, IHasGuidId;
+
+        Task<TProjection> GetByIdAsync<TProjection>(Guid id) where TProjection : class, IHasGuidId;
+
+        IQueryable<TProjection> Query<TProjection>();
     }
 }

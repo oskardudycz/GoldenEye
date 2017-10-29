@@ -1,121 +1,155 @@
-﻿//using GoldenEye.Backend.Core.Context;
-//using Marten;
-//using System;
-//using System.Linq;
-//using System.Threading.Tasks;
+﻿using GoldenEye.Backend.Core.Context;
+using Marten;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+using GoldenEye.Backend.Core.DDD.Events.Store;
+using GoldenEye.Backend.Core.DDD.Events;
 
-//namespace GoldenEye.Backend.Core.Marten.Context
-//{
-//    public class MartenEventSourcedDataContext : IDataContext
-//    {
-//        private readonly IDocumentSession _documentSession;
-//        private int ChangesCount
-//        {
-//            get
-//            {
-//                return _documentSession.PendingChanges.Deletions().Count()
-//                + _documentSession.PendingChanges.Inserts().Count()
-//                + _documentSession.PendingChanges.Patches().Count()
-//                + _documentSession.PendingChanges.Updates().Count();
-//            }
-//        }
+namespace GoldenEye.Backend.Core.Marten.Context
+{
+    public class MartenEventSourcedDataContext : IDataContext
+    {
+        private readonly IDocumentSession documentSession;
+        private readonly IEventStore eventStore;
 
-//        public MartenEventSourcedDataContext(IDocumentSession documentSession)
-//        {
-//            _documentSession = documentSession ?? throw new ArgumentException(nameof(documentSession));
-//        }
+        private int ChangesCount
+        {
+            get
+            {
+                return documentSession.PendingChanges.Deletions().Count()
+                + documentSession.PendingChanges.Inserts().Count()
+                + documentSession.PendingChanges.Patches().Count()
+                + documentSession.PendingChanges.Updates().Count();
+            }
+        }
 
-//        public TEntity Add<TEntity>(TEntity entity) where TEntity : class
-//        {
-//            _documentSession.Insert(entity);
+        public MartenEventSourcedDataContext(IDocumentSession documentSession, IEventStore eventStore)
+        {
+            this.documentSession = documentSession ?? throw new ArgumentException(nameof(documentSession));
+            this.eventStore = eventStore ?? throw new ArgumentException(nameof(eventStore));
+        }
 
-//            return entity;
-//        }
+        public TEntity Add<TEntity>(TEntity entity) where TEntity : class
+        {
+            if (!(entity is IEventSource esEntity))
+                throw new ArgumentException($"Entity {typeof(TEntity)} does not implement IEventSource! It's needed for  usage in MartenEventSourcedDataContext.");
 
-//        public Task<TEntity> AddAsync<TEntity>(TEntity entity) where TEntity : class
-//        {
-//            _documentSession.Insert(entity);
+            eventStore.Store(esEntity.Id, esEntity.PendingEvents.ToArray());
 
-//            return Task.FromResult(entity);
-//        }
+            return entity;
+        }
 
-//        public IQueryable<TEntity> AddRange<TEntity>(params TEntity[] entities) where TEntity : class
-//        {
-//            _documentSession.Insert(entities);
+        public async Task<TEntity> AddAsync<TEntity>(TEntity entity) where TEntity : class
+        {
+            if (!(entity is IEventSource esEntity))
+                throw new ArgumentException($"Entity {typeof(TEntity)} does not implement IEventSource! It's needed for  usage in MartenEventSourcedDataContext.");
 
-//            return entities.AsQueryable();
-//        }
+            await eventStore.StoreAsync(esEntity.Id, esEntity.PendingEvents.ToArray());
 
-//        public void Dispose()
-//        {
-//            _documentSession.Dispose();
-//        }
+            return entity;
+        }
 
-//        public TEntity GetById<TEntity>(object id) where TEntity : class
-//        {
-//            if (!(id is Guid))
-//                throw new NotSupportedException("Id of the Event Sourced aggregate has to be Guid");
-            
-//            if ((await _documentSession.Events.FetchStreamStateAsync((Guid)id)) == null)
-//                return null;
+        public IQueryable<TEntity> AddRange<TEntity>(params TEntity[] entities) where TEntity : class
+        {
+            foreach (var entity in entities)
+                Add(entity);
 
-//            return await _documentSession.Events.AggregateStreamAsync<TEntity>((Guid)id);
-//        }
+            return entities.AsQueryable();
+        }
 
-//        public async Task<TEntity> GetByIdAsync<TEntity>(object id) where TEntity : class
-//        {
-//            if (!(id is Guid))
-//                throw new NotSupportedException("Id of the Event Sourced aggregate has to be Guid");
-            
-//            if ((await _documentSession.Events.FetchStreamStateAsync((Guid)id)) == null)
-//                return null;
+        public void Dispose()
+        {
+        }
 
-//            return await _documentSession.Events.AggregateStreamAsync<TEntity>((Guid)id);
-//        }
+        public TEntity GetById<TEntity>(object id) where TEntity : class, new()
+        {
+            if (!(id is Guid guidId))
+                throw new NotSupportedException("Id of the Event Sourced aggregate has to be Guid");
 
-//        public IQueryable<TEntity> GetQueryable<TEntity>() where TEntity : class
-//        {
-//            return _documentSession.Query<TEntity>();
-//        }
+            return eventStore.Aggregate<TEntity>(guidId);
+        }
 
-//        public TEntity Remove<TEntity>(TEntity entity) where TEntity : class
-//        {
-//            _documentSession.Delete(entity);
-//            return entity;
-//        }
+        public async Task<TEntity> GetByIdAsync<TEntity>(object id) where TEntity : class, new()
+        {
+            if (!(id is Guid guidId))
+                throw new NotSupportedException("Id of the Event Sourced aggregate has to be Guid");
 
-//        public Task<TEntity> RemoveAsync<TEntity>(TEntity entity) where TEntity : class
-//        {
-//            _documentSession.Delete(entity);
-//            return Task.FromResult(entity);
-//        }
+            if ((await documentSession.Events.FetchStreamStateAsync((Guid)id)) == null)
+                return null;
 
-//        public int SaveChanges()
-//        {
-//            var changesCount = ChangesCount;
-//            _documentSession.SaveChanges();
+            return await eventStore.AggregateAsync<TEntity>(guidId);
+        }
 
-//            return changesCount;
-//        }
+        public IQueryable<TEntity> GetQueryable<TEntity>() where TEntity : class
+        {
+            return eventStore.Projections.Query<TEntity>();
+        }
 
-//        public async Task<int> SaveChangesAsync()
-//        {
-//            var changesCount = ChangesCount;
-//            await _documentSession.SaveChangesAsync();
+        public TEntity Remove<TEntity>(TEntity entity, int? version = null) where TEntity : class
+        {
+            return Update(entity);
+        }
 
-//            return changesCount;
-//        }
+        public Task<TEntity> RemoveAsync<TEntity>(TEntity entity, int? version = null) where TEntity : class
+        {
+            return UpdateAsync(entity);
+        }
 
-//        public TEntity Update<TEntity>(TEntity entity) where TEntity : class
-//        {
-//            _documentSession.Update(entity);
-//            return entity;
-//        }
+        public int SaveChanges()
+        {
+            var changesCount = ChangesCount;
+            documentSession.SaveChanges();
 
-//        public Task<TEntity> UpdateAsync<TEntity>(TEntity entity) where TEntity : class
-//        {
-//            _documentSession.Update(entity);
-//            return Task.FromResult(entity);
-//        }
-//    }
-//}
+            return changesCount;
+        }
+
+        public async Task<int> SaveChangesAsync()
+        {
+            var changesCount = ChangesCount;
+            await documentSession.SaveChangesAsync();
+
+            return changesCount;
+        }
+
+        public TEntity Update<TEntity>(TEntity entity, int? version = null) where TEntity : class
+        {
+            if (!(entity is IEventSource esEntity))
+                throw new ArgumentException($"Entity {typeof(TEntity)} does not implement IEventSource! It's needed for  usage in MartenEventSourcedDataContext.");
+
+            eventStore.Store(esEntity.Id, esEntity.PendingEvents.ToArray());
+
+            return entity;
+        }
+
+        public async Task<TEntity> UpdateAsync<TEntity>(TEntity entity, int? version = null) where TEntity : class
+        {
+            if (!(entity is IEventSource esEntity))
+                throw new ArgumentException($"Entity {typeof(TEntity)} does not implement IEventSource! It's needed for  usage in MartenEventSourcedDataContext.");
+
+            await eventStore.StoreAsync(esEntity.Id, esEntity.PendingEvents.ToArray());
+
+            return entity;
+        }
+
+        //private async Task CheckVersion<TEntity>(TEntity entity, long? originVersion)
+        //{
+        //    try
+        //    {
+        //        var entry = await FindAsync(aggregate.Id);
+        //        if (entry != null)
+        //        {
+        //            if (entry.Version != originVersion)
+        //                throw new OptimisticConcurrencyException(entityName, aggregateId);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        if (ex is OptimisticConcurrencyException)
+        //        {
+        //            throw;
+        //        }
+        //    }
+        //}
+    }
+}

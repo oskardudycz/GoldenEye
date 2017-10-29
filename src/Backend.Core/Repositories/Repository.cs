@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GoldenEye.Backend.Core.Context;
@@ -36,7 +35,7 @@ namespace GoldenEye.Backend.Core.Repositories
         public virtual IQueryable<TEntity> AddAll(IEnumerable<TEntity> entities, bool shouldSaveChanges = true)
         {
             var result = Context.AddRange(entities.ToArray());
-            
+
             SaveChanges();
 
             return result.AsQueryable();

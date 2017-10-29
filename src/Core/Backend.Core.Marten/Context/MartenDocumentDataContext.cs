@@ -9,6 +9,7 @@ namespace GoldenEye.Backend.Core.Marten.Context
     public class MartenDocumentDataContext : IDataContext
     {
         private readonly IDocumentSession _documentSession;
+
         private int ChangesCount
         {
             get
@@ -34,24 +35,23 @@ namespace GoldenEye.Backend.Core.Marten.Context
 
         public Task<TEntity> AddAsync<TEntity>(TEntity entity) where TEntity : class
         {
-            _documentSession.Insert(entity);
+            _documentSession.Store(entity);
 
             return Task.FromResult(entity);
         }
 
         public IQueryable<TEntity> AddRange<TEntity>(params TEntity[] entities) where TEntity : class
         {
-            _documentSession.Insert(entities);
+            _documentSession.Store(entities);
 
             return entities.AsQueryable();
         }
 
         public void Dispose()
         {
-            _documentSession.Dispose();
         }
 
-        public TEntity GetById<TEntity>(object id) where TEntity : class
+        public TEntity GetById<TEntity>(object id) where TEntity : class, new()
         {
             if (id is Guid)
                 return _documentSession.Load<TEntity>((Guid)id);
@@ -63,7 +63,7 @@ namespace GoldenEye.Backend.Core.Marten.Context
             return _documentSession.Load<TEntity>(id.ToString());
         }
 
-        public Task<TEntity> GetByIdAsync<TEntity>(object id) where TEntity : class
+        public Task<TEntity> GetByIdAsync<TEntity>(object id) where TEntity : class, new()
         {
             if (id is Guid)
                 return _documentSession.LoadAsync<TEntity>((Guid)id);
@@ -80,13 +80,13 @@ namespace GoldenEye.Backend.Core.Marten.Context
             return _documentSession.Query<TEntity>();
         }
 
-        public TEntity Remove<TEntity>(TEntity entity) where TEntity : class
+        public TEntity Remove<TEntity>(TEntity entity, int? version = null) where TEntity : class
         {
             _documentSession.Delete(entity);
             return entity;
         }
 
-        public Task<TEntity> RemoveAsync<TEntity>(TEntity entity) where TEntity : class
+        public Task<TEntity> RemoveAsync<TEntity>(TEntity entity, int? version = null) where TEntity : class
         {
             _documentSession.Delete(entity);
             return Task.FromResult(entity);
@@ -108,15 +108,15 @@ namespace GoldenEye.Backend.Core.Marten.Context
             return changesCount;
         }
 
-        public TEntity Update<TEntity>(TEntity entity) where TEntity : class
+        public TEntity Update<TEntity>(TEntity entity, int? version = null) where TEntity : class
         {
-            _documentSession.Update(entity);
+            _documentSession.Store(entity);
             return entity;
         }
 
-        public Task<TEntity> UpdateAsync<TEntity>(TEntity entity) where TEntity : class
+        public Task<TEntity> UpdateAsync<TEntity>(TEntity entity, int? version = null) where TEntity : class
         {
-            _documentSession.Update(entity);
+            _documentSession.Store(entity);
             return Task.FromResult(entity);
         }
     }
