@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using IdentityServer4.Models;
 
-namespace GoldenEye.Backend.Identity.Clients.Development
+namespace GoldenEye.Backend.Identity.Clients.Tests
 {
     public class TestClients
     {
