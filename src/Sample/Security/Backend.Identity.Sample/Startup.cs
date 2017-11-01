@@ -40,7 +40,8 @@ namespace Backend.Identity.Sample
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvc();
+            app.UseStaticFiles();
+            app.UseMvcWithDefaultRoute();
 
             app.UseIdentityServer();
         }

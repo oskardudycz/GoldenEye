@@ -12,9 +12,9 @@ namespace GoldenEye.Backend.Identity
         {
             services.AddIdentityServer()
                 .AddInMemoryClients(TestClients.Get())
-                .AddInMemoryIdentityResources(new List<IdentityResource>())
-                .AddInMemoryApiResources(new List<ApiResource>())
-                .AddTestUsers(new List<TestUser>())
+                .AddInMemoryIdentityResources(TestResources.GetIdentityResources())
+                .AddInMemoryApiResources(TestResources.GetApiResources())
+                .AddTestUsers(TestUsers.Get())
                 .AddDeveloperSigningCredential();
         }
     }
