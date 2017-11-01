@@ -35,11 +35,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Security", "Security", "{FA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Security", "Security\Shared.Security\Shared.Security.csproj", "{C689F153-EFF5-4C15-A365-E13BAAE88F74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend.Identity.Sample", "Sample\Security\Backend.Identity.Sample\Backend.Identity.Sample.csproj", "{69755F70-8B61-4820-9853-5B234E2F02DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend.Identity.Sample", "Sample\Security\Backend.Identity.Sample\Backend.Identity.Sample.csproj", "{69755F70-8B61-4820-9853-5B234E2F02DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontend.Identity", "Security\Frontend.Identity\Frontend.Identity.csproj", "{D83D2432-73AD-42AB-9C15-9C005ED1579D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frontend.Identity", "Security\Frontend.Identity\Frontend.Identity.csproj", "{D83D2432-73AD-42AB-9C15-9C005ED1579D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontend.Identity.Sample", "Sample\Security\Frontend.Identity.Sample\Frontend.Identity.Sample.csproj", "{B6F4E48F-F423-4536-AB7F-75C23D73439B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frontend.Identity.Sample", "Sample\Security\Frontend.Identity.Sample\Frontend.Identity.Sample.csproj", "{B6F4E48F-F423-4536-AB7F-75C23D73439B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{0D72899E-6720-4B6C-BB9C-3971FCB0BE6B}"
+	ProjectSection(SolutionItems) = preProject
+		..\LICENSE.txt = ..\LICENSE.txt
+		..\README.md = ..\README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
