@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GoldenEye.Backend.Core.WebApi;
+using GoldenEye.Backend.Core.WebApi.Options;
+using GoldenEye.Frontend.Identity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -21,7 +24,8 @@ namespace Frontend.Identity.Sample
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddIdentityClientWithDefaults();
+            services.AddMvcWithHttps(HttpsMvcOptions.Create(4430));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -34,8 +38,9 @@ namespace Frontend.Identity.Sample
             }
             else
             {
-                app.UseExceptionHandler("/Error");
+                app.UseExceptionHandler("/Home/Error");
             }
+            app.UseAuthentication();
 
             app.UseStaticFiles();
 
@@ -43,7 +48,7 @@ namespace Frontend.Identity.Sample
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
