@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>2.1.0</Version>
+    <PackageId>GoldenEye.Shared.Core</PackageId>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Authors>Oskar Dudycz</Authors>
+    <Company>Oskar Dudycz</Company>
+    <Product>Oskar Dudycz</Product>
+    <Copyright>Oskar Dudycz</Copyright>
+    <Description>GoldenEye is a Full Stack framework written in .NET Core. The main goal of GoldenEye is to speed up your development process. It gathers most widely used frameworks in .NET world and pack them into a simple bootstrap Nuget packages. It also provide set of base classes, helpers, extensions that will help you with your daily work.</Description>
+    <PackageLicenseUrl>https://github.com/oskardudycz/GoldenEye/blob/master/LICENSE.txt</PackageLicenseUrl>
+    <PackageProjectUrl>http://oskardudycz.github.io/GoldenEye/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/oskardudycz/GoldenEye</RepositoryUrl>
+    <AssemblyName>GoldenEye.Shared.Core</AssemblyName>
+    <RootNamespace>GoldenEye.Shared.Core</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Extensions\Threading\**" />
+    <Compile Remove="Validation\**" />
+    <EmbeddedResource Remove="Extensions\Threading\**" />
+    <EmbeddedResource Remove="Validation\**" />
+    <None Remove="Extensions\Threading\**" />
+    <None Remove="Validation\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Configuration\ConfigHelper.cs" />
+    <Compile Remove="Objects\DTO\IValidatableDTO.cs" />
+    <Compile Remove="Objects\DTO\ValidatableDTOBase.cs" />
+    <Compile Remove="Properties\AssemblyInfo.cs" />
+    <Compile Remove="Services\IReadonlyRestService.cs" />
+    <Compile Remove="Services\IRestService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="2.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="ReflectionBridge" Version="0.0.12" />
+    <PackageReference Include="System.ComponentModel" Version="4.3.0" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.4.0" />
+    <PackageReference Include="System.Reflection.Extensions" Version="4.3.0" />
+    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.4.0" />
+    <PackageReference Include="System.Runtime.Serialization.Formatters" Version="4.3.0" />
+    <PackageReference Include="System.Security.Cryptography.Algorithms" Version="4.3.0" />
+    <PackageReference Include="System.Threading.Thread" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Configuration\" />
+    <Folder Include="Properties\" />
+  </ItemGroup>
+</Project>

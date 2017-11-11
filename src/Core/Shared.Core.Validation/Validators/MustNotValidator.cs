@@ -8,7 +8,7 @@ namespace GoldenEye.Shared.Core.Validation.Validators
         private readonly Func<TProperty, bool> _action;
 
         public MustNotValidator(Func<TProperty, bool> action)
-            : base(Resources.ValidationResources.Validator_MustNot_Message)
+            : base("")
         {
             _action = action;
         }

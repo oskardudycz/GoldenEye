@@ -1,5 +1,6 @@
 ﻿using GoldenEye.Shared.Core.Context;
 using GoldenEye.Shared.Core.Objects.Requests;
+using System.Globalization;
 using System.Runtime.Serialization;
 
 namespace GoldenEye.Shared.Core.Validation.Requests
@@ -9,7 +10,7 @@ namespace GoldenEye.Shared.Core.Validation.Requests
         protected ValidatableRequestBase()
         {
             //RequesterUserID = StaticManager.User.Id;
-            RequesterCultureName = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+            RequesterCultureName = CultureInfo.CurrentCulture.Name;
             RequesterIP = UserContext.ClientIP;
             RequesterDNS = UserContext.ClientDNS;
             RequesterBrowser = UserContext.ClientBrowser;

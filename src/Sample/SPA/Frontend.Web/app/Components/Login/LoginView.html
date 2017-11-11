@@ -1,0 +1,51 @@
+﻿<div class="row">
+    <div class="col-sm-4">
+        <h3>Logowanie</h3>
+        <form data-bind="submit: login">
+            <div class="form-group">
+                <label>Email</label>
+                <input class="form-control" type="text" data-bind="value: loginEmail" />
+            </div>
+            <div class="form-group">
+                <label>Hasło</label>
+                <input class="form-control" type="password" data-bind="value: loginPassword" />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default">Zaloguj</button>
+                <!--<button data-bind="click: logout" class="btn btn-default">Wyloguj</button>-->
+                <div class="error-messages" id="login-error-message" style="display:none;"></div>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-sm-4">
+        <form data-bind="submit: register">
+            <h3>Zarejestruj się</h3>
+            <div class="form-group">
+                <label>Imię</label>
+                <input class="form-control" type="text" data-bind="value: firstName" />
+            </div>
+            <div class="form-group">
+                <label>Nazwisko</label>
+                <input class="form-control" type="text" data-bind="value: lastName" />
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input class="form-control" type="text" data-bind="value: registerEmail" />
+            </div>
+            <div class="form-group">
+                <label>Hasło</label>
+                <input class="form-control" type="password" data-bind="value: registerPassword" aria-describedby="helpBlock" />
+                <span id="helpBlock" class="help-block">Hasło musi składać się z conajmniej 6 znaków</span>
+            </div>
+            <div class="form-group">
+                <label>Potwierdź hasło</label>
+                <input class="form-control" type="password" data-bind="value: registerPassword2" />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default">Zarejestruj</button>
+                <div class="error-messages" id="register-error-message" style="display:none;"></div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using FluentValidation;
 using FluentValidation.Results;
+using System.Reflection;
 
 namespace GoldenEye.Shared.Core.Validation
 {
@@ -29,13 +30,13 @@ namespace GoldenEye.Shared.Core.Validation
         }
         public virtual bool Validate()
         {
-            var objectType = this.GetType();
+            var objectType = GetType();
 
-            if (objectType.BaseType != null && objectType.Namespace == "System.Data.Entity.DynamicProxies")
+            if (objectType.GetTypeInfo().BaseType != null && objectType.Namespace == "System.Data.Entity.DynamicProxies")
             {
-                objectType = objectType.BaseType;
+                objectType = objectType.GetTypeInfo().BaseType;
             }
-            var type = objectType.CustomAttributes;
+            var type = objectType.GetTypeInfo().CustomAttributes;
 
             var validatorAttribute = type.First(x => x.AttributeType.Name == "ValidatorAttribute");
             var validatorType = validatorAttribute.ConstructorArguments.First(x => x.ArgumentType.Name == "Type").Value;
