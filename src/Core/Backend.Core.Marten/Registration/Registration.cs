@@ -7,6 +7,7 @@ using Marten;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using GoldenEye.Shared.Core.Extensions.Basic;
+using GoldenEye.Shared.Core.Objects.General;
 
 namespace GoldenEye.Backend.Core.Marten.Registration
 {
@@ -34,13 +35,13 @@ namespace GoldenEye.Backend.Core.Marten.Registration
         }
 
         public static void AddMartenDocumentCRUDRepository<TEntity>(this IServiceCollection services)
-            where TEntity : class, IEntity
+            where TEntity : class, IHasId
         {
             services.AddCRUDRepository<MartenDocumentDataContext, TEntity>();
         }
 
         public static void AddMartenDocumentReadonlyRepository<TEntity>(this IServiceCollection services)
-            where TEntity : class, IEntity
+            where TEntity : class, IHasId
         {
             services.AddReadonlyRepository<MartenDocumentDataContext, TEntity>();
         }
