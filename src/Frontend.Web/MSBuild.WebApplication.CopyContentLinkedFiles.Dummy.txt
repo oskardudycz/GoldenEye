@@ -1,8 +1,0 @@
-﻿This is the dummy text file which is added to make this NuGet package to be treated as project level one.
-In current NuGet version there is exist problem that it treats all NuGet packages which don't have files in content or lib directories as solution level packages.
-
-This file will be when PowerShell script in install.ps1 will be executed by NuGet.
-
-More information about this problem can be found using the following links:
-http://nuget.codeplex.com/discussions/396654
-http://nuget.codeplex.com/workitem/1910

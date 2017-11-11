@@ -22,8 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Backend.Core\Backend.Core.NetCore.csproj" />
+    <ProjectReference Include="..\Backend.Core\Backend.Core.csproj" />
     <ProjectReference Include="..\Backend.Core.DDD\Backend.Core.DDD.csproj" />
   </ItemGroup>
-
 </Project>

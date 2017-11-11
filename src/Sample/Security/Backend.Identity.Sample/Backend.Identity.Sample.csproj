@@ -21,7 +21,6 @@
     <ProjectReference Include="..\..\..\Core\Backend.Core.WebApi\Backend.Core.WebApi.csproj" />
     <ProjectReference Include="..\..\..\Security\Backend.Identity\Backend.Identity.csproj" />
     <ProjectReference Include="..\..\..\Security\Shared.Security\Shared.Security.csproj" />
-    <ProjectReference Include="..\..\..\Shared.Core\Shared.Core.NetCore.csproj" />
+    <ProjectReference Include="..\..\..\Core\Shared.Core\Shared.Core.csproj" />
   </ItemGroup>
-
 </Project>

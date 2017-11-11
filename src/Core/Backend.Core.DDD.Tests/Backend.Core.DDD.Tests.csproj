@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Shared.Core\Shared.Core.NetCore.csproj" />
+    <ProjectReference Include="..\Shared.Core\Shared.Core.csproj" />
     <ProjectReference Include="..\Backend.Core.DDD\Backend.Core.DDD.csproj" />
   </ItemGroup>
 

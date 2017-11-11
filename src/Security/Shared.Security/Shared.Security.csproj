@@ -5,12 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Shared.Core\Shared.Core.NetCore.csproj" />
+    <ProjectReference Include="..\..\Core\Shared.Core\Shared.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Clients\" />
     <Folder Include="Users\" />
   </ItemGroup>
-
 </Project>

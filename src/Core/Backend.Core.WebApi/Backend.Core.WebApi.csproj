@@ -18,9 +18,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Backend.Core\Backend.Core.NetCore.csproj" />
-    <ProjectReference Include="..\Shared.Core.Validation\Share.Core.Validation.NetCore.csproj" />
-    <ProjectReference Include="..\..\Shared.Core\Shared.Core.NetCore.csproj" />
+    <ProjectReference Include="..\Backend.Core\Backend.Core.csproj" />
+    <ProjectReference Include="..\Shared.Core.Validation\Shared.Core.Validation.csproj" />
+    <ProjectReference Include="..\Shared.Core\Shared.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,5 +30,4 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="1.0.0" />
     <PackageReference Include="System.Security.Cryptography.X509Certificates" Version="4.3.1" />
   </ItemGroup>
-
 </Project>

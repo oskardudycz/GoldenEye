@@ -1,0 +1,23 @@
+﻿<h2>zadania</h2>
+<br />
+
+<div class="grid">
+    <table class="table table-bordered" cellspacing="0">
+        <thead>
+            <tr class="grid-header">
+                <th><i class="glyphicon glyphicon-sort-by-alphabet"></i> Nazwa</th>
+                <th><i class="glyphicon glyphicon-calendar"></i> Data</th>
+                <th><i class="glyphicon glyphicon-tasks"></i> Stopień realizacji</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody data-bind='foreach: tasklist'>
+            <tr>
+                <td><span data-bind='text: Name' /></td>
+                <td><span data-bind="text: moment(Date()).format('DD.MM.YYYY')" /></td>
+                <td><div data-bind="progress: { value: Progress, textHidden: false }" class="customprogress"></div></td>
+                <td><a data-bind="attr: { href: '#Detale/' + Id() }">Detale</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

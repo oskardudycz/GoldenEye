@@ -1,0 +1,11 @@
+﻿<ul class="nav navbar-nav navbar-right" data-bind="visible: loggedIn">
+    <li><a href="/#Login">Witaj <span data-bind="text: loggedInUserFirstName"></span>!</a></li>
+    <li>
+        <a data-bind="click: logout">Wyloguj</a>
+    </li>
+</ul>
+
+<ul class="nav navbar-nav navbar-right" data-bind="ifnot: loggedIn">
+    <li><a href="/#Login">Zarejestruj się</a></li>
+    <li><a href="/#Login">Zaloguj</a></li>
+</ul>

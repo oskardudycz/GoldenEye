@@ -1,0 +1,22 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>GoldenEye.Frontend.Core.Web</id>
+    <version>$version$</version>
+    <title>Frontend.Core.Web</title>
+    <authors>odudycz</authors>
+    <owners>odudycz</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Description</description>
+    <copyright>Copyright ©  2015</copyright>
+    <dependencies>
+      <dependency id="GoldenEye.Shared.Core" version="1.4.31" />
+      <dependency id="GoldenEye.Shared.Core.IOC.Ninject" version="1.4.31" />
+      <dependency id="GoldenEye.Shared.Core.Validation" version="1.4.31" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\Release\GoldenEye.Frontend.Core.Web.dll" target="lib\net45" />
+    <file src="bin\Release-Net451\GoldenEye.Frontend.Core.Web.dll" target="lib\net451" />
+  </files>
+</package>

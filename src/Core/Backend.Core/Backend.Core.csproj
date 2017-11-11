@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>2.0.0</Version>
+    <PackageId>GoldenEye.Backend.Core</PackageId>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Authors>Oskar Dudycz</Authors>
+    <Company>Oskar Dudycz</Company>
+    <Product>Oskar Dudycz</Product>
+    <Copyright>Oskar Dudycz</Copyright>
+    <Description>GoldenEye is a Full Stack framework written in .NET and JavaScript. The main goal of GoldenEye is to speed up your development process. It gathers most widely used frameworks in .NET world and pack them into a simple bootstrap Nuget packages. It also provide set of base classes, helpers, extensions that will help you with your daily work.</Description>
+    <PackageLicenseUrl>https://github.com/oskardudycz/GoldenEye/blob/master/LICENSE.txt</PackageLicenseUrl>
+    <PackageProjectUrl>http://oskardudycz.github.io/GoldenEye/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/oskardudycz/GoldenEye</RepositoryUrl>
+    <AssemblyName>GoldenEye.Backend.Core</AssemblyName>
+    <RootNamespace>GoldenEye.Backend.Core</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Backend.Core.nuspec" />
+    <None Remove="packages.config" />
+    <None Remove="Shared.Core.nuspec" />
+    <None Remove="Web.config" />
+    <None Remove="Web.Debug.config" />
+    <None Remove="Web.Release.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.2.0" />
+    <PackageReference Include="FluentValidation" Version="7.2.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Shared.Core.Validation\Shared.Core.Validation.csproj" />
+    <ProjectReference Include="..\Shared.Core\Shared.Core.csproj" />
+  </ItemGroup>
+</Project>

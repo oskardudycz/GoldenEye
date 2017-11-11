@@ -27,8 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Backend.Core\Backend.Core.NetCore.csproj" />
-    <ProjectReference Include="..\..\Shared.Core\Shared.Core.NetCore.csproj" />
+    <ProjectReference Include="..\Backend.Core\Backend.Core.csproj" />
+    <ProjectReference Include="..\Shared.Core\Shared.Core.csproj" />
   </ItemGroup>
-
 </Project>
