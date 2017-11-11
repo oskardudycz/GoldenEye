@@ -2,11 +2,11 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using GoldenEye.Backend.Core.Context;
-using GoldenEye.Backend.Core.Entity;
+using GoldenEye.Shared.Core.Objects.General;
 
 namespace GoldenEye.Backend.Core.Repositories
 {
-    public class ReadonlyRepository<TEntity> : IReadonlyRepository<TEntity> where TEntity : class, IEntity
+    public class ReadonlyRepository<TEntity> : IReadonlyRepository<TEntity> where TEntity : class, IHasId
     {
         protected readonly IDataContext Context;
 
@@ -27,7 +27,7 @@ namespace GoldenEye.Backend.Core.Repositories
 
         public virtual TEntity GetById(object id)
         {
-            return Queryable.SingleOrDefault(r => r.Id == (int)id);
+            return Queryable.SingleOrDefault(r => r.Id == id);
         }
 
         public virtual Task<TEntity> GetByIdAsync(object id)
@@ -46,11 +46,11 @@ namespace GoldenEye.Backend.Core.Repositories
             {
                 return;
             }
-            if (disposing)
-            {
-                Context.Dispose();
-            }
-            Disposed = true;
+            //if (disposing)
+            //{
+            //    Context.Dispose();
+            //}
+            //Disposed = true;
         }
 
         public virtual void Dispose()

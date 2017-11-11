@@ -2,12 +2,12 @@
 
 namespace GoldenEye.Shared.Core.Objects.General
 {
-    public interface IHasObjectId
+    public interface IHasId
     {
         object Id { get; }
     }
 
-    public interface IHasId<T> : IHasObjectId
+    public interface IHasId<T> : IHasId
     {
         new T Id { get; }
     }
@@ -16,7 +16,11 @@ namespace GoldenEye.Shared.Core.Objects.General
     {
     }
 
-    public interface IHasId : IHasId<int>
+    public interface IHasStringId : IHasId<string>
+    {
+    }
+
+    public interface IHasIntId : IHasId<int>
     {
     }
 }

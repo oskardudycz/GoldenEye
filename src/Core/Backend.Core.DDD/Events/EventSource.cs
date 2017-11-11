@@ -7,7 +7,7 @@ namespace GoldenEye.Backend.Core.DDD.Events
     public abstract class EventSource : IEventSource
     {
         public Guid Id { get; protected set; }
-        object IHasObjectId.Id => Id;
+        object IHasId.Id => Id;
 
         public Queue<IEvent> PendingEvents { get; }
 

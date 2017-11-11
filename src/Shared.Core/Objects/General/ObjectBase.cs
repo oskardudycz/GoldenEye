@@ -6,16 +6,16 @@ namespace GoldenEye.Shared.Core.Objects.General
     {
     }
 
-    public abstract class ObjectWithIdBase : ObjectBase, IHasObjectId
+    public abstract class ObjectWithIdBase : ObjectBase, IHasId
     {
-        object IHasObjectId.Id { get; }
+        object IHasId.Id { get; }
     }
 
     public abstract class ObjectWithIdBase<T> : IHasId<T>
     {
         public T Id { get; set; }
 
-        object IHasObjectId.Id
+        object IHasId.Id
         {
             get { return Id; }
         }

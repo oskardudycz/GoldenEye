@@ -7,7 +7,7 @@ namespace GoldenEye.Shared.Core.Extensions.Collections
     public static class CollectionExtensions
     {
         public static bool RemoveById<T>(this ICollection<T> source, object id)
-            where T : IHasObjectId
+            where T : IHasId
         {
             var elementToRemove = source.GetById(id);
 

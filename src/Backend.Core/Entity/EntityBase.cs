@@ -7,7 +7,7 @@ namespace GoldenEye.Backend.Core.Entity
     {
         public virtual int Id { get; set; }
 
-        object IHasObjectId.Id
+        object IHasId.Id
         {
             get { return Id; }
         }

@@ -3,10 +3,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using GoldenEye.Backend.Core.Context;
 using GoldenEye.Backend.Core.Entity;
+using GoldenEye.Shared.Core.Objects.General;
 
 namespace GoldenEye.Backend.Core.Repositories
 {
-    public class CRUDRepository<TEntity> : ReadonlyRepository<TEntity>, IRepository<TEntity> where TEntity : class, IEntity
+    public class CRUDRepository<TEntity> : ReadonlyRepository<TEntity>, IRepository<TEntity> where TEntity : class, IHasId
     {
         public CRUDRepository(IDataContext context) : base(context)
         {
