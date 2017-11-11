@@ -2,14 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>2.0.0</Version>
+    <Version>2.1.0</Version>
     <PackageId>GoldenEye.Backend.Core.WebApi</PackageId>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Authors>Oskar Dudycz</Authors>
     <Company>Oskar Dudycz</Company>
     <Product>Oskar Dudycz</Product>
     <Copyright>Oskar Dudycz</Copyright>
-    <Description>GoldenEye is a Full Stack framework written in .NET and JavaScript. The main goal of GoldenEye is to speed up your development process. It gathers most widely used frameworks in .NET world and pack them into a simple bootstrap Nuget packages. It also provide set of base classes, helpers, extensions that will help you with your daily work.</Description>
+    <Description>GoldenEye is a Full Stack framework written in .NET Core. The main goal of GoldenEye is to speed up your development process. It gathers most widely used frameworks in .NET world and pack them into a simple bootstrap Nuget packages. It also provide set of base classes, helpers, extensions that will help you with your daily work.</Description>
     <PackageLicenseUrl>https://github.com/oskardudycz/GoldenEye/blob/master/LICENSE.txt</PackageLicenseUrl>
     <PackageProjectUrl>http://oskardudycz.github.io/GoldenEye/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/oskardudycz/GoldenEye</RepositoryUrl>
