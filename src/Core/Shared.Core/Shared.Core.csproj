@@ -36,11 +36,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="packages.config" />
-    <None Remove="Shared.Core.nuspec" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.0.0" />
