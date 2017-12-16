@@ -9,6 +9,7 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Core\Backend.Core.EntityFramework\Backend.Core.EntityFramework.csproj" />
     <ProjectReference Include="..\..\..\Core\Backend.Core.WebApi\Backend.Core.WebApi.csproj" />
     <ProjectReference Include="..\..\..\Security\Frontend.Identity\Frontend.Identity.csproj" />
   </ItemGroup>

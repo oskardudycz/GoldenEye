@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+﻿using System.Reflection;
 using GoldenEye.Backend.Core.WebApi;
 using GoldenEye.Backend.Identity;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Backend.Identity.Sample
 {
@@ -27,9 +21,13 @@ namespace Backend.Identity.Sample
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
             services.AddMvcWithHttps();
 
-            services.AddIdentityServerWithDefaults();
+            services.AddIdentityServerWithEFPersistedStorage(options =>
+                {
+                    options.UseNpgsql(Configuration.GetConnectionString("IdentityDatabase"), b => b.MigrationsAssembly(migrationsAssembly));
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,6 +37,8 @@ namespace Backend.Identity.Sample
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSampleIdentityData();
 
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();

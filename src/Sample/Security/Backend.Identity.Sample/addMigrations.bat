@@ -1,0 +1,3 @@
+﻿dotnet ef migrations add InitialIdentityServerMigration -c IdentityServer4.EntityFramework.DbContexts.PersistedGrantDbContext
+dotnet ef migrations add InitialIdentityServerMigration -c IdentityServer4.EntityFramework.DbContexts.ConfigurationDbContext
+dotnet ef migrations add InitialIdentityServerMigration -c Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext
