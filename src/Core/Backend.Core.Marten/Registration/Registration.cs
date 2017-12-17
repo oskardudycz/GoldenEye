@@ -1,13 +1,12 @@
-﻿using GoldenEye.Backend.Core.DDD.Registration;
-using GoldenEye.Backend.Core.Entity;
+﻿using System;
+using GoldenEye.Backend.Core.DDD.Registration;
 using GoldenEye.Backend.Core.Marten.Context;
 using GoldenEye.Backend.Core.Marten.Events.Storage;
 using GoldenEye.Backend.Core.Registration;
-using Marten;
-using Microsoft.Extensions.DependencyInjection;
-using System;
 using GoldenEye.Shared.Core.Extensions.Basic;
 using GoldenEye.Shared.Core.Objects.General;
+using Marten;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace GoldenEye.Backend.Core.Marten.Registration
 {
