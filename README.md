@@ -11,7 +11,7 @@ What do I get?
 --------------------------------
 Complete Solution bootstrap - bottom up:
 - Entity Framework
-- CRUD Repositories and CRUD Application Services
+- CRUD Repositories and CRUD Application Services [see more](/src/Sample/DDD/Backend.DDD.Sample/)
 - WebApi REST controllers with OData being set up
 - Authorization with OAuth
 - complete set up of dependency injection with automatic naming convention binding (Ninject)
@@ -44,7 +44,7 @@ Install packages from the Nuget package manager:
 
 **Core packages**:
 * [GoldenEye.Shared.Core](https://www.nuget.org/packages/GoldenEye.Shared.Core/) - base classes, helpers, extensions that will boost your development
-* [GoldenEye.Shared.Core.Validation](https://www.nuget.org/packages/GoldenEye.Shared.Core.Validation/) - validastion based on FluentValidation.NET
+* [GoldenEye.Shared.Core.Validation](https://www.nuget.org/packages/GoldenEye.Shared.Core.Validation/) - validation based on FluentValidation.NET
 * [GoldenEye.Backend.Core](https://www.nuget.org/packages/GoldenEye.Backend.Core/) - classes suited for the backend development - Repositories, Services, CRUD, mappings, etc.
 * [GoldenEye.Backend.Core.WebApi](https://www.nuget.org/packages/GoldenEye.Backend.Core.WebApi/) - base classes for API development like CRUD controllers, registration helpers, and many more
 * [GoldenEye.Backend.Core.EntityFramework](https://www.nuget.org/packages/GoldenEye.Backend.Core.EntityFramework/) - extensions to GoldenEye.Backend.Core for EntityFramework development (EF repositories, etc.)
