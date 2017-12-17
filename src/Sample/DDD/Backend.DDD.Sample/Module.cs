@@ -33,7 +33,7 @@ namespace Backend.DDD.Sample
 
         private void ConfigureIntrastructure(IServiceCollection services)
         {
-            var connectionString = configuration.GetConnectionString("DDDSample") ?? "PORT = 5433; HOST = localhost; TIMEOUT = 15; POOLING = True; MINPOOLSIZE = 1; MAXPOOLSIZE = 100; COMMANDTIMEOUT = 20; DATABASE = 'postgres'; PASSWORD = 'postgres'; USER ID = 'postgres'";
+            var connectionString = configuration.GetConnectionString("DDDSample") ?? "PORT = 5432; HOST = 127.0.0.1; TIMEOUT = 15; POOLING = True; MINPOOLSIZE = 1; MAXPOOLSIZE = 100; COMMANDTIMEOUT = 20; DATABASE = 'postgres'; PASSWORD = 'postgres'; USER ID = 'postgres'";
 
             services.AddMartenContext(sp => connectionString, schemaName: "DDDSample");
             services.AddEventStore<MartenEventStore>();

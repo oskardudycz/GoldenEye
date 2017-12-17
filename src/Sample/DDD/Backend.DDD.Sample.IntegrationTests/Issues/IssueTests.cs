@@ -18,7 +18,7 @@ namespace Backend.DDD.Sample.IntegrationTests.Issues
         [Fact]
         public async Task IssueFlowTests()
         {
-            var response = await _sut.Client.GetAsync("/issues");
+            var response = await _sut.Client.GetAsync("/api/Issues");
 
             response.EnsureSuccessStatusCode();
 

@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.DDD.WebApi.Sample.Controllers
 {
+    [Route("api/[controller]")]
+    [Microsoft.AspNetCore.Cors.EnableCors("CorsPolicy")]
     public class IssuesController : Controller
     {
         private readonly IQueryBus queryBus;
