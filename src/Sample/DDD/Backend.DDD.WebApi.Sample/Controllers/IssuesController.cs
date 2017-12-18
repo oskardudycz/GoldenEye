@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Backend.DDD.Contracts.Sample.Issues;
-using Backend.DDD.Contracts.Sample.Issues.Commands;
-using Backend.DDD.Contracts.Sample.Issues.Queries;
+using Backend.DDD.Sample.Contracts.Issues.Commands;
+using Backend.DDD.Sample.Contracts.Issues.Queries;
+using Backend.DDD.Sample.Contracts.Issues.Views;
 using GoldenEye.Backend.Core.DDD.Commands;
 using GoldenEye.Backend.Core.DDD.Queries;
 using Microsoft.AspNetCore.Mvc;

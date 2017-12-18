@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Backend.DDD.Contracts.Sample.Issues.Commands;
+using Backend.DDD.Sample.Contracts.Issues.Commands;
 using GoldenEye.Backend.Core.DDD.Commands;
 using GoldenEye.Backend.Core.Repositories;
 using GoldenEye.Shared.Core.Extensions.Mapping;

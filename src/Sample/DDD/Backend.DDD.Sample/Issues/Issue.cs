@@ -1,5 +1,5 @@
 ﻿using System;
-using Backend.DDD.Contracts.Sample.Issues;
+using Backend.DDD.Sample.Contracts.Issues;
 using GoldenEye.Backend.Core.Entity;
 using GoldenEye.Shared.Core.Objects.General;
 

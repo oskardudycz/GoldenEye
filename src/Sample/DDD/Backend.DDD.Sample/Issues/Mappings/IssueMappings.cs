@@ -1,7 +1,7 @@
 ﻿using System;
 using AutoMapper;
 using GoldenEye.Shared.Core.Mappings;
-using IssueContracts = Backend.DDD.Contracts.Sample.Issues;
+using IssueContracts = Backend.DDD.Sample.Contracts.Issues;
 
 namespace Backend.DDD.Sample.Issues.Mappings
 {
@@ -14,9 +14,6 @@ namespace Backend.DDD.Sample.Issues.Mappings
 
             CreateMap<Issue, IssueContracts.Events.IssueCreated>().ConstructUsing(
                 aggregate => new IssueContracts.Events.IssueCreated(aggregate.Id, aggregate.Type, aggregate.Title, aggregate.Description));
-
-            CreateMap<Issue, IssueContracts.Issue>().ConstructUsing(
-                aggregate => new IssueContracts.Issue(aggregate.Id, aggregate.Type, aggregate.Title, aggregate.Description));
         }
     }
 }

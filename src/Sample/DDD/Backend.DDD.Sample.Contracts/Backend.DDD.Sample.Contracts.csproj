@@ -7,5 +7,4 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Core\Backend.Core.DDD\Backend.Core.DDD.csproj" />
   </ItemGroup>
-
 </Project>

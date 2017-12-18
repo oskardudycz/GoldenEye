@@ -12,6 +12,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Core\Backend.Core.DDD\Backend.Core.DDD.csproj" />
     <ProjectReference Include="..\..\..\Core\Backend.Core.Marten\Backend.Core.Marten.csproj" />
-    <ProjectReference Include="..\Backend.DDD.Contracts.Sample\Backend.DDD.Contracts.Sample.csproj" />
+    <ProjectReference Include="..\Backend.DDD.Sample.Contracts\Backend.DDD.Sample.Contracts.csproj" />
   </ItemGroup>
 </Project>

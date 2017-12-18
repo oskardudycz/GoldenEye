@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Core\Backend.Core.WebApi\Backend.Core.WebApi.csproj" />
+    <ProjectReference Include="..\Backend.DDD.Sample.Contracts\Backend.DDD.Sample.Contracts.csproj" />
     <ProjectReference Include="..\Backend.DDD.Sample\Backend.DDD.Sample.csproj" />
   </ItemGroup>
 </Project>

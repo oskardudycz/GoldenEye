@@ -1,9 +1,9 @@
 ﻿using System;
 using GoldenEye.Backend.Core.DDD.Queries;
 
-namespace Backend.DDD.Contracts.Sample.Issues.Queries
+namespace Backend.DDD.Sample.Contracts.Issues.Queries
 {
-    public class GetIssue : IQuery<Issue>
+    public class GetIssue : IQuery<Views.Issue>
     {
         public Guid Id { get; }
 

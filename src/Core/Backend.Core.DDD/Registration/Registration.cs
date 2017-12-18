@@ -1,11 +1,12 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using MediatR;
-using GoldenEye.Backend.Core.DDD.Commands;
-using GoldenEye.Backend.Core.DDD.Queries;
+﻿using GoldenEye.Backend.Core.DDD.Commands;
 using GoldenEye.Backend.Core.DDD.Events;
-using GoldenEye.Backend.Core.DDD.Events.Store;
-using MediatR.Pipeline;
 using GoldenEye.Backend.Core.DDD.Events.Logging;
+using GoldenEye.Backend.Core.DDD.Events.Store;
+using GoldenEye.Backend.Core.DDD.Queries;
+using GoldenEye.Backend.Core.DDD.Validation;
+using MediatR;
+using MediatR.Pipeline;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace GoldenEye.Backend.Core.DDD.Registration
 {
@@ -33,6 +34,11 @@ namespace GoldenEye.Backend.Core.DDD.Registration
         public static void AddEventStorePipeline(this IServiceCollection services)
         {
             services.AddTransient(typeof(IAsyncNotificationHandler<>), typeof(EventStorePipeline<>));
+        }
+
+        public static void AddValidationPipeline(this IServiceCollection services)
+        {
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipeline<,>));
         }
 
         public static void RegisterCommandHandler<TCommand, TCommandHandler>(this IServiceCollection services)

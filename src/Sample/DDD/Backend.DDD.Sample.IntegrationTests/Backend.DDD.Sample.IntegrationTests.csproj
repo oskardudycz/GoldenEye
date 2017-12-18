@@ -46,7 +46,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Backend.DDD.Contracts.Sample\Backend.DDD.Contracts.Sample.csproj" />
+    <ProjectReference Include="..\Backend.DDD.Sample.Contracts\Backend.DDD.Sample.Contracts.csproj" />
     <ProjectReference Include="..\Backend.DDD.WebApi.Sample\Backend.DDD.WebApi.Sample.csproj" />
   </ItemGroup>
 </Project>
