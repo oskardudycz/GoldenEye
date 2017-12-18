@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using GoldenEye.Backend.Core.DDD.Registration;
 using GoldenEye.Backend.Core.WebApi.Modules;
+using GoldenEye.Backend.Core.WebApi.Registration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -56,6 +57,7 @@ namespace Backend.DDD.WebApi.Sample
             }
 
             app.UseMvc();
+            app.UseExceptionHandlingMiddleware();
 
             backendModule.OnStartup();
             app.UseCors("CorsPolicy");

@@ -1,5 +1,5 @@
 ﻿using System.Reflection;
-using GoldenEye.Backend.Core.WebApi;
+using GoldenEye.Backend.Core.WebApi.Registration;
 using GoldenEye.Backend.Identity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

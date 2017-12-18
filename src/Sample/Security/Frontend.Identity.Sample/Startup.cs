@@ -1,9 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using GoldenEye.Backend.Core.WebApi;
 using GoldenEye.Backend.Core.WebApi.Options;
+using GoldenEye.Backend.Core.WebApi.Registration;
 using GoldenEye.Frontend.Identity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

@@ -1,13 +1,15 @@
 ﻿using System.Net;
 using System.Security.Cryptography.X509Certificates;
+using GoldenEye.Backend.Core.WebApi.Exceptions;
 using GoldenEye.Backend.Core.WebApi.Options;
 using Microsoft.AspNetCore.Antiforgery;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace GoldenEye.Backend.Core.WebApi
+namespace GoldenEye.Backend.Core.WebApi.Registration
 {
     public static class Registration
     {
@@ -74,6 +76,12 @@ namespace GoldenEye.Backend.Core.WebApi
             options.HeaderName = "X-XSRF-TOKEN";
 
             return options;
+        }
+
+        public static IApplicationBuilder UseExceptionHandlingMiddleware(this IApplicationBuilder app)
+        {
+            app.UseMiddleware(typeof(ExceptionHandlingMiddleware));
+            return app;
         }
     }
 }
