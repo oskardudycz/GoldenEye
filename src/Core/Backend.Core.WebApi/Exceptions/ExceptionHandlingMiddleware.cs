@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
 namespace GoldenEye.Backend.Core.WebApi.Exceptions
@@ -9,9 +10,13 @@ namespace GoldenEye.Backend.Core.WebApi.Exceptions
     {
         private readonly RequestDelegate next;
 
-        public ExceptionHandlingMiddleware(RequestDelegate next)
+        private readonly ILogger logger;
+
+        public ExceptionHandlingMiddleware(RequestDelegate next,
+            ILoggerFactory loggerFactory)
         {
             this.next = next;
+            logger = loggerFactory.CreateLogger<ExceptionHandlingMiddleware>();
         }
 
         public async Task Invoke(HttpContext context /* other scoped dependencies */)
@@ -26,8 +31,10 @@ namespace GoldenEye.Backend.Core.WebApi.Exceptions
             }
         }
 
-        private static Task HandleExceptionAsync(HttpContext context, Exception exception)
+        private Task HandleExceptionAsync(HttpContext context, Exception exception)
         {
+            logger.LogError(exception, exception.Message);
+
             var codeInfo = ExceptionToHttpStatusMapper.Map(exception);
 
             var result = JsonConvert.SerializeObject(new { error = codeInfo.Message });

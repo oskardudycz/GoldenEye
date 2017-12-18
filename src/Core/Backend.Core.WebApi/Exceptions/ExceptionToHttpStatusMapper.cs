@@ -32,7 +32,7 @@ namespace GoldenEye.Backend.Core.WebApi.Exceptions
                 code = HttpStatusCode.Unauthorized;
             else if (exception is NotImplementedException)
                 code = HttpStatusCode.NotImplemented;
-            if (exception is ValidationException || exception is System.ComponentModel.DataAnnotations.ValidationException)
+            else if (exception is ValidationException || exception is System.ComponentModel.DataAnnotations.ValidationException)
                 code = HttpStatusCode.BadRequest;
 
             return new HttpStatusCodeInfo(code, exception.Message);

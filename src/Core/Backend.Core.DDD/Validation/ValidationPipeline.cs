@@ -6,6 +6,11 @@ using MediatR;
 
 namespace GoldenEye.Backend.Core.DDD.Validation
 {
+    /// <summary>
+    /// Allow automatic command and queries validation
+    /// </summary>
+    /// <typeparam name="TRequest"></typeparam>
+    /// <typeparam name="TResponse"></typeparam>
     public class ValidationPipeline<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
         where TRequest : IRequest<TResponse>
     {
