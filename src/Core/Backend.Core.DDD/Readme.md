@@ -10,12 +10,12 @@ GoldenEye.DDD is a library that helps to write code in Domain Driven Design and 
 What do I get?
 --------------------------------
 Complete DDD and CQRS helpers and bootstrap for:
-- [Command definition and handling](/Commands)
-- [Queries definition and handling](/Queries)
-- [Events definition, publishing and handling](/Events)
-- [Aggregates definition](/Aggregates)
-- [Registration helpers to reduce boilerplate](/Registration/Registration.cs)
-- [Validation helpers for commands and queries](/Validation)
+- [Command definition and handling](Commands)
+- [Queries definition and handling](Queries)
+- [Events definition, publishing and handling](Events)
+- [Aggregates definition](Aggregates)
+- [Registration helpers to reduce boilerplate](Registration/Registration.cs)
+- [Validation helpers for commands and queries](Validation)
 - many more
 
 How do I get started?

@@ -10,11 +10,11 @@ GoldenEye.Backend.Core is a library that brings you abstractions and implementat
 What do I get?
 --------------------------------
 Complete DDD and CQRS helpers and bootstrap for:
-- [Repositories](/Repositories)
-- [Services](/Services)
-- [Entities definition](/Entities)
-- [Data contexts usage and definition](/Context)
-- [Registration helpers to reduce boilerplate](/Registration/Registration.cs)
+- [Repositories](Repositories)
+- [Services](Services)
+- [Entities definition](Entities)
+- [Data contexts usage and definition](Context)
+- [Registration helpers to reduce boilerplate](Registration/Registration.cs)
 - many more
 
 How do I get started?
