@@ -2,10 +2,10 @@
 using AutoMapper;
 using FluentValidation;
 using GoldenEye.Backend.Core.Entity;
-using GoldenEye.Shared.Core.Objects.DTO;
 using GoldenEye.Backend.Core.Repositories;
+using GoldenEye.Shared.Core.Objects.DTO;
 
-namespace GoldenEye.Backend.Core.Service
+namespace GoldenEye.Backend.Core.Services
 {
     public class RestService<TDTO, TEntity, TRepository> : RestService<TDTO, TEntity>
         where TDTO : class, IDTO
@@ -22,13 +22,13 @@ namespace GoldenEye.Backend.Core.Service
         }
     }
 
-    public class RestService<TDTO, TEntity> : ReadonlyRestService<TDTO, TEntity> 
+    public class RestService<TDTO, TEntity> : ReadonlyRestService<TDTO, TEntity>
         where TDTO : class, IDTO
         where TEntity : class, IEntity
     {
         protected new IRepository<TEntity> Repository
         {
-            get { return (IRepository<TEntity>) base.Repository; }
+            get { return (IRepository<TEntity>)base.Repository; }
         }
 
         protected RestService(IRepository<TEntity> repository) : base(repository)

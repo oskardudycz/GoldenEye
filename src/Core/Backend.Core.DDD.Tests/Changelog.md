@@ -2,7 +2,7 @@
 
 ## Changes
 
-* Aded [tests](Validation/ValidationPipelineTests.cs) for [EventStorePipeline](../Backend.Core.DDD/Validation/ValidationPipeline.cs) **[MAJOR]**
+* Added [tests](Validation/ValidationPipelineTests.cs) for [EventStorePipeline](../Backend.Core.DDD/Validation/ValidationPipeline.cs) **[MAJOR]**
 
 # v2.0.0
 
