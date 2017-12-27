@@ -1,10 +1,11 @@
 ﻿using System;
-using Xunit;
-using Microsoft.Extensions.DependencyInjection;
-using GoldenEye.Backend.Core.DDD.Registration;
-using GoldenEye.Backend.Core.DDD.Events.Store;
-using GoldenEye.Backend.Core.DDD.Events;
+using System.Threading.Tasks;
 using FluentAssertions;
+using GoldenEye.Backend.Core.DDD.Events;
+using GoldenEye.Backend.Core.DDD.Events.Store;
+using GoldenEye.Backend.Core.DDD.Registration;
+using Microsoft.Extensions.DependencyInjection;
+using Xunit;
 
 namespace Backend.Core.DDD.Tests.Events.Store
 {
@@ -16,7 +17,7 @@ namespace Backend.Core.DDD.Tests.Events.Store
         }
 
         [Fact]
-        public void GivenEventStorePipelineSetUp_WhenEventIsPublished_ThenEventIsStoredInEventStoreAutomaticallyWithPipeline()
+        public async Task GivenEventStorePipelineSetUp_WhenEventIsPublished_ThenEventIsStoredInEventStoreAutomaticallyWithPipeline()
         {
             //Given
             var services = new ServiceCollection();
@@ -30,7 +31,7 @@ namespace Backend.Core.DDD.Tests.Events.Store
             var @event = new UserCreated();
 
             //When
-            eventBus.Publish(@event);
+            await eventBus.Publish(@event);
 
             //Then
             var eventStore = (EventStore)sp.GetService<IEventStore>();

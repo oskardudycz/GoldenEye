@@ -2,7 +2,7 @@
 
 namespace GoldenEye.Backend.Core.DDD.Queries
 {
-    public interface IListQuery<TResponse> : IQuery<List<TResponse>>
+    public interface IListQuery<TResponse> : IQuery<IReadOnlyList<TResponse>>
     {
     }
 }

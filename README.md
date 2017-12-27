@@ -43,22 +43,22 @@ Where can I get it?
 Install packages from the Nuget package manager:
 
 **Core packages**:
-* [GoldenEye.Shared.Core](https://www.nuget.org/packages/GoldenEye.Shared.Core/) - base classes, helpers, extensions that will boost your development
-* [GoldenEye.Shared.Core.Validation](https://www.nuget.org/packages/GoldenEye.Shared.Core.Validation/) - validastion based on FluentValidation.NET
-* [GoldenEye.Backend.Core](https://www.nuget.org/packages/GoldenEye.Backend.Core/) - classes suited for the backend development - Repositories, Services, CRUD, mappings, etc.
-* [GoldenEye.Backend.Core.WebApi](https://www.nuget.org/packages/GoldenEye.Backend.Core.WebApi/) - base classes for API development like CRUD controllers, registration helpers, and many more
-* [GoldenEye.Backend.Core.EntityFramework](https://www.nuget.org/packages/GoldenEye.Backend.Core.EntityFramework/) - extensions to GoldenEye.Backend.Core for EntityFramework development (EF repositories, etc.)
+* [GoldenEye.Shared.Core](src/Core/Shared.Core/Readme.md) - base classes, helpers, extensions that will boost your development
+* [GoldenEye.Shared.Core.Validation](src/Core/Shared.Core.Validation/Readme.md) - validation based on FluentValidation.NET
+* [GoldenEye.Backend.Core](src/Core/Backend.Core/Readme.md) - classes suited for the backend development - Repositories, Services, CRUD, mappings, etc.
+* [GoldenEye.Backend.Core.WebApi](src/Core/Backend.Core.WebApi/Readme.md) - base classes for API development like CRUD controllers, registration helpers, and many more
+* [GoldenEye.Backend.Core.EntityFramework](src/Core/Backend.Core.EntityFramework/Readme.md) - extensions to GoldenEye.Backend.Core for EntityFramework development (EF repositories, etc.)
 
 **DDD package**:
-* [GoldenEye.Backend.Core.DDD](https://www.nuget.org/packages/GoldenEye.Backend.Core.DDD/) - full DDD flow for CQRS, DDD development. Basing on MediatR library gives the Command, Queries, Events handling, routing
+* [GoldenEye.Backend.Core.DDD](src/Core/Backend.Core.DDD/Readme.md) - full DDD flow for CQRS, DDD development. Basing on MediatR library gives the Command, Queries, Events handling, routing
 
 **Document database and Event Store with Marten package**:
-* [GoldenEye.Backend.Core.Marten](https://www.nuget.org/packages/GoldenEye.Backend.Core.Marten/) - extension to GoldenEye.Backend.Core and GoldenEye.Backend.DDD that gives possibility to use Postgres as Document Database and Event Store - thanks to Marten library
+* [GoldenEye.Backend.Core.Marten](src/Core/Backend.Core.Marten/Readme.md) - extension to GoldenEye.Backend.Core and GoldenEye.Backend.DDD that gives possibility to use Postgres as Document Database and Event Store - thanks to Marten library
 
 **Security related packages (User management, OAuth etc.)**
-* [GoldenEye.Shared.Security](https://www.nuget.org/packages/GoldenEye.Shared.Security/) - base classes to make security management easier
-* [GoldenEye.Backend.Identity](https://www.nuget.org/packages/GoldenEye.Backend.Identity/) - helpers and extensions for Backend OAuth management with IdentityServer
-* [GoldenEye.Frontend.Identity](https://www.nuget.org/packages/GoldenEye.Frontend.Identity/) - helpers and extensions for Frontend OAuth management with IdentityServer
+* [GoldenEye.Shared.Security](src/Security/Shared.Security/Readme.md) - base classes to make security management easier
+* [GoldenEye.Backend.Identity](src/Security/Backend.Identity/Readme.md) - helpers and extensions for Backend OAuth management with IdentityServer
+* [GoldenEye.Frontend.Identity](src/Security/Frontend.Identity/Readme.md) - helpers and extensions for Frontend OAuth management with IdentityServer
 
 I found an issue or I have a change request
 --------------------------------

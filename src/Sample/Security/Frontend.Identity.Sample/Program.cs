@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using GoldenEye.Backend.Core.WebApi;
-using GoldenEye.Backend.Core.WebApi.Options;
+﻿using GoldenEye.Backend.Core.WebApi.Options;
+using GoldenEye.Backend.Core.WebApi.Registration;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 
 namespace Frontend.Identity.Sample
 {

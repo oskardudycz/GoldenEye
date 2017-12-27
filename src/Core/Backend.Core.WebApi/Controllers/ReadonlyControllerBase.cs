@@ -1,12 +1,12 @@
 using System.Linq;
 using System.Threading.Tasks;
+using GoldenEye.Backend.Core.Services;
 using GoldenEye.Shared.Core.Objects.DTO;
-using GoldenEye.Backend.Core.Service;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GoldenEye.Frontend.Core.Web.Controllers
 {
-    public abstract class ReadonlyControllerBase<TService, TDto> : Controller 
+    public abstract class ReadonlyControllerBase<TService, TDto> : Controller
         where TService : IReadonlyService<TDto> where TDto : class, IDTO
     {
         protected TService Service;
