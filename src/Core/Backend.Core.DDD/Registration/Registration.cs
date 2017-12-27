@@ -38,7 +38,7 @@ namespace GoldenEye.Backend.Core.DDD.Registration
 
         public static void AddValidationPipeline(this IServiceCollection services)
         {
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipeline<,>));
+            services.AddTransient(typeof(IRequestPreProcessor<>), typeof(ValidationPipeline<>));
         }
 
         public static void RegisterCommandHandler<TCommand, TCommandHandler>(this IServiceCollection services)
