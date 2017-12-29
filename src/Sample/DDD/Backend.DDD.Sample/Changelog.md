@@ -1,4 +1,4 @@
-﻿# v3.0.0 (29.12.2017)
+﻿# v3.0.0 (29.12.2017) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/44)
 
 ## Changes
 
