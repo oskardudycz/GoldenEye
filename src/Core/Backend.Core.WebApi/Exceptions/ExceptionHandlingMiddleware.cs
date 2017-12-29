@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using GoldenEye.Shared.Core.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -37,7 +38,7 @@ namespace GoldenEye.Backend.Core.WebApi.Exceptions
 
             var codeInfo = ExceptionToHttpStatusMapper.Map(exception);
 
-            var result = JsonConvert.SerializeObject(new { error = codeInfo.Message });
+            var result = JsonConvert.SerializeObject(new HttpExceptionWrapper((int)codeInfo.Code, codeInfo.Message));
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)codeInfo.Code;
             return context.Response.WriteAsync(result);

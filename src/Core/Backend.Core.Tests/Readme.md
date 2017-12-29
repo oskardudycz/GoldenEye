@@ -19,4 +19,4 @@ Feel free to create an issue on GitHub. Contributions, pull requests are more th
 
 For detailed list of changes see [Changelog](Changelog.md)  
 
-GoldenEye.DDD is Copyright &copy; 2015-2017 [Oskar Dudycz](http://oskar-dudycz.pl) and other contributors under the [MIT license](LICENSE.txt).
+GoldenEye is Copyright &copy; 2015-2018 [Oskar Dudycz](http://oskar-dudycz.pl) and other contributors under the [MIT license](LICENSE.txt).

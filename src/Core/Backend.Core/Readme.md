@@ -9,11 +9,11 @@ GoldenEye.Backend.Core is a library that brings you abstractions and implementat
 
 What do I get?
 --------------------------------
-Complete DDD and CQRS helpers and bootstrap for:
-- [Repositories](Repositories)
-- [Services](Services)
+Complete helpers and bootstrap for:
+- [CRUD Repositories](Repositories)
+- [CRUD Services](Services)
 - [Entities definition](Entities)
-- [Data contexts usage and definition](Context)
+- [Data contexts definition and usage](Context)
 - [Registration helpers to reduce boilerplate](Registration/Registration.cs)
 - many more
 
@@ -30,4 +30,4 @@ Feel free to create an issue on GitHub. Contributions, pull requests are more th
 
 For detailed list of changes see [Changelog](Changelog.md)  
 
-GoldenEye.DDD is Copyright &copy; 2015-2017 [Oskar Dudycz](http://oskar-dudycz.pl) and other contributors under the [MIT license](LICENSE.txt).
+GoldenEye is Copyright &copy; 2015-2018 [Oskar Dudycz](http://oskar-dudycz.pl) and other contributors under the [MIT license](LICENSE.txt).
