@@ -1,10 +1,11 @@
-﻿using GoldenEye.Backend.Core.Context;
-using Marten;
-using System;
+﻿using System;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
-using GoldenEye.Backend.Core.DDD.Events.Store;
+using GoldenEye.Backend.Core.Context;
 using GoldenEye.Backend.Core.DDD.Events;
+using GoldenEye.Backend.Core.DDD.Events.Store;
+using Marten;
 
 namespace GoldenEye.Backend.Core.Marten.Context
 {
@@ -40,7 +41,7 @@ namespace GoldenEye.Backend.Core.Marten.Context
             return entity;
         }
 
-        public async Task<TEntity> AddAsync<TEntity>(TEntity entity) where TEntity : class
+        public async Task<TEntity> AddAsync<TEntity>(TEntity entity, CancellationToken cancellationToken = default(CancellationToken)) where TEntity : class
         {
             if (!(entity is IEventSource esEntity))
                 throw new ArgumentException($"Entity {typeof(TEntity)} does not implement IEventSource! It's needed for  usage in MartenEventSourcedDataContext.");
@@ -70,7 +71,7 @@ namespace GoldenEye.Backend.Core.Marten.Context
             return eventStore.Aggregate<TEntity>(guidId);
         }
 
-        public async Task<TEntity> GetByIdAsync<TEntity>(object id) where TEntity : class, new()
+        public async Task<TEntity> GetByIdAsync<TEntity>(object id, CancellationToken cancellationToken = default(CancellationToken)) where TEntity : class, new()
         {
             if (!(id is Guid guidId))
                 throw new NotSupportedException("Id of the Event Sourced aggregate has to be Guid");
@@ -78,7 +79,7 @@ namespace GoldenEye.Backend.Core.Marten.Context
             if ((await documentSession.Events.FetchStreamStateAsync((Guid)id)) == null)
                 return null;
 
-            return await eventStore.AggregateAsync<TEntity>(guidId);
+            return await eventStore.AggregateAsync<TEntity>(guidId, cancellationToken);
         }
 
         public IQueryable<TEntity> GetQueryable<TEntity>() where TEntity : class
@@ -91,9 +92,9 @@ namespace GoldenEye.Backend.Core.Marten.Context
             return Update(entity);
         }
 
-        public Task<TEntity> RemoveAsync<TEntity>(TEntity entity, int? version = null) where TEntity : class
+        public Task<TEntity> RemoveAsync<TEntity>(TEntity entity, int? version = null, CancellationToken cancellationToken = default(CancellationToken)) where TEntity : class
         {
-            return UpdateAsync(entity);
+            return UpdateAsync(entity, version, cancellationToken);
         }
 
         public int SaveChanges()
@@ -104,10 +105,10 @@ namespace GoldenEye.Backend.Core.Marten.Context
             return changesCount;
         }
 
-        public async Task<int> SaveChangesAsync()
+        public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             var changesCount = ChangesCount;
-            await documentSession.SaveChangesAsync();
+            await documentSession.SaveChangesAsync(cancellationToken);
 
             return changesCount;
         }
@@ -122,12 +123,12 @@ namespace GoldenEye.Backend.Core.Marten.Context
             return entity;
         }
 
-        public async Task<TEntity> UpdateAsync<TEntity>(TEntity entity, int? version = null) where TEntity : class
+        public async Task<TEntity> UpdateAsync<TEntity>(TEntity entity, int? version = null, CancellationToken cancellationToken = default(CancellationToken)) where TEntity : class
         {
             if (!(entity is IEventSource esEntity))
                 throw new ArgumentException($"Entity {typeof(TEntity)} does not implement IEventSource! It's needed for  usage in MartenEventSourcedDataContext.");
 
-            await eventStore.StoreAsync(esEntity.Id, esEntity.PendingEvents.ToArray());
+            await eventStore.StoreAsync(esEntity.Id, cancellationToken, esEntity.PendingEvents.ToArray());
 
             return entity;
         }

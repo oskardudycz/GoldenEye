@@ -1,8 +1,9 @@
-﻿using System.Threading.Tasks;
-using AutoMapper;
+﻿using System.Threading;
+using System.Threading.Tasks;
 using FluentValidation;
 using GoldenEye.Backend.Core.Entity;
 using GoldenEye.Backend.Core.Repositories;
+using GoldenEye.Shared.Core.Extensions.Mapping;
 using GoldenEye.Shared.Core.Objects.DTO;
 
 namespace GoldenEye.Backend.Core.Services
@@ -35,31 +36,30 @@ namespace GoldenEye.Backend.Core.Services
         {
         }
 
-        public virtual Task<TDTO> Put(TDTO dto)
+        public virtual async Task<TDTO> PutAsync(TDTO dto, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (!Validate(dto))
-                return Task.Run(() => null as TDTO);
+                return null as TDTO;
 
-            var entity = Mapper.Map<TDTO, TEntity>(dto);
-            var added = Repository.Add(entity);
+            var entity = dto.MapTo<TEntity>();
+            var added = Repository.AddAsync(entity, cancellationToken: cancellationToken);
 
-            Repository.SaveChanges();
+            await Repository.SaveChangesAsync(cancellationToken);
 
-            return Task.Run(() =>
-                Mapper.Map<TEntity, TDTO>(Repository.GetById(added.Id)));
+            return (await Repository.GetByIdAsync(added.Id, cancellationToken)).MapTo<TDTO>();
         }
 
-        public virtual Task<TDTO> Post(TDTO dto)
+        public virtual async Task<TDTO> PostAsync(TDTO dto, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (!Validate(dto))
-                return Task.Run(() => null as TDTO);
+                return null as TDTO;
 
-            var entity = Mapper.Map<TDTO, TEntity>(dto);
-            var updated = Repository.Update(entity);
+            var entity = dto.MapTo<TEntity>();
+            var updated = await Repository.UpdateAsync(entity, cancellationToken: cancellationToken);
 
-            Repository.SaveChanges();
-            return Task.Run(() =>
-                Mapper.Map<TEntity, TDTO>(Repository.GetById(updated.Id)));
+            await Repository.SaveChangesAsync(cancellationToken);
+
+            return (await Repository.GetByIdAsync(updated.Id, cancellationToken)).MapTo<TDTO>();
         }
 
         public virtual Task<bool> Delete(int id)

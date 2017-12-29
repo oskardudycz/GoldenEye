@@ -1,8 +1,9 @@
-﻿using GoldenEye.Backend.Core.Context;
-using Marten;
-using System;
+﻿using System;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
+using GoldenEye.Backend.Core.Context;
+using Marten;
 
 namespace GoldenEye.Backend.Core.Marten.Context
 {
@@ -33,7 +34,7 @@ namespace GoldenEye.Backend.Core.Marten.Context
             return entity;
         }
 
-        public Task<TEntity> AddAsync<TEntity>(TEntity entity) where TEntity : class
+        public Task<TEntity> AddAsync<TEntity>(TEntity entity, CancellationToken cancellationToken = default(CancellationToken)) where TEntity : class
         {
             _documentSession.Store(entity);
 
@@ -63,16 +64,16 @@ namespace GoldenEye.Backend.Core.Marten.Context
             return _documentSession.Load<TEntity>(id.ToString());
         }
 
-        public Task<TEntity> GetByIdAsync<TEntity>(object id) where TEntity : class, new()
+        public Task<TEntity> GetByIdAsync<TEntity>(object id, CancellationToken cancellationToken = default(CancellationToken)) where TEntity : class, new()
         {
             if (id is Guid)
-                return _documentSession.LoadAsync<TEntity>((Guid)id);
+                return _documentSession.LoadAsync<TEntity>((Guid)id, cancellationToken);
             if (id is long)
-                return _documentSession.LoadAsync<TEntity>((long)id);
+                return _documentSession.LoadAsync<TEntity>((long)id, cancellationToken);
             if (id is int)
-                return _documentSession.LoadAsync<TEntity>((int)id);
+                return _documentSession.LoadAsync<TEntity>((int)id, cancellationToken);
 
-            return _documentSession.LoadAsync<TEntity>(id.ToString());
+            return _documentSession.LoadAsync<TEntity>(id.ToString(), cancellationToken);
         }
 
         public IQueryable<TEntity> GetQueryable<TEntity>() where TEntity : class
@@ -86,7 +87,7 @@ namespace GoldenEye.Backend.Core.Marten.Context
             return entity;
         }
 
-        public Task<TEntity> RemoveAsync<TEntity>(TEntity entity, int? version = null) where TEntity : class
+        public Task<TEntity> RemoveAsync<TEntity>(TEntity entity, int? version = null, CancellationToken cancellationToken = default(CancellationToken)) where TEntity : class
         {
             _documentSession.Delete(entity);
             return Task.FromResult(entity);
@@ -100,10 +101,10 @@ namespace GoldenEye.Backend.Core.Marten.Context
             return changesCount;
         }
 
-        public async Task<int> SaveChangesAsync()
+        public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             var changesCount = ChangesCount;
-            await _documentSession.SaveChangesAsync();
+            await _documentSession.SaveChangesAsync(cancellationToken);
 
             return changesCount;
         }
@@ -114,7 +115,7 @@ namespace GoldenEye.Backend.Core.Marten.Context
             return entity;
         }
 
-        public Task<TEntity> UpdateAsync<TEntity>(TEntity entity, int? version = null) where TEntity : class
+        public Task<TEntity> UpdateAsync<TEntity>(TEntity entity, int? version = null, CancellationToken cancellationToken = default(CancellationToken)) where TEntity : class
         {
             _documentSession.Store(entity);
             return Task.FromResult(entity);

@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using GoldenEye.Backend.Core.Context.SaveChangesHandlers;
 using GoldenEye.Backend.Core.Entity;
+using GoldenEye.Shared.Core.Objects.Versioning;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
-using System.Threading.Tasks;
-using System.Threading;
-using GoldenEye.Shared.Core.Objects.Versioning;
 
 namespace GoldenEye.Backend.Core.Context
 {
@@ -43,12 +43,12 @@ namespace GoldenEye.Backend.Core.Context
 
         public Task<int> SaveChangesAsync()
         {
-            SaveChangesProcessor.Instance.RunAll(this);
-            return dbContext.SaveChangesAsync();
+            return SaveChangesAsync(default(CancellationToken));
         }
 
         public Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
+            SaveChangesProcessor.Instance.RunAll(this);
             return dbContext.SaveChangesAsync(cancellationToken);
         }
 
@@ -68,9 +68,9 @@ namespace GoldenEye.Backend.Core.Context
             return entry.Entity;
         }
 
-        async Task<TEntity> IDataContext.AddAsync<TEntity>(TEntity entity)
+        async Task<TEntity> IDataContext.AddAsync<TEntity>(TEntity entity, CancellationToken cancellationToken)
         {
-            var entry = await dbContext.AddAsync(entity);
+            var entry = await dbContext.AddAsync(entity, cancellationToken);
 
             return entry.Entity;
         }
@@ -82,7 +82,7 @@ namespace GoldenEye.Backend.Core.Context
             return entities.AsQueryable();
         }
 
-        TEntity IDataContext.Update<TEntity>(TEntity entity, int? version = null)
+        TEntity IDataContext.Update<TEntity>(TEntity entity, int? version)
         {
             CheckVersion(entity, version);
             var entry = dbContext.Update(entity);
@@ -90,13 +90,13 @@ namespace GoldenEye.Backend.Core.Context
             return entry.Entity;
         }
 
-        Task<TEntity> IDataContext.UpdateAsync<TEntity>(TEntity entity, int? version = null)
+        Task<TEntity> IDataContext.UpdateAsync<TEntity>(TEntity entity, int? version, CancellationToken cancellationToken)
         {
             CheckVersion(entity, version);
-            return Task.Run(() => ((IDataContext)this).Update(entity));
+            return Task.FromResult(((IDataContext)this).Update(entity, version));
         }
 
-        TEntity IDataContext.Remove<TEntity>(TEntity entity, int? version = null)
+        TEntity IDataContext.Remove<TEntity>(TEntity entity, int? version)
         {
             CheckVersion(entity, version);
             var entry = dbContext.Remove(entity);
@@ -104,10 +104,10 @@ namespace GoldenEye.Backend.Core.Context
             return entry.Entity;
         }
 
-        Task<TEntity> IDataContext.RemoveAsync<TEntity>(TEntity entity, int? version = null)
+        Task<TEntity> IDataContext.RemoveAsync<TEntity>(TEntity entity, int? version, CancellationToken cancellationToken)
         {
             CheckVersion(entity, version);
-            return Task.Run(() => ((IDataContext)this).Remove(entity));
+            return Task.FromResult(((IDataContext)this).Remove(entity, version));
         }
 
         public TEntity GetById<TEntity>(object id) where TEntity : class, new()
@@ -115,9 +115,9 @@ namespace GoldenEye.Backend.Core.Context
             return dbContext.Find<TEntity>(id);
         }
 
-        public Task<TEntity> GetByIdAsync<TEntity>(object id) where TEntity : class, new()
+        public Task<TEntity> GetByIdAsync<TEntity>(object id, CancellationToken cancellationToken = default(CancellationToken)) where TEntity : class, new()
         {
-            return dbContext.FindAsync<TEntity>(id);
+            return dbContext.FindAsync<TEntity>(new[] { id }, cancellationToken);
         }
 
         public IQueryable<TEntity> GetQueryable<TEntity>() where TEntity : class

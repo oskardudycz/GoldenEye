@@ -1,10 +1,9 @@
-﻿using GoldenEye.Backend.Core.Entity;
-using GoldenEye.Shared.Core.Objects.General;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using GoldenEye.Shared.Core.Objects.General;
 
 namespace GoldenEye.Backend.Core.DDD.Events.Store
 {
@@ -18,23 +17,33 @@ namespace GoldenEye.Backend.Core.DDD.Events.Store
 
         Task<Guid> StoreAsync(Guid streamId, params IEvent[] events);
 
+        Task<Guid> StoreAsync(Guid streamId, CancellationToken cancellationToken = default(CancellationToken), params IEvent[] events);
+
         Task<Guid> StoreAsync(Guid streamId, int version, params IEvent[] events);
+
+        Task<Guid> StoreAsync(Guid streamId, int version, CancellationToken cancellationToken = default(CancellationToken), params IEvent[] events);
 
         TEntity Aggregate<TEntity>(Guid streamId, int version = 0, DateTime? timestamp = null) where TEntity : class, new();
 
         Task<TEntity> AggregateAsync<TEntity>(Guid streamId, int version = 0, DateTime? timestamp = null) where TEntity : class, new();
 
+        Task<TEntity> AggregateAsync<TEntity>(Guid streamId, CancellationToken cancellationToken = default(CancellationToken), int version = 0, DateTime? timestamp = null) where TEntity : class, new();
+
         TEvent GetById<TEvent>(Guid id) where TEvent : class, IEvent, IHasGuidId;
 
-        Task<TEvent> GetByIdAsync<TEvent>(Guid id) where TEvent : class, IEvent, IHasGuidId;
+        Task<TEvent> GetByIdAsync<TEvent>(Guid id, CancellationToken cancellationToken = default(CancellationToken)) where TEvent : class, IEvent, IHasGuidId;
 
         IList<IEvent> Query(Guid? streamId = null, int? version = null, DateTime? timestamp = null);
 
         Task<IList<IEvent>> QueryAsync(Guid? streamId = null, int? version = null, DateTime? timestamp = null);
 
+        Task<IList<IEvent>> QueryAsync(CancellationToken cancellationToken = default(CancellationToken), Guid? streamId = null, int? version = null, DateTime? timestamp = null);
+
         IList<TEvent> Query<TEvent>(Guid? streamId = null, int? version = null, DateTime? timestamp = null) where TEvent : class, IEvent;
 
         Task<IList<TEvent>> QueryAsync<TEvent>(Guid? streamId = null, int? version = null, DateTime? timestamp = null) where TEvent : class, IEvent;
+
+        Task<IList<TEvent>> QueryAsync<TEvent>(CancellationToken cancellationToken = default(CancellationToken), Guid? streamId = null, int? version = null, DateTime? timestamp = null) where TEvent : class, IEvent;
 
         void SaveChanges();
 
@@ -45,7 +54,7 @@ namespace GoldenEye.Backend.Core.DDD.Events.Store
     {
         TProjection GetById<TProjection>(Guid id) where TProjection : class, IHasGuidId;
 
-        Task<TProjection> GetByIdAsync<TProjection>(Guid id) where TProjection : class, IHasGuidId;
+        Task<TProjection> GetByIdAsync<TProjection>(Guid id, CancellationToken cancellationToken = default(CancellationToken)) where TProjection : class, IHasGuidId;
 
         IQueryable<TProjection> Query<TProjection>();
     }

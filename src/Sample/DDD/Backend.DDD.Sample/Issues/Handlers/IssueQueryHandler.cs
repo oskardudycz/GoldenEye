@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Backend.DDD.Sample.Contracts.Issues.Queries;
 using GoldenEye.Backend.Core.DDD.Queries;
@@ -10,8 +11,8 @@ using IssueViews = Backend.DDD.Sample.Contracts.Issues.Views;
 namespace Backend.DDD.Sample.Issues.Handlers
 {
     internal class IssueQueryHandler :
-        IAsyncQueryHandler<GetIssues, IReadOnlyList<IssueViews.Issue>>,
-        IAsyncQueryHandler<GetIssue, IssueViews.Issue>
+        IQueryHandler<GetIssues, IReadOnlyList<IssueViews.Issue>>,
+        IQueryHandler<GetIssue, IssueViews.Issue>
     {
         private readonly IReadonlyRepository<IssueViews.Issue> repository;
 
@@ -20,14 +21,14 @@ namespace Backend.DDD.Sample.Issues.Handlers
             this.repository = repository ?? throw new ArgumentException(nameof(repository));
         }
 
-        public Task<IReadOnlyList<IssueViews.Issue>> Handle(GetIssues message)
+        public Task<IReadOnlyList<IssueViews.Issue>> Handle(GetIssues message, CancellationToken cancellationToken)
         {
             return repository
                 .GetAll()
                 .ToListAsync();
         }
 
-        public Task<IssueViews.Issue> Handle(GetIssue message)
+        public Task<IssueViews.Issue> Handle(GetIssue message, CancellationToken cancellationToken)
         {
             return repository.GetByIdAsync(message.Id);
         }

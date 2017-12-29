@@ -1,10 +1,11 @@
-﻿using GoldenEye.Backend.Core.DDD.Events.Store;
-using System;
+﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
+using GoldenEye.Backend.Core.DDD.Events.Store;
 
 namespace GoldenEye.Backend.Core.DDD.Events.Logging
 {
-    public class EventStorePipeline<TEvent> : IAsyncEventHandler<TEvent>
+    public class EventStorePipeline<TEvent> : IEventHandler<TEvent>
         where TEvent : IEvent
     {
         private readonly IEventStore eventStore;
@@ -14,10 +15,10 @@ namespace GoldenEye.Backend.Core.DDD.Events.Logging
             this.eventStore = eventStore ?? throw new ArgumentException(nameof(eventStore));
         }
 
-        public async Task Handle(TEvent @event)
+        public async Task Handle(TEvent @event, CancellationToken cancellationToken)
         {
             await eventStore.StoreAsync(@event.StreamId, @event);
-            await eventStore.SaveChangesAsync();
+            await eventStore.SaveChangesAsync(cancellationToken);
         }
     }
 }

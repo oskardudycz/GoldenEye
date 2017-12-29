@@ -1,4 +1,11 @@
-﻿# v2.3.0 (28.12.2017)
+﻿# v3.0.0 (29.12.2017) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/44)
+
+## Changes
+
+* updated packages version to most recent, breaking changes after migration to MediatR 4 **[MAJOR]**
+* added proper handling of `CancellationToken` for async methods in Repositories, Services, Contexts to be aligned with other async handling conventions **[MAJOR]**
+
+# v2.3.0 (28.12.2017)
 
 ## Changes
 

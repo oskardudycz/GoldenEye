@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using FluentAssertions;
 using FluentValidation;
@@ -52,14 +53,16 @@ namespace Backend.Core.Tests.Validation
                     this.context = context;
                 }
 
-                public void Handle(CreateUser command)
+                public Task Handle(CreateUser command, CancellationToken cancellationToken)
                 {
                     context.Users.Add(command.UserName);
+                    return Task.CompletedTask;
                 }
 
-                public void Handle(RemoveAllUsers command)
+                public Task Handle(RemoveAllUsers command, CancellationToken cancellationToken)
                 {
                     context.Users.Clear();
+                    return Task.CompletedTask;
                 }
             }
 
@@ -184,14 +187,14 @@ namespace Backend.Core.Tests.Validation
                     this.context = context;
                 }
 
-                public string Handle(GetUser query)
+                public Task<string> Handle(GetUser query, CancellationToken cancellationToken)
                 {
-                    return context.Users[query.Id];
+                    return Task.FromResult(context.Users[query.Id]);
                 }
 
-                public IReadOnlyList<string> Handle(GetAllUsers query)
+                public Task<IReadOnlyList<string>> Handle(GetAllUsers query, CancellationToken cancellationToken)
                 {
-                    return context.Users;
+                    return Task.FromResult<IReadOnlyList<string>>(context.Users);
                 }
             }
 

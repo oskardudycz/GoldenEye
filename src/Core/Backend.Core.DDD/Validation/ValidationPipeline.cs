@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using FluentValidation;
 using MediatR;
@@ -21,7 +22,7 @@ namespace GoldenEye.Backend.Core.DDD.Validation
             _validators = validators;
         }
 
-        public Task Process(TRequest request)
+        public Task Process(TRequest request, CancellationToken cancellationToken)
         {
             if (_validators?.Count() == 0)
                 return Task.CompletedTask;
@@ -50,7 +51,7 @@ namespace GoldenEye.Backend.Core.DDD.Validation
             _validators = validators;
         }
 
-        public Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next)
+        public Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
         {
             if (_validators?.Count() == 0)
                 return next();
