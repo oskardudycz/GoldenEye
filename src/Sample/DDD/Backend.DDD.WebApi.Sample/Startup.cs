@@ -56,13 +56,13 @@ namespace Backend.DDD.WebApi.Sample
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvc();
             app.UseExceptionHandlingMiddleware();
-
             backendModule.OnStartup();
             app.UseCors("CorsPolicy");
             corsModule.OnStartup(app, env);
             swaggerModule.OnStartup(app, env);
+
+            app.UseMvc();
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using FluentValidation;
+using GoldenEye.Shared.Core.Extensions.Collections;
 
 namespace GoldenEye.Backend.Core.WebApi.Exceptions
 {
@@ -14,6 +15,11 @@ namespace GoldenEye.Backend.Core.WebApi.Exceptions
         {
             Code = code;
             Message = message;
+        }
+
+        public static HttpStatusCodeInfo Create(HttpStatusCode code, string message)
+        {
+            return new HttpStatusCodeInfo(code, message);
         }
     }
 
@@ -40,7 +46,7 @@ namespace GoldenEye.Backend.Core.WebApi.Exceptions
 
         public static void RegisterCustomMap<TException>(Func<Exception, HttpStatusCodeInfo> map) where TException : Exception
         {
-            CustomMaps.Add(typeof(TException), map);
+            CustomMaps.AddOrReplace(typeof(TException), map);
         }
     }
 }
