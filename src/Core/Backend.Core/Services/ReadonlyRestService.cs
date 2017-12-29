@@ -1,10 +1,11 @@
 using System;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
-using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using GoldenEye.Backend.Core.Entity;
 using GoldenEye.Backend.Core.Repositories;
+using GoldenEye.Shared.Core.Extensions.Mapping;
 using GoldenEye.Shared.Core.Objects.DTO;
 
 namespace GoldenEye.Backend.Core.Services
@@ -34,9 +35,9 @@ namespace GoldenEye.Backend.Core.Services
             return Repository.GetAll().ProjectTo<TDTO>();
         }
 
-        public virtual Task<TDTO> Get(int id)
+        public virtual async Task<TDTO> GetAsync(int id, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Task.Run(() => Mapper.Map<TEntity, TDTO>(Repository.GetById(id)));
+            return (await Repository.GetByIdAsync(id, cancellationToken)).MapTo<TDTO>();
         }
 
         public virtual void Dispose()

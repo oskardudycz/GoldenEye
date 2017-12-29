@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using GoldenEye.Shared.Core.Objects.DTO;
 
@@ -9,6 +10,6 @@ namespace GoldenEye.Backend.Core.Services
     {
         IQueryable<TDTO> Get();
 
-        Task<TDTO> Get(int id);
+        Task<TDTO> GetAsync(int id, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

@@ -1,11 +1,11 @@
 ﻿using System;
-using GoldenEye.Backend.Core.DDD.Events.Store;
-using GoldenEye.Backend.Core.DDD.Events;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Collections.Generic;
 using Baseline;
-using System.Linq;
+using GoldenEye.Backend.Core.DDD.Events;
+using GoldenEye.Backend.Core.DDD.Events.Store;
 
 namespace Backend.Core.DDD.Tests.Events.Store
 {
@@ -89,7 +89,32 @@ namespace Backend.Core.DDD.Tests.Events.Store
                 throw new NotImplementedException();
             }
 
-            Task<TEvent> IEventStore.GetByIdAsync<TEvent>(Guid id)
+            public Task<Guid> StoreAsync(Guid streamId, CancellationToken cancellationToken = default(CancellationToken), params IEvent[] events)
+            {
+                throw new NotImplementedException();
+            }
+
+            public Task<Guid> StoreAsync(Guid streamId, int version, CancellationToken cancellationToken = default(CancellationToken), params IEvent[] events)
+            {
+                throw new NotImplementedException();
+            }
+
+            public Task<TEntity> AggregateAsync<TEntity>(Guid streamId, CancellationToken cancellationToken = default(CancellationToken), int version = 0, DateTime? timestamp = null) where TEntity : class, new()
+            {
+                throw new NotImplementedException();
+            }
+
+            Task<TEvent> IEventStore.GetByIdAsync<TEvent>(Guid id, CancellationToken cancellationToken)
+            {
+                throw new NotImplementedException();
+            }
+
+            public Task<IList<IEvent>> QueryAsync(CancellationToken cancellationToken = default(CancellationToken), Guid? streamId = null, int? version = null, DateTime? timestamp = null)
+            {
+                throw new NotImplementedException();
+            }
+
+            Task<IList<TEvent>> IEventStore.QueryAsync<TEvent>(CancellationToken cancellationToken, Guid? streamId, int? version, DateTime? timestamp)
             {
                 throw new NotImplementedException();
             }

@@ -55,9 +55,9 @@ namespace Backend.DDD.Sample
         private void RegisterHandlers(IServiceCollection services)
         {
             ////issues
-            services.RegisterAsyncQueryHandler<GetIssues, IReadOnlyList<IssueContracts.Views.Issue>, IssueQueryHandler>();
-            services.RegisterAsyncQueryHandler<GetIssue, IssueContracts.Views.Issue, IssueQueryHandler>();
-            services.RegisterAsyncCommandHandler<CreateIssue, IssueCommandHandler>();
+            services.RegisterQueryHandler<GetIssues, IReadOnlyList<IssueContracts.Views.Issue>, IssueQueryHandler>();
+            services.RegisterQueryHandler<GetIssue, IssueContracts.Views.Issue, IssueQueryHandler>();
+            services.RegisterCommandHandler<CreateIssue, IssueCommandHandler>();
         }
     }
 }

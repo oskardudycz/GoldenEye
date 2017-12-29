@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Backend.DDD.Sample.Contracts.Issues.Commands;
 using GoldenEye.Backend.Core.DDD.Commands;
@@ -8,7 +9,7 @@ using GoldenEye.Shared.Core.Extensions.Mapping;
 namespace Backend.DDD.Sample.Issues.Handlers
 {
     internal class IssueCommandHandler
-        : IAsyncCommandHandler<CreateIssue>
+        : ICommandHandler<CreateIssue>
     {
         private readonly IRepository<Issue> repository;
 
@@ -19,7 +20,7 @@ namespace Backend.DDD.Sample.Issues.Handlers
             this.repository = repository ?? throw new ArgumentException(nameof(repository));
         }
 
-        public async Task Handle(CreateIssue message)
+        public async Task Handle(CreateIssue message, CancellationToken cancellationToken)
         {
             var aggregate = message.Map<Issue>();
 

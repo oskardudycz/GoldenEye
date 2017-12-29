@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using GoldenEye.Backend.Core.Context;
 using GoldenEye.Shared.Core.Objects.General;
@@ -30,7 +31,7 @@ namespace GoldenEye.Backend.Core.Repositories
             return Queryable.SingleOrDefault(r => r.Id == id);
         }
 
-        public virtual Task<TEntity> GetByIdAsync(object id)
+        public virtual Task<TEntity> GetByIdAsync(object id, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Task.Run(() => GetById(id));
         }

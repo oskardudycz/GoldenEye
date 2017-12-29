@@ -27,7 +27,7 @@ namespace GoldenEye.Frontend.Core.Web.Controllers
 
         public async Task<IActionResult> Get(int id)
         {
-            var dto = await Service.Get(id);
+            var dto = await Service.GetAsync(id);
             if (dto == null)
             {
                 return NotFound();

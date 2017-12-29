@@ -24,7 +24,7 @@ namespace GoldenEye.Frontend.Core.Web.Controllers
                 return BadRequest(ModelState);
             }
 
-            var result = await Service.Put(dto);
+            var result = await Service.PutAsync(dto);
 
             return Ok(result);
         }
@@ -36,14 +36,14 @@ namespace GoldenEye.Frontend.Core.Web.Controllers
                 return BadRequest(ModelState);
             }
 
-            var result = await Service.Post(dto);
+            var result = await Service.PostAsync(dto);
 
             return Ok(result);
         }
 
         public async Task<IActionResult> Delete(int id)
         {
-            var wasDeleted = await Service.Delete(id);
+            var wasDeleted = await Service.DeleteAsync(id);
             if (!wasDeleted)
             {
                 return NotFound();

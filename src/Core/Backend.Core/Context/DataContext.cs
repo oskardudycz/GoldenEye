@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Linq;
-using GoldenEye.Backend.Core.Context.SaveChangesHandlers;
+using System.Threading;
 using System.Threading.Tasks;
+using GoldenEye.Backend.Core.Context.SaveChangesHandlers;
 
 namespace GoldenEye.Backend.Core.Context
 {
@@ -22,28 +23,28 @@ namespace GoldenEye.Backend.Core.Context
             return 0;
         }
 
-        public virtual Task<int> SaveChangesAsync()
+        public virtual Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             return Task.Run(() => SaveChanges());
         }
 
         public abstract TEntity Add<TEntity>(TEntity entity) where TEntity : class;
 
-        public abstract Task<TEntity> AddAsync<TEntity>(TEntity entity) where TEntity : class;
+        public abstract Task<TEntity> AddAsync<TEntity>(TEntity entity, CancellationToken cancellationToken = default(CancellationToken)) where TEntity : class;
 
         public abstract IQueryable<TEntity> AddRange<TEntity>(params TEntity[] entities) where TEntity : class;
 
         public abstract TEntity Update<TEntity>(TEntity entity, int? version = null) where TEntity : class;
 
-        public abstract Task<TEntity> UpdateAsync<TEntity>(TEntity entity, int? version = null) where TEntity : class;
+        public abstract Task<TEntity> UpdateAsync<TEntity>(TEntity entity, int? version = null, CancellationToken cancellationToken = default(CancellationToken)) where TEntity : class;
 
         public abstract TEntity Remove<TEntity>(TEntity entity, int? version = null) where TEntity : class;
 
-        public abstract Task<TEntity> RemoveAsync<TEntity>(TEntity entity, int? version = null) where TEntity : class;
+        public abstract Task<TEntity> RemoveAsync<TEntity>(TEntity entity, int? version = null, CancellationToken cancellationToken = default(CancellationToken)) where TEntity : class;
 
         public abstract TEntity GetById<TEntity>(object id) where TEntity : class, new();
 
-        public abstract Task<TEntity> GetByIdAsync<TEntity>(object id) where TEntity : class, new();
+        public abstract Task<TEntity> GetByIdAsync<TEntity>(object id, CancellationToken cancellationToken = default(CancellationToken)) where TEntity : class, new();
 
         public abstract IQueryable<TEntity> GetQueryable<TEntity>() where TEntity : class;
     }
