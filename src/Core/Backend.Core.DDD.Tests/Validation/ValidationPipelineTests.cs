@@ -139,7 +139,7 @@ namespace Backend.Core.Tests.Validation
                     Func<Task> sendCommandAsync = async () => await commandBus.Send(invalidCommand);
                     //When
                     //Then
-                    sendCommandAsync.ShouldThrow<ValidationException>();
+                    sendCommandAsync.Should().Throw<ValidationException>();
 
                     var context = sp.GetService<DataContext>();
                     context.Users.Should().BeEmpty();
@@ -295,7 +295,7 @@ namespace Backend.Core.Tests.Validation
                     Func<Task> sendQueryAsync = async () => await queryBus.Send<GetUser, string>(invalidQuery);
                     //When
                     //Then
-                    sendQueryAsync.ShouldThrow<ValidationException>();
+                    sendQueryAsync.Should().Throw<ValidationException>();
                 }
             }
         }
