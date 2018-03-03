@@ -50,6 +50,7 @@ Install packages from the Nuget package manager:
 * [GoldenEye.Backend.Core](src/Core/Backend.Core/Readme.md) - classes suited for the backend development - Repositories, Services, CRUD, mappings, etc.
 * [GoldenEye.Backend.Core.WebApi](src/Core/Backend.Core.WebApi/Readme.md) - base classes for API development like CRUD controllers, registration helpers, and many more
 * [GoldenEye.Backend.Core.EntityFramework](src/Core/Backend.Core.EntityFramework/Readme.md) - extensions to GoldenEye.Backend.Core for EntityFramework development (EF repositories, etc.)
+* [GoldenEye.Backend.Core.Dapper](src/Core/Backend.Core.Dapper/Readme.md) - extensions to GoldenEye.Backend.Core for Dapper development (Dapper repositories, etc.)
 
 **DDD package**:
 * [GoldenEye.Backend.Core.DDD](src/Core/Backend.Core.DDD/Readme.md) - full DDD flow for CQRS, DDD development. Basing on MediatR library gives the Command, Queries, Events handling, routing

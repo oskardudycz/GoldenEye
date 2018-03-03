@@ -1,7 +1,7 @@
 ﻿# GoldenEye.Backend.Core
 [![Stories in Ready](https://badge.waffle.io/oskardudycz/GoldenEye.png?label=ready&title=Ready)](https://waffle.io/oskardudycz/GoldenEye)
 [![Build status](https://ci.appveyor.com/api/projects/status/1mtm4h33cvur6kob?svg=true)](https://ci.appveyor.com/project/oskardudycz/goldeneye-core)
-[![NuGet version](https://badge.fury.io/nu/GoldenEye.Shared.Core.svg)](https://badge.fury.io/nu/GoldenEye.Backend.Core)
+[![NuGet version](https://badge.fury.io/nu/GoldenEye.Backend.Core.svg)](https://badge.fury.io/nu/GoldenEye.Backend.Core)
 
 What is GoldenEye.Backend.Core?
 --------------------------------
