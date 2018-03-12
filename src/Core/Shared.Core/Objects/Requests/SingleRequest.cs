@@ -14,7 +14,7 @@ namespace GoldenEye.Shared.Core.Objects.Requests
         /// Record
         /// </summary>
         [DataMember]
-        public T Item { get; set; }
+        public T Item { get; }
 
         /// <summary>
         /// Constructor
@@ -38,7 +38,6 @@ namespace GoldenEye.Shared.Core.Objects.Requests
         object ISingleRequest.Item
         {
             get { return Item; }
-            set { Item = (T)value; }
         }
     }
 }
