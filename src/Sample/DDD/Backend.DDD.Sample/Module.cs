@@ -55,8 +55,9 @@ namespace Backend.DDD.Sample
         private void RegisterHandlers(IServiceCollection services)
         {
             ////issues
-            services.RegisterQueryHandler<GetIssues, IReadOnlyList<IssueContracts.Views.Issue>, IssueQueryHandler>();
-            services.RegisterQueryHandler<GetIssue, IssueContracts.Views.Issue, IssueQueryHandler>();
+            services.AddMartenDocumentReadonlyRepository<IssueContracts.Views.IssueView>();
+            services.RegisterQueryHandler<GetIssues, IReadOnlyList<IssueContracts.Views.IssueView>, IssueQueryHandler>();
+            services.RegisterQueryHandler<GetIssue, IssueContracts.Views.IssueView, IssueQueryHandler>();
             services.RegisterCommandHandler<CreateIssue, IssueCommandHandler>();
         }
     }
