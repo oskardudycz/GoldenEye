@@ -2,7 +2,7 @@
 
 namespace Backend.DDD.Sample.Contracts.Issues.Queries
 {
-    public class GetIssues : IListQuery<Views.Issue>
+    public class GetIssues : IListQuery<Views.IssueView>
     {
     }
 }
