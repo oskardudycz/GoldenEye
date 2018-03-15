@@ -5,4 +5,15 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Include=".template.config\template.json" />
+  </ItemGroup>
+  
+ <ItemGroup>
+	<PackageReference Include="AutoMapper" Version="6.2.2" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.2.0" />
+    <PackageReference Include="GoldenEye.Backend.Core.Marten" Version="3.0.0" />
+    <PackageReference Include="GoldenEye.Backend.Core.WebApi" Version="3.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
+  </ItemGroup>
 </Project>
