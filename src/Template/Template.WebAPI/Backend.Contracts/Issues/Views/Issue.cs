@@ -5,7 +5,7 @@ using GoldenEye.Shared.Core.Objects.General;
 
 namespace Backend.Contracts.Issues.Views
 {
-    public class Issue : IView<Guid>
+    public class IssueView : IView<Guid>
     {
         public Guid Id { get; set; }
 
@@ -17,7 +17,7 @@ namespace Backend.Contracts.Issues.Views
 
         object IHasId.Id => Id;
 
-        public Issue()
+        public IssueView()
         {
         }
 

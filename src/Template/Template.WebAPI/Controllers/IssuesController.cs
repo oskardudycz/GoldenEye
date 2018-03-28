@@ -24,18 +24,18 @@ namespace GoldenEye.WebAPI.Controllers
             this.commandBus = commandBus ?? throw new ArgumentException(nameof(commandBus));
         }
 
-        // GET api/Issues
+        // GET api/incidents
         [HttpGet]
-        public Task<IReadOnlyList<Issue>> Get(GetIssues query)
+        public Task<IReadOnlyList<IssueView>> Get(GetIssues query)
         {
-            return queryBus.Send<GetIssues, IReadOnlyList<Issue>>(query);
+            return queryBus.Send<GetIssues, IReadOnlyList<IssueView>>(query);
         }
 
         // GET api/incidents
         [HttpGet("{id}")]
-        public Task<Issue> Get(Guid id)
+        public Task<IssueView> Get(Guid id)
         {
-            return queryBus.Send<GetIssue, Issue>(new GetIssue(id));
+            return queryBus.Send<GetIssue, IssueView>(new GetIssue(id));
         }
 
         // POST api/incidents

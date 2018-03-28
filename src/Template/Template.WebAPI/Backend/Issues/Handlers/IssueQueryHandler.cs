@@ -10,25 +10,27 @@ using IssueViews = Backend.Contracts.Issues.Views;
 
 namespace Backend.Issues.Handlers
 {
-    public class IssueQueryHandler :
-        IQueryHandler<GetIssues, IReadOnlyList<IssueViews.Issue>>,
-        IQueryHandler<GetIssue, IssueViews.Issue>
+    internal class IssueQueryHandler :
+        IQueryHandler<GetIssues, IReadOnlyList<IssueViews.IssueView>>,
+        IQueryHandler<GetIssue, IssueViews.IssueView>
     {
-        private readonly IReadonlyRepository<Issue> repository;
+        private readonly IReadonlyRepository<IssueViews.IssueView> repository;
 
-        public IssueQueryHandler(IRepository<Issue> repository)
+        public IssueQueryHandler(IReadonlyRepository<IssueViews.IssueView> repository)
         {
             this.repository = repository ?? throw new ArgumentException(nameof(repository));
         }
 
-        public Task<IReadOnlyList<IssueViews.Issue>> Handle(GetIssues message, CancellationToken cancellationToken)
+        public Task<IReadOnlyList<IssueViews.IssueView>> Handle(GetIssues message, CancellationToken cancellationToken)
         {
-            return null;
+            return repository
+                .GetAll()
+                .ToListAsync();
         }
 
-        public Task<IssueViews.Issue> Handle(GetIssue message, CancellationToken cancellationToken)
+        public Task<IssueViews.IssueView> Handle(GetIssue message, CancellationToken cancellationToken)
         {
-            return null;
+            return repository.GetByIdAsync(message.Id);
         }
     }
 }
