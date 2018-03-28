@@ -11,14 +11,14 @@ namespace Backend.DDD.WebApi.Sample
 {
     public class Startup
     {
-        private readonly DDD.Sample.Module backendModule;
+        private readonly Backend.Module backendModule;
         private readonly AllowAllCorsModule corsModule;
         private readonly SwaggerModule swaggerModule;
 
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            backendModule = new DDD.Sample.Module(Configuration);
+            backendModule = new Backend.Module(Configuration);
             corsModule = new AllowAllCorsModule(Configuration);
             swaggerModule = new SwaggerModule(Configuration);
         }

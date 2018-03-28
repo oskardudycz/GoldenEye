@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Backend.DDD.Sample.Contracts.Issues.Commands;
-using Backend.DDD.Sample.Contracts.Issues.Queries;
-using Backend.DDD.Sample.Issues;
-using Backend.DDD.Sample.Issues.Handlers;
-using Backend.DDD.Sample.Issues.Projections;
+using Backend.Contracts.Issues.Commands;
+using Backend.Contracts.Issues.Queries;
+using Backend.Issues;
+using Backend.Issues.Handlers;
+using Backend.Issues.Projections;
 using GoldenEye.Backend.Core.DDD.Registration;
 using GoldenEye.Backend.Core.Marten.Events.Storage;
 using GoldenEye.Backend.Core.Marten.Registration;
@@ -11,9 +11,9 @@ using GoldenEye.Shared.Core.Modules;
 using Marten;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using IssueContracts = Backend.DDD.Sample.Contracts.Issues;
+using IssueContracts = Backend.Contracts.Issues;
 
-namespace Backend.DDD.Sample
+namespace Backend
 {
     public class Module : ModuleBase
     {
@@ -55,6 +55,7 @@ namespace Backend.DDD.Sample
         private void RegisterHandlers(IServiceCollection services)
         {
             ////issues
+            //RequestHandler`2[Backend.DDD.Sample.Contracts.Issues.Queries.GetIssues, System.Collections.Generic.IReadOnlyList`1[Backend.DDD.Sample.Contracts.Issues.Views.Issue]
             services.RegisterQueryHandler<GetIssues, IReadOnlyList<IssueContracts.Views.Issue>, IssueQueryHandler>();
             services.RegisterQueryHandler<GetIssue, IssueContracts.Views.Issue, IssueQueryHandler>();
             services.RegisterCommandHandler<CreateIssue, IssueCommandHandler>();

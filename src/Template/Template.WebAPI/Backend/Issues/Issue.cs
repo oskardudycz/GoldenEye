@@ -1,11 +1,11 @@
 ﻿using System;
-using Backend.DDD.Sample.Contracts.Issues;
+using Backend.Contracts.Issues;
 using GoldenEye.Backend.Core.Entity;
 using GoldenEye.Shared.Core.Objects.General;
 
-namespace Backend.DDD.Sample.Issues
+namespace Backend.Issues
 {
-    internal class Issue : IEntity
+    public class Issue : IEntity
     {
         object IHasId.Id => Id;
 

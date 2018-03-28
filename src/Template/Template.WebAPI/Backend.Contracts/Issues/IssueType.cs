@@ -1,4 +1,4 @@
-﻿namespace Backend.DDD.Sample.Contracts.Issues
+﻿namespace Backend.Contracts.Issues
 {
     public enum IssueType
     {

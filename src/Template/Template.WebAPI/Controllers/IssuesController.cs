@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Backend.DDD.Sample.Contracts.Issues.Commands;
-using Backend.DDD.Sample.Contracts.Issues.Queries;
-using Backend.DDD.Sample.Contracts.Issues.Views;
+using Backend.Contracts.Issues.Commands;
+using Backend.Contracts.Issues.Queries;
+using Backend.Contracts.Issues.Views;
 using GoldenEye.Backend.Core.DDD.Commands;
 using GoldenEye.Backend.Core.DDD.Queries;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Backend.DDD.WebApi.Sample.Controllers
+namespace GoldenEye.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [Microsoft.AspNetCore.Cors.EnableCors("CorsPolicy")]

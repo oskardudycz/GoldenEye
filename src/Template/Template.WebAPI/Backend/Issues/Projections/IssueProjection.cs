@@ -1,8 +1,8 @@
 ﻿using System;
-using Backend.DDD.Sample.Contracts.Issues.Events;
+using Backend.Contracts.Issues.Events;
 using Marten.Events.Projections;
 
-namespace Backend.DDD.Sample.Issues.Projections
+namespace Backend.Issues.Projections
 {
     internal class IssueProjection : ViewProjection<Contracts.Issues.Views.Issue, Guid>
     {

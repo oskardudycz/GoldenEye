@@ -1,7 +1,7 @@
 ﻿using System;
 using GoldenEye.Backend.Core.DDD.Queries;
 
-namespace Backend.DDD.Sample.Contracts.Issues.Queries
+namespace Backend.Contracts.Issues.Queries
 {
     public class GetIssue : IQuery<Views.Issue>
     {

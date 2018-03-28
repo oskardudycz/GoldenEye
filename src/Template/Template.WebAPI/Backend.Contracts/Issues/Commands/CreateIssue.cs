@@ -1,6 +1,6 @@
 ﻿using GoldenEye.Backend.Core.DDD.Commands;
 
-namespace Backend.DDD.Sample.Contracts.Issues.Commands
+namespace Backend.Contracts.Issues.Commands
 {
     public class CreateIssue : ICommand
     {
