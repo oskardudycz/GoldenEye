@@ -39,9 +39,23 @@ What do I get?
 * [Serialization](Extensions/Serialization/SerializationExtensions.cs)
 * [Streams](Extensions/Streams/StreamExtensions.cs)
 
-### Lot of valuable utils 
+### Lot of util classes 
+* [Assemblies Provider](Utils/Assemblies/AssembliesProvider.cs)
+* [Fluent Switch statement](Utils/Coding/Switch.cs)
+* [Collection to CSV Converter](Utils/Collections/CollectionToCSVConverter.cs)
+* [String Encryption](Utils/Cryptography/Encryption.cs)
+* [Exceptions formatter](Utils/Exceptions/ExceptionProvider.cs)
+* [Exceptions formatter](Utils/Exceptions/ExceptionProvider.cs)
+* [Guards for defensive programming](Utils/Exceptions/Guard.cs)
+* [PropertyName](Utils/Lambda/PropertyName.cs)
+* [Localization Utils](Utils/Localization/LocalizationUtils.cs)
+* [Localized DisplayName Attribute](Utils/Localization/DisplayNameLocalizedAttribute.cs)
+* [Localized DisplayName Attribute](Utils/Localization/DisplayNameLocalizedAttribute.cs)
+* [Simple MessageBus](Utils/MessageBus/MessageBus.cs)
+* [NoSynchronizationContextScope](Utils/Threading/NoSynchronizationContextScope.cs)
 
 ### Base classes and interfaces
+
 
 How do I get started?
 --------------------------------

@@ -4,6 +4,6 @@ namespace GoldenEye.Shared.Core.Objects.Requests
 {
     public interface IListRequest<T> : IRequest
     {
-        IList<T> Items { get; set; }
+        IList<T> Items { get; }
     }
 }

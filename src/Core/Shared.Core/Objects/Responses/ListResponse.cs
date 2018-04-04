@@ -13,7 +13,7 @@ namespace GoldenEye.Shared.Core.Objects.Responses
         /// List of records
         /// </summary>
         [DataMember]
-        public IList<T> Items { get; set; }
+        public IList<T> Items { get; }
 
         public ListResponse()
         {

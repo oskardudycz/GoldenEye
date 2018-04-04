@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using FluentAssertions;
 using GoldenEye.Backend.Core.DDD.Events;
 using GoldenEye.Backend.Core.Marten.Events.Storage;
@@ -33,7 +31,7 @@ namespace Backend.Core.Marten.Tests.Events.Storage
             public Guid StreamId => UserId;
         }
 
-        [Fact(Skip = "Myget can't run it")]
+        [Fact]
         public void GivenEventStoreWithEvents_WhenQueried_ThenQueriedSuccessful()
         {
             Guid userId = Guid.NewGuid();

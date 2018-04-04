@@ -2,11 +2,11 @@
 {
     public interface ISingleRequest : IRequest
     {
-        object Item { get; set; }
+        object Item { get; }
     }
 
     public interface ISingleRequest<T> : ISingleRequest
     {
-        new T Item { get; set; }
+        new T Item { get; }
     }
 }
