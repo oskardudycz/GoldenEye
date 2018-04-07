@@ -67,7 +67,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend.Core.Tests", "Core\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend.Core.WebApi.Tests", "Core\Backend.Core.WebApi.Tests\Backend.Core.WebApi.Tests.csproj", "{9BDEDD7C-A07A-42BD-85EB-2A7F29F10E1E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend.Core.Dapper", "Core\Backend.Core.Dapper\Backend.Core.Dapper.csproj", "{7D9EBFA0-F65B-4F87-824A-1F3F2D18BD0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend.Core.Dapper", "Core\Backend.Core.Dapper\Backend.Core.Dapper.csproj", "{7D9EBFA0-F65B-4F87-824A-1F3F2D18BD0A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{745EC139-4033-4F75-BC9C-64A417DC1229}"
+	ProjectSection(SolutionItems) = preProject
+		..\docker\docker-compose.yml = ..\docker\docker-compose.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "postgres", "postgres", "{E9097CBA-BBAA-4E27-BA2E-1DF61CBFCB37}"
+	ProjectSection(SolutionItems) = preProject
+		..\docker\postgres\variables.env = ..\docker\postgres\variables.env
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -192,6 +202,7 @@ Global
 		{68E9180D-9EF1-4765-AC3E-85B0B167602C} = {F4F82AA0-8F75-4A08-B420-5C5A3FC812C0}
 		{9BDEDD7C-A07A-42BD-85EB-2A7F29F10E1E} = {F4F82AA0-8F75-4A08-B420-5C5A3FC812C0}
 		{7D9EBFA0-F65B-4F87-824A-1F3F2D18BD0A} = {F4F82AA0-8F75-4A08-B420-5C5A3FC812C0}
+		{E9097CBA-BBAA-4E27-BA2E-1DF61CBFCB37} = {745EC139-4033-4F75-BC9C-64A417DC1229}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8F5394A0-8892-4A22-B6A0-7BBC209FF191}

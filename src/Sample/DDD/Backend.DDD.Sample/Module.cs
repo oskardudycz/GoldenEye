@@ -35,15 +35,13 @@ namespace Backend.DDD.Sample
 
         private void ConfigureIntrastructure(IServiceCollection services)
         {
-            var connectionString = configuration.GetConnectionString("DDDSample") ?? "PORT = 5432; HOST = 127.0.0.1; TIMEOUT = 15; POOLING = True; MINPOOLSIZE = 1; MAXPOOLSIZE = 100; COMMANDTIMEOUT = 20; DATABASE = 'postgres'; PASSWORD = 'postgres'; USER ID = 'postgres'";
+            var connectionString = configuration.GetConnectionString("DDDSample") ?? "PORT = 5432; HOST = 127.0.0.1; TIMEOUT = 15; POOLING = True; MINPOOLSIZE = 1; MAXPOOLSIZE = 100; COMMANDTIMEOUT = 20; DATABASE = 'postgres'; PASSWORD = 'Password12!'; USER ID = 'postgres'";
 
             services.AddMartenContext(sp => connectionString, SetupEventStore, schemaName: "DDDSample");
             services.AddEventStore<MartenEventStore>();
             services.AddEventStorePipeline();
             services.AddValidationPipeline();
             services.AddMartenDocumentDataContext();
-
-            services.AddMartenDocumentCRUDRepository<Issue>();
         }
 
         private void SetupEventStore(StoreOptions options)
@@ -55,9 +53,12 @@ namespace Backend.DDD.Sample
         private void RegisterHandlers(IServiceCollection services)
         {
             ////issues
-            services.RegisterQueryHandler<GetIssues, IReadOnlyList<IssueContracts.Views.Issue>, IssueQueryHandler>();
-            services.RegisterQueryHandler<GetIssue, IssueContracts.Views.Issue, IssueQueryHandler>();
+
+            services.RegisterQueryHandler<GetIssues, IReadOnlyList<IssueContracts.Views.IssueView>, IssueQueryHandler>();
+            services.RegisterQueryHandler<GetIssue, IssueContracts.Views.IssueView, IssueQueryHandler>();
             services.RegisterCommandHandler<CreateIssue, IssueCommandHandler>();
+            services.AddMartenDocumentCRUDRepository<Issue>();
+            services.AddMartenDocumentReadonlyRepository<IssueContracts.Views.IssueView>();
         }
     }
 }

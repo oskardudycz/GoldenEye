@@ -75,7 +75,7 @@ namespace GoldenEye.Backend.Core.Marten.Events.Storage
 
         public Task<TEntity> AggregateAsync<TEntity>(Guid streamId, CancellationToken cancellationToken = default(CancellationToken), int version = 0, DateTime? timestamp = null) where TEntity : class, new()
         {
-            return documentSession.Events.AggregateStreamAsync<TEntity>(streamId, version, timestamp, cancellationToken);
+            return documentSession.Events.AggregateStreamAsync<TEntity>(streamId, version, timestamp, token: cancellationToken);
         }
 
         public TEvent GetById<TEvent>(Guid id)

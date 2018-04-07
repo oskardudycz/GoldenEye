@@ -13,7 +13,7 @@ namespace GoldenEye.Shared.Core.Objects.Responses
         /// Record
         /// </summary>
         [DataMember]
-        public T Item { get; set; }
+        public T Item { get; }
 
         public SingleResponse()
         {
@@ -49,7 +49,6 @@ namespace GoldenEye.Shared.Core.Objects.Responses
         object ISingleResponse.Item
         {
             get { return Item; }
-            set { Item = (T)value; }
         }
     }
 }

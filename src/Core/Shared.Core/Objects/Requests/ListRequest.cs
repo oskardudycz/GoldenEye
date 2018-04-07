@@ -10,7 +10,7 @@ namespace GoldenEye.Shared.Core.Objects.Requests
         /// <summary>
         /// List of records
         /// </summary>
-        public IList<T> Items { get; set; }
+        public IList<T> Items { get; }
 
         /// <summary>
         /// Constructor
