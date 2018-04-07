@@ -39,7 +39,7 @@ namespace GoldenEye.Backend.Core.Registration
         {
             services.Scan(scan => scan
                 .FromApplicationDependencies()
-                    .AddClasses(classes => classes.AssignableTo(typeof(IValidator<>)))
+                    .AddClasses(classes => classes.Where(t => !t.IsGenericType).AssignableTo(typeof(IValidator<>)))
                         .AsImplementedInterfaces()
                         .WithLifetime(serviceLifetime));
 
