@@ -5,19 +5,19 @@ using GoldenEye.Shared.Core.Objects.General;
 
 namespace Backend.DDD.Sample.Contracts.Issues.Views
 {
-    public class Issue : IView<Guid>
+    public class IssueView : IView<Guid>
     {
         public Guid Id { get; set; }
 
-        public IssueType Type { get; private set; }
+        public IssueType Type { get; set; }
 
-        public string Title { get; private set; }
+        public string Title { get; set; }
 
-        public string Description { get; private set; }
+        public string Description { get; set; }
 
         object IHasId.Id => Id;
 
-        public Issue()
+        public IssueView()
         {
         }
 

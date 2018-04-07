@@ -4,7 +4,7 @@ using GoldenEye.Backend.Core.DDD.Queries;
 
 namespace Backend.DDD.Sample.Contracts.Issues.Queries
 {
-    public class GetIssue : IQuery<Issue>
+    public class GetIssue : IQuery<Views.IssueView>
     {
         public Guid Id { get; }
 

@@ -13,8 +13,8 @@ using IssueViews = Backend.DDD.Sample.Contracts.Issues.Views;
 namespace Backend.DDD.Sample.Issues.Handlers
 {
     internal class IssueQueryHandler :
-        IQueryHandler<GetIssues, IReadOnlyList<IssueViews.Issue>>,
-        IQueryHandler<GetIssue, IssueViews.Issue>
+        IQueryHandler<GetIssues, IReadOnlyList<IssueViews.IssueView>>,
+        IQueryHandler<GetIssue, IssueViews.IssueView>
     {
         private readonly IReadonlyRepository<Issue> repository;
 
@@ -23,19 +23,19 @@ namespace Backend.DDD.Sample.Issues.Handlers
             this.repository = repository ?? throw new ArgumentException(nameof(repository));
         }
 
-        public Task<IReadOnlyList<IssueViews.Issue>> Handle(GetIssues message, CancellationToken cancellationToken)
+        public Task<IReadOnlyList<IssueViews.IssueView>> Handle(GetIssues message, CancellationToken cancellationToken)
         {
             return repository
                 .GetAll()
-                .ProjectTo<IssueViews.Issue>()
+                .ProjectTo<IssueViews.IssueView>()
                 .ToListAsync();
         }
 
-        public async Task<IssueViews.Issue> Handle(GetIssue message, CancellationToken cancellationToken)
+        public async Task<IssueViews.IssueView> Handle(GetIssue message, CancellationToken cancellationToken)
         {
             var entity = await repository.GetByIdAsync(message.Id);
 
-            return entity.Map<IssueViews.Issue>();
+            return entity.Map<IssueViews.IssueView>();
         }
     }
 }

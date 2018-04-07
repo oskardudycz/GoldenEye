@@ -2,11 +2,11 @@
 {
     public interface ISingleResponse : IResponse
     {
-        object Item { get; set; }
+        object Item { get; }
     }
 
     public interface ISingleResponse<T> : ISingleResponse
     {
-        new T Item { get; set; }
+        new T Item { get; }
     }
 }

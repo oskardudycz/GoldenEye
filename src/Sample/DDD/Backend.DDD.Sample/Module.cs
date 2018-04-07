@@ -54,11 +54,11 @@ namespace Backend.DDD.Sample
         {
             ////issues
 
-            services.RegisterQueryHandler<GetIssues, IReadOnlyList<IssueContracts.Views.Issue>, IssueQueryHandler>();
-            services.RegisterQueryHandler<GetIssue, IssueContracts.Views.Issue, IssueQueryHandler>();
+            services.RegisterQueryHandler<GetIssues, IReadOnlyList<IssueContracts.Views.IssueView>, IssueQueryHandler>();
+            services.RegisterQueryHandler<GetIssue, IssueContracts.Views.IssueView, IssueQueryHandler>();
             services.RegisterCommandHandler<CreateIssue, IssueCommandHandler>();
             services.AddMartenDocumentCRUDRepository<Issue>();
-            services.AddMartenDocumentReadonlyRepository<IssueContracts.Views.Issue>();
+            services.AddMartenDocumentReadonlyRepository<IssueContracts.Views.IssueView>();
         }
     }
 }

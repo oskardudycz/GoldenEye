@@ -2,11 +2,7 @@
 
 namespace GoldenEye.Shared.Core.Objects.General
 {
-    public class ObjectBase : IBusinessObject
-    {
-    }
-
-    public abstract class ObjectWithIdBase : ObjectBase, IHasId
+    public abstract class ObjectWithIdBase : IHasId
     {
         object IHasId.Id { get; }
     }
@@ -25,7 +21,7 @@ namespace GoldenEye.Shared.Core.Objects.General
     {
     }
 
-    public abstract class ObjectWithIntIdBase :ObjectWithIdBase<int>, IHasId
+    public abstract class ObjectWithIntIdBase : ObjectWithIdBase<int>, IHasId
     {
     }
 }
