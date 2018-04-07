@@ -15,6 +15,7 @@
     <RepositoryUrl>https://github.com/oskardudycz/GoldenEye</RepositoryUrl>
     <AssemblyName>GoldenEye.Shared.Security</AssemblyName>
     <RootNamespace>GoldenEye.Shared.Security</RootNamespace>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <ItemGroup>

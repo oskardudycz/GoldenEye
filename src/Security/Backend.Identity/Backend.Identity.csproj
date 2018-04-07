@@ -15,6 +15,7 @@
     <RepositoryUrl>https://github.com/oskardudycz/GoldenEye</RepositoryUrl>
     <AssemblyName>GoldenEye.Backend.Identity</AssemblyName>
     <RootNamespace>GoldenEye.Backend.Identity</RootNamespace>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <ItemGroup>

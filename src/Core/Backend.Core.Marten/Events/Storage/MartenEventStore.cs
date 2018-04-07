@@ -168,7 +168,7 @@ namespace GoldenEye.Backend.Core.Marten.Events.Storage
                     .SingleOrDefault(p => p.Id == id);
             }
 
-            Task<TProjection> IEventProjectionStore.GetByIdAsync<TProjection>(Guid id, CancellationToken cancellationToken = default(CancellationToken))
+            Task<TProjection> IEventProjectionStore.GetByIdAsync<TProjection>(Guid id, CancellationToken cancellationToken)
             {
                 return Query<TProjection>()
                     .SingleOrDefaultAsync(p => p.Id == id, cancellationToken);

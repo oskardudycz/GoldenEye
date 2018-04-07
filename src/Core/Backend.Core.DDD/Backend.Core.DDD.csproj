@@ -15,6 +15,7 @@
     <RepositoryUrl>https://github.com/oskardudycz/GoldenEye</RepositoryUrl>
     <AssemblyName>GoldenEye.Backend.Core.DDD</AssemblyName>
     <RootNamespace>GoldenEye.Backend.Core.DDD</RootNamespace>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <ItemGroup>

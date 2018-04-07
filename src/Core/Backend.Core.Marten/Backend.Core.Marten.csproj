@@ -15,6 +15,7 @@
     <RepositoryUrl>https://github.com/oskardudycz/GoldenEye</RepositoryUrl>
     <AssemblyName>GoldenEye.Backend.Core.Marten</AssemblyName>
     <RootNamespace>GoldenEye.Backend.Core.Marten</RootNamespace>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <ItemGroup>
