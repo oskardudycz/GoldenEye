@@ -9,11 +9,11 @@ namespace Backend.DDD.Sample.Contracts.Issues.Views
     {
         public Guid Id { get; set; }
 
-        public IssueType Type { get; private set; }
+        public IssueType Type { get; set; }
 
-        public string Title { get; private set; }
+        public string Title { get; set; }
 
-        public string Description { get; private set; }
+        public string Description { get; set; }
 
         object IHasId.Id => Id;
 

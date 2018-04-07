@@ -42,8 +42,6 @@ namespace Backend.DDD.Sample
             services.AddEventStorePipeline();
             services.AddValidationPipeline();
             services.AddMartenDocumentDataContext();
-
-            services.AddMartenDocumentCRUDRepository<Issue>();
         }
 
         private void SetupEventStore(StoreOptions options)
@@ -55,10 +53,12 @@ namespace Backend.DDD.Sample
         private void RegisterHandlers(IServiceCollection services)
         {
             ////issues
-            services.AddMartenDocumentReadonlyRepository<IssueContracts.Views.IssueView>();
+
             services.RegisterQueryHandler<GetIssues, IReadOnlyList<IssueContracts.Views.IssueView>, IssueQueryHandler>();
             services.RegisterQueryHandler<GetIssue, IssueContracts.Views.IssueView, IssueQueryHandler>();
             services.RegisterCommandHandler<CreateIssue, IssueCommandHandler>();
+            services.AddMartenDocumentCRUDRepository<Issue>();
+            services.AddMartenDocumentReadonlyRepository<IssueContracts.Views.IssueView>();
         }
     }
 }
