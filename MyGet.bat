@@ -1,3 +1,15 @@
+dotnet build src/Core/Shared.Core/Shared.Core.csproj
+dotnet build src/Core/Shared.Core.Validation/Shared.Core.Validation.csproj
+dotnet build src/Core/Backend.Core/Backend.Core.csproj
+dotnet build src/Core/Backend.Core.Dapper/Backend.Core.Dapper.csproj
+dotnet build src/Core/Backend.Core.Marten/Backend.Core.Marten.csproj
+dotnet build src/Core/Backend.Core.EntityFramework/Backend.Core.EntityFramework.csproj
+dotnet build src/Core/Backend.Core.DDD/Backend.Core.DDD.csproj
+dotnet build src/Core/Backend.Core.WebApi/Backend.Core.WebApi.csproj
+dotnet build src/Security/Shared.Security/Shared.Security.csproj
+dotnet build src/Security/Backend.Identity/Backend.Identity.csproj
+dotnet build src/Security/Frontend.Identity/Frontend.Identity.csproj
+
 dotnet pack src/Core/Shared.Core/Shared.Core.csproj
 dotnet pack src/Core/Shared.Core.Validation/Shared.Core.Validation.csproj
 dotnet pack src/Core/Backend.Core/Backend.Core.csproj
