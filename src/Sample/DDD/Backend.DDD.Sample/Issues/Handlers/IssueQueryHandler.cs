@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using AutoMapper.QueryableExtensions;
 using Backend.DDD.Sample.Contracts.Issues.Queries;
 using GoldenEye.Backend.Core.DDD.Queries;
 using GoldenEye.Backend.Core.Repositories;
+using GoldenEye.Shared.Core.Extensions.Mapping;
 using Marten;
 using IssueViews = Backend.DDD.Sample.Contracts.Issues.Views;
 
@@ -14,9 +16,9 @@ namespace Backend.DDD.Sample.Issues.Handlers
         IQueryHandler<GetIssues, IReadOnlyList<IssueViews.Issue>>,
         IQueryHandler<GetIssue, IssueViews.Issue>
     {
-        private readonly IReadonlyRepository<IssueViews.Issue> repository;
+        private readonly IReadonlyRepository<Issue> repository;
 
-        public IssueQueryHandler(IReadonlyRepository<IssueViews.Issue> repository)
+        public IssueQueryHandler(IReadonlyRepository<Issue> repository)
         {
             this.repository = repository ?? throw new ArgumentException(nameof(repository));
         }
@@ -25,12 +27,15 @@ namespace Backend.DDD.Sample.Issues.Handlers
         {
             return repository
                 .GetAll()
+                .ProjectTo<IssueViews.Issue>()
                 .ToListAsync();
         }
 
-        public Task<IssueViews.Issue> Handle(GetIssue message, CancellationToken cancellationToken)
+        public async Task<IssueViews.Issue> Handle(GetIssue message, CancellationToken cancellationToken)
         {
-            return repository.GetByIdAsync(message.Id);
+            var entity = await repository.GetByIdAsync(message.Id);
+
+            return entity.Map<IssueViews.Issue>();
         }
     }
 }
