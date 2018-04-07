@@ -1,3 +1,5 @@
+![GoldenEye Logo](assets/GoldenEye.png)
+
 # GoldenEye
 
 [![Join the chat at https://gitter.im/oskardudycz/GoldenEye](https://badges.gitter.im/oskardudycz/GoldenEye.svg)](https://gitter.im/oskardudycz/GoldenEye?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
