@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>3.0.7</Version>
+    <Version>3.0.8</Version>
     <PackageId>GoldenEye.Backend.Identity</PackageId>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Authors>Oskar Dudycz</Authors>
@@ -16,6 +16,7 @@
     <AssemblyName>GoldenEye.Backend.Identity</AssemblyName>
     <RootNamespace>GoldenEye.Backend.Identity</RootNamespace>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <PackageIconUrl>https://raw.githubusercontent.com/oskardudycz/GoldenEye/master/assets/GoldenEyeLogo.png</PackageIconUrl>
   </PropertyGroup>
 
   <ItemGroup>
