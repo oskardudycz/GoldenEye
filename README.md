@@ -16,14 +16,14 @@ What do I get?
 Complete Solution bootstrap - bottom up:
 - Entity Framework
 - CRUD Repositories and CRUD Application Services
-- WebApi REST controllers with OData being set up
-- Authorization with OAuth
-- complete set up of dependency injection with automatic naming convention binding (Ninject)
-- Automapper preconfigured and class mappings automatic registration
+- WebApi REST controllers
+- Authorization with OAuth (Identity Server)
+- complete set up of dependency injection with automatic naming convention binding
+- AutoMapper preconfigured and class mappings automatic registration
 - Validation flow with FluentValidation.NET
-- Examples of complete usage (Task list funcionality)
+- Examples of complete usage (Task list functionality)
 - CQRS and Domain Driven Development stack - sending and handling commands, queries, events
-- document postgres and event store support with Marten framework
+- document database and event store support in Postgres with Marten framework
 - many more
 
 How do I get started?
