@@ -42,7 +42,6 @@ namespace Backend
             services.AddEventStorePipeline();
             services.AddValidationPipeline();
             services.AddMartenDocumentDataContext();
-            services.AddMartenDocumentCRUDRepository<Issue>();
         }
 
         private void SetupEventStore(StoreOptions options)

@@ -2,7 +2,9 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Backend.Contracts.Issues.Commands;
+using Backend.Contracts.Issues.Events;
 using GoldenEye.Backend.Core.DDD.Commands;
+using GoldenEye.Backend.Core.DDD.Events;
 using GoldenEye.Backend.Core.Repositories;
 using GoldenEye.Shared.Core.Extensions.Mapping;
 
@@ -11,21 +13,19 @@ namespace Backend.Issues.Handlers
     internal class IssueCommandHandler
         : ICommandHandler<CreateIssue>
     {
-        private readonly IRepository<Issue> repository;
+        private IEventBus eventBus;
 
-        public IssueCommandHandler(
-            IRepository<Issue> repository
-        )
+        public IssueCommandHandler( IEventBus eventBus )
         {
-            this.repository = repository ?? throw new ArgumentException(nameof(repository));
+            this.eventBus = eventBus;
         }
 
         public async Task Handle(CreateIssue message, CancellationToken cancellationToken)
         {
-            var aggregate = message.Map<Issue>();
-
-            await repository.AddAsync(aggregate);
-            await repository.SaveChangesAsync();
+            var issue = message.Map<Issue>();
+            var @event = issue.Map<IssueCreated>();
+            await eventBus.Publish(@event);
+           
         }
     }
 }
