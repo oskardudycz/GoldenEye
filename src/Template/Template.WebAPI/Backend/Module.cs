@@ -42,7 +42,6 @@ namespace Backend
             services.AddEventStorePipeline();
             services.AddValidationPipeline();
             services.AddMartenDocumentDataContext();
-
             services.AddMartenDocumentCRUDRepository<Issue>();
         }
 
@@ -54,7 +53,7 @@ namespace Backend
 
         private void RegisterHandlers(IServiceCollection services)
         {
-             services.AddMartenDocumentReadonlyRepository<IssueContracts.Views.IssueView>();
+            services.AddMartenDocumentReadonlyRepository<IssueContracts.Views.IssueView>();
             services.RegisterQueryHandler<GetIssues, IReadOnlyList<IssueContracts.Views.IssueView>, IssueQueryHandler>();
             services.RegisterQueryHandler<GetIssue, IssueContracts.Views.IssueView, IssueQueryHandler>();
             services.RegisterCommandHandler<CreateIssue, IssueCommandHandler>();

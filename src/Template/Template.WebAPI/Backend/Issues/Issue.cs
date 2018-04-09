@@ -1,11 +1,11 @@
 ﻿using System;
 using Backend.Contracts.Issues;
-using GoldenEye.Backend.Core.Entity;
+using GoldenEye.Backend.Core.DDD.Events;
 using GoldenEye.Shared.Core.Objects.General;
 
 namespace Backend.Issues
 {
-    public class Issue : IEntity
+    public class Issue : IEvent, IHasId
     {
         object IHasId.Id => Id;
 
@@ -27,5 +27,7 @@ namespace Backend.Issues
             Type = type;
             Title = title;
         }
+
+        public Guid StreamId => Id;
     }
 }
