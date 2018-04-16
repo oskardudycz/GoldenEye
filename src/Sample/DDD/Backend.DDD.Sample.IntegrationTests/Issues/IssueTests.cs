@@ -15,7 +15,7 @@ namespace Backend.DDD.Sample.IntegrationTests.Issues
             _sut = new TestContext();
         }
 
-        [Fact(Skip = "Skipped because of AppVeyor")]
+        [Fact]
         public async Task IssueFlowTests()
         {
             var response = await _sut.Client.GetAsync("/api/Issues");

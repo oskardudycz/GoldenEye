@@ -120,7 +120,7 @@ namespace Backend.Core.Tests.Validation
             }
 
             [Fact]
-            public async Task GivenValidationPipelineSetUp_WhenInValidCommandWasSent_ThenCommandWasValidatedAndValidationExceptionWasThrown()
+            public void GivenValidationPipelineSetUp_WhenInValidCommandWasSent_ThenCommandWasValidatedAndValidationExceptionWasThrown()
             {
                 //Given
                 var services = new ServiceCollection();
@@ -276,7 +276,7 @@ namespace Backend.Core.Tests.Validation
             }
 
             [Fact]
-            public async Task GivenValidationPipelineSetUp_WhenInValidQueryWasSent_ThenQueryWasValidatedAndValidationExceptionWasThrown()
+            public void GivenValidationPipelineSetUp_WhenInValidQueryWasSent_ThenQueryWasValidatedAndValidationExceptionWasThrown()
             {
                 //Given
                 var services = new ServiceCollection();

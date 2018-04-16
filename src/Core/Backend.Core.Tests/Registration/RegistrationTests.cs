@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using FluentAssertions;
 using FluentValidation;
 using GoldenEye.Backend.Core.Registration;
@@ -42,7 +41,7 @@ namespace Backend.Core.Tests.Registration
         }
 
         [Fact]
-        public async Task GivenTwoValidatorsForType_WhenAddAllValidatorsCalled_ThenAllValidatorsAreRegistered()
+        public void GivenTwoValidatorsForType_WhenAddAllValidatorsCalled_ThenAllValidatorsAreRegistered()
         {
             //Given
             var services = new ServiceCollection();

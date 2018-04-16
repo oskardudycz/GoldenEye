@@ -75,7 +75,7 @@ namespace GoldenEye.Backend.Core.Marten.Events.Storage
 
         public Task<TEntity> AggregateAsync<TEntity>(Guid streamId, CancellationToken cancellationToken = default(CancellationToken), int version = 0, DateTime? timestamp = null) where TEntity : class, new()
         {
-            return documentSession.Events.AggregateStreamAsync<TEntity>(streamId, version, timestamp, cancellationToken);
+            return documentSession.Events.AggregateStreamAsync<TEntity>(streamId, version, timestamp, token: cancellationToken);
         }
 
         public TEvent GetById<TEvent>(Guid id)
@@ -168,7 +168,7 @@ namespace GoldenEye.Backend.Core.Marten.Events.Storage
                     .SingleOrDefault(p => p.Id == id);
             }
 
-            Task<TProjection> IEventProjectionStore.GetByIdAsync<TProjection>(Guid id, CancellationToken cancellationToken = default(CancellationToken))
+            Task<TProjection> IEventProjectionStore.GetByIdAsync<TProjection>(Guid id, CancellationToken cancellationToken)
             {
                 return Query<TProjection>()
                     .SingleOrDefaultAsync(p => p.Id == id, cancellationToken);

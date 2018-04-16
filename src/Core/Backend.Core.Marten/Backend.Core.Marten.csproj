@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>3.0.6</Version>
+    <Version>3.0.8</Version>
     <PackageId>GoldenEye.Backend.Core.Marten</PackageId>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Authors>Oskar Dudycz</Authors>
@@ -15,10 +15,12 @@
     <RepositoryUrl>https://github.com/oskardudycz/GoldenEye</RepositoryUrl>
     <AssemblyName>GoldenEye.Backend.Core.Marten</AssemblyName>
     <RootNamespace>GoldenEye.Backend.Core.Marten</RootNamespace>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <PackageIconUrl>https://raw.githubusercontent.com/oskardudycz/GoldenEye/master/assets/GoldenEyeLogo.png</PackageIconUrl>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Marten" Version="2.5.0" />
+    <PackageReference Include="Marten" Version="2.7.1" />
   </ItemGroup>
 
   <ItemGroup>
