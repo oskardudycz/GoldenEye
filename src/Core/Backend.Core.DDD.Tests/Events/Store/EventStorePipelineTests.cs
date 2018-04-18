@@ -31,7 +31,7 @@ namespace Backend.Core.DDD.Tests.Events.Store
             var @event = new UserCreated();
 
             //When
-            await eventBus.Publish(@event);
+            await eventBus.PublishAsync(@event);
 
             //Then
             var eventStore = (EventStore)sp.GetService<IEventStore>();
