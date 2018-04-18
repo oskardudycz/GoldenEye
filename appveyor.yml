@@ -5,8 +5,6 @@ skip_branch_with_pr: true
 image: Visual Studio 2017
 configuration: Release
 nuget:
-  account_feed: true
-  project_feed: true
   disable_publish_on_pr: true
 before_build:
 - cmd: dotnet restore src/GoldenEye.sln
