@@ -1,4 +1,10 @@
-﻿# v4.0.0 (18.04.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/56)
+﻿# v4.0.1 (18.04.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/57)
+
+## Changes
+
+* updated packages version to most recent **[PATCH]**
+
+# v4.0.0 (18.04.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/56)
 
 ## Changes
 
