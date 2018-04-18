@@ -1,9 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 
 namespace GoldenEye.Backend.Core.DDD.Events
 {
     public interface IEventBus
     {
-        Task Publish<TEvent>(TEvent @event) where TEvent : IEvent;
+        Task PublishAsync<TEvent>(TEvent @event, CancellationToken cancellationToken = default(CancellationToken)) where TEvent : IEvent;
     }
 }

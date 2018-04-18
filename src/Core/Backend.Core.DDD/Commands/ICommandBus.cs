@@ -1,9 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 
 namespace GoldenEye.Backend.Core.DDD.Commands
 {
     public interface ICommandBus
     {
-        Task Send<TCommand>(TCommand command) where TCommand : ICommand;
+        Task SendAsync<TCommand>(TCommand command, CancellationToken cancellationToken = default(CancellationToken)) where TCommand : ICommand;
     }
 }
