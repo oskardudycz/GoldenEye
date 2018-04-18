@@ -1,4 +1,4 @@
-﻿namespace Backend.Contracts.Issues
+﻿namespace Contracts.Issues
 {
     public enum IssueType
     {

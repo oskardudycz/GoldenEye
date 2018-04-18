@@ -1,7 +1,7 @@
 ﻿using System;
 using GoldenEye.Backend.Core.DDD.Events;
 
-namespace Backend.Contracts.Issues.Events
+namespace Contracts.Issues.Events
 {
     public class IssueCreated : IEvent
     {

@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Backend.Contracts.Issues.Queries;
+using Contracts.Issues.Queries;
 using GoldenEye.Backend.Core.DDD.Queries;
 using GoldenEye.Backend.Core.Repositories;
 using Marten;
-using IssueViews = Backend.Contracts.Issues.Views;
+using IssueViews = Contracts.Issues.Views;
 
 namespace Backend.Issues.Handlers
 {

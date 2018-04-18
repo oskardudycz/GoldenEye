@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using Backend.Contracts.Issues.Commands;
-using Backend.Contracts.Issues.Queries;
+using Contracts.Issues.Commands;
+using Contracts.Issues.Queries;
 using Backend.Issues;
 using Backend.Issues.Handlers;
 using Backend.Issues.Projections;
@@ -11,7 +11,7 @@ using GoldenEye.Shared.Core.Modules;
 using Marten;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using IssueContracts = Backend.Contracts.Issues;
+using IssueContracts = Contracts.Issues;
 
 namespace Backend
 {

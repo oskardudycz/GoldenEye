@@ -1,9 +1,9 @@
 ﻿using System;
-using Backend.Contracts.Issues.Events;
+using Contracts.Issues.Events;
 using GoldenEye.Backend.Core.DDD.Queries;
 using GoldenEye.Shared.Core.Objects.General;
 
-namespace Backend.Contracts.Issues.Views
+namespace Contracts.Issues.Views
 {
     public class IssueView : IView<Guid>
     {
@@ -16,10 +16,6 @@ namespace Backend.Contracts.Issues.Views
         public string Description { get; private set; }
 
         object IHasId.Id => Id;
-
-        public IssueView()
-        {
-        }
 
         public void Apply(IssueCreated @event)
         {

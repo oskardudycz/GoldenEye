@@ -1,7 +1,7 @@
 ﻿using System;
 using AutoMapper;
 using GoldenEye.Shared.Core.Mappings;
-using IssueContracts = Backend.Contracts.Issues;
+using IssueContracts = Contracts.Issues;
 
 namespace Backend.Issues.Mappings
 {

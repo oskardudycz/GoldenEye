@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2003
+VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{F4F82AA0-8F75-4A08-B420-5C5A3FC812C0}"
 EndProject
@@ -67,9 +67,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend.Core.Tests", "Core\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend.Core.WebApi.Tests", "Core\Backend.Core.WebApi.Tests\Backend.Core.WebApi.Tests.csproj", "{9BDEDD7C-A07A-42BD-85EB-2A7F29F10E1E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Template.WebAPI", "Template\Template.WebAPI\Template.WebAPI.csproj", "{592DD3EB-823E-4941-808A-7A42928748BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoldenEye.WebApi.SimpleDDD", "Template\GoldenEye.WebApi.SimpleDDD\GoldenEye.WebApi.SimpleDDD.csproj", "{592DD3EB-823E-4941-808A-7A42928748BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend.Core.Dapper", "Core\Backend.Core.Dapper\Backend.Core.Dapper.csproj", "{7D9EBFA0-F65B-4F87-824A-1F3F2D18BD0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend.Core.Dapper", "Core\Backend.Core.Dapper\Backend.Core.Dapper.csproj", "{7D9EBFA0-F65B-4F87-824A-1F3F2D18BD0A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{745EC139-4033-4F75-BC9C-64A417DC1229}"
 	ProjectSection(SolutionItems) = preProject
@@ -80,6 +80,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "postgres", "postgres", "{E9
 	ProjectSection(SolutionItems) = preProject
 		..\docker\postgres\variables.env = ..\docker\postgres\variables.env
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{2C2A047E-CDC5-41E8-82C1-BCC31F941B6A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -207,7 +209,7 @@ Global
 		{780DA3E7-461A-4BC7-AE31-8C8FB9DE68EE} = {E7DF2D12-586C-4FC6-AD53-082A1B5DF85B}
 		{68E9180D-9EF1-4765-AC3E-85B0B167602C} = {F4F82AA0-8F75-4A08-B420-5C5A3FC812C0}
 		{9BDEDD7C-A07A-42BD-85EB-2A7F29F10E1E} = {F4F82AA0-8F75-4A08-B420-5C5A3FC812C0}
-		{592DD3EB-823E-4941-808A-7A42928748BD} = {23C64FA6-FA22-4A73-8360-D81FD44E7AE1}
+		{592DD3EB-823E-4941-808A-7A42928748BD} = {2C2A047E-CDC5-41E8-82C1-BCC31F941B6A}
 		{7D9EBFA0-F65B-4F87-824A-1F3F2D18BD0A} = {F4F82AA0-8F75-4A08-B420-5C5A3FC812C0}
 		{E9097CBA-BBAA-4E27-BA2E-1DF61CBFCB37} = {745EC139-4033-4F75-BC9C-64A417DC1229}
 	EndGlobalSection

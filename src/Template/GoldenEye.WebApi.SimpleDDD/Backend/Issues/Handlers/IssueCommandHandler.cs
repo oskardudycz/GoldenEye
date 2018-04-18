@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Backend.Contracts.Issues.Commands;
-using Backend.Contracts.Issues.Events;
+using Contracts.Issues.Commands;
+using Contracts.Issues.Events;
 using GoldenEye.Backend.Core.DDD.Commands;
 using GoldenEye.Backend.Core.DDD.Events;
-using GoldenEye.Backend.Core.Repositories;
 using GoldenEye.Shared.Core.Extensions.Mapping;
 
 namespace Backend.Issues.Handlers
@@ -17,15 +16,14 @@ namespace Backend.Issues.Handlers
 
         public IssueCommandHandler( IEventBus eventBus )
         {
-            this.eventBus = eventBus;
+            this.eventBus = eventBus ?? throw new ArgumentException(nameof(eventBus));
         }
 
-        public async Task Handle(CreateIssue message, CancellationToken cancellationToken)
+        public async Task Handle(CreateIssue command, CancellationToken cancellationToken)
         {
-            var issue = message.Map<Issue>();
+            var issue = command.Map<Issue>();
             var @event = issue.Map<IssueCreated>();
             await eventBus.Publish(@event);
-           
         }
     }
 }
