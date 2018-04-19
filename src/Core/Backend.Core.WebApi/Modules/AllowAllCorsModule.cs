@@ -1,15 +1,11 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace GoldenEye.Backend.Core.WebApi.Modules
 {
-    public class AllowAllCorsModule : WebApiModuleBase
+    public class AllowAllCorsModule : WebApiModule
     {
-        public AllowAllCorsModule(IConfiguration configuration) : base(configuration)
-        {
-        }
         public override void Configure(IServiceCollection services)
         {
             services.AddCors(options =>
@@ -24,7 +20,7 @@ namespace GoldenEye.Backend.Core.WebApi.Modules
             });
         }
 
-        public override void OnStartup(IApplicationBuilder app, IHostingEnvironment env)
+        public override void Use(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseCors("AllowAllCorsPolicy");
         }

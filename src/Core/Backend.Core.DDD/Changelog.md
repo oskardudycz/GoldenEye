@@ -1,4 +1,11 @@
-﻿# v4.0.0 (18.04.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/56)
+﻿# v5.0.0 (19.04.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/58)
+
+## Changes
+
+* Updated reference to Shared.Core **[MAJOR]**
+
+
+# v4.0.0 (18.04.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/56)
 
 ## Changes
 
@@ -16,7 +23,7 @@
 
 ## Changes
 
-* updated packages version to most recent **[PATCH]**
+* updated packages version to most recent **[PATCH]**C:\Repos\GoldenEye\src\Core\Backend.Core.DDD\Changelog.md
 
 
 # v3.0.0 (29.12.2017) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/44)
