@@ -1,4 +1,11 @@
-﻿# v1.0.2 (08.04.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/54)
+﻿# v2.0.0 (19.04.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/58)
+
+## Changes
+
+* Updated reference to Shared.Core **[MAJOR]**
+
+
+# v1.0.2 (08.04.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/54)
 
 ## Changes
 

@@ -1,4 +1,16 @@
-﻿# v4.0.0 (18.04.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/56)
+﻿# v5.0.0 (19.04.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/58)
+
+## Changes
+
+Updated samples to show:
+* Renamed Module Base classes to don't have `Base` suffix **[MAJOR]**
+* Removed IConfiguration from base classes constructors **[MAJOR]**
+* Moved modules creation to DI **[MAJOR]**
+* Added registration helpers for configuring and Using modules **[MINOR]**
+* Renamed OnStartup method of module to Use to be aligned with DI conventions **[MAJOR]**
+* Added registration of configuration **[MAJOR]**
+
+# v4.0.0 (18.04.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/56)
 
 ## Changes
 
