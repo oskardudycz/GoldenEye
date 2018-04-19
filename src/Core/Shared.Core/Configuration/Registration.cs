@@ -6,11 +6,9 @@ namespace GoldenEye.Shared.Core.Configuration
 {
     public static class Registration
     {
-        public static void AddConfiguration<TConfiguation>(this IServiceCollection services, TConfiguation configuration, ServiceLifetime serviceLifetime = ServiceLifetime.Singleton)
-            where TConfiguation : class, IConfiguration
+        public static void AddConfiguration(this IServiceCollection services, IConfiguration configuration, ServiceLifetime serviceLifetime = ServiceLifetime.Singleton)
         {
-            services.Add<TConfiguation, TConfiguation>(serviceLifetime);
-            services.Add<IConfiguration, TConfiguation>(sp => sp.GetService<TConfiguation>(), serviceLifetime);
+            services.Add(sp => configuration, serviceLifetime);
         }
     }
 }
