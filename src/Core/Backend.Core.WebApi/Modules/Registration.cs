@@ -15,7 +15,7 @@ namespace GoldenEye.Backend.Core.WebApi.Modules
             {
                 if (module is IWebApiModule webApiModule)
                 {
-                    webApiModule.OnStartup(app, env);
+                    webApiModule.Use(app, env);
                 }
                 else
                 {

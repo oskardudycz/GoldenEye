@@ -20,7 +20,7 @@ namespace GoldenEye.Backend.Core.WebApi.Modules
             });
         }
 
-        public override void OnStartup(IApplicationBuilder app, IHostingEnvironment env)
+        public override void Use(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseCors("AllowAllCorsPolicy");
         }
