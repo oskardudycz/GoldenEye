@@ -1,16 +1,12 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace GoldenEye.Backend.Core.WebApi.Modules
 {
-    public class SwaggerModule : WebApiModuleBase
+    public class SwaggerModule : WebApiModule
     {
-        public SwaggerModule(IConfiguration configuration) : base(configuration)
-        {
-        }
         public override void Configure(IServiceCollection services)
         {
             services.AddSwaggerGen(c =>
