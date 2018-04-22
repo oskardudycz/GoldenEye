@@ -43,6 +43,11 @@ namespace GoldenEye.Backend.Core.Dapper.Context
             throw new NotImplementedException();
         }
 
+        public IQueryable<TEntity> CustomQuery<TEntity>(string query) where TEntity : class
+        {
+            throw new NotImplementedException();
+        }
+
         public TEntity Remove<TEntity>(TEntity entity, int? version = null) where TEntity : class
         {
             throw new NotImplementedException();

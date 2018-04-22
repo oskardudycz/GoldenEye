@@ -47,5 +47,7 @@ namespace GoldenEye.Backend.Core.Context
         public abstract Task<TEntity> GetByIdAsync<TEntity>(object id, CancellationToken cancellationToken = default(CancellationToken)) where TEntity : class, new();
 
         public abstract IQueryable<TEntity> GetQueryable<TEntity>() where TEntity : class;
+
+        public abstract IQueryable<TEntity> CustomQuery<TEntity>(string query) where TEntity : class;
     }
 }

@@ -81,6 +81,11 @@ namespace GoldenEye.Backend.Core.Marten.Context
             return _documentSession.Query<TEntity>();
         }
 
+        public IQueryable<TEntity> CustomQuery<TEntity>(string query) where TEntity : class
+        {
+            return _documentSession.Query<TEntity>(query).AsQueryable();
+        }
+
         public TEntity Remove<TEntity>(TEntity entity, int? version = null) where TEntity : class
         {
             _documentSession.Delete(entity);

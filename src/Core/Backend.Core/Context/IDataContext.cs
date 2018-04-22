@@ -27,6 +27,8 @@ namespace GoldenEye.Backend.Core.Context
 
         IQueryable<TEntity> GetQueryable<TEntity>() where TEntity : class;
 
+        IQueryable<TEntity> CustomQuery<TEntity>(string query) where TEntity : class;
+
         int SaveChanges();
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken));
