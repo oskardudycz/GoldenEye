@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <PackageReference Include="Dapper" Version="1.50.4" />
+    <PackageReference Include="Dapper.Contrib" Version="1.50.4" />
   </ItemGroup>
 
   <ItemGroup>
