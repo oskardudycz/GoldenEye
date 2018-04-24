@@ -178,11 +178,6 @@ namespace GoldenEye.Backend.Core.Marten.Events.Storage
                 return Query<TProjection>()
                     .SingleOrDefaultAsync(p => p.Id == id, cancellationToken);
             }
-
-            IQueryable<TProjection> IEventProjectionStore.Query<TProjection>()
-            {
-                throw new NotImplementedException();
-            }
         }
     }
 }

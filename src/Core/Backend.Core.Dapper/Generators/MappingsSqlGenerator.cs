@@ -4,11 +4,14 @@ using GoldenEye.Backend.Core.Dapper.Mappings;
 
 namespace GoldenEye.Backend.Core.Dapper.Generators
 {
-    public class DapperSqlGenerator : IDapperSqlGenerator
+    /// <summary>
+    /// Generates Dapper sql from mappings
+    /// </summary>
+    public class MappingsSqlGenerator : IDapperSqlGenerator
     {
         private readonly IReadOnlyCollection<IDapperMapping> mappings;
 
-        public DapperSqlGenerator(IReadOnlyCollection<IDapperMapping> mappings)
+        public MappingsSqlGenerator(IReadOnlyCollection<IDapperMapping> mappings)
         {
             this.mappings = mappings ?? new List<IDapperMapping>();
         }
