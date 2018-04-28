@@ -18,7 +18,7 @@ namespace GoldenEye.Backend.Core.Dapper.Context
         private readonly IDapperSqlGenerator dapperSqlGenerator;
         private bool wasDisposed;
 
-        public DapperDataContext(IDbConnection dbConnection, IDapperSqlGenerator dapperSqlGenerator)
+        public DapperDataContext(IDbConnection dbConnection, IDapperSqlGenerator dapperSqlGenerator = null)
         {
             this.dbConnection = dbConnection ?? throw new ArgumentNullException(nameof(dbConnection));
             this.dapperSqlGenerator = dapperSqlGenerator;

@@ -62,7 +62,7 @@ namespace Backend.Core.Dapper.Tests.Mappings
                 var mappings = sp.GetServices<IDapperMapping>().ToList();
                 var mappingsReadonlyCollection = sp.GetService<IReadOnlyCollection<IDapperMapping>>();
 
-                mappings.Should().HaveCount(2);
+                mappings.Should().HaveCountGreaterOrEqualTo(2);
                 mappingsReadonlyCollection.Should().HaveSameCount(mappings);
 
                 mappings.Should().Contain(v => v is UserDapperMapping);
