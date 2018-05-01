@@ -14,7 +14,7 @@ GoldenEye is a Full Stack framework written in .NET Core. The main goal of Golde
 What do I get?
 --------------------------------
 Complete Solution bootstrap - bottom up:
-- Entity Framework
+- Entity Framework (supports also `Dapper` and `Marten`)
 - CRUD Repositories and CRUD Application Services
 - WebApi REST controllers
 - Authorization with OAuth (Identity Server)
@@ -28,12 +28,12 @@ Complete Solution bootstrap - bottom up:
 
 How do I get started?
 --------------------------------
-1. Create new solution with "ASP.NET Core Web Application" project name it eg. "Frontend"
+1. Create new solution with "ASP.NET Core Web Application" project name it eg. "API"
 2. Add new Class libraries projects to newly created solution:
   * Backend
   * Shared
 3. Add following references
-  * Backend and Shared to Frontend project
+  * Backend and Shared to API project
   * Shared to Backend project
 4. Install following Nuget packages to the projects:
   * Shared - GoldenEye.Shared.Core    
