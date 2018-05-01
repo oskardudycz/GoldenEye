@@ -1,15 +1,15 @@
 {
   "$schema": "http://json.schemastore.org/template",
   "author": "MJendza",
-  "classifications": [ "WebAPI" ], 
+  "classifications": [ "WebAPI", "DDD", "GoldenEye" ],
   "name": "Create basic GoldenEye project with default settings",
-  "identity": "GoldenEye.Template.WebAPI",         
-  "groupIdentity":"GoldenEye.Template.WebAPI",
-  "shortName": "GoldenEye.WebAPI",                    // You can create the project using this short name instead of the one above.
+  "identity": "GoldenEye.WebApi.SimpleDDD",
+  "groupIdentity": "GoldenEye.WebApi.SimpleDDD",
+  "shortName": "SimpleDDD",
   "tags": {
-    "language": "C#",                         // Specify that this template is in C#.
-    "type":"project"
+    "language": "C#",
+    "type": "project"
   },
-  "sourceName": "Template.WebAPI",              // Will replace the string 'MyProject.StarterWeb' with the value provided via -n.
-  "preferNameDirectory":true
+  "sourceName": "GoldenEye.WebApi.SimpleDDD", 
+  "preferNameDirectory": true
 }

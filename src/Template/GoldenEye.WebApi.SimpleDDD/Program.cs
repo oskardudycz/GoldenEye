@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
-namespace Backend.DDD.WebApi.Sample
+namespace GoldenEye.WebApi.SimpleDDD
 {
     public class Program
     {

@@ -2,35 +2,40 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using AutoMapper.QueryableExtensions;
 using Contracts.Issues.Queries;
+using Contracts.Issues.Views;
 using GoldenEye.Backend.Core.DDD.Queries;
 using GoldenEye.Backend.Core.Repositories;
+using GoldenEye.Shared.Core.Extensions.Mapping;
 using Marten;
-using IssueViews = Contracts.Issues.Views;
 
 namespace Backend.Issues.Handlers
 {
     internal class IssueQueryHandler :
-        IQueryHandler<GetIssues, IReadOnlyList<IssueViews.IssueView>>,
-        IQueryHandler<GetIssue, IssueViews.IssueView>
+        IQueryHandler<GetIssues, IReadOnlyList<IssueView>>,
+        IQueryHandler<GetIssue, IssueView>
     {
-        private readonly IReadonlyRepository<IssueViews.IssueView> repository;
+        private readonly IReadonlyRepository<Issue> repository;
 
-        public IssueQueryHandler(IReadonlyRepository<IssueViews.IssueView> repository)
+        public IssueQueryHandler(IReadonlyRepository<Issue> repository)
         {
             this.repository = repository ?? throw new ArgumentException(nameof(repository));
         }
 
-        public Task<IReadOnlyList<IssueViews.IssueView>> Handle(GetIssues message, CancellationToken cancellationToken)
+        public async Task<IReadOnlyList<IssueView>> Handle(GetIssues message, CancellationToken cancellationToken)
         {
-            return repository
+            return await repository
                 .GetAll()
+                .ProjectTo<IssueView>()
                 .ToListAsync();
         }
 
-        public Task<IssueViews.IssueView> Handle(GetIssue message, CancellationToken cancellationToken)
+        public async Task<IssueView> Handle(GetIssue message, CancellationToken cancellationToken)
         {
-            return repository.GetByIdAsync(message.Id);
+            var entity = await repository.GetByIdAsync(message.Id);
+
+            return entity.Map<IssueView>();
         }
     }
 }

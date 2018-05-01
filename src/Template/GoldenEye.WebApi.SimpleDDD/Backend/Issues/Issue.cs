@@ -1,7 +1,6 @@
 ﻿using System;
 using Contracts.Issues;
 using GoldenEye.Backend.Core.DDD.Aggregates;
-using GoldenEye.Backend.Core.DDD.Events;
 using GoldenEye.Shared.Core.Objects.General;
 
 namespace Backend.Issues

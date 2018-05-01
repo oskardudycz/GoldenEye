@@ -4,6 +4,7 @@ using Contracts.Issues.Queries;
 using Backend.Issues;
 using Backend.Issues.Handlers;
 using Backend.Issues.Projections;
+using Contracts.Issues.Views;
 using GoldenEye.Backend.Core.DDD.Registration;
 using GoldenEye.Backend.Core.Marten.Events.Storage;
 using GoldenEye.Backend.Core.Marten.Registration;
@@ -11,7 +12,6 @@ using GoldenEye.Shared.Core.Modules;
 using Marten;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using IssueContracts = Contracts.Issues;
 
 namespace Backend
 {
@@ -52,9 +52,9 @@ namespace Backend
 
         private void RegisterHandlers(IServiceCollection services)
         {
-            services.AddMartenDocumentReadonlyRepository<IssueContracts.Views.IssueView>();
-            services.RegisterQueryHandler<GetIssues, IReadOnlyList<IssueContracts.Views.IssueView>, IssueQueryHandler>();
-            services.RegisterQueryHandler<GetIssue, IssueContracts.Views.IssueView, IssueQueryHandler>();
+            services.AddMartenDocumentReadonlyRepository<Issue>();
+            services.RegisterQueryHandler<GetIssues, IReadOnlyList<IssueView>, IssueQueryHandler>();
+            services.RegisterQueryHandler<GetIssue, IssueView, IssueQueryHandler>();
             services.RegisterCommandHandler<CreateIssue, IssueCommandHandler>();
         }
     }

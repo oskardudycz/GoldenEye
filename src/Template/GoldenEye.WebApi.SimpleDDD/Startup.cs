@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Backend;
 using GoldenEye.Backend.Core.DDD.Registration;
 using GoldenEye.Backend.Core.WebApi.Modules;
 using GoldenEye.Backend.Core.WebApi.Registration;
@@ -7,18 +8,18 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Backend.DDD.WebApi.Sample
+namespace GoldenEye.WebApi.SimpleDDD
 {
     public class Startup
     {
-        private readonly Backend.Module backendModule;
+        private readonly Module backendModule;
         private readonly AllowAllCorsModule corsModule;
         private readonly SwaggerModule swaggerModule;
 
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            backendModule = new Backend.Module(Configuration);
+            backendModule = new Module(Configuration);
             corsModule = new AllowAllCorsModule(Configuration);
             swaggerModule = new SwaggerModule(Configuration);
         }

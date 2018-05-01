@@ -8,7 +8,7 @@ using GoldenEye.Backend.Core.DDD.Commands;
 using GoldenEye.Backend.Core.DDD.Queries;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GoldenEye.WebAPI.Controllers
+namespace GoldenEye.WebApi.SimpleDDD.Controllers
 {
     [Route("api/[controller]")]
     [Microsoft.AspNetCore.Cors.EnableCors("CorsPolicy")]
@@ -24,21 +24,21 @@ namespace GoldenEye.WebAPI.Controllers
             this.commandBus = commandBus ?? throw new ArgumentException(nameof(commandBus));
         }
 
-        // GET api/incidents
+        // GET api/issues
         [HttpGet]
         public Task<IReadOnlyList<IssueView>> Get(GetIssues query)
         {
             return queryBus.Send<GetIssues, IReadOnlyList<IssueView>>(query);
         }
 
-        // GET api/incidents
+        // GET api/issues
         [HttpGet("{id}")]
         public Task<IssueView> Get(Guid id)
         {
             return queryBus.Send<GetIssue, IssueView>(new GetIssue(id));
         }
 
-        // POST api/incidents
+        // POST api/issues
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]CreateIssue command)
         {
