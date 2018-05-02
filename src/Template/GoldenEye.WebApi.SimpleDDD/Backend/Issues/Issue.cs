@@ -16,8 +16,7 @@ namespace Backend.Issues
         public string Title { get; private set; }
 
         public string Description { get; private set; }
-
-        public Guid StreamId => Id;
+        
         public Issue()
         {
         }
