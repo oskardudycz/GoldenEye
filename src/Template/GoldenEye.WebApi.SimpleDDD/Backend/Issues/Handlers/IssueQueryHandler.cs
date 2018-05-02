@@ -16,9 +16,9 @@ namespace Backend.Issues.Handlers
         IQueryHandler<GetIssues, IReadOnlyList<IssueView>>,
         IQueryHandler<GetIssue, IssueView>
     {
-        private readonly IReadonlyRepository<Issue> repository;
+        private readonly IReadonlyRepository<IssueView> repository;
 
-        public IssueQueryHandler(IReadonlyRepository<Issue> repository)
+        public IssueQueryHandler(IReadonlyRepository<IssueView> repository)
         {
             this.repository = repository ?? throw new ArgumentException(nameof(repository));
         }
@@ -27,7 +27,7 @@ namespace Backend.Issues.Handlers
         {
             return await repository
                 .GetAll()
-                .ProjectTo<IssueView>()
+                //.ProjectTo<IssueView>()
                 .ToListAsync();
         }
 
@@ -35,7 +35,7 @@ namespace Backend.Issues.Handlers
         {
             var entity = await repository.GetByIdAsync(message.Id);
 
-            return entity.Map<IssueView>();
+            return entity;//.Map<IssueView>();
         }
     }
 }

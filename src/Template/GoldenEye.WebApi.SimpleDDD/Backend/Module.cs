@@ -52,7 +52,7 @@ namespace Backend
 
         private void RegisterHandlers(IServiceCollection services)
         {
-            services.AddMartenDocumentReadonlyRepository<Issue>();
+            services.AddMartenDocumentReadonlyRepository<IssueView>();
             services.RegisterQueryHandler<GetIssues, IReadOnlyList<IssueView>, IssueQueryHandler>();
             services.RegisterQueryHandler<GetIssue, IssueView, IssueQueryHandler>();
             services.RegisterCommandHandler<CreateIssue, IssueCommandHandler>();
