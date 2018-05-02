@@ -24,7 +24,6 @@ namespace Backend.Issues.Projections
 
         private void Apply(IssueView item, IssueCreated @event)
         {
-
             Id = @event.IssueId;
             Type = @event.Type;
             Title = @event.Title;
