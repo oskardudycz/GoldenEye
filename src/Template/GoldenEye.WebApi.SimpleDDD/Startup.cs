@@ -12,16 +12,16 @@ namespace GoldenEye.WebApi.SimpleDDD
 {
     public class Startup
     {
-        private readonly Module backendModule;
+        private readonly BackendModule backendModule;
         private readonly AllowAllCorsModule corsModule;
         private readonly SwaggerModule swaggerModule;
 
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            backendModule = new Module(Configuration);
-            corsModule = new AllowAllCorsModule(Configuration);
-            swaggerModule = new SwaggerModule(Configuration);
+            backendModule = new BackendModule(Configuration);
+            corsModule = new AllowAllCorsModule();
+            swaggerModule = new SwaggerModule();
         }
 
         public IConfiguration Configuration { get; }
@@ -58,10 +58,10 @@ namespace GoldenEye.WebApi.SimpleDDD
             }
 
             app.UseExceptionHandlingMiddleware();
-            backendModule.OnStartup();
+            backendModule.Use();
             app.UseCors("CorsPolicy");
-            corsModule.OnStartup(app, env);
-            swaggerModule.OnStartup(app, env);
+            corsModule.Use(app, env);
+            swaggerModule.Use(app, env);
 
             app.UseMvc();
         }

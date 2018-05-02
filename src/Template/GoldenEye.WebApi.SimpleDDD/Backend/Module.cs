@@ -15,10 +15,13 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Backend
 {
-    public class Module : ModuleBase
+    public class BackendModule : Module
     {
-        public Module(IConfiguration configuration) : base(configuration)
+        private readonly IConfiguration _configuration;
+
+        public BackendModule(IConfiguration configuration)
         {
+            _configuration = configuration;
         }
 
         public override void Configure(IServiceCollection services)
@@ -28,14 +31,14 @@ namespace Backend
             base.Configure(services);
         }
 
-        public override void OnStartup()
+        public override void Use()
         {
-            base.OnStartup();
+            base.Use();
         }
 
         private void ConfigureIntrastructure(IServiceCollection services)
         {
-            var connectionString = configuration.GetConnectionString("DDDSample") ?? "PORT = 5432; HOST = 127.0.0.1; TIMEOUT = 15; POOLING = True; MINPOOLSIZE = 1; MAXPOOLSIZE = 100; COMMANDTIMEOUT = 20; DATABASE = 'postgres'; PASSWORD = 'postgres'; USER ID = 'postgres'";
+            var connectionString = _configuration.GetConnectionString("DDDSample") ?? "PORT = 5432; HOST = 127.0.0.1; TIMEOUT = 15; POOLING = True; MINPOOLSIZE = 1; MAXPOOLSIZE = 100; COMMANDTIMEOUT = 20; DATABASE = 'postgres'; PASSWORD = 'postgres'; USER ID = 'postgres'";
 
             services.AddMartenContext(sp => connectionString, SetupEventStore, schemaName: "DDDSample");
             services.AddEventStore<MartenEventStore>();

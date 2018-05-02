@@ -26,23 +26,23 @@ namespace GoldenEye.WebApi.SimpleDDD.Controllers
 
         // GET api/issues
         [HttpGet]
-        public Task<IReadOnlyList<IssueView>> Get(GetIssues query)
+        public async Task<IReadOnlyList<IssueView>> Get(GetIssues query)
         {
-            return queryBus.Send<GetIssues, IReadOnlyList<IssueView>>(query);
+            return await queryBus.SendAsync<GetIssues, IReadOnlyList<IssueView>>(query);
         }
 
         // GET api/issues
         [HttpGet("{id}")]
-        public Task<IssueView> Get(Guid id)
+        public async Task<IssueView> Get(Guid id)
         {
-            return queryBus.Send<GetIssue, IssueView>(new GetIssue(id));
+            return await queryBus.SendAsync<GetIssue, IssueView>(new GetIssue(id));
         }
 
         // POST api/issues
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]CreateIssue command)
         {
-            await commandBus.Send(command);
+            await commandBus.SendAsync(command);
 
             return Ok();
         }

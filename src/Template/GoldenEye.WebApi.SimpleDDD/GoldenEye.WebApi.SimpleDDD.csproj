@@ -14,11 +14,11 @@
  <ItemGroup>
 	<PackageReference Include="AutoMapper" Version="6.2.2" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.2.0" />
-    <PackageReference Include="GoldenEye.Backend.Core" Version="3.0.8" />
-    <PackageReference Include="GoldenEye.Backend.Core.DDD" Version="3.0.8" />
-    <PackageReference Include="GoldenEye.Backend.Core.Marten" Version="3.0.8" />
-    <PackageReference Include="GoldenEye.Backend.Core.WebApi" Version="3.0.8" />
-    <PackageReference Include="GoldenEye.Shared.Core" Version="3.0.10" />
+    <PackageReference Include="GoldenEye.Backend.Core" Version="4.0.0" />
+    <PackageReference Include="GoldenEye.Backend.Core.DDD" Version="5.0.0" />
+    <PackageReference Include="GoldenEye.Backend.Core.Marten" Version="4.0.0" />
+    <PackageReference Include="GoldenEye.Backend.Core.WebApi" Version="4.0.0" />
+    <PackageReference Include="GoldenEye.Shared.Core" Version="4.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.7" />
   </ItemGroup>
 </Project>

@@ -23,7 +23,7 @@ namespace Backend.Issues.Handlers
         {
             var issue = command.Map<Issue>();
             var @event = issue.Map<IssueCreated>();
-            await eventBus.Publish(@event);
+            await eventBus.PublishAsync(@event);
         }
     }
 }
