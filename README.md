@@ -14,16 +14,16 @@ GoldenEye is a Full Stack framework written in .NET Core. The main goal of Golde
 What do I get?
 --------------------------------
 Complete Solution bootstrap - bottom up:
-- Entity Framework (supports also `Dapper` and `Marten`)
+- [Entity Framework](https://github.com/aspnet/EntityFrameworkCore) (supports also [Dapper](https://github.com/StackExchange/Dapper), [Marten](https://github.com/JasperFx/marten)
 - CRUD Repositories and CRUD Application Services
 - WebApi REST controllers
-- Authorization with OAuth (Identity Server)
+- Authorization with OAuth ([Identity Server](https://github.com/IdentityServer/IdentityServer4)
 - complete set up of dependency injection with automatic naming convention binding
 - AutoMapper preconfigured and class mappings automatic registration
-- Validation flow with FluentValidation.NET
+- Validation flow with [FluentValidation.NET](https://github.com/JeremySkinner/FluentValidation)
 - Examples of complete usage (Task list functionality)
 - CQRS and Domain Driven Development stack - sending and handling commands, queries, events
-- document database and event store support in Postgres with Marten framework
+- document database and event store support in Postgres with [Marten](https://github.com/JasperFx/marten) framework
 - many more
 
 How do I get started?
