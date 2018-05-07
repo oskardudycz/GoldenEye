@@ -38,10 +38,12 @@ How do I get started?
 4. Install following Nuget packages to the projects:
   * Shared - GoldenEye.Shared.Core 
   
-  `dotnet add package GoldenEye.Shared.Core`  
+  `dotnet add package GoldenEye.Shared.Core` 
+  
   * Backend - GoldenEye.Backend.Core 
   
-  `dotnet add package GoldenEye.Backend.Core`
+  `dotnet add package GoldenEye.Backend.Core` 
+  
 5. Run the frontend project.
 
 If you're feeling comportable enough with polish language you can read my [blog post](http://oskar-dudycz.pl/2017/01/06/metallica-skonczyla-sie-na-kill-em-all-a-ja-ide-w-open-sourcey/#comment-44) where I annouced GoldenEye and explained the main goals.
