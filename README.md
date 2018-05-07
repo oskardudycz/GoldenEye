@@ -38,6 +38,7 @@ How do I get started?
 4. Install following Nuget packages to the projects:
   * Shared - GoldenEye.Shared.Core    
   `dotnet add package GoldenEye.Shared.Core`
+  
   * Backend - GoldenEye.Backend.Core
   `dotnet add package GoldenEye.Backend.Core`
 5. Run the frontend project.
