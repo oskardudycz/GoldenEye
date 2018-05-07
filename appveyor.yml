@@ -1,11 +1,17 @@
 version: 3.0.{build}
 pull_requests:
   do_not_increment_build_number: true
+skip_branch_with_pr: true
 image: Visual Studio 2017
+configuration: Release
+nuget:
+  disable_publish_on_pr: true
 before_build:
 - cmd: dotnet restore src/GoldenEye.sln
 build:
   project: src/GoldenEye.sln
+  publish_nuget: true
+  publish_nuget_symbols: true
   verbosity: minimal
 services:
   - postgresql95

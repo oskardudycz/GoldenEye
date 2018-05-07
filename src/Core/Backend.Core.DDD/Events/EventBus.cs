@@ -1,5 +1,6 @@
-﻿using MediatR;
+﻿using System.Threading;
 using System.Threading.Tasks;
+using MediatR;
 
 namespace GoldenEye.Backend.Core.DDD.Events
 {
@@ -12,9 +13,9 @@ namespace GoldenEye.Backend.Core.DDD.Events
             _mediator = mediator;
         }
 
-        public Task Publish<TEvent>(TEvent @event) where TEvent : IEvent
+        public Task PublishAsync<TEvent>(TEvent @event, CancellationToken cancellationToken = default(CancellationToken)) where TEvent : IEvent
         {
-            return _mediator.Publish(@event);
+            return _mediator.Publish(@event, cancellationToken);
         }
     }
 }

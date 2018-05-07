@@ -7,7 +7,6 @@ using Backend.DDD.Sample.Issues.Projections;
 using GoldenEye.Backend.Core.DDD.Registration;
 using GoldenEye.Backend.Core.Marten.Events.Storage;
 using GoldenEye.Backend.Core.Marten.Registration;
-using GoldenEye.Shared.Core.Modules;
 using Marten;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,10 +14,13 @@ using IssueContracts = Backend.DDD.Sample.Contracts.Issues;
 
 namespace Backend.DDD.Sample
 {
-    public class Module : ModuleBase
+    public class Module : GoldenEye.Shared.Core.Modules.Module
     {
-        public Module(IConfiguration configuration) : base(configuration)
+        private IConfiguration configuration;
+
+        public Module(IConfiguration configuration)
         {
+            this.configuration = configuration;
         }
 
         public override void Configure(IServiceCollection services)
@@ -28,9 +30,9 @@ namespace Backend.DDD.Sample
             base.Configure(services);
         }
 
-        public override void OnStartup()
+        public override void Use()
         {
-            base.OnStartup();
+            base.Use();
         }
 
         private void ConfigureIntrastructure(IServiceCollection services)

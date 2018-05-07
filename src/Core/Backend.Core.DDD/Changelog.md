@@ -1,4 +1,18 @@
-﻿# v3.0.8 (08.04.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/54)
+﻿# v5.0.0 (19.04.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/58)
+
+## Changes
+
+* Updated reference to Shared.Core **[MAJOR]**
+
+
+# v4.0.0 (18.04.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/56)
+
+## Changes
+
+* Added Async sufix for Publish, Send methods of CommandBus, QueryBus, EventBus abd proper cancellation token handling **[MAJOR]**
+
+
+# v3.0.8 (08.04.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/54)
 
 ## Changes
 
@@ -9,7 +23,7 @@
 
 ## Changes
 
-* updated packages version to most recent **[PATCH]**
+* updated packages version to most recent **[PATCH]**C:\Repos\GoldenEye\src\Core\Backend.Core.DDD\Changelog.md
 
 
 # v3.0.0 (29.12.2017) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/44)

@@ -1,5 +1,6 @@
-﻿using MediatR;
+﻿using System.Threading;
 using System.Threading.Tasks;
+using MediatR;
 
 namespace GoldenEye.Backend.Core.DDD.Commands
 {
@@ -12,9 +13,9 @@ namespace GoldenEye.Backend.Core.DDD.Commands
             _mediator = mediator;
         }
 
-        public Task Send<TCommand>(TCommand command) where TCommand : ICommand
+        public Task SendAsync<TCommand>(TCommand command, CancellationToken cancellationToken = default(CancellationToken)) where TCommand : ICommand
         {
-            return _mediator.Send(command);
+            return _mediator.Send(command, cancellationToken);
         }
     }
 }

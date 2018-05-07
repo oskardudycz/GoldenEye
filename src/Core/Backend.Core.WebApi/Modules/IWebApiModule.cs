@@ -6,6 +6,6 @@ namespace GoldenEye.Backend.Core.WebApi.Modules
 {
     interface IWebApiModule : IModule
     {
-        void OnStartup(IApplicationBuilder app, IHostingEnvironment env);
+        void Use(IApplicationBuilder app, IHostingEnvironment env);
     }
 }

@@ -14,26 +14,26 @@ GoldenEye is a Full Stack framework written in .NET Core. The main goal of Golde
 What do I get?
 --------------------------------
 Complete Solution bootstrap - bottom up:
-- Entity Framework
+- [Entity Framework](https://github.com/aspnet/EntityFrameworkCore) (supports also [Dapper](https://github.com/StackExchange/Dapper), [Marten](https://github.com/JasperFx/marten))
 - CRUD Repositories and CRUD Application Services
 - WebApi REST controllers
-- Authorization with OAuth (Identity Server)
+- Authorization with OAuth ([Identity Server](https://github.com/IdentityServer/IdentityServer4))
 - complete set up of dependency injection with automatic naming convention binding
 - AutoMapper preconfigured and class mappings automatic registration
-- Validation flow with FluentValidation.NET
+- Validation flow with [FluentValidation.NET](https://github.com/JeremySkinner/FluentValidation)
 - Examples of complete usage (Task list functionality)
 - CQRS and Domain Driven Development stack - sending and handling commands, queries, events
-- document database and event store support in Postgres with Marten framework
+- document database and event store support in Postgres with [Marten](https://github.com/JasperFx/marten) framework
 - many more
 
 How do I get started?
 --------------------------------
-1. Create new solution with "ASP.NET Core Web Application" project name it eg. "Frontend"
+1. Create new solution with "ASP.NET Core Web Application" project name it eg. "API"
 2. Add new Class libraries projects to newly created solution:
   * Backend
   * Shared
 3. Add following references
-  * Backend and Shared to Frontend project
+  * Backend and Shared to API project
   * Shared to Backend project
 4. Install following Nuget packages to the projects:
   * Shared - GoldenEye.Shared.Core    
@@ -69,4 +69,4 @@ I found an issue or I have a change request
 --------------------------------
 Feel free to create an issue on GitHub. Contributions, pull requests are more than welcome!
 
-GoldenEye is Copyright &copy; 2015-2018 [Oskar Dudycz](http://oskar-dudycz.pl) and other contributors under the [MIT license](LICENSE.txt).
+**GoldenEye** is Copyright &copy; 2015-2018 [Oskar Dudycz](http://oskar-dudycz.pl) and other contributors under the [MIT license](LICENSE.txt).
