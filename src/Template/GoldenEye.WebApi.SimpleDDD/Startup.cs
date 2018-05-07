@@ -3,6 +3,8 @@ using Backend;
 using GoldenEye.Backend.Core.DDD.Registration;
 using GoldenEye.Backend.Core.WebApi.Modules;
 using GoldenEye.Backend.Core.WebApi.Registration;
+using GoldenEye.Shared.Core.Configuration;
+using GoldenEye.Shared.Core.Modules;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -12,16 +14,9 @@ namespace GoldenEye.WebApi.SimpleDDD
 {
     public class Startup
     {
-        private readonly BackendModule backendModule;
-        private readonly AllowAllCorsModule corsModule;
-        private readonly SwaggerModule swaggerModule;
-
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            backendModule = new BackendModule(Configuration);
-            corsModule = new AllowAllCorsModule();
-            swaggerModule = new SwaggerModule();
         }
 
         public IConfiguration Configuration { get; }
@@ -33,20 +28,11 @@ namespace GoldenEye.WebApi.SimpleDDD
             services.AddDDD();
 
             services.AddAutoMapper();
+            services.AddConfiguration(Configuration);
 
-            backendModule.Configure(services);
-            corsModule.Configure(services);
-            services.AddCors(options =>
-            {
-                options.AddPolicy("CorsPolicy",
-                    builder =>
-                    builder.AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .AllowCredentials()
-                );
-            });
-            swaggerModule.Configure(services);
+            services.AddModule<BackendModule>();
+            services.AddModule<AllowAllCorsModule>();
+            services.AddModule<SwaggerModule>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,10 +44,7 @@ namespace GoldenEye.WebApi.SimpleDDD
             }
 
             app.UseExceptionHandlingMiddleware();
-            backendModule.Use();
-            app.UseCors("CorsPolicy");
-            corsModule.Use(app, env);
-            swaggerModule.Use(app, env);
+            app.UseModules(env);
 
             app.UseMvc();
         }
