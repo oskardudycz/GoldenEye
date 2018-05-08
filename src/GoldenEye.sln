@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2020
+VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{F4F82AA0-8F75-4A08-B420-5C5A3FC812C0}"
 EndProject
@@ -82,6 +82,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "postgres", "postgres", "{E9
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{2C2A047E-CDC5-41E8-82C1-BCC31F941B6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldenEye.WebApi.SimpleDDD.IntegrationTests", "Template\GoldenEye.WebApi.SimpleDDD.IntegrationTests\GoldenEye.WebApi.SimpleDDD.IntegrationTests.csproj", "{8E2E928B-E1D1-4AFA-AAE7-6586F9EC8170}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -181,6 +183,10 @@ Global
 		{7D9EBFA0-F65B-4F87-824A-1F3F2D18BD0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D9EBFA0-F65B-4F87-824A-1F3F2D18BD0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D9EBFA0-F65B-4F87-824A-1F3F2D18BD0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E2E928B-E1D1-4AFA-AAE7-6586F9EC8170}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E2E928B-E1D1-4AFA-AAE7-6586F9EC8170}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E2E928B-E1D1-4AFA-AAE7-6586F9EC8170}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E2E928B-E1D1-4AFA-AAE7-6586F9EC8170}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -212,6 +218,7 @@ Global
 		{592DD3EB-823E-4941-808A-7A42928748BD} = {2C2A047E-CDC5-41E8-82C1-BCC31F941B6A}
 		{7D9EBFA0-F65B-4F87-824A-1F3F2D18BD0A} = {F4F82AA0-8F75-4A08-B420-5C5A3FC812C0}
 		{E9097CBA-BBAA-4E27-BA2E-1DF61CBFCB37} = {745EC139-4033-4F75-BC9C-64A417DC1229}
+		{8E2E928B-E1D1-4AFA-AAE7-6586F9EC8170} = {2C2A047E-CDC5-41E8-82C1-BCC31F941B6A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8F5394A0-8892-4A22-B6A0-7BBC209FF191}
