@@ -22,7 +22,7 @@ Complete Solution bootstrap - bottom up:
 - AutoMapper preconfigured and class mappings automatic registration
 - Validation flow with [FluentValidation.NET](https://github.com/JeremySkinner/FluentValidation)
 - Examples of complete usage (Task list functionality)
-- CQRS and Domain Driven Development stack - sending and handling commands, queries, events
+- CQRS and Domain Driven Development stack - sending and handling commands, queries, events (with usage of [MediatR](https://github.com/jbogard/MediatR) framework)
 - document database and event store support in Postgres with [Marten](https://github.com/JasperFx/marten) framework
 - many more
 
