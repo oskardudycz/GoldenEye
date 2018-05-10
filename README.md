@@ -19,7 +19,7 @@ Complete Solution bootstrap - bottom up:
 - WebApi REST controllers
 - Authorization with OAuth ([Identity Server](https://github.com/IdentityServer/IdentityServer4))
 - complete set up of dependency injection with automatic naming convention binding
-- AutoMapper preconfigured and class mappings automatic registration
+- [AutoMapper](https://github.com/AutoMapper/AutoMapper) preconfigured and automatic mappings registration
 - Validation flow with [FluentValidation.NET](https://github.com/JeremySkinner/FluentValidation)
 - Examples of complete usage (Task list functionality)
 - CQRS and Domain Driven Development stack - sending and handling commands, queries, events (with usage of [MediatR](https://github.com/jbogard/MediatR) framework)
