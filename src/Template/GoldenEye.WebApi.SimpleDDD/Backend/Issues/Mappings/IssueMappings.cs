@@ -12,10 +12,14 @@ namespace Backend.Issues.Mappings
         {
             CreateMap<IssueContracts.Commands.CreateIssue, Issue>().ConstructUsing(
                 command => new Issue(Guid.NewGuid(), command.Type, command.Title));
+            CreateMap<IssueContracts.Commands.UpdateIssue, Issue>().ConstructUsing(
+                command => new Issue(Guid.NewGuid(), command.Type, command.Title));
 
             CreateMap<Issue, IssueContracts.Events.IssueCreated>().ConstructUsing(
                 aggregate => new IssueContracts.Events.IssueCreated(aggregate.Id, aggregate.Type, aggregate.Title, aggregate.Description));
 
+            CreateMap<Issue, IssueContracts.Events.IssueUpdated>().ConstructUsing(
+                aggregate => new IssueContracts.Events.IssueUpdated(aggregate.Id, aggregate.Type, aggregate.Title, aggregate.Description));
             CreateMap<Issue, IssueView>(MemberList.None);
         }
     }

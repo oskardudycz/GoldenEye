@@ -24,5 +24,12 @@ namespace Contracts.Issues.Views
             Title = @event.Title;
             Description = @event.Description;
         }
+        public void Apply(IssueUpdated @event)
+        {
+            Id = @event.IssueId;
+            Type = @event.Type;
+            Title = @event.Title;
+            Description = @event.Description;
+        }
     }
 }

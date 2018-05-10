@@ -10,7 +10,7 @@ using GoldenEye.Shared.Core.Extensions.Mapping;
 namespace Backend.Issues.Handlers
 {
     internal class IssueCommandHandler
-        : ICommandHandler<CreateIssue>
+        : ICommandHandler<CreateIssue>, ICommandHandler<UpdateIssue>
     {
         private IEventBus eventBus;
 
@@ -23,6 +23,13 @@ namespace Backend.Issues.Handlers
         {
             var issue = command.Map<Issue>();
             var @event = issue.Map<IssueCreated>();
+            await eventBus.PublishAsync(@event);
+        }
+
+        public async Task Handle(UpdateIssue command, CancellationToken cancellationToken)
+        {
+            var issue = command.Map<Issue>();
+            var @event = issue.Map<IssueUpdated>();
             await eventBus.PublishAsync(@event);
         }
     }

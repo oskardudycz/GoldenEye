@@ -20,9 +20,17 @@ namespace Backend.Issues.Projections
         public IssueProjection()
         {
             ProjectEvent<IssueCreated>(ev => ev.IssueId, (item, @event) => item.Apply(@event));
+            ProjectEvent<IssueUpdated>(ev => ev.IssueId, (item, @event) => item.Apply(@event));
         }
 
         private void Apply(IssueView item, IssueCreated @event)
+        {
+            Id = @event.IssueId;
+            Type = @event.Type;
+            Title = @event.Title;
+            Description = @event.Description;
+        }
+        private void Apply(IssueView item, IssueUpdated @event)
         {
             Id = @event.IssueId;
             Type = @event.Type;
