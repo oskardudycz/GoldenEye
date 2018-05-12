@@ -103,14 +103,12 @@ namespace GoldenEye.Backend.Core.Marten.Context
 
         public Task<TEntity> RemoveAsync<TEntity>(TEntity entity, int? version = null, CancellationToken cancellationToken = default(CancellationToken)) where TEntity : class
         {
-            _documentSession.Delete(entity);
-            return Task.FromResult(entity);
+            return Task.FromResult(Remove(entity));
         }
 
         public Task<bool> RemoveAsync<TEntity>(object id, int? version = null, CancellationToken cancellationToken = default(CancellationToken)) where TEntity : class
         {
-            _documentSession.Delete(id);
-            return Task.FromResult(true);
+            return Task.FromResult(Remove<TEntity>(id, version));
         }
 
         public int SaveChanges()
