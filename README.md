@@ -19,10 +19,10 @@ Complete Solution bootstrap - bottom up:
 - WebApi REST controllers
 - Authorization with OAuth ([Identity Server](https://github.com/IdentityServer/IdentityServer4))
 - complete set up of dependency injection with automatic naming convention binding
-- AutoMapper preconfigured and class mappings automatic registration
+- [AutoMapper](https://github.com/AutoMapper/AutoMapper) preconfigured and automatic mappings registration
 - Validation flow with [FluentValidation.NET](https://github.com/JeremySkinner/FluentValidation)
 - Examples of complete usage (Task list functionality)
-- CQRS and Domain Driven Development stack - sending and handling commands, queries, events
+- CQRS and Domain Driven Development stack - sending and handling commands, queries, events (with usage of [MediatR](https://github.com/jbogard/MediatR) framework)
 - document database and event store support in Postgres with [Marten](https://github.com/JasperFx/marten) framework
 - many more
 
@@ -36,8 +36,14 @@ How do I get started?
   * Backend and Shared to API project
   * Shared to Backend project
 4. Install following Nuget packages to the projects:
-  * Shared - GoldenEye.Shared.Core    
-  * Backend - GoldenEye.Backend.Core
+  * Shared - GoldenEye.Shared.Core 
+  
+  `dotnet add package GoldenEye.Shared.Core` 
+  
+  * Backend - GoldenEye.Backend.Core 
+  
+  `dotnet add package GoldenEye.Backend.Core` 
+  
 5. Run the frontend project.
 
 If you're feeling comportable enough with polish language you can read my [blog post](http://oskar-dudycz.pl/2017/01/06/metallica-skonczyla-sie-na-kill-em-all-a-ja-ide-w-open-sourcey/#comment-44) where I annouced GoldenEye and explained the main goals.
