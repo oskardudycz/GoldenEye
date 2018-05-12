@@ -48,7 +48,17 @@ namespace GoldenEye.Backend.Core.Dapper.Context
             throw new NotImplementedException();
         }
 
+        public bool Remove<TEntity>(object id, int? version = null) where TEntity : class
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<TEntity> RemoveAsync<TEntity>(TEntity entity, int? version = null, CancellationToken cancellationToken = default(CancellationToken)) where TEntity : class
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> RemoveAsync<TEntity>(object id, int? version = null, CancellationToken cancellationToken = default(CancellationToken)) where TEntity : class
         {
             throw new NotImplementedException();
         }

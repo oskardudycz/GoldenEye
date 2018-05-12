@@ -1,4 +1,12 @@
-﻿# v5.0.0 (12.05.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/60)
+﻿# v5.1.0 (12.05.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/61)
+
+## Changes
+
+* Added `Remove` and `RemoveAsync` methods by id to `MartenDocumentDataContext` **[MINOR]**
+* Updated reference to Backend.Core **[PATCH]**
+
+
+# v5.0.0 (12.05.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/60)
 
 ## Changes
 

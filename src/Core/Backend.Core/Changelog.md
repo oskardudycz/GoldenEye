@@ -1,4 +1,11 @@
-﻿# v5.0.0 (12.05.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/60)
+﻿# v5.1.0 (12.05.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/61)
+
+## Changes
+
+* Fixed bug with stackoverflow during `AddAsync` method of `Repository` **[PATCH]**
+* Added `Remove` and `RemoveAsync` methods by id to `IDataContext` **[MINOR]**
+
+# v5.0.0 (12.05.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/60)
 
 ## Changes
 
