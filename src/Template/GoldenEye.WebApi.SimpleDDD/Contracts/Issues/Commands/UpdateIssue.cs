@@ -1,4 +1,5 @@
 ﻿using System;
+using FluentValidation;
 using GoldenEye.Backend.Core.DDD.Commands;
 
 namespace Contracts.Issues.Commands
@@ -19,6 +20,16 @@ namespace Contracts.Issues.Commands
             Type = type;
             Title = title;
             Description = description;
+        }
+    }
+
+    public class UpdateIssueValidator : AbstractValidator<UpdateIssue>
+    {
+        public UpdateIssueValidator()
+        {
+            RuleFor(r => r.Id).NotEmpty();
+            RuleFor(r => r.Type).IsInEnum();
+            RuleFor(r => r.Title).NotEmpty();
         }
     }
 }

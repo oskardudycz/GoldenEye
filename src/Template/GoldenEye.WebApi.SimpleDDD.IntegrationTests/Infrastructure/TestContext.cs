@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using AutoMapper;
 using GoldenEye.WebApi.SimpleDDD;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
@@ -18,6 +19,8 @@ namespace WebApi.SimpleDDD.IntegrationTests.Infrastructure
 
         private void SetUpClient()
         {
+            Mapper.Reset();
+
             _server = new TestServer(new WebHostBuilder()
                 .UseStartup<Startup>());
 

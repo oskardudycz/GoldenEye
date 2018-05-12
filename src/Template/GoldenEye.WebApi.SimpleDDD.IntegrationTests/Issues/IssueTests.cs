@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -47,6 +48,35 @@ namespace WebApi.SimpleDDD.IntegrationTests.Issues
             await UpdateIssue(updateCommand);
         }
 
+        [Fact]
+        public async Task CreateIssueWithNotValidData_ShouldReturnBadRequest()
+        {
+            var command = new UpdateIssue(
+                Guid.Empty,
+                IssueType.Task,
+                null,
+                null
+            );
+
+            var response = await _sut.Client.PutAsync($"/api/Issues/{command.Id}", command.ToJsonStringContent());
+
+            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+        }
+
+        [Fact]
+        public async Task UpdateIssueWithNotValidData_ShouldReturnBadRequest()
+        {
+            var command = new CreateIssue(
+                IssueType.Task,
+                null,
+                null
+            );
+
+            var response = await _sut.Client.PostAsync("/api/Issues", command.ToJsonStringContent());
+
+            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+        }
+
         private async Task<IReadOnlyList<IssueView>> GetIssues()
         {
             var response = await _sut.Client.GetAsync("/api/Issues");
@@ -58,28 +88,28 @@ namespace WebApi.SimpleDDD.IntegrationTests.Issues
 
         private async Task<IssueView> CreateIssue(CreateIssue command, int previousCount)
         {
-            var responsePost = await _sut.Client.PostAsync("/api/Issues", command.ToJsonStringContent());
-            responsePost.EnsureSuccessStatusCode();
-            responsePost.StatusCode.Should().Be(HttpStatusCode.OK);
+            var response = await _sut.Client.PostAsync("/api/Issues", command.ToJsonStringContent());
+            response.EnsureSuccessStatusCode();
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
 
-            var afterPost = await GetIssues();
+            var issues = await GetIssues();
 
-            afterPost.Count.Should().Be(previousCount + 1);
+            issues.Count.Should().Be(previousCount + 1);
 
-            return afterPost.Last();
+            return issues.Last();
         }
 
         private async Task<IssueView> UpdateIssue(UpdateIssue command)
         {
-            var responsePost = await _sut.Client.PutAsync($"/api/Issues/{command.Id}", command.ToJsonStringContent());
-            responsePost.EnsureSuccessStatusCode();
-            responsePost.StatusCode.Should().Be(HttpStatusCode.OK);
+            var response = await _sut.Client.PutAsync($"/api/Issues/{command.Id}", command.ToJsonStringContent());
+            response.EnsureSuccessStatusCode();
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
 
-            var afterPut = await GetIssues();
+            var issues = await GetIssues();
 
-            afterPut.Any(i => i.Id == command.Id).Should().BeTrue();
+            issues.Any(i => i.Id == command.Id).Should().BeTrue();
 
-            var issue = afterPut.Single(i => i.Id == command.Id);
+            var issue = issues.Single(i => i.Id == command.Id);
 
             issue.Title.Should().Be(command.Title);
             issue.Type.Should().Be(command.Type);

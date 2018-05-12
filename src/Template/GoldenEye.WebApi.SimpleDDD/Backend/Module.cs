@@ -8,6 +8,7 @@ using Contracts.Issues.Views;
 using GoldenEye.Backend.Core.DDD.Registration;
 using GoldenEye.Backend.Core.Marten.Events.Storage;
 using GoldenEye.Backend.Core.Marten.Registration;
+using GoldenEye.Backend.Core.Registration;
 using GoldenEye.Shared.Core.Modules;
 using Marten;
 using Microsoft.Extensions.Configuration;
@@ -44,6 +45,7 @@ namespace Backend
             services.AddEventStore<MartenEventStore>();
             services.AddEventStorePipeline();
             services.AddValidationPipeline();
+            services.AddAllValidators();
             services.AddMartenDocumentDataContext();
         }
 
