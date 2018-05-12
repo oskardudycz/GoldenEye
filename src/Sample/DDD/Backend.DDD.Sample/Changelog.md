@@ -1,4 +1,11 @@
-﻿# v5.0.0 (19.04.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/58)
+﻿# v5.0.1 (12.05.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/62)
+
+## Changes
+
+* updated Marten packages version to most recent **[PATCH]**
+
+
+# v5.0.0 (19.04.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/58)
 
 ## Changes
 
