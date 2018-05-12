@@ -68,12 +68,12 @@ namespace GoldenEye.Backend.Core.Marten.Context
         {
             if (id is Guid)
                 return _documentSession.LoadAsync<TEntity>((Guid)id, cancellationToken);
-            if (id is long)
+            else if (id is long)
                 return _documentSession.LoadAsync<TEntity>((long)id, cancellationToken);
-            if (id is int)
+            else if (id is int)
                 return _documentSession.LoadAsync<TEntity>((int)id, cancellationToken);
-
-            return _documentSession.LoadAsync<TEntity>(id.ToString(), cancellationToken);
+            else
+                return _documentSession.LoadAsync<TEntity>(id.ToString(), cancellationToken);
         }
 
         public IQueryable<TEntity> GetQueryable<TEntity>() where TEntity : class
@@ -87,10 +87,30 @@ namespace GoldenEye.Backend.Core.Marten.Context
             return entity;
         }
 
+        public bool Remove<TEntity>(object id, int? version = null) where TEntity : class
+        {
+            if (id is Guid)
+                _documentSession.Delete<TEntity>((Guid)id);
+            else if (id is long)
+                _documentSession.Delete<TEntity>((long)id);
+            else if (id is int)
+                _documentSession.Delete<TEntity>((int)id);
+            else
+                _documentSession.Delete<TEntity>(id.ToString());
+
+            return true;
+        }
+
         public Task<TEntity> RemoveAsync<TEntity>(TEntity entity, int? version = null, CancellationToken cancellationToken = default(CancellationToken)) where TEntity : class
         {
             _documentSession.Delete(entity);
             return Task.FromResult(entity);
+        }
+
+        public Task<bool> RemoveAsync<TEntity>(object id, int? version = null, CancellationToken cancellationToken = default(CancellationToken)) where TEntity : class
+        {
+            _documentSession.Delete(id);
+            return Task.FromResult(true);
         }
 
         public int SaveChanges()

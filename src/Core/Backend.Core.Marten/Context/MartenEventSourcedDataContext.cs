@@ -97,6 +97,20 @@ namespace GoldenEye.Backend.Core.Marten.Context
             return UpdateAsync(entity, version, cancellationToken);
         }
 
+        public bool Remove<TEntity>(object id, int? version = null) where TEntity : class
+        {
+            throw new NotSupportedException(
+                $"Removing by {nameof(id)} is not supported for {typeof(MartenEventSourcedDataContext).Name}."
+                + $"Please use {nameof(Remove)} method with entiy making sure, that you have event published.");
+        }
+
+        public Task<bool> RemoveAsync<TEntity>(object id, int? version = null, CancellationToken cancellationToken = default(CancellationToken)) where TEntity : class
+        {
+            throw new NotSupportedException(
+                $"Removing by {nameof(id)} is not supported for {typeof(MartenEventSourcedDataContext).Name}."
+                + $"Please use {nameof(RemoveAsync)} method with entiy making sure, that you have event published.");
+        }
+
         public int SaveChanges()
         {
             var changesCount = ChangesCount;
