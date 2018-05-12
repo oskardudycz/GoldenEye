@@ -60,6 +60,7 @@ namespace Backend
             services.AddMartenDocumentCRUDRepository<Issue>();
             services.RegisterCommandHandler<CreateIssue, IssueCommandHandler>();
             services.RegisterCommandHandler<UpdateIssue, IssueCommandHandler>();
+            services.RegisterCommandHandler<DeleteIssue, IssueCommandHandler>();
 
             services.AddMartenDocumentReadonlyRepository<IssueView>();
             services.RegisterQueryHandler<GetIssues, IReadOnlyList<IssueView>, IssueQueryHandler>();

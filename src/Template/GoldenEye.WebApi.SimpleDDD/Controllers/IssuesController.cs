@@ -26,14 +26,14 @@ namespace GoldenEye.WebApi.SimpleDDD.Controllers
 
         // GET api/issues
         [HttpGet]
-        public async Task<IReadOnlyList<IssueView>> Get(GetIssues query)
+        public Task<IReadOnlyList<IssueView>> Get(GetIssues query)
         {
-            return await queryBus.SendAsync<GetIssues, IReadOnlyList<IssueView>>(query);
+            return queryBus.SendAsync<GetIssues, IReadOnlyList<IssueView>>(query);
         }
 
         // GET api/issues
         [HttpGet("{id}")]
-        public async Task<IssueView> Get(Guid id)
+        public async Task<IssueView> Get([FromRoute] Guid id)
         {
             return await queryBus.SendAsync<GetIssue, IssueView>(new GetIssue(id));
         }
@@ -52,6 +52,15 @@ namespace GoldenEye.WebApi.SimpleDDD.Controllers
         public async Task<IActionResult> Put([FromBody]UpdateIssue command)
         {
             await commandBus.SendAsync(command);
+
+            return Ok();
+        }
+
+        // PUT api/issues
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete([FromRoute] Guid id)
+        {
+            await commandBus.SendAsync(new DeleteIssue(id));
 
             return Ok();
         }

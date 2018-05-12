@@ -1,4 +1,5 @@
 ﻿using System;
+using FluentValidation;
 using GoldenEye.Backend.Core.DDD.Queries;
 
 namespace Contracts.Issues.Queries
@@ -10,6 +11,14 @@ namespace Contracts.Issues.Queries
         public GetIssue(Guid id)
         {
             Id = id;
+        }
+    }
+
+    public class GetIssueValidator : AbstractValidator<GetIssue>
+    {
+        public GetIssueValidator()
+        {
+            RuleFor(r => r.Id).NotEmpty();
         }
     }
 }

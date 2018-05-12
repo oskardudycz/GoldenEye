@@ -46,6 +46,19 @@ namespace WebApi.SimpleDDD.IntegrationTests.Issues
             );
 
             await UpdateIssue(updateCommand);
+
+            //Delete
+            await DeleteIssue(createdIssue.Id);
+        }
+
+        [Fact]
+        public async Task GetIssueWithNotValidData_ShouldReturnBadRequest()
+        {
+            var id = Guid.Empty;
+
+            var response = await _sut.Client.GetAsync($"/api/Issues/{id}");
+
+            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
         }
 
         [Fact]
@@ -77,13 +90,34 @@ namespace WebApi.SimpleDDD.IntegrationTests.Issues
             response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
         }
 
+        [Fact]
+        public async Task DeleteIssueWithNotValidData_ShouldReturnBadRequest()
+        {
+            var id = Guid.Empty;
+
+            var response = await _sut.Client.DeleteAsync($"/api/Issues/{id}");
+
+            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+        }
+
         private async Task<IReadOnlyList<IssueView>> GetIssues()
         {
             var response = await _sut.Client.GetAsync("/api/Issues");
             response.EnsureSuccessStatusCode();
 
-            var stringGet = await response.Content.ReadAsStringAsync();
-            return stringGet.FromJson<IReadOnlyList<IssueView>>();
+            var json = await response.Content.ReadAsStringAsync();
+            return json.FromJson<IReadOnlyList<IssueView>>();
+        }
+
+        private async Task<IssueView> GetIssue(Guid id)
+        {
+            var response = await _sut.Client.GetAsync($"/api/Issues/{id}");
+
+            response.EnsureSuccessStatusCode();
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+
+            var json = await response.Content.ReadAsStringAsync();
+            return json.FromJson<IssueView>();
         }
 
         private async Task<IssueView> CreateIssue(CreateIssue command, int previousCount)
@@ -96,7 +130,14 @@ namespace WebApi.SimpleDDD.IntegrationTests.Issues
 
             issues.Count.Should().Be(previousCount + 1);
 
-            return issues.Last();
+            var issue = issues.Last();
+
+            issue.Id.Should().NotBeEmpty();
+            issue.Type.Should().Be(command.Type);
+            issue.Title.Should().Be(command.Title);
+            issue.Description.Should().Be(command.Description);
+
+            return issue;
         }
 
         private async Task<IssueView> UpdateIssue(UpdateIssue command)
@@ -105,16 +146,27 @@ namespace WebApi.SimpleDDD.IntegrationTests.Issues
             response.EnsureSuccessStatusCode();
             response.StatusCode.Should().Be(HttpStatusCode.OK);
 
-            var issues = await GetIssues();
+            var issue = await GetIssue(command.Id);
 
-            issues.Any(i => i.Id == command.Id).Should().BeTrue();
-
-            var issue = issues.Single(i => i.Id == command.Id);
-
-            issue.Title.Should().Be(command.Title);
+            issue.Should().NotBeNull();
+            issue.Id.Should().Be(command.Id);
             issue.Type.Should().Be(command.Type);
+            issue.Title.Should().Be(command.Title);
+            issue.Description.Should().Be(command.Description);
 
             return issue;
+        }
+
+        private async Task DeleteIssue(Guid id)
+        {
+            var response = await _sut.Client.DeleteAsync($"/api/Issues/{id}");
+
+            response.EnsureSuccessStatusCode();
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+
+            var issues = await GetIssues();
+
+            issues.Any(i => i.Id == id).Should().BeFalse();
         }
     }
 }

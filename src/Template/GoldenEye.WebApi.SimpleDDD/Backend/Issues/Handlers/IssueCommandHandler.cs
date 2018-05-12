@@ -10,8 +10,10 @@ using GoldenEye.Shared.Core.Extensions.Mapping;
 
 namespace Backend.Issues.Handlers
 {
-    internal class IssueCommandHandler
-        : ICommandHandler<CreateIssue>, ICommandHandler<UpdateIssue>
+    internal class IssueCommandHandler :
+        ICommandHandler<CreateIssue>,
+        ICommandHandler<UpdateIssue>,
+        ICommandHandler<DeleteIssue>
     {
         private IEventBus eventBus;
         private IRepository<Issue> repository;
@@ -40,6 +42,15 @@ namespace Backend.Issues.Handlers
             await repository.UpdateAsync(issue, cancellationToken: cancellationToken);
 
             var @event = issue.Map<IssueUpdated>();
+            await eventBus.PublishAsync(@event);
+        }
+
+        public async Task Handle(DeleteIssue command, CancellationToken cancellationToken)
+        {
+            var issue = await repository.GetByIdAsync(command.Id, cancellationToken);
+            await repository.DeleteAsync(issue, cancellationToken: cancellationToken);
+
+            var @event = issue.Map<IssueDeleted>();
             await eventBus.PublishAsync(@event);
         }
     }
