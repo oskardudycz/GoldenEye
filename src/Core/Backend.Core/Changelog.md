@@ -1,4 +1,11 @@
-﻿# v4.0.0 (19.04.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/58)
+﻿# v5.0.0 (12.05.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/60)
+
+## Changes
+
+* Fixed wrong type of id in Delete method in `IRepository` and `IRestService` **[MAJOR]**
+* Added overloads with cancellation token only of async `IRepository` methods **[MINOR]**
+
+# v4.0.0 (19.04.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/58)
 
 ## Changes
 

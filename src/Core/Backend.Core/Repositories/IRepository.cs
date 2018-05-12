@@ -12,22 +12,30 @@ namespace GoldenEye.Backend.Core.Repositories
 
         Task<TEntity> AddAsync(TEntity entity, bool shouldSaveChanges = true, CancellationToken cancellationToken = default(CancellationToken));
 
+        Task<TEntity> AddAsync(TEntity entity, CancellationToken cancellationToken);
+
         IQueryable<TEntity> AddAll(IEnumerable<TEntity> entities, bool shouldSaveChanges = true);
 
         TEntity Update(TEntity entity, bool shouldSaveChanges = true);
 
         Task<TEntity> UpdateAsync(TEntity entity, bool shouldSaveChanges = true, CancellationToken cancellationToken = default(CancellationToken));
 
-        int SaveChanges();
-
-        Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken));
+        Task<TEntity> UpdateAsync(TEntity entity, CancellationToken cancellationToken);
 
         TEntity Delete(TEntity entity, bool shouldSaveChanges = true);
 
         Task<TEntity> DeleteAsync(TEntity entity, bool shouldSaveChanges = true, CancellationToken cancellationToken = default(CancellationToken));
 
-        bool Delete(int id, bool shouldSaveChanges = true);
+        Task<TEntity> DeleteAsync(TEntity entity, CancellationToken cancellationToken);
 
-        Task<bool> DeleteAsync(int id, bool shouldSaveChanges = true, CancellationToken cancellationToken = default(CancellationToken));
+        bool Delete(object id, bool shouldSaveChanges = true);
+
+        Task<bool> DeleteAsync(object id, bool shouldSaveChanges = true, CancellationToken cancellationToken = default(CancellationToken));
+
+        Task<bool> DeleteAsync(object id, CancellationToken cancellationToken);
+
+        int SaveChanges();
+
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken));
     }
 }
