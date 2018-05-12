@@ -9,23 +9,31 @@ namespace Backend.Issues
     {
         object IHasId.Id => Id;
 
-        public Guid Id { get; private set; }
+        public Guid Id { get; set; }
 
-        public IssueType Type { get; private set; }
+        public IssueType Type { get; set; }
 
-        public string Title { get; private set; }
+        public string Title { get; set; }
 
-        public string Description { get; private set; }
-        
+        public string Description { get; set; }
+
         public Issue()
         {
         }
 
-        public Issue(Guid id, IssueType type, string title)
+        public Issue(Guid id, IssueType type, string title, string description)
         {
             Id = id;
             Type = type;
             Title = title;
+            Description = description;
+        }
+
+        public void Update(IssueType type, string title, string description)
+        {
+            Type = type;
+            Title = title;
+            Description = description;
         }
     }
 }

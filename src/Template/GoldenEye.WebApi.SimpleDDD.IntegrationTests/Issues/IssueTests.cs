@@ -1,14 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Net;
-using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using Contracts.Issues;
 using Contracts.Issues.Commands;
-using Contracts.Issues.Queries;
 using Contracts.Issues.Views;
 using FluentAssertions;
-using Newtonsoft.Json;
+using GoldenEye.Shared.Core.Extensions.Serialization;
 using WebApi.SimpleDDD.IntegrationTests.Infrastructure;
 using Xunit;
 
@@ -24,40 +22,69 @@ namespace WebApi.SimpleDDD.IntegrationTests.Issues
         }
 
         [Fact]
-        public async Task IssueFlowTests()
+        public async Task IssueCRUDTest()
         {
-            var response = await _sut.Client.GetAsync("/api/Issues");
+            //Read
+            var initCount = (await GetIssues()).Count;
 
-            response.EnsureSuccessStatusCode();
+            //Create
+            var createCommand = new CreateIssue(
+                IssueType.Task,
+                "Check Create Task",
+                "Task should be created after running command"
+            );
 
-            response.StatusCode.Should().Be(HttpStatusCode.OK);
+            var createdIssue = await CreateIssue(createCommand, initCount);
+
+            //Update
+            var updateCommand = new UpdateIssue(
+                createdIssue.Id,
+                IssueType.Task,
+                "Check Update Task",
+                "Task should be update after running command"
+            );
+
+            await UpdateIssue(updateCommand);
         }
 
-        [Fact]
-        public async Task IssueCRUTests()
+        private async Task<IReadOnlyList<IssueView>> GetIssues()
         {
-            var initGet = await GetIssues();
-            var data = new CreateIssue(IssueType.Task, "IntegrationTest", "IntegrationTestDescription");
-            var post =new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
+            var response = await _sut.Client.GetAsync("/api/Issues");
+            response.EnsureSuccessStatusCode();
 
-            var responsePost = await _sut.Client.PostAsync("/api/Issues", post);
+            var stringGet = await response.Content.ReadAsStringAsync();
+            return stringGet.FromJson<IReadOnlyList<IssueView>>();
+        }
 
+        private async Task<IssueView> CreateIssue(CreateIssue command, int previousCount)
+        {
+            var responsePost = await _sut.Client.PostAsync("/api/Issues", command.ToJsonStringContent());
             responsePost.EnsureSuccessStatusCode();
-
             responsePost.StatusCode.Should().Be(HttpStatusCode.OK);
 
             var afterPost = await GetIssues();
-            Assert.Equal(initGet.Count+1, afterPost.Count);
 
+            afterPost.Count.Should().Be(previousCount + 1);
 
+            return afterPost.Last();
         }
-        private async Task<IReadOnlyList<IssueView>>  GetIssues()
+
+        private async Task<IssueView> UpdateIssue(UpdateIssue command)
         {
-            var response = await _sut.Client.GetAsync("/api/Issues");
-            response.EnsureSuccessStatusCode();
-            var stringGet = await response.Content.ReadAsStringAsync();
-            var getResult = JsonConvert.DeserializeObject<IReadOnlyList<IssueView>>(stringGet);
-            return getResult;
+            var responsePost = await _sut.Client.PutAsync($"/api/Issues/{command.Id}", command.ToJsonStringContent());
+            responsePost.EnsureSuccessStatusCode();
+            responsePost.StatusCode.Should().Be(HttpStatusCode.OK);
+
+            var afterPut = await GetIssues();
+
+            afterPut.Any(i => i.Id == command.Id).Should().BeTrue();
+
+            var issue = afterPut.Single(i => i.Id == command.Id);
+
+            issue.Title.Should().Be(command.Title);
+            issue.Type.Should().Be(command.Type);
+
+            return issue;
         }
     }
 }

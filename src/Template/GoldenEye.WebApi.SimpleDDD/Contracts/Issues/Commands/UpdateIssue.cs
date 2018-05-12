@@ -4,8 +4,8 @@ using GoldenEye.Backend.Core.DDD.Commands;
 namespace Contracts.Issues.Commands
 {
     public class UpdateIssue : ICommand
-    { 
-        public Guid Id { get;}
+    {
+        public Guid Id { get; }
 
         public IssueType Type { get; }
 
@@ -13,8 +13,9 @@ namespace Contracts.Issues.Commands
 
         public string Description { get; }
 
-        public UpdateIssue(IssueType type, string title, string description)
+        public UpdateIssue(Guid id, IssueType type, string title, string description)
         {
+            Id = id;
             Type = type;
             Title = title;
             Description = description;

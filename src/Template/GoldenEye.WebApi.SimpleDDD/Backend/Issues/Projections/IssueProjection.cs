@@ -2,7 +2,6 @@
 using Contracts.Issues;
 using Contracts.Issues.Events;
 using Contracts.Issues.Views;
-using GoldenEye.Shared.Core.Objects.General;
 using Marten.Events.Projections;
 
 namespace Backend.Issues.Projections
@@ -30,9 +29,9 @@ namespace Backend.Issues.Projections
             Title = @event.Title;
             Description = @event.Description;
         }
+
         private void Apply(IssueView item, IssueUpdated @event)
         {
-            Id = @event.IssueId;
             Type = @event.Type;
             Title = @event.Title;
             Description = @event.Description;

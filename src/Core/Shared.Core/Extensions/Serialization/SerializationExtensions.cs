@@ -1,5 +1,6 @@
 ﻿using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace GoldenEye.Shared.Core.Extensions.Serialization
@@ -35,6 +36,18 @@ namespace GoldenEye.Shared.Core.Extensions.Serialization
         public static StringContent ToJsonStringContent(this object obj)
         {
             return new StringContent(obj.ToJson(), Encoding.UTF8, "application/json");
+        }
+
+        /// <summary>
+        /// Deserialize object from json with JsonNet
+        /// </summary>
+        /// <typeparam name="T">Type of the deserialized object</typeparam>
+        /// <param name="json">json string</param>
+        /// <returns>deserialized object</returns>
+        public static async Task<T> FromJsonStringContentAsync<T>(this HttpContent content)
+        {
+            var json = await content.ReadAsStringAsync();
+            return json.FromJson<T>();
         }
     }
 }

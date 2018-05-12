@@ -48,7 +48,7 @@ namespace GoldenEye.WebApi.SimpleDDD.Controllers
         }
 
         // PUT api/issues
-        [HttpPut]
+        [HttpPut("{id}")]
         public async Task<IActionResult> Put([FromBody]UpdateIssue command)
         {
             await commandBus.SendAsync(command);
