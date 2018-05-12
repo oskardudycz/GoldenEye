@@ -40,7 +40,11 @@ namespace GoldenEye.Backend.Core.Context
 
         public abstract TEntity Remove<TEntity>(TEntity entity, int? version = null) where TEntity : class;
 
+        public abstract bool Remove<TEntity>(object id, int? version = null) where TEntity : class;
+
         public abstract Task<TEntity> RemoveAsync<TEntity>(TEntity entity, int? version = null, CancellationToken cancellationToken = default(CancellationToken)) where TEntity : class;
+
+        public abstract Task<bool> RemoveAsync<TEntity>(object id, int? version = null, CancellationToken cancellationToken = default(CancellationToken)) where TEntity : class;
 
         public abstract TEntity GetById<TEntity>(object id) where TEntity : class, new();
 

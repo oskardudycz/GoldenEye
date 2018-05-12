@@ -110,6 +110,21 @@ namespace GoldenEye.Backend.Core.Context
             return Task.FromResult(((IDataContext)this).Remove(entity, version));
         }
 
+        bool IDataContext.Remove<TEntity>(object id, int? version)
+        {
+            var entity = dbContext.Find<TEntity>(id);
+
+            CheckVersion(entity, version);
+            dbContext.Remove(id);
+
+            return true;
+        }
+
+        Task<bool> IDataContext.RemoveAsync<TEntity>(object id, int? version, CancellationToken cancellationToken)
+        {
+            return Task.FromResult(((IDataContext)this).Remove<TEntity>(id, version));
+        }
+
         public TEntity GetById<TEntity>(object id) where TEntity : class, new()
         {
             return dbContext.Find<TEntity>(id);

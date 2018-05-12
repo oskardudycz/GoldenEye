@@ -25,7 +25,7 @@ namespace GoldenEye.Backend.Core.Repositories
 
         public virtual Task<TEntity> AddAsync(TEntity entity, CancellationToken cancellationToken)
         {
-            return AddAsync(entity, cancellationToken);
+            return AddAsync(entity, true, cancellationToken);
         }
 
         public async virtual Task<TEntity> AddAsync(TEntity entity, bool shouldSaveChanges = true, CancellationToken cancellationToken = default(CancellationToken))
@@ -89,7 +89,7 @@ namespace GoldenEye.Backend.Core.Repositories
 
         public async virtual Task<TEntity> DeleteAsync(TEntity entity, bool shouldSaveChanges = true, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var result = await Context.RemoveAsync(entity);
+            var result = await Context.RemoveAsync(entity, cancellationToken: cancellationToken);
 
             if (shouldSaveChanges)
                 await SaveChangesAsync();
@@ -99,7 +99,12 @@ namespace GoldenEye.Backend.Core.Repositories
 
         public virtual bool Delete(object id, bool shouldSaveChanges = true)
         {
-            return Delete(GetById(id), shouldSaveChanges) != null;
+            var result = Context.Remove<TEntity>(id);
+
+            if (shouldSaveChanges)
+                SaveChanges();
+
+            return result;
         }
 
         public virtual Task<bool> DeleteAsync(object id, CancellationToken cancellationToken)
@@ -109,7 +114,12 @@ namespace GoldenEye.Backend.Core.Repositories
 
         public async virtual Task<bool> DeleteAsync(object id, bool shouldSaveChanges = true, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return (await DeleteAsync(await GetByIdAsync(id, cancellationToken), shouldSaveChanges, cancellationToken)) != null;
+            var result = await Context.RemoveAsync<TEntity>(id, cancellationToken: cancellationToken);
+
+            if (shouldSaveChanges)
+                await SaveChangesAsync();
+
+            return result;
         }
 
         public virtual int SaveChanges()
