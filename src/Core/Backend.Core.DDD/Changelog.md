@@ -1,4 +1,10 @@
-﻿# v5.0.0 (19.04.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/58)
+﻿# v6.0.0 (12.05.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/60)
+
+## Changes
+
+* Updated reference to Backend.Core **[MAJOR]**
+
+# v5.0.0 (19.04.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/58)
 
 ## Changes
 
