@@ -29,29 +29,27 @@ namespace Backend.Issues.Handlers
         public async Task Handle(CreateIssue command, CancellationToken cancellationToken)
         {
             var issue = command.Map<Issue>();
-            await repository.AddAsync(issue, cancellationToken: cancellationToken);
+            await repository.AddAsync(issue, cancellationToken);
 
             var @event = issue.Map<IssueCreated>();
-            await eventBus.PublishAsync(@event);
+            await eventBus.PublishAsync(@event, cancellationToken);
         }
 
         public async Task Handle(UpdateIssue command, CancellationToken cancellationToken)
         {
             var issue = await repository.GetByIdAsync(command.Id, cancellationToken);
             issue.MapFrom(command);
-            await repository.UpdateAsync(issue, cancellationToken: cancellationToken);
+            await repository.UpdateAsync(issue, cancellationToken);
 
             var @event = issue.Map<IssueUpdated>();
-            await eventBus.PublishAsync(@event);
+            await eventBus.PublishAsync(@event, cancellationToken);
         }
 
         public async Task Handle(DeleteIssue command, CancellationToken cancellationToken)
         {
-            var issue = await repository.GetByIdAsync(command.Id, cancellationToken);
-            await repository.DeleteAsync(issue, cancellationToken: cancellationToken);
+            await repository.DeleteAsync(command.Id, cancellationToken);
 
-            var @event = issue.Map<IssueDeleted>();
-            await eventBus.PublishAsync(@event);
+            await eventBus.PublishAsync(new IssueDeleted(command.Id));
         }
     }
 }
