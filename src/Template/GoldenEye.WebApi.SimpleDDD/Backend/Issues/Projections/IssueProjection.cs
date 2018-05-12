@@ -20,6 +20,7 @@ namespace Backend.Issues.Projections
         {
             ProjectEvent<IssueCreated>(ev => ev.IssueId, (item, @event) => item.Apply(@event));
             ProjectEvent<IssueUpdated>(ev => ev.IssueId, (item, @event) => item.Apply(@event));
+            DeleteEvent<IssueDeleted>(ev => ev.IssueId);
         }
 
         private void Apply(IssueView item, IssueCreated @event)

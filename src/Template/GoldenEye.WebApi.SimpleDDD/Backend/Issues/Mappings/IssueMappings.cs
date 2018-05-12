@@ -19,6 +19,9 @@ namespace Backend.Issues.Mappings
 
             CreateMap<Issue, IssueContracts.Events.IssueUpdated>().ConstructUsing(
                 aggregate => new IssueContracts.Events.IssueUpdated(aggregate.Id, aggregate.Type, aggregate.Title, aggregate.Description));
+
+            CreateMap<Issue, IssueContracts.Events.IssueDeleted>().ConstructUsing(
+                aggregate => new IssueContracts.Events.IssueDeleted(aggregate.Id));
         }
     }
 }
