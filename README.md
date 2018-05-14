@@ -15,7 +15,7 @@ What do I get?
 --------------------------------
 Complete Solution bootstrap - bottom up:
 - [Entity Framework](https://github.com/aspnet/EntityFrameworkCore) (supports also [Dapper](https://github.com/StackExchange/Dapper), [Marten](https://github.com/JasperFx/marten))
-- CRUD Repositories and CRUD Application Services
+- [CRUD Repositories](https://github.com/oskardudycz/GoldenEye/tree/master/src/Core/Backend.Core/Repositories) and CRUD Application Services
 - WebApi REST controllers
 - Authorization with OAuth ([Identity Server](https://github.com/IdentityServer/IdentityServer4))
 - complete set up of dependency injection with automatic naming convention binding
