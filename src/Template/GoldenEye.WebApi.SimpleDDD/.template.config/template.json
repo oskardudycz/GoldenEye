@@ -2,7 +2,7 @@
   "$schema": "http://json.schemastore.org/template",
   "author": "MJendza",
   "classifications": [ "WebAPI", "DDD", "GoldenEye" ],
-  "name": "Create basic GoldenEye project with default settings",
+  "name": "GoldenEye Simple DDD",
   "identity": "GoldenEye.WebApi.SimpleDDD",
   "groupIdentity": "GoldenEye.WebApi.SimpleDDD",
   "shortName": "SimpleDDD",
@@ -10,6 +10,6 @@
     "language": "C#",
     "type": "project"
   },
-  "sourceName": "GoldenEye.WebApi.SimpleDDD", 
+  "sourceName": "GoldenEye.WebApi.SimpleDDD",
   "preferNameDirectory": true
 }
