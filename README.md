@@ -9,13 +9,13 @@
 
 What is GoldenEye?
 --------------------------------
-GoldenEye is a Full Stack framework written in .NET Core. The main goal of GoldenEye is to speed up your development process. It gathers most widely used frameworks in .NET world and pack them into a simple bootstrap Nuget packages. It also provide set of base classes, helpers, extensions that will help you with your daily work.
+**GoldenEye** is a Full Stack framework written in .NET Core. The main goal of **GoldenEye** is to speed up your development process. It gathers most widely used frameworks in .NET world and pack them into a simple bootstrap [Nuget packages](https://www.nuget.org/packages?q=GoldenEye). It also provide set of base classes, helpers, extensions that will help you with your daily work.
 
 What do I get?
 --------------------------------
 Complete Solution bootstrap - bottom up:
 - [Entity Framework](https://github.com/aspnet/EntityFrameworkCore) (supports also [Dapper](https://github.com/StackExchange/Dapper), [Marten](https://github.com/JasperFx/marten))
-- CRUD Repositories and CRUD Application Services
+- [CRUD Repositories](https://github.com/oskardudycz/GoldenEye/tree/master/src/Core/Backend.Core/Repositories) and CRUD Application Services
 - WebApi REST controllers
 - Authorization with OAuth ([Identity Server](https://github.com/IdentityServer/IdentityServer4))
 - complete set up of dependency injection with automatic naming convention binding
@@ -46,7 +46,7 @@ How do I get started?
   
 5. Run the frontend project.
 
-If you're feeling comportable enough with polish language you can read my [blog post](http://oskar-dudycz.pl/2017/01/06/metallica-skonczyla-sie-na-kill-em-all-a-ja-ide-w-open-sourcey/#comment-44) where I annouced GoldenEye and explained the main goals.
+If you're feeling comportable enough with polish language you can read my [blog post](http://oskar-dudycz.pl/2017/01/06/metallica-skonczyla-sie-na-kill-em-all-a-ja-ide-w-open-sourcey/#comment-44) where I annouced **GoldenEye** and explained the main goals.
 
 Where can I get it?
 --------------------------------
