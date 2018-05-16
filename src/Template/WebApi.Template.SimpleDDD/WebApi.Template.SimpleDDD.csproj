@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <Version>1.0.0</Version>
-    <PackageId>GoldenEye.WebApi.SimpleDDD</PackageId>
+    <PackageId>GoldenEye.WebApi.Template.SimpleDDD</PackageId>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <IsPackable>true</IsPackable>
     <Authors>Oskar Dudycz</Authors>
@@ -14,8 +14,8 @@
     <PackageLicenseUrl>https://github.com/oskardudycz/GoldenEye/blob/master/LICENSE.txt</PackageLicenseUrl>
     <PackageProjectUrl>http://oskardudycz.github.io/GoldenEye/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/oskardudycz/GoldenEye</RepositoryUrl>
-    <RootNamespace>GoldenEye.WebApi.SimpleDDD</RootNamespace>
-    <AssemblyName>GoldenEye.WebApi.SimpleDDD</AssemblyName>
+    <RootNamespace>GoldenEye.WebApi.Template.SimpleDDD</RootNamespace>
+    <AssemblyName>GoldenEye.WebApi.Template.SimpleDDD</AssemblyName>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <PackageIconUrl>https://raw.githubusercontent.com/oskardudycz/GoldenEye/master/assets/GoldenEyeLogo.png</PackageIconUrl>
   </PropertyGroup>
