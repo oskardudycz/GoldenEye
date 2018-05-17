@@ -47,6 +47,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WebApi.Template.SimpleDDD\GoldenEye.WebApi.Template.SimpleDDD.csproj" />
+    <ProjectReference Include="..\Content\GoldenEye.WebApi.Template.SimpleDDD.csproj" />
   </ItemGroup>
 </Project>
