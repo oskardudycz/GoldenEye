@@ -2,8 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <IsPackable>true</IsPackable>
     <Version>1.0.0</Version>
+    <PackageId>GoldenEye.WebApi.Template.SimpleDDD</PackageId>
+    <RootNamespace>GoldenEye.WebApi.Template.SimpleDDD</RootNamespace>
+    <AssemblyName>GoldenEye.WebApi.Template.SimpleDDD</AssemblyName>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,6 +18,7 @@
     <PackageReference Include="GoldenEye.Backend.Core.WebApi" Version="5.0.1" />
     <PackageReference Include="GoldenEye.Shared.Core" Version="4.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.7" />
+    <PackageReference Include="NuGet.CommandLine" Version="4.6.2" />
   </ItemGroup>
 
   <ItemGroup>

@@ -28,23 +28,33 @@ Complete Solution bootstrap - bottom up:
 
 How do I get started?
 --------------------------------
-1. Create new solution with "ASP.NET Core Web Application" project name it eg. "API"
-2. Add new Class libraries projects to newly created solution:
-  * Backend
-  * Shared
-3. Add following references
-  * Backend and Shared to API project
-  * Shared to Backend project
-4. Install following Nuget packages to the projects:
-  * Shared - GoldenEye.Shared.Core 
+
+Install the template by running
+
+`dotnet -i GoldenEye.WebApi.Template.SimpleDDD`
+
+and then create new project base on it:
+
+`dotnet new SimpleDDD -n NameOfYourProject`
+
+Or manually add packages to your project, eg:
+
+* **[Shared](src/Core/Shared.Core/Readme.md)** - GoldenEye.Shared.Core 
   
   `dotnet add package GoldenEye.Shared.Core` 
   
-  * Backend - GoldenEye.Backend.Core 
+* **[Backend](src/Core/Backend.Core/Readme.md)** - GoldenEye.Backend.Core 
   
   `dotnet add package GoldenEye.Backend.Core` 
   
-5. Run the frontend project.
+* **[Entity Framework](src/Core/Backend.Core.EntityFramework/Readme.md)** - GoldenEye.Backend.Core.EntityFramework 
+  
+  `dotnet add package GoldenEye.Backend.Core.EntityFramework` 
+  
+* **[WebApi](src/Core/Backend.Core.WebApi/Readme.md)** - GoldenEye.Backend.Core.WebApi 
+  
+  `dotnet add package GoldenEye.Backend.WebApi`
+  
 
 If you're feeling comportable enough with polish language you can read my [blog post](http://oskar-dudycz.pl/2017/01/06/metallica-skonczyla-sie-na-kill-em-all-a-ja-ide-w-open-sourcey/#comment-44) where I annouced **GoldenEye** and explained the main goals.
 

@@ -67,7 +67,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend.Core.Tests", "Core\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend.Core.WebApi.Tests", "Core\Backend.Core.WebApi.Tests\Backend.Core.WebApi.Tests.csproj", "{9BDEDD7C-A07A-42BD-85EB-2A7F29F10E1E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.Template.SimpleDDD", "Template\WebApi.Template.SimpleDDD\GoldenEye.WebApi.Template.SimpleDDD.csproj", "{592DD3EB-823E-4941-808A-7A42928748BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.Template.SimpleDDD", "Templates\SimpleDDD\content\GoldenEye.WebApi.Template.SimpleDDD.csproj", "{592DD3EB-823E-4941-808A-7A42928748BD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend.Core.Dapper", "Core\Backend.Core.Dapper\Backend.Core.Dapper.csproj", "{7D9EBFA0-F65B-4F87-824A-1F3F2D18BD0A}"
 EndProject
@@ -83,7 +83,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "postgres", "postgres", "{E9
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{2C2A047E-CDC5-41E8-82C1-BCC31F941B6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Template.SimpleDDD.IntegrationTests", "Template\WebApi.Template.SimpleDDD.IntegrationTests\WebApi.Template.SimpleDDD.IntegrationTests.csproj", "{8E2E928B-E1D1-4AFA-AAE7-6586F9EC8170}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Template.SimpleDDD.IntegrationTests", "Templates\SimpleDDD\IntegrationTests\WebApi.Template.SimpleDDD.IntegrationTests.csproj", "{8E2E928B-E1D1-4AFA-AAE7-6586F9EC8170}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
