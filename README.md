@@ -29,7 +29,7 @@ Complete Solution bootstrap - bottom up:
 How do I get started?
 --------------------------------
 
-Install the template by running
+Install the [project template](https://github.com/oskardudycz/GoldenEye/tree/master/src/Templates/SimpleDDD/content) by running
 
 `dotnet -i GoldenEye.WebApi.Template.SimpleDDD`
 
