@@ -12,7 +12,7 @@ How do I get started?
 
 Install the template by running
 
-`dotnet -i GoldenEye.WebApi.Template.SimpleDDD`
+`dotnet new -i GoldenEye.WebApi.Template.SimpleDDD`
 
 and then create new project base on that
 
