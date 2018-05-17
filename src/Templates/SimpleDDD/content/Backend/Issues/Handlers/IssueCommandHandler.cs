@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using GoldenEye.Backend.Core.DDD.Commands;
 using GoldenEye.Backend.Core.DDD.Events;
 using GoldenEye.Backend.Core.Repositories;
-using GoldenEye.Shared.Core.Extensions.Mapping;
 using GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Commands;
 using GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Events;
 
@@ -28,20 +27,22 @@ namespace GoldenEye.WebApi.Template.SimpleDDD.Backend.Issues.Handlers
 
         public async Task Handle(CreateIssue command, CancellationToken cancellationToken)
         {
-            var issue = command.Map<Issue>();
-            await repository.AddAsync(issue, cancellationToken);
+            var aggregate = new Issue(Guid.NewGuid(), command.Type, command.Title, command.Description);
+            await repository.AddAsync(aggregate, cancellationToken);
 
-            var @event = issue.Map<IssueCreated>();
+            var @event = new IssueCreated(aggregate.Id, aggregate.Type, aggregate.Title, aggregate.Description);
             await eventBus.PublishAsync(@event, cancellationToken);
         }
 
         public async Task Handle(UpdateIssue command, CancellationToken cancellationToken)
         {
-            var issue = await repository.GetByIdAsync(command.Id, cancellationToken);
-            issue.MapFrom(command);
-            await repository.UpdateAsync(issue, cancellationToken);
+            var aggregate = await repository.GetByIdAsync(command.Id, cancellationToken);
 
-            var @event = issue.Map<IssueUpdated>();
+            aggregate.Update(command.Type, command.Title, command.Description);
+
+            await repository.UpdateAsync(aggregate, cancellationToken);
+
+            var @event = new IssueUpdated(aggregate.Id, aggregate.Type, aggregate.Title, aggregate.Description);
             await eventBus.PublishAsync(@event, cancellationToken);
         }
 
@@ -49,7 +50,7 @@ namespace GoldenEye.WebApi.Template.SimpleDDD.Backend.Issues.Handlers
         {
             await repository.DeleteAsync(command.Id, cancellationToken);
 
-            await eventBus.PublishAsync(new IssueDeleted(command.Id));
+            await eventBus.PublishAsync(new IssueDeleted(command.Id), cancellationToken);
         }
     }
 }
