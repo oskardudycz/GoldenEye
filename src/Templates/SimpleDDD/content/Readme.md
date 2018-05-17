@@ -1,11 +1,11 @@
-﻿# GoldenEye.WebApi.SimpleDDD
+﻿# GoldenEye.Template.WebApi.SimpleDDD
 [![Stories in Ready](https://badge.waffle.io/oskardudycz/GoldenEye.png?label=ready&title=Ready)](https://waffle.io/oskardudycz/GoldenEye)
 [![Build status](https://ci.appveyor.com/api/projects/status/1mtm4h33cvur6kob?svg=true)](https://ci.appveyor.com/project/oskardudycz/goldeneye-core)
-[![NuGet version](https://badge.fury.io/nu/GoldenEye.WebApi.SimpleDDD.svg)](https://badge.fury.io/nu/GoldenEye.WebApi.SimpleDDD)
+[![NuGet version](https://badge.fury.io/nu/GoldenEye.WebApi.Template.SimpleDDD.svg)](https://badge.fury.io/nu/GoldenEye.WebApi.Template.SimpleDDD)
 
-What is GoldenEye.WebApi.SimpleDDD?
+What is GoldenEye.WebApi.Template.SimpleDDD?
 --------------------------------
-GoldenEye.WebApi.SimpleDDD is a template that helps to write code in Domain Driven Design and CQRS. It is written in .NET Core. It provides set of base and bootstrap classes that helps you to reduce boilerplate code and help you focus on writing business code.
+GoldenEye.WebApi.Template.SimpleDDD is a template that helps to write code in Domain Driven Design and CQRS. It is written in .NET Core. It provides set of base and bootstrap classes that helps you to reduce boilerplate code and help you focus on writing business code.
 
 How do I get started?
 --------------------------------
