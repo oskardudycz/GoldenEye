@@ -16,7 +16,7 @@ Install the template by running
 
 and then create new project base on that
 
-`dotnet new SimpleDDD`
+`dotnet new SimpleDDD -n NameOfYourProject`
 
 I found an issue or I have a change request
 --------------------------------

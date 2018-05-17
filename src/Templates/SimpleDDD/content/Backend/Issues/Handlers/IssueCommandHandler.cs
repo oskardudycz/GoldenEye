@@ -37,9 +37,7 @@ namespace GoldenEye.WebApi.Template.SimpleDDD.Backend.Issues.Handlers
         public async Task Handle(UpdateIssue command, CancellationToken cancellationToken)
         {
             var aggregate = await repository.GetByIdAsync(command.Id, cancellationToken);
-
             aggregate.Update(command.Type, command.Title, command.Description);
-
             await repository.UpdateAsync(aggregate, cancellationToken);
 
             var @event = new IssueUpdated(aggregate.Id, aggregate.Type, aggregate.Title, aggregate.Description);
