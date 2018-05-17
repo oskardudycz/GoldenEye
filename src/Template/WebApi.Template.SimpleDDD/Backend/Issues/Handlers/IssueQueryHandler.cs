@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Contracts.Issues.Queries;
-using Contracts.Issues.Views;
 using GoldenEye.Backend.Core.DDD.Queries;
 using GoldenEye.Backend.Core.Repositories;
+using GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Queries;
+using GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Views;
 using Marten;
 
-namespace Backend.Issues.Handlers
+namespace GoldenEye.WebApi.Template.SimpleDDD.Backend.Issues.Handlers
 {
     internal class IssueQueryHandler :
         IQueryHandler<GetIssues, IReadOnlyList<IssueView>>,

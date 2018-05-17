@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Contracts.Issues.Commands;
-using Contracts.Issues.Events;
 using GoldenEye.Backend.Core.DDD.Commands;
 using GoldenEye.Backend.Core.DDD.Events;
 using GoldenEye.Backend.Core.Repositories;
 using GoldenEye.Shared.Core.Extensions.Mapping;
+using GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Commands;
+using GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Events;
 
-namespace Backend.Issues.Handlers
+namespace GoldenEye.WebApi.Template.SimpleDDD.Backend.Issues.Handlers
 {
     internal class IssueCommandHandler :
         ICommandHandler<CreateIssue>,

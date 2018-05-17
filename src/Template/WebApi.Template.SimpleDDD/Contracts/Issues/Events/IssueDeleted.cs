@@ -1,7 +1,7 @@
 ﻿using System;
 using GoldenEye.Backend.Core.DDD.Events;
 
-namespace Contracts.Issues.Events
+namespace GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Events
 {
     public class IssueDeleted : IEvent
     {

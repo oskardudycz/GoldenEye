@@ -1,10 +1,10 @@
 ﻿using System;
-using Contracts.Issues;
-using Contracts.Issues.Events;
-using Contracts.Issues.Views;
+using GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues;
+using GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Events;
+using GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Views;
 using Marten.Events.Projections;
 
-namespace Backend.Issues.Projections
+namespace GoldenEye.WebApi.Template.SimpleDDD.Backend.Issues.Projections
 {
     internal class IssueProjection : ViewProjection<IssueView, Guid>
     {

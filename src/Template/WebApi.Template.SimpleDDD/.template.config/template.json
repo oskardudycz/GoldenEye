@@ -2,14 +2,23 @@
   "$schema": "http://json.schemastore.org/template",
   "author": "MJendza",
   "classifications": [ "WebAPI", "DDD", "GoldenEye" ],
-  "name": "GoldenEye Simple DDD",
-  "identity": "GoldenEye.WebApi.SimpleDDD",
-  "groupIdentity": "GoldenEye.WebApi.SimpleDDD",
+  "name": "GoldenEye Simple WebApi with DDD",
+  "identity": "GoldenEye.WebApi.Template.SimpleDDD",
+  "groupIdentity": "GoldenEye.WebApi.Template.SimpleDDD",
   "shortName": "SimpleDDD",
   "tags": {
     "language": "C#",
     "type": "project"
   },
-  "sourceName": "GoldenEye.WebApi.SimpleDDD",
-  "preferNameDirectory": true
+  "sourceName": "GoldenEye.WebApi.Template.SimpleDDD",
+  "preferNameDirectory": true,
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "exclude": [ "*.md", "*.nuspec"  ]
+        }
+      ]
+    }
+  ]
 }

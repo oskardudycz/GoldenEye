@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 using AutoMapper;
-using GoldenEye.WebApi.SimpleDDD;
+using GoldenEye.WebApi.Template.SimpleDDD;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 

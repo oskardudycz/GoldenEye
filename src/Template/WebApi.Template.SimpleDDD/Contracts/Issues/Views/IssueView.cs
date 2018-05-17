@@ -1,9 +1,9 @@
 ﻿using System;
-using Contracts.Issues.Events;
 using GoldenEye.Backend.Core.DDD.Queries;
 using GoldenEye.Shared.Core.Objects.General;
+using GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Events;
 
-namespace Contracts.Issues.Views
+namespace GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Views
 {
     public class IssueView : IView<Guid>
     {

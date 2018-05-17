@@ -1,9 +1,9 @@
 ﻿using System;
-using Contracts.Issues;
 using GoldenEye.Backend.Core.DDD.Aggregates;
 using GoldenEye.Shared.Core.Objects.General;
+using GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues;
 
-namespace Backend.Issues
+namespace GoldenEye.WebApi.Template.SimpleDDD.Backend.Issues
 {
     public class Issue : IAggregate
     {

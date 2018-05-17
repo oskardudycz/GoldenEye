@@ -2,7 +2,7 @@
 using FluentValidation;
 using GoldenEye.Backend.Core.DDD.Queries;
 
-namespace Contracts.Issues.Queries
+namespace GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Queries
 {
     public class GetIssue : IQuery<Views.IssueView>
     {

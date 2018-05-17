@@ -1,20 +1,20 @@
 ﻿using System.Collections.Generic;
-using Backend.Issues;
-using Backend.Issues.Handlers;
-using Backend.Issues.Projections;
-using Contracts.Issues.Commands;
-using Contracts.Issues.Queries;
-using Contracts.Issues.Views;
 using GoldenEye.Backend.Core.DDD.Registration;
 using GoldenEye.Backend.Core.Marten.Events.Storage;
 using GoldenEye.Backend.Core.Marten.Registration;
 using GoldenEye.Backend.Core.Registration;
 using GoldenEye.Shared.Core.Modules;
+using GoldenEye.WebApi.Template.SimpleDDD.Backend.Issues;
+using GoldenEye.WebApi.Template.SimpleDDD.Backend.Issues.Handlers;
+using GoldenEye.WebApi.Template.SimpleDDD.Backend.Issues.Projections;
+using GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Commands;
+using GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Queries;
+using GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Views;
 using Marten;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Backend
+namespace GoldenEye.WebApi.Template.SimpleDDD.Backend
 {
     public class BackendModule : Module
     {

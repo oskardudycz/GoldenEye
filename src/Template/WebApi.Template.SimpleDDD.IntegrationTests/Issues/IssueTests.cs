@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using Contracts.Issues;
-using Contracts.Issues.Commands;
-using Contracts.Issues.Views;
 using FluentAssertions;
 using GoldenEye.Shared.Core.Extensions.Serialization;
+using GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues;
+using GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Commands;
+using GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Views;
 using WebApi.SimpleDDD.IntegrationTests.Infrastructure;
 using Xunit;
 

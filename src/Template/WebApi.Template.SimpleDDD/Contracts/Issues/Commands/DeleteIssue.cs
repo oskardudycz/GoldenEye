@@ -2,7 +2,7 @@
 using FluentValidation;
 using GoldenEye.Backend.Core.DDD.Commands;
 
-namespace Contracts.Issues.Commands
+namespace GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Commands
 {
     public class DeleteIssue : ICommand
     {

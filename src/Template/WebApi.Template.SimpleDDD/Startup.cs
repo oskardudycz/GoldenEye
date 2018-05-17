@@ -1,16 +1,16 @@
 ﻿using AutoMapper;
-using Backend;
 using GoldenEye.Backend.Core.DDD.Registration;
 using GoldenEye.Backend.Core.WebApi.Modules;
 using GoldenEye.Backend.Core.WebApi.Registration;
 using GoldenEye.Shared.Core.Configuration;
 using GoldenEye.Shared.Core.Modules;
+using GoldenEye.WebApi.Template.SimpleDDD.Backend;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace GoldenEye.WebApi.SimpleDDD
+namespace GoldenEye.WebApi.Template.SimpleDDD
 {
     public class Startup
     {

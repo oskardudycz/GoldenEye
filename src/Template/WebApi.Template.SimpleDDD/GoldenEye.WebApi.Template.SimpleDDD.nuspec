@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>GoldenEye.WebApi.SimpleDDD</id>
+    <version>1.0.0</version>
+    <authors>Oskar Dudycz</authors>
+    <owners>Oskar Dudycz</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/oskardudycz/GoldenEye/blob/master/LICENSE.txt</licenseUrl>
+    <projectUrl>http://oskardudycz.github.io/GoldenEye/</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/oskardudycz/GoldenEye/master/assets/GoldenEyeLogo.png</iconUrl>
+    <description>GoldenEye.DDD is a library that helps to write code in Domain Driven Design and CQRS. It is written in .NET Core. It provides set of base and bootstrap classes that helps you to reduce boilerplate code and help you focus on writing business code.</description>
+    <copyright>Oskar Dudycz</copyright>
+    <repository url="https://github.com/oskardudycz/GoldenEye" />
+    <dependencies>
+      <group targetFramework=".NETCoreApp2.0">
+        <dependency id="AutoMapper" version="6.2.2" exclude="Build,Analyzers" />
+        <dependency id="AutoMapper.Extensions.Microsoft.DependencyInjection" version="3.2.0" exclude="Build,Analyzers" />
+        <dependency id="GoldenEye.Backend.Core" version="5.1.0" exclude="Build,Analyzers" />
+        <dependency id="GoldenEye.Backend.Core.DDD" version="6.0.1" exclude="Build,Analyzers" />
+        <dependency id="GoldenEye.Backend.Core.Marten" version="5.1.1" exclude="Build,Analyzers" />
+        <dependency id="GoldenEye.Backend.Core.WebApi" version="5.0.1" exclude="Build,Analyzers" />
+        <dependency id="GoldenEye.Shared.Core" version="4.0.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.All" version="2.0.7" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.NETCore.App" version="2.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <contentFiles>
+      <files include="any/netcoreapp2.0/appsettings.Development.json" buildAction="Content" />
+      <files include="any/netcoreapp2.0/appsettings.json" buildAction="Content" />
+      <files include="any/netcoreapp2.0/Properties/launchSettings.json" buildAction="Content" />
+	  <file src="**" exclude="*.md" />
+    </contentFiles>
+  </metadata>
+</package>

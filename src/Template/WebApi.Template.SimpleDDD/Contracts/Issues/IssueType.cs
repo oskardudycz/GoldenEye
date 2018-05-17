@@ -1,4 +1,4 @@
-﻿namespace Contracts.Issues
+﻿namespace GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues
 {
     public enum IssueType
     {

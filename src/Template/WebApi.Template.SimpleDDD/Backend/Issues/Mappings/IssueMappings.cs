@@ -1,9 +1,9 @@
 ﻿using System;
 using AutoMapper;
 using GoldenEye.Shared.Core.Mappings;
-using IssueContracts = Contracts.Issues;
+using IssueContracts = GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues;
 
-namespace Backend.Issues.Mappings
+namespace GoldenEye.WebApi.Template.SimpleDDD.Backend.Issues.Mappings
 {
     internal class IssueMappings : Profile, IMappingDefinition
     {
