@@ -11,7 +11,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace GoldenEye.WebApi.Template.SimpleDDD.Controllers
 {
     [Route("api/[controller]")]
-    [Microsoft.AspNetCore.Cors.EnableCors("CorsPolicy")]
     public class IssuesController : Controller
     {
         private readonly IQueryBus queryBus;

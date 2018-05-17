@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+<package>
     <metadata>
-		<id>GoldenEye.WebApi.SimpleDDD</id>
+		<id>GoldenEye.WebApi.Template.SimpleDDD</id>
 		<version>1.0.0</version>
 		<authors>Oskar Dudycz</authors>
 		<owners>Oskar Dudycz</owners>

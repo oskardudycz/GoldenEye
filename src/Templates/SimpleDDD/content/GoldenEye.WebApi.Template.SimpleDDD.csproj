@@ -3,20 +3,10 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <Version>1.0.0</Version>
-    <IsPackable>true</IsPackable>
     <PackageId>GoldenEye.WebApi.Template.SimpleDDD</PackageId>
-    <Authors>Oskar Dudycz</Authors>
-    <Company>Oskar Dudycz</Company>
-    <Product>Oskar Dudycz</Product>
-    <Copyright>Oskar Dudycz</Copyright>
-    <Description>GoldenEye.DDD is a library that helps to write code in Domain Driven Design and CQRS. It is written in .NET Core. It provides set of base and bootstrap classes that helps you to reduce boilerplate code and help you focus on writing business code.</Description>
-    <PackageLicenseUrl>https://github.com/oskardudycz/GoldenEye/blob/master/LICENSE.txt</PackageLicenseUrl>
-    <PackageProjectUrl>http://oskardudycz.github.io/GoldenEye/</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/oskardudycz/GoldenEye</RepositoryUrl>
     <RootNamespace>GoldenEye.WebApi.Template.SimpleDDD</RootNamespace>
     <AssemblyName>GoldenEye.WebApi.Template.SimpleDDD</AssemblyName>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <PackageIconUrl>https://raw.githubusercontent.com/oskardudycz/GoldenEye/master/assets/GoldenEyeLogo.png</PackageIconUrl>
   </PropertyGroup>
 
   <ItemGroup>
