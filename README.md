@@ -33,7 +33,7 @@ Install the [project template](https://github.com/oskardudycz/GoldenEye/tree/mas
 
 `dotnet -i GoldenEye.WebApi.Template.SimpleDDD`
 
-and then create new project base on it:
+and then create new project based on it:
 
 `dotnet new SimpleDDD -n NameOfYourProject`
 
