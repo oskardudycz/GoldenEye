@@ -56,8 +56,6 @@ Or manually add packages to your project, eg:
   `dotnet add package GoldenEye.Backend.WebApi`
   
 
-If you're feeling comportable enough with polish language you can read my [blog post](http://oskar-dudycz.pl/2017/01/06/metallica-skonczyla-sie-na-kill-em-all-a-ja-ide-w-open-sourcey/#comment-44) where I annouced **GoldenEye** and explained the main goals.
-
 Where can I get it?
 --------------------------------
 Install packages from the Nuget package manager:
