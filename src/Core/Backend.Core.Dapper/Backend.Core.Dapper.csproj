@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>3.0.1</Version>
+    <Version>4.0.0</Version>
     <PackageId>GoldenEye.Backend.Core.Dapper</PackageId>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Authors>Oskar Dudycz</Authors>
@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <PackageReference Include="Dapper" Version="1.50.4" />
+    <PackageReference Include="Dapper.Contrib" Version="1.50.4" />
   </ItemGroup>
 
   <ItemGroup>

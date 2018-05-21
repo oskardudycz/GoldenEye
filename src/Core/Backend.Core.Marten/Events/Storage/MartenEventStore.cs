@@ -162,6 +162,11 @@ namespace GoldenEye.Backend.Core.Marten.Events.Storage
                 return documentSession.Query<TProjection>();
             }
 
+            IQueryable<TProjection> IEventProjectionStore.CustomQuery<TProjection>(string query)
+            {
+                return documentSession.Query<TProjection>(query).AsQueryable();
+            }
+
             TProjection IEventProjectionStore.GetById<TProjection>(Guid id)
             {
                 return Query<TProjection>()

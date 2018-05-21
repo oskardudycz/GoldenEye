@@ -1,4 +1,10 @@
-﻿# v6.0.1 (12.05.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/61)
+﻿# v6.1.0 (21.05.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/59)
+
+## Changes
+
+* Added CustomQuery support for EventStore **[MINOR]**
+
+# v6.0.1 (12.05.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/61)
 
 ## Changes
 

@@ -13,5 +13,7 @@ namespace GoldenEye.Backend.Core.Repositories
         Task<TEntity> GetByIdAsync(object id, CancellationToken cancellationToken = default(CancellationToken));
 
         IQueryable<TEntity> GetAll();
+
+        IQueryable<TEntity> CustomQuery(string query);
     }
 }

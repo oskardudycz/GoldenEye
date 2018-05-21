@@ -1,4 +1,10 @@
-﻿# v5.1.1 (12.05.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/62)
+﻿# v5.2.0 (21.05.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/59)
+
+## Changes
+
+* Added CustomQuery support for `MartenDataContext` **[MINOR]**
+
+# v5.1.1 (12.05.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/62)
 
 ## Changes
 

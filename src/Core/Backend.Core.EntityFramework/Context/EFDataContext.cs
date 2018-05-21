@@ -140,6 +140,11 @@ namespace GoldenEye.Backend.Core.Context
             return dbContext.Set<TEntity>();
         }
 
+        public IQueryable<TEntity> CustomQuery<TEntity>(string query) where TEntity : class
+        {
+            return dbContext.Set<TEntity>().FromSql(query);
+        }
+
         private void CheckVersion<TEntity>(TEntity entity, long? originVersion) where TEntity : class
         {
             if (!originVersion.HasValue || !(entity is IVersioned versionedEntity))

@@ -1,4 +1,10 @@
-﻿# v5.1.0 (12.05.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/61)
+﻿# v5.2.0 (21.05.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/59)
+
+## Changes
+
+* Added CustomQuery support for Repositories and DataContexts **[MINOR]**
+
+# v5.1.0 (12.05.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/61)
 
 ## Changes
 

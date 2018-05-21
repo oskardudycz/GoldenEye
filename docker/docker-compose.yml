@@ -6,3 +6,11 @@ services:
             - postgres/variables.env
         ports:
             - "5432:5432"
+
+    
+    mssql:
+        image: "microsoft/mssql-server-linux"
+        env_file:
+            - mssql/variables.env
+        ports:
+          - "1433:1433"

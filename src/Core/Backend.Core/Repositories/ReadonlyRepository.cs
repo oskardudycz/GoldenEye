@@ -41,6 +41,11 @@ namespace GoldenEye.Backend.Core.Repositories
             return Queryable;
         }
 
+        public IQueryable<TEntity> CustomQuery(string query)
+        {
+            return Context.CustomQuery<TEntity>(query);
+        }
+
         protected virtual void Dispose(bool disposing)
         {
             if (Disposed)

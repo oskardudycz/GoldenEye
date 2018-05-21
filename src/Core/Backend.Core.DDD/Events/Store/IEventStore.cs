@@ -57,5 +57,7 @@ namespace GoldenEye.Backend.Core.DDD.Events.Store
         Task<TProjection> GetByIdAsync<TProjection>(Guid id, CancellationToken cancellationToken = default(CancellationToken)) where TProjection : class, IHasGuidId;
 
         IQueryable<TProjection> Query<TProjection>();
+
+        IQueryable<TProjection> CustomQuery<TProjection>(string query);
     }
 }

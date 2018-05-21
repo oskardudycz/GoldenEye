@@ -15,5 +15,6 @@ build:
   verbosity: minimal
 services:
   - postgresql95
+  - mssql2017
 before_package:
   - cmd: nuget pack src/Templates/SimpleDDD/Templates.nuspec
