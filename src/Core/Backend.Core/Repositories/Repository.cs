@@ -23,6 +23,11 @@ namespace GoldenEye.Backend.Core.Repositories
             return result;
         }
 
+        public virtual Task<TEntity> AddAsync(TEntity entity, CancellationToken cancellationToken)
+        {
+            return AddAsync(entity, true, cancellationToken);
+        }
+
         public async virtual Task<TEntity> AddAsync(TEntity entity, bool shouldSaveChanges = true, CancellationToken cancellationToken = default(CancellationToken))
         {
             var result = await Context.AddAsync(entity, cancellationToken);
@@ -52,6 +57,11 @@ namespace GoldenEye.Backend.Core.Repositories
             return result;
         }
 
+        public virtual Task<TEntity> UpdateAsync(TEntity entity, CancellationToken cancellationToken)
+        {
+            return UpdateAsync(entity, true, cancellationToken);
+        }
+
         public async virtual Task<TEntity> UpdateAsync(TEntity entity, bool shouldSaveChanges = true, CancellationToken cancellationToken = default(CancellationToken))
         {
             var result = await Context.UpdateAsync(entity, cancellationToken: cancellationToken);
@@ -60,16 +70,6 @@ namespace GoldenEye.Backend.Core.Repositories
                 await SaveChangesAsync(cancellationToken);
 
             return result;
-        }
-
-        public virtual int SaveChanges()
-        {
-            return Context.SaveChanges();
-        }
-
-        public virtual Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken))
-        {
-            return Context.SaveChangesAsync(cancellationToken);
         }
 
         public virtual TEntity Delete(TEntity entity, bool shouldSaveChanges = true)
@@ -82,9 +82,14 @@ namespace GoldenEye.Backend.Core.Repositories
             return result;
         }
 
+        public virtual Task<TEntity> DeleteAsync(TEntity entity, CancellationToken cancellationToken)
+        {
+            return DeleteAsync(entity, true, cancellationToken);
+        }
+
         public async virtual Task<TEntity> DeleteAsync(TEntity entity, bool shouldSaveChanges = true, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var result = await Context.RemoveAsync(entity);
+            var result = await Context.RemoveAsync(entity, cancellationToken: cancellationToken);
 
             if (shouldSaveChanges)
                 await SaveChangesAsync();
@@ -92,14 +97,39 @@ namespace GoldenEye.Backend.Core.Repositories
             return result;
         }
 
-        public virtual bool Delete(int id, bool shouldSaveChanges = true)
+        public virtual bool Delete(object id, bool shouldSaveChanges = true)
         {
-            return Delete(GetById(id), shouldSaveChanges) != null;
+            var result = Context.Remove<TEntity>(id);
+
+            if (shouldSaveChanges)
+                SaveChanges();
+
+            return result;
         }
 
-        public async virtual Task<bool> DeleteAsync(int id, bool shouldSaveChanges = true, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<bool> DeleteAsync(object id, CancellationToken cancellationToken)
         {
-            return (await DeleteAsync(await GetByIdAsync(id, cancellationToken), shouldSaveChanges, cancellationToken)) != null;
+            return DeleteAsync(id, true, cancellationToken);
+        }
+
+        public async virtual Task<bool> DeleteAsync(object id, bool shouldSaveChanges = true, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var result = await Context.RemoveAsync<TEntity>(id, cancellationToken: cancellationToken);
+
+            if (shouldSaveChanges)
+                await SaveChangesAsync();
+
+            return result;
+        }
+
+        public virtual int SaveChanges()
+        {
+            return Context.SaveChanges();
+        }
+
+        public virtual Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return Context.SaveChangesAsync(cancellationToken);
         }
     }
 }

@@ -31,6 +31,11 @@ namespace GoldenEye.Backend.Core.Dapper.Generators
             return mappings.OfType<IDapperMapping<TEntity>>().FirstOrDefault()?.Delete;
         }
 
+        public string Delete<TEntity>(object id)
+        {
+            return mappings.OfType<IDapperMapping<TEntity>>().FirstOrDefault()?.Delete;
+        }
+
         public string Query<TEntity>()
         {
             return mappings.OfType<IDapperMapping<TEntity>>().FirstOrDefault()?.Query;

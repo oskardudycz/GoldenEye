@@ -9,38 +9,52 @@
 
 What is GoldenEye?
 --------------------------------
-GoldenEye is a Full Stack framework written in .NET Core. The main goal of GoldenEye is to speed up your development process. It gathers most widely used frameworks in .NET world and pack them into a simple bootstrap Nuget packages. It also provide set of base classes, helpers, extensions that will help you with your daily work.
+**GoldenEye** is a Full Stack framework written in .NET Core. The main goal of **GoldenEye** is to speed up your development process. It gathers most widely used frameworks in .NET world and pack them into a simple bootstrap [Nuget packages](https://www.nuget.org/packages?q=GoldenEye). It also provide set of base classes, helpers, extensions that will help you with your daily work.
 
 What do I get?
 --------------------------------
 Complete Solution bootstrap - bottom up:
-- Entity Framework
-- CRUD Repositories and CRUD Application Services
+- [Entity Framework](https://github.com/aspnet/EntityFrameworkCore) (supports also [Dapper](https://github.com/StackExchange/Dapper), [Marten](https://github.com/JasperFx/marten))
+- [CRUD Repositories](https://github.com/oskardudycz/GoldenEye/tree/master/src/Core/Backend.Core/Repositories) and CRUD Application Services
 - WebApi REST controllers
-- Authorization with OAuth (Identity Server)
+- Authorization with OAuth ([Identity Server](https://github.com/IdentityServer/IdentityServer4))
 - complete set up of dependency injection with automatic naming convention binding
-- AutoMapper preconfigured and class mappings automatic registration
-- Validation flow with FluentValidation.NET
+- [AutoMapper](https://github.com/AutoMapper/AutoMapper) preconfigured and automatic mappings registration
+- Validation flow with [FluentValidation.NET](https://github.com/JeremySkinner/FluentValidation)
 - Examples of complete usage (Task list functionality)
-- CQRS and Domain Driven Development stack - sending and handling commands, queries, events
-- document database and event store support in Postgres with Marten framework
+- CQRS and Domain Driven Development stack - sending and handling commands, queries, events (with usage of [MediatR](https://github.com/jbogard/MediatR) framework)
+- document database and event store support in Postgres with [Marten](https://github.com/JasperFx/marten) framework
 - many more
 
 How do I get started?
 --------------------------------
-1. Create new solution with "ASP.NET Core Web Application" project name it eg. "Frontend"
-2. Add new Class libraries projects to newly created solution:
-  * Backend
-  * Shared
-3. Add following references
-  * Backend and Shared to Frontend project
-  * Shared to Backend project
-4. Install following Nuget packages to the projects:
-  * Shared - GoldenEye.Shared.Core    
-  * Backend - GoldenEye.Backend.Core
-5. Run the frontend project.
 
-If you're feeling comportable enough with polish language you can read my [blog post](http://oskar-dudycz.pl/2017/01/06/metallica-skonczyla-sie-na-kill-em-all-a-ja-ide-w-open-sourcey/#comment-44) where I annouced GoldenEye and explained the main goals.
+Install the [project template](https://github.com/oskardudycz/GoldenEye/tree/master/src/Templates/SimpleDDD/content) by running
+
+`dotnet -i GoldenEye.WebApi.Template.SimpleDDD`
+
+and then create new project based on it:
+
+`dotnet new SimpleDDD -n NameOfYourProject`
+
+Or manually add packages to your project, eg:
+
+* **[Shared](src/Core/Shared.Core/Readme.md)** - GoldenEye.Shared.Core 
+  
+  `dotnet add package GoldenEye.Shared.Core` 
+  
+* **[Backend](src/Core/Backend.Core/Readme.md)** - GoldenEye.Backend.Core 
+  
+  `dotnet add package GoldenEye.Backend.Core` 
+  
+* **[Entity Framework](src/Core/Backend.Core.EntityFramework/Readme.md)** - GoldenEye.Backend.Core.EntityFramework 
+  
+  `dotnet add package GoldenEye.Backend.Core.EntityFramework` 
+  
+* **[WebApi](src/Core/Backend.Core.WebApi/Readme.md)** - GoldenEye.Backend.Core.WebApi 
+  
+  `dotnet add package GoldenEye.Backend.WebApi`
+  
 
 Where can I get it?
 --------------------------------

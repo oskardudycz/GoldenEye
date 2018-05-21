@@ -132,6 +132,21 @@ namespace GoldenEye.Backend.Core.Dapper.Context
             return entity;
         }
 
+        public bool Remove<TEntity>(object id, int? version = null) where TEntity : class
+        {
+            var sql = dapperSqlGenerator?.Delete(id);
+
+            if (!sql.IsNullOrEmpty())
+            {
+                dbConnection.Execute(sql, id);
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
+            return true;
+        }
+
         public async Task<TEntity> RemoveAsync<TEntity>(TEntity entity, int? version = null, CancellationToken cancellationToken = default(CancellationToken)) where TEntity : class
         {
             var sql = dapperSqlGenerator?.Delete(entity);
@@ -145,6 +160,11 @@ namespace GoldenEye.Backend.Core.Dapper.Context
                 await dbConnection.DeleteAsync(entity);
             }
             return entity;
+        }
+
+        public Task<bool> RemoveAsync<TEntity>(object id, int? version = null, CancellationToken cancellationToken = default(CancellationToken)) where TEntity : class
+        {
+            throw new NotImplementedException();
         }
 
         public int SaveChanges()

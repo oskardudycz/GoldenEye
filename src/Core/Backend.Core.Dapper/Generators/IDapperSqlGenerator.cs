@@ -8,6 +8,8 @@
 
         string Delete<TEntity>(TEntity entity);
 
+        string Delete<TEntity>(object id);
+
         string GetById<TEntity>(object id);
 
         string Query<TEntity>();

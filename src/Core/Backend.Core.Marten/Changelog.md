@@ -1,4 +1,24 @@
-﻿# v4.0.0 (19.04.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/58)
+﻿# v5.1.1 (12.05.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/62)
+
+## Changes
+
+* Fixed bug in `RemoveAsync` by id, that was selecting document of type Guid instead TEntity **[PATCH]**
+* Updated Marten to `2.8.0` **[PATCH]**
+
+# v5.1.0 (12.05.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/61)
+
+## Changes
+
+* Added `Remove` and `RemoveAsync` methods by id to `MartenDocumentDataContext` **[MINOR]**
+* Updated reference to Backend.Core **[PATCH]**
+
+# v5.0.0 (12.05.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/60)
+
+## Changes
+
+* Updated reference to Backend.Core **[MAJOR]**
+
+# v4.0.0 (19.04.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/58)
 
 ## Changes
 
