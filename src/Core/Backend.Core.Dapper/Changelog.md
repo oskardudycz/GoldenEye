@@ -1,4 +1,4 @@
-﻿# v4.0.0 (12.05.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/59)
+﻿# v4.0.0 (21.05.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/59)
 
 ## Changes
 
@@ -6,6 +6,7 @@
 * Added `IDapperMapping` interface for defining custom sql mapping for dapper **[MAJOR]**
 * Added `IDapperSqlGenerator` and it's implementation `MappingsSqlGenerator` to support custom SQL registration **[MAJOR]**
 * Added automatic registration of Dapper custom sql mappings through `AddAllDapperMappings` extension method **[MAJOR]**
+* Upgraded Backend.Core version to support CustomQuery **[MAJOR]**
 
 # v3.0.1 (12.05.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/61)
 
