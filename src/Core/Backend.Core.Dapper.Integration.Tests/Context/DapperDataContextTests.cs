@@ -45,7 +45,7 @@ namespace Backend.Core.Dapper.Integration.Tests.Context
                 FullName = "Tom Smith"
             };
 
-            result = dataContext.Update(user);
+            result = dataContext.Update(userToUpdate);
 
             result.Should().NotBe(null);
             result.Id.Should().Be(user.Id);

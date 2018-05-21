@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Data;
-using Npgsql;
+using System.Data.SqlClient;
 
 namespace Marten.Integration.Tests.TestsInfrasructure
 {
@@ -12,7 +12,9 @@ namespace Marten.Integration.Tests.TestsInfrasructure
         protected readonly string SchemaName = "sch" + Guid.NewGuid().ToString().Replace("-", string.Empty);
 
         public static string ConnectionString =
-            "PORT = 5432; HOST = 127.0.0.1; TIMEOUT = 15; POOLING = True; MINPOOLSIZE = 1; MAXPOOLSIZE = 100; COMMANDTIMEOUT = 20; DATABASE = 'postgres'; PASSWORD = 'Password12!'; USER ID = 'postgres'";
+            "Server=(local)\\SQL2017;Database=master;User ID=sa;Password=Password12!";
+
+        // "Server=localhost;Database=master;User ID=sa;Password=Password12!";
 
         protected DapperTest() : this(true)
         {
@@ -24,14 +26,14 @@ namespace Marten.Integration.Tests.TestsInfrasructure
             {
                 DbConnection = CreateDbConnection();
 
-                Execute($"CREATE SCHEMA IF NOT EXISTS {SchemaName};");
-                Execute($"SET search_path TO {SchemaName}, public");
+                //Execute($"CREATE SCHEMA IF NOT EXISTS {SchemaName};");
+                //Execute($"SET search_path TO {SchemaName}, public");
             }
         }
 
         protected virtual IDbConnection CreateDbConnection()
         {
-            var connection = new NpgsqlConnection(ConnectionString);
+            var connection = new SqlConnection(ConnectionString);
             connection.Open();
             return connection;
         }
@@ -42,6 +44,7 @@ namespace Marten.Integration.Tests.TestsInfrasructure
             {
                 var command = DbConnection.CreateCommand();
                 command.CommandText = sql;
+                command.Transaction = tran;
 
                 command.ExecuteNonQuery();
 
@@ -57,7 +60,7 @@ namespace Marten.Integration.Tests.TestsInfrasructure
             }
             wasDisposed = true;
 
-            Execute($"DROP SCHEMA IF EXISTS {SchemaName} CASCADE;");
+            //Execute($"DROP SCHEMA IF EXISTS {SchemaName} CASCADE;");
 
             DbConnection?.Dispose();
         }

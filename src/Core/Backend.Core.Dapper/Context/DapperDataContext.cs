@@ -58,7 +58,7 @@ namespace GoldenEye.Backend.Core.Dapper.Context
 
         public IQueryable<TEntity> AddRange<TEntity>(params TEntity[] entities) where TEntity : class
         {
-            throw new NotImplementedException();
+            return entities.Select(entity => Add(entity)).AsQueryable();
         }
 
         public void Dispose()
