@@ -21,7 +21,7 @@ Complete Solution bootstrap - bottom up:
 - [AutoMapper](https://github.com/AutoMapper/AutoMapper) preconfigured and automatic mappings registration
 - Validation flow with [FluentValidation.NET](https://github.com/JeremySkinner/FluentValidation)
 - Examples of complete usage (Task list functionality)
-- CQRS and Domain Driven Development stack - sending and handling commands, queries, events (with usage of [MediatR](https://github.com/jbogard/MediatR) framework)
+- CQRS and Domain Driven Development stack - sending and handling commands, queries, events (with usage of [MediatR](https://github.com/jbogard/MediatR) library)
 - document database and event store support in Postgres with [Marten](https://github.com/JasperFx/marten) framework
 - many more
 
@@ -69,7 +69,7 @@ Install packages from the Nuget package manager:
 * [GoldenEye.Backend.Core.Dapper](src/Core/Backend.Core.Dapper/Readme.md) - extensions to GoldenEye.Backend.Core for Dapper development (Dapper repositories, etc.)
 
 **Domain Driven Design package**:
-* [GoldenEye.Backend.Core.DDD](src/Core/Backend.Core.DDD/Readme.md) - full DDD flow for CQRS, DDD development. Basing on MediatR library gives the Command, Queries, Events handling, routing
+* [GoldenEye.Backend.Core.DDD](src/Core/Backend.Core.DDD/Readme.md) - full DDD flow for CQRS, DDD development. Basing on [MediatR](https://github.com/jbogard/MediatR) library gives the Command, Queries, Events handling, routing
 
 **Document database and Event Store with Marten package**:
 * [GoldenEye.Backend.Core.Marten](src/Core/Backend.Core.Marten/Readme.md) - extension to GoldenEye.Backend.Core and GoldenEye.Backend.DDD that gives possibility to use Postgres as Document Database and Event Store - thanks to Marten library
