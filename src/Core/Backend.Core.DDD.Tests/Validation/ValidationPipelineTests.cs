@@ -7,6 +7,7 @@ using FluentValidation;
 using GoldenEye.Backend.Core.DDD.Commands;
 using GoldenEye.Backend.Core.DDD.Queries;
 using GoldenEye.Backend.Core.DDD.Registration;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
@@ -53,16 +54,16 @@ namespace Backend.Core.Tests.Validation
                     this.context = context;
                 }
 
-                public Task Handle(CreateUser command, CancellationToken cancellationToken)
+                public Task<Unit> Handle(CreateUser command, CancellationToken cancellationToken)
                 {
                     context.Users.Add(command.UserName);
-                    return Task.CompletedTask;
+                    return Unit.Task;
                 }
 
-                public Task Handle(RemoveAllUsers command, CancellationToken cancellationToken)
+                public Task<Unit> Handle(RemoveAllUsers command, CancellationToken cancellationToken)
                 {
                     context.Users.Clear();
-                    return Task.CompletedTask;
+                    return Unit.Task;
                 }
             }
 
