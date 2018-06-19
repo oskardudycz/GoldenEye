@@ -20,8 +20,17 @@ Complete DDD and CQRS helpers and bootstrap for:
 
 How do I get started?
 --------------------------------
-You can either go and check [Sample project](../../Sample/DDD/Backend.DDD.Sample/Readme.md)
-Or create new project and add [nuget package](https://www.nuget.org/packages/GoldenEye.Backend.Core.DDD):
+You can either go and check [Sample project](../../Sample/DDD/Backend.DDD.Sample/Readme.md),
+**Install the [project template](https://github.com/oskardudycz/GoldenEye/tree/master/src/Templates/SimpleDDD/content) by running**
+
+`dotnet -i GoldenEye.WebApi.Template.SimpleDDD`
+
+**and then create new project based on it:**
+
+`dotnet new SimpleDDD -n NameOfYourProject`
+
+Or manually add packages to your project, eg:
+create new project and add [nuget package](https://www.nuget.org/packages/GoldenEye.Backend.Core.DDD):
 
 `dotnet add package GoldenEye.Backend.Core.DDD`
 
