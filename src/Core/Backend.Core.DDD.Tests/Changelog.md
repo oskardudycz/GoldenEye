@@ -1,4 +1,12 @@
-﻿# v3.0.0 (29.12.2017) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/44)
+﻿# v4.0.0 (19.06.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/64)
+
+## Changes
+
+* Updated version of `MediatR` to `5.0.1` **[MAJOR]**
+* Added [tests](Registration/EventHandlerRegistrationTests.cs) for [EventHandler registration](../Backend.Core.DDD/Registration/Registration.cs) **[MINOR]**
+
+
+# v3.0.0 (29.12.2017) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/44)
 
 ## Changes
 
