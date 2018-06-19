@@ -1,4 +1,12 @@
-﻿# v4.0.0 (19.04.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/58)
+﻿
+# v5.0.0 (19.06.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/64)
+
+## Changes
+
+* Updated reference to Shared.Core **[MAJOR]**
+* Updated `FluentValidation` to `7.6.102` **[MINOR]**
+
+# v4.0.0 (19.04.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/58)
 
 ## Changes
 

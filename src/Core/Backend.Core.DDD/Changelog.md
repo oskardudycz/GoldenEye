@@ -1,4 +1,11 @@
-﻿# v6.1.0 (21.05.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/59)
+﻿# v7.0.0 (19.06.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/64)
+
+## Changes
+
+* Updated reference to Shared.Core **[MAJOR]**
+* Updated version of `MediatR` to `5.0.1`, changed commands, queries, events handler to support new `MediatR` usage with Unit **[MAJOR]**
+
+# v6.1.0 (21.05.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/59)
 
 ## Changes
 

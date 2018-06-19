@@ -1,4 +1,11 @@
-﻿# v5.2.0 (21.05.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/59)
+﻿# v6.0.0 (19.06.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/64)
+
+## Changes
+
+* Updated reference to Shared.Core **[MAJOR]**
+* Updated version od `Dapper` and `Dapper.Contrib` **[PATCH]**
+
+# v5.2.0 (21.05.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/59)
 
 ## Changes
 
