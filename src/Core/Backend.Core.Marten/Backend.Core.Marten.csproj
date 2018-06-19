@@ -20,7 +20,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Marten" Version="2.8.0" />
+    <PackageReference Include="Marten" Version="2.8.2" />
   </ItemGroup>
 
   <ItemGroup>
