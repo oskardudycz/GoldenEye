@@ -1,7 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
-using System;
-using System.Collections.Generic;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Backend.Identity.Sample.Migrations.ConfigurationDb
 {

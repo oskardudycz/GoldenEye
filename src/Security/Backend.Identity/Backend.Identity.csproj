@@ -23,7 +23,7 @@
     <PackageReference Include="IdentityServer4" Version="2.2.0" />
     <PackageReference Include="IdentityServer4.AspNetIdentity" Version="2.1.0" />
     <PackageReference Include="IdentityServer4.EntityFramework" Version="2.1.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.1.1" />
   </ItemGroup>
 
   <ItemGroup>

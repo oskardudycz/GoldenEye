@@ -1,14 +1,10 @@
 ﻿@model LoginViewModel
-
 <div class="login-page">
     <div class="page-header">
         <h1>Login</h1>
     </div>
-
-    @Html.Partial("_ValidationSummary")
-
+    @Html.PartialAsync("_ValidationSummary")
     <div class="row">
-
         @if (Model.EnableLocalLogin)
         {
             <div class="col-sm-6">
@@ -17,10 +13,8 @@
                         <h3 class="panel-title">Local Login</h3>
                     </div>
                     <div class="panel-body">
-
                         <form asp-route="Login">
                             <input type="hidden" asp-for="ReturnUrl" />
-
                             <fieldset>
                                 <div class="form-group">
                                     <label asp-for="Username"></label>
@@ -49,7 +43,6 @@
                 </div>
             </div>
         }
-
         @if (Model.VisibleExternalProviders.Any())
         {
             <div class="col-md-6 col-sm-6 external-providers">
@@ -75,7 +68,6 @@
                 </div>
             </div>
         }
-
         @if (!Model.EnableLocalLogin && !Model.VisibleExternalProviders.Any())
         {
             <div class="alert alert-warning">
