@@ -25,7 +25,7 @@
 
   <ItemGroup>
     <PackageReference Include="MediatR" Version="5.0.1" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.0" />
   </ItemGroup>
 
   <ItemGroup>
