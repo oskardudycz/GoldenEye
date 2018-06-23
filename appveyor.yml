@@ -17,4 +17,4 @@ services:
   - postgresql95
   - mssql2017
 before_package:
-  - cmd: nuget pack src/Templates/SimpleDDD/Templates.nuspec --OutputDirectory "src/Templates/SimpleDDD/content/bin/Release
+  - cmd: nuget pack src/Templates/SimpleDDD/Templates.nuspec -OutputDirectory "src/Templates/SimpleDDD/content/bin/Release
