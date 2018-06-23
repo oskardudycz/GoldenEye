@@ -1,4 +1,15 @@
-﻿# v5.0.0 (19.06.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/64)
+﻿# v5.1.0 (23.06.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/65)
+
+## Changes
+
+* Updated `AutoMapper` to `7.0.1` **[PATCH]**
+* Updated `Microsoft.Extensions.Configuration` to `2.1.0` **[MAJOR]**
+* Updated `Microsoft.Extensions.DependencyInjection` to `2.1.0` **[MAJOR]**
+* Updated `Microsoft.Extensions.DependencyModel` to `2.1.0` **[MAJOR]**
+* Updated `System.ComponentModel.Annotations` to `4.5.0` **[MAJOR]**
+* Updated `System.Reflection.TypeExtensions` to `4.5.0` **[MAJOR]**
+
+# v5.0.0 (19.06.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/64)
 
 ## Changes
 
