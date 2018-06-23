@@ -1,4 +1,15 @@
-﻿# v6.0.0 (19.06.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/64)
+﻿# v6.1.0 (23.06.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/65)
+
+## Changes
+
+* Updated reference to `Shared.Core` **[MINOR]**
+* Updated reference to `Backend.Core` **[MINOR]**
+* Updated `Microsoft.AspNetCore.Mvc` to `2.1.0` **[MINOR]**
+* Updated `Microsoft.AspNetCore.Server.Kestrel` to `2.1.0` **[MINOR]**
+* Updated `Microsoft.AspNetCore.Server.Kestrel.Https` to `2.1.0` **[MINOR]**
+* Updated `Swashbuckle.AspNetCore` to `2.5.0` **[MINOR]**
+
+# v6.0.0 (19.06.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/64)
 
 ## Changes
 
