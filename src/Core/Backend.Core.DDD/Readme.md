@@ -34,7 +34,7 @@ create new project and add [nuget package](https://www.nuget.org/packages/Golden
 
 `dotnet add package GoldenEye.Backend.Core.DDD`
 
-You can also check my ***[Github Tutorial](https://github.com/oskardudycz/EventSourcing.NetCore)*** about CQRS and Event Sourcing.
+You can also check my **[Github Tutorial](https://github.com/oskardudycz/EventSourcing.NetCore)** about CQRS and Event Sourcing.
 
 I found an issue or I have a change request
 --------------------------------
