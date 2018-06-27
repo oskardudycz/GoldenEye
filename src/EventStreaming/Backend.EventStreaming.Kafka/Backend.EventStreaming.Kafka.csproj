@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Backend.Core\Backend.Core.csproj" />
+    <ProjectReference Include="..\Backend.EventStreaming\Backend.EventStreaming.csproj" />
+  </ItemGroup>
+
+</Project>
