@@ -103,7 +103,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend.EventStreaming", "E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend.EventStreaming.Kafka", "EventStreaming\Backend.EventStreaming.Kafka\Backend.EventStreaming.Kafka.csproj", "{213A5955-1294-455B-88C8-2C42847141F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend.EventStreaming.RabitMQ", "EventStreaming\Backend.EventStreaming.RabitMQ\Backend.EventStreaming.RabitMQ.csproj", "{FC221F8D-CA9E-42C3-AB46-AA228E93A3B5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend.EventStreaming.RabbitMQ", "EventStreaming\Backend.EventStreaming.RabbitMQ\Backend.EventStreaming.RabbitMQ.csproj", "{FC221F8D-CA9E-42C3-AB46-AA228E93A3B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
