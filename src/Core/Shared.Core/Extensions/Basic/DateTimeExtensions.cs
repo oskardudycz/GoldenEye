@@ -386,7 +386,7 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
             }
             else if (timespan.TotalDays < 2)
             {
-                returnString = String.Format("1 day and hours ago", timespan.Hours);
+                returnString = String.Format("1 day and {0} hours ago", timespan.Hours);
             }
             else if (timespan.TotalDays > 2)
             {
