@@ -17,7 +17,7 @@
     <PackageReference Include="GoldenEye.Backend.Core.Marten" Version="6.1.0" />
     <PackageReference Include="GoldenEye.Backend.Core.WebApi" Version="6.1.0" />
     <PackageReference Include="GoldenEye.Shared.Core" Version="5.1.0" />
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="2.1.1" />
   </ItemGroup>
 
   <ItemGroup>
