@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Backend.DDD.Sample.Contracts.Issues.Queries;
 using GoldenEye.Backend.Core.DDD.Queries;
@@ -17,17 +18,21 @@ namespace Backend.DDD.Sample.Issues.Handlers
         IQueryHandler<GetIssue, IssueViews.IssueView>
     {
         private readonly IReadonlyRepository<Issue> repository;
+        private readonly IConfigurationProvider configurationProvider;
 
-        public IssueQueryHandler(IReadonlyRepository<Issue> repository)
+        public IssueQueryHandler(
+            IReadonlyRepository<Issue> repository,
+            IConfigurationProvider configurationProvider)
         {
             this.repository = repository ?? throw new ArgumentException(nameof(repository));
+            this.configurationProvider = configurationProvider ?? throw new ArgumentException(nameof(configurationProvider));
         }
 
         public Task<IReadOnlyList<IssueViews.IssueView>> Handle(GetIssues message, CancellationToken cancellationToken)
         {
             return repository
                 .GetAll()
-                .ProjectTo<IssueViews.IssueView>()
+                .ProjectTo<IssueViews.IssueView>(configurationProvider)
                 .ToListAsync();
         }
 
