@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
     <AssemblyName>Backend.Core.Tests</AssemblyName>
     <PackageId>Backend.Core.Tests</PackageId>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
