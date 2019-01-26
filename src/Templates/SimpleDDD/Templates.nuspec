@@ -6,7 +6,7 @@
     <authors>Oskar Dudycz</authors>
     <owners>Oskar Dudycz</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <licenseUrl>https://github.com/oskardudycz/GoldenEye/blob/master/LICENSE.txt</licenseUrl>
     <projectUrl>http://oskardudycz.github.io/GoldenEye/</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/oskardudycz/GoldenEye/master/assets/GoldenEyeLogo.png</iconUrl>
     <description>GoldenEye.DDD is a library that helps to write code in Domain Driven Design and CQRS. It is written in .NET Core. It provides set of base and bootstrap classes that helps you to reduce boilerplate code and help you focus on writing business code.</description>
