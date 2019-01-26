@@ -1,4 +1,13 @@
-﻿# v5.1.0 (23.06.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/65)
+﻿# v6.0.0 (26.01.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/69)
+
+## Changes
+
+* Updated reference to `Shared.Core` **[MAJOR]**
+* Updated `FluentValidation` to `8.1.2` **[MAJOR]**
+* Added reference `FluentValidation.ValidatorAttribute` `8.1.2` for keeping backward compatibility **[MINOR]**
+* Made validation related to `ValidatorAttribute` obsolete (`Validatable`, `ValidatableObjectBase`, `ValidationEngine`, `ValidationExtensions`)
+
+# v5.1.0 (23.06.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/65)
 
 ## Changes
 

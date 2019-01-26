@@ -1,12 +1,13 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 using FluentValidation;
 using FluentValidation.Attributes;
 using ValidationResult = FluentValidation.Results.ValidationResult;
-using System.Reflection;
 
 namespace GoldenEye.Shared.Core.Validation
 {
+    [Obsolete]
     public static class ValidationEngine
     {
         public static IValidator GetValidator<T>()

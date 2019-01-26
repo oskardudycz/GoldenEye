@@ -5,6 +5,7 @@ using GoldenEye.Shared.Core.Validation.Validators;
 
 namespace GoldenEye.Shared.Core.Validation
 {
+    [Obsolete]
     public static class ValidationExtensions
     {
         public static CollectionValidatorExtensions.ICollectionValidatorRuleBuilder<T, TCollectionElement>

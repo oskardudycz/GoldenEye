@@ -1,10 +1,12 @@
-﻿using GoldenEye.Shared.Core.Context;
-using GoldenEye.Shared.Core.Objects.Requests;
+﻿using System;
 using System.Globalization;
 using System.Runtime.Serialization;
+using GoldenEye.Shared.Core.Context;
+using GoldenEye.Shared.Core.Objects.Requests;
 
 namespace GoldenEye.Shared.Core.Validation.Requests
 {
+    [Obsolete]
     public class ValidatableRequestBase : ValidatableObjectBase, IRequest
     {
         protected ValidatableRequestBase()

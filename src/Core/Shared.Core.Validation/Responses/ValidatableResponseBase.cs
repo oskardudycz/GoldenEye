@@ -1,7 +1,9 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 
 namespace GoldenEye.Shared.Core.Validation.Responses
 {
+    [Obsolete]
     public class ValidatableResponseBase : ValidatableObjectBase, IValidatableResponse
     {
         [DataMember]

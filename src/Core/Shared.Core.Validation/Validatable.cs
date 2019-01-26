@@ -2,32 +2,31 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Reflection;
 using FluentValidation;
 using FluentValidation.Results;
-using System.Reflection;
 
 namespace GoldenEye.Shared.Core.Validation
 {
+    [Obsolete]
     public abstract class Validatable
     {
-        private ValidationResult validationResult = null;
         [NotMapped]
         [Browsable(false)]
-        public ValidationResult ValidationResult
-        {
-            get { return validationResult; }
-            set { validationResult = value; }
-        }
+        public ValidationResult ValidationResult { get; set; } = null;
+
         [NotMapped]
         [Browsable(false)]
         public bool Valid
         {
-            get { return (validationResult == null || validationResult.Errors == null || validationResult.Errors.Count == 0); }
+            get { return (ValidationResult == null || ValidationResult.Errors == null || ValidationResult.Errors.Count == 0); }
         }
+
         private void Validate(IValidator validator)
         {
-            validationResult = validator.Validate(this);
+            ValidationResult = validator.Validate(this);
         }
+
         public virtual bool Validate()
         {
             var objectType = GetType();
@@ -42,12 +41,9 @@ namespace GoldenEye.Shared.Core.Validation
             var validatorType = validatorAttribute.ConstructorArguments.First(x => x.ArgumentType.Name == "Type").Value;
             var validator = Activator.CreateInstance((Type)validatorType);
 
-
             Validate((IValidator)validator);
 
             return Valid;
         }
-
-
     }
 }
