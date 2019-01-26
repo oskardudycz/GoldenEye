@@ -1,11 +1,18 @@
-﻿# v6.1.0 (23.06.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/65)
+﻿# v7.0.0 (26.01.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/69)
+
+## Changes
+
+* Updated reference to `Shared.Core` **[MAJOR]**
+* Updated `FluentValidation` to `8.1.2` **[MAJOR]**
+* Updated `AutoMapper` to `8.0.0` **[MAJOR]**
+* Updated `Scrutor` to `3.0.2` **[MAJOR]**
+* Updated `Microsoft.Extensions.DependencyInjection.Abstractions` to `2.2.0` **[MINOR]**
+
+# v6.1.0 (23.06.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/65)
 
 ## Changes
 
 * Updated reference to `Shared.Core` **[MINOR]**
-* Updated reference to `Backend.Core` **[MINOR]**
-* Updated `IdentityServer4.EntityFramework` to `2.1.0` **[PATCH]**
-* Updated `Microsoft.AspNetCore.Identity.EntityFrameworkCore` to `2.1.0` **[PATCH]**
 
 # v6.0.0 (19.06.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/64)
 

@@ -1,13 +1,20 @@
-﻿# v6.1.0 (23.06.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/65)
+﻿# v7.0.0 (26.01.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/69)
+
+## Changes
+
+* Updated reference to `Shared.Core` **[MAJOR]**
+* Updated reference to `Backend.Core` **[MAJOR]**
+* Updated `IdentityServer4` to `2.3.2` **[MINOR]**
+* Updated `IdentityServer4.AspNetIdentity` to `2.3.0` **[MINOR]**
+* Updated `IdentityServer4.EntityFramework` to `2.3.2` **[MINOR]**
+* Updated `Microsoft.AspNetCore.Identity.EntityFrameworkCore` to `2.2.0` **[MINOR]**
+
+# v6.1.0 (23.06.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/65)
 
 ## Changes
 
 * Updated reference to `Shared.Core` **[MINOR]**
 * Updated reference to `Backend.Core` **[MINOR]**
-* Updated `Microsoft.AspNetCore.Mvc` to `2.1.0` **[MINOR]**
-* Updated `Microsoft.AspNetCore.Server.Kestrel` to `2.1.0` **[MINOR]**
-* Updated `Microsoft.AspNetCore.Server.Kestrel.Https` to `2.1.0` **[MINOR]**
-* Updated `Swashbuckle.AspNetCore` to `2.5.0` **[MINOR]**
 
 # v6.0.0 (19.06.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/64)
 

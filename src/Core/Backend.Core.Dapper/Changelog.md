@@ -1,9 +1,16 @@
-﻿# v5.1.0 (23.06.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/65)
+﻿# v6.0.0 (26.01.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/69)
 
 ## Changes
 
 * Updated reference to `Shared.Core` **[MAJOR]**
 * Updated reference to `Backend.Core` **[MAJOR]**
+* 
+# v5.1.0 (23.06.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/65)
+
+## Changes
+
+* Updated reference to `Shared.Core` **[MINOR]**
+* Updated reference to `Backend.Core` **[MINOR]**
 
 # v5.0.0 (19.06.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/64)
 

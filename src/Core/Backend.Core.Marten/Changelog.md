@@ -1,4 +1,13 @@
-﻿# v6.1.0 (23.06.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/65)
+﻿# v7.0.0 (26.01.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/69)
+
+## Changes
+
+* Updated reference to `Shared.Core` **[MINOR]**
+* Updated reference to `Backend.Core` **[MINOR]**
+* Updated reference to `Backend.Core.DDD` **[MINOR]**
+* Updated Marten to `3.3.0` **[PATCH]**
+
+# v6.1.0 (23.06.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/65)
 
 ## Changes
 

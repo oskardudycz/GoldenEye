@@ -7,6 +7,7 @@ using GoldenEye.Shared.Core.Extensions.Basic;
 using GoldenEye.Shared.Core.Extensions.DependencyInjection;
 using GoldenEye.Shared.Core.Objects.General;
 using Marten;
+using Marten.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace GoldenEye.Backend.Core.Marten.Registration
@@ -51,7 +52,6 @@ namespace GoldenEye.Backend.Core.Marten.Registration
             var store = DocumentStore.For(_ =>
             {
                 _.Connection(connectionString);
-                _.DatabaseSchemaName = _.Events.DatabaseSchemaName = moduleName.ToLower();
                 _.AutoCreateSchemaObjects = AutoCreate.CreateOrUpdate;
                 _.DdlRules.TableCreation = CreationStyle.CreateIfNotExists;
 
@@ -66,7 +66,7 @@ namespace GoldenEye.Backend.Core.Marten.Registration
 
         public static IDocumentSession CreateDocumentSession(DocumentStore store)
         {
-            var session = store.OpenSession();
+            var session = store.OpenSession(SessionOptions.ForCurrentTransaction());
             return session;
         }
     }

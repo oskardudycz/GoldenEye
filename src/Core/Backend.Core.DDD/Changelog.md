@@ -1,4 +1,13 @@
-﻿# v7.1.0 (23.06.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/65)
+﻿# v8.0.0 (26.01.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/69)
+
+## Changes
+
+* Updated reference to `Shared.Core` **[MAJOR]**
+* Updated reference to `Backend.Core` **[MAJOR]**
+* Updated `Microsoft.Extensions.DependencyInjection` to `2.2.0` **[MINOR]**
+* Updated `MediatR` to `6.0.0` **[MINOR]**
+
+# v7.1.0 (23.06.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/65)
 
 ## Changes
 

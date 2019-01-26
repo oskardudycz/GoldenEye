@@ -26,7 +26,7 @@ namespace Backend.DDD.WebApi.Sample
             services.AddMvc();
             services.AddDDD();
 
-            services.AddAutoMapper();
+            services.AddAutoMapper(typeof(Backend.DDD.Sample.Module).Assembly);
             services.AddConfiguration(Configuration);
 
             services.AddModule<DDD.Sample.Module>();

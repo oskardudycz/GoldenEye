@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
+using AutoMapper;
 using FluentValidation;
 using GoldenEye.Backend.Core.Entity;
 using GoldenEye.Backend.Core.Repositories;
@@ -18,7 +19,9 @@ namespace GoldenEye.Backend.Core.Services
             get { return (TRepository)base.Repository; }
         }
 
-        protected RestService(TRepository repository) : base(repository)
+        protected RestService(
+            TRepository repository,
+            IConfigurationProvider configurationProvider) : base(repository, configurationProvider)
         {
         }
     }
@@ -32,7 +35,9 @@ namespace GoldenEye.Backend.Core.Services
             get { return (IRepository<TEntity>)base.Repository; }
         }
 
-        protected RestService(IRepository<TEntity> repository) : base(repository)
+        protected RestService(
+            IRepository<TEntity> repository,
+            IConfigurationProvider configurationProvider) : base(repository, configurationProvider)
         {
         }
 

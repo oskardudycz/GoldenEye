@@ -8,6 +8,7 @@ using ValidationResult = System.ComponentModel.DataAnnotations.ValidationResult;
 namespace GoldenEye.Shared.Core.Validation
 {
     [Serializable]
+    [Obsolete]
     public class ValidatableObjectBase : IValidatable
     {
         public FluentValidation.Results.ValidationResult Validate()
@@ -29,6 +30,7 @@ namespace GoldenEye.Shared.Core.Validation
         }
     }
 
+    [Obsolete]
     public static class ValidatableObjectBaseExtension
     {
         public static FluentValidation.Results.ValidationResult Validate(this IValidatable obj, object additonalContext)
@@ -87,6 +89,7 @@ namespace GoldenEye.Shared.Core.Validation
         }
     }
 
+    [Obsolete]
     public enum ValidationErrorType
     {
         ElementSpecific = 0,
