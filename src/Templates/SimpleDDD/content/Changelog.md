@@ -1,4 +1,17 @@
-﻿# v3.0.0 (26.01.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/69)
+﻿# v4.0.1 (31.03.2019)
+
+## Changes
+
+* Fixed package version **[PATCH]**
+
+# v4.0.0 (31.03.2019)
+
+## Changes
+
+* Updated packages versions **[MAJOR]**
+* Added missing `Microsoft.AspNetCore.StaticFiles` **[PATCH]**
+
+# v3.0.0 (26.01.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/69)
 
 ## Changes
 

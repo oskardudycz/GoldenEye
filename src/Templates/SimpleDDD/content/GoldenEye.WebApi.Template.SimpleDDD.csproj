@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <Version>4.0.0</Version>
+    <Version>1.0.0</Version>
     <PackageId>GoldenEye.WebApi.Template.SimpleDDD</PackageId>
     <RootNamespace>GoldenEye.WebApi.Template.SimpleDDD</RootNamespace>
     <AssemblyName>GoldenEye.WebApi.Template.SimpleDDD</AssemblyName>
