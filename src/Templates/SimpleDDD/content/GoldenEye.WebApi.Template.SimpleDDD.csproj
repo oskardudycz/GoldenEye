@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <Version>3.0.0</Version>
+    <Version>4.0.0</Version>
     <PackageId>GoldenEye.WebApi.Template.SimpleDDD</PackageId>
     <RootNamespace>GoldenEye.WebApi.Template.SimpleDDD</RootNamespace>
     <AssemblyName>GoldenEye.WebApi.Template.SimpleDDD</AssemblyName>
@@ -12,12 +12,13 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="8.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
-    <PackageReference Include="GoldenEye.Backend.Core" Version="6.1.0" />
-    <PackageReference Include="GoldenEye.Backend.Core.DDD" Version="7.1.0" />
-    <PackageReference Include="GoldenEye.Backend.Core.Marten" Version="6.1.0" />
-    <PackageReference Include="GoldenEye.Backend.Core.WebApi" Version="6.1.0" />
-    <PackageReference Include="GoldenEye.Shared.Core" Version="5.1.0" />
+    <PackageReference Include="GoldenEye.Backend.Core" Version="7.0.0" />
+    <PackageReference Include="GoldenEye.Backend.Core.DDD" Version="8.0.0" />
+    <PackageReference Include="GoldenEye.Backend.Core.Marten" Version="7.0.0" />
+    <PackageReference Include="GoldenEye.Backend.Core.WebApi" Version="7.0.0" />
+    <PackageReference Include="GoldenEye.Shared.Core" Version="6.0.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
