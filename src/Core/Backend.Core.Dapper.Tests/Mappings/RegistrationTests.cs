@@ -49,7 +49,7 @@ namespace Backend.Core.Dapper.Tests.Mappings
         }
 
         [Fact]
-        public void GivenTwoMappingsForEntityTypes_WhenAddAllValidatorsCalled_ThenAllValidatorsAreRegistered()
+        public void GivenTwoMappingsForEntityTypes_WhenAddAllDapperMappingsCalled_ThenAllDapperMappingsAreRegistered()
         {
             //Given
             var services = new ServiceCollection();

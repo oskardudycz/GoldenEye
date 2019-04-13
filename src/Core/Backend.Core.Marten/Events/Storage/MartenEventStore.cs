@@ -33,14 +33,14 @@ namespace GoldenEye.Backend.Core.Marten.Events.Storage
             return documentSession.SaveChangesAsync(token);
         }
 
-        public Guid Store(Guid stream, params IEvent[] events)
+        public Guid Store(Guid streamId, params IEvent[] events)
         {
-            return documentSession.Events.Append(stream, events.Cast<object>().ToArray()).Id;
+            return documentSession.Events.Append(streamId, events.Cast<object>().ToArray()).Id;
         }
 
-        public Guid Store(Guid stream, int version, params IEvent[] events)
+        public Guid Store(Guid streamId, int version, params IEvent[] events)
         {
-            return documentSession.Events.Append(stream, version, events.Cast<object>().ToArray()).Id;
+            return documentSession.Events.Append(streamId, version, events.Cast<object>().ToArray()).Id;
         }
 
         public Task<Guid> StoreAsync(Guid streamId, params IEvent[] events)

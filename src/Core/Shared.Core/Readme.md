@@ -10,7 +10,7 @@ GoldenEye.Shared.Core is a library that brings you abstractions and implementati
 What do I get?
 --------------------------------
 
-### Huge amount of extensions to make your life easier:
+### Extension methods to make your life easier:
 * General:
   * [Comparison](Extensions/Basic/CompareExtensions.cs)
   * [Date Ranges](Extensions/Basic/DateRangeExtensions.cs)
@@ -54,8 +54,75 @@ What do I get?
 * [Simple MessageBus](Utils/MessageBus/MessageBus.cs)
 * [NoSynchronizationContextScope](Utils/Threading/NoSynchronizationContextScope.cs)
 
-### Base classes and interfaces
+### Built-in Modules handling
 
+To make easier dependency resolution inside library package `GoldenEye` provides prossibility to define modules.
+Thanks for that you don't need to remember to register everything in runtime assembly. You can just `AddModule` and rest will be done automatically.
+
+To define module you need to implement `IModule` interface.
+
+```csharp
+public class CustomModule: IModule
+{
+    public virtual void Configure(IServiceCollection services)
+    {
+        services.AddScoped<SomeDbContext>();
+    }
+
+    public virtual void Use()
+    {
+        service.UseSomething();
+    } 
+}
+```
+
+or derive from `Module` class and override only what you need:
+
+```csharp
+public class CustomModule: Module
+{
+    public override void Configure(IServiceCollection services)
+    {
+        services.AddScoped<SomeDbContext>();
+    }
+}
+```
+
+Then in your startup class call `AddModule` and `UseModules` extension methods:
+
+```csharp
+    public class Startup
+    {
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddModule<CustomModule>();
+        }
+
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        {
+            app.UseModules(env);
+        }
+    }
+```
+
+You can also add all of your defined modules by calling `AddAllModules` extension method:
+
+```csharp
+    public class Startup
+    {
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddAllModules();
+        }
+
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        {
+            app.UseModules(env);
+        }
+    }
+```
+
+ 
 
 How do I get started?
 --------------------------------

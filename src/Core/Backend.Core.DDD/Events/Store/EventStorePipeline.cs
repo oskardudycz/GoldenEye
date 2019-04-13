@@ -17,7 +17,7 @@ namespace GoldenEye.Backend.Core.DDD.Events.Logging
 
         public async Task Handle(TEvent @event, CancellationToken cancellationToken)
         {
-            await eventStore.StoreAsync(@event.StreamId, @event);
+            await eventStore.StoreAsync(@event.StreamId, cancellationToken, @event);
             await eventStore.SaveChangesAsync(cancellationToken);
         }
     }

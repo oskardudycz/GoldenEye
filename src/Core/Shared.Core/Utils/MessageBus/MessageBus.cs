@@ -26,36 +26,36 @@ namespace GoldenEye.Shared.Core.Utils.MessageBus
         public void Unsubscribe<TMessage>(IMessageHandler<TMessage> handler)
             where TMessage : class, IMessage, new()
         {
-            if (_subscribers.ContainsKey(typeof(TMessage)))
-            {
-                var handlers = _subscribers[typeof(TMessage)];
-                var handlerToRemove = new List<int>();
-                for (int i = 0; i < handlers.Count; i++)
-                {
-                    if (handlers[i].GetType() == handler.GetType())
-                        handlerToRemove.Add(i);
-                }
-                handlerToRemove.ForEach(handlers.RemoveAt);
+            if (!_subscribers.ContainsKey(typeof(TMessage)))
+                return;
 
-                if (handlers.Count == 0)
-                {
-                    _subscribers.Remove(typeof(TMessage));
-                }
+            var handlers = _subscribers[typeof(TMessage)];
+            var handlerToRemove = new List<int>();
+            for (int i = 0; i < handlers.Count; i++)
+            {
+                if (handlers[i].GetType() == handler.GetType())
+                    handlerToRemove.Add(i);
+            }
+            handlerToRemove.ForEach(handlers.RemoveAt);
+
+            if (handlers.Count == 0)
+            {
+                _subscribers.Remove(typeof(TMessage));
             }
         }
 
         public void Publish<TMessage>(TMessage message)
             where TMessage : class, IMessage, new()
         {
-            if (_subscribers.ContainsKey(typeof(TMessage)))
+            if (!_subscribers.ContainsKey(typeof(TMessage)))
+                return;
+
+            Type msg = message.GetType();
+            var handlers = _subscribers[msg];
+            foreach (object handler in handlers)
             {
-                Type msg = message.GetType();
-                var handlers = _subscribers[msg];
-                foreach (object handler in handlers)
-                {
-                    ((IMessageHandler<TMessage>)handler)
-                        .HandleMessage(message);
-                }
+                ((IMessageHandler<TMessage>)handler)
+                    .HandleMessage(message);
             }
         }
 

@@ -44,6 +44,7 @@
     <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="2.1.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
     <PackageReference Include="ReflectionBridge" Version="0.0.13" />
+    <PackageReference Include="Scrutor" Version="3.0.2" />
     <PackageReference Include="System.ComponentModel" Version="4.3.0" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0" />
     <PackageReference Include="System.Reflection.Extensions" Version="4.3.0" />

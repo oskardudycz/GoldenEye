@@ -26,15 +26,15 @@ namespace Backend.Core.DDD.Tests.Events.Store
                 return Task.CompletedTask;
             }
 
-            public Guid Store(Guid stream, params IEvent[] events)
+            public Guid Store(Guid streamId, params IEvent[] events)
             {
                 this.events.AddRange(events);
-                return stream;
+                return streamId;
             }
 
-            public Task<Guid> StoreAsync(Guid stream, params IEvent[] events)
+            public Task<Guid> StoreAsync(Guid streamId, params IEvent[] events)
             {
-                return Task.FromResult(Store(stream, events));
+                return Task.FromResult(Store(streamId, events));
             }
 
             public TEntity Aggregate<TEntity>(Guid streamId, int version = 0, DateTime? timestamp = null)
@@ -49,14 +49,14 @@ namespace Backend.Core.DDD.Tests.Events.Store
                 return Task.FromResult(Aggregate<TEntity>(streamId));
             }
 
-            public Guid Store(Guid stream, int version, params IEvent[] events)
+            public Guid Store(Guid streamId, int version, params IEvent[] events)
             {
-                return Store(stream, events);
+                return Store(streamId, events);
             }
 
-            public Task<Guid> StoreAsync(Guid stream, int version, params IEvent[] events)
+            public Task<Guid> StoreAsync(Guid streamId, int version, params IEvent[] events)
             {
-                return StoreAsync(stream, events);
+                return StoreAsync(streamId, events);
             }
 
             public IList<IEvent> Query(Guid? streamId = null, int? version = null, DateTime? timestamp = null)
@@ -91,12 +91,12 @@ namespace Backend.Core.DDD.Tests.Events.Store
 
             public Task<Guid> StoreAsync(Guid streamId, CancellationToken cancellationToken = default(CancellationToken), params IEvent[] events)
             {
-                throw new NotImplementedException();
+                return StoreAsync(streamId, events);
             }
 
             public Task<Guid> StoreAsync(Guid streamId, int version, CancellationToken cancellationToken = default(CancellationToken), params IEvent[] events)
             {
-                throw new NotImplementedException();
+                return StoreAsync(streamId, version, events);
             }
 
             public Task<TEntity> AggregateAsync<TEntity>(Guid streamId, CancellationToken cancellationToken = default(CancellationToken), int version = 0, DateTime? timestamp = null) where TEntity : class, new()

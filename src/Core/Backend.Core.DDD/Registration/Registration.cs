@@ -68,5 +68,49 @@ namespace GoldenEye.Backend.Core.DDD.Registration
             services.Add<INotificationHandler<TEvent>>(sp => sp.GetService<TEventHandler>(), serviceLifetime);
             services.Add<IEventHandler<TEvent>>(sp => sp.GetService<TEventHandler>(), serviceLifetime);
         }
+
+        public static IServiceCollection AddAllCommandHandlers(this IServiceCollection services, ServiceLifetime serviceLifetime = ServiceLifetime.Transient)
+        {
+            services.Scan(scan => scan
+                .FromApplicationDependencies()
+                .AddClasses(classes => classes.AssignableTo(typeof(ICommandHandler<>)))
+                    .AsSelfWithInterfaces()
+                    .WithLifetime(serviceLifetime)
+                 );
+
+            return services;
+        }
+
+        public static IServiceCollection AddAllQueryHandlers(this IServiceCollection services, ServiceLifetime serviceLifetime = ServiceLifetime.Transient)
+        {
+            services.Scan(scan => scan
+                .FromApplicationDependencies()
+                .AddClasses(classes => classes.AssignableTo(typeof(IQueryHandler<,>)))
+                    .AsSelfWithInterfaces()
+                    .WithLifetime(serviceLifetime)
+                 );
+
+            return services;
+        }
+
+        public static IServiceCollection AddAllEventHandlers(this IServiceCollection services, ServiceLifetime serviceLifetime = ServiceLifetime.Transient)
+        {
+            services.Scan(scan => scan
+                .FromApplicationDependencies()
+                .AddClasses(classes => classes.AssignableTo(typeof(IEventHandler<>)))
+                    .AsSelfWithInterfaces()
+                    .WithLifetime(serviceLifetime)
+                 );
+
+            return services;
+        }
+
+        public static IServiceCollection AddAllDDDHandlers(this IServiceCollection services, ServiceLifetime serviceLifetime = ServiceLifetime.Transient)
+        {
+            return services
+                .AddAllCommandHandlers()
+                .AddAllQueryHandlers()
+                .AddAllEventHandlers();
+        }
     }
 }
