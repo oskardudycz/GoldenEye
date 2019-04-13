@@ -97,7 +97,7 @@ namespace GoldenEye.Backend.Core.DDD.Registration
         {
             services.Scan(scan => scan
                 .FromApplicationDependencies()
-                .AddClasses(classes => classes.AssignableTo(typeof(IEventHandler<>)))
+                .AddClasses(classes => classes.AssignableTo(typeof(IEventHandler<>)).NotInNamespaceOf(typeof(EventStorePipeline<>)))
                     .AsSelfWithInterfaces()
                     .WithLifetime(serviceLifetime)
                  );
@@ -108,9 +108,9 @@ namespace GoldenEye.Backend.Core.DDD.Registration
         public static IServiceCollection AddAllDDDHandlers(this IServiceCollection services, ServiceLifetime serviceLifetime = ServiceLifetime.Transient)
         {
             return services
-                .AddAllCommandHandlers()
-                .AddAllQueryHandlers()
-                .AddAllEventHandlers();
+                .AddAllCommandHandlers(serviceLifetime)
+                .AddAllQueryHandlers(serviceLifetime)
+                .AddAllEventHandlers(serviceLifetime);
         }
     }
 }

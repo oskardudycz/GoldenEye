@@ -52,7 +52,7 @@ namespace Shared.Core.Tests.Modules
         {
             using (var sp = services.BuildServiceProvider())
             {
-                var mappings = sp.GetService<CustomModuleImplementingIModule>().Should().NotBeNull();
+                sp.GetService<CustomModuleImplementingIModule>().Should().NotBeNull();
             }
         }
 
@@ -61,7 +61,7 @@ namespace Shared.Core.Tests.Modules
         {
             using (var sp = services.BuildServiceProvider())
             {
-                var mappings = sp.GetService<CustomModuleDerivedFromModule>().Should().NotBeNull();
+                sp.GetService<CustomModuleDerivedFromModule>().Should().NotBeNull();
             }
         }
 
@@ -70,7 +70,7 @@ namespace Shared.Core.Tests.Modules
         {
             using (var sp = services.BuildServiceProvider())
             {
-                var mappings = sp.GetService<CustomModuleDerivingFromOtherCustomModule>().Should().NotBeNull();
+                sp.GetService<CustomModuleDerivingFromOtherCustomModule>().Should().NotBeNull();
             }
         }
     }

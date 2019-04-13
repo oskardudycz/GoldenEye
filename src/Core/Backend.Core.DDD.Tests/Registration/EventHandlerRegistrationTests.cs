@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using FluentAssertions;
@@ -69,6 +70,142 @@ namespace Backend.Core.DDD.Tests.Registration
             var usersIdsHandler = sp.GetService<UsersIdsHandler>();
             usersIdsHandler.UserIds.Should().HaveCount(1);
             usersIdsHandler.UserIds.Should().Contain(@event.UserId);
+        }
+    }
+
+    public class EventHandlerAllRegistrationTests
+    {
+        public class UserAdded : IEvent
+        {
+            public Guid StreamId => Guid.Empty;
+        }
+
+        public class UserUpdated : IEvent
+        {
+            public Guid StreamId => Guid.Empty;
+        }
+
+        public class AccountAdded : IEvent
+        {
+            public Guid StreamId => Guid.Empty;
+        }
+
+        public class AccountUpdated : IEvent
+        {
+            public Guid StreamId => Guid.Empty;
+        }
+
+        public class AccountDeleted : IEvent
+        {
+            public Guid StreamId => Guid.Empty;
+        }
+
+        public class UserEventHandler :
+            IEventHandler<UserAdded>,
+            IEventHandler<UserUpdated>
+        {
+            public Task Handle(UserAdded request, CancellationToken cancellationToken)
+            {
+                return Unit.Task;
+            }
+
+            public Task Handle(UserUpdated request, CancellationToken cancellationToken)
+            {
+                return Unit.Task;
+            }
+        }
+
+        public abstract class BaseAccountEventHandler :
+            IEventHandler<AccountAdded>,
+            IEventHandler<AccountUpdated>
+        {
+            public abstract Task Handle(AccountAdded request, CancellationToken cancellationToken);
+
+            public Task Handle(AccountUpdated request, CancellationToken cancellationToken)
+            {
+                return Unit.Task;
+            }
+        }
+
+        public class AccountEventHandler :
+            BaseAccountEventHandler,
+            IEventHandler<AccountDeleted>
+        {
+            public override Task Handle(AccountAdded request, CancellationToken cancellationToken)
+            {
+                return Unit.Task;
+            }
+
+            public Task Handle(AccountDeleted request, CancellationToken cancellationToken)
+            {
+                return Unit.Task;
+            }
+        }
+
+        public class DuplicatedDeleteAccountEventHandler :
+            IEventHandler<AccountDeleted>
+        {
+            public Task Handle(AccountDeleted request, CancellationToken cancellationToken)
+            {
+                return Unit.Task;
+            }
+        }
+
+        private ServiceCollection services = new ServiceCollection();
+
+        public EventHandlerAllRegistrationTests()
+        {
+            services.AddAllEventHandlers(ServiceLifetime.Scoped);
+        }
+
+        [Fact]
+        public void GivenMultipleEventHandler_WhenAddAllEventHandlerCalled_ThenAllEventHandlersAreRegistered()
+        {
+            using (var sp = services.BuildServiceProvider())
+            {
+                var addUserHandlers = sp.GetServices<INotificationHandler<UserAdded>>()
+                    .Union(sp.GetServices<IEventHandler<UserAdded>>()).ToList();
+                var updateUserHandlers = sp.GetServices<INotificationHandler<UserUpdated>>()
+                    .Union(sp.GetServices<IEventHandler<UserUpdated>>()).ToList();
+
+                addUserHandlers.Should().ContainSingle();
+                addUserHandlers.Should().AllBeOfType<UserEventHandler>();
+
+                updateUserHandlers.Should().ContainSingle();
+                updateUserHandlers.Should().AllBeOfType<UserEventHandler>();
+            }
+        }
+
+        [Fact]
+        public void GivenBaseEventHandler_WhenAddAllEventHandlerCalled_ThenOnlyDerivedClassIsRegistered()
+        {
+            using (var sp = services.BuildServiceProvider())
+            {
+                var addAccountHandlers = sp.GetServices<INotificationHandler<AccountAdded>>()
+                    .Union(sp.GetServices<IEventHandler<AccountAdded>>());
+                var updateAccountHandlers = sp.GetServices<INotificationHandler<AccountUpdated>>()
+                    .Union(sp.GetServices<IEventHandler<AccountUpdated>>());
+
+                addAccountHandlers.Should().ContainSingle();
+                addAccountHandlers.Should().AllBeOfType<AccountEventHandler>();
+
+                updateAccountHandlers.Should().ContainSingle();
+                updateAccountHandlers.Should().AllBeOfType<AccountEventHandler>();
+            }
+        }
+
+        [Fact]
+        public void GivenDuplicatedEventHandler_WhenAddAllEventHandlerCalled_ThenBothAreRegistered()
+        {
+            using (var sp = services.BuildServiceProvider())
+            {
+                var deleteAccountHandlers = sp.GetServices<INotificationHandler<AccountDeleted>>()
+                    .Union(sp.GetServices<IEventHandler<AccountDeleted>>());
+
+                deleteAccountHandlers.Should().HaveCount(2);
+                deleteAccountHandlers.Should().Contain(x => x is AccountEventHandler);
+                deleteAccountHandlers.Should().Contain(x => x is DuplicatedDeleteAccountEventHandler);
+            }
         }
     }
 }
