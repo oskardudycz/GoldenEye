@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -134,5 +135,37 @@ namespace Backend.Core.DDD.Tests.Registration
                 deleteAccountHandlers.Should().Contain(x => x is DuplicatedGetMainAccountQueryHandler);
             }
         }
+        private IServiceCollection Collection { get; } = new ServiceCollection();
+        [Fact]
+        public void CanRegisterAllQueriesWithFromApplicationDependencies()
+        {
+            Collection.Scan(scan => scan
+                .FromApplicationDependencies()
+                .AddClasses(classes => classes.AssignableTo(typeof(IQueryHandler<,>)))
+                .AsSelfWithInterfaces()
+            );
+            
+
+            Assert.Collection(Collection,
+                t => Assert.Equal(typeof(IQueryHandler<GetAccountList, IReadOnlyCollection<Account>>), t.ServiceType)
+                
+                );
+        }
+        [Fact]
+        public void CanRegisterAllQueriesWithFromAssemblyOf()
+        {
+            Collection.Scan(scan => scan
+                .FromAssemblyOf<GetAccountList>()
+                .AddClasses(classes => classes.AssignableTo(typeof(IQueryHandler<,>)))
+                .AsSelfWithInterfaces()
+            );
+            
+
+            Assert.Collection(Collection,
+                t => Assert.Equal(typeof(IQueryHandler<GetAccountList, IReadOnlyCollection<Account>>), t.ServiceType)
+                
+            );
+        }
+        
     }
 }
