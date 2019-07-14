@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
+using Scrutor;
 
 namespace GoldenEye.Shared.Core.Extensions.DependencyInjection
 {
@@ -262,6 +263,21 @@ namespace GoldenEye.Shared.Core.Extensions.DependencyInjection
 
                 default:
                     throw new ArgumentNullException(nameof(serviceLifetime));
+            }
+        }
+
+        public static IImplementationTypeSelector FromAssemblies(this IAssemblySelector assemblySelector, AssemblySelector assemblySelection = AssemblySelector.ApplicationDependencies)
+        {
+            switch (assemblySelection)
+            {
+                case AssemblySelector.ApplicationDependencies:
+                    return assemblySelector.FromApplicationDependencies();
+
+                case AssemblySelector.CallingAssembly:
+                    return assemblySelector.FromCallingAssembly();
+
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(assemblySelection), assemblySelection, $"Value {assemblySelection} is not supported");
             }
         }
     }

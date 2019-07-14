@@ -8,53 +8,53 @@
 * Updated `Scrutor` to `3.0.2` **[MAJOR]**
 * Updated `Microsoft.Extensions.DependencyInjection.Abstractions` to `2.2.0` **[MINOR]**
 
-# v6.1.0 (23.06.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/65)
+# v6.1.0 (23.06.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/65)
 
 ## Changes
 
 * Updated reference to `Shared.Core` **[MINOR]**
 
-# v6.0.0 (19.06.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/64)
+# v6.0.0 (19.06.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/64)
 
 ## Changes
 
 * Updated reference to Shared.Core **[MAJOR]**
 
-# v5.2.0 (21.05.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/59)
+# v5.2.0 (21.05.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/59)
 
 ## Changes
 
 * Added CustomQuery support for Repositories and DataContexts **[MINOR]**
 
-# v5.1.0 (12.05.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/61)
+# v5.1.0 (12.05.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/61)
 
 ## Changes
 
 * Fixed bug with stackoverflow during `AddAsync` method of `Repository` **[PATCH]**
 * Added `Remove` and `RemoveAsync` methods by id to `IDataContext` **[MINOR]**
 
-# v5.0.0 (12.05.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/60)
+# v5.0.0 (12.05.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/60)
 
 ## Changes
 
 * Fixed wrong type of id in Delete method in `IRepository` and `IRestService` **[MAJOR]**
 * Added overloads with cancellation token only of async `IRepository` methods **[MINOR]**
 
-# v4.0.0 (19.04.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/58)
+# v4.0.0 (19.04.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/58)
 
 ## Changes
 
 * Updated reference to Shared.Core **[MAJOR]**
 
 
-# v3.0.8 (08.04.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/54)
+# v3.0.8 (08.04.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/54)
 
 ## Changes
 
 * Added package icon **[PATCH]**
 
 
-# v3.0.7 (07.04.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/53)
+# v3.0.7 (07.04.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/53)
 
 ## Changes
 

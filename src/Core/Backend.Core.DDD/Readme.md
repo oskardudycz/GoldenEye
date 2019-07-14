@@ -10,12 +10,12 @@ GoldenEye.DDD is a library that helps to write code in Domain Driven Design and 
 What do I get?
 --------------------------------
 Complete DDD and CQRS helpers and bootstrap for:
-- [Command definition and handling](Commands)
+- [Command definition and handling](Commands/Readme.md)
 - [Queries definition and handling](Queries)
 - [Events definition, publishing and handling](Events)
 - [Aggregates definition](Aggregates)
 - [Registration helpers to reduce boilerplate](Registration/Registration.cs)
-- [Validation helpers for commands and queries](Validation)
+- [Validation helpers for commands and queries](Validation/Readme.md)
 - many more
 
 How do I get started?
@@ -42,4 +42,4 @@ Feel free to create an issue on GitHub. Contributions, pull requests are more th
 
 For detailed list of changes see [Changelog](Changelog.md)  
 
-GoldenEye is Copyright &copy; 2015-2018 [Oskar Dudycz](http://oskar-dudycz.pl) and other contributors under the [MIT license](LICENSE.txt).
+GoldenEye is Copyright &copy; 2015-2019 [Oskar Dudycz](http://oskar-dudycz.pl) and other contributors under the [MIT license](LICENSE.txt).

@@ -1,4 +1,4 @@
-﻿# v3.1.0 (23.06.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/65)
+﻿# v3.1.0 (23.06.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/65)
 
 ## Changes
 
@@ -13,7 +13,7 @@
 * Updated `Microsoft.AspNetCore.All` to `2.1.0` **[MINOR]**
 * Updated `Microsoft.AspNetCore.Mvc` to `2.1.0` **[MINOR]**
 
-# v3.0.9 (18.04.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/57)
+# v3.0.9 (18.04.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/57)
 
 ## Changes
 

@@ -26,7 +26,7 @@
 * Updated version of `AutoMapper` to `8.0.0` **[PATCH]**
 * Updated version of `AutoMapper.Extensions.Microsoft.DependencyInjection` to `6.0.0` **[MINOR]**
 
-# v2.1.0 (19.06.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/64)
+# v2.1.0 (19.06.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/64)
 
 ## Changes
 
@@ -40,7 +40,7 @@
 * Updated version of `AutoMapper` to `7.0.1` **[PATCH]**
 * Updated version of `AutoMapper.Extensions.Microsoft.DependencyInjection` to `4.0.1` **[MINOR]**
 
-# v2.0.0 (19.06.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/64)
+# v2.0.0 (19.06.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/64)
 
 ## Changes
 
@@ -48,13 +48,13 @@
 * Updated version of `MediatR` to `5.0.1`, changed commands handler to support new `MediatR` usage with Unit **[MAJOR]**
 * Updated `AutoMapper` to `7.0.0` **[MAJOR]**
 
-# v1.0.1 (18.05.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/63)
+# v1.0.1 (18.05.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/63)
 
 ## Changes
 
 * Fixed `launchSettings.json` to have properly replacable profile name **[MAJOR]**
 
-# v1.0.0 (16.05.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/55)
+# v1.0.0 (16.05.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/55)
 
 ## Changes
 

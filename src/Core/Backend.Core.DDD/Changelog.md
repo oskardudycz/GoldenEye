@@ -7,7 +7,7 @@
 * Updated `Microsoft.Extensions.DependencyInjection` to `2.2.0` **[MINOR]**
 * Updated `MediatR` to `6.0.0` **[MINOR]**
 
-# v7.1.0 (23.06.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/65)
+# v7.1.0 (23.06.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/65)
 
 ## Changes
 
@@ -15,53 +15,53 @@
 * Updated reference to `Backend.Core` **[MINOR]**
 * Updated `Microsoft.Extensions.DependencyInjection` to `2.1.0` **[MINOR]**
 
-# v7.0.0 (19.06.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/64)
+# v7.0.0 (19.06.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/64)
 
 ## Changes
 
 * Updated reference to Shared.Core **[MAJOR]**
 * Updated version of `MediatR` to `5.0.1`, changed commands, queries, events handler to support new `MediatR` usage with Unit **[MAJOR]**
 
-# v6.1.0 (21.05.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/59)
+# v6.1.0 (21.05.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/59)
 
 ## Changes
 
 * Added CustomQuery support for EventStore **[MINOR]**
 
-# v6.0.1 (12.05.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/61)
+# v6.0.1 (12.05.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/61)
 
 ## Changes
 
 * Updated reference to Backend.Core **[PATCH]**
 
-# v6.0.0 (12.05.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/60)
+# v6.0.0 (12.05.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/60)
 
 ## Changes
 
 * Updated reference to Backend.Core **[MAJOR]**
 
-# v5.0.0 (19.04.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/58)
+# v5.0.0 (19.04.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/58)
 
 ## Changes
 
 * Updated reference to Shared.Core **[MAJOR]**
 
 
-# v4.0.0 (18.04.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/56)
+# v4.0.0 (18.04.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/56)
 
 ## Changes
 
 * Added Async sufix for Publish, Send methods of CommandBus, QueryBus, EventBus abd proper cancellation token handling **[MAJOR]**
 
 
-# v3.0.8 (08.04.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/54)
+# v3.0.8 (08.04.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/54)
 
 ## Changes
 
 * Added package icon **[PATCH]**
 
 
-# v3.0.7 (07.04.2018) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/53)
+# v3.0.7 (07.04.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/53)
 
 ## Changes
 
