@@ -2,7 +2,7 @@
 {
     public enum AssemblySelector
     {
-        ApplicationDependencies,
-        CallingAssembly
+        ApplicationDependencies = 1,
+        CallingAssembly = 2
     }
 }
