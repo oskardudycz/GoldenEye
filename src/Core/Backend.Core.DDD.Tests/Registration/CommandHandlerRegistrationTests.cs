@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Backend.Core.DDD.Tests.External.Contracts;
 using FluentAssertions;
 using GoldenEye.Backend.Core.DDD.Commands;
 using GoldenEye.Backend.Core.DDD.Registration;
@@ -127,6 +128,24 @@ namespace Backend.Core.DDD.Tests.Registration
                 deleteAccountHandlers.Should().HaveCount(2);
                 deleteAccountHandlers.Should().Contain(x => x is AccountCommandHandler);
                 deleteAccountHandlers.Should().Contain(x => x is DuplicatedDeleteAccountCommandHandler);
+            }
+        }
+
+        [Fact]
+        public void GivenMultipleCommandHandlersFromApplicationDependencies_WhenAddAllCommandHandlerCalled_ThenBothAreRegistered()
+        {
+            using (var sp = services.BuildServiceProvider())
+            {
+                var createBankAccountHandlers = sp.GetServices<IRequestHandler<CreateBankAccount>>()
+                    .Union(sp.GetServices<ICommandHandler<CreateBankAccount>>()).ToList();
+                var withdrawMoneyHandlers = sp.GetServices<IRequestHandler<WithdrawMoney>>()
+                    .Union(sp.GetServices<ICommandHandler<WithdrawMoney>>()).ToList();
+
+                createBankAccountHandlers.Should().ContainSingle();
+                createBankAccountHandlers.Should().AllBeOfType<External.Handlers.CommandHandler>();
+
+                withdrawMoneyHandlers.Should().ContainSingle();
+                withdrawMoneyHandlers.Should().AllBeOfType<External.Handlers.CommandHandler>();
             }
         }
     }

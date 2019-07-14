@@ -29,6 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Backend.Core.DDD.Tests.External\Backend.Core.DDD.Tests.External.csproj" />
     <ProjectReference Include="..\Shared.Core\Shared.Core.csproj" />
     <ProjectReference Include="..\Backend.Core.DDD\Backend.Core.DDD.csproj" />
   </ItemGroup>

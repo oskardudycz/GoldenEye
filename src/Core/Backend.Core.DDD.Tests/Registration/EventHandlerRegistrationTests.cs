@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Backend.Core.DDD.Tests.External.Contracts;
 using FluentAssertions;
 using GoldenEye.Backend.Core.DDD.Events;
 using GoldenEye.Backend.Core.DDD.Registration;
@@ -163,16 +164,16 @@ namespace Backend.Core.DDD.Tests.Registration
         {
             using (var sp = services.BuildServiceProvider())
             {
-                var addUserHandlers = sp.GetServices<INotificationHandler<UserAdded>>()
+                var userAddedHandlers = sp.GetServices<INotificationHandler<UserAdded>>()
                     .Union(sp.GetServices<IEventHandler<UserAdded>>()).ToList();
-                var updateUserHandlers = sp.GetServices<INotificationHandler<UserUpdated>>()
+                var userUpdatedHandlers = sp.GetServices<INotificationHandler<UserUpdated>>()
                     .Union(sp.GetServices<IEventHandler<UserUpdated>>()).ToList();
 
-                addUserHandlers.Should().ContainSingle();
-                addUserHandlers.Should().AllBeOfType<UserEventHandler>();
+                userAddedHandlers.Should().ContainSingle();
+                userAddedHandlers.Should().AllBeOfType<UserEventHandler>();
 
-                updateUserHandlers.Should().ContainSingle();
-                updateUserHandlers.Should().AllBeOfType<UserEventHandler>();
+                userUpdatedHandlers.Should().ContainSingle();
+                userUpdatedHandlers.Should().AllBeOfType<UserEventHandler>();
             }
         }
 
@@ -181,16 +182,16 @@ namespace Backend.Core.DDD.Tests.Registration
         {
             using (var sp = services.BuildServiceProvider())
             {
-                var addAccountHandlers = sp.GetServices<INotificationHandler<AccountAdded>>()
+                var accountAddedHandlers = sp.GetServices<INotificationHandler<AccountAdded>>()
                     .Union(sp.GetServices<IEventHandler<AccountAdded>>());
-                var updateAccountHandlers = sp.GetServices<INotificationHandler<AccountUpdated>>()
+                var accountUpdatedHandlers = sp.GetServices<INotificationHandler<AccountUpdated>>()
                     .Union(sp.GetServices<IEventHandler<AccountUpdated>>());
 
-                addAccountHandlers.Should().ContainSingle();
-                addAccountHandlers.Should().AllBeOfType<AccountEventHandler>();
+                accountAddedHandlers.Should().ContainSingle();
+                accountAddedHandlers.Should().AllBeOfType<AccountEventHandler>();
 
-                updateAccountHandlers.Should().ContainSingle();
-                updateAccountHandlers.Should().AllBeOfType<AccountEventHandler>();
+                accountUpdatedHandlers.Should().ContainSingle();
+                accountUpdatedHandlers.Should().AllBeOfType<AccountEventHandler>();
             }
         }
 
@@ -205,6 +206,25 @@ namespace Backend.Core.DDD.Tests.Registration
                 deleteAccountHandlers.Should().HaveCount(2);
                 deleteAccountHandlers.Should().Contain(x => x is AccountEventHandler);
                 deleteAccountHandlers.Should().Contain(x => x is DuplicatedDeleteAccountEventHandler);
+            }
+        }
+
+        [Fact]
+        public void GivenMultipleEventHandlersFromApplicationDependencies_WhenAddAllEventHandlerCalled_ThenBothAreRegistered()
+        {
+            using (var sp = services.BuildServiceProvider())
+            {
+                var bankAccountCreatedHandlers = sp.GetServices<INotificationHandler<BankAccountCreated>>()
+                    .Union(sp.GetServices<IEventHandler<BankAccountCreated>>()).ToList();
+                var moneyWasWithdrawnHandlers = sp.GetServices<INotificationHandler<MoneyWasWithdrawn>>()
+                    .Union(sp.GetServices<IEventHandler<MoneyWasWithdrawn>>()).ToList();
+
+                bankAccountCreatedHandlers.Should().HaveCount(2);
+                bankAccountCreatedHandlers.Should().Contain(x => x is External.Handlers.FirstEventHandler);
+                bankAccountCreatedHandlers.Should().Contain(x => x is External.Handlers.SecondEventHandler);
+
+                moneyWasWithdrawnHandlers.Should().ContainSingle();
+                moneyWasWithdrawnHandlers.Should().AllBeOfType<External.Handlers.FirstEventHandler>();
             }
         }
     }

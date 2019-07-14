@@ -105,7 +105,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Marten", "Marten", "{E0AF79
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApi", "WebApi", "{61870107-24D4-438B-B592-5A6868143AD0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Core.Tests", "Core\Shared.Core.Tests\Shared.Core.Tests.csproj", "{E0242B0D-BEDE-43DC-A680-01F649CC2542}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Core.Tests", "Core\Shared.Core.Tests\Shared.Core.Tests.csproj", "{E0242B0D-BEDE-43DC-A680-01F649CC2542}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend.Core.DDD.Tests.External", "Core\Backend.Core.DDD.Tests.External\Backend.Core.DDD.Tests.External.csproj", "{40CCCF55-F3FB-4C13-8A1D-C737699C1CAD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -221,6 +223,10 @@ Global
 		{E0242B0D-BEDE-43DC-A680-01F649CC2542}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0242B0D-BEDE-43DC-A680-01F649CC2542}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0242B0D-BEDE-43DC-A680-01F649CC2542}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40CCCF55-F3FB-4C13-8A1D-C737699C1CAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40CCCF55-F3FB-4C13-8A1D-C737699C1CAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40CCCF55-F3FB-4C13-8A1D-C737699C1CAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40CCCF55-F3FB-4C13-8A1D-C737699C1CAD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -262,6 +268,7 @@ Global
 		{E0AF79D4-1480-4F8E-8361-625FD350498B} = {F4F82AA0-8F75-4A08-B420-5C5A3FC812C0}
 		{61870107-24D4-438B-B592-5A6868143AD0} = {F4F82AA0-8F75-4A08-B420-5C5A3FC812C0}
 		{E0242B0D-BEDE-43DC-A680-01F649CC2542} = {F4F82AA0-8F75-4A08-B420-5C5A3FC812C0}
+		{40CCCF55-F3FB-4C13-8A1D-C737699C1CAD} = {1A32473D-9490-4FF8-89E7-986DCCF4599C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8F5394A0-8892-4A22-B6A0-7BBC209FF191}

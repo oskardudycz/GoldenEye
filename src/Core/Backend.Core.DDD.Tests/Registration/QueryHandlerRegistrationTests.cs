@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Backend.Core.DDD.Tests.External.Contracts;
 using FluentAssertions;
 using GoldenEye.Backend.Core.DDD.Queries;
 using GoldenEye.Backend.Core.DDD.Registration;
@@ -91,16 +91,16 @@ namespace Backend.Core.DDD.Tests.Registration
         {
             using (var sp = services.BuildServiceProvider())
             {
-                var addUserHandlers = sp.GetServices<IRequestHandler<GetUser, User>>()
+                var getUserHandlers = sp.GetServices<IRequestHandler<GetUser, User>>()
                     .Union(sp.GetServices<IQueryHandler<GetUser, User>>()).ToList();
-                var updateUserHandlers = sp.GetServices<IRequestHandler<GetUserList, IReadOnlyCollection<User>>>()
+                var getUserListHandlers = sp.GetServices<IRequestHandler<GetUserList, IReadOnlyCollection<User>>>()
                     .Union(sp.GetServices<IQueryHandler<GetUserList, IReadOnlyCollection<User>>>()).ToList();
 
-                addUserHandlers.Should().ContainSingle();
-                addUserHandlers.Should().AllBeOfType<UserQueryHandler>();
+                getUserHandlers.Should().ContainSingle();
+                getUserHandlers.Should().AllBeOfType<UserQueryHandler>();
 
-                updateUserHandlers.Should().ContainSingle();
-                updateUserHandlers.Should().AllBeOfType<UserQueryHandler>();
+                getUserListHandlers.Should().ContainSingle();
+                getUserListHandlers.Should().AllBeOfType<UserQueryHandler>();
             }
         }
 
@@ -109,16 +109,16 @@ namespace Backend.Core.DDD.Tests.Registration
         {
             using (var sp = services.BuildServiceProvider())
             {
-                var addAccountHandlers = sp.GetServices<IRequestHandler<GetAccount, Account>>()
+                var getAccountHandlers = sp.GetServices<IRequestHandler<GetAccount, Account>>()
                     .Union(sp.GetServices<IQueryHandler<GetAccount, Account>>());
-                var updateAccountHandlers = sp.GetServices<IRequestHandler<GetAccountList, IReadOnlyCollection<Account>>>()
+                var getAccountListHandlers = sp.GetServices<IRequestHandler<GetAccountList, IReadOnlyCollection<Account>>>()
                     .Union(sp.GetServices<IQueryHandler<GetAccountList, IReadOnlyCollection<Account>>>());
 
-                addAccountHandlers.Should().ContainSingle();
-                addAccountHandlers.Should().AllBeOfType<AccountQueryHandler>();
+                getAccountHandlers.Should().ContainSingle();
+                getAccountHandlers.Should().AllBeOfType<AccountQueryHandler>();
 
-                updateAccountHandlers.Should().ContainSingle();
-                updateAccountHandlers.Should().AllBeOfType<AccountQueryHandler>();
+                getAccountListHandlers.Should().ContainSingle();
+                getAccountListHandlers.Should().AllBeOfType<AccountQueryHandler>();
             }
         }
 
@@ -127,30 +127,35 @@ namespace Backend.Core.DDD.Tests.Registration
         {
             using (var sp = services.BuildServiceProvider())
             {
-                var deleteAccountHandlers = sp.GetServices<IRequestHandler<GetMainAccount, Account>>()
+                var getMainAccountHandlers = sp.GetServices<IRequestHandler<GetMainAccount, Account>>()
                     .Union(sp.GetServices<IQueryHandler<GetMainAccount, Account>>());
 
-                deleteAccountHandlers.Should().HaveCount(2);
-                deleteAccountHandlers.Should().Contain(x => x is AccountQueryHandler);
-                deleteAccountHandlers.Should().Contain(x => x is DuplicatedGetMainAccountQueryHandler);
+                getMainAccountHandlers.Should().HaveCount(2);
+                getMainAccountHandlers.Should().Contain(x => x is AccountQueryHandler);
+                getMainAccountHandlers.Should().Contain(x => x is DuplicatedGetMainAccountQueryHandler);
             }
         }
-        private IServiceCollection Collection { get; } = new ServiceCollection();
-        [Fact]
-        public void CanRegisterAllQueriesWithFromApplicationDependencies()
-        {
-            Collection.Scan(scan => scan
-                .FromApplicationDependencies()
-                .AddClasses(classes => classes.AssignableTo(typeof(IQueryHandler<,>)))
-                .AsSelfWithInterfaces()
-            );
-            
 
-            Assert.Collection(Collection,
-                t => Assert.Equal(typeof(IQueryHandler<GetAccountList, IReadOnlyCollection<Account>>), t.ServiceType)
-                
-                );
+        [Fact]
+        public void GivenMultipleQueryHandlersFromApplicationDependencies_WhenAddAllQueryHandlerCalled_ThenBothAreRegistered()
+        {
+            using (var sp = services.BuildServiceProvider())
+            {
+                var getBankAccountDetailsHandlers = sp.GetServices<IRequestHandler<GetBankAccountDetails, BankAccountDetails>>()
+                    .Union(sp.GetServices<IQueryHandler<GetBankAccountDetails, BankAccountDetails>>()).ToList();
+                var getBankAccountHistoryHandlers = sp.GetServices<IRequestHandler<GetBankAccountHistory, IReadOnlyCollection<MoneyTransaction>>>()
+                    .Union(sp.GetServices<IQueryHandler<GetBankAccountHistory, IReadOnlyCollection<MoneyTransaction>>>()).ToList();
+
+                getBankAccountDetailsHandlers.Should().ContainSingle();
+                getBankAccountDetailsHandlers.Should().AllBeOfType<External.Handlers.QueryHandler>();
+
+                getBankAccountHistoryHandlers.Should().ContainSingle();
+                getBankAccountHistoryHandlers.Should().AllBeOfType<External.Handlers.QueryHandler>();
+            }
         }
+
+        private IServiceCollection Collection { get; } = new ServiceCollection();
+
         [Fact]
         public void CanRegisterAllQueriesWithFromAssemblyOf()
         {
@@ -159,13 +164,11 @@ namespace Backend.Core.DDD.Tests.Registration
                 .AddClasses(classes => classes.AssignableTo(typeof(IQueryHandler<,>)))
                 .AsSelfWithInterfaces()
             );
-            
 
             Assert.Collection(Collection,
                 t => Assert.Equal(typeof(IQueryHandler<GetAccountList, IReadOnlyCollection<Account>>), t.ServiceType)
-                
+
             );
         }
-        
     }
 }
