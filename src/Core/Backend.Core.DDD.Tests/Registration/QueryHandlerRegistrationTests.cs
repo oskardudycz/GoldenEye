@@ -153,22 +153,5 @@ namespace Backend.Core.DDD.Tests.Registration
                 getBankAccountHistoryHandlers.Should().AllBeOfType<External.Handlers.QueryHandler>();
             }
         }
-
-        private IServiceCollection Collection { get; } = new ServiceCollection();
-
-        [Fact]
-        public void CanRegisterAllQueriesWithFromAssemblyOf()
-        {
-            Collection.Scan(scan => scan
-                .FromAssemblyOf<GetAccountList>()
-                .AddClasses(classes => classes.AssignableTo(typeof(IQueryHandler<,>)))
-                .AsSelfWithInterfaces()
-            );
-
-            Assert.Collection(Collection,
-                t => Assert.Equal(typeof(IQueryHandler<GetAccountList, IReadOnlyCollection<Account>>), t.ServiceType)
-
-            );
-        }
     }
 }
