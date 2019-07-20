@@ -1,30 +1,30 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>7.0.0</Version>
-    <PackageId>GoldenEye.Backend.Core.Marten</PackageId>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Authors>Oskar Dudycz</Authors>
-    <Company>Oskar Dudycz</Company>
-    <Product>Oskar Dudycz</Product>
-    <Copyright>Oskar Dudycz</Copyright>
-    <Description>GoldenEye is a Full Stack framework written in .NET Core. The main goal of GoldenEye is to speed up your development process. It gathers most widely used frameworks in .NET world and pack them into a simple bootstrap Nuget packages. It also provide set of base classes, helpers, extensions that will help you with your daily work.</Description>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>http://oskardudycz.github.io/GoldenEye/</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/oskardudycz/GoldenEye</RepositoryUrl>
-    <AssemblyName>GoldenEye.Backend.Core.Marten</AssemblyName>
-    <RootNamespace>GoldenEye.Backend.Core.Marten</RootNamespace>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <PackageIconUrl>https://raw.githubusercontent.com/oskardudycz/GoldenEye/master/assets/GoldenEyeLogo.png</PackageIconUrl>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <Version>8.0.0</Version>
+        <PackageId>GoldenEye.Backend.Core.Marten</PackageId>
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+        <Authors>Oskar Dudycz</Authors>
+        <Company>Oskar Dudycz</Company>
+        <Product>Oskar Dudycz</Product>
+        <Copyright>Oskar Dudycz</Copyright>
+        <Description>GoldenEye is a Full Stack framework written in .NET Core. The main goal of GoldenEye is to speed up your development process. It gathers most widely used frameworks in .NET world and pack them into a simple bootstrap Nuget packages. It also provide set of base classes, helpers, extensions that will help you with your daily work.</Description>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>http://oskardudycz.github.io/GoldenEye/</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/oskardudycz/GoldenEye</RepositoryUrl>
+        <AssemblyName>GoldenEye.Backend.Core.Marten</AssemblyName>
+        <RootNamespace>GoldenEye.Backend.Core.Marten</RootNamespace>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <PackageIconUrl>https://raw.githubusercontent.com/oskardudycz/GoldenEye/master/assets/GoldenEyeLogo.png</PackageIconUrl>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Marten" Version="3.6.1" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Marten" Version="3.6.1" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Backend.Core\Backend.Core.csproj" />
-    <ProjectReference Include="..\Backend.Core.DDD\Backend.Core.DDD.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Backend.Core\Backend.Core.csproj" />
+        <ProjectReference Include="..\Backend.Core.DDD\Backend.Core.DDD.csproj" />
+    </ItemGroup>
 </Project>

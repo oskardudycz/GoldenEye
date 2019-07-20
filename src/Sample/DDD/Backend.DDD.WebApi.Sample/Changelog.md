@@ -1,4 +1,13 @@
-﻿# v5.0.0 (19.04.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/58)
+# v5.1.0 (20.07.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/71)
+
+## Changes
+
+Updated samples to use registering by conventions instead of concrete ones:
+- `AddAllDDDHandlers` - for registering all handlers
+- `AddAutoMapperForAllDependencies` for registering automapper for all dependencies
+- `AddAllModules` - for registering all custom modules
+
+# v5.0.0 (19.04.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/58)
 
 ## Changes
 

@@ -1,6 +1,11 @@
-﻿# v6.1.0 (19.07.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/69)
+# v6.1.0 (20.07.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/71)
 
 ## Changes
+* Added [AddAutoMapperForAllDependencies](Mappings/Registration.cs) extension method for registering automapper for all project dependencies **[MINOR]**
+* Added [AddAllModules](Modules/Registration.cs) extension method for registering all custom modules for dependencies **[MINOR]**
+* Updated `AutoMapper` to `8.1.1` **[MINOR]**
+* Added reference to `Microsoft.Extensions.DependencyInjection` to `2.2.0` **[MINOR]**
+* Updated `Newtonsoft.Json` to `12.0.2` **[PATCH]**
 
 # v6.0.0 (26.01.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/69)
 

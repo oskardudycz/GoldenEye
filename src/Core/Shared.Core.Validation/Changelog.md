@@ -1,4 +1,12 @@
-﻿# v6.0.0 (26.01.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/69)
+# v6.1.0 (20.07.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/71)
+
+## Changes
+
+* Updated `Shared.Core` to `6.1.0` **[MINOR]**
+* Updated `FluentValidation` to `8.4.0` **[MINOR]**
+* Updated `FluentValidation.ValidatorAttribute` to `8.4.0` **[MINOR]**
+
+# v6.0.0 (26.01.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/69)
 
 ## Changes
 

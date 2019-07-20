@@ -1,35 +1,35 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>8.0.0</Version>
-    <PackageId>GoldenEye.Backend.Core.DDD</PackageId>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Authors>Oskar Dudycz</Authors>
-    <Company>Oskar Dudycz</Company>
-    <Product>Oskar Dudycz</Product>
-    <Copyright>Oskar Dudycz</Copyright>
-    <Description>GoldenEye.DDD is a library that helps to write code in Domain Driven Design and CQRS. It is written in .NET Core. It provides set of base and bootstrap classes that helps you to reduce boilerplate code and help you focus on writing business code.</Description>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>http://oskardudycz.github.io/GoldenEye/</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/oskardudycz/GoldenEye</RepositoryUrl>
-    <AssemblyName>GoldenEye.Backend.Core.DDD</AssemblyName>
-    <RootNamespace>GoldenEye.Backend.Core.DDD</RootNamespace>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <PackageIconUrl>https://raw.githubusercontent.com/oskardudycz/GoldenEye/master/assets/GoldenEyeLogo.png</PackageIconUrl>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <Version>9.0.0</Version>
+        <PackageId>GoldenEye.Backend.Core.DDD</PackageId>
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+        <Authors>Oskar Dudycz</Authors>
+        <Company>Oskar Dudycz</Company>
+        <Product>Oskar Dudycz</Product>
+        <Copyright>Oskar Dudycz</Copyright>
+        <Description>GoldenEye.DDD is a library that helps to write code in Domain Driven Design and CQRS. It is written in .NET Core. It provides set of base and bootstrap classes that helps you to reduce boilerplate code and help you focus on writing business code.</Description>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>http://oskardudycz.github.io/GoldenEye/</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/oskardudycz/GoldenEye</RepositoryUrl>
+        <AssemblyName>GoldenEye.Backend.Core.DDD</AssemblyName>
+        <RootNamespace>GoldenEye.Backend.Core.DDD</RootNamespace>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <PackageIconUrl>https://raw.githubusercontent.com/oskardudycz/GoldenEye/master/assets/GoldenEyeLogo.png</PackageIconUrl>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
+    <ItemGroup>
+        <Folder Include="Properties\" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="MediatR" Version="7.0.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="MediatR" Version="7.0.0" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Backend.Core\Backend.Core.csproj" />
-    <ProjectReference Include="..\Shared.Core\Shared.Core.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Backend.Core\Backend.Core.csproj" />
+        <ProjectReference Include="..\Shared.Core\Shared.Core.csproj" />
+    </ItemGroup>
 </Project>

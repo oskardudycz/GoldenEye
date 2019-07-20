@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using FluentAssertions;
 using GoldenEye.Backend.Core.DDD.Events;
@@ -9,9 +9,9 @@ using Xunit;
 
 namespace Backend.Core.Marten.Tests.Transactions
 {
-    public class TransactionScopeUnitOfWorkTests : MartenTest
+    public class TransactionScopeUnitOfWorkTests: MartenTest
     {
-        public class UserCreated : IEvent
+        public class UserCreated: IEvent
         {
             public Guid UserId { get; set; }
             public string UserName { get; set; }
@@ -25,7 +25,7 @@ namespace Backend.Core.Marten.Tests.Transactions
         [Fact(Skip = "not working")]
         public void Test()
         {
-            Guid userId = Guid.NewGuid();
+            var userId = Guid.NewGuid();
             var schemaName = GenerateSchemaName();
 
             using (var uow = new TransactionScopeUnitOfWork())
