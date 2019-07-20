@@ -1,3 +1,9 @@
+# v9.0.1 (20.07.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/72)
+
+## Changes
+
+* Fixed bug for automatic registration of handlers and modules when generic handler implementation exists **[PATCH]**
+
 # v9.0.0 (20.07.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/71)
 
 ## Changes

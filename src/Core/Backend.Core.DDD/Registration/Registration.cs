@@ -1,4 +1,4 @@
-﻿using GoldenEye.Backend.Core.DDD.Commands;
+using GoldenEye.Backend.Core.DDD.Commands;
 using GoldenEye.Backend.Core.DDD.Events;
 using GoldenEye.Backend.Core.DDD.Events.Logging;
 using GoldenEye.Backend.Core.DDD.Events.Store;
@@ -78,10 +78,10 @@ namespace GoldenEye.Backend.Core.DDD.Registration
         {
             services.Scan(scan => scan
                 .FromAssemblies(from)
-                .AddClasses(classes => classes.AssignableTo(typeof(ICommandHandler<>)))
-                    .AsSelfWithInterfaces()
-                    .WithLifetime(withLifetime)
-                 );
+                .AddClasses(classes => classes.AssignableTo(typeof(ICommandHandler<>)).Where(c => !c.IsAbstract && !c.IsGenericTypeDefinition))
+                .AsSelfWithInterfaces()
+                .WithLifetime(withLifetime)
+            );
 
             return services;
         }
@@ -93,10 +93,10 @@ namespace GoldenEye.Backend.Core.DDD.Registration
         {
             services.Scan(scan => scan
                 .FromAssemblies(from)
-                .AddClasses(classes => classes.AssignableTo(typeof(IQueryHandler<,>)))
-                    .AsSelfWithInterfaces()
-                    .WithLifetime(withLifetime)
-                 );
+                .AddClasses(classes => classes.AssignableTo(typeof(IQueryHandler<,>)).Where(c => !c.IsAbstract && !c.IsGenericTypeDefinition))
+                .AsSelfWithInterfaces()
+                .WithLifetime(withLifetime)
+            );
 
             return services;
         }
@@ -108,10 +108,10 @@ namespace GoldenEye.Backend.Core.DDD.Registration
         {
             services.Scan(scan => scan
                 .FromAssemblies(from)
-                .AddClasses(classes => classes.AssignableTo(typeof(IEventHandler<>)).NotInNamespaceOf(typeof(EventStorePipeline<>)))
-                    .AsSelfWithInterfaces()
-                    .WithLifetime(withLifetime)
-                 );
+                .AddClasses(classes => classes.AssignableTo(typeof(IEventHandler<>)).Where(c => !c.IsAbstract && !c.IsGenericTypeDefinition))
+                .AsSelfWithInterfaces()
+                .WithLifetime(withLifetime)
+            );
 
             return services;
         }

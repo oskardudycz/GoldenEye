@@ -1,3 +1,9 @@
+# v8.0.1 (20.07.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/72)
+
+## Changes
+
+* Updated `Backend.Core.DDD` to `9.0.1` **[PATCH]**
+
 # v8.0.0 (20.07.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/71)
 
 ## Changes

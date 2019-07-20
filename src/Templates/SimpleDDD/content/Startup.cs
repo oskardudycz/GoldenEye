@@ -1,11 +1,9 @@
-﻿using System;
-using AutoMapper;
 using GoldenEye.Backend.Core.DDD.Registration;
 using GoldenEye.Backend.Core.WebApi.Modules;
 using GoldenEye.Backend.Core.WebApi.Registration;
 using GoldenEye.Shared.Core.Configuration;
+using GoldenEye.Shared.Core.Mappings;
 using GoldenEye.Shared.Core.Modules;
-using GoldenEye.WebApi.Template.SimpleDDD.Backend;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -28,10 +26,12 @@ namespace GoldenEye.WebApi.Template.SimpleDDD
             services.AddMvc();
             services.AddDDD();
 
-            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddAllDDDHandlers();
+
+            services.AddAutoMapperForAllDependencies();
             services.AddConfiguration(Configuration);
 
-            services.AddModule<BackendModule>();
+            services.AddAllModules();
             services.AddModule<AllowAllCorsModule>();
             services.AddModule<SwaggerModule>();
         }
