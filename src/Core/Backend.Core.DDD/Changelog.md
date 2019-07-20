@@ -1,4 +1,14 @@
-﻿# v8.0.0 (26.01.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/69)
+# v9.0.0 (20.07.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/71)
+
+## Changes
+
+* Added extension methods for registering command handlers (`AddAllCommandHandlers`), query handlers (`AddAllQueryHandlers`), event handlers (`AddAllEventHandlers`) and all handlers (`AddAllDDDHandlers`) by convention. See more [in Registration extensions](Registration/Registration.cs)
+* Updated `Shared.Core` to `7.1.0` **[MINOR]**
+* Updated `Backend.Core` to `7.1.0` **[MINOR]**
+* Updated `Microsoft.Extensions.DependencyInjection` to `2.2.0` **[MINOR]**
+* Updated `MediatR` to `8.0.0` **[MAJOR]**
+
+# v8.0.0 (26.01.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/69)
 
 ## Changes
 

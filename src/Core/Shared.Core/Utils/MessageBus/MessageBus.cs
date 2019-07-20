@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace GoldenEye.Shared.Core.Utils.MessageBus
 {
-    public class MessageBus : IMessageBus
+    public class MessageBus: IMessageBus
     {
         private readonly Dictionary<object, List<object>> _subscribers = new Dictionary<object, List<object>>();
 
@@ -31,7 +30,7 @@ namespace GoldenEye.Shared.Core.Utils.MessageBus
 
             var handlers = _subscribers[typeof(TMessage)];
             var handlerToRemove = new List<int>();
-            for (int i = 0; i < handlers.Count; i++)
+            for (var i = 0; i < handlers.Count; i++)
             {
                 if (handlers[i].GetType() == handler.GetType())
                     handlerToRemove.Add(i);
@@ -50,9 +49,9 @@ namespace GoldenEye.Shared.Core.Utils.MessageBus
             if (!_subscribers.ContainsKey(typeof(TMessage)))
                 return;
 
-            Type msg = message.GetType();
+            var msg = message.GetType();
             var handlers = _subscribers[msg];
-            foreach (object handler in handlers)
+            foreach (var handler in handlers)
             {
                 ((IMessageHandler<TMessage>)handler)
                     .HandleMessage(message);

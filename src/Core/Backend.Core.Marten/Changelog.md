@@ -1,4 +1,12 @@
-﻿# v7.0.0 (26.01.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/69)
+# v8.0.0 (20.07.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/71)
+
+## Changes
+
+* Updated `Backend.Core` to `7.1.0` **[MINOR]**
+* Updated `Backend.Core.DDD` to `9.0.0` **[MAJOR]**
+* Updated Marten to `3.6.1` **[MINOR]**
+
+# v7.0.0 (26.01.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/69)
 
 ## Changes
 
@@ -20,7 +28,6 @@
 ## Changes
 
 * Updated reference to Shared.Core **[MAJOR]**
-* Updated version od `Dapper` and `Dapper.Contrib` **[PATCH]**
 
 # v5.2.0 (21.05.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/59)
 

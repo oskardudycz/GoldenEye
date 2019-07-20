@@ -1,4 +1,12 @@
-﻿# v7.0.0 (26.01.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/69)
+# v7.1.0 (20.07.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/71)
+
+## Changes
+
+* Updated `Shared.Core` to `6.1.0` **[MINOR]**
+* Updated `Shared.Core.Validation` to `6.1.0` **[MINOR]**
+* Updated `Backend.Core` to `7.1.0` **[MINOR]**
+
+# v7.0.0 (26.01.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/69)
 
 ## Changes
 

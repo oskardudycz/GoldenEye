@@ -1,38 +1,38 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>7.0.0</Version>
-    <PackageId>GoldenEye.Backend.Core.EntityFramework</PackageId>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Authors>Oskar Dudycz</Authors>
-    <Company>Oskar Dudycz</Company>
-    <Product>Oskar Dudycz</Product>
-    <Copyright>Oskar Dudycz</Copyright>
-    <Description>GoldenEye is a Full Stack framework written in .NET Core. The main goal of GoldenEye is to speed up your development process. It gathers most widely used frameworks in .NET world and pack them into a simple bootstrap Nuget packages. It also provide set of base classes, helpers, extensions that will help you with your daily work.</Description>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>http://oskardudycz.github.io/GoldenEye/</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/oskardudycz/GoldenEye</RepositoryUrl>
-    <AssemblyName>GoldenEye.Backend.Core.EntityFramework</AssemblyName>
-    <RootNamespace>GoldenEye.Backend.Core.EntityFramework</RootNamespace>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <PackageIconUrl>https://raw.githubusercontent.com/oskardudycz/GoldenEye/master/assets/GoldenEyeLogo.png</PackageIconUrl>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <Version>7.1.0</Version>
+        <PackageId>GoldenEye.Backend.Core.EntityFramework</PackageId>
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+        <Authors>Oskar Dudycz</Authors>
+        <Company>Oskar Dudycz</Company>
+        <Product>Oskar Dudycz</Product>
+        <Copyright>Oskar Dudycz</Copyright>
+        <Description>GoldenEye is a Full Stack framework written in .NET Core. The main goal of GoldenEye is to speed up your development process. It gathers most widely used frameworks in .NET world and pack them into a simple bootstrap Nuget packages. It also provide set of base classes, helpers, extensions that will help you with your daily work.</Description>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>http://oskardudycz.github.io/GoldenEye/</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/oskardudycz/GoldenEye</RepositoryUrl>
+        <AssemblyName>GoldenEye.Backend.Core.EntityFramework</AssemblyName>
+        <RootNamespace>GoldenEye.Backend.Core.EntityFramework</RootNamespace>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <PackageIconUrl>https://raw.githubusercontent.com/oskardudycz/GoldenEye/master/assets/GoldenEyeLogo.png</PackageIconUrl>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Context\ConnectionProvider.cs" />
-    <Compile Remove="Context\IConnectionProvider.cs" />
-  </ItemGroup>
+    <ItemGroup>
+        <Compile Remove="Context\ConnectionProvider.cs" />
+        <Compile Remove="Context\IConnectionProvider.cs" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="2.2.6" />
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="2.2.6" />
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.2.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Backend.Core\Backend.Core.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Backend.Core\Backend.Core.csproj" />
+    </ItemGroup>
 </Project>

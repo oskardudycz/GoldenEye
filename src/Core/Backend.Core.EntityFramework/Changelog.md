@@ -1,4 +1,13 @@
-﻿# v7.0.0 (26.01.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/69)
+# v7.1.0 (20.07.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/71)
+
+## Changes
+
+* Updated `Shared.Core` to `7.1.0` **[MINOR]**
+* Updated `Backend.Core` to `7.1.0` **[MINOR]**
+* Updated `Microsoft.EntityFrameworkCore` to `2.2.6` **[PATCH]**
+* Updated `Microsoft.EntityFrameworkCore.Relational` to `2.2.6` **[PATCH]**
+
+# v7.0.0 (26.01.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/69)
 
 ## Changes
 
