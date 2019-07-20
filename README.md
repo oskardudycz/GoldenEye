@@ -3,7 +3,6 @@
 # GoldenEye
 
 [![Join the chat at https://gitter.im/oskardudycz/GoldenEye](https://badges.gitter.im/oskardudycz/GoldenEye.svg)](https://gitter.im/oskardudycz/GoldenEye?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Stories in Ready](https://badge.waffle.io/oskardudycz/GoldenEye.png?label=ready&title=Ready)](https://waffle.io/oskardudycz/GoldenEye)
 [![Build status](https://ci.appveyor.com/api/projects/status/1mtm4h33cvur6kob/branch/master?svg=true)](https://ci.appveyor.com/project/oskardudycz/goldeneye-core/branch/master)
 
 What is GoldenEye?
