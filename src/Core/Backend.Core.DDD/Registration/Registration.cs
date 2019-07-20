@@ -77,7 +77,9 @@ namespace GoldenEye.Backend.Core.DDD.Registration
             AssemblySelector from = AssemblySelector.ApplicationDependencies)
         {
             services.Scan(scan => scan
-                .FromAssemblies(from)
+                .FromCallingAssembly()
+                .FromApplicationDependencies()
+                //.FromAssemblies(from)
                 .AddClasses(classes => classes.AssignableTo(typeof(ICommandHandler<>)).Where(c => !c.IsAbstract && !c.IsGenericTypeDefinition))
                 .AsSelfWithInterfaces()
                 .WithLifetime(withLifetime)
@@ -92,7 +94,9 @@ namespace GoldenEye.Backend.Core.DDD.Registration
             AssemblySelector from = AssemblySelector.ApplicationDependencies)
         {
             services.Scan(scan => scan
-                .FromAssemblies(from)
+                .FromCallingAssembly()
+                .FromApplicationDependencies()
+                //.FromAssemblies(from)
                 .AddClasses(classes => classes.AssignableTo(typeof(IQueryHandler<,>)).Where(c => !c.IsAbstract && !c.IsGenericTypeDefinition))
                 .AsSelfWithInterfaces()
                 .WithLifetime(withLifetime)
@@ -107,7 +111,9 @@ namespace GoldenEye.Backend.Core.DDD.Registration
             AssemblySelector from = AssemblySelector.ApplicationDependencies)
         {
             services.Scan(scan => scan
-                .FromAssemblies(from)
+                .FromCallingAssembly()
+                .FromApplicationDependencies()
+                //.FromAssemblies(from)
                 .AddClasses(classes => classes.AssignableTo(typeof(IEventHandler<>)).Where(c => !c.IsAbstract && !c.IsGenericTypeDefinition))
                 .AsSelfWithInterfaces()
                 .WithLifetime(withLifetime)
