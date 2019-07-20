@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -15,7 +15,7 @@ namespace Backend.Core.DDD.Tests.Registration
 {
     public class EventHandlerRegistrationTests
     {
-        public class UserCreated : IEvent
+        public class UserCreated: IEvent
         {
             public Guid UserId { get; }
             public Guid StreamId => UserId;
@@ -26,7 +26,7 @@ namespace Backend.Core.DDD.Tests.Registration
             }
         }
 
-        public class UsersCountHandler : IEventHandler<UserCreated>
+        public class UsersCountHandler: IEventHandler<UserCreated>
         {
             public int UserCount { get; private set; }
 
@@ -37,7 +37,7 @@ namespace Backend.Core.DDD.Tests.Registration
             }
         }
 
-        public class UsersIdsHandler : IEventHandler<UserCreated>
+        public class UsersIdsHandler: IEventHandler<UserCreated>
         {
             public List<Guid> UserIds { get; private set; } = new List<Guid>();
 
@@ -76,32 +76,32 @@ namespace Backend.Core.DDD.Tests.Registration
 
     public class EventHandlerAllRegistrationTests
     {
-        public class UserAdded : IEvent
+        public class UserAdded: IEvent
         {
             public Guid StreamId => Guid.Empty;
         }
 
-        public class UserUpdated : IEvent
+        public class UserUpdated: IEvent
         {
             public Guid StreamId => Guid.Empty;
         }
 
-        public class AccountAdded : IEvent
+        public class AccountAdded: IEvent
         {
             public Guid StreamId => Guid.Empty;
         }
 
-        public class AccountUpdated : IEvent
+        public class AccountUpdated: IEvent
         {
             public Guid StreamId => Guid.Empty;
         }
 
-        public class AccountDeleted : IEvent
+        public class AccountDeleted: IEvent
         {
             public Guid StreamId => Guid.Empty;
         }
 
-        public class UserEventHandler :
+        public class UserEventHandler:
             IEventHandler<UserAdded>,
             IEventHandler<UserUpdated>
         {
@@ -116,7 +116,7 @@ namespace Backend.Core.DDD.Tests.Registration
             }
         }
 
-        public abstract class BaseAccountEventHandler :
+        public abstract class BaseAccountEventHandler:
             IEventHandler<AccountAdded>,
             IEventHandler<AccountUpdated>
         {
@@ -128,7 +128,7 @@ namespace Backend.Core.DDD.Tests.Registration
             }
         }
 
-        public class AccountEventHandler :
+        public class AccountEventHandler:
             BaseAccountEventHandler,
             IEventHandler<AccountDeleted>
         {
@@ -143,12 +143,30 @@ namespace Backend.Core.DDD.Tests.Registration
             }
         }
 
-        public class DuplicatedDeleteAccountEventHandler :
+        public class DuplicatedDeleteAccountEventHandler:
             IEventHandler<AccountDeleted>
         {
             public Task Handle(AccountDeleted request, CancellationToken cancellationToken)
             {
                 return Unit.Task;
+            }
+        }
+
+        public abstract class AbstractEventHandler:
+            IEventHandler<AccountDeleted>
+        {
+            public Task Handle(AccountDeleted request, CancellationToken cancellationToken)
+            {
+                return Unit.Task;
+            }
+        }
+
+        public class GenericEventHandler<TEvent>: IEventHandler<TEvent>
+           where TEvent : IEvent
+        {
+            public Task Handle(TEvent notification, CancellationToken cancellationToken)
+            {
+                throw new NotImplementedException();
             }
         }
 
@@ -225,6 +243,29 @@ namespace Backend.Core.DDD.Tests.Registration
 
                 moneyWasWithdrawnHandlers.Should().ContainSingle();
                 moneyWasWithdrawnHandlers.Should().AllBeOfType<External.Handlers.FirstEventHandler>();
+            }
+        }
+
+        [Fact]
+        public void GivenAbstractEventHandler_WhenAddAllEventHandlerCalled_ThenIsNotRegistered()
+        {
+            using (var sp = services.BuildServiceProvider())
+            {
+                var deleteAccountHandlers = sp.GetServices<INotificationHandler<AccountDeleted>>()
+                    .Union(sp.GetServices<IEventHandler<AccountDeleted>>());
+
+                deleteAccountHandlers.Should().NotContain(x => x is AbstractEventHandler);
+            }
+        }
+
+        [Fact]
+        public void GivenGenericEventHandler_WhenAddAllEventHandlerCalled_ThenIsNotRegistered()
+        {
+            using (var sp = services.BuildServiceProvider())
+            {
+                var genericHandler = sp.GetService<GenericEventHandler<BankAccountCreated>>();
+
+                genericHandler.Should().BeNull();
             }
         }
     }

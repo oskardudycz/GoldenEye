@@ -1,4 +1,5 @@
-﻿using System.Linq;
+using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Backend.Core.DDD.Tests.External.Contracts;
@@ -13,17 +14,17 @@ namespace Backend.Core.DDD.Tests.Registration
 {
     public class CommandHandlerRegistrationTests
     {
-        public class AddUser : ICommand { }
+        public class AddUser: ICommand { }
 
-        public class UpdateUser : ICommand { }
+        public class UpdateUser: ICommand { }
 
-        public class AddAccount : ICommand { }
+        public class AddAccount: ICommand { }
 
-        public class UpdateAccount : ICommand { }
+        public class UpdateAccount: ICommand { }
 
-        public class DeleteAccount : ICommand { }
+        public class DeleteAccount: ICommand { }
 
-        public class UserCommandHandler :
+        public class UserCommandHandler:
             ICommandHandler<AddUser>,
             ICommandHandler<UpdateUser>
         {
@@ -38,7 +39,7 @@ namespace Backend.Core.DDD.Tests.Registration
             }
         }
 
-        public abstract class BaseAccountCommandHandler :
+        public abstract class BaseAccountCommandHandler:
             ICommandHandler<AddAccount>,
             ICommandHandler<UpdateAccount>
         {
@@ -50,7 +51,7 @@ namespace Backend.Core.DDD.Tests.Registration
             }
         }
 
-        public class AccountCommandHandler :
+        public class AccountCommandHandler:
             BaseAccountCommandHandler,
             ICommandHandler<DeleteAccount>
         {
@@ -65,12 +66,30 @@ namespace Backend.Core.DDD.Tests.Registration
             }
         }
 
-        public class DuplicatedDeleteAccountCommandHandler :
+        public class DuplicatedDeleteAccountCommandHandler:
             ICommandHandler<DeleteAccount>
         {
             public Task<Unit> Handle(DeleteAccount request, CancellationToken cancellationToken)
             {
                 return Unit.Task;
+            }
+        }
+
+        public abstract class AbstractCommandHandler:
+            ICommandHandler<DeleteAccount>
+        {
+            public Task<Unit> Handle(DeleteAccount request, CancellationToken cancellationToken)
+            {
+                return Unit.Task;
+            }
+        }
+
+        public class GenericCommandHandler<TCommand>: ICommandHandler<TCommand>
+           where TCommand : ICommand
+        {
+            public Task<Unit> Handle(TCommand request, CancellationToken cancellationToken)
+            {
+                throw new NotImplementedException();
             }
         }
 
@@ -146,6 +165,29 @@ namespace Backend.Core.DDD.Tests.Registration
 
                 withdrawMoneyHandlers.Should().ContainSingle();
                 withdrawMoneyHandlers.Should().AllBeOfType<External.Handlers.CommandHandler>();
+            }
+        }
+
+        [Fact]
+        public void GivenAbstractEventHandler_WhenAddAllEventHandlerCalled_ThenIsNotRegistered()
+        {
+            using (var sp = services.BuildServiceProvider())
+            {
+                var deleteAccountHandlers = sp.GetServices<IRequestHandler<DeleteAccount, Unit>>()
+                    .Union(sp.GetServices<ICommandHandler<DeleteAccount>>());
+
+                deleteAccountHandlers.Should().NotContain(x => x is AbstractCommandHandler);
+            }
+        }
+
+        [Fact]
+        public void GivenGenericCommandHandler_WhenAddAllCommandHandlerCalled_ThenIsNotRegistered()
+        {
+            using (var sp = services.BuildServiceProvider())
+            {
+                var genericHandler = sp.GetService<GenericCommandHandler<CreateBankAccount>>();
+
+                genericHandler.Should().BeNull();
             }
         }
     }
