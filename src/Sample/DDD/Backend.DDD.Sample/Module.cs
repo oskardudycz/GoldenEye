@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using Backend.DDD.Sample.Contracts.Issues.Commands;
-using Backend.DDD.Sample.Contracts.Issues.Queries;
-using Backend.DDD.Sample.Issues;
-using Backend.DDD.Sample.Issues.Handlers;
+﻿using Backend.DDD.Sample.Issues;
 using Backend.DDD.Sample.Issues.Projections;
 using GoldenEye.Backend.Core.DDD.Registration;
 using GoldenEye.Backend.Core.Marten.Events.Storage;
@@ -54,7 +50,6 @@ namespace Backend.DDD.Sample
 
         private void RegisterHandlers(IServiceCollection services)
         {
-            services.AddAllDDDHandlers();
             services.AddMartenDocumentCRUDRepository<Issue>();
             services.AddMartenDocumentReadonlyRepository<IssueContracts.Views.IssueView>();
         }
