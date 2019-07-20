@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using GoldenEye.Backend.Core.DDD.Registration;
 using GoldenEye.Backend.Core.WebApi.Modules;
 using GoldenEye.Backend.Core.WebApi.Registration;
@@ -27,7 +28,7 @@ namespace GoldenEye.WebApi.Template.SimpleDDD
             services.AddMvc();
             services.AddDDD();
 
-            services.AddAutoMapper();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddConfiguration(Configuration);
 
             services.AddModule<BackendModule>();

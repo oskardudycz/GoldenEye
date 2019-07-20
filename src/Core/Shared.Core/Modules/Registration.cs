@@ -1,4 +1,5 @@
 ﻿using System;
+using GoldenEye.Shared.Core.Extensions.Collections;
 using GoldenEye.Shared.Core.Extensions.DependencyInjection;
 using GoldenEye.Shared.Core.Modules.Attributes;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,9 +13,11 @@ namespace GoldenEye.Shared.Core.Modules
             services.Scan(scan => scan
                 .FromApplicationDependencies()
                 .AddClasses(classes => classes.AssignableTo<IModule>().WithoutAttribute<InternalModuleAttribute>())
-                    .AsSelfWithInterfaces()
-                    .WithLifetime(serviceLifetime)
-                 );
+                .AsSelfWithInterfaces()
+                .WithLifetime(serviceLifetime)
+            );
+
+            services.BuildServiceProvider().GetServices<IModule>().ForEach(module => module.Configure(services));
 
             return services;
         }

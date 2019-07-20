@@ -10,8 +10,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="8.0.0" />
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="AutoMapper" Version="8.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.1.1" />
     <PackageReference Include="GoldenEye.Backend.Core" Version="7.0.0" />
     <PackageReference Include="GoldenEye.Backend.Core.DDD" Version="8.0.0" />
     <PackageReference Include="GoldenEye.Backend.Core.Marten" Version="7.0.0" />

@@ -1,4 +1,8 @@
-﻿# v6.0.0 (26.01.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/69)
+﻿# v6.1.0 (19.07.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/69)
+
+## Changes
+
+# v6.0.0 (26.01.2019) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/69)
 
 ## Changes
 

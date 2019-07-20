@@ -1,8 +1,8 @@
-﻿using AutoMapper;
-using GoldenEye.Backend.Core.DDD.Registration;
+﻿using GoldenEye.Backend.Core.DDD.Registration;
 using GoldenEye.Backend.Core.WebApi.Modules;
 using GoldenEye.Backend.Core.WebApi.Registration;
 using GoldenEye.Shared.Core.Configuration;
+using GoldenEye.Shared.Core.Mappings;
 using GoldenEye.Shared.Core.Modules;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -25,11 +25,12 @@ namespace Backend.DDD.WebApi.Sample
         {
             services.AddMvc();
             services.AddDDD();
+            services.AddAllDDDHandlers();
 
-            services.AddAutoMapper(typeof(Backend.DDD.Sample.Module).Assembly);
+            services.AddAutoMapperForAllDependencies();
             services.AddConfiguration(Configuration);
 
-            services.AddModule<DDD.Sample.Module>();
+            services.AddAllModules();
             services.AddModule<AllowAllCorsModule>();
             services.AddModule<SwaggerModule>();
 
