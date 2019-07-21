@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -7,7 +7,7 @@ using GoldenEye.Shared.Core.Objects.General;
 
 namespace GoldenEye.Backend.Core.Repositories
 {
-    public class CRUDRepository<TEntity> : ReadonlyRepository<TEntity>, IRepository<TEntity> where TEntity : class, IHasId
+    public class CRUDRepository<TEntity>: ReadonlyRepository<TEntity>, IRepository<TEntity> where TEntity : class, IHasId
     {
         public CRUDRepository(IDataContext context) : base(context)
         {

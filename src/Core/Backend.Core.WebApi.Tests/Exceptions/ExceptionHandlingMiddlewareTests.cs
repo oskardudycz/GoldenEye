@@ -1,4 +1,4 @@
-﻿using System.Net;
+using System.Net;
 using System.Reflection;
 using System.Threading.Tasks;
 using FluentAssertions;
@@ -28,7 +28,7 @@ namespace Backend.Core.WebApi.Tests.Exceptions
     }
 
     [Route("api/Users")]
-    public class UsersController : Controller
+    public class UsersController: Controller
     {
         [HttpPost]
         public IActionResult Post([FromBody]CreateUser command)

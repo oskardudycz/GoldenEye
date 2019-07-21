@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
@@ -16,7 +16,7 @@ namespace Backend.Core.Dapper.Tests.Mappings
             public string Name { get; set; }
         }
 
-        private class UserDapperMapping : IDapperMapping<User>
+        private class UserDapperMapping: IDapperMapping<User>
         {
             public string Add => "INSERT INTO Users (Id, Name) VALUES ('{0}', '{1}')";
 
@@ -35,7 +35,7 @@ namespace Backend.Core.Dapper.Tests.Mappings
             public string Street { get; set; }
         }
 
-        private class AddressDapperMapping : IDapperMapping<User>
+        private class AddressDapperMapping: IDapperMapping<User>
         {
             public string Add => "INSERT INTO Addresses (Id, Street) VALUES ('{0}', '{1}')";
 

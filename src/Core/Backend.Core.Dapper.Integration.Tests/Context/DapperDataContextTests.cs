@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using Backend.Core.Dapper.Integration.Tests.TestData;
 using FluentAssertions;
 using GoldenEye.Backend.Core.Dapper.Context;
@@ -7,7 +7,7 @@ using Xunit;
 
 namespace Backend.Core.Dapper.Integration.Tests.Context
 {
-    public class DapperDataContextTests : DapperTest
+    public class DapperDataContextTests: DapperTest
     {
         [Fact]
         public void GivenDataContextWithouts_WhenFullCRUDFlowIsRun_ThenSucceed()

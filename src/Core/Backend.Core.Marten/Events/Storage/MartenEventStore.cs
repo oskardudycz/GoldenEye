@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -11,7 +11,7 @@ using MartenEvents = Marten.Events;
 
 namespace GoldenEye.Backend.Core.Marten.Events.Storage
 {
-    public class MartenEventStore : IEventStore
+    public class MartenEventStore: IEventStore
     {
         private readonly IDocumentSession documentSession;
 
@@ -148,7 +148,7 @@ namespace GoldenEye.Backend.Core.Marten.Events.Storage
             return query;
         }
 
-        public class EventProjectionStore : IEventProjectionStore
+        public class EventProjectionStore: IEventProjectionStore
         {
             private readonly IDocumentSession documentSession;
 

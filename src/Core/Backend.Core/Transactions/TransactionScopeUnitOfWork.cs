@@ -1,8 +1,8 @@
-﻿using System.Transactions;
+using System.Transactions;
 
 namespace GoldenEye.Backend.Core.Transactions
 {
-    public class TransactionScopeUnitOfWork : IUnitOfWork
+    public class TransactionScopeUnitOfWork: IUnitOfWork
     {
         private TransactionScope transactionScope;
 

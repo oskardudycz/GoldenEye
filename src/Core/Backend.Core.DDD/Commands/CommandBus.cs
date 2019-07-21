@@ -1,10 +1,10 @@
-﻿using System.Threading;
+using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 
 namespace GoldenEye.Backend.Core.DDD.Commands
 {
-    public class CommandBus : ICommandBus
+    public class CommandBus: ICommandBus
     {
         private readonly IMediator _mediator;
 

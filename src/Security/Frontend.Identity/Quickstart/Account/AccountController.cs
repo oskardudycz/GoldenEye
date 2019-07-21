@@ -1,23 +1,22 @@
-﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
+// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
-
-using IdentityModel;
-using IdentityServer4.Services;
-using IdentityServer4.Stores;
-using IdentityServer4.Test;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Security.Principal;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication;
+using IdentityModel;
 using IdentityServer4.Events;
 using IdentityServer4.Extensions;
 using IdentityServer4.Models;
+using IdentityServer4.Services;
+using IdentityServer4.Stores;
+using IdentityServer4.Test;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace IdentityServer4.Quickstart.UI
 {
@@ -27,7 +26,7 @@ namespace IdentityServer4.Quickstart.UI
     /// The interaction service provides a way for the UI to communicate with identityserver for validation and context retrieval
     /// </summary>
     [SecurityHeaders]
-    public class AccountController : Controller
+    public class AccountController: Controller
     {
         private readonly TestUserStore _users;
         private readonly IIdentityServerInteractionService _interaction;
@@ -80,11 +79,11 @@ namespace IdentityServer4.Quickstart.UI
                 var context = await _interaction.GetAuthorizationContextAsync(model.ReturnUrl);
                 if (context != null)
                 {
-                    // if the user cancels, send a result back into IdentityServer as if they 
+                    // if the user cancels, send a result back into IdentityServer as if they
                     // denied the consent (even if this client does not require consent).
                     // this will send back an access denied OIDC error response to the client.
                     await _interaction.GrantConsentAsync(context, ConsentResponse.Denied);
-                    
+
                     // we can trust model.ReturnUrl since GetAuthorizationContextAsync returned non-null
                     return Redirect(model.ReturnUrl);
                 }
@@ -103,7 +102,7 @@ namespace IdentityServer4.Quickstart.UI
                     var user = _users.FindByUsername(model.Username);
                     await _events.RaiseAsync(new UserLoginSuccessEvent(user.Username, user.SubjectId, user.Username));
 
-                    // only set explicit expiration here if user chooses "remember me". 
+                    // only set explicit expiration here if user chooses "remember me".
                     // otherwise we rely upon expiration configured in cookie middleware.
                     AuthenticationProperties props = null;
                     if (AccountOptions.AllowRememberLogin && model.RememberLogin)
@@ -153,7 +152,7 @@ namespace IdentityServer4.Quickstart.UI
             };
 
             // windows authentication needs special handling
-            // since they don't support the redirect uri, 
+            // since they don't support the redirect uri,
             // so this URL is re-triggered when we call challenge
             if (AccountOptions.WindowsAuthenticationSchemeName == provider)
             {
@@ -234,7 +233,7 @@ namespace IdentityServer4.Quickstart.UI
 
             // this is where custom logic would most likely be needed to match your users from the
             // external provider's authentication result, and provision the user as you see fit.
-            // 
+            //
             // check if the external user is already provisioned
             var user = _users.FindByExternalProvider(provider, userId);
             if (user == null)

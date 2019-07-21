@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace GoldenEye.Shared.Core.Objects.Responses
@@ -7,7 +7,7 @@ namespace GoldenEye.Shared.Core.Objects.Responses
     /// Class to send list of records from service
     /// </summary>
     [DataContract]
-    public class ListResponse<T> : ResponseBase, IListResponse<T>
+    public class ListResponse<T>: ResponseBase, IListResponse<T>
     {
         /// <summary>
         /// List of records

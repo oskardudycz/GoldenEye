@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -6,7 +6,7 @@ using GoldenEye.Backend.Core.Context.SaveChangesHandlers;
 
 namespace GoldenEye.Backend.Core.Context
 {
-    public abstract class DataContext : IDataContext
+    public abstract class DataContext: IDataContext
     {
         protected DataContext()
         {

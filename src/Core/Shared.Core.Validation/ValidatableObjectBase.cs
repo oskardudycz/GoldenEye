@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -9,7 +9,7 @@ namespace GoldenEye.Shared.Core.Validation
 {
     [Serializable]
     [Obsolete]
-    public class ValidatableObjectBase : IValidatable
+    public class ValidatableObjectBase: IValidatable
     {
         public FluentValidation.Results.ValidationResult Validate()
         {

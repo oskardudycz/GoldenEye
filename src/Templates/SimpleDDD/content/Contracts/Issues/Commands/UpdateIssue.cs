@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using FluentValidation;
 using GoldenEye.Backend.Core.DDD.Commands;
 
 namespace GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Commands
 {
-    public class UpdateIssue : ICommand
+    public class UpdateIssue: ICommand
     {
         public Guid Id { get; }
 
@@ -23,7 +23,7 @@ namespace GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Commands
         }
     }
 
-    public class UpdateIssueValidator : AbstractValidator<UpdateIssue>
+    public class UpdateIssueValidator: AbstractValidator<UpdateIssue>
     {
         public UpdateIssueValidator()
         {

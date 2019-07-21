@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Backend.DDD.Sample.Contracts.Issues.Commands;
@@ -12,7 +12,7 @@ namespace Backend.DDD.WebApi.Sample.Controllers
 {
     [Route("api/[controller]")]
     [Microsoft.AspNetCore.Cors.EnableCors("CorsPolicy")]
-    public class IssuesController : Controller
+    public class IssuesController: Controller
     {
         private readonly IQueryBus queryBus;
         private readonly ICommandBus commandBus;

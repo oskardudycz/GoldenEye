@@ -1,11 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using GoldenEye.Shared.Core.Extensions.Basic;
 using GoldenEye.Shared.Core.Modules.Attributes;
 using GoldenEye.Shared.Core.Utils.Assemblies;
-using ReflectionBridge.Extensions;
 
 namespace GoldenEye.Shared.Core.Extensions.Reflection
 {

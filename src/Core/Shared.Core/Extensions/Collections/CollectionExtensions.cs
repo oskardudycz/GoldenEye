@@ -1,4 +1,3 @@
-﻿using System.Collections;
 using System.Collections.Generic;
 using GoldenEye.Shared.Core.Objects.General;
 

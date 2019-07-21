@@ -1,10 +1,10 @@
-﻿using System.Runtime.Serialization;
+using System.Runtime.Serialization;
 using GoldenEye.Shared.Core.Context;
 
 namespace GoldenEye.Shared.Core.Objects.Requests
 {
     [DataContract]
-    public abstract class RequestBase : IRequest
+    public abstract class RequestBase: IRequest
     {
         protected RequestBase()
         {

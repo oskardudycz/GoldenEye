@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using Backend.DDD.Sample.Contracts.Issues.Events;
 using GoldenEye.Backend.Core.DDD.Queries;
 using GoldenEye.Shared.Core.Objects.General;
 
 namespace Backend.DDD.Sample.Contracts.Issues.Views
 {
-    public class IssueView : IView<Guid>
+    public class IssueView: IView<Guid>
     {
         public Guid Id { get; set; }
 

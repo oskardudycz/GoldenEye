@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using FluentAssertions;
 using FluentValidation;
 using GoldenEye.Backend.Core.Registration;
@@ -24,7 +24,7 @@ namespace Backend.Core.Tests.Registration
             }
         }
 
-        private class CreateUserValidator : AbstractValidator<CreateUser>
+        private class CreateUserValidator: AbstractValidator<CreateUser>
         {
             public CreateUserValidator()
             {
@@ -32,7 +32,7 @@ namespace Backend.Core.Tests.Registration
             }
         }
 
-        private class CreateUserUniqueUsernameDomainValidator : AbstractValidator<CreateUser>
+        private class CreateUserUniqueUsernameDomainValidator: AbstractValidator<CreateUser>
         {
             public CreateUserUniqueUsernameDomainValidator(DataContext dataContext)
             {

@@ -1,4 +1,4 @@
-﻿using System.Threading;
+using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using FluentValidation;
@@ -9,7 +9,7 @@ using GoldenEye.Shared.Core.Objects.DTO;
 
 namespace GoldenEye.Backend.Core.Services
 {
-    public class RestService<TDTO, TEntity, TRepository> : RestService<TDTO, TEntity>
+    public class RestService<TDTO, TEntity, TRepository>: RestService<TDTO, TEntity>
         where TDTO : class, IDTO
         where TEntity : class, IEntity
         where TRepository : IRepository<TEntity>
@@ -26,7 +26,7 @@ namespace GoldenEye.Backend.Core.Services
         }
     }
 
-    public class RestService<TDTO, TEntity> : ReadonlyRestService<TDTO, TEntity>
+    public class RestService<TDTO, TEntity>: ReadonlyRestService<TDTO, TEntity>
         where TDTO : class, IDTO
         where TEntity : class, IEntity
     {

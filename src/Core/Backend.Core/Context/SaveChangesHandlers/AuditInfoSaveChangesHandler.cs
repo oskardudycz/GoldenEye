@@ -1,12 +1,12 @@
-﻿using GoldenEye.Backend.Core.Entity;
-using GoldenEye.Shared.Core.Security;
 using System;
 using System.Linq;
 using GoldenEye.Backend.Core.Context.SaveChangesHandlers.Base;
+using GoldenEye.Backend.Core.Entity;
+using GoldenEye.Shared.Core.Security;
 
 namespace GoldenEye.Backend.Core.Context.SaveChangesHandlers
 {
-    public class AuditInfoSaveChangesHandler : ISaveChangesHandler
+    public class AuditInfoSaveChangesHandler: ISaveChangesHandler
     {
         public void Handle(IDataContext dataContext)
         {

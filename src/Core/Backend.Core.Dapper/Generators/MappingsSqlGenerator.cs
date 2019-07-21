@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using GoldenEye.Backend.Core.Dapper.Mappings;
 
@@ -7,7 +7,7 @@ namespace GoldenEye.Backend.Core.Dapper.Generators
     /// <summary>
     /// Generates Dapper sql from mappings
     /// </summary>
-    public class MappingsSqlGenerator : IDapperSqlGenerator
+    public class MappingsSqlGenerator: IDapperSqlGenerator
     {
         private readonly IReadOnlyCollection<IDapperMapping> mappings;
 

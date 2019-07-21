@@ -1,4 +1,4 @@
-﻿using Backend.DDD.Sample.Issues;
+using Backend.DDD.Sample.Issues;
 using Backend.DDD.Sample.Issues.Projections;
 using GoldenEye.Backend.Core.DDD.Registration;
 using GoldenEye.Backend.Core.Marten.Events.Storage;
@@ -10,7 +10,7 @@ using IssueContracts = Backend.DDD.Sample.Contracts.Issues;
 
 namespace Backend.DDD.Sample
 {
-    public class Module : GoldenEye.Shared.Core.Modules.Module
+    public class Module: GoldenEye.Shared.Core.Modules.Module
     {
         private IConfiguration configuration;
 

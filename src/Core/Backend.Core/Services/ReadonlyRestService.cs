@@ -11,7 +11,7 @@ using GoldenEye.Shared.Core.Objects.DTO;
 
 namespace GoldenEye.Backend.Core.Services
 {
-    public class ReadonlyRestService<TDTO, TEntity, TRepository> : ReadonlyRestService<TDTO, TEntity>
+    public class ReadonlyRestService<TDTO, TEntity, TRepository>: ReadonlyRestService<TDTO, TEntity>
         where TDTO : class, IDTO
         where TEntity : class, IEntity
         where TRepository : IReadonlyRepository<TEntity>
@@ -23,7 +23,7 @@ namespace GoldenEye.Backend.Core.Services
         }
     }
 
-    public class ReadonlyRestService<TDTO, TEntity> : IReadonlyService<TDTO> where TDTO : class, IDTO where TEntity : class, IEntity
+    public class ReadonlyRestService<TDTO, TEntity>: IReadonlyService<TDTO> where TDTO : class, IDTO where TEntity : class, IEntity
     {
         private bool _disposed;
         protected IReadonlyRepository<TEntity> Repository;
@@ -55,7 +55,8 @@ namespace GoldenEye.Backend.Core.Services
 
         private void Dispose(bool disposing)
         {
-            if (_disposed) return;
+            if (_disposed)
+                return;
 
             if (disposing)
             {

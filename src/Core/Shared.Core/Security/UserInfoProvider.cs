@@ -1,6 +1,6 @@
-﻿namespace GoldenEye.Shared.Core.Security
+namespace GoldenEye.Shared.Core.Security
 {
-    public class UserInfoProvider : IUserInfoProvider
+    public class UserInfoProvider: IUserInfoProvider
     {
         public static IUserInfoProvider Instance = new UserInfoProvider();
 
@@ -15,7 +15,7 @@
         {
             var userInfo = _userInfo;
 
-            return userInfo != null ? userInfo.GetCurrentUserId<int>() : (int?) null;
+            return userInfo != null ? userInfo.GetCurrentUserId<int>() : (int?)null;
         }
     }
 }

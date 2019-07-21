@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -10,7 +10,7 @@ using Marten;
 
 namespace GoldenEye.WebApi.Template.SimpleDDD.Backend.Issues.Handlers
 {
-    internal class IssueQueryHandler :
+    internal class IssueQueryHandler:
         IQueryHandler<GetIssues, IReadOnlyList<IssueView>>,
         IQueryHandler<GetIssue, IssueView>
     {

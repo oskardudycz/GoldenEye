@@ -1,6 +1,6 @@
-﻿namespace GoldenEye.Shared.Core.Objects.Responses
+namespace GoldenEye.Shared.Core.Objects.Responses
 {
-    public class EmptyResponse : ResponseBase, IEmptyResponse
+    public class EmptyResponse: ResponseBase, IEmptyResponse
     {
         public static EmptyResponse Create()
         {

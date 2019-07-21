@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using FluentValidation;
 using GoldenEye.Backend.Core.DDD.Queries;
 
 namespace GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Queries
 {
-    public class GetIssue : IQuery<Views.IssueView>
+    public class GetIssue: IQuery<Views.IssueView>
     {
         public Guid Id { get; }
 
@@ -14,7 +14,7 @@ namespace GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Queries
         }
     }
 
-    public class GetIssueValidator : AbstractValidator<GetIssue>
+    public class GetIssueValidator: AbstractValidator<GetIssue>
     {
         public GetIssueValidator()
         {

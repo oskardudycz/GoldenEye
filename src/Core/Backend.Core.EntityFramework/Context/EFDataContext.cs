@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage;
 
 namespace GoldenEye.Backend.Core.Context
 {
-    public class EFDataContext<T> : IDataContext, IProvidesAuditInfo where T : DbContext
+    public class EFDataContext<T>: IDataContext, IProvidesAuditInfo where T : DbContext
     {
         private readonly DbContext dbContext;
         private bool wasDisposed;

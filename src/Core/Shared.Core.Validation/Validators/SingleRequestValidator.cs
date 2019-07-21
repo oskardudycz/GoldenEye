@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
 using FluentValidation;
-using FluentValidation.Results;
 using GoldenEye.Shared.Core.Objects.Requests;
 
 namespace GoldenEye.Shared.Core.Validation.Validators
@@ -10,7 +7,7 @@ namespace GoldenEye.Shared.Core.Validation.Validators
     /// Single request validator
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class SingleRequestValidator<T> : AbstractValidator<T> where T : ISingleRequest
+    public class SingleRequestValidator<T>: AbstractValidator<T> where T : ISingleRequest
     {
         public SingleRequestValidator()
         {

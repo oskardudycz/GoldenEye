@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
@@ -8,7 +8,8 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
     {
         public static bool PublicInstancePropertiesEqual<T>(this T self, T to, params string[] ignore) where T : class
         {
-            if (self == null || to == null) return self == to;
+            if (self == null || to == null)
+                return self == to;
 
             var type = typeof(T);
             var ignoreList = new List<string>(ignore);

@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 
 namespace GoldenEye.Backend.Core.Transactions
 {
-    public interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork: IDisposable
     {
         void Begin();
 

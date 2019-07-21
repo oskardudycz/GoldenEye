@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using GoldenEye.Backend.Core.Marten.Registration;
 using Marten.Events;
@@ -6,7 +6,7 @@ using Npgsql;
 
 namespace Marten.Integration.Tests.TestsInfrasructure
 {
-    public abstract class MartenTest : IDisposable
+    public abstract class MartenTest: IDisposable
     {
         protected readonly IDocumentSession Session;
 

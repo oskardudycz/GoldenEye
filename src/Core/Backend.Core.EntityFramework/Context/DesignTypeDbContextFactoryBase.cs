@@ -1,11 +1,11 @@
-﻿using System.IO;
+using System.IO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 
 namespace GoldenEye.Backend.Core.EntityFramework.Context
 {
-    public abstract class DesignTypeDbContextFactoryBase<TDBContext> : IDesignTimeDbContextFactory<TDBContext>
+    public abstract class DesignTypeDbContextFactoryBase<TDBContext>: IDesignTimeDbContextFactory<TDBContext>
         where TDBContext : DbContext
     {
         public virtual TDBContext CreateDbContext(string[] args)

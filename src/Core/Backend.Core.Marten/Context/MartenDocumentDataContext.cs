@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -7,7 +7,7 @@ using Marten;
 
 namespace GoldenEye.Backend.Core.Marten.Context
 {
-    public class MartenDocumentDataContext : IDataContext
+    public class MartenDocumentDataContext: IDataContext
     {
         private readonly IDocumentSession _documentSession;
 

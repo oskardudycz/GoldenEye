@@ -1,9 +1,9 @@
-﻿using System.Runtime.Serialization;
+using System.Runtime.Serialization;
 
 namespace GoldenEye.Shared.Core.Objects.Responses
 {
     [DataContract]
-    public abstract class ResponseBase : IResponse
+    public abstract class ResponseBase: IResponse
     {
     }
 }

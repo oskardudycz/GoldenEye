@@ -1,6 +1,6 @@
-﻿namespace GoldenEye.Shared.Core.Objects.Responses
+namespace GoldenEye.Shared.Core.Objects.Responses
 {
-    public interface IEmptyResponse : IResponse
+    public interface IEmptyResponse: IResponse
     {
     }
 }

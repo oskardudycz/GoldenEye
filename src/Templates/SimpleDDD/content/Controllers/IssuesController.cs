@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using GoldenEye.Backend.Core.DDD.Commands;
@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace GoldenEye.WebApi.Template.SimpleDDD.Controllers
 {
     [Route("api/[controller]")]
-    public class IssuesController : Controller
+    public class IssuesController: Controller
     {
         private readonly IQueryBus queryBus;
         private readonly ICommandBus commandBus;

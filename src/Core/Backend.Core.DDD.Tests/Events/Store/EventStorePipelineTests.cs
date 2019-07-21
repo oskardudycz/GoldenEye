@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using FluentAssertions;
 using GoldenEye.Backend.Core.DDD.Events;
@@ -11,7 +11,7 @@ namespace Backend.Core.DDD.Tests.Events.Store
 {
     public partial class EventStorePipelineTests
     {
-        public class UserCreated : IEvent
+        public class UserCreated: IEvent
         {
             public Guid StreamId => Guid.NewGuid();
         }

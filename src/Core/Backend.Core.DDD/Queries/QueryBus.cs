@@ -1,10 +1,10 @@
-﻿using System.Threading;
+using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 
 namespace GoldenEye.Backend.Core.DDD.Queries
 {
-    public class QueryBus : IQueryBus
+    public class QueryBus: IQueryBus
     {
         private readonly IMediator _mediator;
 

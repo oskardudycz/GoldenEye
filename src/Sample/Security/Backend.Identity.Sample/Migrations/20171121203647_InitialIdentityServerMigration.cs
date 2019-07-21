@@ -1,10 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
 using System;
-using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Backend.Identity.Sample.Migrations
 {
-    public partial class InitialIdentityServerMigration : Migration
+    public partial class InitialIdentityServerMigration: Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

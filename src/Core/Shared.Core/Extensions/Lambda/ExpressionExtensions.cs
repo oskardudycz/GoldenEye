@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using GoldenEye.Shared.Core.Extensions.Collections;
 using GoldenEye.Shared.Core.Extensions.Reflection;
-using System.Reflection;
 
 namespace GoldenEye.Shared.Core.Extensions.Lambda
 {
@@ -23,6 +23,7 @@ namespace GoldenEye.Shared.Core.Extensions.Lambda
                     var ue = expr.Body as UnaryExpression;
                     me = ((ue != null) ? ue.Operand : null) as MemberExpression;
                     break;
+
                 default:
                     me = expr.Body as MemberExpression;
                     break;
@@ -49,6 +50,7 @@ namespace GoldenEye.Shared.Core.Extensions.Lambda
                     var ue = expr.Body as UnaryExpression;
                     me = ((ue != null) ? ue.Operand : null) as MemberExpression;
                     break;
+
                 default:
                     me = expr.Body as MemberExpression;
                     break;
@@ -71,7 +73,7 @@ namespace GoldenEye.Shared.Core.Extensions.Lambda
             // replace parameters in the second lambda expression with parameters from the first
             var secondBody = ParameterRebinder.ReplaceParameters(map, second.Body);
 
-            // apply composition of lambda expression bodies to parameters from the first 
+            // apply composition of lambda expression bodies to parameters from the first
             return Expression.Lambda<T>(merge(first.Body, secondBody), first.Parameters);
         }
 
@@ -129,6 +131,7 @@ namespace GoldenEye.Shared.Core.Extensions.Lambda
 
             return expression.Body.Type;
         }
+
         /// <summary>
         /// Checks, whther selector returns instance of a class.
         /// String is not a class in this method.

@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
 namespace GoldenEye.Shared.Core.IOC.Attributes
 {
     [AttributeUsage(AttributeTargets.Class)]
-    public class InjectInSingletonScopeAttribute : Attribute
+    public class InjectInSingletonScopeAttribute: Attribute
     {
     }
 }

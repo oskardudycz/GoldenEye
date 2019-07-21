@@ -1,4 +1,4 @@
-﻿namespace GoldenEye.Shared.Core.Objects.DTO
+namespace GoldenEye.Shared.Core.Objects.DTO
 {
     public interface IDTO
     {

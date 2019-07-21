@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using GoldenEye.Shared.Core.IOC;
 
 namespace GoldenEye.Shared.Core.Utils.Exceptions
 {
-    public class ExceptionProvider : IExceptionProvider
+    public class ExceptionProvider: IExceptionProvider
     {
         private const int MaxRecursionLevel = 10;
 

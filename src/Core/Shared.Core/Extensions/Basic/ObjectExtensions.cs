@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -10,8 +10,8 @@ using GoldenEye.Shared.Core.Extensions.Reflection;
 namespace GoldenEye.Shared.Core.Extensions.Basic
 {
     public static class ObjectExtensions
-    {        
-        static readonly Type[] EmptyTypes = {};
+    {
+        private static readonly Type[] EmptyTypes = { };
 
         public static TReturn SafeGet<TObject, TReturn>(this TObject obj, Func<TObject, TReturn> getOperation)
                  where TObject : class
@@ -113,7 +113,7 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
         {
             return (type.GetConstructor(EmptyTypes) != null) ? Activator.CreateInstance(type) : GetDefault(type);
         }
-              
+
         public static object GetValue(this object obj, string propertyName, object defaultValue = null)
         {
             var type = obj.GetType();
@@ -246,12 +246,13 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
                     || value is double
                     || value is decimal;
         }
-        
+
         public static object Invoke<T>(this Type type, T obj, string methodName, params object[] parameters)
         {
             MethodInfo method = type.GetMethod(methodName);
             return method.Invoke(obj, parameters);
         }
+
         public static object InvokeGeneric<T>(this Type type, T obj, string methodName, Type[] types, params object[] parameters)
         {
             MethodInfo method = type.GetMethod(methodName);

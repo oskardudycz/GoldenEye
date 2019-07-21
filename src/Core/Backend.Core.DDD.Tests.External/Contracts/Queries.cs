@@ -1,4 +1,4 @@
-﻿using GoldenEye.Backend.Core.DDD.Queries;
+using GoldenEye.Backend.Core.DDD.Queries;
 
 namespace Backend.Core.DDD.Tests.External.Contracts
 {
@@ -6,7 +6,7 @@ namespace Backend.Core.DDD.Tests.External.Contracts
     {
     }
 
-    public class GetBankAccountDetails : IQuery<BankAccountDetails>
+    public class GetBankAccountDetails: IQuery<BankAccountDetails>
     {
     }
 
@@ -14,7 +14,7 @@ namespace Backend.Core.DDD.Tests.External.Contracts
     {
     }
 
-    public class GetBankAccountHistory : IListQuery<MoneyTransaction>
+    public class GetBankAccountHistory: IListQuery<MoneyTransaction>
     {
     }
 }

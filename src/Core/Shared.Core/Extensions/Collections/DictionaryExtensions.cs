@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
@@ -55,7 +55,7 @@ namespace GoldenEye.Shared.Core.Extensions.Collections
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <typeparam name="T1"></typeparam>
         /// <typeparam name="T2"></typeparam>
@@ -66,7 +66,6 @@ namespace GoldenEye.Shared.Core.Extensions.Collections
         {
             return null == part2 ? part1 : part1.Union(part2).ToDictionary(x => x.Key, y => y.Value);
         }
-
 
         public static IDictionary<T1, T2> With<T1, T2>(this IDictionary<T1, T2> dictionary, T1 key, T2 value)
         {

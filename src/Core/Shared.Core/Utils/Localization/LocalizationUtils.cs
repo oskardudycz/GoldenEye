@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Reflection;
 using System.Resources;
 
 namespace GoldenEye.Shared.Core.Utils.Localization
 {
-    public class LocalizationUtils : ILocalizationUtils
+    public class LocalizationUtils: ILocalizationUtils
     {
         public static readonly LocalizationUtils Instance = new LocalizationUtils();
 

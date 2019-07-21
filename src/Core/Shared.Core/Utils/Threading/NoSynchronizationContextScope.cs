@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System;
 using System.Threading;
 
 namespace GoldenEye.Shared.Core.Utils.Threading
@@ -14,7 +12,7 @@ namespace GoldenEye.Shared.Core.Utils.Threading
             return new Disposable(context);
         }
 
-        public struct Disposable : IDisposable
+        public struct Disposable: IDisposable
         {
             private readonly SynchronizationContext _synchronizationContext;
 

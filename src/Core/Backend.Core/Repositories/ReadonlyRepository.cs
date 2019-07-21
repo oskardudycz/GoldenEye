@@ -7,7 +7,7 @@ using GoldenEye.Shared.Core.Objects.General;
 
 namespace GoldenEye.Backend.Core.Repositories
 {
-    public class ReadonlyRepository<TEntity> : IReadonlyRepository<TEntity> where TEntity : class, IHasId
+    public class ReadonlyRepository<TEntity>: IReadonlyRepository<TEntity> where TEntity : class, IHasId
     {
         protected readonly IDataContext Context;
 

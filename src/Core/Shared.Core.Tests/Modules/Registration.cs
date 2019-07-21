@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using FluentAssertions;
 using GoldenEye.Shared.Core.Modules;
 using Microsoft.Extensions.DependencyInjection;
@@ -8,7 +8,7 @@ namespace Shared.Core.Tests.Modules
 {
     public class Registration
     {
-        public class CustomModuleImplementingIModule : IModule
+        public class CustomModuleImplementingIModule: IModule
         {
             public void Configure(IServiceCollection services)
             {
@@ -19,11 +19,11 @@ namespace Shared.Core.Tests.Modules
             }
         }
 
-        public class CustomModuleDerivedFromModule : Module
+        public class CustomModuleDerivedFromModule: Module
         {
         }
 
-        public class CustomModuleDerivingFromOtherCustomModule : CustomModuleDerivedFromModule
+        public class CustomModuleDerivingFromOtherCustomModule: CustomModuleDerivedFromModule
         {
         }
 

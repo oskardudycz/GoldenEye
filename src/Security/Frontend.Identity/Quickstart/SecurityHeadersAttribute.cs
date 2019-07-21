@@ -1,13 +1,12 @@
-﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
+// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
-
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace IdentityServer4.Quickstart.UI
 {
-    public class SecurityHeadersAttribute : ActionFilterAttribute
+    public class SecurityHeadersAttribute: ActionFilterAttribute
     {
         public override void OnResultExecuting(ResultExecutingContext context)
         {
@@ -26,7 +25,7 @@ namespace IdentityServer4.Quickstart.UI
                 var csp = "default-src 'self';";
                 // an example if you need client images to be displayed from twitter
                 //var csp = "default-src 'self'; img-src 'self' https://pbs.twimg.com";
-                
+
                 // once for standards compliant browsers
                 if (!context.HttpContext.Response.Headers.ContainsKey("Content-Security-Policy"))
                 {

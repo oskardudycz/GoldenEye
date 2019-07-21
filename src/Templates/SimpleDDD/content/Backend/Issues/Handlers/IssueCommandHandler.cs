@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using GoldenEye.Backend.Core.DDD.Commands;
@@ -10,7 +10,7 @@ using MediatR;
 
 namespace GoldenEye.WebApi.Template.SimpleDDD.Backend.Issues.Handlers
 {
-    internal class IssueCommandHandler :
+    internal class IssueCommandHandler:
         ICommandHandler<CreateIssue>,
         ICommandHandler<UpdateIssue>,
         ICommandHandler<DeleteIssue>

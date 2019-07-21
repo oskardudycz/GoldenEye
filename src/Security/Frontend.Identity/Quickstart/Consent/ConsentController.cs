@@ -1,12 +1,11 @@
-﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
+// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
-
+using System.Threading.Tasks;
 using IdentityServer4.Services;
 using IdentityServer4.Stores;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System.Threading.Tasks;
 
 namespace IdentityServer4.Quickstart.UI
 {
@@ -14,7 +13,7 @@ namespace IdentityServer4.Quickstart.UI
     /// This controller processes the consent UI
     /// </summary>
     [SecurityHeaders]
-    public class ConsentController : Controller
+    public class ConsentController: Controller
     {
         private readonly ConsentService _consent;
 

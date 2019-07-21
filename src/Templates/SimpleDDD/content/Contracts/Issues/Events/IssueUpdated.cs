@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using GoldenEye.Backend.Core.DDD.Events;
 
 namespace GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Events
 {
-    public class IssueUpdated : IEvent
+    public class IssueUpdated: IEvent
     {
         public Guid IssueId { get; }
 

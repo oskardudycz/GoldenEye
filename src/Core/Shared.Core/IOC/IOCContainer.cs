@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace GoldenEye.Shared.Core.IOC
 {
-    public abstract class IOCContainer : IIOCContainer
+    public abstract class IOCContainer: IIOCContainer
     {
         public static IIOCContainer Instance { get; private set; }
 

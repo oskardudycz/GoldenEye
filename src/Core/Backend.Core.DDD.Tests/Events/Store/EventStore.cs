@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -11,7 +11,7 @@ namespace Backend.Core.DDD.Tests.Events.Store
 {
     public partial class EventStorePipelineTests
     {
-        public class EventStore : IEventStore
+        public class EventStore: IEventStore
         {
             private IList<IEvent> events = new List<IEvent>();
 

@@ -1,4 +1,4 @@
-﻿using System.Runtime.Serialization;
+using System.Runtime.Serialization;
 
 namespace GoldenEye.Shared.Core.Objects.Responses
 {
@@ -7,7 +7,7 @@ namespace GoldenEye.Shared.Core.Objects.Responses
     /// Allows checkings of not null Item and inner data contract validation
     /// </summary>
     [DataContract]
-    public class SingleResponse<T> : ResponseBase, ISingleResponse<T>
+    public class SingleResponse<T>: ResponseBase, ISingleResponse<T>
     {
         /// <summary>
         /// Record

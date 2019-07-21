@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using Newtonsoft.Json;
 
 namespace GoldenEye.Shared.Core.Utils.Serialization
 {
-    public class DateTimeJsonConverter : JsonConverter
+    public class DateTimeJsonConverter: JsonConverter
     {
         public static DateTimeJsonConverter Get()
         {

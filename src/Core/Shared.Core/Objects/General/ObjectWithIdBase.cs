@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 
 namespace GoldenEye.Shared.Core.Objects.General
 {
-    public abstract class ObjectWithIdBase : IHasId
+    public abstract class ObjectWithIdBase: IHasId
     {
         object IHasId.Id { get; }
     }
 
-    public abstract class ObjectWithIdBase<T> : IHasId<T>
+    public abstract class ObjectWithIdBase<T>: IHasId<T>
     {
         public T Id { get; set; }
 
@@ -17,11 +17,11 @@ namespace GoldenEye.Shared.Core.Objects.General
         }
     }
 
-    public abstract class ObjectWithGuidIdBase : ObjectWithIdBase<Guid>, IHasGuidId
+    public abstract class ObjectWithGuidIdBase: ObjectWithIdBase<Guid>, IHasGuidId
     {
     }
 
-    public abstract class ObjectWithIntIdBase : ObjectWithIdBase<int>, IHasId
+    public abstract class ObjectWithIntIdBase: ObjectWithIdBase<int>, IHasId
     {
     }
 }

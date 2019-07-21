@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Linq;
 using System.Threading;
@@ -12,7 +12,7 @@ using GoldenEye.Shared.Core.Extensions.Basic;
 
 namespace GoldenEye.Backend.Core.Dapper.Context
 {
-    public class DapperDataContext : IDataContext
+    public class DapperDataContext: IDataContext
     {
         private readonly IDbConnection dbConnection;
         private readonly IDapperSqlGenerator dapperSqlGenerator;

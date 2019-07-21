@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Microsoft.Extensions.DependencyModel;
@@ -14,7 +14,8 @@ namespace GoldenEye.Shared.Core.Utils.Assemblies
             var list = new List<Assembly>();
             foreach (var library in dependencies)
             {
-                if (IsCandidateLibrary(library, assemblyPrefix)) list.Add(Assembly.Load(new AssemblyName(library.Name)));
+                if (IsCandidateLibrary(library, assemblyPrefix))
+                    list.Add(Assembly.Load(new AssemblyName(library.Name)));
             }
             return list;
         }

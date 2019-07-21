@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -17,7 +17,7 @@ namespace Backend.Core.Tests.Validation
     {
         public class CommandTests
         {
-            private class CreateUser : ICommand
+            private class CreateUser: ICommand
             {
                 public string UserName { get; }
 
@@ -27,7 +27,7 @@ namespace Backend.Core.Tests.Validation
                 }
             }
 
-            private class CreateUserValidator : AbstractValidator<CreateUser>
+            private class CreateUserValidator: AbstractValidator<CreateUser>
             {
                 public CreateUserValidator()
                 {
@@ -35,7 +35,7 @@ namespace Backend.Core.Tests.Validation
                 }
             }
 
-            private class RemoveAllUsers : ICommand
+            private class RemoveAllUsers: ICommand
             {
             }
 
@@ -44,7 +44,7 @@ namespace Backend.Core.Tests.Validation
                 public List<string> Users = new List<string>();
             }
 
-            private class UserCommandHandler : ICommandHandler<CreateUser>,
+            private class UserCommandHandler: ICommandHandler<CreateUser>,
                 ICommandHandler<RemoveAllUsers>
             {
                 private readonly DataContext context;
@@ -150,7 +150,7 @@ namespace Backend.Core.Tests.Validation
 
         public class QueriesTests
         {
-            private class GetUser : IQuery<string>
+            private class GetUser: IQuery<string>
             {
                 public int Id { get; }
 
@@ -160,7 +160,7 @@ namespace Backend.Core.Tests.Validation
                 }
             }
 
-            private class GetUserValidator : AbstractValidator<GetUser>
+            private class GetUserValidator: AbstractValidator<GetUser>
             {
                 public GetUserValidator()
                 {
@@ -169,7 +169,7 @@ namespace Backend.Core.Tests.Validation
                 }
             }
 
-            private class GetAllUsers : IListQuery<string>
+            private class GetAllUsers: IListQuery<string>
             {
             }
 
@@ -178,7 +178,7 @@ namespace Backend.Core.Tests.Validation
                 public List<string> Users = new List<string>();
             }
 
-            private class UserQueryHandler : IQueryHandler<GetUser, string>,
+            private class UserQueryHandler: IQueryHandler<GetUser, string>,
                 IQueryHandler<GetAllUsers, IReadOnlyList<string>>
             {
                 private readonly DataContext context;

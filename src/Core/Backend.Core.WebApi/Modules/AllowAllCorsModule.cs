@@ -1,4 +1,4 @@
-﻿using GoldenEye.Shared.Core.Modules.Attributes;
+using GoldenEye.Shared.Core.Modules.Attributes;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace GoldenEye.Backend.Core.WebApi.Modules
 {
     [InternalModule]
-    public class AllowAllCorsModule : WebApiModule
+    public class AllowAllCorsModule: WebApiModule
     {
         public override void Configure(IServiceCollection services)
         {

@@ -1,11 +1,11 @@
-﻿using System.Threading;
+using System.Threading;
 using System.Threading.Tasks;
 using Backend.Core.DDD.Tests.External.Contracts;
 using GoldenEye.Backend.Core.DDD.Events;
 
 namespace Backend.Core.DDD.Tests.External.Handlers
 {
-    public class FirstEventHandler : IEventHandler<BankAccountCreated>, IEventHandler<MoneyWasWithdrawn>
+    public class FirstEventHandler: IEventHandler<BankAccountCreated>, IEventHandler<MoneyWasWithdrawn>
     {
         public Task Handle(BankAccountCreated notification, CancellationToken cancellationToken)
         {
@@ -18,7 +18,7 @@ namespace Backend.Core.DDD.Tests.External.Handlers
         }
     }
 
-    public class SecondEventHandler : IEventHandler<BankAccountCreated>
+    public class SecondEventHandler: IEventHandler<BankAccountCreated>
     {
         public Task Handle(BankAccountCreated notification, CancellationToken cancellationToken)
         {

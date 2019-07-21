@@ -1,4 +1,4 @@
-﻿namespace GoldenEye.Shared.Core.Objects.General
+namespace GoldenEye.Shared.Core.Objects.General
 {
     public interface IHasParent
     {

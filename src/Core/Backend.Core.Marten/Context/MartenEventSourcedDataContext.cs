@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9,7 +9,7 @@ using Marten;
 
 namespace GoldenEye.Backend.Core.Marten.Context
 {
-    public class MartenEventSourcedDataContext : IDataContext
+    public class MartenEventSourcedDataContext: IDataContext
     {
         private readonly IDocumentSession documentSession;
         private readonly IEventStore eventStore;

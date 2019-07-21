@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using GoldenEye.Backend.Core.DDD.Aggregates;
 using GoldenEye.Shared.Core.Objects.General;
 using GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues;
 
 namespace GoldenEye.WebApi.Template.SimpleDDD.Backend.Issues
 {
-    public class Issue : IAggregate
+    public class Issue: IAggregate
     {
         object IHasId.Id => Id;
 

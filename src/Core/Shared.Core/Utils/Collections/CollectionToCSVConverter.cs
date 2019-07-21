@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Reflection;
+using System.Text;
 
 namespace GoldenEye.Shared.Core.Utils.Collections
 {
@@ -85,13 +85,12 @@ namespace GoldenEye.Shared.Core.Utils.Collections
 
         private static string GetHeaders(string separator)
         {
-            var result = typeof (T).GetProperties()
+            var result = typeof(T).GetProperties()
                 .Aggregate(string.Empty, (current, prop) => current + string.Format("{0}{1}", prop.Name, separator));
-            
+
             result = result.Remove(result.Length - 1);
 
             return result;
         }
     }
 }
-

@@ -1,4 +1,4 @@
-﻿namespace GoldenEye.Backend.Core.Dapper.Mappings
+namespace GoldenEye.Backend.Core.Dapper.Mappings
 {
     public interface IDapperMapping
     {
@@ -9,7 +9,7 @@
         string GetById { get; }
     }
 
-    public interface IDapperMapping<TEntity> : IDapperMapping
+    public interface IDapperMapping<TEntity>: IDapperMapping
     {
     }
 }

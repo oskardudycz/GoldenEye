@@ -1,11 +1,11 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using Frontend.Identity.Sample.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Frontend.Identity.Sample.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController: Controller
     {
         public IActionResult Index()
         {

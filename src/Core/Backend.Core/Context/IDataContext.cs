@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace GoldenEye.Backend.Core.Context
 {
-    public interface IDataContext : IDisposable
+    public interface IDataContext: IDisposable
     {
         TEntity Add<TEntity>(TEntity entity) where TEntity : class;
 

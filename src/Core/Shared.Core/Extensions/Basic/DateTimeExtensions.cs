@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -12,14 +12,17 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
         {
             get { return DateTime.Today; }
         }
+
         public static DateTime Tomorrow
         {
             get { return DateTime.Today.AddDays(1); }
         }
+
         public static DateTime Yesterday
         {
             get { return DateTime.Today.AddDays(-1); }
         }
+
         /// <summary>
         /// Checks, whether date falls in the range defined by <paramref name="rangeStart"/> and <paramref name="rangeEnd"/>.
         /// Starting and ending day are taken into account.
@@ -244,6 +247,7 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
 
             return ranges.OrderBy(i => i.StartDate);
         }
+
         public static DateTime GetFirstDayOfWeek(this DateTime givenDate)
         {
             DateTime tmp = givenDate.Date;
@@ -295,6 +299,7 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
 
             return tmp;
         }
+
         public static DateTime GoToFirstDayOfLastWeek(this DateTime date, int dayOfWeek)
         {
             DateTime tmp = date.Date.AddMonths(1).AddDays(-1);
@@ -304,6 +309,7 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
             }
             return tmp;
         }
+
         /// <summary>
         /// Function that returns all dates in selected year
         /// </summary>
@@ -370,7 +376,6 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
         {
             return (dateTime - new DateTime(1970, 1, 1).ToLocalTime()).TotalSeconds;
         }
-
 
         public static string ToUserFriendlyTimePeriod(this TimeSpan timespan)
         {

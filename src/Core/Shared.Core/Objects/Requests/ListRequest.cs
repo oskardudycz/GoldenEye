@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace GoldenEye.Shared.Core.Objects.Requests
 {
     /// <summary>
     /// Class to send list of records from service
     /// </summary>
-    public class ListRequest<T> : RequestBase, IListRequest<T>
+    public class ListRequest<T>: RequestBase, IListRequest<T>
     {
         /// <summary>
         /// List of records

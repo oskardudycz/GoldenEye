@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using FluentAssertions;
 using GoldenEye.Backend.Core.DDD.Events;
@@ -8,7 +8,7 @@ using Xunit;
 
 namespace Backend.Core.Marten.Tests.Events.Storage
 {
-    public class MartenEventStoreTests : MartenTest
+    public class MartenEventStoreTests: MartenTest
     {
         private MartenEventStore Sut;
 
@@ -17,14 +17,14 @@ namespace Backend.Core.Marten.Tests.Events.Storage
             Sut = new MartenEventStore(Session);
         }
 
-        public class UserCreated : IEvent
+        public class UserCreated: IEvent
         {
             public Guid UserId { get; set; }
             public string UserName { get; set; }
             public Guid StreamId => UserId;
         }
 
-        public class UserUpdated : IEvent
+        public class UserUpdated: IEvent
         {
             public Guid UserId { get; set; }
             public string UserName { get; set; }

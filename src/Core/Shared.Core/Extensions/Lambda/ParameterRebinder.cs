@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq.Expressions;
 
 namespace GoldenEye.Shared.Core.Extensions.Lambda
 {
     // source: http://blogs.msdn.com/b/meek/archive/2008/05/02/linq-to-entities-combining-predicates.aspx
-    public class ParameterRebinder : ExpressionVisitor
+    public class ParameterRebinder: ExpressionVisitor
     {
         private readonly Dictionary<ParameterExpression, ParameterExpression> map;
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text;
 
 namespace GoldenEye.Shared.Core.Extensions.Basic
@@ -12,13 +12,16 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
                 case EDescriptionGenerationInfo.OneLine:
                     sb.Append(msg);
                     break;
+
                 case EDescriptionGenerationInfo.MultiLine:
                     sb.AppendLine(msg);
                     break;
+
                 case EDescriptionGenerationInfo.MultiLineHtml:
                     sb.AppendLine(
                         string.Format("<p>{0}</p>", msg));
                     break;
+
                 default:
                     throw new ArgumentOutOfRangeException("info", info, null);
             }

@@ -1,4 +1,4 @@
-﻿namespace GoldenEye.Backend.Core.DDD.Commands
+namespace GoldenEye.Backend.Core.DDD.Commands
 {
-    public interface ICommand : MediatR.IRequest { }
+    public interface ICommand: MediatR.IRequest { }
 }

@@ -1,6 +1,4 @@
-﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using IdentityServer4.Models;
 
 namespace GoldenEye.Backend.Identity.Clients.Tests

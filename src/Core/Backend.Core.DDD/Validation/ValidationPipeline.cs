@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,7 +13,7 @@ namespace GoldenEye.Backend.Core.DDD.Validation
     /// </summary>
     /// <typeparam name="TRequest"></typeparam>
     /// <typeparam name="TResponse"></typeparam>
-    public class ValidationPipeline<TRequest> : IRequestPreProcessor<TRequest>
+    public class ValidationPipeline<TRequest>: IRequestPreProcessor<TRequest>
     {
         private readonly IEnumerable<IValidator<TRequest>> _validators;
 
@@ -42,7 +42,7 @@ namespace GoldenEye.Backend.Core.DDD.Validation
         }
     }
 
-    public class ValidationPipeline<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+    public class ValidationPipeline<TRequest, TResponse>: IPipelineBehavior<TRequest, TResponse>
     {
         private readonly IEnumerable<IValidator<TRequest>> _validators;
 

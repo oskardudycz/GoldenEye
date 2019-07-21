@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 
 namespace Marten.Integration.Tests.TestsInfrasructure
 {
-    public abstract class DapperTest : IDisposable
+    public abstract class DapperTest: IDisposable
     {
         protected bool wasDisposed = false;
         protected readonly IDbConnection DbConnection;

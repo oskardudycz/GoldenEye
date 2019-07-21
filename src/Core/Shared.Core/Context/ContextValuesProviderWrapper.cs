@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace GoldenEye.Shared.Core.Context
 {
@@ -8,7 +8,7 @@ namespace GoldenEye.Shared.Core.Context
 
         public static IContextValuesProvider GetCurrentProvider()
         {
-            return //ThreadContextValuesProvider.Instance ?? 
+            return //ThreadContextValuesProvider.Instance ??
                 Provider;
         }
 
@@ -18,7 +18,7 @@ namespace GoldenEye.Shared.Core.Context
         }
     }
 
-    public class ContextValuesProviderToken : IDisposable
+    public class ContextValuesProviderToken: IDisposable
     {
         public ContextValuesProviderToken(IContextValuesProvider provider)
         {

@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 namespace GoldenEye.Shared.Core.Objects.Dates
 {
-    public class DateRange : IEnumerable<DateTime>, IDateRange
+    public class DateRange: IEnumerable<DateTime>, IDateRange
     {
         /// <summary>
         /// Field representing starting day of range.

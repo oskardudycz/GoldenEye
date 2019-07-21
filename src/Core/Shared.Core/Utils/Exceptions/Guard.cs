@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 
 namespace GoldenEye.Shared.Core.Utils.Exceptions
 {
     /// <summary>
     /// Helper class for guard statements, which allow prettier
     /// code for guard clauses
-    /// 
+    ///
     /// All credits to Ayende Rahien
     /// </summary>
     public class Guard

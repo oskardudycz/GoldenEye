@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GoldenEye.Frontend.Core.Web.Controllers
 {
-    public abstract class ReadonlyControllerBase<TService, TDto> : Controller
+    public abstract class ReadonlyControllerBase<TService, TDto>: Controller
         where TService : IReadonlyService<TDto> where TDto : class, IDTO
     {
         protected TService Service;

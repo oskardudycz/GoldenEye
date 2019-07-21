@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using FluentValidation;
 using GoldenEye.Backend.Core.DDD.Commands;
 
 namespace GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Commands
 {
-    public class DeleteIssue : ICommand
+    public class DeleteIssue: ICommand
     {
         public Guid Id { get; }
 
@@ -14,7 +14,7 @@ namespace GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Commands
         }
     }
 
-    public class DeleteIssueValidator : AbstractValidator<DeleteIssue>
+    public class DeleteIssueValidator: AbstractValidator<DeleteIssue>
     {
         public DeleteIssueValidator()
         {

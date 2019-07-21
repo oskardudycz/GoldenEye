@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,7 +13,7 @@ using IssueViews = Backend.DDD.Sample.Contracts.Issues.Views;
 
 namespace Backend.DDD.Sample.Issues.Handlers
 {
-    internal class IssueQueryHandler :
+    internal class IssueQueryHandler:
         IQueryHandler<GetIssues, IReadOnlyList<IssueViews.IssueView>>,
         IQueryHandler<GetIssue, IssueViews.IssueView>
     {

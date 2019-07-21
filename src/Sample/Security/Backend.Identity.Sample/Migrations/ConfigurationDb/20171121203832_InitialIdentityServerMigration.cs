@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Backend.Identity.Sample.Migrations.ConfigurationDb
 {
-    public partial class InitialIdentityServerMigration : Migration
+    public partial class InitialIdentityServerMigration: Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

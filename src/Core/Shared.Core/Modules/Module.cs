@@ -1,8 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace GoldenEye.Shared.Core.Modules
 {
-    public abstract class Module : IModule
+    public abstract class Module: IModule
     {
         public virtual void Configure(IServiceCollection services)
         {

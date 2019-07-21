@@ -1,6 +1,5 @@
-﻿using System;
+using System;
 using System.Globalization;
-using System.Threading;
 using GoldenEye.Shared.Core.Extensions.Basic;
 using Newtonsoft.Json;
 

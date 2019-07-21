@@ -1,14 +1,13 @@
-﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
+// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
-
-using IdentityServer4.Services;
-using IdentityServer4.Stores;
-using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using IdentityServer4.Services;
+using IdentityServer4.Stores;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace IdentityServer4.Quickstart.UI
 {
@@ -17,7 +16,7 @@ namespace IdentityServer4.Quickstart.UI
     /// </summary>
     [SecurityHeaders]
     [Authorize(AuthenticationSchemes = IdentityServer4.IdentityServerConstants.DefaultCookieAuthenticationScheme)]
-    public class GrantsController : Controller
+    public class GrantsController: Controller
     {
         private readonly IIdentityServerInteractionService _interaction;
         private readonly IClientStore _clients;
@@ -57,7 +56,7 @@ namespace IdentityServer4.Quickstart.UI
             var grants = await _interaction.GetAllUserConsentsAsync();
 
             var list = new List<GrantViewModel>();
-            foreach(var grant in grants)
+            foreach (var grant in grants)
             {
                 var client = await _clients.FindClientByIdAsync(grant.ClientId);
                 if (client != null)

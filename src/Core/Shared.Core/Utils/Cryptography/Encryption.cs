@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -13,7 +13,7 @@ namespace GoldenEye.Shared.Core.Utils.Cryptography
         /// Private encryption key.
         /// </summary>
         private const string Key = "qwe123ASD!@#zxc";
-        
+
         /// <summary>
         /// Encrypt string.
         /// </summary>
@@ -35,7 +35,6 @@ namespace GoldenEye.Shared.Core.Utils.Cryptography
                 // Step 2. Create a new TripleDESCryptoServiceProvider object
                 using (var tdesAlgorithm = TripleDES.Create())
                 {
-
                     tdesAlgorithm.Key = tdesKey;
                     tdesAlgorithm.Mode = CipherMode.ECB;
                     tdesAlgorithm.Padding = PaddingMode.PKCS7;
@@ -78,7 +77,6 @@ namespace GoldenEye.Shared.Core.Utils.Cryptography
                 // Step 2. Create a new TripleDESCryptoServiceProvider object
                 using (var tdesAlgorithm = TripleDES.Create())
                 {
-
                     tdesAlgorithm.Key = tdesKey;
                     tdesAlgorithm.Mode = CipherMode.ECB;
                     tdesAlgorithm.Padding = PaddingMode.PKCS7;

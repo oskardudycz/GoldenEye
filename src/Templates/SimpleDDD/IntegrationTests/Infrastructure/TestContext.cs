@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Net.Http;
 using AutoMapper;
 using GoldenEye.WebApi.Template.SimpleDDD;
@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.TestHost;
 
 namespace WebApi.SimpleDDD.IntegrationTests.Infrastructure
 {
-    public class TestContext : IDisposable
+    public class TestContext: IDisposable
     {
         private TestServer _server;
         public HttpClient Client { get; private set; }

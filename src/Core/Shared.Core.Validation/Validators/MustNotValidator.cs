@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using FluentValidation.Validators;
 
 namespace GoldenEye.Shared.Core.Validation.Validators
 {
-    public class MustNotValidator<TProperty> : PropertyValidator
+    public class MustNotValidator<TProperty>: PropertyValidator
     {
         private readonly Func<TProperty, bool> _action;
 

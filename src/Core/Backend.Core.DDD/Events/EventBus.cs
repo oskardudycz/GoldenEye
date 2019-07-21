@@ -1,10 +1,10 @@
-﻿using System.Threading;
+using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 
 namespace GoldenEye.Backend.Core.DDD.Events
 {
-    public class EventBus : IEventBus
+    public class EventBus: IEventBus
     {
         private readonly IMediator _mediator;
 

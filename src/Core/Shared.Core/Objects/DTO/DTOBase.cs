@@ -1,6 +1,6 @@
-﻿namespace GoldenEye.Shared.Core.Objects.DTO
+namespace GoldenEye.Shared.Core.Objects.DTO
 {
-    public class DTOBase : IDTO
+    public class DTOBase: IDTO
     {
     }
 }

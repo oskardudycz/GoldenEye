@@ -1,4 +1,4 @@
-﻿using System.Runtime.Serialization;
+using System.Runtime.Serialization;
 
 namespace GoldenEye.Shared.Core.Objects.Requests
 {
@@ -8,7 +8,7 @@ namespace GoldenEye.Shared.Core.Objects.Requests
     /// </summary>
     [DataContract]
     //[Validator(typeof(SingleRequestValidator<>))]
-    public class SingleRequest<T> : RequestBase, ISingleRequest<T>
+    public class SingleRequest<T>: RequestBase, ISingleRequest<T>
     {
         /// <summary>
         /// Record

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace GoldenEye.Shared.Core.Utils.Coding
 {
@@ -11,7 +11,6 @@ namespace GoldenEye.Shared.Core.Utils.Coding
 
         public Object Object { get; private set; }
     }
-
 
     /// <summary>
     /// Extensions, because otherwise casing fails on Switch==null

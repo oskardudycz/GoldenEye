@@ -1,6 +1,6 @@
-﻿namespace GoldenEye.Shared.Core.Objects.DTO
+namespace GoldenEye.Shared.Core.Objects.DTO
 {
-    public class UserDTO : IDTO
+    public class UserDTO: IDTO
     {
         public int Id { get; set; }
         public string UserName { get; set; }

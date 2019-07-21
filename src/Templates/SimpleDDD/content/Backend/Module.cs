@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using GoldenEye.Backend.Core.DDD.Registration;
 using GoldenEye.Backend.Core.Marten.Events.Storage;
 using GoldenEye.Backend.Core.Marten.Registration;
@@ -16,7 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace GoldenEye.WebApi.Template.SimpleDDD.Backend
 {
-    public class BackendModule : Module
+    public class BackendModule: Module
     {
         private readonly IConfiguration _configuration;
 

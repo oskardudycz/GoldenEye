@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 
 namespace GoldenEye.Backend.Core.Entity
 {
-    public class AuditableEntity : EntityBase, IAuditableEntity
+    public class AuditableEntity: EntityBase, IAuditableEntity
     {
         public DateTime Created { get; set; }
         public int? CreatedBy { get; set; }

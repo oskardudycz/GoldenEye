@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using AutoMapper;
 using Backend.DDD.Sample.Contracts.Issues.Views;
 using GoldenEye.Shared.Core.Mappings;
@@ -6,7 +6,7 @@ using IssueContracts = Backend.DDD.Sample.Contracts.Issues;
 
 namespace Backend.DDD.Sample.Issues.Mappings
 {
-    internal class IssueMappings : Profile, IMappingDefinition
+    internal class IssueMappings: Profile, IMappingDefinition
     {
         public IssueMappings()
         {

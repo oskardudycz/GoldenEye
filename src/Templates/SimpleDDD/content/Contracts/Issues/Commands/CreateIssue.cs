@@ -1,9 +1,9 @@
-﻿using FluentValidation;
+using FluentValidation;
 using GoldenEye.Backend.Core.DDD.Commands;
 
 namespace GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Commands
 {
-    public class CreateIssue : ICommand
+    public class CreateIssue: ICommand
     {
         public IssueType Type { get; }
 
@@ -19,7 +19,7 @@ namespace GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Commands
         }
     }
 
-    public class CreateIssueValidator : AbstractValidator<CreateIssue>
+    public class CreateIssueValidator: AbstractValidator<CreateIssue>
     {
         public CreateIssueValidator()
         {

@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -6,7 +6,7 @@ using GoldenEye.Shared.Core.Objects.General;
 
 namespace GoldenEye.Backend.Core.Repositories
 {
-    public interface IRepository<TEntity> : IReadonlyRepository<TEntity> where TEntity : class, IHasId
+    public interface IRepository<TEntity>: IReadonlyRepository<TEntity> where TEntity : class, IHasId
     {
         TEntity Add(TEntity entity, bool shouldSaveChanges = true);
 
