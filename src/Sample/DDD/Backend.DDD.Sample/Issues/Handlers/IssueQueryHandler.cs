@@ -7,7 +7,6 @@ using AutoMapper.QueryableExtensions;
 using Backend.DDD.Sample.Contracts.Issues.Queries;
 using GoldenEye.Backend.Core.DDD.Queries;
 using GoldenEye.Backend.Core.Repositories;
-using GoldenEye.Shared.Core.Extensions.Mapping;
 using Marten;
 using IssueViews = Backend.DDD.Sample.Contracts.Issues.Views;
 
@@ -19,13 +18,16 @@ namespace Backend.DDD.Sample.Issues.Handlers
     {
         private readonly IReadonlyRepository<Issue> repository;
         private readonly IConfigurationProvider configurationProvider;
+        private readonly IMapper mapper;
 
         public IssueQueryHandler(
             IReadonlyRepository<Issue> repository,
-            IConfigurationProvider configurationProvider)
+            IConfigurationProvider configurationProvider,
+            IMapper mapper)
         {
             this.repository = repository ?? throw new ArgumentException(nameof(repository));
             this.configurationProvider = configurationProvider ?? throw new ArgumentException(nameof(configurationProvider));
+            this.mapper = mapper ?? throw new ArgumentException(nameof(mapper));
         }
 
         public Task<IReadOnlyList<IssueViews.IssueView>> Handle(GetIssues message, CancellationToken cancellationToken)
@@ -40,7 +42,7 @@ namespace Backend.DDD.Sample.Issues.Handlers
         {
             var entity = await repository.GetByIdAsync(message.Id);
 
-            return entity.Map<IssueViews.IssueView>();
+            return mapper.Map<IssueViews.IssueView>(entity);
         }
     }
 }

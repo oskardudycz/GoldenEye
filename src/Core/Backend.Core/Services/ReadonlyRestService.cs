@@ -6,7 +6,6 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using GoldenEye.Backend.Core.Entity;
 using GoldenEye.Backend.Core.Repositories;
-using GoldenEye.Shared.Core.Extensions.Mapping;
 using GoldenEye.Shared.Core.Objects.DTO;
 
 namespace GoldenEye.Backend.Core.Services
@@ -18,7 +17,8 @@ namespace GoldenEye.Backend.Core.Services
     {
         protected ReadonlyRestService(
             TRepository repository,
-            IConfigurationProvider configurationProvider) : base(repository, configurationProvider)
+            IMapper mapper
+        ) : base(repository, mapper)
         {
         }
     }
@@ -27,14 +27,16 @@ namespace GoldenEye.Backend.Core.Services
     {
         private bool _disposed;
         protected IReadonlyRepository<TEntity> Repository;
-        protected readonly IConfigurationProvider ConfigurationProvider;
+        protected readonly IMapper Mapper;
+        protected IConfigurationProvider ConfigurationProvider => Mapper.ConfigurationProvider;
 
         protected ReadonlyRestService(
             IReadonlyRepository<TEntity> repository,
-            IConfigurationProvider configurationProvider)
+            IMapper mapper
+        )
         {
             Repository = repository;
-            this.ConfigurationProvider = configurationProvider;
+            Mapper = mapper;
         }
 
         public virtual IQueryable<TDTO> Get()
@@ -44,7 +46,8 @@ namespace GoldenEye.Backend.Core.Services
 
         public virtual async Task<TDTO> GetAsync(int id, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return (await Repository.GetByIdAsync(id, cancellationToken)).MapTo<TDTO>();
+            var entity = await Repository.GetByIdAsync(id, cancellationToken);
+            return Mapper.Map<TDTO>(entity);
         }
 
         public virtual void Dispose()
