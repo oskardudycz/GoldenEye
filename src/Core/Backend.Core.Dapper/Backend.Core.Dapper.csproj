@@ -20,8 +20,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Dapper" Version="1.60.6" />
-        <PackageReference Include="Dapper.Contrib" Version="1.60.1" />
+        <PackageReference Include="Dapper" Version="2.0.30" />
+        <PackageReference Include="Dapper.Contrib" Version="2.0.30" />
     </ItemGroup>
 
     <ItemGroup>

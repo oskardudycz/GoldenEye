@@ -30,8 +30,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="FluentValidation" Version="8.4.0" />
-        <PackageReference Include="FluentValidation.ValidatorAttribute" Version="8.4.0" />
+        <PackageReference Include="FluentValidation" Version="8.6.1" />
+        <PackageReference Include="FluentValidation.ValidatorAttribute" Version="8.6.0" />
     </ItemGroup>
 
     <ItemGroup>
