@@ -35,7 +35,7 @@
           </e>
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
-              <e p="netstandard2.0" t="Include">
+              <e p="netstandard2.1" t="Include">
                 <e p="Backend.Core.AssemblyInfo.cs" t="Include" />
               </e>
             </e>
@@ -79,7 +79,7 @@
           </e>
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
-              <e p="netstandard2.0" t="Include">
+              <e p="netstandard2.1" t="Include">
                 <e p="Backend.Core.Dapper.AssemblyInfo.cs" t="Include" />
               </e>
             </e>
@@ -98,7 +98,7 @@
           </e>
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
-              <e p="netcoreapp2.2" t="Include">
+              <e p="netcoreapp3.1" t="Include">
                 <e p="Backend.Core.Dapper.Integration.Tests.AssemblyInfo.cs" t="Include" />
               </e>
             </e>
@@ -116,7 +116,7 @@
           </e>
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
-              <e p="netcoreapp2.2" t="Include">
+              <e p="netcoreapp3.1" t="Include">
                 <e p="Backend.Core.Dapper.Tests.AssemblyInfo.cs" t="Include" />
               </e>
             </e>
@@ -150,7 +150,7 @@
           </e>
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
-              <e p="netstandard2.0" t="Include">
+              <e p="netstandard2.1" t="Include">
                 <e p="Backend.Core.DDD.AssemblyInfo.cs" t="Include" />
               </e>
             </e>
@@ -185,7 +185,7 @@
           </e>
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
-              <e p="netcoreapp2.2" t="Include">
+              <e p="netcoreapp3.1" t="Include">
                 <e p="Backend.Core.DDD.Tests.AssemblyInfo.cs" t="Include" />
               </e>
             </e>
@@ -216,7 +216,7 @@
           </e>
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
-              <e p="netstandard2.0" t="Include">
+              <e p="netstandard2.1" t="Include">
                 <e p="Backend.Core.DDD.Tests.External.AssemblyInfo.cs" t="Include" />
               </e>
             </e>
@@ -232,7 +232,7 @@
           </e>
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
-              <e p="netstandard2.0" t="Include">
+              <e p="netstandard2.1" t="Include">
                 <e p="Backend.Core.EntityFramework.AssemblyInfo.cs" t="Include" />
               </e>
             </e>
@@ -257,7 +257,7 @@
           </e>
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
-              <e p="netstandard2.0" t="Include">
+              <e p="netstandard2.1" t="Include">
                 <e p="Backend.Core.Marten.AssemblyInfo.cs" t="Include" />
               </e>
             </e>
@@ -281,7 +281,7 @@
           </e>
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
-              <e p="netcoreapp2.2" t="Include">
+              <e p="netcoreapp3.1" t="Include">
                 <e p="Backend.Core.Marten.Tests.AssemblyInfo.cs" t="Include" />
               </e>
             </e>
@@ -297,7 +297,7 @@
           <e p="Changelog.md" t="Include" />
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
-              <e p="netcoreapp2.2" t="Include">
+              <e p="netcoreapp3.1" t="Include">
                 <e p="Backend.Core.Tests.AssemblyInfo.cs" t="Include" />
               </e>
             </e>
@@ -328,7 +328,7 @@
           </e>
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
-              <e p="netstandard2.0" t="Include">
+              <e p="netstandard2.1" t="Include">
                 <e p="Backend.Core.WebApi.AssemblyInfo.cs" t="Include" />
               </e>
             </e>
@@ -352,7 +352,7 @@
           </e>
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
-              <e p="netcoreapp2.2" t="Include">
+              <e p="netcoreapp3.1" t="Include">
                 <e p="Backend.Core.WebApi.Tests.AssemblyInfo.cs" t="Include" />
               </e>
             </e>
@@ -448,7 +448,7 @@
           </e>
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
-              <e p="netstandard2.0" t="Include">
+              <e p="netstandard2.1" t="Include">
                 <e p="Shared.Core.AssemblyInfo.cs" t="Include" />
               </e>
             </e>
@@ -561,7 +561,7 @@
           </e>
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
-              <e p="netcoreapp2.2" t="Include">
+              <e p="netcoreapp3.1" t="Include">
                 <e p="Shared.Core.Tests.AssemblyInfo.cs" t="Include" />
               </e>
             </e>
@@ -581,7 +581,7 @@
           <e p="IValidatable.cs" t="Include" />
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
-              <e p="netstandard2.0" t="Include">
+              <e p="netstandard2.1" t="Include">
                 <e p="Shared.Core.Validation.AssemblyInfo.cs" t="Include" />
               </e>
             </e>
@@ -638,7 +638,7 @@
             <e p="Module.cs" t="Include" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="Backend.DDD.Sample.AssemblyInfo.cs" t="Include" />
                 </e>
               </e>
@@ -667,7 +667,7 @@
             </e>
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netstandard2.0" t="Include">
+                <e p="netstandard2.1" t="Include">
                   <e p="Backend.DDD.Sample.Contracts.AssemblyInfo.cs" t="Include" />
                 </e>
               </e>
@@ -686,7 +686,7 @@
             </e>
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="Backend.DDD.Sample.IntegrationTests.AssemblyInfo.cs" t="Include" />
                 </e>
               </e>
@@ -704,7 +704,7 @@
             </e>
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="Backend.DDD.WebApi.Sample.AssemblyInfo.cs" t="Include" />
                   <e p="Backend.DDD.WebApi.Sample.RazorAssemblyInfo.cs" t="Include" />
                 </e>
@@ -729,7 +729,7 @@
           <e p="GoldenEye.WebApi.Sample.csproj" t="IncludeRecursive" />
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
-              <e p="netcoreapp2.2" t="Include">
+              <e p="netcoreapp3.1" t="Include">
                 <e p="GoldenEye.WebApi.Sample.AssemblyInfo.cs" t="Include" />
                 <e p="GoldenEye.WebApi.Sample.RazorAssemblyInfo.cs" t="Include" />
               </e>
@@ -770,7 +770,7 @@
             </e>
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="Backend.Identity.Sample.AssemblyInfo.cs" t="Include" />
                   <e p="Backend.Identity.Sample.RazorAssemblyInfo.cs" t="Include" />
                 </e>
@@ -894,7 +894,7 @@
             </e>
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="Frontend.Identity.Sample.AssemblyInfo.cs" t="Include" />
                   <e p="Frontend.Identity.Sample.RazorAssemblyInfo.cs" t="Include" />
                 </e>
@@ -1002,7 +1002,7 @@
           </e>
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
-              <e p="netstandard2.0" t="Include">
+              <e p="netcoreapp3.1" t="Include">
                 <e p="Backend.Identity.AssemblyInfo.cs" t="Include" />
               </e>
             </e>
@@ -1021,7 +1021,7 @@
           <e p="Frontend.Identity.csproj" t="IncludeRecursive" />
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
-              <e p="netstandard2.0" t="Include">
+              <e p="netcoreapp3.1" t="Include">
                 <e p="Frontend.Identity.AssemblyInfo.cs" t="Include" />
               </e>
             </e>
@@ -1131,7 +1131,7 @@
           <e p="Clients" t="Include" />
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
-              <e p="netstandard2.0" t="Include">
+              <e p="netstandard2.1" t="Include">
                 <e p="Shared.Security.AssemblyInfo.cs" t="Include" />
               </e>
             </e>
@@ -1193,7 +1193,7 @@
             <e p="GoldenEye.WebApi.Template.SimpleDDD.csproj" t="IncludeRecursive" />
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="GoldenEye.WebApi.Template.SimpleDDD.AssemblyInfo.cs" t="Include" />
                 </e>
               </e>
@@ -1215,7 +1215,7 @@
             </e>
             <e p="obj" t="ExcludeRecursive">
               <e p="Debug" t="Include">
-                <e p="netcoreapp2.2" t="Include">
+                <e p="netcoreapp3.1" t="Include">
                   <e p="WebApi.Template.SimpleDDD.IntegrationTests.AssemblyInfo.cs" t="Include" />
                 </e>
               </e>
@@ -1226,9 +1226,11 @@
         </e>
       </e>
     </e>
-    <e p="C:\Users\oskar\.nuget\packages\microsoft.net.test.sdk\16.2.0\build\netcoreapp1.0" t="Include">
+    <e p="C:\Users\oskar\.nuget\packages\microsoft.net.test.sdk\16.6.1\build\netcoreapp2.1" t="Include">
       <e p="Microsoft.NET.Test.Sdk.Program.cs" t="Include" />
     </e>
+    <e p="C:\Users\oskar\.nuget\packages\microsoft.testplatform.testhost\16.6.1\build\netcoreapp2.1\x64\testhost.dll" t="Include" />
+    <e p="C:\Users\oskar\.nuget\packages\microsoft.testplatform.testhost\16.6.1\build\netcoreapp2.1\x64\testhost.exe" t="Include" />
     <e p="C:\Users\oskar\.nuget\packages\xunit.runner.visualstudio\2.4.1\build\netcoreapp1.0\xunit.runner.reporters.netcoreapp10.dll" t="Include" />
     <e p="C:\Users\oskar\.nuget\packages\xunit.runner.visualstudio\2.4.1\build\netcoreapp1.0\xunit.runner.utility.netcoreapp10.dll" t="Include" />
     <e p="C:\Users\oskar\.nuget\packages\xunit.runner.visualstudio\2.4.1\build\netcoreapp1.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll" t="Include" />

@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
+        <TargetFramework>netstandard2.1</TargetFramework>
         <Version>6.1.0</Version>
         <PackageId>GoldenEye.Shared.Core.Validation</PackageId>
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
@@ -30,8 +30,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="FluentValidation" Version="8.6.1" />
-        <PackageReference Include="FluentValidation.ValidatorAttribute" Version="8.6.0" />
+        <PackageReference Include="FluentValidation" Version="8.6.2" />
+        <PackageReference Include="FluentValidation.ValidatorAttribute" Version="8.6.1" />
     </ItemGroup>
 
     <ItemGroup>
@@ -43,6 +43,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <None Include="../../../assets/GoldenEyeLogo.png" Visible="false" Pack="true" PackagePath=""/>
+        <None Include="../../../assets/GoldenEyeLogo.png" Visible="false" Pack="true" PackagePath="" />
     </ItemGroup>
 </Project>

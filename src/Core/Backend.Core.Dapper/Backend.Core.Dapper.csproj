@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
+        <TargetFramework>netstandard2.1</TargetFramework>
         <Version>6.1.0</Version>
         <PackageId>GoldenEye.Backend.Core.Dapper</PackageId>
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
@@ -20,8 +20,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Dapper" Version="2.0.30" />
-        <PackageReference Include="Dapper.Contrib" Version="2.0.30" />
+        <PackageReference Include="Dapper" Version="2.0.35" />
+        <PackageReference Include="Dapper.Contrib" Version="2.0.35" />
     </ItemGroup>
 
     <ItemGroup>
@@ -29,6 +29,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <None Include="../../../assets/GoldenEyeLogo.png" Visible="false" Pack="true" PackagePath=""/>
+        <None Include="../../../assets/GoldenEyeLogo.png" Visible="false" Pack="true" PackagePath="" />
     </ItemGroup>
 </Project>
