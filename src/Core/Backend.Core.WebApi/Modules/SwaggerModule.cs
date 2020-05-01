@@ -2,6 +2,7 @@ using GoldenEye.Shared.Core.Modules.Attributes;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace GoldenEye.Backend.Core.WebApi.Modules
@@ -13,11 +14,11 @@ namespace GoldenEye.Backend.Core.WebApi.Modules
         {
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo  { Title = "API", Version = "v1" });
             });
         }
 
-        public override void Use(IApplicationBuilder app, IHostingEnvironment env)
+        public override void Use(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseSwagger();
 

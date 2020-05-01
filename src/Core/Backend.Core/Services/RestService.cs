@@ -8,8 +8,8 @@ using GoldenEye.Shared.Core.Objects.DTO;
 
 namespace GoldenEye.Backend.Core.Services
 {
-    public class RestService<TDTO, TEntity, TRepository>: RestService<TDTO, TEntity>
-        where TDTO : class, IDTO
+    public class RestService<TDto, TEntity, TRepository>: RestService<TDto, TEntity>
+        where TDto : class, IDTO
         where TEntity : class, IEntity
         where TRepository : IRepository<TEntity>
     {
@@ -25,8 +25,8 @@ namespace GoldenEye.Backend.Core.Services
         }
     }
 
-    public class RestService<TDTO, TEntity>: ReadonlyRestService<TDTO, TEntity>
-        where TDTO : class, IDTO
+    public class RestService<TDto, TEntity>: ReadonlyRestService<TDto, TEntity>, IRestService<TDto>
+        where TDto : class, IDTO
         where TEntity : class, IEntity
     {
         protected new IRepository<TEntity> Repository
@@ -41,10 +41,10 @@ namespace GoldenEye.Backend.Core.Services
         {
         }
 
-        public virtual async Task<TDTO> PutAsync(TDTO dto, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<TDto> AddAsync(TDto dto, CancellationToken cancellationToken = default)
         {
             if (!Validate(dto))
-                return null as TDTO;
+                return null as TDto;
 
             var entity = Mapper.Map<TEntity>(dto);
             var added = Repository.AddAsync(entity, cancellationToken: cancellationToken);
@@ -53,13 +53,13 @@ namespace GoldenEye.Backend.Core.Services
 
             var fromDb = await Repository.GetByIdAsync(added.Id, cancellationToken);
 
-            return Mapper.Map<TDTO>(fromDb);
+            return Mapper.Map<TDto>(fromDb);
         }
 
-        public virtual async Task<TDTO> PostAsync(TDTO dto, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<TDto> UpdateAsync(TDto dto, CancellationToken cancellationToken = default)
         {
             if (!Validate(dto))
-                return null as TDTO;
+                return null as TDto;
 
             var entity = Mapper.Map<TEntity>(dto);
             var updated = await Repository.UpdateAsync(entity, cancellationToken: cancellationToken);
@@ -68,20 +68,20 @@ namespace GoldenEye.Backend.Core.Services
 
             var fromDb = await Repository.GetByIdAsync(updated.Id, cancellationToken);
 
-            return Mapper.Map<TDTO>(fromDb);
+            return Mapper.Map<TDto>(fromDb);
         }
 
-        public virtual Task<bool> Delete(int id)
+        public virtual Task<bool> DeleteAsync(object id, CancellationToken cancellationToken = default)
         {
-            return Task.Run(() => Repository.Delete(id));
+            return Repository.DeleteAsync(id, cancellationToken);
         }
 
-        protected virtual AbstractValidator<TDTO> GetValidator()
+        protected virtual AbstractValidator<TDto> GetValidator()
         {
             return null;
         }
 
-        protected bool Validate(TDTO dto)
+        protected bool Validate(TDto dto)
         {
             var validator = GetValidator();
 

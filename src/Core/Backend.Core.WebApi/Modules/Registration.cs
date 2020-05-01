@@ -7,7 +7,7 @@ namespace GoldenEye.Backend.Core.WebApi.Modules
 {
     public static class Registration
     {
-        public static void UseModules(this IApplicationBuilder app, IHostingEnvironment env)
+        public static IApplicationBuilder UseModules(this IApplicationBuilder app, IWebHostEnvironment env)
         {
             var modules = app.ApplicationServices.GetServices<IModule>();
 
@@ -22,6 +22,8 @@ namespace GoldenEye.Backend.Core.WebApi.Modules
                     module.Use();
                 }
             }
+
+            return app;
         }
     }
 }

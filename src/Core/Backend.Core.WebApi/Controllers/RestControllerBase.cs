@@ -24,7 +24,7 @@ namespace GoldenEye.Frontend.Core.Web.Controllers
                 return BadRequest(ModelState);
             }
 
-            var result = await Service.PutAsync(dto);
+            var result = await Service.UpdateAsync(dto);
 
             return Ok(result);
         }
@@ -36,7 +36,7 @@ namespace GoldenEye.Frontend.Core.Web.Controllers
                 return BadRequest(ModelState);
             }
 
-            var result = await Service.PostAsync(dto);
+            var result = await Service.AddAsync(dto);
 
             return Ok(result);
         }
@@ -49,7 +49,7 @@ namespace GoldenEye.Frontend.Core.Web.Controllers
                 return NotFound();
             }
 
-            return Ok();
+            return NoContent();
         }
     }
 }

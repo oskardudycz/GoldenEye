@@ -130,9 +130,9 @@ namespace GoldenEye.Backend.Core.Context
             return dbContext.Find<TEntity>(id);
         }
 
-        public Task<TEntity> GetByIdAsync<TEntity>(object id, CancellationToken cancellationToken = default(CancellationToken)) where TEntity : class, new()
+        public async Task<TEntity> GetByIdAsync<TEntity>(object id, CancellationToken cancellationToken = default(CancellationToken)) where TEntity : class, new()
         {
-            return dbContext.FindAsync<TEntity>(new[] { id }, cancellationToken);
+            return await dbContext.FindAsync<TEntity>(new[] { id }, cancellationToken);
         }
 
         public IQueryable<TEntity> GetQueryable<TEntity>() where TEntity : class
@@ -142,7 +142,7 @@ namespace GoldenEye.Backend.Core.Context
 
         public IQueryable<TEntity> CustomQuery<TEntity>(string query) where TEntity : class
         {
-            return dbContext.Set<TEntity>().FromSql(query);
+            return dbContext.Set<TEntity>().FromSqlRaw(query);
         }
 
         private void CheckVersion<TEntity>(TEntity entity, long? originVersion) where TEntity : class

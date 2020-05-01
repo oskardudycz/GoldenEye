@@ -4,12 +4,12 @@ using GoldenEye.Shared.Core.Objects.DTO;
 
 namespace GoldenEye.Backend.Core.Services
 {
-    public interface IRestService<TDTO>: IReadonlyService<TDTO> where TDTO : class, IDTO
+    public interface IRestService<TDto>: IReadonlyService<TDto> where TDto : class, IDTO
     {
-        Task<bool> DeleteAsync(object id, CancellationToken cancellationToken = default(CancellationToken));
+        Task<bool> DeleteAsync(object id, CancellationToken cancellationToken = default);
 
-        Task<TDTO> PostAsync(TDTO dto, CancellationToken cancellationToken = default(CancellationToken));
+        Task<TDto> AddAsync(TDto dto, CancellationToken cancellationToken = default);
 
-        Task<TDTO> PutAsync(TDTO dto, CancellationToken cancellationToken = default(CancellationToken));
+        Task<TDto> UpdateAsync(TDto dto, CancellationToken cancellationToken = default);
     }
 }

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GoldenEye.Frontend.Core.Web.Controllers
 {
-    public abstract class ReadonlyControllerBase<TService, TDto>: Controller
+    public abstract class ReadonlyControllerBase<TService, TDto>: ControllerBase
         where TService : IReadonlyService<TDto> where TDto : class, IDTO
     {
         protected TService Service;
@@ -22,10 +22,10 @@ namespace GoldenEye.Frontend.Core.Web.Controllers
 
         public virtual IQueryable<TDto> Get()
         {
-            return Service.Get();
+            return Service.Query();
         }
 
-        public async Task<IActionResult> Get(int id)
+        public virtual async Task<IActionResult> Get(int id)
         {
             var dto = await Service.GetAsync(id);
             if (dto == null)
@@ -34,15 +34,6 @@ namespace GoldenEye.Frontend.Core.Web.Controllers
             }
 
             return Ok(dto);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                Service.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }

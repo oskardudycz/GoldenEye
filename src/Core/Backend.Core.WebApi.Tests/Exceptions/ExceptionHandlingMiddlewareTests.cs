@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Xunit;
 
 namespace Backend.Core.WebApi.Tests.Exceptions
@@ -31,7 +32,7 @@ namespace Backend.Core.WebApi.Tests.Exceptions
     public class UsersController: Controller
     {
         [HttpPost]
-        public IActionResult Post([FromBody]CreateUser command)
+        public IActionResult Post([FromBody] CreateUser command)
         {
             if (command.UserName.IsNullOrEmpty())
                 throw new ValidationException("UserName is required");
@@ -44,7 +45,7 @@ namespace Backend.Core.WebApi.Tests.Exceptions
     {
         public class Startup
         {
-            public Startup(IHostingEnvironment env)
+            public Startup(IHostEnvironment env)
             {
                 var builder = new ConfigurationBuilder()
                     .SetBasePath(env.ContentRootPath)
@@ -52,7 +53,7 @@ namespace Backend.Core.WebApi.Tests.Exceptions
                 Configuration = builder.Build();
             }
 
-            public IConfigurationRoot Configuration { get; }
+            private IConfigurationRoot Configuration { get; }
 
             // This method gets called by the runtime. Use this method to add services to the container.
             public void ConfigureServices(IServiceCollection services)
@@ -60,9 +61,10 @@ namespace Backend.Core.WebApi.Tests.Exceptions
                 var assembly = typeof(UsersController).GetTypeInfo().Assembly;
                 services.AddMvc()
                     .AddApplicationPart(assembly);
+                services.AddControllers();
             }
 
-            public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+            public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
             {
                 //Use ExceptionHandlingMiddleware needs to be registered before UseMvc
                 app.UseExceptionHandlingMiddleware();
@@ -72,7 +74,8 @@ namespace Backend.Core.WebApi.Tests.Exceptions
         }
 
         [Fact]
-        public async Task GivenAppWithExceptionHandlingMiddleware_WhenExceptionWasThrown_ThenReturnsResultWithProperStatusCodeAndErrorInfo()
+        public async Task
+            GivenAppWithExceptionHandlingMiddleware_WhenExceptionWasThrown_ThenReturnsResultWithProperStatusCodeAndErrorInfo()
         {
             //Given
             var server = new TestServer(new WebHostBuilder()

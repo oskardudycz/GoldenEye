@@ -31,7 +31,7 @@ namespace Shared.Core.Tests.Modules
 
         public Registration()
         {
-            services.AddAllModules();
+            services.AddAllApplicationModules();
         }
 
         [Fact]

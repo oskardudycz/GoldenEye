@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json.Converters;
 
 namespace Backend.DDD.WebApi.Sample
 {
@@ -23,42 +25,44 @@ namespace Backend.DDD.WebApi.Sample
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
-            services.AddDDD();
-            services.AddAllDDDHandlers();
-
-            services.AddAutoMapperForAllDependencies();
-            services.AddConfiguration(Configuration);
-
-            services.AddAllModules();
-            services.AddModule<AllowAllCorsModule>();
-            services.AddModule<SwaggerModule>();
-
-            services.AddCors(options =>
-            {
-                options.AddPolicy("CorsPolicy",
-                    builder =>
-                    builder.AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .AllowCredentials()
-                );
-            });
+            services.AddControllers()
+                .AddNewtonsoftJson(opt => opt.SerializerSettings.Converters.Add(new StringEnumConverter()));
+            services.AddDDD()
+                .AddAllDDDHandlers()
+                .AddAutoMapperForAllDependencies()
+                .AddConfiguration(Configuration)
+                .AddAllApplicationModules()
+                .AddModule<AllowAllCorsModule>()
+                .AddModule<SwaggerModule>()
+                .AddCors(options =>
+                {
+                    options.AddPolicy("CorsPolicy",
+                        builder =>
+                        builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials()
+                    );
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseExceptionHandlingMiddleware();
-            app.UseModules(env);
-            app.UseCors("CorsPolicy");
-
-            app.UseMvc();
+            app.UseRouting()
+                .UseAuthorization()
+                .UseEndpoints(endpoints =>
+                {
+                    endpoints.MapControllers();
+                })
+                .UseExceptionHandlingMiddleware()
+                .UseModules(env)
+                .UseCors("CorsPolicy");
         }
     }
 }

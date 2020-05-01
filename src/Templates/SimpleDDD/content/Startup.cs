@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace GoldenEye.WebApi.Template.SimpleDDD
 {
@@ -37,7 +38,7 @@ namespace GoldenEye.WebApi.Template.SimpleDDD
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -45,7 +46,8 @@ namespace GoldenEye.WebApi.Template.SimpleDDD
             }
 
             app.UseExceptionHandlingMiddleware();
-            app.UseModules(env);
+            //TODO: Fix template after publishing NuGets
+            //app.UseModules(env);
 
             app.UseMvc();
         }

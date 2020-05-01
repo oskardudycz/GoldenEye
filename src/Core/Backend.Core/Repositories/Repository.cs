@@ -28,7 +28,7 @@ namespace GoldenEye.Backend.Core.Repositories
             return AddAsync(entity, true, cancellationToken);
         }
 
-        public async virtual Task<TEntity> AddAsync(TEntity entity, bool shouldSaveChanges = true, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<TEntity> AddAsync(TEntity entity, bool shouldSaveChanges = true, CancellationToken cancellationToken = default)
         {
             var result = await Context.AddAsync(entity, cancellationToken);
 
@@ -62,7 +62,7 @@ namespace GoldenEye.Backend.Core.Repositories
             return UpdateAsync(entity, true, cancellationToken);
         }
 
-        public async virtual Task<TEntity> UpdateAsync(TEntity entity, bool shouldSaveChanges = true, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<TEntity> UpdateAsync(TEntity entity, bool shouldSaveChanges = true, CancellationToken cancellationToken = default(CancellationToken))
         {
             var result = await Context.UpdateAsync(entity, cancellationToken: cancellationToken);
 
@@ -87,12 +87,12 @@ namespace GoldenEye.Backend.Core.Repositories
             return DeleteAsync(entity, true, cancellationToken);
         }
 
-        public async virtual Task<TEntity> DeleteAsync(TEntity entity, bool shouldSaveChanges = true, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<TEntity> DeleteAsync(TEntity entity, bool shouldSaveChanges = true, CancellationToken cancellationToken = default(CancellationToken))
         {
             var result = await Context.RemoveAsync(entity, cancellationToken: cancellationToken);
 
             if (shouldSaveChanges)
-                await SaveChangesAsync();
+                await SaveChangesAsync(cancellationToken);
 
             return result;
         }
@@ -112,12 +112,12 @@ namespace GoldenEye.Backend.Core.Repositories
             return DeleteAsync(id, true, cancellationToken);
         }
 
-        public async virtual Task<bool> DeleteAsync(object id, bool shouldSaveChanges = true, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<bool> DeleteAsync(object id, bool shouldSaveChanges = true, CancellationToken cancellationToken = default)
         {
             var result = await Context.RemoveAsync<TEntity>(id, cancellationToken: cancellationToken);
 
             if (shouldSaveChanges)
-                await SaveChangesAsync();
+                await SaveChangesAsync(cancellationToken);
 
             return result;
         }
@@ -127,7 +127,7 @@ namespace GoldenEye.Backend.Core.Repositories
             return Context.SaveChanges();
         }
 
-        public virtual Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             return Context.SaveChangesAsync(cancellationToken);
         }

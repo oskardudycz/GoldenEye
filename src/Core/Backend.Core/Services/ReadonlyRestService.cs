@@ -23,10 +23,9 @@ namespace GoldenEye.Backend.Core.Services
         }
     }
 
-    public class ReadonlyRestService<TDTO, TEntity>: IReadonlyService<TDTO> where TDTO : class, IDTO where TEntity : class, IEntity
+    public class ReadonlyRestService<TDto, TEntity>: IReadonlyService<TDto> where TDto : class, IDTO where TEntity : class, IEntity
     {
-        private bool _disposed;
-        protected IReadonlyRepository<TEntity> Repository;
+        protected readonly IReadonlyRepository<TEntity> Repository;
         protected readonly IMapper Mapper;
         protected IConfigurationProvider ConfigurationProvider => Mapper.ConfigurationProvider;
 
@@ -39,34 +38,15 @@ namespace GoldenEye.Backend.Core.Services
             Mapper = mapper;
         }
 
-        public virtual IQueryable<TDTO> Get()
+        public virtual IQueryable<TDto> Query()
         {
-            return Repository.GetAll().ProjectTo<TDTO>(ConfigurationProvider);
+            return Repository.GetAll().ProjectTo<TDto>(ConfigurationProvider);
         }
 
-        public virtual async Task<TDTO> GetAsync(int id, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<TDto> GetAsync(int id, CancellationToken cancellationToken = default)
         {
             var entity = await Repository.GetByIdAsync(id, cancellationToken);
-            return Mapper.Map<TDTO>(entity);
-        }
-
-        public virtual void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        private void Dispose(bool disposing)
-        {
-            if (_disposed)
-                return;
-
-            if (disposing)
-            {
-                Repository.Dispose();
-            }
-
-            _disposed = true;
+            return Mapper.Map<TDto>(entity);
         }
     }
 }

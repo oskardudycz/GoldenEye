@@ -25,21 +25,22 @@ namespace GoldenEye.Backend.Core.WebApi.Exceptions
 
     public static class ExceptionToHttpStatusMapper
     {
-        public static Dictionary<Type, Func<Exception, HttpStatusCodeInfo>> CustomMaps = new Dictionary<Type, Func<Exception, HttpStatusCodeInfo>>();
+        private static readonly Dictionary<Type, Func<Exception, HttpStatusCodeInfo>> CustomMaps = new Dictionary<Type, Func<Exception, HttpStatusCodeInfo>>();
 
         public static HttpStatusCodeInfo Map(Exception exception)
         {
             if (CustomMaps.ContainsKey(exception.GetType()))
                 return CustomMaps[exception.GetType()](exception);
 
-            var code = HttpStatusCode.InternalServerError; // 500 if unexpected
-
-            if (exception is UnauthorizedAccessException)
-                code = HttpStatusCode.Unauthorized;
-            else if (exception is NotImplementedException)
-                code = HttpStatusCode.NotImplemented;
-            else if (exception is ValidationException || exception is System.ComponentModel.DataAnnotations.ValidationException)
-                code = HttpStatusCode.BadRequest;
+            var code = exception switch
+            {
+                UnauthorizedAccessException _ => HttpStatusCode.Unauthorized,
+                NotImplementedException _ => HttpStatusCode.NotImplemented,
+                ValidationException _ => HttpStatusCode.BadRequest,
+                System.ComponentModel.DataAnnotations.ValidationException _ => HttpStatusCode.BadRequest,
+                ArgumentException _ => HttpStatusCode.BadRequest,
+                _ => HttpStatusCode.InternalServerError
+            };
 
             return new HttpStatusCodeInfo(code, exception.Message);
         }
