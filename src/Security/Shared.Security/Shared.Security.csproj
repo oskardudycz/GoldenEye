@@ -16,7 +16,7 @@
         <AssemblyName>GoldenEye.Shared.Security</AssemblyName>
         <RootNamespace>GoldenEye.Shared.Security</RootNamespace>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-        <PackageIconUrl>https://raw.githubusercontent.com/oskardudycz/GoldenEye/master/assets/GoldenEyeLogo.png</PackageIconUrl>
+        <PackageIcon>GoldenEyeLogo.png</PackageIcon>
     </PropertyGroup>
 
     <ItemGroup>
@@ -26,5 +26,9 @@
     <ItemGroup>
         <Folder Include="Clients\" />
         <Folder Include="Users\" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="../../../assets/GoldenEyeLogo.png" Visible="false" Pack="true" PackagePath=""/>
     </ItemGroup>
 </Project>

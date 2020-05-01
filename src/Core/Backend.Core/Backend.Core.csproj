@@ -16,7 +16,7 @@
         <AssemblyName>GoldenEye.Backend.Core</AssemblyName>
         <RootNamespace>GoldenEye.Backend.Core</RootNamespace>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-        <PackageIconUrl>https://raw.githubusercontent.com/oskardudycz/GoldenEye/master/assets/GoldenEyeLogo.png</PackageIconUrl>
+        <PackageIcon>GoldenEyeLogo.png</PackageIcon>
     </PropertyGroup>
 
     <ItemGroup>
@@ -46,5 +46,9 @@
     <ItemGroup>
         <ProjectReference Include="..\Shared.Core.Validation\Shared.Core.Validation.csproj" />
         <ProjectReference Include="..\Shared.Core\Shared.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="../../../assets/GoldenEyeLogo.png" Visible="false" Pack="true" PackagePath=""/>
     </ItemGroup>
 </Project>

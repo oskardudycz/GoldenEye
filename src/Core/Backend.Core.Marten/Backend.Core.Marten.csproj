@@ -16,7 +16,7 @@
         <AssemblyName>GoldenEye.Backend.Core.Marten</AssemblyName>
         <RootNamespace>GoldenEye.Backend.Core.Marten</RootNamespace>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-        <PackageIconUrl>https://raw.githubusercontent.com/oskardudycz/GoldenEye/master/assets/GoldenEyeLogo.png</PackageIconUrl>
+        <PackageIcon>GoldenEyeLogo.png</PackageIcon>
     </PropertyGroup>
 
     <ItemGroup>
@@ -26,5 +26,9 @@
     <ItemGroup>
         <ProjectReference Include="..\Backend.Core\Backend.Core.csproj" />
         <ProjectReference Include="..\Backend.Core.DDD\Backend.Core.DDD.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="../../../assets/GoldenEyeLogo.png" Visible="false" Pack="true" PackagePath=""/>
     </ItemGroup>
 </Project>

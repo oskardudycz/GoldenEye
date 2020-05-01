@@ -1,0 +1,1240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Repos\GoldenEye\appveyor.yml" t="Include" />
+    <e p="C:\Repos\GoldenEye\assets\GoldenEyeLogo.png" t="Include" />
+    <e p="C:\Repos\GoldenEye\Docker\docker-compose.yml" t="Include" />
+    <e p="C:\Repos\GoldenEye\Docker\postgres\variables.env" t="Include" />
+    <e p="C:\Repos\GoldenEye\LICENSE.txt" t="Include" />
+    <e p="C:\Repos\GoldenEye\Readme.md" t="Include" />
+    <e p="C:\Repos\GoldenEye\src" t="IncludeFlat">
+      <e p="Core" t="Include">
+        <e p="Backend.Core" t="IncludeRecursive">
+          <e p="Backend.Core.csproj" t="IncludeRecursive" />
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Changelog.md" t="Include" />
+          <e p="Context" t="Include">
+            <e p="DataContext.cs" t="Include" />
+            <e p="IDataContext.cs" t="Include" />
+            <e p="SaveChangesHandlers" t="Include">
+              <e p="AuditInfoSaveChangesHandler.cs" t="Include" />
+              <e p="Base" t="Include">
+                <e p="ISaveChangesHandler.cs" t="Include" />
+              </e>
+              <e p="ISaveChangesProcessor.cs" t="Include" />
+              <e p="SaveChangesProcessor.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Entities" t="Include">
+            <e p="AuditableEntity.cs" t="Include" />
+            <e p="EntityBase.cs" t="Include" />
+            <e p="EntityEntry.cs" t="Include" />
+            <e p="IAuditableEntity.cs" t="Include" />
+            <e p="IEntity.cs" t="Include" />
+            <e p="IProvidesAuditInfo.cs" t="Include" />
+          </e>
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netstandard2.0" t="Include">
+                <e p="Backend.Core.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Properties" t="Include" />
+          <e p="Readme.md" t="Include" />
+          <e p="Registration" t="Include">
+            <e p="Registration.cs" t="Include" />
+          </e>
+          <e p="Repositories" t="Include">
+            <e p="IReadonlyRepository.cs" t="Include" />
+            <e p="IRepository.cs" t="Include" />
+            <e p="ReadonlyRepository.cs" t="Include" />
+            <e p="Repository.cs" t="Include" />
+          </e>
+          <e p="Services" t="Include">
+            <e p="IReadonlyService.cs" t="Include" />
+            <e p="IRestService.cs" t="Include" />
+            <e p="ReadonlyRestService.cs" t="Include" />
+            <e p="RestService.cs" t="Include" />
+          </e>
+          <e p="Transactions" t="Include">
+            <e p="IUnitOfWork.cs" t="Include" />
+            <e p="TransactionScopeUnitOfWork.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Backend.Core.Dapper" t="IncludeRecursive">
+          <e p="Backend.Core.Dapper.csproj" t="IncludeRecursive" />
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Changelog.md" t="Include" />
+          <e p="Context" t="Include">
+            <e p="DapperDataContext.cs" t="Include" />
+          </e>
+          <e p="Generators" t="Include">
+            <e p="IDapperSqlGenerator.cs" t="Include" />
+            <e p="MappingsSqlGenerator.cs" t="Include" />
+          </e>
+          <e p="Mappings" t="Include">
+            <e p="IDapperMapping.cs" t="Include" />
+            <e p="Registration.cs" t="Include" />
+          </e>
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netstandard2.0" t="Include">
+                <e p="Backend.Core.Dapper.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Readme.md" t="Include" />
+        </e>
+        <e p="Backend.Core.Dapper.Integration.Tests" t="IncludeRecursive">
+          <e p="Backend.Core.Dapper.Integration.Tests.csproj" t="IncludeRecursive" />
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Changelog.md" t="Include" />
+          <e p="Context" t="Include">
+            <e p="DapperDataContextTests.cs" t="Include" />
+          </e>
+          <e p="Infrastructure" t="Include">
+            <e p="DapperTest.cs" t="Include" />
+          </e>
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netcoreapp2.2" t="Include">
+                <e p="Backend.Core.Dapper.Integration.Tests.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="TestData" t="Include">
+            <e p="Structure.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Backend.Core.Dapper.Tests" t="IncludeRecursive">
+          <e p="Backend.Core.Dapper.Tests.csproj" t="IncludeRecursive" />
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Changelog.md" t="Include" />
+          <e p="Mappings" t="Include">
+            <e p="RegistrationTests.cs" t="Include" />
+          </e>
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netcoreapp2.2" t="Include">
+                <e p="Backend.Core.Dapper.Tests.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
+        <e p="Backend.Core.DDD" t="IncludeRecursive">
+          <e p="Aggregates" t="Include">
+            <e p="IAggregate.cs" t="Include" />
+          </e>
+          <e p="Backend.Core.DDD.csproj" t="IncludeRecursive" />
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Changelog.md" t="Include" />
+          <e p="Commands" t="Include">
+            <e p="CommandBus.cs" t="Include" />
+            <e p="ICommand.cs" t="Include" />
+            <e p="ICommandBus.cs" t="Include" />
+            <e p="ICommandHandler.cs" t="Include" />
+            <e p="Readme.md" t="Include" />
+          </e>
+          <e p="Events" t="Include">
+            <e p="EventBus.cs" t="Include" />
+            <e p="EventSource.cs" t="Include" />
+            <e p="IEvent.cs" t="Include" />
+            <e p="IEventBus.cs" t="Include" />
+            <e p="IEventHandler.cs" t="Include" />
+            <e p="IEventSource.cs" t="Include" />
+            <e p="Store" t="Include">
+              <e p="EventStorePipeline.cs" t="Include" />
+              <e p="IEventStore.cs" t="Include" />
+            </e>
+          </e>
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netstandard2.0" t="Include">
+                <e p="Backend.Core.DDD.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Properties" t="Include" />
+          <e p="Queries" t="Include">
+            <e p="IListQuery.cs" t="Include" />
+            <e p="IQuery.cs" t="Include" />
+            <e p="IQueryBus.cs" t="Include" />
+            <e p="IQueryHandler.cs" t="Include" />
+            <e p="IView.cs" t="Include" />
+            <e p="QueryBus.cs" t="Include" />
+          </e>
+          <e p="Readme.md" t="Include" />
+          <e p="Registration" t="Include">
+            <e p="Readme.md" t="Include" />
+            <e p="Registration.cs" t="Include" />
+          </e>
+          <e p="Validation" t="Include">
+            <e p="ValidationPipeline.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Backend.Core.DDD.Tests" t="IncludeRecursive">
+          <e p="Backend.Core.DDD.Tests.csproj" t="IncludeRecursive" />
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Changelog.md" t="Include" />
+          <e p="Events" t="Include">
+            <e p="Store" t="Include">
+              <e p="EventStore.cs" t="Include" />
+              <e p="EventStorePipelineTests.cs" t="Include" />
+            </e>
+          </e>
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netcoreapp2.2" t="Include">
+                <e p="Backend.Core.DDD.Tests.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Readme.md" t="Include" />
+          <e p="Registration" t="Include">
+            <e p="AllHandlersRegistrationTests.cs" t="Include" />
+            <e p="CommandHandlerRegistrationTests.cs" t="Include" />
+            <e p="EventHandlerRegistrationTests.cs" t="Include" />
+            <e p="QueryHandlerRegistrationTests.cs" t="Include" />
+          </e>
+          <e p="Validation" t="Include">
+            <e p="ValidationPipelineTests.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Backend.Core.DDD.Tests.External" t="IncludeRecursive">
+          <e p="Backend.Core.DDD.Tests.External.csproj" t="IncludeRecursive" />
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Contracts" t="Include">
+            <e p="Commands.cs" t="Include" />
+            <e p="Events.cs" t="Include" />
+            <e p="Queries.cs" t="Include" />
+          </e>
+          <e p="Handlers" t="Include">
+            <e p="CommandHandlers.cs" t="Include" />
+            <e p="EventHandlers.cs" t="Include" />
+            <e p="QueryHandlers.cs" t="Include" />
+          </e>
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netstandard2.0" t="Include">
+                <e p="Backend.Core.DDD.Tests.External.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
+        <e p="Backend.Core.EntityFramework" t="IncludeRecursive">
+          <e p="Backend.Core.EntityFramework.csproj" t="IncludeRecursive" />
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Changelog.md" t="Include" />
+          <e p="Context" t="Include">
+            <e p="DesignTypeDbContextFactoryBase.cs" t="Include" />
+            <e p="EFDataContext.cs" t="Include" />
+          </e>
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netstandard2.0" t="Include">
+                <e p="Backend.Core.EntityFramework.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Readme.md" t="Include" />
+          <e p="Registration" t="Include">
+            <e p="Registration.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Backend.Core.Marten" t="IncludeRecursive">
+          <e p="Backend.Core.Marten.csproj" t="IncludeRecursive" />
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Changelog.md" t="Include" />
+          <e p="Context" t="Include">
+            <e p="MartenDocumentDataContext.cs" t="Include" />
+            <e p="MartenEventSourcedDataContext.cs" t="Include" />
+          </e>
+          <e p="Events" t="Include">
+            <e p="Storage" t="Include">
+              <e p="MartenEventStore.cs" t="Include" />
+            </e>
+          </e>
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netstandard2.0" t="Include">
+                <e p="Backend.Core.Marten.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Readme.md" t="Include" />
+          <e p="Registration" t="Include">
+            <e p="Registration.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Backend.Core.Marten.Tests" t="IncludeRecursive">
+          <e p="Backend.Core.Marten.Tests.csproj" t="IncludeRecursive" />
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Changelog.md" t="Include" />
+          <e p="Events" t="Include">
+            <e p="Storage" t="Include">
+              <e p="MartenEventStoreTests.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Infrastructure" t="Include">
+            <e p="MartenTest.cs" t="Include" />
+          </e>
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netcoreapp2.2" t="Include">
+                <e p="Backend.Core.Marten.Tests.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Readme.md" t="Include" />
+          <e p="Transactions" t="Include">
+            <e p="TransactionScopeUnitOfWorkTests.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Backend.Core.Tests" t="IncludeRecursive">
+          <e p="Backend.Core.Tests.csproj" t="IncludeRecursive" />
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Changelog.md" t="Include" />
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netcoreapp2.2" t="Include">
+                <e p="Backend.Core.Tests.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Readme.md" t="Include" />
+          <e p="Registration" t="Include">
+            <e p="RegistrationTests.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Backend.Core.WebApi" t="IncludeRecursive">
+          <e p="Backend.Core.WebApi.csproj" t="IncludeRecursive" />
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Changelog.md" t="Include" />
+          <e p="Controllers" t="Include">
+            <e p="ReadonlyControllerBase.cs" t="Include" />
+            <e p="RestControllerBase.cs" t="Include" />
+          </e>
+          <e p="Exceptions" t="Include">
+            <e p="ExceptionHandlingMiddleware.cs" t="Include" />
+            <e p="ExceptionToHttpStatusMapper.cs" t="Include" />
+          </e>
+          <e p="Modules" t="Include">
+            <e p="AllowAllCorsModule.cs" t="Include" />
+            <e p="IWebApiModule.cs" t="Include" />
+            <e p="Registration.cs" t="Include" />
+            <e p="SwaggerModule.cs" t="Include" />
+            <e p="WebApiModule.cs" t="Include" />
+          </e>
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netstandard2.0" t="Include">
+                <e p="Backend.Core.WebApi.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Options" t="Include">
+            <e p="HttpsMvcOptions.cs" t="Include" />
+            <e p="HttpsServerOptions.cs" t="Include" />
+          </e>
+          <e p="Readme.md" t="Include" />
+          <e p="Registration" t="Include">
+            <e p="Registration.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Backend.Core.WebApi.Tests" t="IncludeRecursive">
+          <e p="Backend.Core.WebApi.Tests.csproj" t="IncludeRecursive" />
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Changelog.md" t="Include" />
+          <e p="Exceptions" t="Include">
+            <e p="ExceptionHandlingMiddlewareTests.cs" t="Include" />
+            <e p="ExceptionToHttpStatusMapperTests.cs" t="Include" />
+          </e>
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netcoreapp2.2" t="Include">
+                <e p="Backend.Core.WebApi.Tests.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Readme.md" t="Include" />
+        </e>
+        <e p="Dapper" t="Include" />
+        <e p="DDD" t="Include" />
+        <e p="EntityFramework" t="Include" />
+        <e p="Marten" t="Include" />
+        <e p="Shared.Core" t="IncludeRecursive">
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Changelog.md" t="Include" />
+          <e p="Configuration" t="Include">
+            <e p="Registration.cs" t="Include" />
+          </e>
+          <e p="Context" t="Include">
+            <e p="ContextValuesProviderWrapper.cs" t="Include" />
+            <e p="IContextValuesProvider.cs" t="Include" />
+            <e p="UserContext.cs" t="Include" />
+          </e>
+          <e p="Exceptions" t="Include">
+            <e p="HttpExceptionWrapper.cs" t="Include" />
+          </e>
+          <e p="Extensions" t="Include">
+            <e p="Basic" t="Include">
+              <e p="CompareExtensions.cs" t="Include" />
+              <e p="DateRangeExtensions.cs" t="Include" />
+              <e p="DateTimeExtensions.cs" t="Include" />
+              <e p="ObjectExtensions.cs" t="Include" />
+              <e p="StringBuilderExtensions.cs" t="Include" />
+              <e p="StringExtensions.cs" t="Include" />
+            </e>
+            <e p="Collections" t="Include">
+              <e p="CollectionExtensions.cs" t="Include" />
+              <e p="DictionaryExtensions.cs" t="Include" />
+              <e p="EnumerableExtensions.cs" t="Include" />
+              <e p="ListExtensions.cs" t="Include" />
+              <e p="QueryableExtensions.cs" t="Include" />
+            </e>
+            <e p="DependencyInjection" t="Include">
+              <e p="AssemblySelector.cs" t="Include" />
+              <e p="RegistrationExtensions.cs" t="Include" />
+            </e>
+            <e p="Dynamic" t="Include">
+              <e p="DynamicExtensions.cs" t="Include" />
+            </e>
+            <e p="Enums" t="Include">
+              <e p="EnumExtensions.cs" t="Include" />
+            </e>
+            <e p="Exceptions" t="Include">
+              <e p="ExceptionExtensions.cs" t="Include" />
+            </e>
+            <e p="Lambda" t="Include">
+              <e p="ExpressionExtensions.cs" t="Include" />
+              <e p="ParameterRebinder.cs" t="Include" />
+            </e>
+            <e p="Naming" t="Include">
+              <e p="ConventionNamesExtensions.cs" t="Include" />
+            </e>
+            <e p="Reflection" t="Include">
+              <e p="AttributeExtensions.cs" t="Include" />
+              <e p="ReflectionExtensions.cs" t="Include" />
+            </e>
+            <e p="Serialization" t="Include">
+              <e p="SerializationExtensions.cs" t="Include" />
+            </e>
+            <e p="Streams" t="Include">
+              <e p="StreamExtensions.cs" t="Include" />
+            </e>
+          </e>
+          <e p="IOC" t="Include">
+            <e p="Attributes" t="Include">
+              <e p="InjectInRequestScopeAttribute.cs" t="Include" />
+              <e p="InjectInSingletonScopeAttribute.cs" t="Include" />
+              <e p="NotInjectedWithConventionsAttribute.cs" t="Include" />
+            </e>
+            <e p="IIOCContainer.cs" t="Include" />
+            <e p="IOCContainer.cs" t="Include" />
+          </e>
+          <e p="Mappings" t="Include">
+            <e p="IMappingDefinition.cs" t="Include" />
+            <e p="Registration.cs" t="Include" />
+          </e>
+          <e p="Modules" t="Include">
+            <e p="Attributes" t="Include">
+              <e p="InternalModuleAttribute.cs" t="Include" />
+              <e p="ProjectAssemblyAttribute.cs" t="Include" />
+            </e>
+            <e p="IModule.cs" t="Include" />
+            <e p="Module.cs" t="Include" />
+            <e p="Registration.cs" t="Include" />
+          </e>
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netstandard2.0" t="Include">
+                <e p="Shared.Core.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Objects" t="Include">
+            <e p="Audit" t="Include">
+              <e p="IAuditable.cs" t="Include" />
+            </e>
+            <e p="Dates" t="Include">
+              <e p="DateRange.cs" t="Include" />
+              <e p="IDateRange.cs" t="Include" />
+            </e>
+            <e p="DTO" t="Include">
+              <e p="DTOBase.cs" t="Include" />
+              <e p="IDTO.cs" t="Include" />
+              <e p="UserDTO.cs" t="Include" />
+            </e>
+            <e p="General" t="Include">
+              <e p="IHasId.cs" t="Include" />
+              <e p="IHasName.cs" t="Include" />
+              <e p="IHasParent.cs" t="Include" />
+              <e p="ObjectWithIdBase.cs" t="Include" />
+            </e>
+            <e p="Order" t="Include">
+              <e p="IOrderable.cs" t="Include" />
+            </e>
+            <e p="Requests" t="Include">
+              <e p="EmptyRequest.cs" t="Include" />
+              <e p="IEmptyRequest.cs" t="Include" />
+              <e p="IListRequest.cs" t="Include" />
+              <e p="IRequest.cs" t="Include" />
+              <e p="ISingleRequest.cs" t="Include" />
+              <e p="ListRequest.cs" t="Include" />
+              <e p="RequestBase.cs" t="Include" />
+              <e p="SingleRequest.cs" t="Include" />
+            </e>
+            <e p="Responses" t="Include">
+              <e p="EmptyResponse.cs" t="Include" />
+              <e p="IEmptyResponse.cs" t="Include" />
+              <e p="IListResponse.cs" t="Include" />
+              <e p="IResponse.cs" t="Include" />
+              <e p="ISingleResponse.cs" t="Include" />
+              <e p="ListResponse.cs" t="Include" />
+              <e p="ResponseBase.cs" t="Include" />
+              <e p="SingleResponse.cs" t="Include" />
+            </e>
+            <e p="Versioning" t="Include">
+              <e p="IVersioned.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Properties" t="Include" />
+          <e p="Readme.md" t="Include" />
+          <e p="Security" t="Include">
+            <e p="IUserInfo.cs" t="Include" />
+            <e p="IUserInfoProvider.cs" t="Include" />
+            <e p="UserInfoProvider.cs" t="Include" />
+          </e>
+          <e p="Services" t="Include">
+            <e p="IAuthorizationService.cs" t="Include" />
+            <e p="IService.cs" t="Include" />
+          </e>
+          <e p="Shared.Core.csproj" t="IncludeRecursive" />
+          <e p="Utils" t="Include">
+            <e p="Assemblies" t="Include">
+              <e p="AssembliesProvider.cs" t="Include" />
+            </e>
+            <e p="Coding" t="Include">
+              <e p="Switch.cs" t="Include" />
+            </e>
+            <e p="Collections" t="Include">
+              <e p="CollectionToCSVConverter.cs" t="Include" />
+            </e>
+            <e p="Cryptography" t="Include">
+              <e p="Encryption.cs" t="Include" />
+            </e>
+            <e p="Exceptions" t="Include">
+              <e p="ExceptionProvider.cs" t="Include" />
+              <e p="Guard.cs" t="Include" />
+              <e p="IExceptionHandler.cs" t="Include" />
+              <e p="IExceptionProvider.cs" t="Include" />
+            </e>
+            <e p="Lambda" t="Include">
+              <e p="PropertyName.cs" t="Include" />
+            </e>
+            <e p="Localization" t="Include">
+              <e p="DisplayNameLocalizedAttribute.cs" t="Include" />
+              <e p="ILocalizationUtils.cs" t="Include" />
+              <e p="LocalizationUtils.cs" t="Include" />
+              <e p="ResourceQualifiedKey.cs" t="Include" />
+            </e>
+            <e p="MessageBus" t="Include">
+              <e p="IMessage.cs" t="Include" />
+              <e p="IMessageBus.cs" t="Include" />
+              <e p="IMessageHandler.cs" t="Include" />
+              <e p="MessageBus.cs" t="Include" />
+            </e>
+            <e p="Serialization" t="Include">
+              <e p="DateTimeJsonConverter.cs" t="Include" />
+              <e p="JsonSerializer.cs" t="Include" />
+            </e>
+            <e p="Threading" t="Include">
+              <e p="NoSynchronizationContextScope.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Shared.Core.Tests" t="IncludeRecursive">
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Modules" t="Include">
+            <e p="Registration.cs" t="Include" />
+          </e>
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netcoreapp2.2" t="Include">
+                <e p="Shared.Core.Tests.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Shared.Core.Tests.csproj" t="IncludeRecursive" />
+        </e>
+        <e p="Shared.Core.Validation" t="IncludeRecursive">
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Changelog.md" t="Include" />
+          <e p="DTO" t="Include">
+            <e p="IValidatableDTO.cs" t="Include" />
+            <e p="ValidatableDTOBase.cs" t="Include" />
+          </e>
+          <e p="Extensions" t="Include">
+            <e p="ValidationResultExtensions.cs" t="Include" />
+          </e>
+          <e p="IValidatable.cs" t="Include" />
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netstandard2.0" t="Include">
+                <e p="Shared.Core.Validation.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Properties" t="Include" />
+          <e p="Readme.md" t="Include" />
+          <e p="Requests" t="Include">
+            <e p="ValidatableRequestBase.cs" t="Include" />
+          </e>
+          <e p="Responses" t="Include">
+            <e p="IValidatableResponse.cs" t="Include" />
+            <e p="ValidatableResponseBase.cs" t="Include" />
+          </e>
+          <e p="Shared.Core.Validation.csproj" t="IncludeRecursive" />
+          <e p="Validatable.cs" t="Include" />
+          <e p="ValidatableObjectBase.cs" t="Include" />
+          <e p="ValidationEngine.cs" t="Include" />
+          <e p="ValidationExtensions.cs" t="Include" />
+          <e p="Validators" t="Include">
+            <e p="CompositeValidator.cs" t="Include" />
+            <e p="DateRangeValidator.cs" t="Include" />
+            <e p="MustNotValidator.cs" t="Include" />
+            <e p="NestedComponentValidator.cs" t="Include" />
+            <e p="SingleRequestValidator.cs" t="Include" />
+          </e>
+        </e>
+        <e p="WebApi" t="Include" />
+      </e>
+      <e p="Docker" t="Include">
+        <e p="postgres" t="Include" />
+      </e>
+      <e p="Docs" t="Include" />
+      <e p="GoldenEye.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Sample" t="Include">
+        <e p="DDD" t="Include">
+          <e p="Backend.DDD.Sample" t="IncludeRecursive">
+            <e p="Backend.DDD.Sample.csproj" t="IncludeRecursive" />
+            <e p="bin" t="ExcludeRecursive" />
+            <e p="Changelog.md" t="Include" />
+            <e p="Issues" t="Include">
+              <e p="Handlers" t="Include">
+                <e p="IssueCommandHandler.cs" t="Include" />
+                <e p="IssueQueryHandler.cs" t="Include" />
+              </e>
+              <e p="Issue.cs" t="Include" />
+              <e p="Mappings" t="Include">
+                <e p="IssueMappings.cs" t="Include" />
+              </e>
+              <e p="Projections" t="Include">
+                <e p="IssueProjection.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Module.cs" t="Include" />
+            <e p="obj" t="ExcludeRecursive">
+              <e p="Debug" t="Include">
+                <e p="netcoreapp2.2" t="Include">
+                  <e p="Backend.DDD.Sample.AssemblyInfo.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+            <e p="Readme.md" t="Include" />
+          </e>
+          <e p="Backend.DDD.Sample.Contracts" t="IncludeRecursive">
+            <e p="Backend.DDD.Sample.Contracts.csproj" t="IncludeRecursive" />
+            <e p="bin" t="ExcludeRecursive" />
+            <e p="Changelog.md" t="Include" />
+            <e p="Issues" t="Include">
+              <e p="Commands" t="Include">
+                <e p="CreateIssue.cs" t="Include" />
+              </e>
+              <e p="Events" t="Include">
+                <e p="IssueCreated.cs" t="Include" />
+              </e>
+              <e p="IssueType.cs" t="Include" />
+              <e p="Queries" t="Include">
+                <e p="GetIssue.cs" t="Include" />
+                <e p="GetIssues.cs" t="Include" />
+              </e>
+              <e p="Views" t="Include">
+                <e p="IssueView.cs" t="Include" />
+              </e>
+            </e>
+            <e p="obj" t="ExcludeRecursive">
+              <e p="Debug" t="Include">
+                <e p="netstandard2.0" t="Include">
+                  <e p="Backend.DDD.Sample.Contracts.AssemblyInfo.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+            <e p="Readme.md" t="Include" />
+          </e>
+          <e p="Backend.DDD.Sample.IntegrationTests" t="IncludeRecursive">
+            <e p="Backend.DDD.Sample.IntegrationTests.csproj" t="IncludeRecursive" />
+            <e p="bin" t="ExcludeRecursive" />
+            <e p="Changelog.md" t="Include" />
+            <e p="Infrastructure" t="Include">
+              <e p="TestContext.cs" t="Include" />
+            </e>
+            <e p="Issues" t="Include">
+              <e p="IssueTests.cs" t="Include" />
+            </e>
+            <e p="obj" t="ExcludeRecursive">
+              <e p="Debug" t="Include">
+                <e p="netcoreapp2.2" t="Include">
+                  <e p="Backend.DDD.Sample.IntegrationTests.AssemblyInfo.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+            <e p="Readme.md" t="Include" />
+          </e>
+          <e p="Backend.DDD.WebApi.Sample" t="IncludeRecursive">
+            <e p="appsettings.Development.json" t="Include" />
+            <e p="appsettings.json" t="Include" />
+            <e p="Backend.DDD.WebApi.Sample.csproj" t="IncludeRecursive" />
+            <e p="bin" t="ExcludeRecursive" />
+            <e p="Changelog.md" t="Include" />
+            <e p="Controllers" t="Include">
+              <e p="IssuesController.cs" t="Include" />
+            </e>
+            <e p="obj" t="ExcludeRecursive">
+              <e p="Debug" t="Include">
+                <e p="netcoreapp2.2" t="Include">
+                  <e p="Backend.DDD.WebApi.Sample.AssemblyInfo.cs" t="Include" />
+                  <e p="Backend.DDD.WebApi.Sample.RazorAssemblyInfo.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+            <e p="Program.cs" t="Include" />
+            <e p="Properties" t="Include">
+              <e p="launchSettings.json" t="Include" />
+            </e>
+            <e p="Readme.md" t="Include" />
+            <e p="Startup.cs" t="Include" />
+            <e p="wwwroot" t="Include" />
+          </e>
+        </e>
+        <e p="GoldenEye.WebApi.Sample" t="IncludeRecursive">
+          <e p="appsettings.Development.json" t="Include" />
+          <e p="appsettings.json" t="Include" />
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Controllers" t="Include">
+            <e p="ValuesController.cs" t="Include" />
+          </e>
+          <e p="GoldenEye.WebApi.Sample.csproj" t="IncludeRecursive" />
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netcoreapp2.2" t="Include">
+                <e p="GoldenEye.WebApi.Sample.AssemblyInfo.cs" t="Include" />
+                <e p="GoldenEye.WebApi.Sample.RazorAssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Program.cs" t="Include" />
+          <e p="Properties" t="Include">
+            <e p="launchSettings.json" t="Include" />
+          </e>
+          <e p="Startup.cs" t="Include" />
+          <e p="wwwroot" t="Include" />
+        </e>
+        <e p="Security" t="Include">
+          <e p="Backend.Identity.Sample" t="IncludeRecursive">
+            <e p="addMigrations.bat" t="Include" />
+            <e p="appsettings.Development.json" t="Include" />
+            <e p="appsettings.json" t="Include" />
+            <e p="Backend.Identity.Sample.csproj" t="IncludeRecursive" />
+            <e p="bin" t="ExcludeRecursive" />
+            <e p="Controllers" t="Include">
+              <e p="ValuesController.cs" t="Include" />
+            </e>
+            <e p="DesignDbContextFactories.cs" t="Include" />
+            <e p="Migrations" t="Include">
+              <e p="20171121203647_InitialIdentityServerMigration.cs" t="Include" />
+              <e p="20171121203647_InitialIdentityServerMigration.Designer.cs" t="Include" />
+              <e p="ApplicationDb" t="Include">
+                <e p="20171216204146_InitialIdentityServerMigration.cs" t="Include" />
+                <e p="20171216204146_InitialIdentityServerMigration.Designer.cs" t="Include" />
+                <e p="ApplicationDbContextModelSnapshot.cs" t="Include" />
+              </e>
+              <e p="ConfigurationDb" t="Include">
+                <e p="20171121203832_InitialIdentityServerMigration.cs" t="Include" />
+                <e p="20171121203832_InitialIdentityServerMigration.Designer.cs" t="Include" />
+                <e p="ConfigurationDbContextModelSnapshot.cs" t="Include" />
+              </e>
+              <e p="PersistedGrantDbContextModelSnapshot.cs" t="Include" />
+            </e>
+            <e p="obj" t="ExcludeRecursive">
+              <e p="Debug" t="Include">
+                <e p="netcoreapp2.2" t="Include">
+                  <e p="Backend.Identity.Sample.AssemblyInfo.cs" t="Include" />
+                  <e p="Backend.Identity.Sample.RazorAssemblyInfo.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+            <e p="Program.cs" t="Include" />
+            <e p="Properties" t="Include">
+              <e p="launchSettings.json" t="Include" />
+            </e>
+            <e p="Quickstart" t="Include">
+              <e p="Account" t="Include">
+                <e p="AccountController.cs" t="Include" />
+                <e p="AccountOptions.cs" t="Include" />
+                <e p="AccountService.cs" t="Include" />
+                <e p="ExternalProvider.cs" t="Include" />
+                <e p="LoggedOutViewModel.cs" t="Include" />
+                <e p="LoginInputModel.cs" t="Include" />
+                <e p="LoginViewModel.cs" t="Include" />
+                <e p="LogoutInputModel.cs" t="Include" />
+                <e p="LogoutViewModel.cs" t="Include" />
+              </e>
+              <e p="Consent" t="Include">
+                <e p="ConsentController.cs" t="Include" />
+                <e p="ConsentInputModel.cs" t="Include" />
+                <e p="ConsentOptions.cs" t="Include" />
+                <e p="ConsentService.cs" t="Include" />
+                <e p="ConsentViewModel.cs" t="Include" />
+                <e p="ProcessConsentResult.cs" t="Include" />
+                <e p="ScopeViewModel.cs" t="Include" />
+              </e>
+              <e p="Grants" t="Include">
+                <e p="GrantsController.cs" t="Include" />
+                <e p="GrantsViewModel.cs" t="Include" />
+              </e>
+              <e p="Home" t="Include">
+                <e p="ErrorViewModel.cs" t="Include" />
+                <e p="HomeController.cs" t="Include" />
+              </e>
+              <e p="SecurityHeadersAttribute.cs" t="Include" />
+              <e p="TestUsers.cs" t="Include" />
+            </e>
+            <e p="Readme.md" t="Include" />
+            <e p="Startup.cs" t="Include" />
+            <e p="tempkey.rsa" t="Include" />
+            <e p="Views" t="Include">
+              <e p="_ViewImports.cshtml" t="Include" />
+              <e p="_ViewStart.cshtml" t="Include" />
+              <e p="Account" t="Include">
+                <e p="LoggedOut.cshtml" t="Include" />
+                <e p="Login.cshtml" t="Include" />
+                <e p="Logout.cshtml" t="Include" />
+              </e>
+              <e p="Consent" t="Include">
+                <e p="_ScopeListItem.cshtml" t="Include" />
+                <e p="Index.cshtml" t="Include" />
+              </e>
+              <e p="Grants" t="Include">
+                <e p="Index.cshtml" t="Include" />
+              </e>
+              <e p="Home" t="Include">
+                <e p="Index.cshtml" t="Include" />
+              </e>
+              <e p="Shared" t="Include">
+                <e p="_Layout.cshtml" t="Include" />
+                <e p="_ValidationSummary.cshtml" t="Include" />
+                <e p="Error.cshtml" t="Include" />
+              </e>
+            </e>
+            <e p="wwwroot" t="Include">
+              <e p="css" t="Include">
+                <e p="site.css" t="Include" />
+                <e p="site.less" t="Include" />
+                <e p="site.min.css" t="Include" />
+              </e>
+              <e p="favicon.ico" t="Include" />
+              <e p="icon.jpg" t="Include" />
+              <e p="icon.png" t="Include" />
+              <e p="js" t="Include">
+                <e p="signout-redirect.js" t="Include" />
+              </e>
+              <e p="lib" t="Include">
+                <e p="bootstrap" t="Include">
+                  <e p="css" t="Include">
+                    <e p="bootstrap.css" t="Include" />
+                    <e p="bootstrap.css.map" t="Include" />
+                    <e p="bootstrap.min.css" t="Include" />
+                  </e>
+                  <e p="fonts" t="Include">
+                    <e p="glyphicons-halflings-regular.eot" t="Include" />
+                    <e p="glyphicons-halflings-regular.svg" t="Include" />
+                    <e p="glyphicons-halflings-regular.ttf" t="Include" />
+                    <e p="glyphicons-halflings-regular.woff" t="Include" />
+                    <e p="glyphicons-halflings-regular.woff2" t="Include" />
+                  </e>
+                  <e p="js" t="Include">
+                    <e p="bootstrap.js" t="Include" />
+                    <e p="bootstrap.min.js" t="Include" />
+                  </e>
+                </e>
+                <e p="jquery" t="Include">
+                  <e p="jquery.js" t="Include" />
+                  <e p="jquery.min.js" t="Include" />
+                  <e p="jquery.min.map" t="Include" />
+                </e>
+              </e>
+            </e>
+          </e>
+          <e p="Frontend.Identity.Sample" t="IncludeRecursive">
+            <e p=".bowerrc" t="Include" />
+            <e p="appsettings.Development.json" t="Include" />
+            <e p="appsettings.json" t="Include" />
+            <e p="bin" t="ExcludeRecursive" />
+            <e p="bower.json" t="Include" />
+            <e p="bundleconfig.json" t="Include" />
+            <e p="Controllers" t="Include">
+              <e p="HomeController.cs" t="Include" />
+            </e>
+            <e p="Frontend.Identity.Sample.csproj" t="IncludeRecursive" />
+            <e p="Models" t="Include">
+              <e p="ErrorModel.cs" t="Include" />
+            </e>
+            <e p="obj" t="ExcludeRecursive">
+              <e p="Debug" t="Include">
+                <e p="netcoreapp2.2" t="Include">
+                  <e p="Frontend.Identity.Sample.AssemblyInfo.cs" t="Include" />
+                  <e p="Frontend.Identity.Sample.RazorAssemblyInfo.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+            <e p="Program.cs" t="Include" />
+            <e p="Properties" t="Include">
+              <e p="launchSettings.json" t="Include" />
+            </e>
+            <e p="Readme.md" t="Include" />
+            <e p="Startup.cs" t="Include" />
+            <e p="Views" t="Include">
+              <e p="_ViewImports.cshtml" t="Include" />
+              <e p="_ViewStart.cshtml" t="Include" />
+              <e p="Home" t="Include">
+                <e p="About.cshtml" t="Include" />
+                <e p="Contact.cshtml" t="Include" />
+                <e p="Index.cshtml" t="Include" />
+              </e>
+              <e p="Shared" t="Include">
+                <e p="_Layout.cshtml" t="Include" />
+                <e p="_ValidationScriptsPartial.cshtml" t="Include" />
+                <e p="Error.cshtml" t="Include" />
+              </e>
+            </e>
+            <e p="wwwroot" t="Include">
+              <e p="css" t="Include">
+                <e p="site.css" t="Include" />
+                <e p="site.min.css" t="Include" />
+              </e>
+              <e p="favicon.ico" t="Include" />
+              <e p="images" t="Include">
+                <e p="banner1.svg" t="Include" />
+                <e p="banner2.svg" t="Include" />
+                <e p="banner3.svg" t="Include" />
+                <e p="banner4.svg" t="Include" />
+              </e>
+              <e p="js" t="Include">
+                <e p="site.js" t="Include" />
+                <e p="site.min.js" t="Include" />
+              </e>
+              <e p="lib" t="Include">
+                <e p="bootstrap" t="Include">
+                  <e p=".bower.json" t="Include" />
+                  <e p="dist" t="Include">
+                    <e p="css" t="Include">
+                      <e p="bootstrap-theme.css" t="Include" />
+                      <e p="bootstrap-theme.css.map" t="Include" />
+                      <e p="bootstrap-theme.min.css.map" t="Include" />
+                      <e p="bootstrap.css" t="Include" />
+                      <e p="bootstrap.css.map" t="Include" />
+                      <e p="bootstrap.min.css.map" t="Include" />
+                    </e>
+                    <e p="fonts" t="Include">
+                      <e p="glyphicons-halflings-regular.eot" t="Include" />
+                      <e p="glyphicons-halflings-regular.svg" t="Include" />
+                      <e p="glyphicons-halflings-regular.ttf" t="Include" />
+                      <e p="glyphicons-halflings-regular.woff" t="Include" />
+                      <e p="glyphicons-halflings-regular.woff2" t="Include" />
+                    </e>
+                    <e p="js" t="Include">
+                      <e p="bootstrap.js" t="Include" />
+                      <e p="npm.js" t="Include" />
+                    </e>
+                  </e>
+                  <e p="LICENSE" t="Include" />
+                </e>
+                <e p="jquery" t="Include">
+                  <e p=".bower.json" t="Include" />
+                  <e p="dist" t="Include">
+                    <e p="jquery.js" t="Include" />
+                    <e p="jquery.min.map" t="Include" />
+                  </e>
+                  <e p="LICENSE.txt" t="Include" />
+                </e>
+                <e p="jquery-validation" t="Include">
+                  <e p=".bower.json" t="Include" />
+                  <e p="dist" t="Include">
+                    <e p="additional-methods.js" t="Include" />
+                    <e p="jquery.validate.js" t="Include" />
+                  </e>
+                  <e p="LICENSE.md" t="Include" />
+                </e>
+                <e p="jquery-validation-unobtrusive" t="Include">
+                  <e p=".bower.json" t="Include" />
+                  <e p="jquery.validate.unobtrusive.js" t="Include" />
+                  <e p="jquery.validate.unobtrusive.min.js" t="Include" />
+                </e>
+              </e>
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="Security" t="Include">
+        <e p="Backend.Identity" t="IncludeRecursive">
+          <e p="Backend.Identity.csproj" t="IncludeRecursive" />
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Changelog.md" t="Include" />
+          <e p="Clients" t="Include">
+            <e p="Tests" t="Include">
+              <e p="TestClients.cs" t="Include" />
+              <e p="TestResources.cs" t="Include" />
+              <e p="TestUsers.cs" t="Include" />
+            </e>
+          </e>
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netstandard2.0" t="Include">
+                <e p="Backend.Identity.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Readme.md" t="Include" />
+          <e p="Registration.cs" t="Include" />
+          <e p="Storage" t="Include">
+            <e p="ApplicationDbContext.cs" t="Include" />
+            <e p="ConfigurationDbContext.cs" t="Include" />
+            <e p="PersistedGrantDbContext.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Frontend.Identity" t="IncludeRecursive">
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Changelog.md" t="Include" />
+          <e p="Frontend.Identity.csproj" t="IncludeRecursive" />
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netstandard2.0" t="Include">
+                <e p="Frontend.Identity.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Quickstart" t="Include">
+            <e p="Account" t="Include">
+              <e p="AccountController.cs" t="Include" />
+              <e p="AccountOptions.cs" t="Include" />
+              <e p="AccountService.cs" t="Include" />
+              <e p="ExternalProvider.cs" t="Include" />
+              <e p="LoggedOutViewModel.cs" t="Include" />
+              <e p="LoginInputModel.cs" t="Include" />
+              <e p="LoginViewModel.cs" t="Include" />
+              <e p="LogoutInputModel.cs" t="Include" />
+              <e p="LogoutViewModel.cs" t="Include" />
+            </e>
+            <e p="Consent" t="Include">
+              <e p="ConsentController.cs" t="Include" />
+              <e p="ConsentInputModel.cs" t="Include" />
+              <e p="ConsentOptions.cs" t="Include" />
+              <e p="ConsentService.cs" t="Include" />
+              <e p="ConsentViewModel.cs" t="Include" />
+              <e p="ProcessConsentResult.cs" t="Include" />
+              <e p="ScopeViewModel.cs" t="Include" />
+            </e>
+            <e p="Grants" t="Include">
+              <e p="GrantsController.cs" t="Include" />
+              <e p="GrantsViewModel.cs" t="Include" />
+            </e>
+            <e p="Home" t="Include">
+              <e p="ErrorViewModel.cs" t="Include" />
+              <e p="HomeController.cs" t="Include" />
+            </e>
+            <e p="SecurityHeadersAttribute.cs" t="Include" />
+            <e p="TestUsers.cs" t="Include" />
+          </e>
+          <e p="Readme.md" t="Include" />
+          <e p="Registration" t="Include">
+            <e p="Registration.cs" t="Include" />
+          </e>
+          <e p="Views" t="Include">
+            <e p="_ViewImports.cshtml" t="Include" />
+            <e p="_ViewStart.cshtml" t="Include" />
+            <e p="Account" t="Include">
+              <e p="LoggedOut.cshtml" t="Include" />
+              <e p="Login.cshtml" t="Include" />
+              <e p="Logout.cshtml" t="Include" />
+            </e>
+            <e p="Consent" t="Include">
+              <e p="_ScopeListItem.cshtml" t="Include" />
+              <e p="Index.cshtml" t="Include" />
+            </e>
+            <e p="Grants" t="Include">
+              <e p="Index.cshtml" t="Include" />
+            </e>
+            <e p="Home" t="Include">
+              <e p="Index.cshtml" t="Include" />
+            </e>
+            <e p="Shared" t="Include">
+              <e p="_Layout.cshtml" t="Include" />
+              <e p="_ValidationSummary.cshtml" t="Include" />
+              <e p="Error.cshtml" t="Include" />
+            </e>
+          </e>
+          <e p="wwwroot" t="Include">
+            <e p="css" t="Include">
+              <e p="site.css" t="Include" />
+              <e p="site.less" t="Include" />
+              <e p="site.min.css" t="Include" />
+            </e>
+            <e p="favicon.ico" t="Include" />
+            <e p="icon.jpg" t="Include" />
+            <e p="icon.png" t="Include" />
+            <e p="js" t="Include">
+              <e p="signout-redirect.js" t="Include" />
+            </e>
+            <e p="lib" t="Include">
+              <e p="bootstrap" t="Include">
+                <e p="css" t="Include">
+                  <e p="bootstrap.css" t="Include" />
+                  <e p="bootstrap.css.map" t="Include" />
+                  <e p="bootstrap.min.css" t="Include" />
+                </e>
+                <e p="fonts" t="Include">
+                  <e p="glyphicons-halflings-regular.eot" t="Include" />
+                  <e p="glyphicons-halflings-regular.svg" t="Include" />
+                  <e p="glyphicons-halflings-regular.ttf" t="Include" />
+                  <e p="glyphicons-halflings-regular.woff" t="Include" />
+                  <e p="glyphicons-halflings-regular.woff2" t="Include" />
+                </e>
+                <e p="js" t="Include">
+                  <e p="bootstrap.js" t="Include" />
+                  <e p="bootstrap.min.js" t="Include" />
+                </e>
+              </e>
+              <e p="jquery" t="Include">
+                <e p="jquery.js" t="Include" />
+                <e p="jquery.min.js" t="Include" />
+                <e p="jquery.min.map" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
+        <e p="Shared.Security" t="IncludeRecursive">
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Changelog.md" t="Include" />
+          <e p="Clients" t="Include" />
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netstandard2.0" t="Include">
+                <e p="Shared.Security.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Readme.md" t="Include" />
+          <e p="Shared.Security.csproj" t="IncludeRecursive" />
+          <e p="Users" t="Include" />
+        </e>
+      </e>
+      <e p="Solution Items" t="Include" />
+      <e p="Templates" t="Include">
+        <e p="SimpleDDD" t="Include">
+          <e p="content" t="IncludeRecursive">
+            <e p="appsettings.Development.json" t="Include" />
+            <e p="appsettings.json" t="Include" />
+            <e p="Backend" t="Include">
+              <e p="Issues" t="Include">
+                <e p="Handlers" t="Include">
+                  <e p="IssueCommandHandler.cs" t="Include" />
+                  <e p="IssueQueryHandler.cs" t="Include" />
+                </e>
+                <e p="Issue.cs" t="Include" />
+                <e p="Mappings" t="Include">
+                  <e p="IssueMappings.cs" t="Include" />
+                </e>
+                <e p="Projections" t="Include">
+                  <e p="IssueProjection.cs" t="Include" />
+                </e>
+              </e>
+              <e p="Module.cs" t="Include" />
+            </e>
+            <e p="bin" t="ExcludeRecursive" />
+            <e p="Changelog.md" t="Include" />
+            <e p="Contracts" t="Include">
+              <e p="Issues" t="Include">
+                <e p="Commands" t="Include">
+                  <e p="CreateIssue.cs" t="Include" />
+                  <e p="DeleteIssue.cs" t="Include" />
+                  <e p="UpdateIssue.cs" t="Include" />
+                </e>
+                <e p="Events" t="Include">
+                  <e p="IssueCreated.cs" t="Include" />
+                  <e p="IssueDeleted.cs" t="Include" />
+                  <e p="IssueUpdated.cs" t="Include" />
+                </e>
+                <e p="IssueType.cs" t="Include" />
+                <e p="Queries" t="Include">
+                  <e p="GetIssue.cs" t="Include" />
+                  <e p="GetIssues.cs" t="Include" />
+                </e>
+                <e p="Views" t="Include">
+                  <e p="IssueView.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+            <e p="Controllers" t="Include">
+              <e p="IssuesController.cs" t="Include" />
+            </e>
+            <e p="GoldenEye.WebApi.Template.SimpleDDD.csproj" t="IncludeRecursive" />
+            <e p="obj" t="ExcludeRecursive">
+              <e p="Debug" t="Include">
+                <e p="netcoreapp2.2" t="Include">
+                  <e p="GoldenEye.WebApi.Template.SimpleDDD.AssemblyInfo.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+            <e p="Program.cs" t="Include" />
+            <e p="Properties" t="Include">
+              <e p="launchSettings.json" t="Include" />
+            </e>
+            <e p="Readme.md" t="Include" />
+            <e p="Startup.cs" t="Include" />
+          </e>
+          <e p="IntegrationTests" t="IncludeRecursive">
+            <e p="bin" t="ExcludeRecursive" />
+            <e p="Infrastructure" t="Include">
+              <e p="TestContext.cs" t="Include" />
+            </e>
+            <e p="Issues" t="Include">
+              <e p="IssueTests.cs" t="Include" />
+            </e>
+            <e p="obj" t="ExcludeRecursive">
+              <e p="Debug" t="Include">
+                <e p="netcoreapp2.2" t="Include">
+                  <e p="WebApi.Template.SimpleDDD.IntegrationTests.AssemblyInfo.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+            <e p="WebApi.Template.SimpleDDD.IntegrationTests.csproj" t="IncludeRecursive" />
+          </e>
+          <e p="Templates.nuspec" t="Include" />
+        </e>
+      </e>
+    </e>
+    <e p="C:\Users\oskar\.nuget\packages\microsoft.net.test.sdk\16.2.0\build\netcoreapp1.0" t="Include">
+      <e p="Microsoft.NET.Test.Sdk.Program.cs" t="Include" />
+    </e>
+    <e p="C:\Users\oskar\.nuget\packages\xunit.runner.visualstudio\2.4.1\build\netcoreapp1.0\xunit.runner.reporters.netcoreapp10.dll" t="Include" />
+    <e p="C:\Users\oskar\.nuget\packages\xunit.runner.visualstudio\2.4.1\build\netcoreapp1.0\xunit.runner.utility.netcoreapp10.dll" t="Include" />
+    <e p="C:\Users\oskar\.nuget\packages\xunit.runner.visualstudio\2.4.1\build\netcoreapp1.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll" t="Include" />
+    <e p="C:\Users\oskar\.Rider2019.3\config\consoles\db" t="IncludeRecursive" />
+    <e p="C:\Users\oskar\.Rider2019.3\config\Extensions" t="IncludeRecursive" />
+    <e p="C:\Users\oskar\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\oskar\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_GoldenEye.1494035094.00" t="ExcludeRecursive" />
+  </component>
+</project>

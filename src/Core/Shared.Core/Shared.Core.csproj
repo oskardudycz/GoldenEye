@@ -16,7 +16,7 @@
     <AssemblyName>GoldenEye.Shared.Core</AssemblyName>
     <RootNamespace>GoldenEye.Shared.Core</RootNamespace>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <PackageIconUrl>https://raw.githubusercontent.com/oskardudycz/GoldenEye/master/assets/GoldenEyeLogo.png</PackageIconUrl>
+    <PackageIcon>GoldenEyeLogo.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -57,5 +57,9 @@
 
   <ItemGroup>
     <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="../../../assets/GoldenEyeLogo.png" Visible="false" Pack="true" PackagePath=""/>
   </ItemGroup>
 </Project>

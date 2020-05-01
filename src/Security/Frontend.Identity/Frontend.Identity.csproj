@@ -16,7 +16,7 @@
         <AssemblyName>GoldenEye.Frontend.Identity</AssemblyName>
         <RootNamespace>GoldenEye.Frontend.Identity</RootNamespace>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-        <PackageIconUrl>https://raw.githubusercontent.com/oskardudycz/GoldenEye/master/assets/GoldenEyeLogo.png</PackageIconUrl>
+        <PackageIcon>GoldenEyeLogo.png</PackageIcon>
     </PropertyGroup>
 
     <ItemGroup>
@@ -30,5 +30,9 @@
         <ProjectReference Include="..\..\Core\Backend.Core.WebApi\Backend.Core.WebApi.csproj" />
         <ProjectReference Include="..\..\Core\Shared.Core\Shared.Core.csproj" />
         <ProjectReference Include="..\Shared.Security\Shared.Security.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="../../../assets/GoldenEyeLogo.png" Visible="false" Pack="true" PackagePath=""/>
     </ItemGroup>
 </Project>

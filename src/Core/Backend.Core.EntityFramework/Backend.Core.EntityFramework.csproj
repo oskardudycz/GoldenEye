@@ -16,7 +16,7 @@
         <AssemblyName>GoldenEye.Backend.Core.EntityFramework</AssemblyName>
         <RootNamespace>GoldenEye.Backend.Core.EntityFramework</RootNamespace>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-        <PackageIconUrl>https://raw.githubusercontent.com/oskardudycz/GoldenEye/master/assets/GoldenEyeLogo.png</PackageIconUrl>
+        <PackageIcon>GoldenEyeLogo.png</PackageIcon>
     </PropertyGroup>
 
     <ItemGroup>
@@ -34,5 +34,9 @@
 
     <ItemGroup>
         <ProjectReference Include="..\Backend.Core\Backend.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="../../../assets/GoldenEyeLogo.png" Visible="false" Pack="true" PackagePath=""/>
     </ItemGroup>
 </Project>
