@@ -29,9 +29,9 @@ namespace GoldenEye.Backend.Core.DDD.Events.Store
 
         Task<TEntity> AggregateAsync<TEntity>(Guid streamId, CancellationToken cancellationToken = default(CancellationToken), int version = 0, DateTime? timestamp = null) where TEntity : class, new();
 
-        TEvent GetById<TEvent>(Guid id) where TEvent : class, IEvent, IHaveGuidId;
+        TEvent FindById<TEvent>(Guid id) where TEvent : class, IEvent, IHaveGuidId;
 
-        Task<TEvent> GetByIdAsync<TEvent>(Guid id, CancellationToken cancellationToken = default(CancellationToken)) where TEvent : class, IEvent, IHaveGuidId;
+        Task<TEvent> FindByIdAsync<TEvent>(Guid id, CancellationToken cancellationToken = default(CancellationToken)) where TEvent : class, IEvent, IHaveGuidId;
 
         IList<IEvent> Query(Guid? streamId = null, int? version = null, DateTime? timestamp = null);
 

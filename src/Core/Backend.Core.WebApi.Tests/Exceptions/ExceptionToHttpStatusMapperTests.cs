@@ -14,10 +14,9 @@ namespace Backend.Core.WebApi.Tests.Exceptions
         public void GivenArgumentExceptions_WhenMapped_ThenReturnsBadRequestHttpStatusWithProperMessage()
         {
             //Given
-            const string message = "Message";
-            var argumentException = new ArgumentException(message);
-            var argumentNullException = new ArgumentNullException(message);
-            var argumentOutOfRangeException = new ArgumentOutOfRangeException(message);
+            var argumentException = new ArgumentException();
+            var argumentNullException = new ArgumentNullException();
+            var argumentOutOfRangeException = new ArgumentOutOfRangeException();
 
             var exceptions = new Exception[] { argumentException, argumentNullException, argumentOutOfRangeException };
 
@@ -28,7 +27,6 @@ namespace Backend.Core.WebApi.Tests.Exceptions
 
                 //Then
                 codeInfo.Code.Should().Be(HttpStatusCode.BadRequest);
-                codeInfo.Message.Should().Be(message);
             }
         }
 

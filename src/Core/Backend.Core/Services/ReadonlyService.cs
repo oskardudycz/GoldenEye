@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -6,28 +5,27 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using GoldenEye.Backend.Core.Entity;
 using GoldenEye.Backend.Core.Repositories;
-using GoldenEye.Shared.Core.Objects.DTO;
 
 namespace GoldenEye.Backend.Core.Services
 {
-    public class ReadonlyService<TDTO, TEntity, TRepository>: ReadonlyService<TDTO, TEntity>
-        where TDTO : class, IDTO
+    public class ReadonlyService<TDto, TEntity, TRepository>: ReadonlyService<TDto, TEntity>
+        where TDto : class
         where TEntity : class, IEntity
         where TRepository : IReadonlyRepository<TEntity>
     {
         protected ReadonlyService(
             TRepository repository,
             IMapper mapper
-        ) : base(repository, mapper)
+        ): base(repository, mapper)
         {
         }
     }
 
-    public class ReadonlyService<TDto, TEntity>: IReadonlyService<TDto> where TDto : class, IDTO where TEntity : class, IEntity
+    public class ReadonlyService<TDto, TEntity>: IReadonlyService<TDto>
+        where TDto : class where TEntity : class, IEntity
     {
-        protected readonly IReadonlyRepository<TEntity> Repository;
         protected readonly IMapper Mapper;
-        protected IConfigurationProvider ConfigurationProvider => Mapper.ConfigurationProvider;
+        protected readonly IReadonlyRepository<TEntity> Repository;
 
         protected ReadonlyService(
             IReadonlyRepository<TEntity> repository,
@@ -38,14 +36,16 @@ namespace GoldenEye.Backend.Core.Services
             Mapper = mapper;
         }
 
+        protected IConfigurationProvider ConfigurationProvider => Mapper.ConfigurationProvider;
+
         public virtual IQueryable<TDto> Query()
         {
             return Repository.Query().ProjectTo<TDto>(ConfigurationProvider);
         }
 
-        public virtual async Task<TDto> GetAsync(int id, CancellationToken cancellationToken = default)
+        public virtual async Task<TDto> GetAsync(object id, CancellationToken cancellationToken = default)
         {
-            var entity = await Repository.GetByIdAsync(id);
+            var entity = await Repository.GetByIdAsync(id, cancellationToken);
             return Mapper.Map<TDto>(entity);
         }
     }

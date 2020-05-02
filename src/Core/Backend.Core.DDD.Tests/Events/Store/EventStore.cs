@@ -84,7 +84,7 @@ namespace Backend.Core.DDD.Tests.Events.Store
                 return Task.FromResult<IList<TEvent>>(Query(streamId, version, timestamp).OfType<TEvent>().ToList());
             }
 
-            TEvent IEventStore.GetById<TEvent>(Guid id)
+            TEvent IEventStore.FindById<TEvent>(Guid id)
             {
                 throw new NotImplementedException();
             }
@@ -104,7 +104,7 @@ namespace Backend.Core.DDD.Tests.Events.Store
                 throw new NotImplementedException();
             }
 
-            Task<TEvent> IEventStore.GetByIdAsync<TEvent>(Guid id, CancellationToken cancellationToken)
+            Task<TEvent> IEventStore.FindByIdAsync<TEvent>(Guid id, CancellationToken cancellationToken)
             {
                 throw new NotImplementedException();
             }

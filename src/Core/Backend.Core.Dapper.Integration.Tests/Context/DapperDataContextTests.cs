@@ -33,7 +33,7 @@ namespace Backend.Core.Dapper.Integration.Tests.Context
 
             //2. GetById
 
-            var recordFromDb = dataContext.GetById<User>(user.Id);
+            var recordFromDb = dataContext.FindById<User>(user.Id);
 
             recordFromDb.Should().BeEquivalentTo(result);
 
@@ -52,7 +52,7 @@ namespace Backend.Core.Dapper.Integration.Tests.Context
             result.UserName.Should().Be("tom.smith@mail.com");
             result.FullName.Should().Be("Tom Smith");
 
-            recordFromDb = dataContext.GetById<User>(userToUpdate.Id);
+            recordFromDb = dataContext.FindById<User>(userToUpdate.Id);
 
             recordFromDb.Should().BeEquivalentTo(result);
 
@@ -64,7 +64,7 @@ namespace Backend.Core.Dapper.Integration.Tests.Context
             result.UserName.Should().Be("tom.smith@mail.com");
             result.FullName.Should().Be("Tom Smith");
 
-            recordFromDb = dataContext.GetById<User>(userToUpdate.Id);
+            recordFromDb = dataContext.FindById<User>(userToUpdate.Id);
 
             recordFromDb.Should().Be(null);
 

@@ -25,44 +25,16 @@ namespace Backend.DDD.WebApi.Sample
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers()
-                .AddNewtonsoftJson(opt => opt.SerializerSettings.Converters.Add(new StringEnumConverter()));
             services.AddDDD()
                 .AddAllDDDHandlers()
                 .AddAutoMapperForAllDependencies()
-                .AddConfiguration(Configuration)
-                .AddAllApplicationModules()
-                .AddModule<AllowAllCorsModule>()
-                .AddModule<SwaggerModule>()
-                .AddCors(options =>
-                {
-                    options.AddPolicy("CorsPolicy",
-                        builder =>
-                        builder.AllowAnyOrigin()
-                        .AllowAnyMethod()
-                        .AllowAnyHeader()
-                        .AllowCredentials()
-                    );
-                });
+                .AddWebApiWithDefaultConfig(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
-            app.UseRouting()
-                .UseAuthorization()
-                .UseEndpoints(endpoints =>
-                {
-                    endpoints.MapControllers();
-                })
-                .UseExceptionHandlingMiddleware()
-                .UseModules(env)
-                .UseCors("CorsPolicy");
+            app.UseWebApiWithDefaultConfig(env);
         }
     }
 }

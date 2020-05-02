@@ -70,7 +70,7 @@ namespace GoldenEye.Backend.Core.Dapper.Context
             GC.SuppressFinalize(this);
         }
 
-        public TEntity GetById<TEntity>(object id) where TEntity : class, new()
+        public TEntity FindById<TEntity>(object id) where TEntity : class, new()
         {
             var sql = dapperSqlGenerator?.GetById<TEntity>(id);
 
@@ -84,7 +84,7 @@ namespace GoldenEye.Backend.Core.Dapper.Context
             }
         }
 
-        public async Task<TEntity> GetByIdAsync<TEntity>(object id, CancellationToken cancellationToken = default(CancellationToken)) where TEntity : class, new()
+        public async Task<TEntity> FindById<TEntity>(object id, CancellationToken cancellationToken = default(CancellationToken)) where TEntity : class, new()
         {
             var sql = dapperSqlGenerator?.GetById<TEntity>(id);
 

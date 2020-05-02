@@ -63,7 +63,7 @@ namespace GoldenEye.Backend.Core.Marten.Context
         {
         }
 
-        public TEntity GetById<TEntity>(object id) where TEntity : class, new()
+        public TEntity FindById<TEntity>(object id) where TEntity : class, new()
         {
             if (!(id is Guid guidId))
                 throw new NotSupportedException("Id of the Event Sourced aggregate has to be Guid");
@@ -71,7 +71,7 @@ namespace GoldenEye.Backend.Core.Marten.Context
             return eventStore.Aggregate<TEntity>(guidId);
         }
 
-        public async Task<TEntity> GetByIdAsync<TEntity>(object id, CancellationToken cancellationToken = default(CancellationToken)) where TEntity : class, new()
+        public async Task<TEntity> FindById<TEntity>(object id, CancellationToken cancellationToken = default(CancellationToken)) where TEntity : class, new()
         {
             if (!(id is Guid guidId))
                 throw new NotSupportedException("Id of the Event Sourced aggregate has to be Guid");

@@ -324,10 +324,8 @@
             <e p="ExceptionToHttpStatusMapper.cs" t="Include" />
           </e>
           <e p="Modules" t="Include">
-            <e p="AllowAllCorsModule.cs" t="Include" />
             <e p="IWebApiModule.cs" t="Include" />
             <e p="Registration.cs" t="Include" />
-            <e p="SwaggerModule.cs" t="Include" />
             <e p="WebApiModule.cs" t="Include" />
           </e>
           <e p="obj" t="ExcludeRecursive">
@@ -461,11 +459,6 @@
               <e p="DateRange.cs" t="Include" />
               <e p="IDateRange.cs" t="Include" />
             </e>
-            <e p="DTO" t="Include">
-              <e p="DTOBase.cs" t="Include" />
-              <e p="IDTO.cs" t="Include" />
-              <e p="UserDTO.cs" t="Include" />
-            </e>
             <e p="General" t="Include">
               <e p="IHasName.cs" t="Include" />
               <e p="IHasParent.cs" t="Include" />
@@ -507,7 +500,6 @@
             <e p="UserInfoProvider.cs" t="Include" />
           </e>
           <e p="Services" t="Include">
-            <e p="IAuthorizationService.cs" t="Include" />
             <e p="IService.cs" t="Include" />
           </e>
           <e p="Shared.Core.csproj" t="IncludeRecursive" />
@@ -571,10 +563,6 @@
         <e p="Shared.Core.Validation" t="IncludeRecursive">
           <e p="bin" t="ExcludeRecursive" />
           <e p="Changelog.md" t="Include" />
-          <e p="DTO" t="Include">
-            <e p="IValidatableDTO.cs" t="Include" />
-            <e p="ValidatableDTOBase.cs" t="Include" />
-          </e>
           <e p="Extensions" t="Include">
             <e p="ValidationResultExtensions.cs" t="Include" />
           </e>
@@ -742,89 +730,7 @@
         </e>
       </e>
       <e p="Solution Items" t="Include" />
-      <e p="Templates" t="Include">
-        <e p="SimpleDDD" t="Include">
-          <e p="content" t="IncludeRecursive">
-            <e p="appsettings.Development.json" t="Include" />
-            <e p="appsettings.json" t="Include" />
-            <e p="Backend" t="Include">
-              <e p="Issues" t="Include">
-                <e p="Handlers" t="Include">
-                  <e p="IssueCommandHandler.cs" t="Include" />
-                  <e p="IssueQueryHandler.cs" t="Include" />
-                </e>
-                <e p="Issue.cs" t="Include" />
-                <e p="Mappings" t="Include">
-                  <e p="IssueMappings.cs" t="Include" />
-                </e>
-                <e p="Projections" t="Include">
-                  <e p="IssueProjection.cs" t="Include" />
-                </e>
-              </e>
-              <e p="Module.cs" t="Include" />
-            </e>
-            <e p="bin" t="ExcludeRecursive" />
-            <e p="Changelog.md" t="Include" />
-            <e p="Contracts" t="Include">
-              <e p="Issues" t="Include">
-                <e p="Commands" t="Include">
-                  <e p="CreateIssue.cs" t="Include" />
-                  <e p="DeleteIssue.cs" t="Include" />
-                  <e p="UpdateIssue.cs" t="Include" />
-                </e>
-                <e p="Events" t="Include">
-                  <e p="IssueCreated.cs" t="Include" />
-                  <e p="IssueDeleted.cs" t="Include" />
-                  <e p="IssueUpdated.cs" t="Include" />
-                </e>
-                <e p="IssueType.cs" t="Include" />
-                <e p="Queries" t="Include">
-                  <e p="GetIssue.cs" t="Include" />
-                  <e p="GetIssues.cs" t="Include" />
-                </e>
-                <e p="Views" t="Include">
-                  <e p="IssueView.cs" t="Include" />
-                </e>
-              </e>
-            </e>
-            <e p="Controllers" t="Include">
-              <e p="IssuesController.cs" t="Include" />
-            </e>
-            <e p="GoldenEye.WebApi.Template.SimpleDDD.csproj" t="IncludeRecursive" />
-            <e p="obj" t="ExcludeRecursive">
-              <e p="Debug" t="Include">
-                <e p="netcoreapp3.1" t="Include">
-                  <e p="GoldenEye.WebApi.Template.SimpleDDD.AssemblyInfo.cs" t="Include" />
-                </e>
-              </e>
-            </e>
-            <e p="Program.cs" t="Include" />
-            <e p="Properties" t="Include">
-              <e p="launchSettings.json" t="Include" />
-            </e>
-            <e p="Readme.md" t="Include" />
-            <e p="Startup.cs" t="Include" />
-          </e>
-          <e p="IntegrationTests" t="IncludeRecursive">
-            <e p="bin" t="ExcludeRecursive" />
-            <e p="Infrastructure" t="Include">
-              <e p="TestContext.cs" t="Include" />
-            </e>
-            <e p="Issues" t="Include">
-              <e p="IssueTests.cs" t="Include" />
-            </e>
-            <e p="obj" t="ExcludeRecursive">
-              <e p="Debug" t="Include">
-                <e p="netcoreapp3.1" t="Include">
-                  <e p="WebApi.Template.SimpleDDD.IntegrationTests.AssemblyInfo.cs" t="Include" />
-                </e>
-              </e>
-            </e>
-            <e p="WebApi.Template.SimpleDDD.IntegrationTests.csproj" t="IncludeRecursive" />
-          </e>
-          <e p="Templates.nuspec" t="Include" />
-        </e>
-      </e>
+      <e p="Templates" t="Include" />
     </e>
     <e p="C:\Users\oskar\.nuget\packages\microsoft.net.test.sdk\16.6.1\build\netcoreapp2.1" t="Include">
       <e p="Microsoft.NET.Test.Sdk.Program.cs" t="Include" />

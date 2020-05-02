@@ -4,12 +4,11 @@ using AutoMapper;
 using FluentValidation;
 using GoldenEye.Backend.Core.Entity;
 using GoldenEye.Backend.Core.Repositories;
-using GoldenEye.Shared.Core.Objects.DTO;
 
 namespace GoldenEye.Backend.Core.Services
 {
     public class CRUDService<TDto, TEntity, TRepository>: CRUDService<TDto, TEntity>
-        where TDto : class, IDTO
+        where TDto : class
         where TEntity : class, IEntity
         where TRepository : IRepository<TEntity>
     {
@@ -20,15 +19,18 @@ namespace GoldenEye.Backend.Core.Services
 
         protected CRUDService(
             TRepository repository,
-            IMapper mapper) : base(repository, mapper)
+            IMapper mapper): base(repository, mapper)
         {
         }
     }
 
     public class CRUDService<TDto, TEntity>: ReadonlyService<TDto, TEntity>, ICRUDService<TDto>
-        where TDto : class, IDTO
+        where TDto : class
         where TEntity : class, IEntity
     {
+        protected readonly IValidator<TDto> DtoValidator;
+        protected readonly IValidator<TEntity> EntityValidator;
+
         protected new IRepository<TEntity> Repository
         {
             get { return (IRepository<TEntity>)base.Repository; }
@@ -36,39 +38,45 @@ namespace GoldenEye.Backend.Core.Services
 
         protected CRUDService(
             IRepository<TEntity> repository,
-            IMapper mapper
-        ) : base(repository, mapper)
+            IMapper mapper,
+            IValidator<TDto> dtoValidator = null,
+            IValidator<TEntity> entityValidator = null
+        ): base(repository, mapper)
         {
+            DtoValidator = dtoValidator;
+            EntityValidator = entityValidator;
         }
 
         public virtual async Task<TDto> AddAsync(TDto dto, CancellationToken cancellationToken = default)
         {
-            if (!Validate(dto))
-                return null as TDto;
+            await ValidateAsync(dto, cancellationToken);
 
             var entity = Mapper.Map<TEntity>(dto);
+
+            await ValidateAsync(entity, cancellationToken);
+
             var added = Repository.AddAsync(entity, cancellationToken: cancellationToken);
 
             await Repository.SaveChangesAsync(cancellationToken);
 
-            var fromDb = await Repository.GetByIdAsync(added.Id);
-
-            return Mapper.Map<TDto>(fromDb);
+            return Mapper.Map<TDto>(added);
         }
 
-        public virtual async Task<TDto> UpdateAsync(TDto dto, CancellationToken cancellationToken = default)
+        public virtual async Task<TDto> UpdateAsync(object id, TDto dto, CancellationToken cancellationToken = default)
         {
-            if (!Validate(dto))
-                return null as TDto;
+            await ValidateAsync(dto, cancellationToken);
 
-            var entity = Mapper.Map<TEntity>(dto);
+            var fromDb = await Repository.GetByIdAsync(id, cancellationToken);
+
+            var entity = Mapper.Map(dto, fromDb);
+
+            await ValidateAsync(entity, cancellationToken);
+
             var updated = await Repository.UpdateAsync(entity, cancellationToken: cancellationToken);
 
             await Repository.SaveChangesAsync(cancellationToken);
 
-            var fromDb = await Repository.GetByIdAsync(updated.Id);
-
-            return Mapper.Map<TDto>(fromDb);
+            return Mapper.Map<TDto>(updated);
         }
 
         public virtual Task<bool> DeleteAsync(object id, CancellationToken cancellationToken = default)
@@ -76,21 +84,14 @@ namespace GoldenEye.Backend.Core.Services
             return Repository.DeleteByIdAsync(id, cancellationToken);
         }
 
-        protected virtual AbstractValidator<TDto> GetValidator()
+        private async Task ValidateAsync(TDto dto, CancellationToken cancellationToken)
         {
-            return null;
+            await DtoValidator?.ValidateAndThrowAsync(dto, null, cancellationToken);
         }
 
-        protected bool Validate(TDto dto)
+        private async Task ValidateAsync(TEntity entity, CancellationToken cancellationToken)
         {
-            var validator = GetValidator();
-
-            if (validator == null)
-                return true;
-
-            var results = validator.Validate(dto);
-
-            return results.IsValid;
+            await EntityValidator?.ValidateAndThrowAsync(entity, null, cancellationToken);
         }
     }
 }

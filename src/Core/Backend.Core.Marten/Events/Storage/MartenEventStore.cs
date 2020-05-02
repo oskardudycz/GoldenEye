@@ -78,13 +78,13 @@ namespace GoldenEye.Backend.Core.Marten.Events.Storage
             return documentSession.Events.AggregateStreamAsync<TEntity>(streamId, version, timestamp, token: cancellationToken);
         }
 
-        public TEvent GetById<TEvent>(Guid id)
+        public TEvent FindById<TEvent>(Guid id)
             where TEvent : class, IEvent, IHaveGuidId
         {
             return documentSession.Events.Load<TEvent>(id)?.Data;
         }
 
-        public async Task<TEvent> GetByIdAsync<TEvent>(Guid id, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<TEvent> FindByIdAsync<TEvent>(Guid id, CancellationToken cancellationToken = default(CancellationToken))
             where TEvent : class, IEvent, IHaveGuidId
         {
             return (await documentSession.Events.LoadAsync<TEvent>(id, cancellationToken))?.Data;

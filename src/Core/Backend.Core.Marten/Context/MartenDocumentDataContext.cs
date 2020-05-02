@@ -52,7 +52,7 @@ namespace GoldenEye.Backend.Core.Marten.Context
         {
         }
 
-        public TEntity GetById<TEntity>(object id) where TEntity : class, new()
+        public TEntity FindById<TEntity>(object id) where TEntity : class, new()
         {
             if (id is Guid)
                 return _documentSession.Load<TEntity>((Guid)id);
@@ -64,7 +64,7 @@ namespace GoldenEye.Backend.Core.Marten.Context
             return _documentSession.Load<TEntity>(id.ToString());
         }
 
-        public Task<TEntity> GetByIdAsync<TEntity>(object id, CancellationToken cancellationToken = default(CancellationToken)) where TEntity : class, new()
+        public Task<TEntity> FindById<TEntity>(object id, CancellationToken cancellationToken = default(CancellationToken)) where TEntity : class, new()
         {
             if (id is Guid)
                 return _documentSession.LoadAsync<TEntity>((Guid)id, cancellationToken);

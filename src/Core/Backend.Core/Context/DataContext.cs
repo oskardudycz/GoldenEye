@@ -46,9 +46,9 @@ namespace GoldenEye.Backend.Core.Context
 
         public abstract Task<bool> RemoveAsync<TEntity>(object id, int? version = null, CancellationToken cancellationToken = default(CancellationToken)) where TEntity : class;
 
-        public abstract TEntity GetById<TEntity>(object id) where TEntity : class, new();
+        public abstract TEntity FindById<TEntity>(object id) where TEntity : class, new();
 
-        public abstract Task<TEntity> GetByIdAsync<TEntity>(object id, CancellationToken cancellationToken = default(CancellationToken)) where TEntity : class, new();
+        public abstract Task<TEntity> FindById<TEntity>(object id, CancellationToken cancellationToken = default(CancellationToken)) where TEntity : class, new();
 
         public abstract IQueryable<TEntity> GetQueryable<TEntity>() where TEntity : class;
 

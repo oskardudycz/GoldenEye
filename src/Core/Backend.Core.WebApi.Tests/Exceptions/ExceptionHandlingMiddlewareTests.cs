@@ -14,18 +14,19 @@ using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json.Converters;
 using Xunit;
 
 namespace Backend.Core.WebApi.Tests.Exceptions
 {
     public class CreateUser
     {
-        public string UserName { get; }
-
         public CreateUser(string userName)
         {
             UserName = userName;
         }
+
+        public string UserName { get; }
     }
 
     [Route("api/Users")]
@@ -59,17 +60,15 @@ namespace Backend.Core.WebApi.Tests.Exceptions
             public void ConfigureServices(IServiceCollection services)
             {
                 var assembly = typeof(UsersController).GetTypeInfo().Assembly;
-                services.AddMvc()
+                services.AddWebApiWithDefaultConfig()
                     .AddApplicationPart(assembly);
-                services.AddControllers();
             }
 
             public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
             {
                 //Use ExceptionHandlingMiddleware needs to be registered before UseMvc
-                app.UseExceptionHandlingMiddleware();
-
-                app.UseMvc();
+                app.UseWebApi()
+                    .UseExceptionHandlingMiddleware();
             }
         }
 

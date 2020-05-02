@@ -125,12 +125,12 @@ namespace GoldenEye.Backend.Core.Context
             return Task.FromResult(((IDataContext)this).Remove<TEntity>(id, version));
         }
 
-        public TEntity GetById<TEntity>(object id) where TEntity : class, new()
+        public TEntity FindById<TEntity>(object id) where TEntity : class, new()
         {
             return dbContext.Find<TEntity>(id);
         }
 
-        public async Task<TEntity> GetByIdAsync<TEntity>(object id, CancellationToken cancellationToken = default(CancellationToken)) where TEntity : class, new()
+        public async Task<TEntity> FindById<TEntity>(object id, CancellationToken cancellationToken = default(CancellationToken)) where TEntity : class, new()
         {
             return await dbContext.FindAsync<TEntity>(new[] { id }, cancellationToken);
         }

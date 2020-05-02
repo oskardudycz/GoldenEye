@@ -1,13 +1,12 @@
 using System.Linq;
 using System.Threading.Tasks;
 using GoldenEye.Backend.Core.Services;
-using GoldenEye.Shared.Core.Objects.DTO;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GoldenEye.Frontend.Core.Web.Controllers
 {
     public abstract class ReadonlyControllerBase<TService, TDto>: ControllerBase
-        where TService : IReadonlyService<TDto> where TDto : class, IDTO
+        where TService : IReadonlyService<TDto> where TDto : class
     {
         protected TService Service;
 
@@ -25,13 +24,10 @@ namespace GoldenEye.Frontend.Core.Web.Controllers
             return Service.Query();
         }
 
-        public virtual async Task<IActionResult> Get(int id)
+        public virtual async Task<IActionResult> Get(object id)
         {
             var dto = await Service.GetAsync(id);
-            if (dto == null)
-            {
-                return NotFound();
-            }
+            if (dto == null) return NotFound();
 
             return Ok(dto);
         }
