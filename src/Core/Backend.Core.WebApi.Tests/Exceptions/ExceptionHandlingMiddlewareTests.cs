@@ -14,7 +14,6 @@ using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Newtonsoft.Json.Converters;
 using Xunit;
 
 namespace Backend.Core.WebApi.Tests.Exceptions
@@ -67,8 +66,8 @@ namespace Backend.Core.WebApi.Tests.Exceptions
             public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
             {
                 //Use ExceptionHandlingMiddleware needs to be registered before UseMvc
-                app.UseWebApi()
-                    .UseExceptionHandlingMiddleware();
+                app.UseExceptionHandlingMiddleware()
+                    .UseWebApi();
             }
         }
 

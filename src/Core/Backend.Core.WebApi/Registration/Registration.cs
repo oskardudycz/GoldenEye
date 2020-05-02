@@ -96,11 +96,12 @@ namespace GoldenEye.Backend.Core.WebApi.Registration
                 opt.RoutePrefix = string.Empty;
             }
 
-            return app.UseWebApi()
+            return app
+                .UseExceptionHandlingMiddleware()
+                .UseWebApi()
                 .UseSwagger()
                 .UseSwaggerUI(setupSwaggerUI ?? DefaultSwaggerSetup)
-                .UseModules(env)
-                .UseExceptionHandlingMiddleware();
+                .UseModules(env);
         }
 
         public static IApplicationBuilder UseExceptionHandlingMiddleware(this IApplicationBuilder app)
