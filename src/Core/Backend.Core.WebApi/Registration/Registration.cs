@@ -69,7 +69,6 @@ namespace GoldenEye.Backend.Core.WebApi.Registration
                         builder.AllowAnyOrigin()
                             .AllowAnyMethod()
                             .AllowAnyHeader()
-                            .AllowCredentials()
                 );
             });
         }
