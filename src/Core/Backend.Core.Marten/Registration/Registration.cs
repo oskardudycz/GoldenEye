@@ -36,13 +36,13 @@ namespace GoldenEye.Backend.Core.Marten.Registration
         }
 
         public static void AddMartenDocumentCRUDRepository<TEntity>(this IServiceCollection services, ServiceLifetime serviceLifetime = ServiceLifetime.Transient)
-            where TEntity : class, IHasId
+            where TEntity : class, IHaveId
         {
             services.AddCRUDRepository<MartenDocumentDataContext, TEntity>(serviceLifetime);
         }
 
         public static void AddMartenDocumentReadonlyRepository<TEntity>(this IServiceCollection services, ServiceLifetime serviceLifetime = ServiceLifetime.Transient)
-            where TEntity : class, IHasId
+            where TEntity : class, IHaveId
         {
             services.AddReadonlyRepository<MartenDocumentDataContext, TEntity>(serviceLifetime);
         }

@@ -6,11 +6,11 @@ using GoldenEye.Shared.Core.Objects.General;
 
 namespace GoldenEye.Backend.Core.Repositories
 {
-    public interface IRepository<TEntity>: IReadonlyRepository<TEntity> where TEntity : class, IHasId
+    public interface IRepository<TEntity>: IReadonlyRepository<TEntity> where TEntity : class, IHaveId
     {
         TEntity Add(TEntity entity, bool shouldSaveChanges = true);
 
-        Task<TEntity> AddAsync(TEntity entity, bool shouldSaveChanges = true, CancellationToken cancellationToken = default(CancellationToken));
+        Task<TEntity> AddAsync(TEntity entity, bool shouldSaveChanges = true, CancellationToken cancellationToken = default);
 
         Task<TEntity> AddAsync(TEntity entity, CancellationToken cancellationToken);
 
@@ -18,21 +18,21 @@ namespace GoldenEye.Backend.Core.Repositories
 
         TEntity Update(TEntity entity, bool shouldSaveChanges = true);
 
-        Task<TEntity> UpdateAsync(TEntity entity, bool shouldSaveChanges = true, CancellationToken cancellationToken = default(CancellationToken));
+        Task<TEntity> UpdateAsync(TEntity entity, bool shouldSaveChanges = true, CancellationToken cancellationToken = default);
 
         Task<TEntity> UpdateAsync(TEntity entity, CancellationToken cancellationToken);
 
         TEntity Delete(TEntity entity, bool shouldSaveChanges = true);
 
-        Task<TEntity> DeleteAsync(TEntity entity, bool shouldSaveChanges = true, CancellationToken cancellationToken = default(CancellationToken));
+        Task<TEntity> DeleteAsync(TEntity entity, bool shouldSaveChanges = true, CancellationToken cancellationToken = default);
 
         Task<TEntity> DeleteAsync(TEntity entity, CancellationToken cancellationToken);
 
-        bool Delete(object id, bool shouldSaveChanges = true);
+        bool DeleteById(object id, bool shouldSaveChanges = true);
 
-        Task<bool> DeleteAsync(object id, bool shouldSaveChanges = true, CancellationToken cancellationToken = default(CancellationToken));
+        Task<bool> DeleteByIdAsync(object id, bool shouldSaveChanges = true, CancellationToken cancellationToken = default);
 
-        Task<bool> DeleteAsync(object id, CancellationToken cancellationToken);
+        Task<bool> DeleteByIdAsync(object id, CancellationToken cancellationToken);
 
         int SaveChanges();
 

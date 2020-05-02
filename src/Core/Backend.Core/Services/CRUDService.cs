@@ -8,7 +8,7 @@ using GoldenEye.Shared.Core.Objects.DTO;
 
 namespace GoldenEye.Backend.Core.Services
 {
-    public class RestService<TDto, TEntity, TRepository>: RestService<TDto, TEntity>
+    public class CRUDService<TDto, TEntity, TRepository>: CRUDService<TDto, TEntity>
         where TDto : class, IDTO
         where TEntity : class, IEntity
         where TRepository : IRepository<TEntity>
@@ -18,14 +18,14 @@ namespace GoldenEye.Backend.Core.Services
             get { return (TRepository)base.Repository; }
         }
 
-        protected RestService(
+        protected CRUDService(
             TRepository repository,
             IMapper mapper) : base(repository, mapper)
         {
         }
     }
 
-    public class RestService<TDto, TEntity>: ReadonlyRestService<TDto, TEntity>, IRestService<TDto>
+    public class CRUDService<TDto, TEntity>: ReadonlyService<TDto, TEntity>, ICRUDService<TDto>
         where TDto : class, IDTO
         where TEntity : class, IEntity
     {
@@ -34,7 +34,7 @@ namespace GoldenEye.Backend.Core.Services
             get { return (IRepository<TEntity>)base.Repository; }
         }
 
-        protected RestService(
+        protected CRUDService(
             IRepository<TEntity> repository,
             IMapper mapper
         ) : base(repository, mapper)
@@ -51,7 +51,7 @@ namespace GoldenEye.Backend.Core.Services
 
             await Repository.SaveChangesAsync(cancellationToken);
 
-            var fromDb = await Repository.GetByIdAsync(added.Id, cancellationToken);
+            var fromDb = await Repository.GetByIdAsync(added.Id);
 
             return Mapper.Map<TDto>(fromDb);
         }
@@ -66,14 +66,14 @@ namespace GoldenEye.Backend.Core.Services
 
             await Repository.SaveChangesAsync(cancellationToken);
 
-            var fromDb = await Repository.GetByIdAsync(updated.Id, cancellationToken);
+            var fromDb = await Repository.GetByIdAsync(updated.Id);
 
             return Mapper.Map<TDto>(fromDb);
         }
 
         public virtual Task<bool> DeleteAsync(object id, CancellationToken cancellationToken = default)
         {
-            return Repository.DeleteAsync(id, cancellationToken);
+            return Repository.DeleteByIdAsync(id, cancellationToken);
         }
 
         protected virtual AbstractValidator<TDto> GetValidator()

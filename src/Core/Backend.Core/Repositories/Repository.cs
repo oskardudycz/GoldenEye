@@ -7,7 +7,7 @@ using GoldenEye.Shared.Core.Objects.General;
 
 namespace GoldenEye.Backend.Core.Repositories
 {
-    public class CRUDRepository<TEntity>: ReadonlyRepository<TEntity>, IRepository<TEntity> where TEntity : class, IHasId
+    public class CRUDRepository<TEntity>: ReadonlyRepository<TEntity>, IRepository<TEntity> where TEntity : class, IHaveId
     {
         public CRUDRepository(IDataContext context) : base(context)
         {
@@ -97,7 +97,7 @@ namespace GoldenEye.Backend.Core.Repositories
             return result;
         }
 
-        public virtual bool Delete(object id, bool shouldSaveChanges = true)
+        public virtual bool DeleteById(object id, bool shouldSaveChanges = true)
         {
             var result = Context.Remove<TEntity>(id);
 
@@ -107,12 +107,12 @@ namespace GoldenEye.Backend.Core.Repositories
             return result;
         }
 
-        public virtual Task<bool> DeleteAsync(object id, CancellationToken cancellationToken)
+        public virtual Task<bool> DeleteByIdAsync(object id, CancellationToken cancellationToken)
         {
-            return DeleteAsync(id, true, cancellationToken);
+            return DeleteByIdAsync(id, true, cancellationToken);
         }
 
-        public virtual async Task<bool> DeleteAsync(object id, bool shouldSaveChanges = true, CancellationToken cancellationToken = default)
+        public virtual async Task<bool> DeleteByIdAsync(object id, bool shouldSaveChanges = true, CancellationToken cancellationToken = default)
         {
             var result = await Context.RemoveAsync<TEntity>(id, cancellationToken: cancellationToken);
 

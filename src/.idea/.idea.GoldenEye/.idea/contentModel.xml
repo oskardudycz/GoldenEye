@@ -33,6 +33,10 @@
             <e p="IEntity.cs" t="Include" />
             <e p="IProvidesAuditInfo.cs" t="Include" />
           </e>
+          <e p="Exceptions" t="Include">
+            <e p="NotFoundException.cs" t="Include" />
+            <e p="OptimisticConcurrencyException.cs" t="Include" />
+          </e>
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
               <e p="netstandard2.1" t="Include">
@@ -52,10 +56,10 @@
             <e p="Repository.cs" t="Include" />
           </e>
           <e p="Services" t="Include">
+            <e p="CRUDService.cs" t="Include" />
+            <e p="ICRUDService.cs" t="Include" />
             <e p="IReadonlyService.cs" t="Include" />
-            <e p="IRestService.cs" t="Include" />
-            <e p="ReadonlyRestService.cs" t="Include" />
-            <e p="RestService.cs" t="Include" />
+            <e p="ReadonlyService.cs" t="Include" />
           </e>
           <e p="Transactions" t="Include">
             <e p="IUnitOfWork.cs" t="Include" />
@@ -463,9 +467,9 @@
               <e p="UserDTO.cs" t="Include" />
             </e>
             <e p="General" t="Include">
-              <e p="IHasId.cs" t="Include" />
               <e p="IHasName.cs" t="Include" />
               <e p="IHasParent.cs" t="Include" />
+              <e p="IHaveId.cs" t="Include" />
               <e p="ObjectWithIdBase.cs" t="Include" />
             </e>
             <e p="Order" t="Include">

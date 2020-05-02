@@ -18,7 +18,7 @@ namespace GoldenEye.Backend.Core.Registration
 
         public static IServiceCollection AddCRUDRepository<TDataContext, TEntity>(this IServiceCollection services, ServiceLifetime serviceLifetime = ServiceLifetime.Transient)
             where TDataContext : IDataContext
-            where TEntity : class, IHasId
+            where TEntity : class, IHaveId
         {
             services.Add(sp => new CRUDRepository<TEntity>(sp.GetService<TDataContext>()), serviceLifetime);
             services.Add<IRepository<TEntity>>(sp => sp.GetService<CRUDRepository<TEntity>>(), serviceLifetime);
@@ -28,7 +28,7 @@ namespace GoldenEye.Backend.Core.Registration
 
         public static IServiceCollection AddReadonlyRepository<TDataContext, TEntity>(this IServiceCollection services, ServiceLifetime serviceLifetime = ServiceLifetime.Transient)
             where TDataContext : IDataContext
-            where TEntity : class, IHasId
+            where TEntity : class, IHaveId
         {
             services.Add(sp => new ReadonlyRepository<TEntity>(sp.GetService<TDataContext>()), serviceLifetime);
             services.Add<IReadonlyRepository<TEntity>>(sp => sp.GetService<ReadonlyRepository<TEntity>>(), serviceLifetime);

@@ -195,7 +195,7 @@ namespace GoldenEye.Shared.Core.Extensions.Collections
         }
 
         public static T GetById<T>(this IEnumerable<T> source, object id)
-            where T : IHasId
+            where T : IHaveId
         {
             return source.SingleOrDefault(el => el.Id == id);
         }

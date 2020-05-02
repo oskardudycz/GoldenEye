@@ -7,7 +7,7 @@ namespace Backend.DDD.Sample.Issues
 {
     internal class Issue: IEntity
     {
-        object IHasId.Id => Id;
+        object IHaveId.Id => Id;
 
         public Guid Id { get; private set; }
 

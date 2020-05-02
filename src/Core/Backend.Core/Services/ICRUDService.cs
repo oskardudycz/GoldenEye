@@ -4,7 +4,7 @@ using GoldenEye.Shared.Core.Objects.DTO;
 
 namespace GoldenEye.Backend.Core.Services
 {
-    public interface IRestService<TDto>: IReadonlyService<TDto> where TDto : class, IDTO
+    public interface ICRUDService<TDto>: IReadonlyService<TDto> where TDto : class, IDTO
     {
         Task<bool> DeleteAsync(object id, CancellationToken cancellationToken = default);
 

@@ -29,9 +29,9 @@ namespace GoldenEye.Backend.Core.DDD.Events.Store
 
         Task<TEntity> AggregateAsync<TEntity>(Guid streamId, CancellationToken cancellationToken = default(CancellationToken), int version = 0, DateTime? timestamp = null) where TEntity : class, new();
 
-        TEvent GetById<TEvent>(Guid id) where TEvent : class, IEvent, IHasGuidId;
+        TEvent GetById<TEvent>(Guid id) where TEvent : class, IEvent, IHaveGuidId;
 
-        Task<TEvent> GetByIdAsync<TEvent>(Guid id, CancellationToken cancellationToken = default(CancellationToken)) where TEvent : class, IEvent, IHasGuidId;
+        Task<TEvent> GetByIdAsync<TEvent>(Guid id, CancellationToken cancellationToken = default(CancellationToken)) where TEvent : class, IEvent, IHaveGuidId;
 
         IList<IEvent> Query(Guid? streamId = null, int? version = null, DateTime? timestamp = null);
 
@@ -52,9 +52,9 @@ namespace GoldenEye.Backend.Core.DDD.Events.Store
 
     public interface IEventProjectionStore
     {
-        TProjection GetById<TProjection>(Guid id) where TProjection : class, IHasGuidId;
+        TProjection GetById<TProjection>(Guid id) where TProjection : class, IHaveGuidId;
 
-        Task<TProjection> GetByIdAsync<TProjection>(Guid id, CancellationToken cancellationToken = default(CancellationToken)) where TProjection : class, IHasGuidId;
+        Task<TProjection> GetByIdAsync<TProjection>(Guid id, CancellationToken cancellationToken = default(CancellationToken)) where TProjection : class, IHaveGuidId;
 
         IQueryable<TProjection> Query<TProjection>();
 

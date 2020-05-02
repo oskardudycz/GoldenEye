@@ -2,26 +2,26 @@ using System;
 
 namespace GoldenEye.Shared.Core.Objects.General
 {
-    public abstract class ObjectWithIdBase: IHasId
+    public abstract class ObjectWithIdBase: IHaveId
     {
-        object IHasId.Id { get; }
+        object IHaveId.Id { get; }
     }
 
-    public abstract class ObjectWithIdBase<T>: IHasId<T>
+    public abstract class ObjectWithIdBase<T>: IHaveId<T>
     {
         public T Id { get; set; }
 
-        object IHasId.Id
+        object IHaveId.Id
         {
             get { return Id; }
         }
     }
 
-    public abstract class ObjectWithGuidIdBase: ObjectWithIdBase<Guid>, IHasGuidId
+    public abstract class ObjectWithGuidIdBase: ObjectWithIdBase<Guid>, IHaveGuidId
     {
     }
 
-    public abstract class ObjectWithIntIdBase: ObjectWithIdBase<int>, IHasId
+    public abstract class ObjectWithIntIdBase: ObjectWithIdBase<int>, IHaveId
     {
     }
 }

@@ -33,7 +33,7 @@ namespace Backend.DDD.Sample.Issues.Handlers
         public Task<IReadOnlyList<IssueViews.IssueView>> Handle(GetIssues message, CancellationToken cancellationToken)
         {
             return repository
-                .GetAll()
+                .Query()
                 .ProjectTo<IssueViews.IssueView>(configurationProvider)
                 .ToListAsync();
         }

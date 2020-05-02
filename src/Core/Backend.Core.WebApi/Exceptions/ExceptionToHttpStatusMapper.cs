@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using FluentValidation;
+using GoldenEye.Backend.Core.Exceptions;
 using GoldenEye.Shared.Core.Extensions.Collections;
 
 namespace GoldenEye.Backend.Core.WebApi.Exceptions
@@ -34,11 +35,14 @@ namespace GoldenEye.Backend.Core.WebApi.Exceptions
 
             var code = exception switch
             {
-                UnauthorizedAccessException _ => HttpStatusCode.Unauthorized,
-                NotImplementedException _ => HttpStatusCode.NotImplemented,
                 ValidationException _ => HttpStatusCode.BadRequest,
                 System.ComponentModel.DataAnnotations.ValidationException _ => HttpStatusCode.BadRequest,
                 ArgumentException _ => HttpStatusCode.BadRequest,
+                UnauthorizedAccessException _ => HttpStatusCode.Unauthorized,
+                InvalidOperationException _ => HttpStatusCode.Forbidden,
+                NotFoundException _ => HttpStatusCode.NotFound,
+                OptimisticConcurrencyException  _ => HttpStatusCode.Conflict,
+                NotImplementedException _ => HttpStatusCode.NotImplemented,
                 _ => HttpStatusCode.InternalServerError
             };
 

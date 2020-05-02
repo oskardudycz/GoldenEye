@@ -10,12 +10,12 @@ using GoldenEye.Shared.Core.Objects.DTO;
 
 namespace GoldenEye.Backend.Core.Services
 {
-    public class ReadonlyRestService<TDTO, TEntity, TRepository>: ReadonlyRestService<TDTO, TEntity>
+    public class ReadonlyService<TDTO, TEntity, TRepository>: ReadonlyService<TDTO, TEntity>
         where TDTO : class, IDTO
         where TEntity : class, IEntity
         where TRepository : IReadonlyRepository<TEntity>
     {
-        protected ReadonlyRestService(
+        protected ReadonlyService(
             TRepository repository,
             IMapper mapper
         ) : base(repository, mapper)
@@ -23,13 +23,13 @@ namespace GoldenEye.Backend.Core.Services
         }
     }
 
-    public class ReadonlyRestService<TDto, TEntity>: IReadonlyService<TDto> where TDto : class, IDTO where TEntity : class, IEntity
+    public class ReadonlyService<TDto, TEntity>: IReadonlyService<TDto> where TDto : class, IDTO where TEntity : class, IEntity
     {
         protected readonly IReadonlyRepository<TEntity> Repository;
         protected readonly IMapper Mapper;
         protected IConfigurationProvider ConfigurationProvider => Mapper.ConfigurationProvider;
 
-        protected ReadonlyRestService(
+        protected ReadonlyService(
             IReadonlyRepository<TEntity> repository,
             IMapper mapper
         )
@@ -40,12 +40,12 @@ namespace GoldenEye.Backend.Core.Services
 
         public virtual IQueryable<TDto> Query()
         {
-            return Repository.GetAll().ProjectTo<TDto>(ConfigurationProvider);
+            return Repository.Query().ProjectTo<TDto>(ConfigurationProvider);
         }
 
         public virtual async Task<TDto> GetAsync(int id, CancellationToken cancellationToken = default)
         {
-            var entity = await Repository.GetByIdAsync(id, cancellationToken);
+            var entity = await Repository.GetByIdAsync(id);
             return Mapper.Map<TDto>(entity);
         }
     }

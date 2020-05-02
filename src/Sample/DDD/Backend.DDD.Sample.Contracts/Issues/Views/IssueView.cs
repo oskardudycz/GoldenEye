@@ -15,7 +15,7 @@ namespace Backend.DDD.Sample.Contracts.Issues.Views
 
         public string Description { get; set; }
 
-        object IHasId.Id => Id;
+        object IHaveId.Id => Id;
 
         public IssueView()
         {

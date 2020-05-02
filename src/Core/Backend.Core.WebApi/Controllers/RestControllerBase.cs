@@ -7,7 +7,7 @@ namespace GoldenEye.Frontend.Core.Web.Controllers
 {
     public abstract class RestControllerBase<TService, TDto>: ReadonlyControllerBase<TService, TDto>
         where TDto : class, IDTO
-        where TService : IRestService<TDto>
+        where TService : ICRUDService<TDto>
     {
         protected RestControllerBase(TService service) : base(service)
         {

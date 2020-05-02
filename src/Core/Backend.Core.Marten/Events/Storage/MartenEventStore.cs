@@ -79,13 +79,13 @@ namespace GoldenEye.Backend.Core.Marten.Events.Storage
         }
 
         public TEvent GetById<TEvent>(Guid id)
-            where TEvent : class, IEvent, IHasGuidId
+            where TEvent : class, IEvent, IHaveGuidId
         {
             return documentSession.Events.Load<TEvent>(id)?.Data;
         }
 
         public async Task<TEvent> GetByIdAsync<TEvent>(Guid id, CancellationToken cancellationToken = default(CancellationToken))
-            where TEvent : class, IEvent, IHasGuidId
+            where TEvent : class, IEvent, IHaveGuidId
         {
             return (await documentSession.Events.LoadAsync<TEvent>(id, cancellationToken))?.Data;
         }
