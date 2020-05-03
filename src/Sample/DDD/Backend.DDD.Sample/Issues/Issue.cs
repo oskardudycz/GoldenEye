@@ -18,13 +18,13 @@ namespace Backend.DDD.Sample.Issues
             Title = title;
         }
 
-        public Guid Id { get; }
+        public Guid Id { get; set; }
 
-        public IssueType Type { get; }
+        public IssueType Type { get; set; }
 
-        public string Title { get; }
+        public string Title { get; set;  }
 
-        public string Description { get; private set; }
+        public string Description { get; set; }
         object IHaveId.Id => Id;
     }
 }
