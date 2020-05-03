@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Backend.Core.DDD.Tests.External.Contracts;
+using Backend.Core.DDD.Tests.External.Handlers;
 using FluentAssertions;
 using GoldenEye.Backend.Core.DDD.Events;
 using GoldenEye.Backend.Core.DDD.Registration;
@@ -17,13 +18,13 @@ namespace Backend.Core.DDD.Tests.Registration
     {
         public class UserCreated: IEvent
         {
-            public Guid UserId { get; }
-            public Guid StreamId => UserId;
-
             public UserCreated(Guid userId)
             {
                 UserId = userId;
             }
+
+            public Guid UserId { get; }
+            public Guid StreamId => UserId;
         }
 
         public class UsersCountHandler: IEventHandler<UserCreated>
@@ -39,7 +40,7 @@ namespace Backend.Core.DDD.Tests.Registration
 
         public class UsersIdsHandler: IEventHandler<UserCreated>
         {
-            public List<Guid> UserIds { get; private set; } = new List<Guid>();
+            public List<Guid> UserIds { get; } = new List<Guid>();
 
             public Task Handle(UserCreated @event, CancellationToken cancellationToken)
             {
@@ -76,6 +77,11 @@ namespace Backend.Core.DDD.Tests.Registration
 
     public class EventHandlerAllRegistrationTests
     {
+        public EventHandlerAllRegistrationTests()
+        {
+            services.AddAllEventHandlers(ServiceLifetime.Scoped);
+        }
+
         public class UserAdded: IEvent
         {
             public Guid StreamId => Guid.Empty;
@@ -132,12 +138,12 @@ namespace Backend.Core.DDD.Tests.Registration
             BaseAccountEventHandler,
             IEventHandler<AccountDeleted>
         {
-            public override Task Handle(AccountAdded request, CancellationToken cancellationToken)
+            public Task Handle(AccountDeleted request, CancellationToken cancellationToken)
             {
                 return Unit.Task;
             }
 
-            public Task Handle(AccountDeleted request, CancellationToken cancellationToken)
+            public override Task Handle(AccountAdded request, CancellationToken cancellationToken)
             {
                 return Unit.Task;
             }
@@ -162,7 +168,7 @@ namespace Backend.Core.DDD.Tests.Registration
         }
 
         public class GenericEventHandler<TEvent>: IEventHandler<TEvent>
-           where TEvent : IEvent
+            where TEvent : IEvent
         {
             public Task Handle(TEvent notification, CancellationToken cancellationToken)
             {
@@ -170,28 +176,17 @@ namespace Backend.Core.DDD.Tests.Registration
             }
         }
 
-        private ServiceCollection services = new ServiceCollection();
-
-        public EventHandlerAllRegistrationTests()
-        {
-            services.AddAllEventHandlers(ServiceLifetime.Scoped);
-        }
+        private readonly ServiceCollection services = new ServiceCollection();
 
         [Fact]
-        public void GivenMultipleEventHandler_WhenAddAllEventHandlerCalled_ThenAllEventHandlersAreRegistered()
+        public void GivenAbstractEventHandler_WhenAddAllEventHandlerCalled_ThenIsNotRegistered()
         {
             using (var sp = services.BuildServiceProvider())
             {
-                var userAddedHandlers = sp.GetServices<INotificationHandler<UserAdded>>()
-                    .Union(sp.GetServices<IEventHandler<UserAdded>>()).ToList();
-                var userUpdatedHandlers = sp.GetServices<INotificationHandler<UserUpdated>>()
-                    .Union(sp.GetServices<IEventHandler<UserUpdated>>()).ToList();
+                var deleteAccountHandlers = sp.GetServices<INotificationHandler<AccountDeleted>>()
+                    .Union(sp.GetServices<IEventHandler<AccountDeleted>>());
 
-                userAddedHandlers.Should().ContainSingle();
-                userAddedHandlers.Should().AllBeOfType<UserEventHandler>();
-
-                userUpdatedHandlers.Should().ContainSingle();
-                userUpdatedHandlers.Should().AllBeOfType<UserEventHandler>();
+                deleteAccountHandlers.Should().NotContain(x => x is AbstractEventHandler);
             }
         }
 
@@ -228,7 +223,37 @@ namespace Backend.Core.DDD.Tests.Registration
         }
 
         [Fact]
-        public void GivenMultipleEventHandlersFromApplicationDependencies_WhenAddAllEventHandlerCalled_ThenBothAreRegistered()
+        public void GivenGenericEventHandler_WhenAddAllEventHandlerCalled_ThenIsNotRegistered()
+        {
+            using (var sp = services.BuildServiceProvider())
+            {
+                var genericHandler = sp.GetService<GenericEventHandler<BankAccountCreated>>();
+
+                genericHandler.Should().BeNull();
+            }
+        }
+
+        [Fact]
+        public void GivenMultipleEventHandler_WhenAddAllEventHandlerCalled_ThenAllEventHandlersAreRegistered()
+        {
+            using (var sp = services.BuildServiceProvider())
+            {
+                var userAddedHandlers = sp.GetServices<INotificationHandler<UserAdded>>()
+                    .Union(sp.GetServices<IEventHandler<UserAdded>>()).ToList();
+                var userUpdatedHandlers = sp.GetServices<INotificationHandler<UserUpdated>>()
+                    .Union(sp.GetServices<IEventHandler<UserUpdated>>()).ToList();
+
+                userAddedHandlers.Should().ContainSingle();
+                userAddedHandlers.Should().AllBeOfType<UserEventHandler>();
+
+                userUpdatedHandlers.Should().ContainSingle();
+                userUpdatedHandlers.Should().AllBeOfType<UserEventHandler>();
+            }
+        }
+
+        [Fact]
+        public void
+            GivenMultipleEventHandlersFromApplicationDependencies_WhenAddAllEventHandlerCalled_ThenBothAreRegistered()
         {
             using (var sp = services.BuildServiceProvider())
             {
@@ -238,34 +263,11 @@ namespace Backend.Core.DDD.Tests.Registration
                     .Union(sp.GetServices<IEventHandler<MoneyWasWithdrawn>>()).ToList();
 
                 bankAccountCreatedHandlers.Should().HaveCount(2);
-                bankAccountCreatedHandlers.Should().Contain(x => x is External.Handlers.FirstEventHandler);
-                bankAccountCreatedHandlers.Should().Contain(x => x is External.Handlers.SecondEventHandler);
+                bankAccountCreatedHandlers.Should().Contain(x => x is FirstEventHandler);
+                bankAccountCreatedHandlers.Should().Contain(x => x is SecondEventHandler);
 
                 moneyWasWithdrawnHandlers.Should().ContainSingle();
-                moneyWasWithdrawnHandlers.Should().AllBeOfType<External.Handlers.FirstEventHandler>();
-            }
-        }
-
-        [Fact]
-        public void GivenAbstractEventHandler_WhenAddAllEventHandlerCalled_ThenIsNotRegistered()
-        {
-            using (var sp = services.BuildServiceProvider())
-            {
-                var deleteAccountHandlers = sp.GetServices<INotificationHandler<AccountDeleted>>()
-                    .Union(sp.GetServices<IEventHandler<AccountDeleted>>());
-
-                deleteAccountHandlers.Should().NotContain(x => x is AbstractEventHandler);
-            }
-        }
-
-        [Fact]
-        public void GivenGenericEventHandler_WhenAddAllEventHandlerCalled_ThenIsNotRegistered()
-        {
-            using (var sp = services.BuildServiceProvider())
-            {
-                var genericHandler = sp.GetService<GenericEventHandler<BankAccountCreated>>();
-
-                genericHandler.Should().BeNull();
+                moneyWasWithdrawnHandlers.Should().AllBeOfType<FirstEventHandler>();
             }
         }
     }

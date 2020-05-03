@@ -8,12 +8,12 @@ namespace Backend.DDD.Sample.IntegrationTests.Issues
 {
     public class IssueTests
     {
-        private readonly TestContext _sut;
-
         public IssueTests()
         {
             _sut = new TestContext();
         }
+
+        private readonly TestContext _sut;
 
         [Fact]
         public async Task IssueFlowTests()

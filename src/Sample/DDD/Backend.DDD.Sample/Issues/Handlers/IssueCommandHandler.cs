@@ -12,8 +12,8 @@ namespace Backend.DDD.Sample.Issues.Handlers
     internal class IssueCommandHandler
         : ICommandHandler<CreateIssue>
     {
-        private readonly IRepository<Issue> repository;
         private readonly IMapper mapper;
+        private readonly IRepository<Issue> repository;
 
         public IssueCommandHandler(
             IRepository<Issue> repository,
@@ -28,8 +28,8 @@ namespace Backend.DDD.Sample.Issues.Handlers
         {
             var aggregate = mapper.Map<Issue>(message);
 
-            await repository.AddAsync(aggregate);
-            await repository.SaveChangesAsync();
+            await repository.AddAsync(aggregate, cancellationToken);
+            await repository.SaveChangesAsync(cancellationToken);
 
             return Unit.Value;
         }

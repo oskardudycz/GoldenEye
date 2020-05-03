@@ -24,19 +24,11 @@ namespace GoldenEye.Shared.Core.Validation
 
             var validatorType = attribute.ValidatorType;
 
-            if (validatorType.GetTypeInfo().IsGenericType)
-            {
-                validatorType = validatorType.MakeGenericType(type);
-            }
+            if (validatorType.GetTypeInfo().IsGenericType) validatorType = validatorType.MakeGenericType(type);
 
             if (additionalValue == null)
-            {
                 return (IValidator)Activator.CreateInstance(validatorType);
-            }
-            else
-            {
-                return (IValidator)Activator.CreateInstance(validatorType, additionalValue);
-            }
+            return (IValidator)Activator.CreateInstance(validatorType, additionalValue);
         }
 
         public static ValidationResult Validate<T>(T obj) where T : IValidatableObject

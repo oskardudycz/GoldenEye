@@ -18,7 +18,7 @@ namespace Backend.Core.WebApi.Tests.Exceptions
             var argumentNullException = new ArgumentNullException();
             var argumentOutOfRangeException = new ArgumentOutOfRangeException();
 
-            var exceptions = new Exception[] { argumentException, argumentNullException, argumentOutOfRangeException };
+            var exceptions = new Exception[] {argumentException, argumentNullException, argumentOutOfRangeException};
 
             foreach (var argumentExc in exceptions)
             {
@@ -31,39 +31,22 @@ namespace Backend.Core.WebApi.Tests.Exceptions
         }
 
         [Fact]
-        public void GivenValidationExceptions_WhenMapped_ThenReturnsBadRequestHttpStatusWithProperMessage()
+        public void
+            GivenDefaultHandledExceptionWithCustomMap_WhenMapped_ThenReturnsHttpStatusWithProperMessageFromCustomMap()
         {
             //Given
             const string message = "Message";
-            var fluentValidationException = new ValidationException(message);
-            var dataAnnotationsException = new System.ComponentModel.DataAnnotations.ValidationException(message);
+            var exception = new NotImplementedException(message);
 
-            var exceptions = new Exception[] { fluentValidationException, dataAnnotationsException };
-
-            foreach (var validationException in exceptions)
-            {
-                //When
-                var codeInfo = ExceptionToHttpStatusMapper.Map(fluentValidationException);
-
-                //Then
-                codeInfo.Code.Should().Be(HttpStatusCode.BadRequest);
-                codeInfo.Message.Should().Be(message);
-            }
-        }
-
-        [Fact]
-        public void GivenUnauthorizedAccessException_WhenMapped_ThenReturnsUnauthorizedHttpStatusWithProperMessage()
-        {
-            //Given
-            const string message = "Message";
-            var exception = new UnauthorizedAccessException(message);
+            ExceptionToHttpStatusMapper.RegisterCustomMap<NotImplementedException>(
+                exc => HttpStatusCodeInfo.Create(HttpStatusCode.BadRequest, "CustomMessage"));
 
             //When
             var codeInfo = ExceptionToHttpStatusMapper.Map(exception);
 
             //Then
-            codeInfo.Code.Should().Be(HttpStatusCode.Unauthorized);
-            codeInfo.Message.Should().Be(message);
+            codeInfo.Code.Should().Be(HttpStatusCode.BadRequest);
+            codeInfo.Message.Should().Be("CustomMessage");
         }
 
         [Fact]
@@ -97,22 +80,6 @@ namespace Backend.Core.WebApi.Tests.Exceptions
         }
 
         [Fact]
-        public void GivenOptimisticConcurrencyException_WhenMapped_ThenReturnsForbiddenHttpStatusWithProperMessage()
-        {
-            //Given
-            var id = Guid.NewGuid();
-            var version = Guid.NewGuid();
-            var exception = OptimisticConcurrencyException.For<TestEntity>(id, version);
-
-            //When
-            var codeInfo = ExceptionToHttpStatusMapper.Map(exception);
-
-            //Then
-            codeInfo.Code.Should().Be(HttpStatusCode.Conflict);
-            codeInfo.Message.Should().Be($"Cannot modify {typeof(TestEntity).Name} with id: {id}. Version `{version}` did not match.");
-        }
-
-        [Fact]
         public void GivenNotImplementedException_WhenMapped_ThenReturnsNotImplementedHttpStatusWithProperMessage()
         {
             //Given
@@ -125,6 +92,23 @@ namespace Backend.Core.WebApi.Tests.Exceptions
             //Then
             codeInfo.Code.Should().Be(HttpStatusCode.NotImplemented);
             codeInfo.Message.Should().Be(message);
+        }
+
+        [Fact]
+        public void GivenOptimisticConcurrencyException_WhenMapped_ThenReturnsForbiddenHttpStatusWithProperMessage()
+        {
+            //Given
+            var id = Guid.NewGuid();
+            var version = Guid.NewGuid();
+            var exception = OptimisticConcurrencyException.For<TestEntity>(id, version);
+
+            //When
+            var codeInfo = ExceptionToHttpStatusMapper.Map(exception);
+
+            //Then
+            codeInfo.Code.Should().Be(HttpStatusCode.Conflict);
+            codeInfo.Message.Should()
+                .Be($"Cannot modify {typeof(TestEntity).Name} with id: {id}. Version `{version}` did not match.");
         }
 
         [Fact]
@@ -143,7 +127,8 @@ namespace Backend.Core.WebApi.Tests.Exceptions
         }
 
         [Fact]
-        public void GivenOtherTypeExceptionWithCustomMap_WhenMapped_ThenReturnsHttpStatusWithProperMessageFromCustomMap()
+        public void
+            GivenOtherTypeExceptionWithCustomMap_WhenMapped_ThenReturnsHttpStatusWithProperMessageFromCustomMap()
         {
             //Given
             const string message = "Message";
@@ -161,21 +146,39 @@ namespace Backend.Core.WebApi.Tests.Exceptions
         }
 
         [Fact]
-        public void GivenDefaultHandledExceptionWithCustomMap_WhenMapped_ThenReturnsHttpStatusWithProperMessageFromCustomMap()
+        public void GivenUnauthorizedAccessException_WhenMapped_ThenReturnsUnauthorizedHttpStatusWithProperMessage()
         {
             //Given
             const string message = "Message";
-            var exception = new NotImplementedException(message);
-
-            ExceptionToHttpStatusMapper.RegisterCustomMap<NotImplementedException>(
-                exc => HttpStatusCodeInfo.Create(HttpStatusCode.BadRequest, "CustomMessage"));
+            var exception = new UnauthorizedAccessException(message);
 
             //When
             var codeInfo = ExceptionToHttpStatusMapper.Map(exception);
 
             //Then
-            codeInfo.Code.Should().Be(HttpStatusCode.BadRequest);
-            codeInfo.Message.Should().Be("CustomMessage");
+            codeInfo.Code.Should().Be(HttpStatusCode.Unauthorized);
+            codeInfo.Message.Should().Be(message);
+        }
+
+        [Fact]
+        public void GivenValidationExceptions_WhenMapped_ThenReturnsBadRequestHttpStatusWithProperMessage()
+        {
+            //Given
+            const string message = "Message";
+            var fluentValidationException = new ValidationException(message);
+            var dataAnnotationsException = new System.ComponentModel.DataAnnotations.ValidationException(message);
+
+            var exceptions = new Exception[] {fluentValidationException, dataAnnotationsException};
+
+            foreach (var validationException in exceptions)
+            {
+                //When
+                var codeInfo = ExceptionToHttpStatusMapper.Map(fluentValidationException);
+
+                //Then
+                codeInfo.Code.Should().Be(HttpStatusCode.BadRequest);
+                codeInfo.Message.Should().Be(message);
+            }
         }
     }
 

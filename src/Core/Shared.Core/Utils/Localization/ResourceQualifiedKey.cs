@@ -2,6 +2,7 @@
 using System.Linq.Expressions;
 using System.Runtime.Serialization;
 using GoldenEye.Shared.Core.Extensions.Basic;
+using GoldenEye.Shared.Core.Utils.Lambda;
 
 namespace GoldenEye.Shared.Core.Utils.Localization
 {
@@ -10,6 +11,16 @@ namespace GoldenEye.Shared.Core.Utils.Localization
     public class ResourceQualifiedKey
     {
         private Type _resourceType;
+
+        public ResourceQualifiedKey()
+        {
+        }
+
+        public ResourceQualifiedKey(Type resourceType, string resourceId)
+        {
+            ResourceType = resourceType;
+            ResourceId = resourceId;
+        }
 
         public Type ResourceType
         {
@@ -28,30 +39,18 @@ namespace GoldenEye.Shared.Core.Utils.Localization
             }
         }
 
-        [DataMember]
-        private string ResourceTypeString { get; set; }
+        [DataMember] private string ResourceTypeString { get; set; }
 
-        [DataMember]
-        public string ResourceId { get; set; }
-
-        public ResourceQualifiedKey()
-        {
-        }
-
-        public ResourceQualifiedKey(Type resourceType, string resourceId)
-        {
-            ResourceType = resourceType;
-            ResourceId = resourceId;
-        }
+        [DataMember] public string ResourceId { get; set; }
 
         public static ResourceQualifiedKey For<TResource>(Expression<Func<TResource, object>> member)
         {
-            return new ResourceQualifiedKey(typeof(TResource), Lambda.PropertyName.For(member));
+            return new ResourceQualifiedKey(typeof(TResource), PropertyName.For(member));
         }
 
         public static ResourceQualifiedKey For<TResource>(Expression<Func<object>> member)
         {
-            return new ResourceQualifiedKey(typeof(TResource), Lambda.PropertyName.For(member));
+            return new ResourceQualifiedKey(typeof(TResource), PropertyName.For(member));
         }
 
         public static ResourceQualifiedKey For<TResource>(string resourceId)

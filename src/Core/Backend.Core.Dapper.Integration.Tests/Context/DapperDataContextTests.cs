@@ -1,7 +1,7 @@
 using System.Linq;
 using Backend.Core.Dapper.Integration.Tests.TestData;
 using FluentAssertions;
-using GoldenEye.Backend.Core.Dapper.Context;
+using GoldenEye.Backend.Core.Dapper.Repositories;
 using Marten.Integration.Tests.TestsInfrasructure;
 using Xunit;
 
@@ -14,17 +14,12 @@ namespace Backend.Core.Dapper.Integration.Tests.Context
         {
             Execute(Structure.UsersCreateSql);
 
-            var dataContext = new DapperDataContext(DbConnection);
+            var repository = new DapperRepository<User>(DbConnection);
 
-            var user = new User
-            {
-                Id = 0,
-                UserName = "john.doe@mail.com",
-                FullName = null
-            };
+            var user = new User {Id = 0, UserName = "john.doe@mail.com", FullName = null};
 
             //1. Add
-            var result = dataContext.Add(user);
+            var result = repository.Add(user);
 
             result.Should().NotBe(null);
             result.Id.Should().BeGreaterThan(0);
@@ -33,47 +28,42 @@ namespace Backend.Core.Dapper.Integration.Tests.Context
 
             //2. GetById
 
-            var recordFromDb = dataContext.FindById<User>(user.Id);
+            var recordFromDb = repository.FindById(user.Id);
 
             recordFromDb.Should().BeEquivalentTo(result);
 
             //3. Update
-            var userToUpdate = new User
-            {
-                Id = user.Id,
-                UserName = "tom.smith@mail.com",
-                FullName = "Tom Smith"
-            };
+            var userToUpdate = new User {Id = user.Id, UserName = "tom.smith@mail.com", FullName = "Tom Smith"};
 
-            result = dataContext.Update(userToUpdate);
+            result = repository.Update(userToUpdate);
 
             result.Should().NotBe(null);
             result.Id.Should().Be(user.Id);
             result.UserName.Should().Be("tom.smith@mail.com");
             result.FullName.Should().Be("Tom Smith");
 
-            recordFromDb = dataContext.FindById<User>(userToUpdate.Id);
+            recordFromDb = repository.FindById(userToUpdate.Id);
 
             recordFromDb.Should().BeEquivalentTo(result);
 
             //4. Remove
-            result = dataContext.Remove(userToUpdate);
+            result = repository.Delete(userToUpdate);
 
             result.Should().NotBe(null);
             result.Id.Should().Be(user.Id);
             result.UserName.Should().Be("tom.smith@mail.com");
             result.FullName.Should().Be("Tom Smith");
 
-            recordFromDb = dataContext.FindById<User>(userToUpdate.Id);
+            recordFromDb = repository.FindById(userToUpdate.Id);
 
             recordFromDb.Should().Be(null);
 
             //5. Add Range
 
-            var results = dataContext.AddRange(
-                new User { UserName = "anna.frank@mail.com" },
-                new User { UserName = "anna.young@mail.com" },
-                new User { UserName = "anna.old@mail.com" }
+            var results = repository.AddAll(
+                new User {UserName = "anna.frank@mail.com"},
+                new User {UserName = "anna.young@mail.com"},
+                new User {UserName = "anna.old@mail.com"}
             )?.ToList();
 
             results.Should().NotBeNull();
@@ -93,11 +83,11 @@ namespace Backend.Core.Dapper.Integration.Tests.Context
 
             //6. Query
 
-            var queryResults = dataContext.GetQueryable<User>().ToList();
+            var queryResults = repository.Query().ToList();
 
             queryResults.Should().Contain(x => results.Select(u => u.Id).Contains(x.Id));
 
-            queryResults = dataContext.GetQueryable<User>().Where(x => x.UserName == results[1].UserName).ToList();
+            queryResults = repository.Query().ToList().Where(x => x.UserName == results[1].UserName).ToList();
 
             queryResults.Should().HaveCountGreaterOrEqualTo(1);
             queryResults.First(x => x.Id == results[1].Id).Should().BeEquivalentTo(results[1]);

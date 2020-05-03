@@ -9,14 +9,14 @@ namespace GoldenEye.Backend.Core.WebApi.Exceptions
 {
     public class HttpStatusCodeInfo
     {
-        public HttpStatusCode Code { get; }
-        public string Message { get; }
-
         public HttpStatusCodeInfo(HttpStatusCode code, string message)
         {
             Code = code;
             Message = message;
         }
+
+        public HttpStatusCode Code { get; }
+        public string Message { get; }
 
         public static HttpStatusCodeInfo Create(HttpStatusCode code, string message)
         {
@@ -26,7 +26,8 @@ namespace GoldenEye.Backend.Core.WebApi.Exceptions
 
     public static class ExceptionToHttpStatusMapper
     {
-        private static readonly Dictionary<Type, Func<Exception, HttpStatusCodeInfo>> CustomMaps = new Dictionary<Type, Func<Exception, HttpStatusCodeInfo>>();
+        private static readonly Dictionary<Type, Func<Exception, HttpStatusCodeInfo>> CustomMaps =
+            new Dictionary<Type, Func<Exception, HttpStatusCodeInfo>>();
 
         public static HttpStatusCodeInfo Map(Exception exception)
         {
@@ -41,7 +42,7 @@ namespace GoldenEye.Backend.Core.WebApi.Exceptions
                 UnauthorizedAccessException _ => HttpStatusCode.Unauthorized,
                 InvalidOperationException _ => HttpStatusCode.Forbidden,
                 NotFoundException _ => HttpStatusCode.NotFound,
-                OptimisticConcurrencyException  _ => HttpStatusCode.Conflict,
+                OptimisticConcurrencyException _ => HttpStatusCode.Conflict,
                 NotImplementedException _ => HttpStatusCode.NotImplemented,
                 _ => HttpStatusCode.InternalServerError
             };
@@ -49,7 +50,8 @@ namespace GoldenEye.Backend.Core.WebApi.Exceptions
             return new HttpStatusCodeInfo(code, exception.Message);
         }
 
-        public static void RegisterCustomMap<TException>(Func<Exception, HttpStatusCodeInfo> map) where TException : Exception
+        public static void RegisterCustomMap<TException>(Func<Exception, HttpStatusCodeInfo> map)
+            where TException : Exception
         {
             CustomMaps.AddOrReplace(typeof(TException), map);
         }

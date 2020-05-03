@@ -7,16 +7,6 @@ namespace GoldenEye.WebApi.Template.SimpleDDD.Backend.Issues
 {
     public class Issue: IAggregate
     {
-        object IHasId.Id => Id;
-
-        public Guid Id { get; set; }
-
-        public IssueType Type { get; set; }
-
-        public string Title { get; set; }
-
-        public string Description { get; set; }
-
         public Issue()
         {
         }
@@ -28,6 +18,15 @@ namespace GoldenEye.WebApi.Template.SimpleDDD.Backend.Issues
             Title = title;
             Description = description;
         }
+
+        public IssueType Type { get; set; }
+
+        public string Title { get; set; }
+
+        public string Description { get; set; }
+        object IHaveId.Id => Id;
+
+        public Guid Id { get; set; }
 
         public void Update(IssueType type, string title, string description)
         {

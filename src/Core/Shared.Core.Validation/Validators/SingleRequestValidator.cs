@@ -4,7 +4,7 @@ using GoldenEye.Shared.Core.Objects.Requests;
 namespace GoldenEye.Shared.Core.Validation.Validators
 {
     /// <summary>
-    /// Single request validator
+    ///     Single request validator
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class SingleRequestValidator<T>: AbstractValidator<T> where T : ISingleRequest

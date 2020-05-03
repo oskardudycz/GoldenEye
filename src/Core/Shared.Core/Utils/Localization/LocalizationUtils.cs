@@ -11,7 +11,7 @@ namespace GoldenEye.Shared.Core.Utils.Localization
 
         public string LookupResource(Type resourceManagerProvider, string resourceKey, params object[] formatParams)
         {
-            ResourceManager resourceManager = GetResourceManager(resourceManagerProvider);
+            var resourceManager = GetResourceManager(resourceManagerProvider);
             var resourceValue = resourceManager != null ? resourceManager.GetString(resourceKey) : null;
 
             return resourceValue != null ? string.Format(resourceValue, formatParams) : null;
@@ -30,7 +30,8 @@ namespace GoldenEye.Shared.Core.Utils.Localization
         public ResourceManager GetResourceManager(Type resourceManagerProvider)
         {
             var resourceManagerProperty =
-                resourceManagerProvider.GetProperties(BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public)
+                resourceManagerProvider
+                    .GetProperties(BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public)
                     .FirstOrDefault(el => el.PropertyType == typeof(ResourceManager));
 
             if (resourceManagerProperty == null)

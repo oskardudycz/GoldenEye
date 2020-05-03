@@ -2,7 +2,7 @@ using System;
 
 namespace GoldenEye.Shared.Core.IOC.Attributes
 {
-    [AttributeUsage(AttributeTargets.Class, Inherited = true)]
+    [AttributeUsage(AttributeTargets.Class)]
     public class NotInjectedWithConventionsAttribute: Attribute
     {
     }

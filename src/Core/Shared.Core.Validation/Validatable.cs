@@ -11,15 +11,17 @@ namespace GoldenEye.Shared.Core.Validation
     [Obsolete]
     public abstract class Validatable
     {
-        [NotMapped]
-        [Browsable(false)]
-        public ValidationResult ValidationResult { get; set; } = null;
+        [NotMapped] [Browsable(false)] public ValidationResult ValidationResult { get; set; }
 
         [NotMapped]
         [Browsable(false)]
         public bool Valid
         {
-            get { return (ValidationResult == null || ValidationResult.Errors == null || ValidationResult.Errors.Count == 0); }
+            get
+            {
+                return (ValidationResult == null || ValidationResult.Errors == null ||
+                        ValidationResult.Errors.Count == 0);
+            }
         }
 
         private void Validate(IValidator validator)
@@ -31,10 +33,8 @@ namespace GoldenEye.Shared.Core.Validation
         {
             var objectType = GetType();
 
-            if (objectType.GetTypeInfo().BaseType != null && objectType.Namespace == "System.Data.Entity.DynamicProxies")
-            {
-                objectType = objectType.GetTypeInfo().BaseType;
-            }
+            if (objectType.GetTypeInfo().BaseType != null && objectType.Namespace == "System.Data.Entity.DynamicProxies"
+            ) objectType = objectType.GetTypeInfo().BaseType;
             var type = objectType.GetTypeInfo().CustomAttributes;
 
             var validatorAttribute = type.First(x => x.AttributeType.Name == "ValidatorAttribute");

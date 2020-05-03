@@ -6,16 +6,17 @@ using Backend.DDD.Sample.Contracts.Issues.Queries;
 using Backend.DDD.Sample.Contracts.Issues.Views;
 using GoldenEye.Backend.Core.DDD.Commands;
 using GoldenEye.Backend.Core.DDD.Queries;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.DDD.WebApi.Sample.Controllers
 {
     [Route("api/[controller]")]
-    [Microsoft.AspNetCore.Cors.EnableCors("CorsPolicy")]
+    [EnableCors("CorsPolicy")]
     public class IssuesController: Controller
     {
-        private readonly IQueryBus queryBus;
         private readonly ICommandBus commandBus;
+        private readonly IQueryBus queryBus;
 
         public IssuesController(IQueryBus queryBus,
             ICommandBus commandBus)
@@ -40,7 +41,7 @@ namespace Backend.DDD.WebApi.Sample.Controllers
 
         // POST api/incidents
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody]CreateIssue command)
+        public async Task<IActionResult> Post([FromBody] CreateIssue command)
         {
             await commandBus.SendAsync(command);
 

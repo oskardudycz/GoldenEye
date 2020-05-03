@@ -14,8 +14,6 @@
           <e p="bin" t="ExcludeRecursive" />
           <e p="Changelog.md" t="Include" />
           <e p="Context" t="Include">
-            <e p="DataContext.cs" t="Include" />
-            <e p="IDataContext.cs" t="Include" />
             <e p="SaveChangesHandlers" t="Include">
               <e p="AuditInfoSaveChangesHandler.cs" t="Include" />
               <e p="Base" t="Include">
@@ -50,10 +48,10 @@
             <e p="Registration.cs" t="Include" />
           </e>
           <e p="Repositories" t="Include">
+            <e p="InMemoryReadonlyRepository.cs" t="Include" />
+            <e p="InMemoryRepository.cs" t="Include" />
             <e p="IReadonlyRepository.cs" t="Include" />
             <e p="IRepository.cs" t="Include" />
-            <e p="ReadonlyRepository.cs" t="Include" />
-            <e p="Repository.cs" t="Include" />
           </e>
           <e p="Services" t="Include">
             <e p="CRUDService.cs" t="Include" />
@@ -70,9 +68,6 @@
           <e p="Backend.Core.Dapper.csproj" t="IncludeRecursive" />
           <e p="bin" t="ExcludeRecursive" />
           <e p="Changelog.md" t="Include" />
-          <e p="Context" t="Include">
-            <e p="DapperDataContext.cs" t="Include" />
-          </e>
           <e p="Generators" t="Include">
             <e p="IDapperSqlGenerator.cs" t="Include" />
             <e p="MappingsSqlGenerator.cs" t="Include" />
@@ -89,6 +84,9 @@
             </e>
           </e>
           <e p="Readme.md" t="Include" />
+          <e p="Repositories" t="Include">
+            <e p="DapperRepository.cs" t="Include" />
+          </e>
         </e>
         <e p="Backend.Core.Dapper.Integration.Tests" t="IncludeRecursive">
           <e p="Backend.Core.Dapper.Integration.Tests.csproj" t="IncludeRecursive" />
@@ -230,10 +228,6 @@
           <e p="Backend.Core.EntityFramework.csproj" t="IncludeRecursive" />
           <e p="bin" t="ExcludeRecursive" />
           <e p="Changelog.md" t="Include" />
-          <e p="Context" t="Include">
-            <e p="DesignTypeDbContextFactoryBase.cs" t="Include" />
-            <e p="EFDataContext.cs" t="Include" />
-          </e>
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
               <e p="netstandard2.1" t="Include">
@@ -245,15 +239,15 @@
           <e p="Registration" t="Include">
             <e p="Registration.cs" t="Include" />
           </e>
+          <e p="Repositories" t="Include">
+            <e p="DesignTypeDbContextFactoryBase.cs" t="Include" />
+            <e p="EntityFrameworkRepository.cs" t="Include" />
+          </e>
         </e>
         <e p="Backend.Core.Marten" t="IncludeRecursive">
           <e p="Backend.Core.Marten.csproj" t="IncludeRecursive" />
           <e p="bin" t="ExcludeRecursive" />
           <e p="Changelog.md" t="Include" />
-          <e p="Context" t="Include">
-            <e p="MartenDocumentDataContext.cs" t="Include" />
-            <e p="MartenEventSourcedDataContext.cs" t="Include" />
-          </e>
           <e p="Events" t="Include">
             <e p="Storage" t="Include">
               <e p="MartenEventStore.cs" t="Include" />
@@ -269,6 +263,10 @@
           <e p="Readme.md" t="Include" />
           <e p="Registration" t="Include">
             <e p="Registration.cs" t="Include" />
+          </e>
+          <e p="Repositories" t="Include">
+            <e p="MartenDocumentRepository.cs" t="Include" />
+            <e p="MartenEventSourcedDataContext.cs" t="Include" />
           </e>
         </e>
         <e p="Backend.Core.Marten.Tests" t="IncludeRecursive">
@@ -730,7 +728,89 @@
         </e>
       </e>
       <e p="Solution Items" t="Include" />
-      <e p="Templates" t="Include" />
+      <e p="Templates" t="Include">
+        <e p="SimpleDDD" t="Include">
+          <e p="content" t="IncludeRecursive">
+            <e p="appsettings.Development.json" t="Include" />
+            <e p="appsettings.json" t="Include" />
+            <e p="Backend" t="Include">
+              <e p="Issues" t="Include">
+                <e p="Handlers" t="Include">
+                  <e p="IssueCommandHandler.cs" t="Include" />
+                  <e p="IssueQueryHandler.cs" t="Include" />
+                </e>
+                <e p="Issue.cs" t="Include" />
+                <e p="Mappings" t="Include">
+                  <e p="IssueMappings.cs" t="Include" />
+                </e>
+                <e p="Projections" t="Include">
+                  <e p="IssueProjection.cs" t="Include" />
+                </e>
+              </e>
+              <e p="Module.cs" t="Include" />
+            </e>
+            <e p="bin" t="ExcludeRecursive" />
+            <e p="Changelog.md" t="Include" />
+            <e p="Contracts" t="Include">
+              <e p="Issues" t="Include">
+                <e p="Commands" t="Include">
+                  <e p="CreateIssue.cs" t="Include" />
+                  <e p="DeleteIssue.cs" t="Include" />
+                  <e p="UpdateIssue.cs" t="Include" />
+                </e>
+                <e p="Events" t="Include">
+                  <e p="IssueCreated.cs" t="Include" />
+                  <e p="IssueDeleted.cs" t="Include" />
+                  <e p="IssueUpdated.cs" t="Include" />
+                </e>
+                <e p="IssueType.cs" t="Include" />
+                <e p="Queries" t="Include">
+                  <e p="GetIssue.cs" t="Include" />
+                  <e p="GetIssues.cs" t="Include" />
+                </e>
+                <e p="Views" t="Include">
+                  <e p="IssueView.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+            <e p="Controllers" t="Include">
+              <e p="IssuesController.cs" t="Include" />
+            </e>
+            <e p="GoldenEye.WebApi.Template.SimpleDDD.csproj" t="IncludeRecursive" />
+            <e p="obj" t="ExcludeRecursive">
+              <e p="Debug" t="Include">
+                <e p="netcoreapp3.1" t="Include">
+                  <e p="GoldenEye.WebApi.Template.SimpleDDD.AssemblyInfo.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+            <e p="Program.cs" t="Include" />
+            <e p="Properties" t="Include">
+              <e p="launchSettings.json" t="Include" />
+            </e>
+            <e p="Readme.md" t="Include" />
+            <e p="Startup.cs" t="Include" />
+          </e>
+          <e p="IntegrationTests" t="IncludeRecursive">
+            <e p="bin" t="ExcludeRecursive" />
+            <e p="Infrastructure" t="Include">
+              <e p="TestContext.cs" t="Include" />
+            </e>
+            <e p="Issues" t="Include">
+              <e p="IssueTests.cs" t="Include" />
+            </e>
+            <e p="obj" t="ExcludeRecursive">
+              <e p="Debug" t="Include">
+                <e p="netcoreapp3.1" t="Include">
+                  <e p="WebApi.Template.SimpleDDD.IntegrationTests.AssemblyInfo.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+            <e p="WebApi.Template.SimpleDDD.IntegrationTests.csproj" t="IncludeRecursive" />
+          </e>
+          <e p="Templates.nuspec" t="Include" />
+        </e>
+      </e>
     </e>
     <e p="C:\Users\oskar\.nuget\packages\microsoft.net.test.sdk\16.6.1\build\netcoreapp2.1" t="Include">
       <e p="Microsoft.NET.Test.Sdk.Program.cs" t="Include" />

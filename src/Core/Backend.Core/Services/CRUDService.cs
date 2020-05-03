@@ -12,15 +12,15 @@ namespace GoldenEye.Backend.Core.Services
         where TEntity : class, IEntity
         where TRepository : IRepository<TEntity>
     {
-        protected new TRepository Repository
-        {
-            get { return (TRepository)base.Repository; }
-        }
-
         protected CRUDService(
             TRepository repository,
             IMapper mapper): base(repository, mapper)
         {
+        }
+
+        protected new TRepository Repository
+        {
+            get { return (TRepository)base.Repository; }
         }
     }
 
@@ -30,11 +30,6 @@ namespace GoldenEye.Backend.Core.Services
     {
         protected readonly IValidator<TDto> DtoValidator;
         protected readonly IValidator<TEntity> EntityValidator;
-
-        protected new IRepository<TEntity> Repository
-        {
-            get { return (IRepository<TEntity>)base.Repository; }
-        }
 
         protected CRUDService(
             IRepository<TEntity> repository,
@@ -47,6 +42,11 @@ namespace GoldenEye.Backend.Core.Services
             EntityValidator = entityValidator;
         }
 
+        protected new IRepository<TEntity> Repository
+        {
+            get { return (IRepository<TEntity>)base.Repository; }
+        }
+
         public virtual async Task<TDto> AddAsync(TDto dto, CancellationToken cancellationToken = default)
         {
             await ValidateAsync(dto, cancellationToken);
@@ -55,7 +55,7 @@ namespace GoldenEye.Backend.Core.Services
 
             await ValidateAsync(entity, cancellationToken);
 
-            var added = Repository.AddAsync(entity, cancellationToken: cancellationToken);
+            var added = Repository.AddAsync(entity, cancellationToken);
 
             await Repository.SaveChangesAsync(cancellationToken);
 
@@ -72,7 +72,7 @@ namespace GoldenEye.Backend.Core.Services
 
             await ValidateAsync(entity, cancellationToken);
 
-            var updated = await Repository.UpdateAsync(entity, cancellationToken: cancellationToken);
+            var updated = await Repository.UpdateAsync(entity, cancellationToken);
 
             await Repository.SaveChangesAsync(cancellationToken);
 

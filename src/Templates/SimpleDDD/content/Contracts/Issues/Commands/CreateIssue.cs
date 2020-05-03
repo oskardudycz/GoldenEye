@@ -5,18 +5,18 @@ namespace GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Commands
 {
     public class CreateIssue: ICommand
     {
-        public IssueType Type { get; }
-
-        public string Title { get; }
-
-        public string Description { get; }
-
         public CreateIssue(IssueType type, string title, string description)
         {
             Type = type;
             Title = title;
             Description = description;
         }
+
+        public IssueType Type { get; }
+
+        public string Title { get; }
+
+        public string Description { get; }
     }
 
     public class CreateIssueValidator: AbstractValidator<CreateIssue>

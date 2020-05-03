@@ -5,17 +5,17 @@ using System.Text;
 namespace GoldenEye.Shared.Core.Utils.Cryptography
 {
     /// <summary>
-    /// Class to help encrypt/decrypt password.
+    ///     Class to help encrypt/decrypt password.
     /// </summary>
     public class Encryption
     {
         /// <summary>
-        /// Private encryption key.
+        ///     Private encryption key.
         /// </summary>
         private const string Key = "qwe123ASD!@#zxc";
 
         /// <summary>
-        /// Encrypt string.
+        ///     Encrypt string.
         /// </summary>
         /// <param name="message">Message to encrypt.</param>
         /// <returns></returns>
@@ -30,7 +30,7 @@ namespace GoldenEye.Shared.Core.Utils.Cryptography
 
             using (var hashProvider = MD5.Create())
             {
-                byte[] tdesKey = hashProvider.ComputeHash(utf8.GetBytes(Key));
+                var tdesKey = hashProvider.ComputeHash(utf8.GetBytes(Key));
 
                 // Step 2. Create a new TripleDESCryptoServiceProvider object
                 using (var tdesAlgorithm = TripleDES.Create())
@@ -41,10 +41,10 @@ namespace GoldenEye.Shared.Core.Utils.Cryptography
                     // Step 3. Setup the encoder
 
                     // Step 4. Convert the message string to a byte[]
-                    byte[] dataToEncrypt = utf8.GetBytes(message);
+                    var dataToEncrypt = utf8.GetBytes(message);
 
                     // Step 5. Attempt to encrypt the string
-                    ICryptoTransform encryptor = tdesAlgorithm.CreateEncryptor();
+                    var encryptor = tdesAlgorithm.CreateEncryptor();
                     results = encryptor.TransformFinalBlock(dataToEncrypt, 0, dataToEncrypt.Length);
 
                     // Step 6. Return the encrypted string as a base64 encoded string
@@ -54,7 +54,7 @@ namespace GoldenEye.Shared.Core.Utils.Cryptography
         }
 
         /// <summary>
-        /// Decrypt string
+        ///     Decrypt string
         /// </summary>
         /// <param name="message">Message to decryption.</param>
         /// <returns></returns>
@@ -72,7 +72,7 @@ namespace GoldenEye.Shared.Core.Utils.Cryptography
 
             using (var hashProvider = MD5.Create())
             {
-                byte[] tdesKey = hashProvider.ComputeHash(utf8.GetBytes(Key));
+                var tdesKey = hashProvider.ComputeHash(utf8.GetBytes(Key));
 
                 // Step 2. Create a new TripleDESCryptoServiceProvider object
                 using (var tdesAlgorithm = TripleDES.Create())
@@ -84,10 +84,10 @@ namespace GoldenEye.Shared.Core.Utils.Cryptography
                     // Step 3. Setup the decoder
 
                     // Step 4. Convert the message string to a byte[]
-                    byte[] dataToDecrypt = Convert.FromBase64String(message);
+                    var dataToDecrypt = Convert.FromBase64String(message);
 
                     // Step 5. Attempt to decrypt the string
-                    ICryptoTransform decryptor = tdesAlgorithm.CreateDecryptor();
+                    var decryptor = tdesAlgorithm.CreateDecryptor();
                     results = decryptor.TransformFinalBlock(dataToDecrypt, 0, dataToDecrypt.Length);
                 }
             }

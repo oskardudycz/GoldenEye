@@ -1,4 +1,4 @@
-using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -18,6 +18,9 @@ namespace GoldenEye.Backend.Core.Repositories
 
         IQueryable<TEntity> Query();
 
-        IQueryable<TEntity> Query(string query);
+        IReadOnlyCollection<TEntity> Query(string query, params object[] queryParams);
+
+        Task<IReadOnlyCollection<TEntity>> QueryAsync(string query, CancellationToken cancellationToken = default,
+            params object[] queryParams);
     }
 }

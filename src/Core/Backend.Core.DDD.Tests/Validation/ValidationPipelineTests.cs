@@ -19,12 +19,12 @@ namespace Backend.Core.Tests.Validation
         {
             private class CreateUser: ICommand
             {
-                public string UserName { get; }
-
                 public CreateUser(string userName)
                 {
                     UserName = userName;
                 }
+
+                public string UserName { get; }
             }
 
             private class CreateUserValidator: AbstractValidator<CreateUser>
@@ -68,40 +68,15 @@ namespace Backend.Core.Tests.Validation
             }
 
             [Fact]
-            public async Task GivenValidationPipelineSetUp_WhenValidCommandWasSent_ThenCommandIsValidatedAndHandledByCommandHandler()
+            public async Task
+                GivenValidationPipelineSetUp_WhenCommandWithoutValidatorWasSent_ThenCommandIsNotValidatedAndHandledByCommandHandler()
             {
                 //Given
                 var services = new ServiceCollection();
                 services.AddDDD();
 
                 services.AddValidationPipeline();
-                services.AddSingleton<DataContext>();
-                services.RegisterCommandHandler<CreateUser, UserCommandHandler>();
-                services.AddTransient<IValidator<CreateUser>, CreateUserValidator>();
-
-                using (var sp = services.BuildServiceProvider())
-                {
-                    var commandBus = sp.GetService<ICommandBus>();
-                    var command = new CreateUser("John Doe");
-
-                    //When
-                    await commandBus.SendAsync(command);
-
-                    //Then
-                    var context = sp.GetService<DataContext>();
-                    context.Users.Should().Contain(command.UserName);
-                }
-            }
-
-            [Fact]
-            public async Task GivenValidationPipelineSetUp_WhenCommandWithoutValidatorWasSent_ThenCommandIsNotValidatedAndHandledByCommandHandler()
-            {
-                //Given
-                var services = new ServiceCollection();
-                services.AddDDD();
-
-                services.AddValidationPipeline();
-                services.AddSingleton(new DataContext { Users = new List<string> { "John Doe" } });
+                services.AddSingleton(new DataContext {Users = new List<string> {"John Doe"}});
                 services.RegisterCommandHandler<RemoveAllUsers, UserCommandHandler>();
                 //No validator Registered
 
@@ -121,7 +96,8 @@ namespace Backend.Core.Tests.Validation
             }
 
             [Fact]
-            public void GivenValidationPipelineSetUp_WhenInValidCommandWasSent_ThenCommandWasValidatedAndValidationExceptionWasThrown()
+            public void
+                GivenValidationPipelineSetUp_WhenInValidCommandWasSent_ThenCommandWasValidatedAndValidationExceptionWasThrown()
             {
                 //Given
                 var services = new ServiceCollection();
@@ -146,18 +122,45 @@ namespace Backend.Core.Tests.Validation
                     context.Users.Should().BeEmpty();
                 }
             }
+
+            [Fact]
+            public async Task
+                GivenValidationPipelineSetUp_WhenValidCommandWasSent_ThenCommandIsValidatedAndHandledByCommandHandler()
+            {
+                //Given
+                var services = new ServiceCollection();
+                services.AddDDD();
+
+                services.AddValidationPipeline();
+                services.AddSingleton<DataContext>();
+                services.RegisterCommandHandler<CreateUser, UserCommandHandler>();
+                services.AddTransient<IValidator<CreateUser>, CreateUserValidator>();
+
+                using (var sp = services.BuildServiceProvider())
+                {
+                    var commandBus = sp.GetService<ICommandBus>();
+                    var command = new CreateUser("John Doe");
+
+                    //When
+                    await commandBus.SendAsync(command);
+
+                    //Then
+                    var context = sp.GetService<DataContext>();
+                    context.Users.Should().Contain(command.UserName);
+                }
+            }
         }
 
         public class QueriesTests
         {
             private class GetUser: IQuery<string>
             {
-                public int Id { get; }
-
                 public GetUser(int id)
                 {
                     Id = id;
                 }
+
+                public int Id { get; }
             }
 
             private class GetUserValidator: AbstractValidator<GetUser>
@@ -188,52 +191,52 @@ namespace Backend.Core.Tests.Validation
                     this.context = context;
                 }
 
-                public Task<string> Handle(GetUser query, CancellationToken cancellationToken)
-                {
-                    return Task.FromResult(context.Users[query.Id]);
-                }
-
                 public Task<IReadOnlyList<string>> Handle(GetAllUsers query, CancellationToken cancellationToken)
                 {
                     return Task.FromResult<IReadOnlyList<string>>(context.Users);
                 }
+
+                public Task<string> Handle(GetUser query, CancellationToken cancellationToken)
+                {
+                    return Task.FromResult(context.Users[query.Id]);
+                }
             }
 
             [Fact]
-            public async Task GivenValidationPipelineSetUp_WhenValidQueryWasSent_ThenQueryIsValidatedAndHandledByQueryHandler()
+            public void
+                GivenValidationPipelineSetUp_WhenInValidQueryWasSent_ThenQueryWasValidatedAndValidationExceptionWasThrown()
             {
                 //Given
                 var services = new ServiceCollection();
                 services.AddDDD();
 
                 services.AddValidationPipeline();
-                services.AddSingleton(new DataContext { Users = new List<string> { "John Doe" } });
+                services.AddSingleton(new DataContext {Users = new List<string> {"John Doe"}});
                 services.RegisterQueryHandler<GetUser, string, UserQueryHandler>();
                 services.AddTransient<IValidator<GetUser>, GetUserValidator>();
 
                 using (var sp = services.BuildServiceProvider())
                 {
                     var queryBus = sp.GetService<IQueryBus>();
-                    var query = new GetUser(0);
+                    var invalidQuery = new GetUser(-1);
 
+                    Func<Task> sendQueryAsync = async () => await queryBus.SendAsync<GetUser, string>(invalidQuery);
                     //When
-                    var result = await queryBus.SendAsync<GetUser, string>(query);
-
                     //Then
-                    result.Should().NotBeNull();
-                    result.Should().Be("John Doe");
+                    sendQueryAsync.Should().Throw<ValidationException>();
                 }
             }
 
             [Fact]
-            public async Task GivenValidationPipelineSetUp_WhenQueryWithoutValidatorWasSent_ThenQueryIsNotValidatedAndHandledByQueryHandler()
+            public async Task
+                GivenValidationPipelineSetUp_WhenQueryWithoutValidatorWasSent_ThenQueryIsNotValidatedAndHandledByQueryHandler()
             {
                 //Given
                 var services = new ServiceCollection();
                 services.AddDDD();
 
                 services.AddValidationPipeline();
-                services.AddSingleton(new DataContext { Users = new List<string> { "John Doe" } });
+                services.AddSingleton(new DataContext {Users = new List<string> {"John Doe"}});
                 services.RegisterQueryHandler<GetAllUsers, IReadOnlyList<string>, UserQueryHandler>();
 
                 using (var sp = services.BuildServiceProvider())
@@ -251,14 +254,15 @@ namespace Backend.Core.Tests.Validation
             }
 
             [Fact]
-            public async Task GivenValidationPipelineSetUp_WhenValidQueryWithoutValidatorWasSent_ThenQueryIsValidatedAndHandledByQueryHandler()
+            public async Task
+                GivenValidationPipelineSetUp_WhenValidQueryWasSent_ThenQueryIsValidatedAndHandledByQueryHandler()
             {
                 //Given
                 var services = new ServiceCollection();
                 services.AddDDD();
 
                 services.AddValidationPipeline();
-                services.AddSingleton(new DataContext { Users = new List<string> { "John Doe" } });
+                services.AddSingleton(new DataContext {Users = new List<string> {"John Doe"}});
                 services.RegisterQueryHandler<GetUser, string, UserQueryHandler>();
                 services.AddTransient<IValidator<GetUser>, GetUserValidator>();
 
@@ -277,26 +281,29 @@ namespace Backend.Core.Tests.Validation
             }
 
             [Fact]
-            public void GivenValidationPipelineSetUp_WhenInValidQueryWasSent_ThenQueryWasValidatedAndValidationExceptionWasThrown()
+            public async Task
+                GivenValidationPipelineSetUp_WhenValidQueryWithoutValidatorWasSent_ThenQueryIsValidatedAndHandledByQueryHandler()
             {
                 //Given
                 var services = new ServiceCollection();
                 services.AddDDD();
 
                 services.AddValidationPipeline();
-                services.AddSingleton(new DataContext { Users = new List<string> { "John Doe" } });
+                services.AddSingleton(new DataContext {Users = new List<string> {"John Doe"}});
                 services.RegisterQueryHandler<GetUser, string, UserQueryHandler>();
                 services.AddTransient<IValidator<GetUser>, GetUserValidator>();
 
                 using (var sp = services.BuildServiceProvider())
                 {
                     var queryBus = sp.GetService<IQueryBus>();
-                    var invalidQuery = new GetUser(-1);
+                    var query = new GetUser(0);
 
-                    Func<Task> sendQueryAsync = async () => await queryBus.SendAsync<GetUser, string>(invalidQuery);
                     //When
+                    var result = await queryBus.SendAsync<GetUser, string>(query);
+
                     //Then
-                    sendQueryAsync.Should().Throw<ValidationException>();
+                    result.Should().NotBeNull();
+                    result.Should().Be("John Doe");
                 }
             }
         }

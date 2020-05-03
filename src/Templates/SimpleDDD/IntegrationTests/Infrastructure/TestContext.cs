@@ -9,11 +9,18 @@ namespace WebApi.SimpleDDD.IntegrationTests.Infrastructure
     public class TestContext: IDisposable
     {
         private TestServer _server;
-        public HttpClient Client { get; private set; }
 
         public TestContext()
         {
             SetUpClient();
+        }
+
+        public HttpClient Client { get; private set; }
+
+        public void Dispose()
+        {
+            _server?.Dispose();
+            Client?.Dispose();
         }
 
         private void SetUpClient()
@@ -22,12 +29,6 @@ namespace WebApi.SimpleDDD.IntegrationTests.Infrastructure
                 .UseStartup<Startup>());
 
             Client = _server.CreateClient();
-        }
-
-        public void Dispose()
-        {
-            _server?.Dispose();
-            Client?.Dispose();
         }
     }
 }

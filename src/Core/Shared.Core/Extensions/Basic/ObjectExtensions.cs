@@ -14,14 +14,14 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
         private static readonly Type[] EmptyTypes = { };
 
         public static TReturn SafeGet<TObject, TReturn>(this TObject obj, Func<TObject, TReturn> getOperation)
-                 where TObject : class
+            where TObject : class
         {
-            return obj != null ? getOperation(obj) : default(TReturn);
+            return obj != null ? getOperation(obj) : default;
         }
 
         public static TReturn SafeGet<TObject, TReturn>(this TObject obj,
-                                                                    Func<TObject, TReturn> getOperation,
-                                                                    TReturn defValue)
+            Func<TObject, TReturn> getOperation,
+            TReturn defValue)
             where TObject : class
         {
             return obj != null ? getOperation(obj) : defValue;
@@ -35,19 +35,11 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
             var realType = underlyingType ?? type;
 
             if (obj == null && !isNullable && !type.GetTypeInfo().IsClass)
-            {
                 throw new InvalidCastException("Cannot assign null to non-reference type");
-            }
 
-            if (obj == null)
-            {
-                return default(T);
-            }
+            if (obj == null) return default;
 
-            if (!realType.GetTypeInfo().IsEnum)
-            {
-                return (T)obj;
-            }
+            if (!realType.GetTypeInfo().IsEnum) return (T)obj;
 
             //Commented out because of PCL
             //if (!realType.IsEnumDefined(obj))
@@ -67,7 +59,7 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
             if (obj == null)
                 return GetDefault(t);
 
-            Type u = Nullable.GetUnderlyingType(t);
+            var u = Nullable.GetUnderlyingType(t);
 
             if (u == null)
                 return Convert.ChangeType(obj, t, CultureInfo.CurrentCulture);
@@ -178,7 +170,8 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
             return value == null ? string.Empty : value.ToString();
         }
 
-        public static IDictionary<string, object> AsDictionary(this object source, BindingFlags bindingAttr = BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance)
+        public static IDictionary<string, object> AsDictionary(this object source,
+            BindingFlags bindingAttr = BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance)
         {
             return ReflectionExtensions.GetProperties(source.GetType(), bindingAttr).ToDictionary
             (
@@ -193,7 +186,7 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
         }
 
         /// <summary>
-        /// Modifies object using specified action.
+        ///     Modifies object using specified action.
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="action">Action to be performed.</param>
@@ -202,68 +195,61 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
         public static T Modify<T>(this T obj, Action<T> action, bool throwExceptionIfNull = false)
         {
             if (!Equals(obj, default(T)))
-            {
                 action(obj);
-            }
-            else if (throwExceptionIfNull)
-            {
-                throw new ArgumentNullException();
-            }
+            else if (throwExceptionIfNull) throw new ArgumentNullException();
 
             return obj;
         }
 
         public static TOut As<TIn, TOut>(this TIn obj, Func<TIn, TOut> func)
         {
-            if (Equals(obj, default(TIn)))
-            {
-                throw new ArgumentNullException();
-            }
+            if (Equals(obj, default(TIn))) throw new ArgumentNullException();
 
             return func(obj);
         }
 
         /// <summary>
-        /// Generates a list with one element.
+        ///     Generates a list with one element.
         /// </summary>
         /// <returns>New list with one element.</returns>
         public static List<T> AsList<T>(this T obj)
         {
-            return new List<T> { obj };
+            return new List<T> {obj};
         }
 
         public static bool IsNumber(this object value)
         {
             return value is sbyte
-                    || value is byte
-                    || value is short
-                    || value is ushort
-                    || value is int
-                    || value is uint
-                    || value is long
-                    || value is ulong
-                    || value is float
-                    || value is double
-                    || value is decimal;
+                   || value is byte
+                   || value is short
+                   || value is ushort
+                   || value is int
+                   || value is uint
+                   || value is long
+                   || value is ulong
+                   || value is float
+                   || value is double
+                   || value is decimal;
         }
 
         public static object Invoke<T>(this Type type, T obj, string methodName, params object[] parameters)
         {
-            MethodInfo method = type.GetMethod(methodName);
+            var method = type.GetMethod(methodName);
             return method.Invoke(obj, parameters);
         }
 
-        public static object InvokeGeneric<T>(this Type type, T obj, string methodName, Type[] types, params object[] parameters)
+        public static object InvokeGeneric<T>(this Type type, T obj, string methodName, Type[] types,
+            params object[] parameters)
         {
-            MethodInfo method = type.GetMethod(methodName);
-            MethodInfo generic = method.MakeGenericMethod(types);
+            var method = type.GetMethod(methodName);
+            var generic = method.MakeGenericMethod(types);
             return generic.Invoke(obj, parameters);
         }
 
         public static object InvokeGeneric<T>(T obj, string methodName, Type[] types, params object[] parameters)
         {
-            MethodInfo method = typeof(T).GetMethod(methodName);
-            MethodInfo generic = method.MakeGenericMethod(types);
+            var method = typeof(T).GetMethod(methodName);
+            var generic = method.MakeGenericMethod(types);
             return generic.Invoke(obj, parameters);
         }
     }

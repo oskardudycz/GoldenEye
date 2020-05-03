@@ -1,6 +1,7 @@
-using GoldenEye.Backend.Core.Context.SaveChangesHandlers.Base;
+using GoldenEye.Backend.Core.Entity;
+using GoldenEye.Backend.Core.Repositories.SaveChangesHandlers.Base;
 
-namespace GoldenEye.Backend.Core.Context.SaveChangesHandlers
+namespace GoldenEye.Backend.Core.Repositories.SaveChangesHandlers
 {
     public interface ISaveChangesProcessor
     {
@@ -8,6 +9,6 @@ namespace GoldenEye.Backend.Core.Context.SaveChangesHandlers
 
         void Add(ISaveChangesHandler handler);
 
-        void RunAll(IDataContext context);
+        void RunAll(IProvidesAuditInfo context);
     }
 }

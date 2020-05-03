@@ -17,7 +17,7 @@ namespace GoldenEye.Shared.Core.Utils.MessageBus
             }
             else
             {
-                var handlers = new List<object> { handler };
+                var handlers = new List<object> {handler};
                 _subscribers[typeof(TMessage)] = handlers;
             }
         }
@@ -31,16 +31,11 @@ namespace GoldenEye.Shared.Core.Utils.MessageBus
             var handlers = _subscribers[typeof(TMessage)];
             var handlerToRemove = new List<int>();
             for (var i = 0; i < handlers.Count; i++)
-            {
                 if (handlers[i].GetType() == handler.GetType())
                     handlerToRemove.Add(i);
-            }
             handlerToRemove.ForEach(handlers.RemoveAt);
 
-            if (handlers.Count == 0)
-            {
-                _subscribers.Remove(typeof(TMessage));
-            }
+            if (handlers.Count == 0) _subscribers.Remove(typeof(TMessage));
         }
 
         public void Publish<TMessage>(TMessage message)
@@ -52,19 +47,14 @@ namespace GoldenEye.Shared.Core.Utils.MessageBus
             var msg = message.GetType();
             var handlers = _subscribers[msg];
             foreach (var handler in handlers)
-            {
                 ((IMessageHandler<TMessage>)handler)
                     .HandleMessage(message);
-            }
         }
 
         public IList<object> GetHandlers()
         {
             var handlers = new List<object>();
-            foreach (var obj in _subscribers.Values)
-            {
-                handlers.AddRange(obj.Select(x => x));
-            }
+            foreach (var obj in _subscribers.Values) handlers.AddRange(obj.Select(x => x));
             return handlers;
         }
     }

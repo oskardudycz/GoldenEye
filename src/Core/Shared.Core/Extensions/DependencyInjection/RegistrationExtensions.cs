@@ -30,7 +30,9 @@ namespace GoldenEye.Shared.Core.Extensions.DependencyInjection
         // Returns:
         //     A reference to this instance after the operation has completed.
 
-        public static IServiceCollection Add<TService, TImplementation>(this IServiceCollection services, Func<IServiceProvider, TImplementation> implementationFactory, ServiceLifetime serviceLifetime = ServiceLifetime.Transient)
+        public static IServiceCollection Add<TService, TImplementation>(this IServiceCollection services,
+            Func<IServiceProvider, TImplementation> implementationFactory,
+            ServiceLifetime serviceLifetime = ServiceLifetime.Transient)
             where TService : class
             where TImplementation : class, TService
         {
@@ -69,19 +71,21 @@ namespace GoldenEye.Shared.Core.Extensions.DependencyInjection
         //
         // Returns:
         //     A reference to this instance after the operation has completed.
-        public static IServiceCollection Add<TService>(this IServiceCollection services, Func<IServiceProvider, TService> implementationFactory, ServiceLifetime serviceLifetime = ServiceLifetime.Transient)
+        public static IServiceCollection Add<TService>(this IServiceCollection services,
+            Func<IServiceProvider, TService> implementationFactory,
+            ServiceLifetime serviceLifetime = ServiceLifetime.Transient)
             where TService : class
         {
             switch (serviceLifetime)
             {
                 case ServiceLifetime.Singleton:
-                    return services.AddSingleton<TService>(implementationFactory);
+                    return services.AddSingleton(implementationFactory);
 
                 case ServiceLifetime.Scoped:
-                    return services.AddScoped<TService>(implementationFactory);
+                    return services.AddScoped(implementationFactory);
 
                 case ServiceLifetime.Transient:
-                    return services.AddTransient<TService>(implementationFactory);
+                    return services.AddTransient(implementationFactory);
 
                 default:
                     throw new ArgumentNullException(nameof(serviceLifetime));
@@ -103,7 +107,8 @@ namespace GoldenEye.Shared.Core.Extensions.DependencyInjection
         //
         // Returns:
         //     A reference to this instance after the operation has completed.
-        public static IServiceCollection Add<TService>(this IServiceCollection services, ServiceLifetime serviceLifetime = ServiceLifetime.Transient)
+        public static IServiceCollection Add<TService>(this IServiceCollection services,
+            ServiceLifetime serviceLifetime = ServiceLifetime.Transient)
             where TService : class
         {
             switch (serviceLifetime)
@@ -137,7 +142,8 @@ namespace GoldenEye.Shared.Core.Extensions.DependencyInjection
         //
         // Returns:
         //     A reference to this instance after the operation has completed.
-        public static IServiceCollection Add(this IServiceCollection services, Type serviceType, ServiceLifetime serviceLifetime = ServiceLifetime.Transient)
+        public static IServiceCollection Add(this IServiceCollection services, Type serviceType,
+            ServiceLifetime serviceLifetime = ServiceLifetime.Transient)
         {
             switch (serviceLifetime)
             {
@@ -174,7 +180,8 @@ namespace GoldenEye.Shared.Core.Extensions.DependencyInjection
         //
         // Returns:
         //     A reference to this instance after the operation has completed.
-        public static IServiceCollection Add<TService, TImplementation>(this IServiceCollection services, ServiceLifetime serviceLifetime = ServiceLifetime.Transient)
+        public static IServiceCollection Add<TService, TImplementation>(this IServiceCollection services,
+            ServiceLifetime serviceLifetime = ServiceLifetime.Transient)
             where TService : class
             where TImplementation : class, TService
         {
@@ -212,7 +219,9 @@ namespace GoldenEye.Shared.Core.Extensions.DependencyInjection
         //
         // Returns:
         //     A reference to this instance after the operation has completed.
-        public static IServiceCollection Add(this IServiceCollection services, Type serviceType, Func<IServiceProvider, object> implementationFactory, ServiceLifetime serviceLifetime = ServiceLifetime.Transient)
+        public static IServiceCollection Add(this IServiceCollection services, Type serviceType,
+            Func<IServiceProvider, object> implementationFactory,
+            ServiceLifetime serviceLifetime = ServiceLifetime.Transient)
         {
             switch (serviceLifetime)
             {
@@ -248,7 +257,8 @@ namespace GoldenEye.Shared.Core.Extensions.DependencyInjection
         //
         // Returns:
         //     A reference to this instance after the operation has completed.
-        public static IServiceCollection Add(this IServiceCollection services, Type serviceType, Type implementationType, ServiceLifetime serviceLifetime = ServiceLifetime.Transient)
+        public static IServiceCollection Add(this IServiceCollection services, Type serviceType,
+            Type implementationType, ServiceLifetime serviceLifetime = ServiceLifetime.Transient)
         {
             switch (serviceLifetime)
             {
@@ -266,7 +276,8 @@ namespace GoldenEye.Shared.Core.Extensions.DependencyInjection
             }
         }
 
-        public static IImplementationTypeSelector FromAssemblies(this IAssemblySelector assemblySelector, AssemblySelector assemblySelection = AssemblySelector.ApplicationDependencies)
+        public static IImplementationTypeSelector FromAssemblies(this IAssemblySelector assemblySelector,
+            AssemblySelector assemblySelection = AssemblySelector.ApplicationDependencies)
         {
             switch (assemblySelection)
             {
@@ -277,7 +288,8 @@ namespace GoldenEye.Shared.Core.Extensions.DependencyInjection
                     return assemblySelector.FromCallingAssembly();
 
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(assemblySelection), assemblySelection, $"Value {assemblySelection} is not supported");
+                    throw new ArgumentOutOfRangeException(nameof(assemblySelection), assemblySelection,
+                        $"Value {assemblySelection} is not supported");
             }
         }
     }

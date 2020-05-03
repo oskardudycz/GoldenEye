@@ -8,7 +8,6 @@ using GoldenEye.Shared.Core.Extensions.DependencyInjection;
 using MediatR;
 using MediatR.Pipeline;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace GoldenEye.Backend.Core.DDD.Registration
 {

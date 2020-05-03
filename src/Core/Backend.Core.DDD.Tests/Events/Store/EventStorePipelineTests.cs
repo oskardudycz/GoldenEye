@@ -17,7 +17,8 @@ namespace Backend.Core.DDD.Tests.Events.Store
         }
 
         [Fact]
-        public async Task GivenEventStorePipelineSetUp_WhenEventIsPublished_ThenEventIsStoredInEventStoreAutomaticallyWithPipeline()
+        public async Task
+            GivenEventStorePipelineSetUp_WhenEventIsPublished_ThenEventIsStoredInEventStoreAutomaticallyWithPipeline()
         {
             //Given
             var services = new ServiceCollection();

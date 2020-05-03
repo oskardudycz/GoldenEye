@@ -5,8 +5,7 @@ namespace GoldenEye.Shared.Core.Utils.Exceptions
 {
     public interface IExceptionProvider
     {
-        string HandleException(Exception e);
-
         IEnumerable<IExceptionHandler> ExceptionHandlers { get; }
+        string HandleException(Exception e);
     }
 }

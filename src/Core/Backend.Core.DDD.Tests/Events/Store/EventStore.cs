@@ -13,7 +13,7 @@ namespace Backend.Core.DDD.Tests.Events.Store
     {
         public class EventStore: IEventStore
         {
-            private IList<IEvent> events = new List<IEvent>();
+            private readonly IList<IEvent> events = new List<IEvent>();
 
             public IEventProjectionStore Projections => throw new NotImplementedException();
 
@@ -21,7 +21,7 @@ namespace Backend.Core.DDD.Tests.Events.Store
             {
             }
 
-            public Task SaveChangesAsync(CancellationToken token = default(CancellationToken))
+            public Task SaveChangesAsync(CancellationToken token = default)
             {
                 return Task.CompletedTask;
             }
@@ -43,7 +43,8 @@ namespace Backend.Core.DDD.Tests.Events.Store
                 return new TEntity();
             }
 
-            public Task<TEntity> AggregateAsync<TEntity>(Guid streamId, int version = 0, DateTime? timestamp = null)
+            public Task<TEntity> AggregateAsync<TEntity>(Guid streamId, int version = 0, DateTime? timestamp = null,
+                CancellationToken cancellationToken = default)
                 where TEntity : class, new()
             {
                 return Task.FromResult(Aggregate<TEntity>(streamId));
@@ -69,7 +70,8 @@ namespace Backend.Core.DDD.Tests.Events.Store
                 return query.ToList();
             }
 
-            public Task<IList<IEvent>> QueryAsync(Guid? streamId = null, int? version = null, DateTime? timestamp = null)
+            public Task<IList<IEvent>> QueryAsync(Guid? streamId = null, int? version = null,
+                DateTime? timestamp = null)
             {
                 return Task.FromResult(Query(streamId, version, timestamp));
             }
@@ -89,19 +91,16 @@ namespace Backend.Core.DDD.Tests.Events.Store
                 throw new NotImplementedException();
             }
 
-            public Task<Guid> StoreAsync(Guid streamId, CancellationToken cancellationToken = default(CancellationToken), params IEvent[] events)
+            public Task<Guid> StoreAsync(Guid streamId, CancellationToken cancellationToken = default,
+                params IEvent[] events)
             {
                 return StoreAsync(streamId, events);
             }
 
-            public Task<Guid> StoreAsync(Guid streamId, int version, CancellationToken cancellationToken = default(CancellationToken), params IEvent[] events)
+            public Task<Guid> StoreAsync(Guid streamId, int version, CancellationToken cancellationToken = default,
+                params IEvent[] events)
             {
                 return StoreAsync(streamId, version, events);
-            }
-
-            public Task<TEntity> AggregateAsync<TEntity>(Guid streamId, CancellationToken cancellationToken = default(CancellationToken), int version = 0, DateTime? timestamp = null) where TEntity : class, new()
-            {
-                throw new NotImplementedException();
             }
 
             Task<TEvent> IEventStore.FindByIdAsync<TEvent>(Guid id, CancellationToken cancellationToken)
@@ -109,12 +108,20 @@ namespace Backend.Core.DDD.Tests.Events.Store
                 throw new NotImplementedException();
             }
 
-            public Task<IList<IEvent>> QueryAsync(CancellationToken cancellationToken = default(CancellationToken), Guid? streamId = null, int? version = null, DateTime? timestamp = null)
+            public Task<IList<IEvent>> QueryAsync(CancellationToken cancellationToken = default, Guid? streamId = null,
+                int? version = null, DateTime? timestamp = null)
             {
                 throw new NotImplementedException();
             }
 
-            Task<IList<TEvent>> IEventStore.QueryAsync<TEvent>(CancellationToken cancellationToken, Guid? streamId, int? version, DateTime? timestamp)
+            Task<IList<TEvent>> IEventStore.QueryAsync<TEvent>(CancellationToken cancellationToken, Guid? streamId,
+                int? version, DateTime? timestamp)
+            {
+                throw new NotImplementedException();
+            }
+
+            public Task<TEntity> AggregateAsync<TEntity>(Guid streamId, CancellationToken cancellationToken = default,
+                int version = 0, DateTime? timestamp = null) where TEntity : class, new()
             {
                 throw new NotImplementedException();
             }

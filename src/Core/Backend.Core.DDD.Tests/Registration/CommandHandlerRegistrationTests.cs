@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Backend.Core.DDD.Tests.External.Contracts;
+using Backend.Core.DDD.Tests.External.Handlers;
 using FluentAssertions;
 using GoldenEye.Backend.Core.DDD.Commands;
 using GoldenEye.Backend.Core.DDD.Registration;
@@ -14,15 +15,30 @@ namespace Backend.Core.DDD.Tests.Registration
 {
     public class CommandHandlerRegistrationTests
     {
-        public class AddUser: ICommand { }
+        public CommandHandlerRegistrationTests()
+        {
+            services.AddAllCommandHandlers(ServiceLifetime.Scoped);
+        }
 
-        public class UpdateUser: ICommand { }
+        public class AddUser: ICommand
+        {
+        }
 
-        public class AddAccount: ICommand { }
+        public class UpdateUser: ICommand
+        {
+        }
 
-        public class UpdateAccount: ICommand { }
+        public class AddAccount: ICommand
+        {
+        }
 
-        public class DeleteAccount: ICommand { }
+        public class UpdateAccount: ICommand
+        {
+        }
+
+        public class DeleteAccount: ICommand
+        {
+        }
 
         public class UserCommandHandler:
             ICommandHandler<AddUser>,
@@ -55,12 +71,12 @@ namespace Backend.Core.DDD.Tests.Registration
             BaseAccountCommandHandler,
             ICommandHandler<DeleteAccount>
         {
-            public override Task<Unit> Handle(AddAccount request, CancellationToken cancellationToken)
+            public Task<Unit> Handle(DeleteAccount request, CancellationToken cancellationToken)
             {
                 return Unit.Task;
             }
 
-            public Task<Unit> Handle(DeleteAccount request, CancellationToken cancellationToken)
+            public override Task<Unit> Handle(AddAccount request, CancellationToken cancellationToken)
             {
                 return Unit.Task;
             }
@@ -85,7 +101,7 @@ namespace Backend.Core.DDD.Tests.Registration
         }
 
         public class GenericCommandHandler<TCommand>: ICommandHandler<TCommand>
-           where TCommand : ICommand
+            where TCommand : ICommand
         {
             public Task<Unit> Handle(TCommand request, CancellationToken cancellationToken)
             {
@@ -93,28 +109,17 @@ namespace Backend.Core.DDD.Tests.Registration
             }
         }
 
-        private ServiceCollection services = new ServiceCollection();
-
-        public CommandHandlerRegistrationTests()
-        {
-            services.AddAllCommandHandlers(ServiceLifetime.Scoped);
-        }
+        private readonly ServiceCollection services = new ServiceCollection();
 
         [Fact]
-        public void GivenMultipleCommandHandler_WhenAddAllCommandHandlerCalled_ThenAllCommandHandlersAreRegistered()
+        public void GivenAbstractEventHandler_WhenAddAllEventHandlerCalled_ThenIsNotRegistered()
         {
             using (var sp = services.BuildServiceProvider())
             {
-                var addUserHandlers = sp.GetServices<IRequestHandler<AddUser, Unit>>()
-                    .Union(sp.GetServices<ICommandHandler<AddUser>>()).ToList();
-                var updateUserHandlers = sp.GetServices<IRequestHandler<UpdateUser, Unit>>()
-                    .Union(sp.GetServices<ICommandHandler<UpdateUser>>()).ToList();
+                var deleteAccountHandlers = sp.GetServices<IRequestHandler<DeleteAccount, Unit>>()
+                    .Union(sp.GetServices<ICommandHandler<DeleteAccount>>());
 
-                addUserHandlers.Should().ContainSingle();
-                addUserHandlers.Should().AllBeOfType<UserCommandHandler>();
-
-                updateUserHandlers.Should().ContainSingle();
-                updateUserHandlers.Should().AllBeOfType<UserCommandHandler>();
+                deleteAccountHandlers.Should().NotContain(x => x is AbstractCommandHandler);
             }
         }
 
@@ -151,7 +156,37 @@ namespace Backend.Core.DDD.Tests.Registration
         }
 
         [Fact]
-        public void GivenMultipleCommandHandlersFromApplicationDependencies_WhenAddAllCommandHandlerCalled_ThenBothAreRegistered()
+        public void GivenGenericCommandHandler_WhenAddAllCommandHandlerCalled_ThenIsNotRegistered()
+        {
+            using (var sp = services.BuildServiceProvider())
+            {
+                var genericHandler = sp.GetService<GenericCommandHandler<CreateBankAccount>>();
+
+                genericHandler.Should().BeNull();
+            }
+        }
+
+        [Fact]
+        public void GivenMultipleCommandHandler_WhenAddAllCommandHandlerCalled_ThenAllCommandHandlersAreRegistered()
+        {
+            using (var sp = services.BuildServiceProvider())
+            {
+                var addUserHandlers = sp.GetServices<IRequestHandler<AddUser, Unit>>()
+                    .Union(sp.GetServices<ICommandHandler<AddUser>>()).ToList();
+                var updateUserHandlers = sp.GetServices<IRequestHandler<UpdateUser, Unit>>()
+                    .Union(sp.GetServices<ICommandHandler<UpdateUser>>()).ToList();
+
+                addUserHandlers.Should().ContainSingle();
+                addUserHandlers.Should().AllBeOfType<UserCommandHandler>();
+
+                updateUserHandlers.Should().ContainSingle();
+                updateUserHandlers.Should().AllBeOfType<UserCommandHandler>();
+            }
+        }
+
+        [Fact]
+        public void
+            GivenMultipleCommandHandlersFromApplicationDependencies_WhenAddAllCommandHandlerCalled_ThenBothAreRegistered()
         {
             using (var sp = services.BuildServiceProvider())
             {
@@ -161,33 +196,10 @@ namespace Backend.Core.DDD.Tests.Registration
                     .Union(sp.GetServices<ICommandHandler<WithdrawMoney>>()).ToList();
 
                 createBankAccountHandlers.Should().ContainSingle();
-                createBankAccountHandlers.Should().AllBeOfType<External.Handlers.CommandHandler>();
+                createBankAccountHandlers.Should().AllBeOfType<CommandHandler>();
 
                 withdrawMoneyHandlers.Should().ContainSingle();
-                withdrawMoneyHandlers.Should().AllBeOfType<External.Handlers.CommandHandler>();
-            }
-        }
-
-        [Fact]
-        public void GivenAbstractEventHandler_WhenAddAllEventHandlerCalled_ThenIsNotRegistered()
-        {
-            using (var sp = services.BuildServiceProvider())
-            {
-                var deleteAccountHandlers = sp.GetServices<IRequestHandler<DeleteAccount, Unit>>()
-                    .Union(sp.GetServices<ICommandHandler<DeleteAccount>>());
-
-                deleteAccountHandlers.Should().NotContain(x => x is AbstractCommandHandler);
-            }
-        }
-
-        [Fact]
-        public void GivenGenericCommandHandler_WhenAddAllCommandHandlerCalled_ThenIsNotRegistered()
-        {
-            using (var sp = services.BuildServiceProvider())
-            {
-                var genericHandler = sp.GetService<GenericCommandHandler<CreateBankAccount>>();
-
-                genericHandler.Should().BeNull();
+                withdrawMoneyHandlers.Should().AllBeOfType<CommandHandler>();
             }
         }
     }

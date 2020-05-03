@@ -9,6 +9,12 @@ namespace GoldenEye.Shared.Core.Validation.Requests
     [Obsolete]
     public class ValidatableRequestBase: ValidatableObjectBase, IRequest
     {
+        [DataMember] public string RequesterBrowser = string.Empty;
+
+        [DataMember] public string RequesterDNS = string.Empty;
+
+        [DataMember] public string RequesterIP = string.Empty;
+
         protected ValidatableRequestBase()
         {
             //RequesterUserID = StaticManager.User.Id;
@@ -21,16 +27,6 @@ namespace GoldenEye.Shared.Core.Validation.Requests
         //[DataMember(Order = 0)]
         //public Guid RequesterUserID { get; set; }
 
-        [DataMember]
-        public string RequesterCultureName { get; set; }
-
-        [DataMember]
-        public string RequesterIP = string.Empty;
-
-        [DataMember]
-        public string RequesterDNS = string.Empty;
-
-        [DataMember]
-        public string RequesterBrowser = string.Empty;
+        [DataMember] public string RequesterCultureName { get; set; }
     }
 }

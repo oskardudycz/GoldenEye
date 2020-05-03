@@ -1,15 +1,10 @@
 ﻿using GoldenEye.Backend.Core.DDD.Registration;
-using GoldenEye.Backend.Core.WebApi.Modules;
 using GoldenEye.Backend.Core.WebApi.Registration;
-using GoldenEye.Shared.Core.Configuration;
 using GoldenEye.Shared.Core.Mappings;
-using GoldenEye.Shared.Core.Modules;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Newtonsoft.Json.Converters;
 
 namespace Backend.DDD.WebApi.Sample
 {

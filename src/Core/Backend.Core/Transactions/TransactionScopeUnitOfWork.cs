@@ -6,7 +6,7 @@ namespace GoldenEye.Backend.Core.Transactions
     {
         private TransactionScope transactionScope;
 
-        private bool wasDisposed = false;
+        private bool wasDisposed;
 
         public void Begin()
         {

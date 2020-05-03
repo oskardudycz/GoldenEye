@@ -8,6 +8,11 @@ namespace Shared.Core.Tests.Modules
 {
     public class Registration
     {
+        public Registration()
+        {
+            services.AddAllApplicationModules();
+        }
+
         public class CustomModuleImplementingIModule: IModule
         {
             public void Configure(IServiceCollection services)
@@ -27,34 +32,7 @@ namespace Shared.Core.Tests.Modules
         {
         }
 
-        private ServiceCollection services = new ServiceCollection();
-
-        public Registration()
-        {
-            services.AddAllApplicationModules();
-        }
-
-        [Fact]
-        public void GivenMultipleCustomModules_WhenAddAllModulesCalled_ThenAllModulesAreRegisteredAsIModule()
-        {
-            using (var sp = services.BuildServiceProvider())
-            {
-                var modules = sp.GetServices<IModule>().ToList();
-
-                modules.Should().Contain(x => x is CustomModuleImplementingIModule);
-                modules.Should().Contain(x => x is CustomModuleDerivedFromModule);
-                modules.Should().Contain(x => x is CustomModuleDerivingFromOtherCustomModule);
-            }
-        }
-
-        [Fact]
-        public void GivenCustomModuleImplementingIModule_WhenAddAllModulesCalled_ThenModuleIsRegistered()
-        {
-            using (var sp = services.BuildServiceProvider())
-            {
-                sp.GetService<CustomModuleImplementingIModule>().Should().NotBeNull();
-            }
-        }
+        private readonly ServiceCollection services = new ServiceCollection();
 
         [Fact]
         public void GivenCustomModuleDerivedFromModule_WhenAddAllModulesCalled_ThenModuleIsRegistered()
@@ -71,6 +49,28 @@ namespace Shared.Core.Tests.Modules
             using (var sp = services.BuildServiceProvider())
             {
                 sp.GetService<CustomModuleDerivingFromOtherCustomModule>().Should().NotBeNull();
+            }
+        }
+
+        [Fact]
+        public void GivenCustomModuleImplementingIModule_WhenAddAllModulesCalled_ThenModuleIsRegistered()
+        {
+            using (var sp = services.BuildServiceProvider())
+            {
+                sp.GetService<CustomModuleImplementingIModule>().Should().NotBeNull();
+            }
+        }
+
+        [Fact]
+        public void GivenMultipleCustomModules_WhenAddAllModulesCalled_ThenAllModulesAreRegisteredAsIModule()
+        {
+            using (var sp = services.BuildServiceProvider())
+            {
+                var modules = sp.GetServices<IModule>().ToList();
+
+                modules.Should().Contain(x => x is CustomModuleImplementingIModule);
+                modules.Should().Contain(x => x is CustomModuleDerivedFromModule);
+                modules.Should().Contain(x => x is CustomModuleDerivingFromOtherCustomModule);
             }
         }
     }

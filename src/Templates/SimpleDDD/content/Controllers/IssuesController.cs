@@ -13,8 +13,8 @@ namespace GoldenEye.WebApi.Template.SimpleDDD.Controllers
     [Route("api/[controller]")]
     public class IssuesController: Controller
     {
-        private readonly IQueryBus queryBus;
         private readonly ICommandBus commandBus;
+        private readonly IQueryBus queryBus;
 
         public IssuesController(IQueryBus queryBus,
             ICommandBus commandBus)
@@ -39,7 +39,7 @@ namespace GoldenEye.WebApi.Template.SimpleDDD.Controllers
 
         // POST api/issues
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody]CreateIssue command)
+        public async Task<IActionResult> Post([FromBody] CreateIssue command)
         {
             await commandBus.SendAsync(command);
 
@@ -48,7 +48,7 @@ namespace GoldenEye.WebApi.Template.SimpleDDD.Controllers
 
         // PUT api/issues
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put([FromBody]UpdateIssue command)
+        public async Task<IActionResult> Put([FromBody] UpdateIssue command)
         {
             await commandBus.SendAsync(command);
 

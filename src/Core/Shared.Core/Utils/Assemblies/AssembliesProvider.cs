@@ -13,18 +13,16 @@ namespace GoldenEye.Shared.Core.Utils.Assemblies
 
             var list = new List<Assembly>();
             foreach (var library in dependencies)
-            {
                 if (IsCandidateLibrary(library, assemblyPrefix))
                     list.Add(Assembly.Load(new AssemblyName(library.Name)));
-            }
             return list;
         }
 
         private static bool IsCandidateLibrary(Library library, string assemblyPrefix)
         {
             return string.IsNullOrEmpty(assemblyPrefix)
-                || library.Name.ToLower().StartsWith(assemblyPrefix.ToLower())
-                || library.Dependencies.Any(d => d.Name.ToLower().StartsWith(assemblyPrefix.ToLower()));
+                   || library.Name.ToLower().StartsWith(assemblyPrefix.ToLower())
+                   || library.Dependencies.Any(d => d.Name.ToLower().StartsWith(assemblyPrefix.ToLower()));
         }
     }
 }

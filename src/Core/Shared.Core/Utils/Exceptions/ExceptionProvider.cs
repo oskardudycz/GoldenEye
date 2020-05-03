@@ -12,7 +12,7 @@ namespace GoldenEye.Shared.Core.Utils.Exceptions
         public string HandleException(Exception exception)
         {
             var sb = new StringBuilder();
-            int recursionLevel = 1;
+            var recursionLevel = 1;
 
             while (exception != null && recursionLevel <= MaxRecursionLevel)
             {
@@ -20,16 +20,15 @@ namespace GoldenEye.Shared.Core.Utils.Exceptions
                 sb.Append(Environment.NewLine);
                 sb.Append(Environment.NewLine);
                 foreach (var handler in ExceptionHandlers)
-                {
                     if (handler.CanHandleException(exception))
                         sb.Append(handler.GetFormattedMessage(exception));
-                }
                 sb.Append(exception.StackTrace);
                 sb.Append(Environment.NewLine);
                 sb.Append(Environment.NewLine);
                 exception = exception.InnerException;
                 recursionLevel++;
             }
+
             return sb.ToString();
         }
 

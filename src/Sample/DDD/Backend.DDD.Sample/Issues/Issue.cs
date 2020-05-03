@@ -7,16 +7,6 @@ namespace Backend.DDD.Sample.Issues
 {
     internal class Issue: IEntity
     {
-        object IHaveId.Id => Id;
-
-        public Guid Id { get; private set; }
-
-        public IssueType Type { get; private set; }
-
-        public string Title { get; private set; }
-
-        public string Description { get; private set; }
-
         public Issue()
         {
         }
@@ -27,5 +17,14 @@ namespace Backend.DDD.Sample.Issues
             Type = type;
             Title = title;
         }
+
+        public Guid Id { get; }
+
+        public IssueType Type { get; }
+
+        public string Title { get; }
+
+        public string Description { get; private set; }
+        object IHaveId.Id => Id;
     }
 }

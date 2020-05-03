@@ -23,15 +23,12 @@ namespace GoldenEye.Shared.Core.Extensions.Collections
 
         public static void ForEach<T>(this IEnumerable<T> list, Action<T> action)
         {
-            foreach (var element in list)
-            {
-                action(element);
-            }
+            foreach (var element in list) action(element);
         }
 
         public static void ForEach<T>(this IEnumerable<T> list, Action<T, int> action)
         {
-            int index = 0;
+            var index = 0;
             foreach (var element in list)
             {
                 action(element, index);
@@ -41,21 +38,16 @@ namespace GoldenEye.Shared.Core.Extensions.Collections
 
         public static void ForEach(this IEnumerable list, Action<object> action)
         {
-            foreach (var element in list)
-            {
-                action(element);
-            }
+            foreach (var element in list) action(element);
         }
 
-        public static IEnumerable<TResult> Select<T, TResult>(this IEnumerable<T> source, Func<T, int, TResult> projection)
+        public static IEnumerable<TResult> Select<T, TResult>(this IEnumerable<T> source,
+            Func<T, int, TResult> projection)
         {
-            int index = 0;
+            var index = 0;
             using (var iterator = source.GetEnumerator())
             {
-                if (!iterator.MoveNext())
-                {
-                    yield break;
-                }
+                if (!iterator.MoveNext()) yield break;
                 do
                 {
                     yield return projection(iterator.Current, index);
@@ -66,13 +58,10 @@ namespace GoldenEye.Shared.Core.Extensions.Collections
 
         public static IEnumerable<TResult> Select<T, TResult>(this IList<T> source, Func<T, int, TResult> projection)
         {
-            int index = 0;
+            var index = 0;
             using (var iterator = source.GetEnumerator())
             {
-                if (!iterator.MoveNext())
-                {
-                    yield break;
-                }
+                if (!iterator.MoveNext()) yield break;
                 do
                 {
                     yield return projection(iterator.Current, index);
@@ -86,11 +75,8 @@ namespace GoldenEye.Shared.Core.Extensions.Collections
         {
             using (var iterator = source.GetEnumerator())
             {
-                if (!iterator.MoveNext())
-                {
-                    yield break;
-                }
-                TSource previous = iterator.Current;
+                if (!iterator.MoveNext()) yield break;
+                var previous = iterator.Current;
                 while (iterator.MoveNext())
                 {
                     yield return projection(previous, iterator.Current);
@@ -99,34 +85,42 @@ namespace GoldenEye.Shared.Core.Extensions.Collections
             }
         }
 
-        public static TResult MaxOrDefault<TSource, TResult>(this IQueryable<TSource> source, Expression<Func<TSource, TResult>> selector)
+        public static TResult MaxOrDefault<TSource, TResult>(this IQueryable<TSource> source,
+            Expression<Func<TSource, TResult>> selector)
         {
             return !source.Any() ? ObjectExtensions.GetDefault<TResult>() : source.Max(selector);
         }
 
-        public static TResult MinOrDefault<TSource, TResult>(this IQueryable<TSource> source, Expression<Func<TSource, TResult>> selector)
+        public static TResult MinOrDefault<TSource, TResult>(this IQueryable<TSource> source,
+            Expression<Func<TSource, TResult>> selector)
         {
             return !source.Any() ? ObjectExtensions.GetDefault<TResult>() : source.Min(selector);
         }
 
-        public static TProperty NonZeroAverage<TSource, TProperty>(this IEnumerable<TSource> source, Func<TSource, TProperty> selector)
+        public static TProperty NonZeroAverage<TSource, TProperty>(this IEnumerable<TSource> source,
+            Func<TSource, TProperty> selector)
         {
             if (typeof(TProperty) == typeof(int))
-                return source.Select(selector.CastTo<Func<TSource, int>>()).Where(el => el != 0).ToList().Average().ConvertTo<TProperty>();
+                return source.Select(selector.CastTo<Func<TSource, int>>()).Where(el => el != 0).ToList().Average()
+                    .ConvertTo<TProperty>();
 
             if (typeof(TProperty) == typeof(int?))
-                return source.Select(selector.CastTo<Func<TSource, int?>>()).Where(el => el != 0).ToList().Average().ConvertTo<TProperty>();
+                return source.Select(selector.CastTo<Func<TSource, int?>>()).Where(el => el != 0).ToList().Average()
+                    .ConvertTo<TProperty>();
 
             if (typeof(TProperty) == typeof(decimal))
-                return source.Select(selector.CastTo<Func<TSource, decimal>>()).Where(el => el != 0).ToList().Average().ConvertTo<TProperty>();
+                return source.Select(selector.CastTo<Func<TSource, decimal>>()).Where(el => el != 0).ToList().Average()
+                    .ConvertTo<TProperty>();
 
             if (typeof(TProperty) == typeof(decimal?))
-                return source.Select(selector.CastTo<Func<TSource, decimal?>>()).Where(el => el != 0).ToList().Average().ConvertTo<TProperty>();
+                return source.Select(selector.CastTo<Func<TSource, decimal?>>()).Where(el => el != 0).ToList().Average()
+                    .ConvertTo<TProperty>();
 
             throw new ArgumentOutOfRangeException("selector");
         }
 
-        public static TProperty Average<TSource, TProperty>(this IEnumerable<TSource> source, Func<TSource, TProperty> selector)
+        public static TProperty Average<TSource, TProperty>(this IEnumerable<TSource> source,
+            Func<TSource, TProperty> selector)
         {
             if (typeof(TProperty) == typeof(int))
                 return source.Average(selector.CastTo<Func<TSource, int>>()).ConvertTo<TProperty>();
@@ -162,36 +156,26 @@ namespace GoldenEye.Shared.Core.Extensions.Collections
 
         public static IEnumerable<TSource> Page<TSource>(this IEnumerable<TSource> source, int page, int? pageSize)
         {
-            if (page < 0)
-            {
-                throw new ArgumentException("Page number should be greater than or equal to 0");
-            }
+            if (page < 0) throw new ArgumentException("Page number should be greater than or equal to 0");
 
             if (pageSize.HasValue && pageSize.Value < 0)
-            {
                 throw new ArgumentException("Page size should be greater than or equal to 0");
-            }
 
-            return (pageSize.HasValue == true) ? source.Skip((page - 1) * pageSize.Value).Take(pageSize.Value) : source;
+            return pageSize.HasValue ? source.Skip((page - 1) * pageSize.Value).Take(pageSize.Value) : source;
         }
 
         /// <summary>
-        /// Selects random element from the collection.
+        ///     Selects random element from the collection.
         /// </summary>
         /// <returns>Random element from the collection, if collection contains any elements. Otherwise, default value.</returns>
         public static TSource Random<TSource>(this IEnumerable<TSource> source)
         {
-            if (!source.Any())
-            {
-                return default(TSource);
-            }
-            else
-            {
-                var rnd = new Random(DateTime.Now.Millisecond);
-                var index = rnd.Next(source.Count());
+            if (!source.Any()) return default;
 
-                return source.ElementAt(index);
-            }
+            var rnd = new Random(DateTime.Now.Millisecond);
+            var index = rnd.Next(source.Count());
+
+            return source.ElementAt(index);
         }
 
         public static T GetById<T>(this IEnumerable<T> source, object id)
@@ -200,29 +184,26 @@ namespace GoldenEye.Shared.Core.Extensions.Collections
             return source.SingleOrDefault(el => el.Id == id);
         }
 
-        public static IEnumerable<TSource> DistinctBy<TSource, TProperty, TOrderProperty>(this IEnumerable<TSource> source, Func<TSource, TProperty> property, Func<TSource, TOrderProperty> orderProperty, bool descending = false)
+        public static IEnumerable<TSource> DistinctBy<TSource, TProperty, TOrderProperty>(
+            this IEnumerable<TSource> source, Func<TSource, TProperty> property,
+            Func<TSource, TOrderProperty> orderProperty, bool descending = false)
         {
-            return source.
-                GroupBy(property).
-                Select(i =>
-                {
-                    var ordered = descending ? i.OrderByDescending(orderProperty) : i.OrderBy(orderProperty);
+            return source.GroupBy(property).Select(i =>
+            {
+                var ordered = descending ? i.OrderByDescending(orderProperty) : i.OrderBy(orderProperty);
 
-                    return ordered.First();
-                });
+                return ordered.First();
+            });
         }
 
-        public static bool IsSequential<TSource>(this IEnumerable<TSource> source, Func<TSource, int> property, int startIndex = 1)
+        public static bool IsSequential<TSource>(this IEnumerable<TSource> source, Func<TSource, int> property,
+            int startIndex = 1)
         {
             var list = source.OrderBy(property).ToList();
 
-            for (int i = 0; i < list.Count; ++i)
-            {
+            for (var i = 0; i < list.Count; ++i)
                 if (property(list[i]) != (i + startIndex))
-                {
                     return false;
-                }
-            }
 
             return true;
         }
@@ -257,7 +238,7 @@ namespace GoldenEye.Shared.Core.Extensions.Collections
             collection = collection.OrderBy(x => x.Position);
             item.Position = -1;
 
-            int index = 1;
+            var index = 1;
             collection.Where(x => x.Position > 0).Take(position - 1).ForEach(x => x.Position = index++);
 
             index = position + 1;

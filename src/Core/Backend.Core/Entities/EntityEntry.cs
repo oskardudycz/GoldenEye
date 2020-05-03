@@ -8,15 +8,15 @@ namespace GoldenEye.Backend.Core.Entity
 
     public class EntityEntry: IEntityEntry
     {
-        public EntityEntryState State { get; private set; }
-
-        public IEntity Entity { get; private set; }
-
         public EntityEntry(EntityEntryState state, IEntity entity)
         {
             State = state;
             Entity = entity;
         }
+
+        public EntityEntryState State { get; }
+
+        public IEntity Entity { get; }
     }
 
     public enum EntityEntryState

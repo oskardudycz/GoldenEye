@@ -15,8 +15,8 @@ namespace GoldenEye.WebApi.Template.SimpleDDD.Backend.Issues.Handlers
         ICommandHandler<UpdateIssue>,
         ICommandHandler<DeleteIssue>
     {
-        private IEventBus eventBus;
-        private IRepository<Issue> repository;
+        private readonly IEventBus eventBus;
+        private readonly IRepository<Issue> repository;
 
         public IssueCommandHandler(
             IEventBus eventBus,
@@ -37,6 +37,15 @@ namespace GoldenEye.WebApi.Template.SimpleDDD.Backend.Issues.Handlers
             return Unit.Value;
         }
 
+        public async Task<Unit> Handle(DeleteIssue command, CancellationToken cancellationToken)
+        {
+            await repository.DeleteByIdAsync(command.Id, cancellationToken);
+
+            await eventBus.PublishAsync(new IssueDeleted(command.Id), cancellationToken);
+
+            return Unit.Value;
+        }
+
         public async Task<Unit> Handle(UpdateIssue command, CancellationToken cancellationToken)
         {
             var aggregate = await repository.GetByIdAsync(command.Id, cancellationToken);
@@ -45,15 +54,6 @@ namespace GoldenEye.WebApi.Template.SimpleDDD.Backend.Issues.Handlers
 
             var @event = new IssueUpdated(aggregate.Id, aggregate.Type, aggregate.Title, aggregate.Description);
             await eventBus.PublishAsync(@event, cancellationToken);
-
-            return Unit.Value;
-        }
-
-        public async Task<Unit> Handle(DeleteIssue command, CancellationToken cancellationToken)
-        {
-            await repository.DeleteAsync(command.Id, cancellationToken);
-
-            await eventBus.PublishAsync(new IssueDeleted(command.Id), cancellationToken);
 
             return Unit.Value;
         }

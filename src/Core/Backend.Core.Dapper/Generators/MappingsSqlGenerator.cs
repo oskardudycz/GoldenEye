@@ -5,7 +5,7 @@ using GoldenEye.Backend.Core.Dapper.Mappings;
 namespace GoldenEye.Backend.Core.Dapper.Generators
 {
     /// <summary>
-    /// Generates Dapper sql from mappings
+    ///     Generates Dapper sql from mappings
     /// </summary>
     public class MappingsSqlGenerator: IDapperSqlGenerator
     {

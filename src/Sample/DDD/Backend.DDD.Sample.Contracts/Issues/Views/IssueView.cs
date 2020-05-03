@@ -7,19 +7,14 @@ namespace Backend.DDD.Sample.Contracts.Issues.Views
 {
     public class IssueView: IView<Guid>
     {
-        public Guid Id { get; set; }
-
         public IssueType Type { get; set; }
 
         public string Title { get; set; }
 
         public string Description { get; set; }
+        public Guid Id { get; set; }
 
         object IHaveId.Id => Id;
-
-        public IssueView()
-        {
-        }
 
         public void Apply(IssueCreated @event)
         {
