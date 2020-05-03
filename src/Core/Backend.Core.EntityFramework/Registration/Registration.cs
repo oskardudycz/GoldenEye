@@ -11,7 +11,7 @@ namespace GoldenEye.Backend.Core.EntityFramework.Registration
 {
     public static class Registration
     {
-        public static void AddEntityFramewor(this IServiceCollection services)
+        public static void AddEntityFramework(this IServiceCollection services)
         {
             services.TryAddScoped<IEntityFrameworkMigrationsRunner>();
         }
