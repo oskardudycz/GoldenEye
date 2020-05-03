@@ -101,7 +101,7 @@ namespace GoldenEye.Backend.Core.WebApi.Registration
                 .UseWebApi()
                 .UseSwagger()
                 .UseSwaggerUI(setupSwaggerUI ?? DefaultSwaggerSetup)
-                .UseModules(env);
+                .UseApplicationModules(env);
         }
 
         public static IApplicationBuilder UseExceptionHandlingMiddleware(this IApplicationBuilder app)

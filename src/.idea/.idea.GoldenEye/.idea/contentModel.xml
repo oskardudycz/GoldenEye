@@ -92,9 +92,6 @@
           <e p="Backend.Core.Dapper.Integration.Tests.csproj" t="IncludeRecursive" />
           <e p="bin" t="ExcludeRecursive" />
           <e p="Changelog.md" t="Include" />
-          <e p="Context" t="Include">
-            <e p="DapperDataContextTests.cs" t="Include" />
-          </e>
           <e p="Infrastructure" t="Include">
             <e p="DapperTest.cs" t="Include" />
           </e>
@@ -104,6 +101,9 @@
                 <e p="Backend.Core.Dapper.Integration.Tests.AssemblyInfo.cs" t="Include" />
               </e>
             </e>
+          </e>
+          <e p="Repositories" t="Include">
+            <e p="DapperRepositoryTests.cs" t="Include" />
           </e>
           <e p="TestData" t="Include">
             <e p="Structure.cs" t="Include" />
@@ -228,6 +228,13 @@
           <e p="Backend.Core.EntityFramework.csproj" t="IncludeRecursive" />
           <e p="bin" t="ExcludeRecursive" />
           <e p="Changelog.md" t="Include" />
+          <e p="DbContexts" t="Include" />
+          <e p="Migrations" t="Include">
+            <e p="EntityFrameworkDbContextMigrationRunner.cs" t="Include" />
+            <e p="EntityFrameworkMigrationsRunner.cs" t="Include" />
+            <e p="IEntityFrameworkDbContextMigrationRunner.cs" t="Include" />
+            <e p="IEntityFrameworkMigrationsRunner.cs" t="Include" />
+          </e>
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
               <e p="netstandard2.1" t="Include">
@@ -240,8 +247,34 @@
             <e p="Registration.cs" t="Include" />
           </e>
           <e p="Repositories" t="Include">
-            <e p="DesignTypeDbContextFactoryBase.cs" t="Include" />
+            <e p="DesignTypeDbContextFactory.cs" t="Include" />
             <e p="EntityFrameworkRepository.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Backend.Core.EntityFramework.Integration.Tests" t="IncludeRecursive">
+          <e p="appsettings.json" t="Include" />
+          <e p="Backend.Core.EntityFramework.Integration.Tests.csproj" t="IncludeRecursive" />
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Infrastructure" t="Include">
+            <e p="EntityFrameworkTest.cs" t="Include" />
+          </e>
+          <e p="Migrations" t="Include">
+            <e p="20200503181242_InitialCreate.cs" t="Include" />
+            <e p="20200503181242_InitialCreate.Designer.cs" t="Include" />
+            <e p="UsersDbContextModelSnapshot.cs" t="Include" />
+          </e>
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netcoreapp3.1" t="Include">
+                <e p="Backend.Core.EntityFramework.Integration.Tests.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Repositories" t="Include">
+            <e p="EntityFrameworkRepositoryTests.cs" t="Include" />
+          </e>
+          <e p="TestData" t="Include">
+            <e p="Structure.cs" t="Include" />
           </e>
         </e>
         <e p="Backend.Core.Marten" t="IncludeRecursive">

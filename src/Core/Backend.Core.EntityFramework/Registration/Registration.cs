@@ -1,20 +1,31 @@
 ﻿using System;
 using GoldenEye.Backend.Core.Entity;
+using GoldenEye.Backend.Core.EntityFramework.Migrations;
 using GoldenEye.Backend.Core.Repositories;
 using GoldenEye.Shared.Core.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace GoldenEye.Backend.Core.EntityFramework.Registration
 {
     public static class Registration
     {
-        public static void AddEntityFramework<TDbContext>(this IServiceCollection services,
+        public static void AddEntityFramewor(this IServiceCollection services)
+        {
+            services.TryAddScoped<IEntityFrameworkMigrationsRunner>();
+        }
+
+        public static void AddEntityFrameworkDbContext<TDbContext>(this IServiceCollection services,
             Action<IServiceProvider, DbContextOptionsBuilder> optionsAction,
             ServiceLifetime serviceLifetime = ServiceLifetime.Scoped)
             where TDbContext : DbContext
         {
             services.AddDbContext<TDbContext>(optionsAction, serviceLifetime);
+            services.Add<IEntityFrameworkDbContextMigrationRunner<TDbContext>>(sp =>
+                new EntityFrameworkDbContextMigrationRunner<TDbContext>(sp.GetService<TDbContext>()), serviceLifetime);
+            services.Add<IEntityFrameworkDbContextMigrationRunner>(sp =>
+                new EntityFrameworkDbContextMigrationRunner<TDbContext>(sp.GetService<TDbContext>()), serviceLifetime);
         }
 
         public static void AddEntityFrameworkRepository<TDbContext, TEntity>(this IServiceCollection services,

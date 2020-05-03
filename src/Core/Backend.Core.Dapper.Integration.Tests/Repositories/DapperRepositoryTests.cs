@@ -5,12 +5,12 @@ using GoldenEye.Backend.Core.Dapper.Repositories;
 using Marten.Integration.Tests.TestsInfrasructure;
 using Xunit;
 
-namespace Backend.Core.Dapper.Integration.Tests.Context
+namespace Backend.Core.Dapper.Integration.Tests.Repositories
 {
-    public class DapperDataContextTests: DapperTest
+    public class DapperRepositoryTests: DapperTest
     {
         [Fact]
-        public void GivenDataContextWithouts_WhenFullCRUDFlowIsRun_ThenSucceed()
+        public void GivenRepository_WhenFullCRUDFlowIsRun_ThenSucceed()
         {
             Execute(Structure.UsersCreateSql);
 
