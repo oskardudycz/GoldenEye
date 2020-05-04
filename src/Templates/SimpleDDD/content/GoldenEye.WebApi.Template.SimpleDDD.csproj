@@ -12,11 +12,11 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="9.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
-    <PackageReference Include="GoldenEye.Backend.Core" Version="8.0.0-alpha1" />
-    <PackageReference Include="GoldenEye.Backend.Core.DDD" Version="10.0.0-alpha1" />
-    <PackageReference Include="GoldenEye.Backend.Core.Marten" Version="9.0.0-alpha1" />
-    <PackageReference Include="GoldenEye.Backend.Core.WebApi" Version="8.0.0-alpha1" />
-    <PackageReference Include="GoldenEye.Shared.Core" Version="7.0.0-alpha1" />
+    <PackageReference Include="GoldenEye.Backend.Core" Version="8.0.0-alpha3" />
+    <PackageReference Include="GoldenEye.Backend.Core.DDD" Version="10.0.0-alpha3" />
+    <PackageReference Include="GoldenEye.Backend.Core.Marten" Version="9.0.0-alpha3" />
+    <PackageReference Include="GoldenEye.Backend.Core.WebApi" Version="8.0.0-alpha3" />
+    <PackageReference Include="GoldenEye.Shared.Core" Version="7.0.0-alpha3" />
   </ItemGroup>
 
   <ItemGroup>

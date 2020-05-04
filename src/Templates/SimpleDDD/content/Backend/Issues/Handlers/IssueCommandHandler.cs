@@ -30,6 +30,7 @@ namespace GoldenEye.WebApi.Template.SimpleDDD.Backend.Issues.Handlers
         {
             var aggregate = new Issue(Guid.NewGuid(), command.Type, command.Title, command.Description);
             await repository.AddAsync(aggregate, cancellationToken);
+            await repository.SaveChangesAsync(cancellationToken);
 
             var @event = new IssueCreated(aggregate.Id, aggregate.Type, aggregate.Title, aggregate.Description);
             await eventBus.PublishAsync(@event, cancellationToken);
@@ -41,6 +42,8 @@ namespace GoldenEye.WebApi.Template.SimpleDDD.Backend.Issues.Handlers
         {
             await repository.DeleteByIdAsync(command.Id, cancellationToken);
 
+            await repository.SaveChangesAsync(cancellationToken);
+
             await eventBus.PublishAsync(new IssueDeleted(command.Id), cancellationToken);
 
             return Unit.Value;
@@ -51,6 +54,8 @@ namespace GoldenEye.WebApi.Template.SimpleDDD.Backend.Issues.Handlers
             var aggregate = await repository.GetByIdAsync(command.Id, cancellationToken);
             aggregate.Update(command.Type, command.Title, command.Description);
             await repository.UpdateAsync(aggregate, cancellationToken);
+
+            await repository.SaveChangesAsync(cancellationToken);
 
             var @event = new IssueUpdated(aggregate.Id, aggregate.Type, aggregate.Title, aggregate.Description);
             await eventBus.PublishAsync(@event, cancellationToken);
