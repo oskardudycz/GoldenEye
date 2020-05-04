@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
-        <Version>8.0.0-alpha2</Version>
+        <Version>8.0.0-alpha3</Version>
         <PackageId>GoldenEye.Backend.Core.EntityFramework</PackageId>
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
         <Authors>Oskar Dudycz</Authors>

@@ -177,16 +177,16 @@ namespace GoldenEye.Backend.Core.Marten.Repositories
             switch (id)
             {
                 case Guid guid:
-                    documentSession.Delete(guid);
+                    documentSession.Delete<TEntity>(guid);
                     break;
                 case long l:
-                    documentSession.Delete(l);
+                    documentSession.Delete<TEntity>(l);
                     break;
                 case int i:
-                    documentSession.Delete(i);
+                    documentSession.Delete<TEntity>(i);
                     break;
                 default:
-                    documentSession.Delete(id.ToString());
+                    documentSession.Delete<TEntity>(id.ToString());
                     break;
             }
 
@@ -201,16 +201,16 @@ namespace GoldenEye.Backend.Core.Marten.Repositories
             switch (id)
             {
                 case Guid guid:
-                    documentSession.Delete(guid);
+                    documentSession.Delete<TEntity>(guid);
                     break;
                 case long l:
-                    documentSession.Delete(l);
+                    documentSession.Delete<TEntity>(l);
                     break;
                 case int i:
-                    documentSession.Delete(i);
+                    documentSession.Delete<TEntity>(i);
                     break;
                 default:
-                    documentSession.Delete(id.ToString());
+                    documentSession.Delete<TEntity>(id.ToString());
                     break;
             }
 
