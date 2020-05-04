@@ -8,6 +8,8 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
 {
     public static class DateTimeExtensions
     {
+        private static List<DateTime> _allDatesInCurrentYear;
+
         public static DateTime Today
         {
             get { return DateTime.Today; }
@@ -24,8 +26,16 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
         }
 
         /// <summary>
-        /// Checks, whether date falls in the range defined by <paramref name="rangeStart"/> and <paramref name="rangeEnd"/>.
-        /// Starting and ending day are taken into account.
+        ///     All dates in current year
+        /// </summary>
+        public static List<DateTime> AllDatesInCurrentYear
+        {
+            get { return _allDatesInCurrentYear ?? (_allDatesInCurrentYear = GetDates(DateTime.Today.Year)); }
+        }
+
+        /// <summary>
+        ///     Checks, whether date falls in the range defined by <paramref name="rangeStart" /> and <paramref name="rangeEnd" />.
+        ///     Starting and ending day are taken into account.
         /// </summary>
         /// <param name="date">Date to be checked</param>
         /// <param name="rangeStart">Start date of range</param>
@@ -36,8 +46,8 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
         }
 
         /// <summary>
-        /// Checks, whether date falls in the specified range.
-        /// Starting and ending day are taken into account.
+        ///     Checks, whether date falls in the specified range.
+        ///     Starting and ending day are taken into account.
         /// </summary>
         /// <param name="date">Date to be checked</param>
         /// <param name="range">Range of dates</param>
@@ -47,8 +57,8 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
         }
 
         /// <summary>
-        /// Checks, whether date falls in any range in <paramref name="ranges"/> collection.
-        /// Starting and ending day are taken into account.
+        ///     Checks, whether date falls in any range in <paramref name="ranges" /> collection.
+        ///     Starting and ending day are taken into account.
         /// </summary>
         /// <param name="date">Date to be checked</param>
         /// <param name="ranges">Collection of date ranges</param>
@@ -58,8 +68,8 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
         }
 
         /// <summary>
-        /// Extracts week day number from date.
-        /// Monday is the first day of the week, and Sunday is last.
+        ///     Extracts week day number from date.
+        ///     Monday is the first day of the week, and Sunday is last.
         /// </summary>
         /// <param name="date"></param>
         /// <returns>One-based number of the day in the week</returns>
@@ -73,7 +83,7 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
         }
 
         /// <summary>
-        /// Returns the date of the first day of chosen month
+        ///     Returns the date of the first day of chosen month
         /// </summary>
         /// <param name="date"></param>
         /// <returns></returns>
@@ -83,7 +93,7 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
         }
 
         /// <summary>
-        /// Returns the date of the last day of chosen month
+        ///     Returns the date of the last day of chosen month
         /// </summary>
         /// <param name="date"></param>
         /// <returns></returns>
@@ -93,7 +103,7 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
         }
 
         /// <summary>
-        /// Returns the date of the first day of current month
+        ///     Returns the date of the first day of current month
         /// </summary>
         /// <returns></returns>
         public static DateTime FirstDayOfCurrentMonth()
@@ -102,7 +112,7 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
         }
 
         /// <summary>
-        /// Returns the date of the first day of current year
+        ///     Returns the date of the first day of current year
         /// </summary>
         /// <returns></returns>
         public static DateTime FirstDayOfCurrentYear()
@@ -111,7 +121,7 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
         }
 
         /// <summary>
-        /// Returns the date of the last day of chosen month
+        ///     Returns the date of the last day of chosen month
         /// </summary>
         /// <returns></returns>
         public static DateTime LastDayOfCurrentMonth()
@@ -120,7 +130,7 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
         }
 
         /// <summary>
-        /// Returns the date of the first day of current month
+        ///     Returns the date of the first day of current month
         /// </summary>
         /// <returns></returns>
         public static DateTime GetDayOfCurrentMonth(int day)
@@ -129,7 +139,7 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
         }
 
         /// <summary>
-        /// Calculates first date of quarter.
+        ///     Calculates first date of quarter.
         /// </summary>
         /// <param name="date">Date</param>
         /// <returns>First date of quarter</returns>
@@ -141,7 +151,7 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
         }
 
         /// <summary>
-        /// Calculates first date of quarter.
+        ///     Calculates first date of quarter.
         /// </summary>
         /// <param name="date">Date</param>
         /// <returns>First date of quarter</returns>
@@ -151,7 +161,7 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
         }
 
         /// <summary>
-        /// Returns the date of the last day of chosen year
+        ///     Returns the date of the last day of chosen year
         /// </summary>
         /// <param name="date"></param>
         /// <returns></returns>
@@ -161,7 +171,7 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
         }
 
         /// <summary>
-        /// Returns the date of the last day of chosen year
+        ///     Returns the date of the last day of chosen year
         /// </summary>
         /// <param name="date"></param>
         /// <returns></returns>
@@ -171,7 +181,7 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
         }
 
         /// <summary>
-        /// Returns the date of the last day of current year
+        ///     Returns the date of the last day of current year
         /// </summary>
         /// <returns></returns>
         public static DateTime LastDayOfCurrentYear()
@@ -180,7 +190,7 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
         }
 
         /// <summary>
-        /// Returns the date of the first day of current quarter
+        ///     Returns the date of the first day of current quarter
         /// </summary>
         /// <returns></returns>
         public static DateTime FirstDayOfCurrentQuarter()
@@ -189,7 +199,7 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
         }
 
         /// <summary>
-        /// Returns the date of the last day of current quarter
+        ///     Returns the date of the last day of current quarter
         /// </summary>
         /// <returns></returns>
         public static DateTime LastDayOfCurrentQuarter()
@@ -198,13 +208,14 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
         }
 
         /// <summary>
-        /// Converts collection of dates to sorted collection of date ranges.
-        /// Every date in the source collection will be treated as date, time is rejected.
+        ///     Converts collection of dates to sorted collection of date ranges.
+        ///     Every date in the source collection will be treated as date, time is rejected.
         /// </summary>
         /// <param name="collection"></param>
         /// <param name="maxValue">Maximum value from collection taken for the generation of ranges</param>
         /// <returns>Sorted collection of date ranges</returns>
-        public static IOrderedEnumerable<DateRange> ToDateRanges(this IList<DateTime> collection, DateTime? maxValue = null)
+        public static IOrderedEnumerable<DateRange> ToDateRanges(this IList<DateTime> collection,
+            DateTime? maxValue = null)
         {
             var ranges = new List<DateRange>();
 
@@ -221,8 +232,8 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
             DateRange range = null;
             for (; startDate <= endDate; startDate = startDate.AddDays(1).Date)
             {
-                bool isIncollection = dateOnlyHashSet.Contains(startDate);
-                bool rangeStarted = range != null;
+                var isIncollection = dateOnlyHashSet.Contains(startDate);
+                var rangeStarted = range != null;
 
                 if (rangeStarted && !isIncollection)
                 {
@@ -250,21 +261,15 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
 
         public static DateTime GetFirstDayOfWeek(this DateTime givenDate)
         {
-            DateTime tmp = givenDate.Date;
-            while (tmp.AddDays(-1).Month == givenDate.Month && tmp.DayOfWeek > DayOfWeek.Monday)
-            {
-                tmp = tmp.AddDays(-1);
-            }
+            var tmp = givenDate.Date;
+            while (tmp.AddDays(-1).Month == givenDate.Month && tmp.DayOfWeek > DayOfWeek.Monday) tmp = tmp.AddDays(-1);
             return tmp;
         }
 
         public static DateTime GetLastDayOfWeek(this DateTime givenDate)
         {
-            DateTime tmp = givenDate.Date;
-            while (tmp.AddDays(1).Month == givenDate.Month && tmp.DayOfWeek != DayOfWeek.Sunday)
-            {
-                tmp = tmp.AddDays(1);
-            }
+            var tmp = givenDate.Date;
+            while (tmp.AddDays(1).Month == givenDate.Month && tmp.DayOfWeek != DayOfWeek.Sunday) tmp = tmp.AddDays(1);
             return tmp;
         }
 
@@ -274,90 +279,68 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
             var firstDayOfMonth = new DateTime(date.Year, date.Month, 1);
             var firstDay = CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek;
 
-            for (int i = 0; i < weeks - 1; i++)
+            for (var i = 0; i < weeks - 1; i++)
             {
-                if (i > 0)
-                {
-                    tmp = tmp.AddDays(1);
-                }
+                if (i > 0) tmp = tmp.AddDays(1);
 
                 while (tmp.AddDays(1).Month == date.Month && (tmp.DayOfWeek != firstDay || tmp == firstDayOfMonth))
-                {
                     tmp = tmp.AddDays(1);
-                }
             }
 
-            while (tmp.AddDays(1).Month == date.Month && tmp.DayOfWeek != (DayOfWeek)dayOfWeek)
-            {
-                tmp = tmp.AddDays(1);
-            }
+            while (tmp.AddDays(1).Month == date.Month && tmp.DayOfWeek != (DayOfWeek)dayOfWeek) tmp = tmp.AddDays(1);
 
-            if (tmp.DayOfWeek != (DayOfWeek)dayOfWeek)
-            {
-                return null;
-            }
+            if (tmp.DayOfWeek != (DayOfWeek)dayOfWeek) return null;
 
             return tmp;
         }
 
         public static DateTime GoToFirstDayOfLastWeek(this DateTime date, int dayOfWeek)
         {
-            DateTime tmp = date.Date.AddMonths(1).AddDays(-1);
-            while (tmp.AddDays(-1).Month == date.Month && tmp.DayOfWeek != (DayOfWeek)dayOfWeek)
-            {
-                tmp = tmp.AddDays(-1);
-            }
+            var tmp = date.Date.AddMonths(1).AddDays(-1);
+            while (tmp.AddDays(-1).Month == date.Month && tmp.DayOfWeek != (DayOfWeek)dayOfWeek) tmp = tmp.AddDays(-1);
             return tmp;
         }
 
         /// <summary>
-        /// Function that returns all dates in selected year
+        ///     Function that returns all dates in selected year
         /// </summary>
         /// <param name="year">selected year</param>
         /// <returns>all dates in selected year</returns>
         public static List<DateTime> GetDates(int year)
         {
-            return Enumerable.Range(1, 12)  // Months: 1, 2 ... 12 etc.
-                             .SelectMany(month => GetDates(year, month))
-                             .ToList();
+            return Enumerable.Range(1, 12) // Months: 1, 2 ... 12 etc.
+                .SelectMany(month => GetDates(year, month))
+                .ToList();
         }
 
         /// <summary>
-        /// Function that returns all dates in selected month of a year
+        ///     Function that returns all dates in selected month of a year
         /// </summary>
         /// <param name="year">selected year</param>
         /// <param name="month">selected month</param>
         /// <returns>all dates in selected month of a year</returns>
         public static List<DateTime> GetDates(int year, int month)
         {
-            return Enumerable.Range(1, DateTime.DaysInMonth(year, month))  // Days: 1, 2 ... 31 etc.
-                             .Select(day => new DateTime(year, month, day)) // Map each day to a date
-                             .ToList(); // Load dates into a list
-        }
-
-        private static List<DateTime> _allDatesInCurrentYear;
-
-        /// <summary>
-        /// All dates in current year
-        /// </summary>
-        public static List<DateTime> AllDatesInCurrentYear
-        {
-            get { return _allDatesInCurrentYear ?? (_allDatesInCurrentYear = GetDates(DateTime.Today.Year)); }
+            return Enumerable.Range(1, DateTime.DaysInMonth(year, month)) // Days: 1, 2 ... 31 etc.
+                .Select(day => new DateTime(year, month, day)) // Map each day to a date
+                .ToList(); // Load dates into a list
         }
 
         public static DateTime Convert(string dateString, string format)
         {
             DateTime result;
             if (DateTime.TryParseExact(dateString, format, CultureInfo.InvariantCulture,
-                                   DateTimeStyles.None, out result))
+                DateTimeStyles.None, out result))
                 return result;
 
             return DateTime.TryParse(dateString, CultureInfo.InvariantCulture,
-                                     DateTimeStyles.None, out result) ? result : DateTime.Parse(dateString);
+                DateTimeStyles.None, out result)
+                ? result
+                : DateTime.Parse(dateString);
         }
 
         /// <summary>
-        /// Compares two nullable date time object
+        ///     Compares two nullable date time object
         /// </summary>
         /// <param name="d1"></param>
         /// <param name="d2"></param>
@@ -379,24 +362,15 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
 
         public static string ToUserFriendlyTimePeriod(this TimeSpan timespan)
         {
-            String returnString = null;
+            string returnString = null;
 
             if (timespan.TotalHours < 1)
-            {
-                returnString = String.Format("{0} minutes ago", timespan.Minutes);
-            }
+                returnString = string.Format("{0} minutes ago", timespan.Minutes);
             else if (timespan.TotalHours < 24)
-            {
-                returnString = String.Format("{0} hours ago", timespan.Hours);
-            }
+                returnString = string.Format("{0} hours ago", timespan.Hours);
             else if (timespan.TotalDays < 2)
-            {
-                returnString = String.Format("1 day and {0} hours ago", timespan.Hours);
-            }
-            else if (timespan.TotalDays > 2)
-            {
-                returnString = String.Format("{0} days ago", timespan.Days);
-            }
+                returnString = string.Format("1 day and {0} hours ago", timespan.Hours);
+            else if (timespan.TotalDays > 2) returnString = string.Format("{0} days ago", timespan.Days);
 
             return returnString;
         }

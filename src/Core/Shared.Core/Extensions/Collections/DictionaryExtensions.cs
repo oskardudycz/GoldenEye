@@ -8,8 +8,8 @@ namespace GoldenEye.Shared.Core.Extensions.Collections
     public static class DictionaryExtensions
     {
         /// <summary>
-        /// Extension method that turns a dictionary of string and object to an ExpandoObject
-        /// Snagged from http://theburningmonk.com/2011/05/idictionarystring-object-to-expandoobject-extension-method/
+        ///     Extension method that turns a dictionary of string and object to an ExpandoObject
+        ///     Snagged from http://theburningmonk.com/2011/05/idictionarystring-object-to-expandoobject-extension-method/
         /// </summary>
         public static ExpandoObject ToExpando(this IDictionary<string, object> dictionary)
         {
@@ -18,7 +18,6 @@ namespace GoldenEye.Shared.Core.Extensions.Collections
 
             // go through the items in the dictionary and copy over the key value pairs)
             foreach (var kvp in dictionary)
-            {
                 // if the value can also be turned into an ExpandoObject, then do it!
                 if (kvp.Value is IDictionary<string, object>)
                 {
@@ -31,7 +30,6 @@ namespace GoldenEye.Shared.Core.Extensions.Collections
                     // along the way into expando objects
                     var itemList = new List<object>();
                     foreach (var item in (ICollection)kvp.Value)
-                    {
                         if (item is IDictionary<string, object>)
                         {
                             var expandoItem = ((IDictionary<string, object>)item).ToExpando();
@@ -41,7 +39,6 @@ namespace GoldenEye.Shared.Core.Extensions.Collections
                         {
                             itemList.Add(item);
                         }
-                    }
 
                     expandoDic.Add(kvp.Key, itemList);
                 }
@@ -49,13 +46,11 @@ namespace GoldenEye.Shared.Core.Extensions.Collections
                 {
                     expandoDic.Add(kvp);
                 }
-            }
 
             return expando;
         }
 
         /// <summary>
-        ///
         /// </summary>
         /// <typeparam name="T1"></typeparam>
         /// <typeparam name="T2"></typeparam>
@@ -87,7 +82,8 @@ namespace GoldenEye.Shared.Core.Extensions.Collections
             return dictionary;
         }
 
-        public static T2 GetValueOrDefault<T1, T2>(this IDictionary<T1, T2> dictionary, T1 key, T2 defaultValue = default(T2))
+        public static T2 GetValueOrDefault<T1, T2>(this IDictionary<T1, T2> dictionary, T1 key,
+            T2 defaultValue = default)
         {
             return dictionary.ContainsKey(key) ? dictionary[key] : defaultValue;
         }

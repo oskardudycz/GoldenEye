@@ -1,13 +1,15 @@
 using System.Collections.Generic;
-using GoldenEye.Backend.Core.Context.SaveChangesHandlers.Base;
+using GoldenEye.Backend.Core.Entity;
+using GoldenEye.Backend.Core.Repositories.SaveChangesHandlers.Base;
 
-namespace GoldenEye.Backend.Core.Context.SaveChangesHandlers
+namespace GoldenEye.Backend.Core.Repositories.SaveChangesHandlers
 {
     public class SaveChangesProcessor: ISaveChangesProcessor
     {
         public static ISaveChangesProcessor Instance = new SaveChangesProcessor();
 
-        private readonly IList<ISaveChangesHandler> _handlers = new List<ISaveChangesHandler> { new AuditInfoSaveChangesHandler() };
+        private readonly IList<ISaveChangesHandler> _handlers =
+            new List<ISaveChangesHandler> {new AuditInfoSaveChangesHandler()};
 
         public void Clear()
         {
@@ -19,12 +21,9 @@ namespace GoldenEye.Backend.Core.Context.SaveChangesHandlers
             _handlers.Add(handler);
         }
 
-        public void RunAll(IDataContext context)
+        public void RunAll(IProvidesAuditInfo context)
         {
-            foreach (var handler in _handlers)
-            {
-                handler.Handle(context);
-            }
+            foreach (var handler in _handlers) handler.Handle(context);
         }
     }
 }

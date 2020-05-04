@@ -3,24 +3,18 @@ using System.Runtime.Serialization;
 namespace GoldenEye.Shared.Core.Objects.Responses
 {
     /// <summary>
-    /// Class to send single record from service.
-    /// Allows checkings of not null Item and inner data contract validation
+    ///     Class to send single record from service.
+    ///     Allows checkings of not null Item and inner data contract validation
     /// </summary>
     [DataContract]
     public class SingleResponse<T>: ResponseBase, ISingleResponse<T>
     {
-        /// <summary>
-        /// Record
-        /// </summary>
-        [DataMember]
-        public T Item { get; }
-
         public SingleResponse()
         {
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item">record</param>
         private SingleResponse(T item)
@@ -29,14 +23,10 @@ namespace GoldenEye.Shared.Core.Objects.Responses
         }
 
         /// <summary>
-        /// Creation metod of class object
+        ///     Record
         /// </summary>
-        /// <param name="item">Record</param>
-        /// <returns></returns>
-        public static SingleResponse<T> Create(T item)
-        {
-            return new SingleResponse<T>(item);
-        }
+        [DataMember]
+        public T Item { get; }
 
         //public static SingleResponse<T> Failure(FluentValidation.Results.ValidationResult returnInfo)
         //{
@@ -49,6 +39,16 @@ namespace GoldenEye.Shared.Core.Objects.Responses
         object ISingleResponse.Item
         {
             get { return Item; }
+        }
+
+        /// <summary>
+        ///     Creation metod of class object
+        /// </summary>
+        /// <param name="item">Record</param>
+        /// <returns></returns>
+        public static SingleResponse<T> Create(T item)
+        {
+            return new SingleResponse<T>(item);
         }
     }
 }

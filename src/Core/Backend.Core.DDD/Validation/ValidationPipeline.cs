@@ -9,7 +9,7 @@ using MediatR.Pipeline;
 namespace GoldenEye.Backend.Core.DDD.Validation
 {
     /// <summary>
-    /// Allow automatic command and queries validation
+    ///     Allow automatic command and queries validation
     /// </summary>
     /// <typeparam name="TRequest"></typeparam>
     /// <typeparam name="TResponse"></typeparam>
@@ -34,10 +34,7 @@ namespace GoldenEye.Backend.Core.DDD.Validation
                 .Where(f => f != null)
                 .ToList();
 
-            if (failures.Count != 0)
-            {
-                throw new ValidationException(failures);
-            }
+            if (failures.Count != 0) throw new ValidationException(failures);
             return Task.CompletedTask;
         }
     }
@@ -51,7 +48,8 @@ namespace GoldenEye.Backend.Core.DDD.Validation
             _validators = validators;
         }
 
-        public Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
+        public Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken,
+            RequestHandlerDelegate<TResponse> next)
         {
             if (_validators?.Count() == 0)
                 return next();
@@ -63,10 +61,7 @@ namespace GoldenEye.Backend.Core.DDD.Validation
                 .Where(f => f != null)
                 .ToList();
 
-            if (failures.Count != 0)
-            {
-                throw new ValidationException(failures);
-            }
+            if (failures.Count != 0) throw new ValidationException(failures);
             return next();
         }
     }

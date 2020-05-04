@@ -39,14 +39,14 @@ namespace GoldenEye.WebApi.Template.SimpleDDD.Backend
 
         private void ConfigureIntrastructure(IServiceCollection services)
         {
-            var connectionString = _configuration.GetConnectionString("DDDSample") ?? "PORT = 5432; HOST = 127.0.0.1; TIMEOUT = 15; POOLING = True; MINPOOLSIZE = 1; MAXPOOLSIZE = 100; COMMANDTIMEOUT = 20; DATABASE = 'postgres'; PASSWORD = 'Password12!'; USER ID = 'postgres'";
+            var connectionString = _configuration.GetConnectionString("DDDSample") ??
+                                   "PORT = 5432; HOST = 127.0.0.1; TIMEOUT = 15; POOLING = True; MINPOOLSIZE = 1; MAXPOOLSIZE = 100; COMMANDTIMEOUT = 20; DATABASE = 'postgres'; PASSWORD = 'Password12!'; USER ID = 'postgres'";
 
-            services.AddMartenContext(sp => connectionString, SetupEventStore, schemaName: "DDDSample");
+            services.AddMarten(sp => connectionString, SetupEventStore, "DDDSample");
             services.AddEventStore<MartenEventStore>();
             services.AddEventStorePipeline();
             services.AddValidationPipeline();
             services.AddAllValidators();
-            services.AddMartenDocumentDataContext();
         }
 
         private void SetupEventStore(StoreOptions options)
@@ -57,7 +57,7 @@ namespace GoldenEye.WebApi.Template.SimpleDDD.Backend
 
         private void RegisterHandlers(IServiceCollection services)
         {
-            services.AddMartenDocumentCRUDRepository<Issue>();
+            services.AddMartenDocumentRepository<Issue>();
             services.RegisterCommandHandler<CreateIssue, IssueCommandHandler>();
             services.RegisterCommandHandler<UpdateIssue, IssueCommandHandler>();
             services.RegisterCommandHandler<DeleteIssue, IssueCommandHandler>();

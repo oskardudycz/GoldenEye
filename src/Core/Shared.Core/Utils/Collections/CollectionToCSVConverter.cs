@@ -8,31 +8,28 @@ using System.Text;
 namespace GoldenEye.Shared.Core.Utils.Collections
 {
     /// <summary>
-    /// Converts any collection to comma seperated values stream or string based on collection objects properties values
+    ///     Converts any collection to comma seperated values stream or string based on collection objects properties values
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public static class CollectionToCSVConverter<T>
     {
-        public static string GetCsvString(ICollection<T> collection, string separator = ",", string[] customHeaders = null, bool headers = false)
+        public static string GetCsvString(ICollection<T> collection, string separator = ",",
+            string[] customHeaders = null, bool headers = false)
         {
             var result = new StringBuilder();
 
             if (headers)
-            {
                 result.AppendLine(customHeaders != null
                     ? ProcessHeaders(customHeaders, separator)
                     : GetHeaders(separator));
-            }
 
-            foreach (var item in collection)
-            {
-                result.AppendLine(ProcessItem(item, separator));
-            }
+            foreach (var item in collection) result.AppendLine(ProcessItem(item, separator));
 
             return result.ToString();
         }
 
-        public static Stream GetCsvStream(ICollection<T> collection, string separator = ",", string[] customHeaders = null, bool headers = false)
+        public static Stream GetCsvStream(ICollection<T> collection, string separator = ",",
+            string[] customHeaders = null, bool headers = false)
         {
             var sw = new StreamWriter(new MemoryStream());
 
@@ -40,16 +37,11 @@ namespace GoldenEye.Shared.Core.Utils.Collections
                 return sw.BaseStream;
 
             if (headers)
-            {
                 sw.WriteLine(customHeaders != null
                     ? ProcessHeaders(customHeaders, separator)
                     : GetHeaders(separator));
-            }
 
-            foreach (var item in collection)
-            {
-                sw.WriteLine(ProcessItem(item, separator));
-            }
+            foreach (var item in collection) sw.WriteLine(ProcessItem(item, separator));
 
             sw.Flush();
             sw.BaseStream.Position = 0;
@@ -63,7 +55,9 @@ namespace GoldenEye.Shared.Core.Utils.Collections
 
             foreach (var prop in typeof(T).GetTypeInfo().GetProperties())
             {
-                var value = prop.PropertyType.GetTypeInfo().IsEnum ? ((Enum)prop.GetValue(item, null)).ToString("G") : prop.GetValue(item, null).ToString();
+                var value = prop.PropertyType.GetTypeInfo().IsEnum
+                    ? ((Enum)prop.GetValue(item, null)).ToString("G")
+                    : prop.GetValue(item, null).ToString();
                 var format = value.Contains(",") ? "\"{0}\"{1}" : "{0}{1}";
                 result += string.Format(format, value, separator);
             }

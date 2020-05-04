@@ -15,20 +15,20 @@ namespace GoldenEye.Backend.Core.Marten.Events.Storage
     {
         private readonly IDocumentSession documentSession;
 
-        public IEventProjectionStore Projections { get; }
-
         public MartenEventStore(IDocumentSession documentSession)
         {
             this.documentSession = documentSession ?? throw new ArgumentException(nameof(documentSession));
             Projections = new EventProjectionStore(documentSession);
         }
 
+        public IEventProjectionStore Projections { get; }
+
         public void SaveChanges()
         {
             documentSession.SaveChanges();
         }
 
-        public Task SaveChangesAsync(CancellationToken token = default(CancellationToken))
+        public Task SaveChangesAsync(CancellationToken token = default)
         {
             return documentSession.SaveChangesAsync(token);
         }
@@ -53,39 +53,45 @@ namespace GoldenEye.Backend.Core.Marten.Events.Storage
             return Task.FromResult(Store(streamId, version, events));
         }
 
-        public Task<Guid> StoreAsync(Guid streamId, CancellationToken cancellationToken = default(CancellationToken), params IEvent[] events)
+        public Task<Guid> StoreAsync(Guid streamId, CancellationToken cancellationToken = default,
+            params IEvent[] events)
         {
             return Task.FromResult(Store(streamId, events));
         }
 
-        public Task<Guid> StoreAsync(Guid streamId, int version, CancellationToken cancellationToken = default(CancellationToken), params IEvent[] events)
+        public Task<Guid> StoreAsync(Guid streamId, int version, CancellationToken cancellationToken = default,
+            params IEvent[] events)
         {
             return Task.FromResult(Store(streamId, version, events));
         }
 
-        public TEntity Aggregate<TEntity>(Guid streamId, int version = 0, DateTime? timestamp = null) where TEntity : class, new()
+        public TEntity Aggregate<TEntity>(Guid streamId, int version = 0, DateTime? timestamp = null)
+            where TEntity : class, new()
         {
             return documentSession.Events.AggregateStream<TEntity>(streamId, version, timestamp);
         }
 
-        public Task<TEntity> AggregateAsync<TEntity>(Guid streamId, int version = 0, DateTime? timestamp = null) where TEntity : class, new()
+        public Task<TEntity> AggregateAsync<TEntity>(Guid streamId, int version = 0, DateTime? timestamp = null, CancellationToken cancellationToken = default)
+            where TEntity : class, new()
         {
             return documentSession.Events.AggregateStreamAsync<TEntity>(streamId, version, timestamp);
         }
 
-        public Task<TEntity> AggregateAsync<TEntity>(Guid streamId, CancellationToken cancellationToken = default(CancellationToken), int version = 0, DateTime? timestamp = null) where TEntity : class, new()
+        public Task<TEntity> AggregateAsync<TEntity>(Guid streamId, CancellationToken cancellationToken = default,
+            int version = 0, DateTime? timestamp = null) where TEntity : class, new()
         {
-            return documentSession.Events.AggregateStreamAsync<TEntity>(streamId, version, timestamp, token: cancellationToken);
+            return documentSession.Events.AggregateStreamAsync<TEntity>(streamId, version, timestamp,
+                token: cancellationToken);
         }
 
-        public TEvent GetById<TEvent>(Guid id)
-            where TEvent : class, IEvent, IHasGuidId
+        public TEvent FindById<TEvent>(Guid id)
+            where TEvent : class, IEvent, IHaveGuidId
         {
             return documentSession.Events.Load<TEvent>(id)?.Data;
         }
 
-        public async Task<TEvent> GetByIdAsync<TEvent>(Guid id, CancellationToken cancellationToken = default(CancellationToken))
-            where TEvent : class, IEvent, IHasGuidId
+        public async Task<TEvent> FindByIdAsync<TEvent>(Guid id, CancellationToken cancellationToken = default)
+            where TEvent : class, IEvent, IHaveGuidId
         {
             return (await documentSession.Events.LoadAsync<TEvent>(id, cancellationToken))?.Data;
         }
@@ -101,31 +107,35 @@ namespace GoldenEye.Backend.Core.Marten.Events.Storage
 
         public Task<IList<IEvent>> QueryAsync(Guid? streamId = null, int? version = null, DateTime? timestamp = null)
         {
-            return QueryAsync(default(CancellationToken), streamId, version, timestamp);
+            return QueryAsync(default, streamId, version, timestamp);
         }
 
-        public async Task<IList<IEvent>> QueryAsync(CancellationToken cancellationToken = default(CancellationToken), Guid? streamId = null, int? version = null, DateTime? timestamp = null)
+        public async Task<IList<IEvent>> QueryAsync(CancellationToken cancellationToken = default,
+            Guid? streamId = null, int? version = null, DateTime? timestamp = null)
         {
             return (await Filter(streamId, version, timestamp)
-                 .ToListAsync(cancellationToken))
-                 .Select(ev => ev.Data)
-                 .OfType<IEvent>()
-                 .ToList();
+                    .ToListAsync(cancellationToken))
+                .Select(ev => ev.Data)
+                .OfType<IEvent>()
+                .ToList();
         }
 
-        public IList<TEvent> Query<TEvent>(Guid? streamId = null, int? version = null, DateTime? timestamp = null) where TEvent : class, IEvent
+        public IList<TEvent> Query<TEvent>(Guid? streamId = null, int? version = null, DateTime? timestamp = null)
+            where TEvent : class, IEvent
         {
             return Query(streamId, version, timestamp)
                 .OfType<TEvent>()
                 .ToList();
         }
 
-        public Task<IList<TEvent>> QueryAsync<TEvent>(Guid? streamId = null, int? version = null, DateTime? timestamp = null) where TEvent : class, IEvent
+        public Task<IList<TEvent>> QueryAsync<TEvent>(Guid? streamId = null, int? version = null,
+            DateTime? timestamp = null) where TEvent : class, IEvent
         {
-            return QueryAsync<TEvent>(default(CancellationToken), streamId, version, timestamp);
+            return QueryAsync<TEvent>(default, streamId, version, timestamp);
         }
 
-        public async Task<IList<TEvent>> QueryAsync<TEvent>(CancellationToken cancellationToken = default(CancellationToken), Guid? streamId = null, int? version = null, DateTime? timestamp = null) where TEvent : class, IEvent
+        public async Task<IList<TEvent>> QueryAsync<TEvent>(CancellationToken cancellationToken = default,
+            Guid? streamId = null, int? version = null, DateTime? timestamp = null) where TEvent : class, IEvent
         {
             return (await QueryAsync(cancellationToken, streamId, version, timestamp))
                 .OfType<TEvent>()
@@ -173,7 +183,8 @@ namespace GoldenEye.Backend.Core.Marten.Events.Storage
                     .SingleOrDefault(p => p.Id == id);
             }
 
-            Task<TProjection> IEventProjectionStore.GetByIdAsync<TProjection>(Guid id, CancellationToken cancellationToken)
+            Task<TProjection> IEventProjectionStore.GetByIdAsync<TProjection>(Guid id,
+                CancellationToken cancellationToken)
             {
                 return Query<TProjection>()
                     .SingleOrDefaultAsync(p => p.Id == id, cancellationToken);

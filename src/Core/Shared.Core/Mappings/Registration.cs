@@ -6,11 +6,11 @@ namespace GoldenEye.Shared.Core.Mappings
 {
     public static class Registration
     {
-        public static void AddAutoMapperForAllDependencies(
+        public static IServiceCollection AddAutoMapperForAllDependencies(
             this IServiceCollection services
         )
         {
-            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            return services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
     }
 }

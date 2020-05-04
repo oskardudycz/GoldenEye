@@ -1,4 +1,5 @@
 ﻿using Dapper.Contrib.Extensions;
+using GoldenEye.Shared.Core.Objects.General;
 
 namespace Backend.Core.Dapper.Integration.Tests.TestData
 {
@@ -15,12 +16,12 @@ namespace Backend.Core.Dapper.Integration.Tests.TestData
             END;";
     }
 
-    public class User
+    public class User: IHaveId
     {
-        [Key]
-        public int Id { get; set; }
+        [Key] public int Id { get; set; }
 
         public string UserName { get; set; }
         public string FullName { get; set; }
+        object IHaveId.Id => Id;
     }
 }

@@ -5,7 +5,8 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
 {
     public static class StringBuilderExtensions
     {
-        public static StringBuilder AppendDescriptionLine(this StringBuilder sb, EDescriptionGenerationInfo info, string msg)
+        public static StringBuilder AppendDescriptionLine(this StringBuilder sb, EDescriptionGenerationInfo info,
+            string msg)
         {
             switch (info)
             {
@@ -25,6 +26,7 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
                 default:
                     throw new ArgumentOutOfRangeException("info", info, null);
             }
+
             return sb;
         }
     }

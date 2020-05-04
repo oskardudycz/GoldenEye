@@ -8,18 +8,13 @@ namespace Marten.Integration.Tests.TestsInfrasructure
 {
     public abstract class MartenTest: IDisposable
     {
-        protected readonly IDocumentSession Session;
-
-        protected IEventStore EventStore => Session.Events;
-
-        protected readonly string SchemaName = GenerateSchemaName();
-
         public static string ConnectionString =
             "PORT = 5432; HOST = 127.0.0.1; TIMEOUT = 15; POOLING = True; MINPOOLSIZE = 1; MAXPOOLSIZE = 100; COMMANDTIMEOUT = 20; DATABASE = 'postgres'; PASSWORD = 'Password12!'; USER ID = 'postgres'";
 
-        protected static string GenerateSchemaName() => "sch" + Guid.NewGuid().ToString().Replace("-", string.Empty);
+        protected readonly string SchemaName = GenerateSchemaName();
+        protected readonly IDocumentSession Session;
 
-        protected MartenTest() : this(true)
+        protected MartenTest(): this(true)
         {
         }
 
@@ -29,12 +24,7 @@ namespace Marten.Integration.Tests.TestsInfrasructure
                 Session = CreateSession();
         }
 
-        protected virtual IDocumentSession CreateSession(Action<StoreOptions> storeOptions = null)
-        {
-            var documentStore = Registration.CreateDocumentStore(ConnectionString, storeOptions, SchemaName);
-
-            return Registration.CreateDocumentSession(documentStore);
-        }
+        protected IEventStore EventStore => Session.Events;
 
         public void Dispose()
         {
@@ -54,6 +44,15 @@ namespace Marten.Integration.Tests.TestsInfrasructure
                     tran.Commit();
                 }
             }
+        }
+
+        protected static string GenerateSchemaName() => "sch" + Guid.NewGuid().ToString().Replace("-", string.Empty);
+
+        protected virtual IDocumentSession CreateSession(Action<StoreOptions> storeOptions = null)
+        {
+            var documentStore = Registration.CreateDocumentStore(ConnectionString, storeOptions, SchemaName);
+
+            return Registration.CreateDocumentSession(documentStore);
         }
     }
 }

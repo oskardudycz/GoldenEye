@@ -1,3 +1,4 @@
+using Backend.DDD.Sample.Contracts.Issues.Views;
 using Backend.DDD.Sample.Issues;
 using Backend.DDD.Sample.Issues.Projections;
 using GoldenEye.Backend.Core.DDD.Registration;
@@ -12,7 +13,7 @@ namespace Backend.DDD.Sample
 {
     public class Module: GoldenEye.Shared.Core.Modules.Module
     {
-        private IConfiguration configuration;
+        private readonly IConfiguration configuration;
 
         public Module(IConfiguration configuration)
         {
@@ -26,20 +27,15 @@ namespace Backend.DDD.Sample
             base.Configure(services);
         }
 
-        public override void Use()
-        {
-            base.Use();
-        }
-
         private void ConfigureIntrastructure(IServiceCollection services)
         {
-            var connectionString = configuration.GetConnectionString("DDDSample") ?? "PORT = 5432; HOST = 127.0.0.1; TIMEOUT = 15; POOLING = True; MINPOOLSIZE = 1; MAXPOOLSIZE = 100; COMMANDTIMEOUT = 20; DATABASE = 'postgres'; PASSWORD = 'Password12!'; USER ID = 'postgres'";
+            var connectionString = configuration.GetConnectionString("DDDSample") ??
+                                   "PORT = 5432; HOST = 127.0.0.1; TIMEOUT = 15; POOLING = True; MINPOOLSIZE = 1; MAXPOOLSIZE = 100; COMMANDTIMEOUT = 20; DATABASE = 'postgres'; PASSWORD = 'Password12!'; USER ID = 'postgres'";
 
-            services.AddMartenContext(sp => connectionString, SetupEventStore, schemaName: "DDDSample");
+            services.AddMarten(sp => connectionString, SetupEventStore, "DDDSample");
             services.AddEventStore<MartenEventStore>();
             services.AddEventStorePipeline();
             services.AddValidationPipeline();
-            services.AddMartenDocumentDataContext();
         }
 
         private void SetupEventStore(StoreOptions options)
@@ -50,8 +46,8 @@ namespace Backend.DDD.Sample
 
         private void RegisterHandlers(IServiceCollection services)
         {
-            services.AddMartenDocumentCRUDRepository<Issue>();
-            services.AddMartenDocumentReadonlyRepository<IssueContracts.Views.IssueView>();
+            services.AddMartenDocumentRepository<Issue>();
+            services.AddMartenDocumentReadonlyRepository<IssueView>();
         }
     }
 }

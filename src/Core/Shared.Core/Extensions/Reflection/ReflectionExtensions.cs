@@ -10,10 +10,17 @@ namespace GoldenEye.Shared.Core.Extensions.Reflection
 {
     public static class ReflectionExtensions
     {
-        private static object _lock = new object();
+        private static readonly object _lock = new object();
 
-        public static Dictionary<Type, Dictionary<string, PropertyInfo>> TypeProperties = new Dictionary<Type, Dictionary<string, PropertyInfo>>();
+        public static Dictionary<Type, Dictionary<string, PropertyInfo>> TypeProperties =
+            new Dictionary<Type, Dictionary<string, PropertyInfo>>();
+
         private static IList<Assembly> _assemblies;
+
+        public static IEnumerable<Assembly> Assemblies
+        {
+            get { return _assemblies ?? (_assemblies = AssembliesProvider.GetAll().ToList()); }
+        }
 
         public static bool HasProperty(this Type type, string propertyName)
         {
@@ -25,9 +32,7 @@ namespace GoldenEye.Shared.Core.Extensions.Reflection
             lock (_lock)
             {
                 if (!TypeProperties.ContainsKey(type))
-                {
                     TypeProperties.Add(type, type.GetProperties().ToDictionary(ks => ks.Name, vs => vs));
-                }
             }
 
             return TypeProperties[type].ContainsKey(propertyName) ? TypeProperties[type][propertyName] : null;
@@ -38,9 +43,7 @@ namespace GoldenEye.Shared.Core.Extensions.Reflection
             lock (_lock)
             {
                 if (!TypeProperties.ContainsKey(type))
-                {
                     TypeProperties.Add(type, type.GetProperties().ToDictionary(ks => ks.Name, vs => vs));
-                }
             }
 
             return TypeProperties[type];
@@ -51,9 +54,7 @@ namespace GoldenEye.Shared.Core.Extensions.Reflection
             lock (_lock)
             {
                 if (!TypeProperties.ContainsKey(type))
-                {
                     TypeProperties.Add(type, type.GetProperties(bindingAttr).ToDictionary(ks => ks.Name, vs => vs));
-                }
             }
 
             return TypeProperties[type];
@@ -64,9 +65,7 @@ namespace GoldenEye.Shared.Core.Extensions.Reflection
             lock (_lock)
             {
                 if (!TypeProperties.ContainsKey(type))
-                {
                     TypeProperties.Add(type, type.GetProperties().ToDictionary(ks => ks.Name, vs => vs));
-                }
             }
 
             return GetProperties(type)[propertyName].PropertyType;
@@ -77,16 +76,19 @@ namespace GoldenEye.Shared.Core.Extensions.Reflection
             return type.GetInterfaces().Contains(typeof(T));
         }
 
-        public static object InvokeStaticGeneric(this Type type, string methodName, Type[] types, params object[] parameters)
+        public static object InvokeStaticGeneric(this Type type, string methodName, Type[] types,
+            params object[] parameters)
         {
             return InvokeStaticGeneric(type, methodName, types, null, parameters);
         }
 
-        public static object InvokeStaticGeneric(this Type type, string methodName, Type[] types, Type[] methodParameterTypes, params object[] parameters)
+        public static object InvokeStaticGeneric(this Type type, string methodName, Type[] types,
+            Type[] methodParameterTypes, params object[] parameters)
         {
-            MethodInfo method = methodParameterTypes == null ? type.GetMethod(methodName)
+            var method = methodParameterTypes == null
+                ? type.GetMethod(methodName)
                 : type.GetMethod(methodName, methodParameterTypes);
-            MethodInfo generic = method.MakeGenericMethod(types);
+            var generic = method.MakeGenericMethod(types);
             return generic.Invoke(null, parameters);
         }
 
@@ -118,8 +120,8 @@ namespace GoldenEye.Shared.Core.Extensions.Reflection
         public static IList<Type> GetTypesFromAllAssemblies(Func<Type, bool> selector)
         {
             return Assemblies
-                            .SelectMany(s => s.GetTypes())
-                            .Where(selector).ToList();
+                .SelectMany(s => s.GetTypes())
+                .Where(selector).ToList();
         }
 
         public static IList<Type> GetTypesFromAllProjectAssemblies(Func<Type, bool> selector = null)
@@ -138,12 +140,7 @@ namespace GoldenEye.Shared.Core.Extensions.Reflection
 
         internal static T GetCustomAttribute<T>(this Assembly assembly) where T : Attribute
         {
-            return assembly.GetCustomAttributes<T>().FirstOrDefault() as T;
-        }
-
-        public static IEnumerable<Assembly> Assemblies
-        {
-            get { return _assemblies ?? (_assemblies = AssembliesProvider.GetAll().ToList()); }
+            return assembly.GetCustomAttributes<T>().FirstOrDefault();
         }
     }
 }

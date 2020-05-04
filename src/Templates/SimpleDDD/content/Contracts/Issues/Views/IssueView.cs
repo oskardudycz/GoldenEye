@@ -7,15 +7,14 @@ namespace GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Views
 {
     public class IssueView: IView<Guid>
     {
-        public Guid Id { get; set; }
-
         public IssueType Type { get; set; }
 
         public string Title { get; set; }
 
         public string Description { get; set; }
+        public Guid Id { get; set; }
 
-        object IHasId.Id => Id;
+        object IHaveId.Id => Id;
 
         public void Apply(IssueCreated @event)
         {

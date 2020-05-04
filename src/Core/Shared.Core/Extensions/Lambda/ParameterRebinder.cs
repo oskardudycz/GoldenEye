@@ -13,7 +13,8 @@ namespace GoldenEye.Shared.Core.Extensions.Lambda
             this.map = map ?? new Dictionary<ParameterExpression, ParameterExpression>();
         }
 
-        public static Expression ReplaceParameters(Dictionary<ParameterExpression, ParameterExpression> map, Expression exp)
+        public static Expression ReplaceParameters(Dictionary<ParameterExpression, ParameterExpression> map,
+            Expression exp)
         {
             return new ParameterRebinder(map).Visit(exp);
         }
@@ -22,10 +23,7 @@ namespace GoldenEye.Shared.Core.Extensions.Lambda
         {
             ParameterExpression replacement;
 
-            if (map.TryGetValue(p, out replacement))
-            {
-                p = replacement;
-            }
+            if (map.TryGetValue(p, out replacement)) p = replacement;
 
             return base.VisitParameter(p);
         }

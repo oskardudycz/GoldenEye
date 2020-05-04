@@ -11,15 +11,15 @@ namespace Backend.Core.Marten.Tests.Transactions
 {
     public class TransactionScopeUnitOfWorkTests: MartenTest
     {
+        public TransactionScopeUnitOfWorkTests(): base(false)
+        {
+        }
+
         public class UserCreated: IEvent
         {
             public Guid UserId { get; set; }
             public string UserName { get; set; }
             public Guid StreamId => UserId;
-        }
-
-        public TransactionScopeUnitOfWorkTests() : base(false)
-        {
         }
 
         [Fact(Skip = "not working")]
@@ -32,12 +32,13 @@ namespace Backend.Core.Marten.Tests.Transactions
             {
                 uow.Begin();
 
-                using (var session = CreateSession(opt => opt.Events.DatabaseSchemaName = opt.DatabaseSchemaName = schemaName))
+                using (var session = CreateSession(opt =>
+                    opt.Events.DatabaseSchemaName = opt.DatabaseSchemaName = schemaName))
                 {
                     var eventStore = new MartenEventStore(session);
                     //Given
                     eventStore.Store(userId,
-                        new UserCreated { UserId = userId, UserName = "john.smith" }
+                        new UserCreated {UserId = userId, UserName = "john.smith"}
                     );
 
                     eventStore.SaveChanges();
@@ -47,7 +48,8 @@ namespace Backend.Core.Marten.Tests.Transactions
                 }
             }
 
-            using (var session = CreateSession(opt => opt.Events.DatabaseSchemaName = opt.DatabaseSchemaName = schemaName))
+            using (var session =
+                CreateSession(opt => opt.Events.DatabaseSchemaName = opt.DatabaseSchemaName = schemaName))
             {
                 //Given
                 var eventStore = new MartenEventStore(session);

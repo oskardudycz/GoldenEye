@@ -16,12 +16,12 @@ namespace Backend.Core.Tests.Registration
 
         private class CreateUser
         {
-            public string UserName { get; }
-
             public CreateUser(string userName)
             {
                 UserName = userName;
             }
+
+            public string UserName { get; }
         }
 
         private class CreateUserValidator: AbstractValidator<CreateUser>

@@ -15,10 +15,7 @@ namespace GoldenEye.Shared.Core.Validation.Validators
 
         protected override bool IsValid(PropertyValidatorContext context)
         {
-            if (context.PropertyValue is TProperty)
-            {
-                return !_action((TProperty)context.PropertyValue);
-            }
+            if (context.PropertyValue is TProperty) return !_action((TProperty)context.PropertyValue);
 
             throw new ArgumentException();
         }

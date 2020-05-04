@@ -1,28 +1,23 @@
 using System;
 using System.Linq;
-using GoldenEye.Backend.Core.Context.SaveChangesHandlers.Base;
 using GoldenEye.Backend.Core.Entity;
+using GoldenEye.Backend.Core.Repositories.SaveChangesHandlers.Base;
 using GoldenEye.Shared.Core.Security;
 
-namespace GoldenEye.Backend.Core.Context.SaveChangesHandlers
+namespace GoldenEye.Backend.Core.Repositories.SaveChangesHandlers
 {
     public class AuditInfoSaveChangesHandler: ISaveChangesHandler
     {
-        public void Handle(IDataContext dataContext)
+        public void Handle(IProvidesAuditInfo context)
         {
-            if (dataContext as IProvidesAuditInfo == null)
-                return;
-
-            var context = (IProvidesAuditInfo)dataContext;
-
             var addedEntities = context.Changes
-                            .Where(ch => ch.State == EntityEntryState.Added)
-                            .Select(ch => ch.Entity)
-                            .OfType<IAuditableEntity>();
+                .Where(ch => ch.State == EntityEntryState.Added)
+                .Select(ch => ch.Entity)
+                .OfType<IAuditableEntity>();
             var updatedEntities = context.Changes
-                            .Where(ch => ch.State == EntityEntryState.Modified)
-                            .Select(ch => ch.Entity)
-                            .OfType<IAuditableEntity>();
+                .Where(ch => ch.State == EntityEntryState.Modified)
+                .Select(ch => ch.Entity)
+                .OfType<IAuditableEntity>();
 
             var currentUserId = UserInfoProvider.Instance.GetCurrenUserId();
 

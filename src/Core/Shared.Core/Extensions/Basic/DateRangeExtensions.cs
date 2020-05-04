@@ -9,8 +9,9 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
     public static class DateRangeExtensions
     {
         /// <summary>
-        /// Consolidates ranges in collection by merging ones with difference less than or equal to 1 day between corresponding end and start dates.
-        /// May modify elements in the collection.
+        ///     Consolidates ranges in collection by merging ones with difference less than or equal to 1 day between corresponding
+        ///     end and start dates.
+        ///     May modify elements in the collection.
         /// </summary>
         public static IEnumerable<DateRange> Consolidate(this IEnumerable<DateRange> ranges)
         {
@@ -21,10 +22,10 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
 
             ranges = ranges.OrderBy(i => i.StartDate).ToList();
 
-            DateRange range = ranges.First();
+            var range = ranges.First();
             DateRange current;
 
-            for (int index = 1; index < ranges.Count(); ++index)
+            for (var index = 1; index < ranges.Count(); ++index)
             {
                 current = ranges.ElementAt(index);
 
@@ -46,9 +47,9 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
         }
 
         /// <summary>
-        /// Method returns new collection of ranges, which occur after <paramref name="startDate"/>.
-        /// Every range containing the date is adjusted to occur after this date.
-        /// May modify elements in the collection
+        ///     Method returns new collection of ranges, which occur after <paramref name="startDate" />.
+        ///     Every range containing the date is adjusted to occur after this date.
+        ///     May modify elements in the collection
         /// </summary>
         /// <param name="startDate">Date, to which every range in collection is adjusted</param>
         /// <returns></returns>
@@ -67,11 +68,9 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
             newRanges.RemoveAll(i => i.EndDate.Date < startDate);
 
             if (newRanges.Any())
-            {
                 newRanges.Where(i => i.Contains(startDate)).ForEach(i =>
                     i.StartDate = startDate
                 );
-            }
 
             return newRanges;
         }

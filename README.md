@@ -73,11 +73,6 @@ Install packages from the Nuget package manager:
 **Document database and Event Store with Marten package**:
 * [GoldenEye.Backend.Core.Marten](src/Core/Backend.Core.Marten/Readme.md) - extension to GoldenEye.Backend.Core and GoldenEye.Backend.DDD that gives possibility to use Postgres as Document Database and Event Store - thanks to Marten library
 
-**Security related packages (User management, OAuth etc.)**
-* [GoldenEye.Shared.Security](src/Security/Shared.Security/Readme.md) - base classes to make security management easier
-* [GoldenEye.Backend.Identity](src/Security/Backend.Identity/Readme.md) - helpers and extensions for Backend OAuth management with IdentityServer
-* [GoldenEye.Frontend.Identity](src/Security/Frontend.Identity/Readme.md) - helpers and extensions for Frontend OAuth management with IdentityServer
-
 I found an issue or I have a change request
 --------------------------------
 Feel free to create an issue on GitHub. Contributions, pull requests are more than welcome!

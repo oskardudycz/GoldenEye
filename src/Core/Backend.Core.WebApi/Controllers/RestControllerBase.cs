@@ -1,15 +1,14 @@
 using System.Threading.Tasks;
 using GoldenEye.Backend.Core.Services;
-using GoldenEye.Shared.Core.Objects.DTO;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GoldenEye.Frontend.Core.Web.Controllers
 {
     public abstract class RestControllerBase<TService, TDto>: ReadonlyControllerBase<TService, TDto>
-        where TDto : class, IDTO
-        where TService : IRestService<TDto>
+        where TDto : class
+        where TService : ICRUDService<TDto>
     {
-        protected RestControllerBase(TService service) : base(service)
+        protected RestControllerBase(TService service): base(service)
         {
         }
 
@@ -17,14 +16,12 @@ namespace GoldenEye.Frontend.Core.Web.Controllers
         {
         }
 
-        public virtual async Task<IActionResult> Put(TDto dto)
+        public virtual async Task<IActionResult> Put([FromRoute] object id, TDto dto)
         {
             if (!ModelState.IsValid)
-            {
                 return BadRequest(ModelState);
-            }
 
-            var result = await Service.PutAsync(dto);
+            var result = await Service.UpdateAsync(id, dto);
 
             return Ok(result);
         }
@@ -32,24 +29,18 @@ namespace GoldenEye.Frontend.Core.Web.Controllers
         public virtual async Task<IActionResult> Post(TDto dto)
         {
             if (!ModelState.IsValid)
-            {
                 return BadRequest(ModelState);
-            }
 
-            var result = await Service.PostAsync(dto);
+            var result = await Service.AddAsync(dto);
 
             return Ok(result);
         }
 
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(object id)
         {
-            var wasDeleted = await Service.DeleteAsync(id);
-            if (!wasDeleted)
-            {
-                return NotFound();
-            }
+            await Service.DeleteAsync(id);
 
-            return Ok();
+            return NoContent();
         }
     }
 }

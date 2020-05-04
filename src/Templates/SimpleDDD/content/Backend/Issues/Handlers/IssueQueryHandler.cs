@@ -21,16 +21,16 @@ namespace GoldenEye.WebApi.Template.SimpleDDD.Backend.Issues.Handlers
             this.repository = repository ?? throw new ArgumentException(nameof(repository));
         }
 
+        public Task<IssueView> Handle(GetIssue message, CancellationToken cancellationToken)
+        {
+            return repository.GetByIdAsync(message.Id, cancellationToken);
+        }
+
         public Task<IReadOnlyList<IssueView>> Handle(GetIssues message, CancellationToken cancellationToken)
         {
             return repository
-                .GetAll()
-                .ToListAsync();
-        }
-
-        public Task<IssueView> Handle(GetIssue message, CancellationToken cancellationToken)
-        {
-            return repository.GetByIdAsync(message.Id);
+                .Query()
+                .ToListAsync(cancellationToken);
         }
     }
 }

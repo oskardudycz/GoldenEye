@@ -13,7 +13,8 @@ namespace GoldenEye.Backend.Core.DDD.Events
             _mediator = mediator;
         }
 
-        public Task PublishAsync<TEvent>(TEvent @event, CancellationToken cancellationToken = default(CancellationToken)) where TEvent : IEvent
+        public Task PublishAsync<TEvent>(TEvent @event, CancellationToken cancellationToken = default)
+            where TEvent : IEvent
         {
             return _mediator.Publish(@event, cancellationToken);
         }

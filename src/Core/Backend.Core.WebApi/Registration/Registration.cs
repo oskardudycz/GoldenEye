@@ -1,81 +1,107 @@
-﻿using System.Net;
-using System.Security.Cryptography.X509Certificates;
+﻿using System;
 using GoldenEye.Backend.Core.WebApi.Exceptions;
-using GoldenEye.Backend.Core.WebApi.Options;
-using Microsoft.AspNetCore.Antiforgery;
+using GoldenEye.Backend.Core.WebApi.Modules;
+using GoldenEye.Shared.Core.Configuration;
+using GoldenEye.Shared.Core.Modules;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
+using Newtonsoft.Json.Converters;
+using Swashbuckle.AspNetCore.SwaggerGen;
+using Swashbuckle.AspNetCore.SwaggerUI;
 
 namespace GoldenEye.Backend.Core.WebApi.Registration
 {
     public static class Registration
     {
-        public static IWebHostBuilder UseKestrelWithHttps(this IWebHostBuilder hostBuilder, HttpsServerOptions httpsOptions = null)
+        public static IMvcBuilder AddWebApiWithDefaultConfig(
+            this IServiceCollection services,
+            IConfiguration configuration = null,
+            Action<SwaggerGenOptions> setupSwagger = null,
+            Action<MvcNewtonsoftJsonOptions> setupNewtonsoft = null)
         {
-            if (httpsOptions == null)
-                httpsOptions = HttpsServerOptions.Create();
+            if (configuration != null)
+                services.AddConfiguration(configuration);
 
-            hostBuilder
-                .UseKestrel(
-                    options =>
-                    {
-                        httpsOptions.Apply(options);
-
-                        var certificate = new X509Certificate2(
-                            httpsOptions.CertificateOptions.Path,
-                            httpsOptions.CertificateOptions.Password);
-                        options.AddServerHeader = false;
-                        options.Listen(IPAddress.Loopback, httpsOptions.Port, listenOptions =>
-                        {
-                            listenOptions.UseHttps(certificate);
-                        });
-                    }
-                )
-                .UseUrls($"https://*:{httpsOptions.Port}");
-
-            return hostBuilder;
+            return services
+                .AddAllApplicationModules()
+                .AddDefaultCorsSetup()
+                .AddSwagger(setupSwagger)
+                .AddWebApiWithNewtonsoft(setupNewtonsoft);
         }
 
-        public static IMvcBuilder AddMvcWithHttps(this IServiceCollection services, HttpsMvcOptions httpsOptions = null)
+        public static IServiceCollection AddSwagger(
+            this IServiceCollection services,
+            Action<SwaggerGenOptions> setupSwagger = null)
         {
-            if (httpsOptions == null)
-                httpsOptions = HttpsMvcOptions.Create();
+            static void DefaultSwaggerSetup(SwaggerGenOptions opt)
+            {
+                opt.SwaggerDoc("v1", new OpenApiInfo {Title = "API", Version = "v1"});
+            }
 
-            services.AddAntiforgery(
-                options =>
+            return services
+                .AddSwaggerGen(setupSwagger ?? DefaultSwaggerSetup);
+        }
+
+        public static IMvcBuilder AddWebApiWithNewtonsoft(
+            this IServiceCollection services,
+            Action<MvcNewtonsoftJsonOptions> setupNewtonsoft = null)
+        {
+            static void DefaultNewtonsoftSetup(MvcNewtonsoftJsonOptions opt)
+            {
+                opt.SerializerSettings.Converters.Add(new StringEnumConverter());
+            }
+
+            return services
+                .AddControllers()
+                .AddNewtonsoftJson(setupNewtonsoft ?? DefaultNewtonsoftSetup);
+        }
+
+        public static IServiceCollection AddDefaultCorsSetup(this IServiceCollection services)
+        {
+            return services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                        builder.AllowAnyOrigin()
+                            .AllowAnyMethod()
+                            .AllowAnyHeader()
+                );
+            });
+        }
+
+        public static IApplicationBuilder UseWebApi(this IApplicationBuilder app)
+        {
+            return app.UseRouting()
+                .UseAuthorization()
+                .UseCors()
+                .UseEndpoints(endpoints =>
                 {
-                    options.UseHttps();
-                }
-            );
-
-            return services.AddMvc(
-               options =>
-               {
-                   httpsOptions.Apply(options);
-                   options.UseHttps();
-               }
-           );
+                    endpoints.MapControllers();
+                });
         }
 
-        public static MvcOptions UseHttps(this MvcOptions options, int port = 443)
+        public static IApplicationBuilder UseWebApiWithDefaultConfig(
+            this IApplicationBuilder app,
+            IWebHostEnvironment env,
+            Action<SwaggerUIOptions> setupSwaggerUI = null
+        )
         {
-            options.SslPort = port;
-            options.Filters.Add(new RequireHttpsAttribute());
+            static void DefaultSwaggerSetup(SwaggerUIOptions opt)
+            {
+                opt.SwaggerEndpoint("/swagger/v1/swagger.json", "Meeting Management V1");
+                opt.RoutePrefix = string.Empty;
+            }
 
-            return options;
-        }
-
-        public static AntiforgeryOptions UseHttps(this AntiforgeryOptions options)
-        {
-            options.Cookie.Name = "_af";
-            options.Cookie.HttpOnly = true;
-            options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
-            options.HeaderName = "X-XSRF-TOKEN";
-
-            return options;
+            return app
+                .UseExceptionHandlingMiddleware()
+                .UseWebApi()
+                .UseSwagger()
+                .UseSwaggerUI(setupSwaggerUI ?? DefaultSwaggerSetup)
+                .UseApplicationModules(env);
         }
 
         public static IApplicationBuilder UseExceptionHandlingMiddleware(this IApplicationBuilder app)

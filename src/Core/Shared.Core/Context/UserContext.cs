@@ -11,7 +11,7 @@ namespace GoldenEye.Shared.Core.Context
         private const string ValuesClientBrowser = "ClientBrowser";
 
         /// <summary>
-        /// Gets collection to store context specific data.
+        ///     Gets collection to store context specific data.
         /// </summary>
         public static IDictionary<string, object> Values
         {

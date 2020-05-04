@@ -15,90 +15,12 @@ namespace WebApi.SimpleDDD.IntegrationTests.Issues
 {
     public class IssueTests
     {
-        private readonly TestContext _sut;
-
         public IssueTests()
         {
             _sut = new TestContext();
         }
 
-        [Fact]
-        public async Task IssueCRUDTest()
-        {
-            //Read
-            var initCount = (await GetIssues()).Count;
-
-            //Create
-            var createCommand = new CreateIssue(
-                IssueType.Task,
-                "Check Create Task",
-                "Task should be created after running command"
-            );
-
-            var createdIssue = await CreateIssue(createCommand, initCount);
-
-            //Update
-            var updateCommand = new UpdateIssue(
-                createdIssue.Id,
-                IssueType.Task,
-                "Check Update Task",
-                "Task should be update after running command"
-            );
-
-            await UpdateIssue(updateCommand);
-
-            //Delete
-            await DeleteIssue(createdIssue.Id);
-        }
-
-        [Fact]
-        public async Task GetIssueWithNotValidData_ShouldReturnBadRequest()
-        {
-            var id = Guid.Empty;
-
-            var response = await _sut.Client.GetAsync($"/api/Issues/{id}");
-
-            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
-        }
-
-        [Fact]
-        public async Task CreateIssueWithNotValidData_ShouldReturnBadRequest()
-        {
-            var command = new UpdateIssue(
-                Guid.Empty,
-                IssueType.Task,
-                null,
-                null
-            );
-
-            var response = await _sut.Client.PutAsync($"/api/Issues/{command.Id}", command.ToJsonStringContent());
-
-            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
-        }
-
-        [Fact]
-        public async Task UpdateIssueWithNotValidData_ShouldReturnBadRequest()
-        {
-            var command = new CreateIssue(
-                IssueType.Task,
-                null,
-                null
-            );
-
-            var response = await _sut.Client.PostAsync("/api/Issues", command.ToJsonStringContent());
-
-            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
-        }
-
-        [Fact]
-        public async Task DeleteIssueWithNotValidData_ShouldReturnBadRequest()
-        {
-            var id = Guid.Empty;
-
-            var response = await _sut.Client.DeleteAsync($"/api/Issues/{id}");
-
-            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
-        }
+        private readonly TestContext _sut;
 
         private async Task<IReadOnlyList<IssueView>> GetIssues()
         {
@@ -167,6 +89,84 @@ namespace WebApi.SimpleDDD.IntegrationTests.Issues
             var issues = await GetIssues();
 
             issues.Any(i => i.Id == id).Should().BeFalse();
+        }
+
+        [Fact]
+        public async Task CreateIssueWithNotValidData_ShouldReturnBadRequest()
+        {
+            var command = new UpdateIssue(
+                Guid.Empty,
+                IssueType.Task,
+                null,
+                null
+            );
+
+            var response = await _sut.Client.PutAsync($"/api/Issues/{command.Id}", command.ToJsonStringContent());
+
+            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+        }
+
+        [Fact]
+        public async Task DeleteIssueWithNotValidData_ShouldReturnBadRequest()
+        {
+            var id = Guid.Empty;
+
+            var response = await _sut.Client.DeleteAsync($"/api/Issues/{id}");
+
+            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+        }
+
+        [Fact]
+        public async Task GetIssueWithNotValidData_ShouldReturnBadRequest()
+        {
+            var id = Guid.Empty;
+
+            var response = await _sut.Client.GetAsync($"/api/Issues/{id}");
+
+            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+        }
+
+        [Fact]
+        public async Task IssueCRUDTest()
+        {
+            //Read
+            var initCount = (await GetIssues()).Count;
+
+            //Create
+            var createCommand = new CreateIssue(
+                IssueType.Task,
+                "Check Create Task",
+                "Task should be created after running command"
+            );
+
+            var createdIssue = await CreateIssue(createCommand, initCount);
+
+            //Update
+            var updateCommand = new UpdateIssue(
+                createdIssue.Id,
+                IssueType.Task,
+                "Check Update Task",
+                "Task should be update after running command"
+            );
+
+            await UpdateIssue(updateCommand);
+
+            //Delete
+            await DeleteIssue(createdIssue.Id);
+        }
+
+        [Fact]
+        public async Task UpdateIssueWithNotValidData_ShouldReturnBadRequest()
+        {
+            var command = new CreateIssue(
+                IssueType.Task,
+                null,
+                null
+            );
+
+            var response = await _sut.Client.PostAsync("/api/Issues", command.ToJsonStringContent());
+
+            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
         }
     }
 }

@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace GoldenEye.Shared.Core.Extensions.Basic
 {
@@ -16,10 +17,7 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
 
         public static string Limit(this string text, int limit)
         {
-            if (text.Length <= limit)
-            {
-                return text;
-            }
+            if (text.Length <= limit) return text;
 
             return string.Format("{0}...", text.Substring(0, limit));
         }
@@ -31,34 +29,32 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
 
         public static bool IsNullOrEmpty(this string str)
         {
-            return String.IsNullOrEmpty(str);
+            return string.IsNullOrEmpty(str);
         }
 
         public static bool IsNullOrWhiteSpace(this string str)
         {
-            return String.IsNullOrWhiteSpace(str);
+            return string.IsNullOrWhiteSpace(str);
         }
 
         public static List<string> SplitWithQuotes(this string str, char separator)
         {
             var foundParts = new List<string>();
-            bool openedQuotes = false;
-            int lastPart = 0;
+            var openedQuotes = false;
+            var lastPart = 0;
 
-            for (int i = 0; i < str.Length; ++i)
-            {
+            for (var i = 0; i < str.Length; ++i)
                 if (str[i] == separator && !openedQuotes)
                 {
-                    foundParts.Add(str.Substring(lastPart, i - lastPart).Replace("\"", String.Empty));
+                    foundParts.Add(str.Substring(lastPart, i - lastPart).Replace("\"", string.Empty));
                     lastPart = i + 1;
                 }
                 else if (str[i] == '"')
                 {
                     openedQuotes = !openedQuotes;
                 }
-            }
 
-            foundParts.Add(str.Substring(lastPart).Replace("\"", String.Empty));
+            foundParts.Add(str.Substring(lastPart).Replace("\"", string.Empty));
 
             return foundParts;
         }
@@ -70,11 +66,11 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
 
         public static string AttachIfTrue(this string str, bool doAttach)
         {
-            return doAttach ? str : String.Empty;
+            return doAttach ? str : string.Empty;
         }
 
         /// <summary>
-        /// Returns a substring, starting from specified text (included in resulting string);
+        ///     Returns a substring, starting from specified text (included in resulting string);
         /// </summary>
         /// <param name="str"></param>
         /// <param name="needle">Text to be used as starting point.</param>
@@ -84,7 +80,7 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
         }
 
         /// <summary>
-        /// Returns a substring, starting from specified text (included in resulting string);
+        ///     Returns a substring, starting from specified text (included in resulting string);
         /// </summary>
         /// <param name="str"></param>
         /// <param name="needle">Text to be used as starting point.</param>
@@ -92,9 +88,8 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
         {
             var needlePosition = str.IndexOf(needle, comparisonType);
             if (needlePosition < 0)
-            {
-                throw new ArgumentException(String.Format("Needle ({0}) not found in the source string ({1}).", needle, str));
-            }
+                throw new ArgumentException(string.Format("Needle ({0}) not found in the source string ({1}).", needle,
+                    str));
 
             return str.Substring(needlePosition);
         }
@@ -124,7 +119,7 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
             if (string.IsNullOrEmpty(source))
                 return string.Empty;
             // convert to char array of the string
-            char[] letters = source.ToCharArray();
+            var letters = source.ToCharArray();
             // upper case the first char
 
             switch (sizeChangeEnum)
@@ -148,7 +143,8 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
         public static string GetStringBetween(this string str, string start, string end)
         {
             var dataSourceTokenIndex = str.IndexOf(start, StringComparison.Ordinal) + start.Length + 1;
-            var dataSourcePartLength = str.IndexOf(end, dataSourceTokenIndex, StringComparison.Ordinal) - dataSourceTokenIndex;
+            var dataSourcePartLength =
+                str.IndexOf(end, dataSourceTokenIndex, StringComparison.Ordinal) - dataSourceTokenIndex;
 
             return str.Substring(dataSourceTokenIndex, dataSourcePartLength);
         }
@@ -164,6 +160,16 @@ namespace GoldenEye.Shared.Core.Extensions.Basic
             }
 
             return builder.ToString();
+        }
+
+        public static string[] SplitCamelCase(this string source)
+        {
+            return Regex.Split(source, @"(?<!^)(?=[A-Z])");
+        }
+
+        public static string ToReadableTypeName<T>()
+        {
+            return string.Join(" ", typeof(T).Name.SplitCamelCase());
         }
 
         private enum SizeChangeEnum

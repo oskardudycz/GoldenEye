@@ -8,67 +8,71 @@ using GoldenEye.Shared.Core.Extensions.DependencyInjection;
 using MediatR;
 using MediatR.Pipeline;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace GoldenEye.Backend.Core.DDD.Registration
 {
     public static class Registration
     {
-        public static void AddDDD(this IServiceCollection services, ServiceLifetime withLifetime = ServiceLifetime.Transient)
+        public static IServiceCollection AddDDD(this IServiceCollection services,
+            ServiceLifetime withLifetime = ServiceLifetime.Transient)
         {
-            services.AddScoped<IMediator, Mediator>();
-            services.Add<ServiceFactory>(sp => t => sp.GetService(t), withLifetime);
-            services.Add(typeof(IPipelineBehavior<,>), typeof(RequestPreProcessorBehavior<,>), withLifetime);
-
-            services.Add<ICommandBus, CommandBus>(withLifetime);
-            services.Add<IQueryBus, QueryBus>(withLifetime);
-            services.Add<IEventBus, EventBus>(withLifetime);
+            return services.AddScoped<IMediator, Mediator>()
+                .Add<ServiceFactory>(sp => t => sp.GetService(t), withLifetime)
+                .Add(typeof(IPipelineBehavior<,>), typeof(RequestPreProcessorBehavior<,>), withLifetime)
+                .Add<ICommandBus, CommandBus>(withLifetime)
+                .Add<IQueryBus, QueryBus>(withLifetime)
+                .Add<IEventBus, EventBus>(withLifetime);
         }
 
-        public static void AddEventStore<TEventStore>(this IServiceCollection services, ServiceLifetime withLifetime = ServiceLifetime.Transient)
+        public static IServiceCollection AddEventStore<TEventStore>(this IServiceCollection services,
+            ServiceLifetime withLifetime = ServiceLifetime.Transient)
             where TEventStore : class, IEventStore
         {
-            services.Add<TEventStore, TEventStore>(withLifetime);
-            services.Add<IEventStore>(sp => sp.GetService<TEventStore>(), withLifetime);
+            return services.Add<TEventStore, TEventStore>(withLifetime)
+                .Add<IEventStore>(sp => sp.GetService<TEventStore>(), withLifetime);
         }
 
-        public static void AddEventStorePipeline(this IServiceCollection services, ServiceLifetime withLifetime = ServiceLifetime.Transient)
+        public static IServiceCollection AddEventStorePipeline(this IServiceCollection services,
+            ServiceLifetime withLifetime = ServiceLifetime.Transient)
         {
-            services.Add(typeof(INotificationHandler<>), typeof(EventStorePipeline<>), withLifetime);
+            return services.Add(typeof(INotificationHandler<>), typeof(EventStorePipeline<>), withLifetime);
         }
 
-        public static void AddValidationPipeline(this IServiceCollection services, ServiceLifetime withLifetime = ServiceLifetime.Transient)
+        public static IServiceCollection AddValidationPipeline(this IServiceCollection services,
+            ServiceLifetime withLifetime = ServiceLifetime.Transient)
         {
-            services.Add(typeof(IRequestPreProcessor<>), typeof(ValidationPipeline<>), withLifetime);
+            return services.Add(typeof(IRequestPreProcessor<>), typeof(ValidationPipeline<>), withLifetime);
         }
 
-        public static void RegisterCommandHandler<TCommand, TCommandHandler>(this IServiceCollection services, ServiceLifetime withLifetime = ServiceLifetime.Transient)
+        public static IServiceCollection RegisterCommandHandler<TCommand, TCommandHandler>(
+            this IServiceCollection services, ServiceLifetime withLifetime = ServiceLifetime.Transient)
             where TCommand : ICommand
             where TCommandHandler : class, ICommandHandler<TCommand>
         {
-            services.Add<TCommandHandler>(withLifetime);
-            services.Add<IRequestHandler<TCommand, Unit>>(sp => sp.GetService<TCommandHandler>(), withLifetime);
-            services.Add<ICommandHandler<TCommand>>(sp => sp.GetService<TCommandHandler>(), withLifetime);
+            return services.Add<TCommandHandler>(withLifetime)
+                .Add<IRequestHandler<TCommand, Unit>>(sp => sp.GetService<TCommandHandler>(), withLifetime)
+                .Add<ICommandHandler<TCommand>>(sp => sp.GetService<TCommandHandler>(), withLifetime);
         }
 
-        public static void RegisterQueryHandler<TQuery, TResponse, TQueryHandler>(this IServiceCollection services, ServiceLifetime withLifetime = ServiceLifetime.Transient)
+        public static IServiceCollection RegisterQueryHandler<TQuery, TResponse, TQueryHandler>(
+            this IServiceCollection services, ServiceLifetime withLifetime = ServiceLifetime.Transient)
             where TQuery : IQuery<TResponse>
             where TQueryHandler : class, IQueryHandler<TQuery, TResponse>
         {
-            services.Add<TQueryHandler>(withLifetime);
-            services.Add<IRequestHandler<TQuery, TResponse>>(sp => sp.GetService<TQueryHandler>(), withLifetime);
-            services.Add<IQueryHandler<TQuery, TResponse>>(sp => sp.GetService<TQueryHandler>(), withLifetime);
+            return services.Add<TQueryHandler>(withLifetime)
+                .Add<IRequestHandler<TQuery, TResponse>>(sp => sp.GetService<TQueryHandler>(), withLifetime)
+                .Add<IQueryHandler<TQuery, TResponse>>(sp => sp.GetService<TQueryHandler>(), withLifetime);
         }
 
-        public static void RegisterEventHandler<TEvent, TEventHandler>(
+        public static IServiceCollection RegisterEventHandler<TEvent, TEventHandler>(
             this IServiceCollection services,
             ServiceLifetime withLifetime = ServiceLifetime.Transient)
             where TEvent : IEvent
             where TEventHandler : class, IEventHandler<TEvent>
         {
-            services.Add<TEventHandler>(withLifetime);
-            services.Add<INotificationHandler<TEvent>>(sp => sp.GetService<TEventHandler>(), withLifetime);
-            services.Add<IEventHandler<TEvent>>(sp => sp.GetService<TEventHandler>(), withLifetime);
+            return services.Add<TEventHandler>(withLifetime)
+                .Add<INotificationHandler<TEvent>>(sp => sp.GetService<TEventHandler>(), withLifetime)
+                .Add<IEventHandler<TEvent>>(sp => sp.GetService<TEventHandler>(), withLifetime);
         }
 
         public static IServiceCollection AddAllCommandHandlers(
@@ -76,14 +80,14 @@ namespace GoldenEye.Backend.Core.DDD.Registration
             ServiceLifetime withLifetime = ServiceLifetime.Transient,
             AssemblySelector from = AssemblySelector.ApplicationDependencies)
         {
-            services.Scan(scan => scan
+            return services.Scan(scan => scan
                 .FromAssemblies(from)
-                .AddClasses(classes => classes.AssignableTo(typeof(ICommandHandler<>)).Where(c => !c.IsAbstract && !c.IsGenericTypeDefinition))
+                .AddClasses(classes =>
+                    classes.AssignableTo(typeof(ICommandHandler<>))
+                        .Where(c => !c.IsAbstract && !c.IsGenericTypeDefinition))
                 .AsSelfWithInterfaces()
                 .WithLifetime(withLifetime)
             );
-
-            return services;
         }
 
         public static IServiceCollection AddAllQueryHandlers(
@@ -91,14 +95,14 @@ namespace GoldenEye.Backend.Core.DDD.Registration
             ServiceLifetime withLifetime = ServiceLifetime.Transient,
             AssemblySelector from = AssemblySelector.ApplicationDependencies)
         {
-            services.Scan(scan => scan
+            return services.Scan(scan => scan
                 .FromAssemblies(from)
-                .AddClasses(classes => classes.AssignableTo(typeof(IQueryHandler<,>)).Where(c => !c.IsAbstract && !c.IsGenericTypeDefinition))
+                .AddClasses(classes =>
+                    classes.AssignableTo(typeof(IQueryHandler<,>))
+                        .Where(c => !c.IsAbstract && !c.IsGenericTypeDefinition))
                 .AsSelfWithInterfaces()
                 .WithLifetime(withLifetime)
             );
-
-            return services;
         }
 
         public static IServiceCollection AddAllEventHandlers(
@@ -106,14 +110,14 @@ namespace GoldenEye.Backend.Core.DDD.Registration
             ServiceLifetime withLifetime = ServiceLifetime.Transient,
             AssemblySelector from = AssemblySelector.ApplicationDependencies)
         {
-            services.Scan(scan => scan
+            return services.Scan(scan => scan
                 .FromAssemblies(from)
-                .AddClasses(classes => classes.AssignableTo(typeof(IEventHandler<>)).Where(c => !c.IsAbstract && !c.IsGenericTypeDefinition))
+                .AddClasses(classes =>
+                    classes.AssignableTo(typeof(IEventHandler<>))
+                        .Where(c => !c.IsAbstract && !c.IsGenericTypeDefinition))
                 .AsSelfWithInterfaces()
                 .WithLifetime(withLifetime)
             );
-
-            return services;
         }
 
         public static IServiceCollection AddAllDDDHandlers(

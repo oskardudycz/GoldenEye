@@ -13,7 +13,8 @@ namespace GoldenEye.Backend.Core.DDD.Commands
             _mediator = mediator;
         }
 
-        public Task SendAsync<TCommand>(TCommand command, CancellationToken cancellationToken = default(CancellationToken)) where TCommand : ICommand
+        public Task SendAsync<TCommand>(TCommand command, CancellationToken cancellationToken = default)
+            where TCommand : ICommand
         {
             return _mediator.Send(command, cancellationToken);
         }

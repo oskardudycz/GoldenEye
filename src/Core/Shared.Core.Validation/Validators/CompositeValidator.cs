@@ -14,11 +14,9 @@ namespace GoldenEye.Shared.Core.Validation.Validators
         {
             // Ensure that we've registered a compatible validator.
             if (!validator.CanValidateInstancesOfType(typeof(T)))
-            {
                 throw new NotSupportedException(
                     string.Format("Type {0} is not a base-class or interface implemented by {1}.", typeof(TBase).Name,
-                                  typeof(T).Name));
-            }
+                        typeof(T).Name));
 
             _otherValidators.Add(validator);
         }

@@ -10,12 +10,12 @@ namespace Backend.Core.Marten.Tests.Events.Storage
 {
     public class MartenEventStoreTests: MartenTest
     {
-        private MartenEventStore Sut;
-
         public MartenEventStoreTests()
         {
             Sut = new MartenEventStore(Session);
         }
+
+        private readonly MartenEventStore Sut;
 
         public class UserCreated: IEvent
         {
@@ -34,16 +34,16 @@ namespace Backend.Core.Marten.Tests.Events.Storage
         [Fact]
         public void GivenEventStoreWithEvents_WhenQueried_ThenQueriedSuccessful()
         {
-            Guid userId = Guid.NewGuid();
+            var userId = Guid.NewGuid();
             //Given
             Sut.Store(userId,
-                new UserCreated { UserId = userId, UserName = "john.sith" },
-                new UserUpdated { UserId = userId, UserName = "john.smith" }
+                new UserCreated {UserId = userId, UserName = "john.sith"},
+                new UserUpdated {UserId = userId, UserName = "john.smith"}
             );
 
-            Guid secondUserId = Guid.NewGuid();
+            var secondUserId = Guid.NewGuid();
             Sut.Store(secondUserId,
-                new UserCreated { UserId = secondUserId, UserName = "adam.sandler" }
+                new UserCreated {UserId = secondUserId, UserName = "adam.sandler"}
             );
 
             Sut.SaveChanges();

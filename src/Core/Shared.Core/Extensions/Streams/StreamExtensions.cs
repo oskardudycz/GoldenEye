@@ -13,10 +13,7 @@ namespace GoldenEye.Shared.Core.Extensions.Streams
             using (var ms = new MemoryStream())
             {
                 int read;
-                while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
-                {
-                    ms.Write(buffer, 0, read);
-                }
+                while ((read = input.Read(buffer, 0, buffer.Length)) > 0) ms.Write(buffer, 0, read);
 
                 return ms.ToArray();
             }

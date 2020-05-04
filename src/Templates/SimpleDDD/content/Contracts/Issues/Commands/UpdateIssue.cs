@@ -6,14 +6,6 @@ namespace GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Commands
 {
     public class UpdateIssue: ICommand
     {
-        public Guid Id { get; }
-
-        public IssueType Type { get; }
-
-        public string Title { get; }
-
-        public string Description { get; }
-
         public UpdateIssue(Guid id, IssueType type, string title, string description)
         {
             Id = id;
@@ -21,6 +13,14 @@ namespace GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Commands
             Title = title;
             Description = description;
         }
+
+        public Guid Id { get; }
+
+        public IssueType Type { get; }
+
+        public string Title { get; }
+
+        public string Description { get; }
     }
 
     public class UpdateIssueValidator: AbstractValidator<UpdateIssue>
