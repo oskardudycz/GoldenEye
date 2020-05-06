@@ -13,7 +13,6 @@ Complete helpers and bootstrap for:
 - [CRUD Repositories](Repositories)
 - [CRUD Services](Services)
 - [Entities definition](Entities)
-- [Data contexts definition and usage](Context)
 - [Registration helpers to reduce boilerplate](Registration/Registration.cs)
 - many more
 
@@ -30,4 +29,4 @@ Feel free to create an issue on GitHub. Contributions, pull requests are more th
 
 For detailed list of changes see [Changelog](Changelog.md)  
 
-GoldenEye is Copyright &copy; 2015-2019 [Oskar Dudycz](http://oskar-dudycz.pl) and other contributors under the [MIT license](LICENSE.txt).
+GoldenEye is Copyright &copy; 2015-2020 [Oskar Dudycz](http://oskar-dudycz.pl) and other contributors under the [MIT license](LICENSE.txt).
