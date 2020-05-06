@@ -10,7 +10,7 @@ GoldenEye.Backend.Core.Dapper is a library that brings you abstractions and impl
 What do I get?
 --------------------------------
 Complete helpers and bootstrap for:
-- [Data contexts definition and usage](Context)
+- [Repositories definition and usage](Repositories)
 - many more
 
 How do I get started?
@@ -25,4 +25,4 @@ Feel free to create an issue on GitHub. Contributions, pull requests are more th
 
 For detailed list of changes see [Changelog](Changelog.md)  
 
-GoldenEye is Copyright &copy; 2015-2019 [Oskar Dudycz](http://oskar-dudycz.pl) and other contributors under the [MIT license](LICENSE.txt).
+GoldenEye is Copyright &copy; 2015-2020 [Oskar Dudycz](http://oskar-dudycz.pl) and other contributors under the [MIT license](LICENSE.txt).
