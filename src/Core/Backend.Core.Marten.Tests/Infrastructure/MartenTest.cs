@@ -1,10 +1,11 @@
 using System;
 using System.Data;
 using GoldenEye.Backend.Core.Marten.Registration;
+using Marten;
 using Marten.Events;
 using Npgsql;
 
-namespace Marten.Integration.Tests.TestsInfrasructure
+namespace Backend.Core.Marten.Tests.Infrastructure
 {
     public abstract class MartenTest: IDisposable
     {

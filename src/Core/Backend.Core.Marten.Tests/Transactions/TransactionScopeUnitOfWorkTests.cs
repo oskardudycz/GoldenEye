@@ -1,10 +1,10 @@
 using System;
 using System.Linq;
+using Backend.Core.Marten.Tests.Infrastructure;
 using FluentAssertions;
 using GoldenEye.Backend.Core.DDD.Events;
 using GoldenEye.Backend.Core.Marten.Events.Storage;
 using GoldenEye.Backend.Core.Transactions;
-using Marten.Integration.Tests.TestsInfrasructure;
 using Xunit;
 
 namespace Backend.Core.Marten.Tests.Transactions
