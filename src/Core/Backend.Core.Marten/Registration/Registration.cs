@@ -47,12 +47,12 @@ namespace GoldenEye.Backend.Core.Marten.Registration
             ServiceLifetime serviceLifetime = ServiceLifetime.Transient)
             where TEntity : class, IEventSource, new()
         {
-            services.Add(sp => new MartenEventSourcedDataContext<TEntity>(sp.GetService<IDocumentSession>(), sp.GetService<MartenEventStore>()),
+            services.Add(sp => new MartenEventSourcedRepository<TEntity>(sp.GetService<IDocumentSession>(), sp.GetService<MartenEventStore>()),
                 serviceLifetime);
 
-            services.Add<IRepository<TEntity>>(sp => sp.GetService<MartenEventSourcedDataContext<TEntity>>(),
+            services.Add<IRepository<TEntity>>(sp => sp.GetService<MartenEventSourcedRepository<TEntity>>(),
                 serviceLifetime);
-            services.Add<IReadonlyRepository<TEntity>>(sp => sp.GetService<MartenEventSourcedDataContext<TEntity>>(),
+            services.Add<IReadonlyRepository<TEntity>>(sp => sp.GetService<MartenEventSourcedRepository<TEntity>>(),
                 serviceLifetime);
         }
 

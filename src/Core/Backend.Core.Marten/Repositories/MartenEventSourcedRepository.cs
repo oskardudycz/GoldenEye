@@ -13,13 +13,13 @@ using Marten;
 
 namespace GoldenEye.Backend.Core.Marten.Repositories
 {
-    public class MartenEventSourcedDataContext<TEntity>: IRepository<TEntity>
+    public class MartenEventSourcedRepository<TEntity>: IRepository<TEntity>
         where TEntity : class, IHaveId, IEventSource, new()
     {
         private readonly IDocumentSession documentSession;
         private readonly IEventStore eventStore;
 
-        public MartenEventSourcedDataContext(IDocumentSession documentSession, MartenEventStore eventStore)
+        public MartenEventSourcedRepository(IDocumentSession documentSession, MartenEventStore eventStore)
         {
             this.documentSession = documentSession ?? throw new ArgumentException(nameof(documentSession));
             this.eventStore = eventStore ?? throw new ArgumentException(nameof(eventStore));
