@@ -76,4 +76,11 @@ I found an issue or I have a change request
 --------------------------------
 Feel free to create an issue on GitHub. Contributions, pull requests are more than welcome!
 
+Support
+--------------------------------
+💖 If this repository helped you - I'd be more than happy if you **join** the group of **my official supporters** at:
+
+👉 [Github Sponsors](https://github.com/sponsors/oskardudycz) 
+
+
 **GoldenEye** is Copyright &copy; 2015-2020 [Oskar Dudycz](http://oskar-dudycz.pl) and other contributors under the [MIT license](LICENSE.txt).
