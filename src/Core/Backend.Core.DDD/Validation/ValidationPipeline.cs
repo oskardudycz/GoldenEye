@@ -27,7 +27,7 @@ namespace GoldenEye.Backend.Core.DDD.Validation
             if (_validators?.Count() == 0)
                 return Task.CompletedTask;
 
-            var context = new ValidationContext(request);
+            var context = new ValidationContext<TRequest>(request);
             var failures = _validators
                 .Select(v => v.Validate(context))
                 .SelectMany(result => result.Errors)
@@ -54,7 +54,7 @@ namespace GoldenEye.Backend.Core.DDD.Validation
             if (_validators?.Count() == 0)
                 return next();
 
-            var context = new ValidationContext(request);
+            var context = new ValidationContext<TRequest>(request);
             var failures = _validators
                 .Select(v => v.Validate(context))
                 .SelectMany(result => result.Errors)

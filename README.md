@@ -3,7 +3,7 @@
 # GoldenEye
 
 ![Twitter Follow](https://img.shields.io/twitter/follow/oskar_at_net?style=social) [![Join the chat at https://gitter.im/oskardudycz/GoldenEye](https://badges.gitter.im/oskardudycz/GoldenEye.svg)](https://gitter.im/oskardudycz/GoldenEye?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Build status](https://ci.appveyor.com/api/projects/status/1mtm4h33cvur6kob/branch/master?svg=true)](https://ci.appveyor.com/project/oskardudycz/goldeneye-core/branch/master)
+[![Build status](https://ci.appveyor.com/api/projects/status/1mtm4h33cvur6kob/branch/main?svg=true)](https://ci.appveyor.com/project/oskardudycz/goldeneye-core/branch/main)
 
 What is GoldenEye?
 --------------------------------
@@ -13,7 +13,7 @@ What do I get?
 --------------------------------
 Complete Solution bootstrap - bottom up:
 - [Entity Framework](https://github.com/aspnet/EntityFrameworkCore) (supports also [Dapper](https://github.com/StackExchange/Dapper), [Marten](https://github.com/JasperFx/marten))
-- [CRUD Repositories](https://github.com/oskardudycz/GoldenEye/tree/master/src/Core/Backend.Core/Repositories) and CRUD Application Services
+- [CRUD Repositories](https://github.com/oskardudycz/GoldenEye/tree/main/src/Core/Backend.Core/Repositories) and CRUD Application Services
 - WebApi REST controllers
 - complete set up of dependency injection with automatic naming convention binding
 - [AutoMapper](https://github.com/AutoMapper/AutoMapper) preconfigured and automatic mappings registration
@@ -26,7 +26,7 @@ Complete Solution bootstrap - bottom up:
 How do I get started?
 --------------------------------
 
-**Install the [project template](https://github.com/oskardudycz/GoldenEye/tree/master/src/Templates/SimpleDDD/content) by running**
+**Install the [project template](https://github.com/oskardudycz/GoldenEye/tree/main/src/Templates/SimpleDDD/content) by running**
 
 `dotnet new -i GoldenEye.WebApi.Template.SimpleDDD`
 
@@ -60,7 +60,6 @@ Install packages from the Nuget package manager:
 
 **Core packages**:
 * [GoldenEye.Shared.Core](src/Core/Shared.Core/Readme.md) - base classes, helpers, extensions that will boost your development
-* [GoldenEye.Shared.Core.Validation](src/Core/Shared.Core.Validation/Readme.md) - validation based on FluentValidation.NET
 * [GoldenEye.Backend.Core](src/Core/Backend.Core/Readme.md) - classes suited for the backend development - Repositories, Services, CRUD, mappings, etc.
 * [GoldenEye.Backend.Core.WebApi](src/Core/Backend.Core.WebApi/Readme.md) - base classes for API development like CRUD controllers, registration helpers, and many more
 * [GoldenEye.Backend.Core.EntityFramework](src/Core/Backend.Core.EntityFramework/Readme.md) - extensions to GoldenEye.Backend.Core for EntityFramework development (EF repositories, etc.)

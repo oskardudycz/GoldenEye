@@ -86,12 +86,12 @@ namespace GoldenEye.Backend.Core.Services
 
         private async Task ValidateAsync(TDto dto, CancellationToken cancellationToken)
         {
-            await DtoValidator?.ValidateAndThrowAsync(dto, null, cancellationToken);
+            await DtoValidator?.ValidateAsync(dto, null, cancellationToken);
         }
 
         private async Task ValidateAsync(TEntity entity, CancellationToken cancellationToken)
         {
-            await EntityValidator?.ValidateAndThrowAsync(entity, null, cancellationToken);
+            await EntityValidator?.ValidateAsync(entity, null, cancellationToken);
         }
     }
 }
