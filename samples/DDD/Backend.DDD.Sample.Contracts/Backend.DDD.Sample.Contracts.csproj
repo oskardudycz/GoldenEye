@@ -7,6 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Core\Backend.Core.DDD\Backend.Core.DDD.csproj" />
+    <ProjectReference Include="..\..\..\src\Core\Backend.Core.DDD\Backend.Core.DDD.csproj" />
   </ItemGroup>
 </Project>

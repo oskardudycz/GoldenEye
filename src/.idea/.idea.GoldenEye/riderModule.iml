@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="RIDER_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$/../../../LICENSE.txt" />
-    <content url="file://$MODULE_DIR$/../../../README.md" />
-    <content url="file://$MODULE_DIR$/../../../appveyor.yml" />
-    <content url="file://$MODULE_DIR$/../../../assets/GoldenEyeLogo.png" />
-    <content url="file://$MODULE_DIR$/../../../docker/docker-compose.yml" />
-    <content url="file://$MODULE_DIR$/../../../docker/postgres/variables.env" />
-    <content url="file://$MODULE_DIR$/../.." />
     <content url="file://$USER_HOME$/.nuget/packages/microsoft.net.test.sdk/16.6.1/build/netcoreapp2.1" />
     <content url="file://$USER_HOME$/.nuget/packages/microsoft.net.test.sdk/16.8.0/build/netcoreapp2.1" />
     <content url="file://$USER_HOME$/.nuget/packages/microsoft.testplatform.testhost/16.6.1/build/netcoreapp2.1/x64/testhost.dll" />
@@ -17,6 +10,18 @@
     <content url="file://$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.4.3/build/netcoreapp2.1/xunit.runner.reporters.netcoreapp10.dll" />
     <content url="file://$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.4.3/build/netcoreapp2.1/xunit.runner.utility.netcoreapp10.dll" />
     <content url="file://$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.4.3/build/netcoreapp2.1/xunit.runner.visualstudio.dotnetcore.testadapter.dll" />
+    <content url="file://$MODULE_DIR$/../../../LICENSE.txt" />
+    <content url="file://$MODULE_DIR$/../../../README.md" />
+    <content url="file://$MODULE_DIR$/../../../appveyor.yml" />
+    <content url="file://$MODULE_DIR$/../../../assets/GoldenEyeLogo.png" />
+    <content url="file://$MODULE_DIR$/../../../docker/docker-compose.yml" />
+    <content url="file://$MODULE_DIR$/../../../docker/postgres/variables.env" />
+    <content url="file://$MODULE_DIR$/../../../samples/DDD/Backend.DDD.Sample" />
+    <content url="file://$MODULE_DIR$/../../../samples/DDD/Backend.DDD.Sample.Contracts" />
+    <content url="file://$MODULE_DIR$/../../../samples/DDD/Backend.DDD.Sample.IntegrationTests" />
+    <content url="file://$MODULE_DIR$/../../../samples/DDD/Backend.DDD.WebApi.Sample" />
+    <content url="file://$MODULE_DIR$/../../../samples/GoldenEye.WebApi.Sample" />
+    <content url="file://$MODULE_DIR$/../.." />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>

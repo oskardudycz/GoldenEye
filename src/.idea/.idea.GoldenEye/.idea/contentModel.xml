@@ -1,13 +1,149 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Repos\GoldenEye\appveyor.yml" t="Include" />
-    <e p="C:\Repos\GoldenEye\assets\GoldenEyeLogo.png" t="Include" />
-    <e p="C:\Repos\GoldenEye\Docker\docker-compose.yml" t="Include" />
-    <e p="C:\Repos\GoldenEye\Docker\postgres\variables.env" t="Include" />
-    <e p="C:\Repos\GoldenEye\LICENSE.txt" t="Include" />
-    <e p="C:\Repos\GoldenEye\Readme.md" t="Include" />
-    <e p="C:\Repos\GoldenEye\src" t="IncludeFlat">
+    <e p="C:\Users\oskar\.nuget\packages\microsoft.net.test.sdk\16.6.1\build\netcoreapp2.1" t="Include">
+      <e p="Microsoft.NET.Test.Sdk.Program.cs" t="Include" />
+    </e>
+    <e p="C:\Users\oskar\.nuget\packages\microsoft.net.test.sdk\16.8.0\build\netcoreapp2.1" t="Include">
+      <e p="Microsoft.NET.Test.Sdk.Program.cs" t="Include" />
+    </e>
+    <e p="C:\Users\oskar\.nuget\packages\microsoft.testplatform.testhost\16.6.1\build\netcoreapp2.1\x64\testhost.dll" t="Include" />
+    <e p="C:\Users\oskar\.nuget\packages\microsoft.testplatform.testhost\16.6.1\build\netcoreapp2.1\x64\testhost.exe" t="Include" />
+    <e p="C:\Users\oskar\.nuget\packages\microsoft.testplatform.testhost\16.8.0\build\netcoreapp2.1\x64\testhost.dll" t="Include" />
+    <e p="C:\Users\oskar\.nuget\packages\microsoft.testplatform.testhost\16.8.0\build\netcoreapp2.1\x64\testhost.exe" t="Include" />
+    <e p="C:\Users\oskar\.nuget\packages\xunit.runner.visualstudio\2.4.3\build\netcoreapp2.1\xunit.runner.reporters.netcoreapp10.dll" t="Include" />
+    <e p="C:\Users\oskar\.nuget\packages\xunit.runner.visualstudio\2.4.3\build\netcoreapp2.1\xunit.runner.utility.netcoreapp10.dll" t="Include" />
+    <e p="C:\Users\oskar\.nuget\packages\xunit.runner.visualstudio\2.4.3\build\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll" t="Include" />
+    <e p="C:\Users\oskar\AppData\local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\oskar\AppData\local\JetBrains\Rider2020.2\resharper-host\local\Transient\Rider\v202\SolutionCaches\_GoldenEye.-850631947.00" t="ExcludeRecursive" />
+    <e p="D:\Repos\GoldenEye\appveyor.yml" t="Include" />
+    <e p="D:\Repos\GoldenEye\assets\GoldenEyeLogo.png" t="Include" />
+    <e p="D:\Repos\GoldenEye\Docker\docker-compose.yml" t="Include" />
+    <e p="D:\Repos\GoldenEye\Docker\postgres\variables.env" t="Include" />
+    <e p="D:\Repos\GoldenEye\LICENSE.txt" t="Include" />
+    <e p="D:\Repos\GoldenEye\Readme.md" t="Include" />
+    <e p="D:\Repos\GoldenEye\Samples\DDD\Backend.DDD.Sample" t="IncludeRecursive">
+      <e p="Backend.DDD.Sample.csproj" t="IncludeRecursive" />
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="Changelog.md" t="Include" />
+      <e p="Issues" t="Include">
+        <e p="Handlers" t="Include">
+          <e p="IssueCommandHandler.cs" t="Include" />
+          <e p="IssueQueryHandler.cs" t="Include" />
+        </e>
+        <e p="Issue.cs" t="Include" />
+        <e p="Mappings" t="Include">
+          <e p="IssueMappings.cs" t="Include" />
+        </e>
+        <e p="Projections" t="Include">
+          <e p="IssueProjection.cs" t="Include" />
+        </e>
+      </e>
+      <e p="Module.cs" t="Include" />
+      <e p="obj" t="ExcludeRecursive">
+        <e p="Debug" t="Include">
+          <e p="netcoreapp3.1" t="Include">
+            <e p="Backend.DDD.Sample.AssemblyInfo.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="Readme.md" t="Include" />
+    </e>
+    <e p="D:\Repos\GoldenEye\Samples\DDD\Backend.DDD.Sample.Contracts" t="IncludeRecursive">
+      <e p="Backend.DDD.Sample.Contracts.csproj" t="IncludeRecursive" />
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="Changelog.md" t="Include" />
+      <e p="Issues" t="Include">
+        <e p="Commands" t="Include">
+          <e p="CreateIssue.cs" t="Include" />
+        </e>
+        <e p="Events" t="Include">
+          <e p="IssueCreated.cs" t="Include" />
+        </e>
+        <e p="IssueType.cs" t="Include" />
+        <e p="Queries" t="Include">
+          <e p="GetIssue.cs" t="Include" />
+          <e p="GetIssues.cs" t="Include" />
+        </e>
+        <e p="Views" t="Include">
+          <e p="IssueView.cs" t="Include" />
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive">
+        <e p="Debug" t="Include">
+          <e p="netstandard2.1" t="Include">
+            <e p="Backend.DDD.Sample.Contracts.AssemblyInfo.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="Readme.md" t="Include" />
+    </e>
+    <e p="D:\Repos\GoldenEye\Samples\DDD\Backend.DDD.Sample.IntegrationTests" t="IncludeRecursive">
+      <e p="Backend.DDD.Sample.IntegrationTests.csproj" t="IncludeRecursive" />
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="Changelog.md" t="Include" />
+      <e p="Infrastructure" t="Include">
+        <e p="TestContext.cs" t="Include" />
+      </e>
+      <e p="Issues" t="Include">
+        <e p="IssueTests.cs" t="Include" />
+      </e>
+      <e p="obj" t="ExcludeRecursive">
+        <e p="Debug" t="Include">
+          <e p="netcoreapp3.1" t="Include">
+            <e p="Backend.DDD.Sample.IntegrationTests.AssemblyInfo.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="Readme.md" t="Include" />
+    </e>
+    <e p="D:\Repos\GoldenEye\Samples\DDD\Backend.DDD.WebApi.Sample" t="IncludeRecursive">
+      <e p="appsettings.Development.json" t="Include" />
+      <e p="appsettings.json" t="Include" />
+      <e p="Backend.DDD.WebApi.Sample.csproj" t="IncludeRecursive" />
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="Changelog.md" t="Include" />
+      <e p="Controllers" t="Include">
+        <e p="IssuesController.cs" t="Include" />
+      </e>
+      <e p="obj" t="ExcludeRecursive">
+        <e p="Debug" t="Include">
+          <e p="netcoreapp3.1" t="Include">
+            <e p="Backend.DDD.WebApi.Sample.AssemblyInfo.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="Program.cs" t="Include" />
+      <e p="Properties" t="Include">
+        <e p="launchSettings.json" t="Include" />
+      </e>
+      <e p="Readme.md" t="Include" />
+      <e p="Startup.cs" t="Include" />
+      <e p="wwwroot" t="Include" />
+    </e>
+    <e p="D:\Repos\GoldenEye\Samples\GoldenEye.WebApi.Sample" t="IncludeRecursive">
+      <e p="appsettings.Development.json" t="Include" />
+      <e p="appsettings.json" t="Include" />
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="Controllers" t="Include">
+        <e p="ValuesController.cs" t="Include" />
+      </e>
+      <e p="GoldenEye.WebApi.Sample.csproj" t="IncludeRecursive" />
+      <e p="obj" t="ExcludeRecursive">
+        <e p="Debug" t="Include">
+          <e p="netcoreapp3.1" t="Include">
+            <e p="GoldenEye.WebApi.Sample.AssemblyInfo.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="Program.cs" t="Include" />
+      <e p="Properties" t="Include">
+        <e p="launchSettings.json" t="Include" />
+      </e>
+      <e p="Startup.cs" t="Include" />
+      <e p="wwwroot" t="Include" />
+    </e>
+    <e p="D:\Repos\GoldenEye\src" t="IncludeFlat">
       <e p="Core" t="Include">
         <e p="Backend.Core" t="IncludeRecursive">
           <e p="Backend.Core.csproj" t="IncludeRecursive" />
@@ -599,130 +735,8 @@
       <e p="Docs" t="Include" />
       <e p="GoldenEye.sln" t="IncludeFlat" />
       <e p="packages" t="ExcludeRecursive" />
-      <e p="Sample" t="Include">
-        <e p="DDD" t="Include">
-          <e p="Backend.DDD.Sample" t="IncludeRecursive">
-            <e p="Backend.DDD.Sample.csproj" t="IncludeRecursive" />
-            <e p="bin" t="ExcludeRecursive" />
-            <e p="Changelog.md" t="Include" />
-            <e p="Issues" t="Include">
-              <e p="Handlers" t="Include">
-                <e p="IssueCommandHandler.cs" t="Include" />
-                <e p="IssueQueryHandler.cs" t="Include" />
-              </e>
-              <e p="Issue.cs" t="Include" />
-              <e p="Mappings" t="Include">
-                <e p="IssueMappings.cs" t="Include" />
-              </e>
-              <e p="Projections" t="Include">
-                <e p="IssueProjection.cs" t="Include" />
-              </e>
-            </e>
-            <e p="Module.cs" t="Include" />
-            <e p="obj" t="ExcludeRecursive">
-              <e p="Debug" t="Include">
-                <e p="netcoreapp3.1" t="Include">
-                  <e p="Backend.DDD.Sample.AssemblyInfo.cs" t="Include" />
-                </e>
-              </e>
-            </e>
-            <e p="Readme.md" t="Include" />
-          </e>
-          <e p="Backend.DDD.Sample.Contracts" t="IncludeRecursive">
-            <e p="Backend.DDD.Sample.Contracts.csproj" t="IncludeRecursive" />
-            <e p="bin" t="ExcludeRecursive" />
-            <e p="Changelog.md" t="Include" />
-            <e p="Issues" t="Include">
-              <e p="Commands" t="Include">
-                <e p="CreateIssue.cs" t="Include" />
-              </e>
-              <e p="Events" t="Include">
-                <e p="IssueCreated.cs" t="Include" />
-              </e>
-              <e p="IssueType.cs" t="Include" />
-              <e p="Queries" t="Include">
-                <e p="GetIssue.cs" t="Include" />
-                <e p="GetIssues.cs" t="Include" />
-              </e>
-              <e p="Views" t="Include">
-                <e p="IssueView.cs" t="Include" />
-              </e>
-            </e>
-            <e p="obj" t="ExcludeRecursive">
-              <e p="Debug" t="Include">
-                <e p="netstandard2.1" t="Include">
-                  <e p="Backend.DDD.Sample.Contracts.AssemblyInfo.cs" t="Include" />
-                </e>
-              </e>
-            </e>
-            <e p="Readme.md" t="Include" />
-          </e>
-          <e p="Backend.DDD.Sample.IntegrationTests" t="IncludeRecursive">
-            <e p="Backend.DDD.Sample.IntegrationTests.csproj" t="IncludeRecursive" />
-            <e p="bin" t="ExcludeRecursive" />
-            <e p="Changelog.md" t="Include" />
-            <e p="Infrastructure" t="Include">
-              <e p="TestContext.cs" t="Include" />
-            </e>
-            <e p="Issues" t="Include">
-              <e p="IssueTests.cs" t="Include" />
-            </e>
-            <e p="obj" t="ExcludeRecursive">
-              <e p="Debug" t="Include">
-                <e p="netcoreapp3.1" t="Include">
-                  <e p="Backend.DDD.Sample.IntegrationTests.AssemblyInfo.cs" t="Include" />
-                </e>
-              </e>
-            </e>
-            <e p="Readme.md" t="Include" />
-          </e>
-          <e p="Backend.DDD.WebApi.Sample" t="IncludeRecursive">
-            <e p="appsettings.Development.json" t="Include" />
-            <e p="appsettings.json" t="Include" />
-            <e p="Backend.DDD.WebApi.Sample.csproj" t="IncludeRecursive" />
-            <e p="bin" t="ExcludeRecursive" />
-            <e p="Changelog.md" t="Include" />
-            <e p="Controllers" t="Include">
-              <e p="IssuesController.cs" t="Include" />
-            </e>
-            <e p="obj" t="ExcludeRecursive">
-              <e p="Debug" t="Include">
-                <e p="netcoreapp3.1" t="Include">
-                  <e p="Backend.DDD.WebApi.Sample.AssemblyInfo.cs" t="Include" />
-                </e>
-              </e>
-            </e>
-            <e p="Program.cs" t="Include" />
-            <e p="Properties" t="Include">
-              <e p="launchSettings.json" t="Include" />
-            </e>
-            <e p="Readme.md" t="Include" />
-            <e p="Startup.cs" t="Include" />
-            <e p="wwwroot" t="Include" />
-          </e>
-        </e>
-        <e p="GoldenEye.WebApi.Sample" t="IncludeRecursive">
-          <e p="appsettings.Development.json" t="Include" />
-          <e p="appsettings.json" t="Include" />
-          <e p="bin" t="ExcludeRecursive" />
-          <e p="Controllers" t="Include">
-            <e p="ValuesController.cs" t="Include" />
-          </e>
-          <e p="GoldenEye.WebApi.Sample.csproj" t="IncludeRecursive" />
-          <e p="obj" t="ExcludeRecursive">
-            <e p="Debug" t="Include">
-              <e p="netcoreapp3.1" t="Include">
-                <e p="GoldenEye.WebApi.Sample.AssemblyInfo.cs" t="Include" />
-              </e>
-            </e>
-          </e>
-          <e p="Program.cs" t="Include" />
-          <e p="Properties" t="Include">
-            <e p="launchSettings.json" t="Include" />
-          </e>
-          <e p="Startup.cs" t="Include" />
-          <e p="wwwroot" t="Include" />
-        </e>
+      <e p="Samples" t="Include">
+        <e p="DDD" t="Include" />
       </e>
       <e p="Solution Items" t="Include" />
       <e p="Templates" t="Include">
@@ -809,22 +823,5 @@
         </e>
       </e>
     </e>
-    <e p="C:\Users\oskar\.nuget\packages\microsoft.net.test.sdk\16.6.1\build\netcoreapp2.1" t="Include">
-      <e p="Microsoft.NET.Test.Sdk.Program.cs" t="Include" />
-    </e>
-    <e p="C:\Users\oskar\.nuget\packages\microsoft.net.test.sdk\16.8.0\build\netcoreapp2.1" t="Include">
-      <e p="Microsoft.NET.Test.Sdk.Program.cs" t="Include" />
-    </e>
-    <e p="C:\Users\oskar\.nuget\packages\microsoft.testplatform.testhost\16.6.1\build\netcoreapp2.1\x64\testhost.dll" t="Include" />
-    <e p="C:\Users\oskar\.nuget\packages\microsoft.testplatform.testhost\16.6.1\build\netcoreapp2.1\x64\testhost.exe" t="Include" />
-    <e p="C:\Users\oskar\.nuget\packages\microsoft.testplatform.testhost\16.8.0\build\netcoreapp2.1\x64\testhost.dll" t="Include" />
-    <e p="C:\Users\oskar\.nuget\packages\microsoft.testplatform.testhost\16.8.0\build\netcoreapp2.1\x64\testhost.exe" t="Include" />
-    <e p="C:\Users\oskar\.nuget\packages\xunit.runner.visualstudio\2.4.3\build\netcoreapp2.1\xunit.runner.reporters.netcoreapp10.dll" t="Include" />
-    <e p="C:\Users\oskar\.nuget\packages\xunit.runner.visualstudio\2.4.3\build\netcoreapp2.1\xunit.runner.utility.netcoreapp10.dll" t="Include" />
-    <e p="C:\Users\oskar\.nuget\packages\xunit.runner.visualstudio\2.4.3\build\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll" t="Include" />
-    <e p="C:\Users\oskar\AppData\local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\oskar\AppData\local\JetBrains\Rider2020.2\resharper-host\local\Transient\Rider\v202\SolutionCaches\_GoldenEye.1494035094.00" t="ExcludeRecursive" />
-    <e p="C:\Users\oskar\AppData\Roaming\JetBrains\Rider2020.2\consoles\db" t="IncludeRecursive" />
-    <e p="C:\Users\oskar\AppData\Roaming\JetBrains\Rider2020.2\Extensions" t="IncludeRecursive" />
   </component>
 </project>
