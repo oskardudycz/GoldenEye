@@ -1,11 +1,10 @@
 using System;
 using System.Data;
-using GoldenEye.Backend.Core.Marten.Registration;
 using Marten;
 using Marten.Events;
 using Npgsql;
 
-namespace Backend.Core.Marten.Tests.Infrastructure
+namespace GoldenEye.Marten.Integration.Tests.Infrastructure
 {
     public abstract class MartenTest: IDisposable
     {
@@ -51,9 +50,9 @@ namespace Backend.Core.Marten.Tests.Infrastructure
 
         protected virtual IDocumentSession CreateSession(Action<StoreOptions> storeOptions = null)
         {
-            var documentStore = Registration.CreateDocumentStore(ConnectionString, storeOptions, SchemaName);
+            var documentStore = Registration.Registration.CreateDocumentStore(ConnectionString, storeOptions, SchemaName);
 
-            return Registration.CreateDocumentSession(documentStore);
+            return Registration.Registration.CreateDocumentSession(documentStore);
         }
     }
 }

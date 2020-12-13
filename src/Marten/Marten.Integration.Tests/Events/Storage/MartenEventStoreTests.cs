@@ -1,12 +1,12 @@
 using System;
 using System.Linq;
-using Backend.Core.Marten.Tests.Infrastructure;
 using FluentAssertions;
-using GoldenEye.Backend.Core.DDD.Events;
-using GoldenEye.Backend.Core.Marten.Events.Storage;
+using GoldenEye.DDD.Events;
+using GoldenEye.Marten.Events.Storage;
+using GoldenEye.Marten.Integration.Tests.Infrastructure;
 using Xunit;
 
-namespace Backend.Core.Marten.Tests.Events.Storage
+namespace GoldenEye.Marten.Integration.Tests.Events.Storage
 {
     public class MartenEventStoreTests: MartenTest
     {

@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using GoldenEye.Backend.Core.DDD.Events;
-using GoldenEye.Backend.Core.DDD.Events.Store;
-using GoldenEye.Backend.Core.Exceptions;
-using GoldenEye.Backend.Core.Marten.Events.Storage;
-using GoldenEye.Backend.Core.Repositories;
-using GoldenEye.Shared.Core.Objects.General;
+using GoldenEye.DDD.Events;
+using GoldenEye.DDD.Events.Store;
+using GoldenEye.Core.Exceptions;
+using GoldenEye.Marten.Events.Storage;
+using GoldenEye.Core.Repositories;
+using GoldenEye.Core.Objects.General;
 using Marten;
 
-namespace GoldenEye.Backend.Core.Marten.Repositories
+namespace GoldenEye.Marten.Repositories
 {
     public class MartenEventSourcedRepository<TEntity>: IRepository<TEntity>
         where TEntity : class, IHaveId, IEventSource, new()

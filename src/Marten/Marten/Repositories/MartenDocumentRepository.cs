@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using GoldenEye.Backend.Core.Exceptions;
-using GoldenEye.Backend.Core.Repositories;
-using GoldenEye.Shared.Core.Objects.General;
+using GoldenEye.Core.Exceptions;
+using GoldenEye.Core.Repositories;
+using GoldenEye.Core.Objects.General;
 using Marten;
 
-namespace GoldenEye.Backend.Core.Marten.Repositories
+namespace GoldenEye.Marten.Repositories
 {
     public class MartenDocumentRepository<TEntity>: IRepository<TEntity> where TEntity : class, IHaveId
     {
