@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using GoldenEye.Backend.Core.Repositories;
-using GoldenEye.Shared.Core.Extensions.DependencyInjection;
-using GoldenEye.Shared.Core.Objects.General;
+using GoldenEye.Core.Extensions.DependencyInjection;
+using GoldenEye.Core.Objects.General;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace GoldenEye.Backend.Core.Registration

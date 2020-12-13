@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using GoldenEye.Shared.Core.IOC;
+using GoldenEye.Core.IOC;
 
-namespace GoldenEye.Shared.Core.Utils.Exceptions
+namespace GoldenEye.Core.Utils.Exceptions
 {
     public class ExceptionProvider: IExceptionProvider
     {

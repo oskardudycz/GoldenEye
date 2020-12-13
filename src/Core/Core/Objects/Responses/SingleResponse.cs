@@ -1,6 +1,6 @@
 using System.Runtime.Serialization;
 
-namespace GoldenEye.Shared.Core.Objects.Responses
+namespace GoldenEye.Core.Objects.Responses
 {
     /// <summary>
     ///     Class to send single record from service.

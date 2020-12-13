@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace GoldenEye.Shared.Core.Extensions.Collections
+namespace GoldenEye.Core.Extensions.Collections
 {
     public static class QueryableExtensions
     {

@@ -1,7 +1,7 @@
 using System;
 using System.Threading;
 
-namespace GoldenEye.Shared.Core.Utils.Threading
+namespace GoldenEye.Core.Utils.Threading
 {
     public static class NoSynchronizationContextScope
     {

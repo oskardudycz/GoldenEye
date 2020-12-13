@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using GoldenEye.Shared.Core.Objects.General;
+using GoldenEye.Core.Objects.General;
 
 namespace GoldenEye.Backend.Core.Repositories
 {

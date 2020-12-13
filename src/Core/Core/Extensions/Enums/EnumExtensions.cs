@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace GoldenEye.Shared.Core.Extensions.Enums
+namespace GoldenEye.Core.Extensions.Enums
 {
     public static class EnumExtensions
     {

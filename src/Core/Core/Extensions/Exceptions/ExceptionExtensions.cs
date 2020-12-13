@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Text;
-using GoldenEye.Shared.Core.IOC;
-using GoldenEye.Shared.Core.Utils.Exceptions;
+using GoldenEye.Core.IOC;
+using GoldenEye.Core.Utils.Exceptions;
 
-namespace GoldenEye.Shared.Core.Extensions.Exceptions
+namespace GoldenEye.Core.Extensions.Exceptions
 {
     public static class ExceptionExtensions
     {

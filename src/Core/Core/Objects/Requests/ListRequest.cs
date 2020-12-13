@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace GoldenEye.Shared.Core.Objects.Requests
+namespace GoldenEye.Core.Objects.Requests
 {
     /// <summary>
     ///     Class to send list of records from service

@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using GoldenEye.Shared.Core.Extensions.Basic;
-using GoldenEye.Shared.Core.Objects.General;
-using GoldenEye.Shared.Core.Objects.Order;
+using GoldenEye.Core.Extensions.Basic;
+using GoldenEye.Core.Objects.General;
+using GoldenEye.Core.Objects.Order;
 
-namespace GoldenEye.Shared.Core.Extensions.Collections
+namespace GoldenEye.Core.Extensions.Collections
 {
     public static class EnumerableExtensions
     {

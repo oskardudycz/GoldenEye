@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace GoldenEye.Shared.Core.Objects.Requests
+namespace GoldenEye.Core.Objects.Requests
 {
     public interface IListRequest<T>: IRequest
     {

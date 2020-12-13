@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace GoldenEye.Shared.Core.IOC
+namespace GoldenEye.Core.IOC
 {
     public interface IIOCContainer
     {

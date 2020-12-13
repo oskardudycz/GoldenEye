@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using GoldenEye.Shared.Core.Objects.Dates;
+using GoldenEye.Core.Objects.Dates;
 
-namespace GoldenEye.Shared.Core.Extensions.Basic
+namespace GoldenEye.Core.Extensions.Basic
 {
     public static class DateTimeExtensions
     {

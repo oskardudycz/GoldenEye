@@ -1,4 +1,4 @@
-﻿namespace GoldenEye.Shared.Core.Exceptions
+﻿namespace GoldenEye.Core.Exceptions
 {
     public class HttpExceptionWrapper
     {

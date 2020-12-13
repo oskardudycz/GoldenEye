@@ -2,7 +2,7 @@ using System;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace GoldenEye.Shared.Core.Utils.Cryptography
+namespace GoldenEye.Core.Utils.Cryptography
 {
     /// <summary>
     ///     Class to help encrypt/decrypt password.

@@ -1,4 +1,4 @@
-namespace GoldenEye.Shared.Core.Objects.Order
+namespace GoldenEye.Core.Objects.Order
 {
     public interface IOrderable
     {

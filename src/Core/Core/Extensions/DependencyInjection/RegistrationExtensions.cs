@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Scrutor;
 
-namespace GoldenEye.Shared.Core.Extensions.DependencyInjection
+namespace GoldenEye.Core.Extensions.DependencyInjection
 {
     public static class RegistrationExtensions
     {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace GoldenEye.Shared.Core.Utils.Collections
+namespace GoldenEye.Core.Utils.Collections
 {
     /// <summary>
     ///     Converts any collection to comma seperated values stream or string based on collection objects properties values

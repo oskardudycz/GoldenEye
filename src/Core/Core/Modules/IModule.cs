@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace GoldenEye.Shared.Core.Modules
+namespace GoldenEye.Core.Modules
 {
     public interface IModule
     {

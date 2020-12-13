@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace GoldenEye.Shared.Core.Extensions.Naming
+namespace GoldenEye.Core.Extensions.Naming
 {
     public static class ConventionNamesExtensions
     {

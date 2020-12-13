@@ -1,6 +1,6 @@
 using System;
 
-namespace GoldenEye.Shared.Core.Utils.Coding
+namespace GoldenEye.Core.Utils.Coding
 {
     public class Switch
     {

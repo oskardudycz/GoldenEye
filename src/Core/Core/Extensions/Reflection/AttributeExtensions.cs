@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 
-namespace GoldenEye.Shared.Core.Extensions.Reflection
+namespace GoldenEye.Core.Extensions.Reflection
 {
     public static class AttributeExtensions
     {

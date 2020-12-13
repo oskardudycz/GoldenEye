@@ -1,6 +1,6 @@
 using System;
 
-namespace GoldenEye.Shared.Core.Objects.Audit
+namespace GoldenEye.Core.Objects.Audit
 {
     public interface IAuditable
     {

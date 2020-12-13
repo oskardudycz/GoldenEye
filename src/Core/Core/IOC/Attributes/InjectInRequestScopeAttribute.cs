@@ -1,6 +1,6 @@
 using System;
 
-namespace GoldenEye.Shared.Core.IOC.Attributes
+namespace GoldenEye.Core.IOC.Attributes
 {
     [AttributeUsage(AttributeTargets.Class)]
     public class InjectInRequestScopeAttribute: Attribute

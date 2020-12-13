@@ -1,6 +1,6 @@
 using System;
 
-namespace GoldenEye.Shared.Core.Context
+namespace GoldenEye.Core.Context
 {
     public static class ContextValuesProviderWrapper
     {
