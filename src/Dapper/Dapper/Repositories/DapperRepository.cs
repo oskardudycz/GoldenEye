@@ -6,13 +6,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using Dapper;
 using Dapper.Contrib.Extensions;
-using GoldenEye.Backend.Core.Dapper.Generators;
+using GoldenEye.Dapper.Generators;
 using GoldenEye.Backend.Core.Exceptions;
 using GoldenEye.Backend.Core.Repositories;
-using GoldenEye.Shared.Core.Extensions.Basic;
-using GoldenEye.Shared.Core.Objects.General;
+using GoldenEye.Core.Extensions.Basic;
+using GoldenEye.Core.Objects.General;
 
-namespace GoldenEye.Backend.Core.Dapper.Repositories
+namespace GoldenEye.Dapper.Repositories
 {
     public class DapperRepository<TEntity>: IRepository<TEntity>
         where TEntity : class, IHaveId

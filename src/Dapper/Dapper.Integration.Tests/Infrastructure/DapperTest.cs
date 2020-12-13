@@ -2,7 +2,7 @@ using System;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace Marten.Integration.Tests.TestsInfrasructure
+namespace GoldenEye.Dapper.Integration.Tests.Infrastructure
 {
     public abstract class DapperTest: IDisposable
     {

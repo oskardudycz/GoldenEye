@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using GoldenEye.Shared.Core.Extensions.DependencyInjection;
+using GoldenEye.Core.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace GoldenEye.Backend.Core.Dapper.Mappings
+namespace GoldenEye.Dapper.Mappings
 {
     public static class Registration
     {

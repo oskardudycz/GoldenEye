@@ -35,15 +35,6 @@
     </e>
     <e p="D:\Repos\GoldenEye\src" t="IncludeFlat">
       <e p="Core" t="Include">
-        <e p="Backend.Core.Dapper" t="IncludeRecursive">
-          <e p="Backend.Core.Dapper.csproj" t="IncludeRecursive" />
-        </e>
-        <e p="Backend.Core.Dapper.Integration.Tests" t="IncludeRecursive">
-          <e p="Backend.Core.Dapper.Integration.Tests.csproj" t="IncludeRecursive" />
-        </e>
-        <e p="Backend.Core.Dapper.Tests" t="IncludeRecursive">
-          <e p="Backend.Core.Dapper.Tests.csproj" t="IncludeRecursive" />
-        </e>
         <e p="Backend.Core.DDD" t="IncludeRecursive">
           <e p="Backend.Core.DDD.csproj" t="IncludeRecursive" />
         </e>
@@ -307,7 +298,68 @@
           </e>
         </e>
       </e>
-      <e p="Dapper" t="Include" />
+      <e p="Dapper" t="Include">
+        <e p="Dapper" t="IncludeRecursive">
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Changelog.md" t="Include" />
+          <e p="Dapper.csproj" t="IncludeRecursive" />
+          <e p="Generators" t="Include">
+            <e p="IDapperSqlGenerator.cs" t="Include" />
+            <e p="MappingsSqlGenerator.cs" t="Include" />
+          </e>
+          <e p="Mappings" t="Include">
+            <e p="IDapperMapping.cs" t="Include" />
+            <e p="Registration.cs" t="Include" />
+          </e>
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netstandard2.1" t="Include">
+                <e p="Dapper.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Readme.md" t="Include" />
+          <e p="Repositories" t="Include">
+            <e p="DapperRepository.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Dapper.Integration.Tests" t="IncludeRecursive">
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Changelog.md" t="Include" />
+          <e p="Dapper.Integration.Tests.csproj" t="IncludeRecursive" />
+          <e p="Infrastructure" t="Include">
+            <e p="DapperTest.cs" t="Include" />
+          </e>
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="net5.0" t="Include">
+                <e p="Dapper.Integration.Tests.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Repositories" t="Include">
+            <e p="DapperRepositoryTests.cs" t="Include" />
+          </e>
+          <e p="TestData" t="Include">
+            <e p="Structure.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Dapper.Tests" t="IncludeRecursive">
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Changelog.md" t="Include" />
+          <e p="Dapper.Tests.csproj" t="IncludeRecursive" />
+          <e p="Mappings" t="Include">
+            <e p="RegistrationTests.cs" t="Include" />
+          </e>
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="net5.0" t="Include">
+                <e p="Dapper.Tests.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
+      </e>
       <e p="DDD" t="Include" />
       <e p="Directory.build.props" t="Include" />
       <e p="Docker" t="Include">

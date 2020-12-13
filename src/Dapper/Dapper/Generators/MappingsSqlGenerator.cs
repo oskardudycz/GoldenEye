@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using GoldenEye.Backend.Core.Dapper.Mappings;
+using GoldenEye.Dapper.Mappings;
 
-namespace GoldenEye.Backend.Core.Dapper.Generators
+namespace GoldenEye.Dapper.Generators
 {
     /// <summary>
     ///     Generates Dapper sql from mappings
