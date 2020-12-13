@@ -1,7 +1,7 @@
 ﻿using Dapper.Contrib.Extensions;
-using GoldenEye.Shared.Core.Objects.General;
+using GoldenEye.Core.Objects.General;
 
-namespace Backend.Core.Dapper.Integration.Tests.TestData
+namespace GoldenEye.Dapper.Integration.Tests.TestData
 {
     public static class Structure
     {

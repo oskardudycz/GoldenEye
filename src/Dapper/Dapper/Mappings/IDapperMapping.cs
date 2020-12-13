@@ -1,4 +1,4 @@
-namespace GoldenEye.Backend.Core.Dapper.Mappings
+namespace GoldenEye.Dapper.Mappings
 {
     public interface IDapperMapping
     {

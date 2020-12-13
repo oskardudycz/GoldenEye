@@ -4,7 +4,7 @@ using GoldenEye.Core.Modules;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
-namespace Shared.Core.Tests.Modules
+namespace GoldenEye.Core.Tests.Modules
 {
     public class Registration
     {

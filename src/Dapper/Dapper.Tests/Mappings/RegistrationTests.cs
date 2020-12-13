@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using GoldenEye.Backend.Core.Dapper.Mappings;
+using GoldenEye.Dapper.Mappings;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
-namespace Backend.Core.Dapper.Tests.Mappings
+namespace GoldenEye.Dapper.Tests.Mappings
 {
     public class RegistrationTests
     {

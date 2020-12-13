@@ -1,4 +1,4 @@
-﻿namespace GoldenEye.Backend.Core.Dapper.Generators
+﻿namespace GoldenEye.Dapper.Generators
 {
     public interface IDapperSqlGenerator
     {

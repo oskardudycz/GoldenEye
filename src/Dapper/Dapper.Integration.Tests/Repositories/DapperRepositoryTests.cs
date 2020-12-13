@@ -1,11 +1,11 @@
 using System.Linq;
-using Backend.Core.Dapper.Integration.Tests.TestData;
 using FluentAssertions;
-using GoldenEye.Backend.Core.Dapper.Repositories;
-using Marten.Integration.Tests.TestsInfrasructure;
+using GoldenEye.Dapper.Integration.Tests.Infrastructure;
+using GoldenEye.Dapper.Integration.Tests.TestData;
+using GoldenEye.Dapper.Repositories;
 using Xunit;
 
-namespace Backend.Core.Dapper.Integration.Tests.Repositories
+namespace GoldenEye.Dapper.Integration.Tests.Repositories
 {
     public class DapperRepositoryTests: DapperTest
     {

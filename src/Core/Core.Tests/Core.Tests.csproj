@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <RootNamespace>GoldenEye.Core.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

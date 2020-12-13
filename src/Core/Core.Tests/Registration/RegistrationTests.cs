@@ -5,13 +5,13 @@ using GoldenEye.Backend.Core.Registration;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
-namespace Backend.Core.Tests.Registration
+namespace GoldenEye.Core.Tests.Registration
 {
     public class RegistrationTests
     {
         public class DataContext
         {
-            public List<string> Users = new List<string>();
+            public readonly List<string> Users = new();
         }
 
         private class CreateUser
