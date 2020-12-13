@@ -1,6 +1,6 @@
 using System;
 
-namespace GoldenEye.Shared.Core.Security
+namespace GoldenEye.Core.Security
 {
     public interface IUserInfo
     {

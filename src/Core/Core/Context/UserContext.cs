@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using GoldenEye.Shared.Core.Extensions.Basic;
-using GoldenEye.Shared.Core.Extensions.Collections;
+using GoldenEye.Core.Extensions.Basic;
+using GoldenEye.Core.Extensions.Collections;
 
-namespace GoldenEye.Shared.Core.Context
+namespace GoldenEye.Core.Context
 {
     public static class UserContext
     {

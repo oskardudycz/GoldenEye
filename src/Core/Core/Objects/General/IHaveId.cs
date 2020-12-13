@@ -1,6 +1,6 @@
 using System;
 
-namespace GoldenEye.Shared.Core.Objects.General
+namespace GoldenEye.Core.Objects.General
 {
     public interface IHaveId
     {

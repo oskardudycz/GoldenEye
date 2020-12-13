@@ -2,7 +2,7 @@
 using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace GoldenEye.Shared.Core.Mappings
+namespace GoldenEye.Core.Mappings
 {
     public static class Registration
     {

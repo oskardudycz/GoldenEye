@@ -1,10 +1,10 @@
 ﻿using System;
-using GoldenEye.Shared.Core.Extensions.Collections;
-using GoldenEye.Shared.Core.Extensions.DependencyInjection;
-using GoldenEye.Shared.Core.Modules.Attributes;
+using GoldenEye.Core.Extensions.Collections;
+using GoldenEye.Core.Extensions.DependencyInjection;
+using GoldenEye.Core.Modules.Attributes;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace GoldenEye.Shared.Core.Modules
+namespace GoldenEye.Core.Modules
 {
     public static class Registration
     {

@@ -1,4 +1,4 @@
-namespace GoldenEye.Shared.Core.Mappings
+namespace GoldenEye.Core.Mappings
 {
     public interface IMappingDefinition
     {

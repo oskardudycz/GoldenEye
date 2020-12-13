@@ -1,4 +1,4 @@
-namespace GoldenEye.Shared.Core.Objects.Requests
+namespace GoldenEye.Core.Objects.Requests
 {
     public class EmptyRequest: RequestBase, IEmptyRequest
     {

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using GoldenEye.Shared.Core.Objects.General;
+using GoldenEye.Core.Objects.General;
 
-namespace GoldenEye.Shared.Core.Extensions.Collections
+namespace GoldenEye.Core.Extensions.Collections
 {
     public static class CollectionExtensions
     {

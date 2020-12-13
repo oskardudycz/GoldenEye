@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using GoldenEye.Backend.Core.Exceptions;
-using GoldenEye.Shared.Core.Objects.General;
+using GoldenEye.Core.Objects.General;
 
 namespace GoldenEye.Backend.Core.Repositories
 {

@@ -1,10 +1,10 @@
 using System;
 using System.Globalization;
-using GoldenEye.Shared.Core.Extensions.Basic;
+using GoldenEye.Core.Extensions.Basic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace GoldenEye.Shared.Core.Utils.Serialization
+namespace GoldenEye.Core.Utils.Serialization
 {
     public static class JsonSerializer
     {

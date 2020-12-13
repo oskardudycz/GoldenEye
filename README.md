@@ -37,9 +37,9 @@ How do I get started?
 
 Or manually add packages to your project, eg:
 
-* **[Shared](src/Core/Shared.Core/Readme.md)** - GoldenEye.Shared.Core 
+* **[Shared](src/Core/Shared.Core/Readme.md)** - GoldenEye.Core 
   
-  `dotnet add package GoldenEye.Shared.Core` 
+  `dotnet add package GoldenEye.Core` 
   
 * **[Backend](src/Core/Backend.Core/Readme.md)** - GoldenEye.Backend.Core 
   
@@ -59,7 +59,7 @@ Where can I get it?
 Install packages from the Nuget package manager:
 
 **Core packages**:
-* [GoldenEye.Shared.Core](src/Core/Shared.Core/Readme.md) - base classes, helpers, extensions that will boost your development
+* [GoldenEye.Core](src/Core/Shared.Core/Readme.md) - base classes, helpers, extensions that will boost your development
 * [GoldenEye.Backend.Core](src/Core/Backend.Core/Readme.md) - classes suited for the backend development - Repositories, Services, CRUD, mappings, etc.
 * [GoldenEye.Backend.Core.WebApi](src/Core/Backend.Core.WebApi/Readme.md) - base classes for API development like CRUD controllers, registration helpers, and many more
 * [GoldenEye.Backend.Core.EntityFramework](src/Core/Backend.Core.EntityFramework/Readme.md) - extensions to GoldenEye.Backend.Core for EntityFramework development (EF repositories, etc.)

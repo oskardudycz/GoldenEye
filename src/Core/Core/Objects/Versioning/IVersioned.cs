@@ -1,4 +1,4 @@
-﻿namespace GoldenEye.Shared.Core.Objects.Versioning
+﻿namespace GoldenEye.Core.Objects.Versioning
 {
     public interface IVersioned
     {

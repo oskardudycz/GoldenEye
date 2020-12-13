@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace GoldenEye.Shared.Core.Utils.Exceptions
+namespace GoldenEye.Core.Utils.Exceptions
 {
     public interface IExceptionProvider
     {

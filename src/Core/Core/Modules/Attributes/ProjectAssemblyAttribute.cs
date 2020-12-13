@@ -1,6 +1,6 @@
 using System;
 
-namespace GoldenEye.Shared.Core.Modules.Attributes
+namespace GoldenEye.Core.Modules.Attributes
 {
     [AttributeUsage(AttributeTargets.Assembly)]
     public class ProjectAssemblyAttribute: Attribute

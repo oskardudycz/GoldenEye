@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace GoldenEye.Shared.Core.Context
+namespace GoldenEye.Core.Context
 {
     public interface IContextValuesProvider
     {

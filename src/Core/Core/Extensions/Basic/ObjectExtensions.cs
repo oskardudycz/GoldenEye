@@ -4,10 +4,10 @@ using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using GoldenEye.Shared.Core.Extensions.Lambda;
-using GoldenEye.Shared.Core.Extensions.Reflection;
+using GoldenEye.Core.Extensions.Lambda;
+using GoldenEye.Core.Extensions.Reflection;
 
-namespace GoldenEye.Shared.Core.Extensions.Basic
+namespace GoldenEye.Core.Extensions.Basic
 {
     public static class ObjectExtensions
     {

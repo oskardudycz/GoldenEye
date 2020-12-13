@@ -1,6 +1,6 @@
 using System.Linq;
 using FluentAssertions;
-using GoldenEye.Shared.Core.Modules;
+using GoldenEye.Core.Modules;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
