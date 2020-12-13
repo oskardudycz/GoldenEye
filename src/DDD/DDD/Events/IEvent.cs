@@ -1,7 +1,7 @@
 using System;
 using MediatR;
 
-namespace GoldenEye.Backend.Core.DDD.Events
+namespace GoldenEye.DDD.Events
 {
     public interface IEvent: INotification
     {

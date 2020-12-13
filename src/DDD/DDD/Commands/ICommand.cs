@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace GoldenEye.Backend.Core.DDD.Commands
+namespace GoldenEye.DDD.Commands
 {
     public interface ICommand: IRequest
     {

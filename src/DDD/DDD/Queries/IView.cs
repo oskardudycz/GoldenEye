@@ -1,6 +1,6 @@
-using GoldenEye.Shared.Core.Objects.General;
+using GoldenEye.Core.Objects.General;
 
-namespace GoldenEye.Backend.Core.DDD.Queries
+namespace GoldenEye.DDD.Queries
 {
     public interface IView<TKey>: IHaveId<TKey>
     {

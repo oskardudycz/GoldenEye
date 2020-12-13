@@ -1,20 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Backend.Core.DDD.Tests.External.Contracts;
-using Backend.Core.DDD.Tests.External.Handlers;
 using FluentAssertions;
-using GoldenEye.Backend.Core.DDD.Commands;
-using GoldenEye.Backend.Core.DDD.Events;
-using GoldenEye.Backend.Core.DDD.Queries;
-using GoldenEye.Backend.Core.DDD.Registration;
+using GoldenEye.DDD.Commands;
+using GoldenEye.DDD.Events;
+using GoldenEye.DDD.Queries;
+using GoldenEye.DDD.Registration;
+using GoldenEye.DDD.Tests.External.Contracts;
+using GoldenEye.DDD.Tests.External.Handlers;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
-using static Backend.Core.DDD.Tests.Registration.CommandHandlerRegistrationTests;
-using static Backend.Core.DDD.Tests.Registration.EventHandlerAllRegistrationTests;
-using static Backend.Core.DDD.Tests.Registration.QueryHandlerRegistrationTests;
+using static GoldenEye.DDD.Tests.Registration.CommandHandlerRegistrationTests;
+using static GoldenEye.DDD.Tests.Registration.EventHandlerAllRegistrationTests;
+using static GoldenEye.DDD.Tests.Registration.QueryHandlerRegistrationTests;
 
-namespace Backend.Core.DDD.Tests.Registration
+namespace GoldenEye.DDD.Tests.Registration
 {
     public class AllHandlersRegistrationTests
     {

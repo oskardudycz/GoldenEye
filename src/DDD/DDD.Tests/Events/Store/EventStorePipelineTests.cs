@@ -1,13 +1,13 @@
 using System;
 using System.Threading.Tasks;
 using FluentAssertions;
-using GoldenEye.Backend.Core.DDD.Events;
-using GoldenEye.Backend.Core.DDD.Events.Store;
-using GoldenEye.Backend.Core.DDD.Registration;
+using GoldenEye.DDD.Events;
+using GoldenEye.DDD.Events.Store;
+using GoldenEye.DDD.Registration;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
-namespace Backend.Core.DDD.Tests.Events.Store
+namespace GoldenEye.DDD.Tests.Events.Store
 {
     public partial class EventStorePipelineTests
     {

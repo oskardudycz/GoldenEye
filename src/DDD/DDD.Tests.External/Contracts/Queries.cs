@@ -1,6 +1,6 @@
-using GoldenEye.Backend.Core.DDD.Queries;
+using GoldenEye.DDD.Queries;
 
-namespace Backend.Core.DDD.Tests.External.Contracts
+namespace GoldenEye.DDD.Tests.External.Contracts
 {
     public class BankAccountDetails
     {

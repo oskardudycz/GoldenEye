@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using GoldenEye.Shared.Core.Objects.General;
+using GoldenEye.Core.Objects.General;
 
-namespace GoldenEye.Backend.Core.DDD.Events
+namespace GoldenEye.DDD.Events
 {
     public abstract class EventSource: IEventSource
     {

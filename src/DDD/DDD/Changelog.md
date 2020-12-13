@@ -81,7 +81,7 @@
 
 ## Changes
 
-* updated packages version to most recent **[PATCH]**C:\Repos\GoldenEye\src\Core\Backend.Core.DDD\Changelog.md
+* updated packages version to most recent **[PATCH]**C:\Repos\GoldenEye\src\Core\DDD\Changelog.md
 
 
 # v3.0.0 (29.12.2017) [Pull Request](https://github.com/oskardudycz/GoldenEye/pull/44)

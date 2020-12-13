@@ -6,7 +6,7 @@ using FluentValidation;
 using MediatR;
 using MediatR.Pipeline;
 
-namespace GoldenEye.Backend.Core.DDD.Validation
+namespace GoldenEye.DDD.Validation
 {
     /// <summary>
     ///     Allow automatic command and queries validation

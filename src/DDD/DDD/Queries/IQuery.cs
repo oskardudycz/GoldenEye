@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace GoldenEye.Backend.Core.DDD.Queries
+namespace GoldenEye.DDD.Queries
 {
     public interface IQuery<out TResponse>: IRequest<TResponse>
     {

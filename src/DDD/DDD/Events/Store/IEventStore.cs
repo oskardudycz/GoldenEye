@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using GoldenEye.Shared.Core.Objects.General;
+using GoldenEye.Core.Objects.General;
 
-namespace GoldenEye.Backend.Core.DDD.Events.Store
+namespace GoldenEye.DDD.Events.Store
 {
     public interface IEventStore
     {

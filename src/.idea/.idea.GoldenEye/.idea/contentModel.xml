@@ -35,15 +35,6 @@
     </e>
     <e p="D:\Repos\GoldenEye\src" t="IncludeFlat">
       <e p="Core" t="Include">
-        <e p="Backend.Core.DDD" t="IncludeRecursive">
-          <e p="Backend.Core.DDD.csproj" t="IncludeRecursive" />
-        </e>
-        <e p="Backend.Core.DDD.Tests" t="IncludeRecursive">
-          <e p="Backend.Core.DDD.Tests.csproj" t="IncludeRecursive" />
-        </e>
-        <e p="Backend.Core.DDD.Tests.External" t="IncludeRecursive">
-          <e p="Backend.Core.DDD.Tests.External.csproj" t="IncludeRecursive" />
-        </e>
         <e p="Backend.Core.EntityFramework" t="IncludeRecursive">
           <e p="Backend.Core.EntityFramework.csproj" t="IncludeRecursive" />
         </e>
@@ -360,7 +351,107 @@
           </e>
         </e>
       </e>
-      <e p="DDD" t="Include" />
+      <e p="DDD" t="Include">
+        <e p="DDD" t="IncludeRecursive">
+          <e p="Aggregates" t="Include">
+            <e p="IAggregate.cs" t="Include" />
+          </e>
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Changelog.md" t="Include" />
+          <e p="Commands" t="Include">
+            <e p="CommandBus.cs" t="Include" />
+            <e p="ICommand.cs" t="Include" />
+            <e p="ICommandBus.cs" t="Include" />
+            <e p="ICommandHandler.cs" t="Include" />
+            <e p="Readme.md" t="Include" />
+          </e>
+          <e p="DDD.csproj" t="IncludeRecursive" />
+          <e p="Events" t="Include">
+            <e p="EventBus.cs" t="Include" />
+            <e p="EventSource.cs" t="Include" />
+            <e p="IEvent.cs" t="Include" />
+            <e p="IEventBus.cs" t="Include" />
+            <e p="IEventHandler.cs" t="Include" />
+            <e p="IEventSource.cs" t="Include" />
+            <e p="Store" t="Include">
+              <e p="EventStorePipeline.cs" t="Include" />
+              <e p="IEventStore.cs" t="Include" />
+            </e>
+          </e>
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netstandard2.1" t="Include">
+                <e p="DDD.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Queries" t="Include">
+            <e p="IListQuery.cs" t="Include" />
+            <e p="IQuery.cs" t="Include" />
+            <e p="IQueryBus.cs" t="Include" />
+            <e p="IQueryHandler.cs" t="Include" />
+            <e p="IView.cs" t="Include" />
+            <e p="QueryBus.cs" t="Include" />
+          </e>
+          <e p="Readme.md" t="Include" />
+          <e p="Registration" t="Include">
+            <e p="Readme.md" t="Include" />
+            <e p="Registration.cs" t="Include" />
+          </e>
+          <e p="Validation" t="Include">
+            <e p="ValidationPipeline.cs" t="Include" />
+          </e>
+        </e>
+        <e p="DDD.Tests" t="IncludeRecursive">
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Changelog.md" t="Include" />
+          <e p="DDD.Tests.csproj" t="IncludeRecursive" />
+          <e p="Events" t="Include">
+            <e p="Store" t="Include">
+              <e p="EventStore.cs" t="Include" />
+              <e p="EventStorePipelineTests.cs" t="Include" />
+            </e>
+          </e>
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="net5.0" t="Include">
+                <e p="DDD.Tests.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Readme.md" t="Include" />
+          <e p="Registration" t="Include">
+            <e p="AllHandlersRegistrationTests.cs" t="Include" />
+            <e p="CommandHandlerRegistrationTests.cs" t="Include" />
+            <e p="EventHandlerRegistrationTests.cs" t="Include" />
+            <e p="QueryHandlerRegistrationTests.cs" t="Include" />
+          </e>
+          <e p="Validation" t="Include">
+            <e p="ValidationPipelineTests.cs" t="Include" />
+          </e>
+        </e>
+        <e p="DDD.Tests.External" t="IncludeRecursive">
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Contracts" t="Include">
+            <e p="Commands.cs" t="Include" />
+            <e p="Events.cs" t="Include" />
+            <e p="Queries.cs" t="Include" />
+          </e>
+          <e p="DDD.Tests.External.csproj" t="IncludeRecursive" />
+          <e p="Handlers" t="Include">
+            <e p="CommandHandlers.cs" t="Include" />
+            <e p="EventHandlers.cs" t="Include" />
+            <e p="QueryHandlers.cs" t="Include" />
+          </e>
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netstandard2.1" t="Include">
+                <e p="DDD.Tests.External.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
+      </e>
       <e p="Directory.build.props" t="Include" />
       <e p="Docker" t="Include">
         <e p="postgres" t="Include" />
