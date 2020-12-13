@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
+    <e p="C:\Users\oskar\.nuget\packages\microsoft.net.test.sdk\16.6.1\build\netcoreapp2.1" t="Include">
+      <e p="Microsoft.NET.Test.Sdk.Program.cs" t="Include" />
+    </e>
     <e p="C:\Users\oskar\.nuget\packages\microsoft.net.test.sdk\16.8.3\build\netcoreapp2.1" t="Include">
       <e p="Microsoft.NET.Test.Sdk.Program.cs" t="Include" />
     </e>
+    <e p="C:\Users\oskar\.nuget\packages\microsoft.testplatform.testhost\16.6.1\build\netcoreapp2.1\x64\testhost.dll" t="Include" />
+    <e p="C:\Users\oskar\.nuget\packages\microsoft.testplatform.testhost\16.6.1\build\netcoreapp2.1\x64\testhost.exe" t="Include" />
     <e p="C:\Users\oskar\.nuget\packages\microsoft.testplatform.testhost\16.8.3\build\netcoreapp2.1\x64\Microsoft.TestPlatform.PlatformAbstractions.dll" t="Include" />
     <e p="C:\Users\oskar\.nuget\packages\microsoft.testplatform.testhost\16.8.3\build\netcoreapp2.1\x64\testhost.dll" t="Include" />
     <e p="C:\Users\oskar\.nuget\packages\microsoft.testplatform.testhost\16.8.3\build\netcoreapp2.1\x64\testhost.exe" t="Include" />
@@ -35,12 +40,6 @@
     </e>
     <e p="D:\Repos\GoldenEye\src" t="IncludeFlat">
       <e p="Core" t="Include">
-        <e p="Backend.Core.Marten" t="IncludeRecursive">
-          <e p="Backend.Core.Marten.csproj" t="IncludeRecursive" />
-        </e>
-        <e p="Backend.Core.Marten.Tests" t="IncludeRecursive">
-          <e p="Backend.Core.Marten.Tests.csproj" t="IncludeRecursive" />
-        </e>
         <e p="Backend.Core.WebApi" t="IncludeRecursive">
           <e p="Backend.Core.WebApi.csproj" t="IncludeRecursive" />
         </e>
@@ -506,7 +505,54 @@
         </e>
       </e>
       <e p="GoldenEye.sln" t="IncludeFlat" />
-      <e p="Marten" t="Include" />
+      <e p="Marten" t="Include">
+        <e p="Marten" t="IncludeRecursive">
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Changelog.md" t="Include" />
+          <e p="Events" t="Include">
+            <e p="Storage" t="Include">
+              <e p="MartenEventStore.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Marten.csproj" t="IncludeRecursive" />
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netstandard2.1" t="Include">
+                <e p="Marten.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Readme.md" t="Include" />
+          <e p="Registration" t="Include">
+            <e p="Registration.cs" t="Include" />
+          </e>
+          <e p="Repositories" t="Include">
+            <e p="MartenDocumentRepository.cs" t="Include" />
+            <e p="MartenEventSourcedRepository.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Marten.Integration.Tests" t="IncludeRecursive">
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Changelog.md" t="Include" />
+          <e p="Events" t="Include">
+            <e p="Storage" t="Include">
+              <e p="MartenEventStoreTests.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Infrastructure" t="Include">
+            <e p="MartenTest.cs" t="Include" />
+          </e>
+          <e p="Marten.Integration.Tests.csproj" t="IncludeRecursive" />
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netcoreapp3.1" t="Include">
+                <e p="Marten.Integration.Tests.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Readme.md" t="Include" />
+        </e>
+      </e>
       <e p="packages" t="ExcludeRecursive" />
       <e p="Samples" t="Include">
         <e p="DDD" t="Include" />

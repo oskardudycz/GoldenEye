@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using GoldenEye.Backend.Core.DDD.Events;
-using GoldenEye.Backend.Core.DDD.Events.Store;
-using GoldenEye.Shared.Core.Objects.General;
+using GoldenEye.DDD.Events;
+using GoldenEye.DDD.Events.Store;
+using GoldenEye.Core.Objects.General;
 using Marten;
 using MartenEvents = Marten.Events;
 
-namespace GoldenEye.Backend.Core.Marten.Events.Storage
+namespace GoldenEye.Marten.Events.Storage
 {
     public class MartenEventStore: IEventStore
     {

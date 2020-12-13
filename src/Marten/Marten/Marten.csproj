@@ -1,22 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netstandard2.1</TargetFramework>
-        <Version>10.0.0</Version>
-        <PackageId>GoldenEye.Backend.Core.Marten</PackageId>
-        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-        <Authors>Oskar Dudycz</Authors>
-        <Company>Oskar Dudycz</Company>
-        <Product>Oskar Dudycz</Product>
-        <Copyright>Oskar Dudycz</Copyright>
-        <Description>GoldenEye is a Full Stack framework written in .NET Core. The main goal of GoldenEye is to speed up your development process. It gathers most widely used frameworks in .NET world and pack them into a simple bootstrap Nuget packages. It also provide set of base classes, helpers, extensions that will help you with your daily work.</Description>
-        <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <PackageProjectUrl>http://oskardudycz.github.io/GoldenEye/</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/oskardudycz/GoldenEye</RepositoryUrl>
-        <AssemblyName>GoldenEye.Backend.Core.Marten</AssemblyName>
-        <RootNamespace>GoldenEye.Backend.Core.Marten</RootNamespace>
-        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-        <PackageIcon>GoldenEyeLogo.png</PackageIcon>
+        <Version>1.0.0</Version>
+        <PackageId>GoldenEye.Marten</PackageId>
+        <AssemblyName>GoldenEye.Marten</AssemblyName>
+        <RootNamespace>GoldenEye.Marten</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -24,11 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Backend.Core\Backend.Core.csproj" />
-        <ProjectReference Include="..\Backend.Core.DDD\Backend.Core.DDD.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <None Include="../../../assets/GoldenEyeLogo.png" Visible="false" Pack="true" PackagePath="" />
+        <ProjectReference Include="..\..\Core\Core\Core.csproj" />
+        <ProjectReference Include="..\..\DDD\DDD\DDD.csproj" />
     </ItemGroup>
 </Project>
