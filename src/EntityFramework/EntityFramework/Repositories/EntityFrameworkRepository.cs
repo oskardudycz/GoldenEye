@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using GoldenEye.Backend.Core.Exceptions;
-using GoldenEye.Shared.Core.Objects.General;
-using GoldenEye.Shared.Core.Objects.Versioning;
+using GoldenEye.Core.Exceptions;
+using GoldenEye.Core.Objects.General;
+using GoldenEye.Core.Objects.Versioning;
 using Microsoft.EntityFrameworkCore;
 
-namespace GoldenEye.Backend.Core.Repositories
+namespace GoldenEye.Core.Repositories
 {
     public class EntityFrameworkRepository<TDbContext, TEntity>: IRepository<TEntity>
         where TDbContext : DbContext where TEntity : class, IHaveId

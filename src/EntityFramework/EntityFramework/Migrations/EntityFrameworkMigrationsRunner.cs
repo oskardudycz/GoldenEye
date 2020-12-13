@@ -2,9 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using GoldenEye.Shared.Core.Services;
 
-namespace GoldenEye.Backend.Core.EntityFramework.Migrations
+namespace GoldenEye.EntityFramework.Migrations
 {
     public class EntityFrameworkMigrationsRunner: IEntityFrameworkMigrationsRunner
     {

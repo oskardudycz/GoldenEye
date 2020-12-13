@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using FluentAssertions;
 using FluentValidation;
-using GoldenEye.Backend.Core.Registration;
+using GoldenEye.Core.Registration;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 

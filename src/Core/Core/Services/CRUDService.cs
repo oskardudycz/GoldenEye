@@ -2,10 +2,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using FluentValidation;
-using GoldenEye.Backend.Core.Entity;
-using GoldenEye.Backend.Core.Repositories;
+using GoldenEye.Core.Entity;
+using GoldenEye.Core.Repositories;
 
-namespace GoldenEye.Backend.Core.Services
+namespace GoldenEye.Core.Services
 {
     public class CRUDService<TDto, TEntity, TRepository>: CRUDService<TDto, TEntity>
         where TDto : class

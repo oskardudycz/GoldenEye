@@ -1,7 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace GoldenEye.Backend.Core.Services
+namespace GoldenEye.Core.Services
 {
     public interface ICRUDService<TDto>: IReadonlyService<TDto> where TDto : class
     {

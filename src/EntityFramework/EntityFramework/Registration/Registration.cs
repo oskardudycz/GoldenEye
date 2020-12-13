@@ -1,13 +1,13 @@
 ﻿using System;
-using GoldenEye.Backend.Core.Entity;
-using GoldenEye.Backend.Core.EntityFramework.Migrations;
-using GoldenEye.Backend.Core.Repositories;
-using GoldenEye.Shared.Core.Extensions.DependencyInjection;
+using GoldenEye.Core.Entity;
+using GoldenEye.EntityFramework.Migrations;
+using GoldenEye.Core.Repositories;
+using GoldenEye.Core.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace GoldenEye.Backend.Core.EntityFramework.Registration
+namespace GoldenEye.EntityFramework.Registration
 {
     public static class Registration
     {
