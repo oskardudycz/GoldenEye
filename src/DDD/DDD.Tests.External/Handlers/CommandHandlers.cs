@@ -1,10 +1,10 @@
 using System.Threading;
 using System.Threading.Tasks;
-using Backend.Core.DDD.Tests.External.Contracts;
-using GoldenEye.Backend.Core.DDD.Commands;
+using GoldenEye.DDD.Commands;
+using GoldenEye.DDD.Tests.External.Contracts;
 using MediatR;
 
-namespace Backend.Core.DDD.Tests.External.Handlers
+namespace GoldenEye.DDD.Tests.External.Handlers
 {
     public class CommandHandler: ICommandHandler<CreateBankAccount>, ICommandHandler<WithdrawMoney>
     {

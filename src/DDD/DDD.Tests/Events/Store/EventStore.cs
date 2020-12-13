@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Baseline;
-using GoldenEye.Backend.Core.DDD.Events;
-using GoldenEye.Backend.Core.DDD.Events.Store;
+using GoldenEye.Core.Extensions.Collections;
+using GoldenEye.DDD.Events;
+using GoldenEye.DDD.Events.Store;
 
-namespace Backend.Core.DDD.Tests.Events.Store
+namespace GoldenEye.DDD.Tests.Events.Store
 {
     public partial class EventStorePipelineTests
     {

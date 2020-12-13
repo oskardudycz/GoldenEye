@@ -1,15 +1,15 @@
-using GoldenEye.Backend.Core.DDD.Commands;
-using GoldenEye.Backend.Core.DDD.Events;
-using GoldenEye.Backend.Core.DDD.Events.Logging;
-using GoldenEye.Backend.Core.DDD.Events.Store;
-using GoldenEye.Backend.Core.DDD.Queries;
-using GoldenEye.Backend.Core.DDD.Validation;
-using GoldenEye.Shared.Core.Extensions.DependencyInjection;
+using GoldenEye.DDD.Commands;
+using GoldenEye.DDD.Events;
+using GoldenEye.DDD.Events.Logging;
+using GoldenEye.DDD.Events.Store;
+using GoldenEye.DDD.Queries;
+using GoldenEye.DDD.Validation;
+using GoldenEye.Core.Extensions.DependencyInjection;
 using MediatR;
 using MediatR.Pipeline;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace GoldenEye.Backend.Core.DDD.Registration
+namespace GoldenEye.DDD.Registration
 {
     public static class Registration
     {

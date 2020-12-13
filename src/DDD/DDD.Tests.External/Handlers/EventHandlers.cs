@@ -1,9 +1,9 @@
 using System.Threading;
 using System.Threading.Tasks;
-using Backend.Core.DDD.Tests.External.Contracts;
-using GoldenEye.Backend.Core.DDD.Events;
+using GoldenEye.DDD.Events;
+using GoldenEye.DDD.Tests.External.Contracts;
 
-namespace Backend.Core.DDD.Tests.External.Handlers
+namespace GoldenEye.DDD.Tests.External.Handlers
 {
     public class FirstEventHandler: IEventHandler<BankAccountCreated>, IEventHandler<MoneyWasWithdrawn>
     {

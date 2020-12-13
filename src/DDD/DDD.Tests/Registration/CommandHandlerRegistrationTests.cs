@@ -2,16 +2,16 @@ using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Backend.Core.DDD.Tests.External.Contracts;
-using Backend.Core.DDD.Tests.External.Handlers;
 using FluentAssertions;
-using GoldenEye.Backend.Core.DDD.Commands;
-using GoldenEye.Backend.Core.DDD.Registration;
+using GoldenEye.DDD.Commands;
+using GoldenEye.DDD.Registration;
+using GoldenEye.DDD.Tests.External.Contracts;
+using GoldenEye.DDD.Tests.External.Handlers;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
-namespace Backend.Core.DDD.Tests.Registration
+namespace GoldenEye.DDD.Tests.Registration
 {
     public class CommandHandlerRegistrationTests
     {

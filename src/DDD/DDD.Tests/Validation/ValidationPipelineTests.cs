@@ -4,14 +4,14 @@ using System.Threading;
 using System.Threading.Tasks;
 using FluentAssertions;
 using FluentValidation;
-using GoldenEye.Backend.Core.DDD.Commands;
-using GoldenEye.Backend.Core.DDD.Queries;
-using GoldenEye.Backend.Core.DDD.Registration;
+using GoldenEye.DDD.Commands;
+using GoldenEye.DDD.Queries;
+using GoldenEye.DDD.Registration;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
-namespace Backend.Core.Tests.Validation
+namespace GoldenEye.DDD.Tests.Validation
 {
     public class ValidationPipelineTests
     {

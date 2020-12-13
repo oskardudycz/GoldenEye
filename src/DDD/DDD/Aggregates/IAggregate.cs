@@ -1,7 +1,7 @@
 using System;
-using GoldenEye.Shared.Core.Objects.General;
+using GoldenEye.Core.Objects.General;
 
-namespace GoldenEye.Backend.Core.DDD.Aggregates
+namespace GoldenEye.DDD.Aggregates
 {
     public interface IAggregate<TKey>: IHaveId<TKey>
     {

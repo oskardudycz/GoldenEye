@@ -61,7 +61,7 @@ Install packages from the Nuget package manager:
 * [GoldenEye.Dapper](src/Dapper/Dapper/Readme.md) - extensions to GoldenEye.Backend.Core for Dapper development (Dapper repositories, etc.)
 
 **Domain Driven Design package**:
-* [GoldenEye.DDD](src/DDD/Backend.Core.DDD/Readme.md) - full DDD flow for CQRS, DDD development. Basing on [MediatR](https://github.com/jbogard/MediatR) library gives the Command, Queries, Events handling, routing
+* [GoldenEye.DDD](src/DDD/DDD/Readme.md) - full DDD flow for CQRS, DDD development. Basing on [MediatR](https://github.com/jbogard/MediatR) library gives the Command, Queries, Events handling, routing
 
 **Document database and Event Store with Marten package**:
 * [GoldenEye.Marten](src/Marten/Marten/Readme.md) - extension to GoldenEye.Core and GoldenEye.DDD that gives possibility to use Postgres as Document Database and Event Store - thanks to Marten library

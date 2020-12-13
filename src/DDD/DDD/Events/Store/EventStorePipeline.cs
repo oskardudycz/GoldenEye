@@ -1,9 +1,9 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using GoldenEye.Backend.Core.DDD.Events.Store;
+using GoldenEye.DDD.Events.Store;
 
-namespace GoldenEye.Backend.Core.DDD.Events.Logging
+namespace GoldenEye.DDD.Events.Logging
 {
     public class EventStorePipeline<TEvent>: IEventHandler<TEvent>
         where TEvent : IEvent

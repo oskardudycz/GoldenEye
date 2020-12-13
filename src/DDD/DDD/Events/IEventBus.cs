@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace GoldenEye.Backend.Core.DDD.Events
+namespace GoldenEye.DDD.Events
 {
     public interface IEventBus
     {

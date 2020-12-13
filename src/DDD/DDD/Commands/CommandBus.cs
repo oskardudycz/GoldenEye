@@ -2,7 +2,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 
-namespace GoldenEye.Backend.Core.DDD.Commands
+namespace GoldenEye.DDD.Commands
 {
     public class CommandBus: ICommandBus
     {

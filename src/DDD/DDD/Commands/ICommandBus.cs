@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace GoldenEye.Backend.Core.DDD.Commands
+namespace GoldenEye.DDD.Commands
 {
     public interface ICommandBus
     {

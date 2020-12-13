@@ -1,7 +1,7 @@
 using System;
-using GoldenEye.Backend.Core.DDD.Events;
+using GoldenEye.DDD.Events;
 
-namespace Backend.Core.DDD.Tests.External.Contracts
+namespace GoldenEye.DDD.Tests.External.Contracts
 {
     public class BankAccountCreated: IEvent
     {

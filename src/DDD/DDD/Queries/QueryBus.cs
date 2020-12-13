@@ -2,7 +2,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 
-namespace GoldenEye.Backend.Core.DDD.Queries
+namespace GoldenEye.DDD.Queries
 {
     public class QueryBus: IQueryBus
     {

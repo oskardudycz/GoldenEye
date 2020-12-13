@@ -1,6 +1,6 @@
-using GoldenEye.Backend.Core.DDD.Commands;
+using GoldenEye.DDD.Commands;
 
-namespace Backend.Core.DDD.Tests.External.Contracts
+namespace GoldenEye.DDD.Tests.External.Contracts
 {
     public class CreateBankAccount: ICommand
     {
