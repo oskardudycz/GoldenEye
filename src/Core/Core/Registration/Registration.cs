@@ -1,10 +1,10 @@
 ﻿using FluentValidation;
-using GoldenEye.Backend.Core.Repositories;
+using GoldenEye.Core.Repositories;
 using GoldenEye.Core.Extensions.DependencyInjection;
 using GoldenEye.Core.Objects.General;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace GoldenEye.Backend.Core.Registration
+namespace GoldenEye.Core.Registration
 {
     public static class Registration
     {

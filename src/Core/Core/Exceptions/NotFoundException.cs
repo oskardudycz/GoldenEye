@@ -1,6 +1,6 @@
 using System;
 
-namespace GoldenEye.Backend.Core.Exceptions
+namespace GoldenEye.Core.Exceptions
 {
     public class NotFoundException: Exception
     {

@@ -1,10 +1,9 @@
-using System.ComponentModel.DataAnnotations;
-using GoldenEye.Backend.Core.EntityFramework.Context;
-using GoldenEye.Shared.Core.Objects.General;
+using GoldenEye.Core.Objects.General;
+using GoldenEye.EntityFramework.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-namespace Backend.Core.EntityFramework.Integration.Tests.TestData
+namespace GoldenEye.EntityFramework.Integration.Tests.TestData
 {
     public class User: IHaveId
     {

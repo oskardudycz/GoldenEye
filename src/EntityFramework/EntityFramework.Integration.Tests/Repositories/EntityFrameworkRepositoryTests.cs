@@ -1,13 +1,13 @@
 using System.Linq;
-using Backend.Core.EntityFramework.Integration.Tests.Infrastructure;
-using Backend.Core.EntityFramework.Integration.Tests.TestData;
 using FluentAssertions;
-using GoldenEye.Backend.Core.Repositories;
+using GoldenEye.Core.Repositories;
+using GoldenEye.EntityFramework.Integration.Tests.Infrastructure;
+using GoldenEye.EntityFramework.Integration.Tests.TestData;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Xunit;
 
-namespace Backend.Core.Dapper.Integration.Tests.Repositories
+namespace GoldenEye.EntityFramework.Integration.Tests.Repositories
 {
     public class EntityFrameworkRepositoryTests: EntityFrameworkTest
     {

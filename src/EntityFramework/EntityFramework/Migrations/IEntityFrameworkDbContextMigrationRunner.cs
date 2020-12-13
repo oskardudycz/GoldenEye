@@ -2,7 +2,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace GoldenEye.Backend.Core.EntityFramework.Migrations
+namespace GoldenEye.EntityFramework.Migrations
 {
     public interface IEntityFrameworkDbContextMigrationRunner
     {

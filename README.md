@@ -57,8 +57,8 @@ Install packages from the Nuget package manager:
 **Core packages**:
 * [GoldenEye.Core](src/Core/Core/Readme.md) - base classes, Repositories, Services, CRUD, helpers, extensions that will boost your development
 * [GoldenEye.WebApi](src/WebApi/WebApi/Readme.md) - base classes for API development like CRUD controllers, registration helpers, and many more
-* [GoldenEye.EntityFramework](src/EntityFramework/EntityFramework/Readme.md) - extensions to GoldenEye.Backend.Core for EntityFramework development (EF repositories, etc.)
-* [GoldenEye.Dapper](src/Dapper/Dapper/Readme.md) - extensions to GoldenEye.Backend.Core for Dapper development (Dapper repositories, etc.)
+* [GoldenEye.EntityFramework](src/EntityFramework/EntityFramework/Readme.md) - extensions to GoldenEye.Core for EntityFramework development (EF repositories, etc.)
+* [GoldenEye.Dapper](src/Dapper/Dapper/Readme.md) - extensions to GoldenEye.Core for Dapper development (Dapper repositories, etc.)
 
 **Domain Driven Design package**:
 * [GoldenEye.DDD](src/DDD/DDD/Readme.md) - full DDD flow for CQRS, DDD development. Basing on [MediatR](https://github.com/jbogard/MediatR) library gives the Command, Queries, Events handling, routing

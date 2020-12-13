@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using GoldenEye.Core.Objects.General;
 
-namespace GoldenEye.Backend.Core.Repositories
+namespace GoldenEye.Core.Repositories
 {
     public interface IReadonlyRepository<TEntity> where TEntity : class, IHaveId
     {

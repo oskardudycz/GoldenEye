@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using GoldenEye.Core.Extensions.Collections;
 using GoldenEye.Core.Objects.General;
 
-namespace GoldenEye.Backend.Core.Repositories
+namespace GoldenEye.Core.Repositories
 {
     public class InMemoryRepository<TEntity>: InMemoryReadonlyRepository<TEntity>, IRepository<TEntity>
         where TEntity : class, IHaveId

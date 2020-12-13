@@ -1,7 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace GoldenEye.Backend.Core.EntityFramework.Migrations
+namespace GoldenEye.EntityFramework.Migrations
 {
     public interface IEntityFrameworkMigrationsRunner
     {

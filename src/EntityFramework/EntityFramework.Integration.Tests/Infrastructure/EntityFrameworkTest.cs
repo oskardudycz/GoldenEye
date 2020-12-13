@@ -2,7 +2,7 @@ using System;
 using System.Data;
 using Npgsql;
 
-namespace Backend.Core.EntityFramework.Integration.Tests.Infrastructure
+namespace GoldenEye.EntityFramework.Integration.Tests.Infrastructure
 {
     public class EntityFrameworkTest : IDisposable
     {

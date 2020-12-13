@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
-namespace Backend.Core.EntityFramework.Integration.Tests.Migrations
+namespace GoldenEye.EntityFramework.Integration.Tests.Migrations
 {
     public partial class InitialCreate : Migration
     {

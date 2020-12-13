@@ -1,6 +1,6 @@
 using System;
 
-namespace GoldenEye.Backend.Core.Entity
+namespace GoldenEye.Core.Entity
 {
     public class AuditableEntity: EntityBase, IAuditableEntity
     {
