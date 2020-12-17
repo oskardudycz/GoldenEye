@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
-using GoldenEye.Shared.Core.Exceptions;
+using GoldenEye.Core.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
-namespace GoldenEye.Backend.Core.WebApi.Exceptions
+namespace GoldenEye.WebApi.Exceptions
 {
     public class ExceptionHandlingMiddleware
     {

@@ -1,11 +1,11 @@
-﻿# GoldenEye.Backend.Core.WebApi
+﻿# GoldenEye.WebApi
 [![Stories in Ready](https://badge.waffle.io/oskardudycz/GoldenEye.png?label=ready&title=Ready)](https://waffle.io/oskardudycz/GoldenEye)
 [![Build status](https://ci.appveyor.com/api/projects/status/1mtm4h33cvur6kob?svg=true)](https://ci.appveyor.com/project/oskardudycz/goldeneye-core)
-[![NuGet version](https://badge.fury.io/nu/GoldenEye.Shared.Core.svg)](https://badge.fury.io/nu/GoldenEye.Backend.Core.WebApi)
+[![NuGet version](https://badge.fury.io/nu/GoldenEye.Core.svg)](https://badge.fury.io/nu/GoldenEye.WebApi)
 
-What is GoldenEye.Backend.Core.WebApi?
+What is GoldenEye.WebApi?
 --------------------------------
-GoldenEye.Backend.Core.WebApi is a library that brings you abstractions and implementations for common WebApi topics. It is written in .NET Core. It provides set of base and bootstrap classes that helps you to reduce boilerplate code and help you focus on writing business code.
+GoldenEye.WebApi is a library that brings you abstractions and implementations for common WebApi topics. It is written in .NET Core. It provides set of base and bootstrap classes that helps you to reduce boilerplate code and help you focus on writing business code.
 
 Tests structure
 --------------------------------

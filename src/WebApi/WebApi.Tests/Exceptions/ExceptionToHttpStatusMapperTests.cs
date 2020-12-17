@@ -2,11 +2,11 @@
 using System.Net;
 using FluentAssertions;
 using FluentValidation;
-using GoldenEye.Backend.Core.Exceptions;
-using GoldenEye.Backend.Core.WebApi.Exceptions;
+using GoldenEye.Core.Exceptions;
+using GoldenEye.WebApi.Exceptions;
 using Xunit;
 
-namespace Backend.Core.WebApi.Tests.Exceptions
+namespace GoldenEye.WebApi.Tests.Exceptions
 {
     public class ExceptionToHttpStatusMapperTests
     {

@@ -1,36 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
-        <Version>9.0.0</Version>
-        <PackageId>GoldenEye.Backend.Core.WebApi</PackageId>
-        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-        <Authors>Oskar Dudycz</Authors>
-        <Company>Oskar Dudycz</Company>
-        <Product>Oskar Dudycz</Product>
-        <Copyright>Oskar Dudycz</Copyright>
-        <Description>GoldenEye is a Full Stack framework written in .NET Core. The main goal of GoldenEye is to speed up your development process. It gathers most widely used frameworks in .NET world and pack them into a simple bootstrap Nuget packages. It also provide set of base classes, helpers, extensions that will help you with your daily work.</Description>
-        <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <PackageProjectUrl>http://oskardudycz.github.io/GoldenEye/</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/oskardudycz/GoldenEye</RepositoryUrl>
-        <AssemblyName>GoldenEye.Backend.Core.WebApi</AssemblyName>
-        <RootNamespace>GoldenEye.Backend.Core.WebApi</RootNamespace>
-        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-        <PackageIcon>GoldenEyeLogo.png</PackageIcon>
+        <TargetFrameworks>netcoreapp3.1;net5.0</TargetFrameworks>
+        <Version>1.0.0</Version>
+        <PackageId>GoldenEye.WebApi</PackageId>
+        <AssemblyName>GoldenEye.WebApi</AssemblyName>
+        <RootNamespace>GoldenEye.WebApi</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Backend.Core\Backend.Core.csproj" />
-        <ProjectReference Include="..\Shared.Core\Shared.Core.csproj" />
+        <ProjectReference Include="..\..\Core\Core\Core.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.10" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.1" Condition="'$(TargetFramework)' == 'net5.0'" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.10" Condition="'$(TargetFramework)' == 'netcoreapp3.1'" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
         <PackageReference Include="System.Security.Cryptography.X509Certificates" Version="4.3.2" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <None Include="../../../assets/GoldenEyeLogo.png" Visible="false" Pack="true" PackagePath="" />
     </ItemGroup>
 </Project>

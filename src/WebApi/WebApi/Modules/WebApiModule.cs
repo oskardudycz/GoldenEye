@@ -1,8 +1,8 @@
-using GoldenEye.Shared.Core.Modules;
+using GoldenEye.Core.Modules;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 
-namespace GoldenEye.Backend.Core.WebApi.Modules
+namespace GoldenEye.WebApi.Modules
 {
     public abstract class WebApiModule: Module, IWebApiModule
     {

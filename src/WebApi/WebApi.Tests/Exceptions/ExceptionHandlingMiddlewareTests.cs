@@ -3,10 +3,10 @@ using System.Reflection;
 using System.Threading.Tasks;
 using FluentAssertions;
 using FluentValidation;
-using GoldenEye.Backend.Core.WebApi.Registration;
-using GoldenEye.Shared.Core.Exceptions;
-using GoldenEye.Shared.Core.Extensions.Basic;
-using GoldenEye.Shared.Core.Extensions.Serialization;
+using GoldenEye.WebApi.Registration;
+using GoldenEye.Core.Exceptions;
+using GoldenEye.Core.Extensions.Basic;
+using GoldenEye.Core.Extensions.Serialization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -16,7 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Xunit;
 
-namespace Backend.Core.WebApi.Tests.Exceptions
+namespace GoldenEye.WebApi.Tests.Exceptions
 {
     public class CreateUser
     {
