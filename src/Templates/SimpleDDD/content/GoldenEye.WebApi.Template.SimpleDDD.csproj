@@ -15,7 +15,7 @@
     <PackageReference Include="GoldenEye.Core" Version="9.0.0" />
     <PackageReference Include="GoldenEye.DDD" Version="11.0.0" />
     <PackageReference Include="GoldenEye.Core.Marten" Version="10.0.0" />
-    <PackageReference Include="GoldenEye.Core.WebApi" Version="9.0.0" />
+    <PackageReference Include="GoldenEye.WebApi" Version="9.0.0" />
     <PackageReference Include="GoldenEye.Core" Version="8.0.0" />
   </ItemGroup>
 

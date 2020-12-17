@@ -1,8 +1,8 @@
 using System.Threading.Tasks;
-using GoldenEye.Backend.Core.Services;
+using GoldenEye.Core.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GoldenEye.Frontend.Core.Web.Controllers
+namespace GoldenEye.WebApi.Controllers
 {
     public abstract class RestControllerBase<TService, TDto>: ReadonlyControllerBase<TService, TDto>
         where TDto : class

@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Net;
 using FluentValidation;
-using GoldenEye.Backend.Core.Exceptions;
-using GoldenEye.Shared.Core.Extensions.Collections;
+using GoldenEye.Core.Exceptions;
+using GoldenEye.Core.Extensions.Collections;
 
-namespace GoldenEye.Backend.Core.WebApi.Exceptions
+namespace GoldenEye.WebApi.Exceptions
 {
     public class HttpStatusCodeInfo
     {

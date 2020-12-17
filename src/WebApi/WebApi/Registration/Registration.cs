@@ -1,8 +1,8 @@
 ﻿using System;
-using GoldenEye.Backend.Core.WebApi.Exceptions;
-using GoldenEye.Backend.Core.WebApi.Modules;
-using GoldenEye.Shared.Core.Configuration;
-using GoldenEye.Shared.Core.Modules;
+using GoldenEye.WebApi.Modules;
+using GoldenEye.Core.Configuration;
+using GoldenEye.Core.Modules;
+using GoldenEye.WebApi.Exceptions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -13,7 +13,7 @@ using Newtonsoft.Json.Converters;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
-namespace GoldenEye.Backend.Core.WebApi.Registration
+namespace GoldenEye.WebApi.Registration
 {
     public static class Registration
     {

@@ -40,12 +40,6 @@
     </e>
     <e p="D:\Repos\GoldenEye\src" t="IncludeFlat">
       <e p="Core" t="Include">
-        <e p="Backend.Core.WebApi" t="IncludeRecursive">
-          <e p="Backend.Core.WebApi.csproj" t="IncludeRecursive" />
-        </e>
-        <e p="Backend.Core.WebApi.Tests" t="IncludeRecursive">
-          <e p="Backend.Core.WebApi.Tests.csproj" t="IncludeRecursive" />
-        </e>
         <e p="Core" t="IncludeRecursive">
           <e p="bin" t="ExcludeRecursive" />
           <e p="Changelog.md" t="Include" />
@@ -569,7 +563,48 @@
           <e p="Templates.nuspec" t="Include" />
         </e>
       </e>
-      <e p="WebApi" t="Include" />
+      <e p="WebApi" t="Include">
+        <e p="WebApi" t="IncludeRecursive">
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Changelog.md" t="Include" />
+          <e p="Controllers" t="Include">
+            <e p="ReadonlyControllerBase.cs" t="Include" />
+            <e p="RestControllerBase.cs" t="Include" />
+          </e>
+          <e p="Exceptions" t="Include">
+            <e p="ExceptionHandlingMiddleware.cs" t="Include" />
+            <e p="ExceptionToHttpStatusMapper.cs" t="Include" />
+          </e>
+          <e p="Modules" t="Include">
+            <e p="IWebApiModule.cs" t="Include" />
+            <e p="Registration.cs" t="Include" />
+            <e p="WebApiModule.cs" t="Include" />
+          </e>
+          <e p="obj" t="ExcludeRecursive" />
+          <e p="Readme.md" t="Include" />
+          <e p="Registration" t="Include">
+            <e p="Registration.cs" t="Include" />
+          </e>
+          <e p="WebApi.csproj" t="IncludeRecursive" />
+        </e>
+        <e p="WebApi.Tests" t="IncludeRecursive">
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Changelog.md" t="Include" />
+          <e p="Exceptions" t="Include">
+            <e p="ExceptionHandlingMiddlewareTests.cs" t="Include" />
+            <e p="ExceptionToHttpStatusMapperTests.cs" t="Include" />
+          </e>
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="net5.0" t="Include">
+                <e p="WebApi.Tests.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Readme.md" t="Include" />
+          <e p="WebApi.Tests.csproj" t="IncludeRecursive" />
+        </e>
+      </e>
     </e>
   </component>
 </project>

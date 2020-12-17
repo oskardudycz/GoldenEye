@@ -1,9 +1,9 @@
-﻿using GoldenEye.Shared.Core.Modules;
+﻿using GoldenEye.Core.Modules;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace GoldenEye.Backend.Core.WebApi.Modules
+namespace GoldenEye.WebApi.Modules
 {
     public static class Registration
     {
