@@ -1,4 +1,4 @@
-﻿using GoldenEye.Backend.Core.WebApi.Registration;
+﻿using GoldenEye.WebApi.Registration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
