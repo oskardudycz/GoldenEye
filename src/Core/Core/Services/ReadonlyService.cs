@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using GoldenEye.Core.Entities;
 using GoldenEye.Core.Entity;
 using GoldenEye.Core.Repositories;
 

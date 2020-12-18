@@ -1,11 +1,12 @@
 using System;
 using Backend.DDD.Sample.Contracts.Issues;
+using GoldenEye.Core.Entities;
 using GoldenEye.Core.Entity;
 using GoldenEye.Core.Objects.General;
 
 namespace Backend.DDD.Sample.Issues
 {
-    internal class Issue: IEntity
+    public class Issue: IEntity
     {
         public Issue()
         {

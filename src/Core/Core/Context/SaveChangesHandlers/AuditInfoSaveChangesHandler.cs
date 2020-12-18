@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using GoldenEye.Core.Entities;
 using GoldenEye.Core.Entity;
 using GoldenEye.Core.Repositories.SaveChangesHandlers.Base;
 using GoldenEye.Core.Security;

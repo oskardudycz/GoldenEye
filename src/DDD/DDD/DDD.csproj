@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
-        <Version>1.0.0-alpha.1</Version>
+        <Version>1.0.0-alpha.2</Version>
         <PackageId>GoldenEye.DDD</PackageId>
         <AssemblyName>GoldenEye.DDD</AssemblyName>
         <RootNamespace>GoldenEye.DDD</RootNamespace>

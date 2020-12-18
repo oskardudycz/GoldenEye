@@ -1,4 +1,5 @@
 ﻿using System;
+using GoldenEye.Core.Entities;
 using GoldenEye.Core.Entity;
 using GoldenEye.EntityFramework.Migrations;
 using GoldenEye.Core.Repositories;

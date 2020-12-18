@@ -2,6 +2,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using FluentValidation;
+using GoldenEye.Core.Entities;
 using GoldenEye.Core.Entity;
 using GoldenEye.Core.Repositories;
 

@@ -1,6 +1,6 @@
 using GoldenEye.Core.Objects.General;
 
-namespace GoldenEye.Core.Entity
+namespace GoldenEye.Core.Entities
 {
     public class EntityBase: IEntity
     {
