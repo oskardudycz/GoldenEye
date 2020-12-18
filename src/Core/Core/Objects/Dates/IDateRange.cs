@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GoldenEye.Core.Objects.Dates
+namespace GoldenEye.Objects.Dates
 {
     public interface IDateRange
     {

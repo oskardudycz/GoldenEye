@@ -1,4 +1,4 @@
-using GoldenEye.DDD.Commands;
+using GoldenEye.Commands;
 
 namespace Backend.DDD.Sample.Contracts.Issues.Commands
 {

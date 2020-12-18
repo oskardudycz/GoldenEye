@@ -1,4 +1,4 @@
-﻿namespace GoldenEye.Core.Extensions.DependencyInjection
+﻿namespace GoldenEye.Extensions.DependencyInjection
 {
     public enum AssemblySelector
     {

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using GoldenEye.Core.Exceptions;
-using GoldenEye.Core.Objects.General;
+using GoldenEye.Exceptions;
+using GoldenEye.Objects.General;
 
-namespace GoldenEye.Core.Repositories
+namespace GoldenEye.Repositories
 {
     public class InMemoryReadonlyRepository<TEntity>: IReadonlyRepository<TEntity> where TEntity : class, IHaveId
     {

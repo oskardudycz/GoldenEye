@@ -1,6 +1,6 @@
 using System;
 
-namespace GoldenEye.Core.Modules.Attributes
+namespace GoldenEye.Modules.Attributes
 {
     [AttributeUsage(AttributeTargets.Class)]
     public class InternalModuleAttribute: Attribute

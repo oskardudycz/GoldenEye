@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using GoldenEye.Core.Extensions.Collections;
-using GoldenEye.Core.Objects.General;
+using GoldenEye.Extensions.Collections;
+using GoldenEye.Objects.General;
 
-namespace GoldenEye.Core.Repositories
+namespace GoldenEye.Repositories
 {
     public class InMemoryRepository<TEntity>: InMemoryReadonlyRepository<TEntity>, IRepository<TEntity>
         where TEntity : class, IHaveId

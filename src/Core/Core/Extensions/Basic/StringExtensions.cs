@@ -4,7 +4,7 @@ using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace GoldenEye.Core.Extensions.Basic
+namespace GoldenEye.Extensions.Basic
 {
     public static class StringExtensions
     {

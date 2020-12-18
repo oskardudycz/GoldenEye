@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Net;
 using FluentValidation;
-using GoldenEye.Core.Exceptions;
-using GoldenEye.Core.Extensions.Collections;
+using GoldenEye.Exceptions;
+using GoldenEye.Extensions.Collections;
 
 namespace GoldenEye.WebApi.Exceptions
 {

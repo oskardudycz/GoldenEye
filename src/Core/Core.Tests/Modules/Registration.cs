@@ -1,10 +1,10 @@
 using System.Linq;
 using FluentAssertions;
-using GoldenEye.Core.Modules;
+using GoldenEye.Modules;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
-namespace GoldenEye.Core.Tests.Modules
+namespace GoldenEye.Tests.Modules
 {
     public class Registration
     {

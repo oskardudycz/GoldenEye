@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GoldenEye.Core.Utils.Exceptions
+namespace GoldenEye.Utils.Exceptions
 {
     public interface IExceptionHandler
     {

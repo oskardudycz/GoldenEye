@@ -1,4 +1,4 @@
-namespace GoldenEye.Core.Security
+namespace GoldenEye.Security
 {
     public class UserInfoProvider: IUserInfoProvider
     {

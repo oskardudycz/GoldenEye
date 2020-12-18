@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using FluentAssertions;
 using FluentValidation;
-using GoldenEye.Core.Registration;
+using GoldenEye.Registration;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
-namespace GoldenEye.Core.Tests.Registration
+namespace GoldenEye.Tests.Registration
 {
     public class RegistrationTests
     {

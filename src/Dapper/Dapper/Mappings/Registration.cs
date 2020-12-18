@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using GoldenEye.Core.Extensions.DependencyInjection;
+using GoldenEye.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace GoldenEye.Dapper.Mappings

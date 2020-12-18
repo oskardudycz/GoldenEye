@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using GoldenEye.DDD.Events;
-using GoldenEye.DDD.Events.Store;
-using GoldenEye.Core.Objects.General;
+using GoldenEye.Events;
+using GoldenEye.Events.Store;
+using GoldenEye.Objects.General;
 using Marten;
 using MartenEvents = Marten.Events;
 

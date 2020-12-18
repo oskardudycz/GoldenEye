@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace GoldenEye.Core.Objects.Responses
+namespace GoldenEye.Objects.Responses
 {
     public interface IListResponse<T>
     {

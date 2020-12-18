@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace GoldenEye.Core.Extensions.Streams
+namespace GoldenEye.Extensions.Streams
 {
     public static class StreamExtensions
     {

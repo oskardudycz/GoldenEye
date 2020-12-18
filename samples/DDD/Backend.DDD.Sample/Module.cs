@@ -1,9 +1,9 @@
 using Backend.DDD.Sample.Contracts.Issues.Views;
 using Backend.DDD.Sample.Issues;
 using Backend.DDD.Sample.Issues.Projections;
-using GoldenEye.DDD.Registration;
 using GoldenEye.Marten.Events.Storage;
 using GoldenEye.Marten.Registration;
+using GoldenEye.Registration;
 using Marten;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,7 +11,7 @@ using IssueContracts = Backend.DDD.Sample.Contracts.Issues;
 
 namespace Backend.DDD.Sample
 {
-    public class Module: GoldenEye.Core.Modules.Module
+    public class Module: GoldenEye.Modules.Module
     {
         private readonly IConfiguration configuration;
 

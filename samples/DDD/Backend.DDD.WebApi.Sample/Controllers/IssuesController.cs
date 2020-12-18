@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 using Backend.DDD.Sample.Contracts.Issues.Commands;
 using Backend.DDD.Sample.Contracts.Issues.Queries;
 using Backend.DDD.Sample.Contracts.Issues.Views;
-using GoldenEye.DDD.Commands;
-using GoldenEye.DDD.Queries;
+using GoldenEye.Commands;
+using GoldenEye.Queries;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 

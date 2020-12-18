@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using GoldenEye.Core.Extensions.Basic;
-using GoldenEye.Core.Modules.Attributes;
-using GoldenEye.Core.Utils.Assemblies;
+using GoldenEye.Extensions.Basic;
+using GoldenEye.Modules.Attributes;
+using GoldenEye.Utils.Assemblies;
 
-namespace GoldenEye.Core.Extensions.Reflection
+namespace GoldenEye.Extensions.Reflection
 {
     public static class ReflectionExtensions
     {

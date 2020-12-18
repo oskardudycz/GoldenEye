@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using GoldenEye.Core.Exceptions;
-using GoldenEye.Core.Repositories;
-using GoldenEye.Core.Objects.General;
+using GoldenEye.Exceptions;
+using GoldenEye.Objects.General;
+using GoldenEye.Repositories;
 using Marten;
 
 namespace GoldenEye.Marten.Repositories

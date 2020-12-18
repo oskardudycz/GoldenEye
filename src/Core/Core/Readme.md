@@ -10,55 +10,60 @@ GoldenEye.Core is a library that brings you abstractions and implementations for
 What do I get?
 --------------------------------
 
-### Complete helpers and bootstrap for:
-* [CRUD Repositories](Repositories)
-* [CRUD Services](Services)
-* [Entities definition](Entities)
-* [Registration helpers to reduce boilerplate](Registration/Registration.cs)
+Complete DDD and CQRS helpers and bootstrap for:
+- [Command definition and handling](Commands/Readme.md)
+- [Queries definition and handling](Queries)
+- [Events definition, publishing and handling](Events)
+- [Aggregates definition](Aggregates)
+- [Registration helpers to reduce boilerplate](Registration/Registration.cs)
+- [Validation helpers for commands and queries](Validation/Readme.md)
+- [CRUD Repositories](Repositories)
+- [CRUD Services](Services)
+- [Entities definition](Entities)
 
 ### Extension methods to make your life easier:
-* General:
-  * [Comparison](Extensions/Basic/CompareExtensions.cs)
-  * [Date Ranges](Extensions/Basic/DateRangeExtensions.cs)
-  * [DateTime](Extensions/Basic/DateTimeExtensions.cs)
-  * [Object](Extensions/Basic/ObjectExtensions.cs)
-  * [StringBuilder](Extensions/Basic/StringBuilderExtensions.cs)
-  * [String](Extensions/Basic/StringExtensions.cs)
-* Collections:
-  * [Collection](Extensions/Collections/CollectionExtensions.cs)
-  * [Dictionary](Extensions/Collections/DictionaryExtensions.cs)
-  * [Enumerable](Extensions/Collections/EnumerableExtensions.cs)
-  * [List](Extensions/Collections/ListExtensions.cs)
-  * [Queryable](Extensions/Collections/QueryableExtensions.cs)
-* [Dependency Injection Registration](Extensions/DependencyInjection/RegistrationExtensions.cs)
-* [Dynamic](Extensions/Dynamic/DynamicExtensions.cs)
-* [Enums](Extensions/Enums/EnumExtensions.cs)
-* [Exceptions](Extensions/Exceptions/ExceptionExtensions.cs)
-* Lambda
-  * [Expression](Extensions/Lambda/ExpressionExtensions.cs)
-  * [ParameterRebinder](Extensions/Lambda/ParameterRebinder.cs)
-* [Auto Mapper mappings](Extensions/Mapping/AutoMapperExtensions.cs)
-* [Convention names](Extensions/Naming/ConventionNamesExtensions.cs)
-* Reflection
-  * [Attribute](Extensions/Reflection/AttributeExtensions.cs)
-  * [Reflection](Extensions/Reflection/ReflectionExtensions.cs)
-* [Serialization](Extensions/Serialization/SerializationExtensions.cs)
-* [Streams](Extensions/Streams/StreamExtensions.cs)
+- General:
+  - [Comparison](Extensions/Basic/CompareExtensions.cs)
+  - [Date Ranges](Extensions/Basic/DateRangeExtensions.cs)
+  - [DateTime](Extensions/Basic/DateTimeExtensions.cs)
+  - [Object](Extensions/Basic/ObjectExtensions.cs)
+  - [StringBuilder](Extensions/Basic/StringBuilderExtensions.cs)
+  - [String](Extensions/Basic/StringExtensions.cs)
+- Collections:
+  - [Collection](Extensions/Collections/CollectionExtensions.cs)
+  - [Dictionary](Extensions/Collections/DictionaryExtensions.cs)
+  - [Enumerable](Extensions/Collections/EnumerableExtensions.cs)
+  - [List](Extensions/Collections/ListExtensions.cs)
+  - [Queryable](Extensions/Collections/QueryableExtensions.cs)
+- [Dependency Injection Registration](Extensions/DependencyInjection/RegistrationExtensions.cs)
+- [Dynamic](Extensions/Dynamic/DynamicExtensions.cs)
+- [Enums](Extensions/Enums/EnumExtensions.cs)
+- [Exceptions](Extensions/Exceptions/ExceptionExtensions.cs)
+- Lambda
+  - [Expression](Extensions/Lambda/ExpressionExtensions.cs)
+  - [ParameterRebinder](Extensions/Lambda/ParameterRebinder.cs)
+- [Auto Mapper mappings](Extensions/Mapping/AutoMapperExtensions.cs)
+- [Convention names](Extensions/Naming/ConventionNamesExtensions.cs)
+- Reflection
+  - [Attribute](Extensions/Reflection/AttributeExtensions.cs)
+  - [Reflection](Extensions/Reflection/ReflectionExtensions.cs)
+- [Serialization](Extensions/Serialization/SerializationExtensions.cs)
+- [Streams](Extensions/Streams/StreamExtensions.cs)
 
 ### Lot of util classes 
-* [Assemblies Provider](Utils/Assemblies/AssembliesProvider.cs)
-* [Fluent Switch statement](Utils/Coding/Switch.cs)
-* [Collection to CSV Converter](Utils/Collections/CollectionToCSVConverter.cs)
-* [String Encryption](Utils/Cryptography/Encryption.cs)
-* [Exceptions formatter](Utils/Exceptions/ExceptionProvider.cs)
-* [Exceptions formatter](Utils/Exceptions/ExceptionProvider.cs)
-* [Guards for defensive programming](Utils/Exceptions/Guard.cs)
-* [PropertyName](Utils/Lambda/PropertyName.cs)
-* [Localization Utils](Utils/Localization/LocalizationUtils.cs)
-* [Localized DisplayName Attribute](Utils/Localization/DisplayNameLocalizedAttribute.cs)
-* [Localized DisplayName Attribute](Utils/Localization/DisplayNameLocalizedAttribute.cs)
-* [Simple MessageBus](Utils/MessageBus/MessageBus.cs)
-* [NoSynchronizationContextScope](Utils/Threading/NoSynchronizationContextScope.cs)
+- [Assemblies Provider](Utils/Assemblies/AssembliesProvider.cs)
+- [Fluent Switch statement](Utils/Coding/Switch.cs)
+- [Collection to CSV Converter](Utils/Collections/CollectionToCSVConverter.cs)
+- [String Encryption](Utils/Cryptography/Encryption.cs)
+- [Exceptions formatter](Utils/Exceptions/ExceptionProvider.cs)
+- [Exceptions formatter](Utils/Exceptions/ExceptionProvider.cs)
+- [Guards for defensive programming](Utils/Exceptions/Guard.cs)
+- [PropertyName](Utils/Lambda/PropertyName.cs)
+- [Localization Utils](Utils/Localization/LocalizationUtils.cs)
+- [Localized DisplayName Attribute](Utils/Localization/DisplayNameLocalizedAttribute.cs)
+- [Localized DisplayName Attribute](Utils/Localization/DisplayNameLocalizedAttribute.cs)
+- [Simple MessageBus](Utils/MessageBus/MessageBus.cs)
+- [NoSynchronizationContextScope](Utils/Threading/NoSynchronizationContextScope.cs)
 
 ### Built-in Modules handling
 
@@ -135,6 +140,22 @@ How do I get started?
 Create new project and add [nuget package](https://www.nuget.org/packages/GoldenEye.Core):
 
 `dotnet add package GoldenEye.Core`
+
+You can either go and check [Sample project](../../Sample/DDD/Backend.DDD.Sample/Readme.md),
+**Install the [project template](https://github.com/oskardudycz/GoldenEye/tree/main/src/Templates/SimpleDDD/content) by running**
+
+`dotnet new -i GoldenEye.WebApi.Template.SimpleDDD`
+
+**and then create new project based on it:**
+
+`dotnet new SimpleDDD -n NameOfYourProject`
+
+Or manually add packages to your project, eg:
+create new project and add [nuget package](https://www.nuget.org/packages/GoldenEye.DDD):
+
+`dotnet add package GoldenEye.DDD`
+
+You can also check my **[Github Tutorial](https://github.com/oskardudycz/EventSourcing.NetCore)** about CQRS and Event Sourcing.
 
 I found an issue or I have a change request
 --------------------------------

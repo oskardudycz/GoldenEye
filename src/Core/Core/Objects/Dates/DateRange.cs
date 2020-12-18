@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace GoldenEye.Core.Objects.Dates
+namespace GoldenEye.Objects.Dates
 {
     public class DateRange: IEnumerable<DateTime>, IDateRange
     {

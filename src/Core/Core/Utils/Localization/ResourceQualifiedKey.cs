@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq.Expressions;
 using System.Runtime.Serialization;
-using GoldenEye.Core.Extensions.Basic;
-using GoldenEye.Core.Utils.Lambda;
+using GoldenEye.Extensions.Basic;
+using GoldenEye.Utils.Lambda;
 
-namespace GoldenEye.Core.Utils.Localization
+namespace GoldenEye.Utils.Localization
 {
     [Serializable]
     [DataContract]

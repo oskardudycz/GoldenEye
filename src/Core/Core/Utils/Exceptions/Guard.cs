@@ -1,6 +1,6 @@
 using System;
 
-namespace GoldenEye.Core.Utils.Exceptions
+namespace GoldenEye.Utils.Exceptions
 {
     /// <summary>
     ///     Helper class for guard statements, which allow prettier

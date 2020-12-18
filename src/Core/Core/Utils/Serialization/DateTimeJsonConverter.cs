@@ -1,7 +1,7 @@
 using System;
 using Newtonsoft.Json;
 
-namespace GoldenEye.Core.Utils.Serialization
+namespace GoldenEye.Utils.Serialization
 {
     public class DateTimeJsonConverter: JsonConverter
     {

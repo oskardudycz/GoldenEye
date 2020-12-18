@@ -3,7 +3,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace GoldenEye.Core.Extensions.Serialization
+namespace GoldenEye.Extensions.Serialization
 {
     public static class SerializationExtensions
     {

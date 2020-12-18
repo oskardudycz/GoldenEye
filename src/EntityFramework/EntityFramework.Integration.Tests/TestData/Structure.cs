@@ -1,5 +1,5 @@
-using GoldenEye.Core.Objects.General;
 using GoldenEye.EntityFramework.Context;
+using GoldenEye.Objects.General;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 

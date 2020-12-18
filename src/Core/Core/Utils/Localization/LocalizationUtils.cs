@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using System.Resources;
 
-namespace GoldenEye.Core.Utils.Localization
+namespace GoldenEye.Utils.Localization
 {
     public class LocalizationUtils: ILocalizationUtils
     {

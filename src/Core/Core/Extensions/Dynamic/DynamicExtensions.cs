@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Reflection;
 
-namespace GoldenEye.Core.Extensions.Dynamic
+namespace GoldenEye.Extensions.Dynamic
 {
     public static class DynamicExtensions
     {

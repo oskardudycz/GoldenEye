@@ -1,7 +1,7 @@
 using System;
 using System.Text;
 
-namespace GoldenEye.Core.Extensions.Basic
+namespace GoldenEye.Extensions.Basic
 {
     public static class StringBuilderExtensions
     {

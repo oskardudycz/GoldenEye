@@ -1,7 +1,7 @@
 ﻿using System;
+using GoldenEye.Configuration;
+using GoldenEye.Modules;
 using GoldenEye.WebApi.Modules;
-using GoldenEye.Core.Configuration;
-using GoldenEye.Core.Modules;
 using GoldenEye.WebApi.Exceptions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

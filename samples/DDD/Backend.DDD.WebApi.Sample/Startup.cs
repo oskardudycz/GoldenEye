@@ -1,6 +1,6 @@
-﻿using GoldenEye.DDD.Registration;
+﻿using GoldenEye.Mappings;
+using GoldenEye.Registration;
 using GoldenEye.WebApi.Registration;
-using GoldenEye.Core.Mappings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;

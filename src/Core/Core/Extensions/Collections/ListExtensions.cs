@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using GoldenEye.Core.Objects.General;
-using GoldenEye.Core.Objects.Order;
+using GoldenEye.Objects.General;
+using GoldenEye.Objects.Order;
 
-namespace GoldenEye.Core.Extensions.Collections
+namespace GoldenEye.Extensions.Collections
 {
     public static class ListExtensions
     {

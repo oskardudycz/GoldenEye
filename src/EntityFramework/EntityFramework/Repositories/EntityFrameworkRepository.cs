@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using GoldenEye.Core.Exceptions;
-using GoldenEye.Core.Objects.General;
-using GoldenEye.Core.Objects.Versioning;
+using GoldenEye.Exceptions;
+using GoldenEye.Objects.General;
+using GoldenEye.Objects.Versioning;
+using GoldenEye.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace GoldenEye.Core.Repositories

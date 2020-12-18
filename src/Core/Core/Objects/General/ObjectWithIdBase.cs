@@ -1,6 +1,6 @@
 using System;
 
-namespace GoldenEye.Core.Objects.General
+namespace GoldenEye.Objects.General
 {
     public abstract class ObjectWithIdBase: IHaveId
     {

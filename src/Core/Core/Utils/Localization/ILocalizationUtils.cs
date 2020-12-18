@@ -1,7 +1,7 @@
 using System;
 using System.Resources;
 
-namespace GoldenEye.Core.Utils.Localization
+namespace GoldenEye.Utils.Localization
 {
     public interface ILocalizationUtils
     {

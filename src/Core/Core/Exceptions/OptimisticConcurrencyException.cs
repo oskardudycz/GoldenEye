@@ -1,6 +1,6 @@
 using System;
 
-namespace GoldenEye.Core.Exceptions
+namespace GoldenEye.Exceptions
 {
     public class OptimisticConcurrencyException: Exception
     {

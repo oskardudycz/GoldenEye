@@ -1,7 +1,7 @@
 using System;
 using Backend.DDD.Sample.Contracts.Issues.Events;
-using GoldenEye.DDD.Queries;
-using GoldenEye.Core.Objects.General;
+using GoldenEye.Objects.General;
+using GoldenEye.Queries;
 
 namespace Backend.DDD.Sample.Contracts.Issues.Views
 {

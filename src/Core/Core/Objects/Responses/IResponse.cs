@@ -1,4 +1,4 @@
-namespace GoldenEye.Core.Objects.Responses
+namespace GoldenEye.Objects.Responses
 {
     public interface IResponse
     {

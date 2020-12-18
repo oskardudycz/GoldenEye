@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 using Dapper;
 using Dapper.Contrib.Extensions;
 using GoldenEye.Dapper.Generators;
-using GoldenEye.Core.Exceptions;
-using GoldenEye.Core.Repositories;
-using GoldenEye.Core.Extensions.Basic;
-using GoldenEye.Core.Objects.General;
+using GoldenEye.Exceptions;
+using GoldenEye.Extensions.Basic;
+using GoldenEye.Objects.General;
+using GoldenEye.Repositories;
 
 namespace GoldenEye.Dapper.Repositories
 {

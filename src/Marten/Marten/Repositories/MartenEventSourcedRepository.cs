@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using GoldenEye.DDD.Events;
-using GoldenEye.DDD.Events.Store;
-using GoldenEye.Core.Exceptions;
+using GoldenEye.Events;
+using GoldenEye.Events.Store;
+using GoldenEye.Exceptions;
 using GoldenEye.Marten.Events.Storage;
-using GoldenEye.Core.Repositories;
-using GoldenEye.Core.Objects.General;
+using GoldenEye.Objects.General;
+using GoldenEye.Repositories;
 using Marten;
 
 namespace GoldenEye.Marten.Repositories

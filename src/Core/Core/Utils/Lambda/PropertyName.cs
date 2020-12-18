@@ -1,7 +1,7 @@
 using System;
 using System.Linq.Expressions;
 
-namespace GoldenEye.Core.Utils.Lambda
+namespace GoldenEye.Utils.Lambda
 {
     /// <summary>
     ///     Pobranie nazwy właściwości lub pola z wykorzystaniem wyrażeń lambda.

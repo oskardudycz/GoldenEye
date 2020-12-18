@@ -1,4 +1,4 @@
-namespace GoldenEye.Core.Objects.Requests
+namespace GoldenEye.Objects.Requests
 {
     public interface ISingleRequest: IRequest
     {

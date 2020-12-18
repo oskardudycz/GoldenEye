@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 
-namespace GoldenEye.Core.Extensions.Collections
+namespace GoldenEye.Extensions.Collections
 {
     public static class DictionaryExtensions
     {

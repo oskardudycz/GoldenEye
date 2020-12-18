@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 using FluentAssertions;
-using GoldenEye.DDD.Events;
+using GoldenEye.Events;
 using GoldenEye.Marten.Events.Storage;
 using GoldenEye.Marten.Integration.Tests.Infrastructure;
 using Xunit;

@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Threading;
 
-namespace GoldenEye.Core.Extensions.Threading
+namespace GoldenEye.Extensions.Threading
 {
     public static class ThreadExtensions
     {

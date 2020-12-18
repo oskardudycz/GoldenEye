@@ -1,4 +1,4 @@
-namespace GoldenEye.Core.Objects.General
+namespace GoldenEye.Objects.General
 {
     public interface IHasName
     {

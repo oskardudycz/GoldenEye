@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using Microsoft.Extensions.DependencyModel;
 
-namespace GoldenEye.Core.Utils.Assemblies
+namespace GoldenEye.Utils.Assemblies
 {
     public static class AssembliesProvider
     {

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace GoldenEye.Core.Utils.MessageBus
+namespace GoldenEye.Utils.MessageBus
 {
     public class MessageBus: IMessageBus
     {

@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using GoldenEye.Core.Extensions.Collections;
-using GoldenEye.Core.Extensions.Reflection;
+using GoldenEye.Extensions.Collections;
+using GoldenEye.Extensions.Reflection;
 
-namespace GoldenEye.Core.Extensions.Lambda
+namespace GoldenEye.Extensions.Lambda
 {
     public static class ExpressionExtensions
     {

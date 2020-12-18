@@ -2,7 +2,7 @@
 using System.Net;
 using FluentAssertions;
 using FluentValidation;
-using GoldenEye.Core.Exceptions;
+using GoldenEye.Exceptions;
 using GoldenEye.WebApi.Exceptions;
 using Xunit;
 

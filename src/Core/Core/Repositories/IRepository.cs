@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using GoldenEye.Core.Objects.General;
+using GoldenEye.Objects.General;
 
-namespace GoldenEye.Core.Repositories
+namespace GoldenEye.Repositories
 {
     public interface IRepository<TEntity>: IReadonlyRepository<TEntity> where TEntity : class, IHaveId
     {

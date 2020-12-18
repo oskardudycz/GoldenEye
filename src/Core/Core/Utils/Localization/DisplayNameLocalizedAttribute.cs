@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel;
 
-namespace GoldenEye.Core.Utils.Localization
+namespace GoldenEye.Utils.Localization
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method | AttributeTargets.Property |
                     AttributeTargets.Event)]

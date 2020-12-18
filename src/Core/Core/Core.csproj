@@ -2,10 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>1.0.0-alpha.2</Version>
-    <PackageId>GoldenEye.Core</PackageId>
-    <AssemblyName>GoldenEye.Core</AssemblyName>
-    <RootNamespace>GoldenEye.Core</RootNamespace>
+    <Version>1.0.0-alpha.3</Version>
+    <PackageId>GoldenEye</PackageId>
+    <AssemblyName>GoldenEye</AssemblyName>
+    <RootNamespace>GoldenEye</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,5 +16,6 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="Scrutor" Version="3.3.0" />
+    <PackageReference Include="MediatR" Version="9.0.0" />
   </ItemGroup>
 </Project>

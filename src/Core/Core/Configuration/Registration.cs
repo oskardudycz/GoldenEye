@@ -1,8 +1,8 @@
-﻿using GoldenEye.Core.Extensions.DependencyInjection;
+﻿using GoldenEye.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace GoldenEye.Core.Configuration
+namespace GoldenEye.Configuration
 {
     public static class Registration
     {

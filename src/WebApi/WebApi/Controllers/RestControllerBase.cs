@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using GoldenEye.Core.Services;
+using GoldenEye.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GoldenEye.WebApi.Controllers

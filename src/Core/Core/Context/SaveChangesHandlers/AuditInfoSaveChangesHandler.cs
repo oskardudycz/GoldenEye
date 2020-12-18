@@ -1,11 +1,10 @@
 using System;
 using System.Linq;
-using GoldenEye.Core.Entities;
-using GoldenEye.Core.Entity;
-using GoldenEye.Core.Repositories.SaveChangesHandlers.Base;
-using GoldenEye.Core.Security;
+using GoldenEye.Context.SaveChangesHandlers.Base;
+using GoldenEye.Entities;
+using GoldenEye.Security;
 
-namespace GoldenEye.Core.Repositories.SaveChangesHandlers
+namespace GoldenEye.Context.SaveChangesHandlers
 {
     public class AuditInfoSaveChangesHandler: ISaveChangesHandler
     {

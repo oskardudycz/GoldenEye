@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using GoldenEye.Core.Exceptions;
+using GoldenEye.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;

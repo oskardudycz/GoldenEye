@@ -1,4 +1,4 @@
-namespace GoldenEye.Core.Utils.MessageBus
+namespace GoldenEye.Utils.MessageBus
 {
     public interface IMessage
     {

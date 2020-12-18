@@ -1,5 +1,5 @@
 ﻿using Dapper.Contrib.Extensions;
-using GoldenEye.Core.Objects.General;
+using GoldenEye.Objects.General;
 
 namespace GoldenEye.Dapper.Integration.Tests.TestData
 {

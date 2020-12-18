@@ -1,6 +1,6 @@
-using GoldenEye.Core.Entity;
+using GoldenEye.Entities;
 
-namespace GoldenEye.Core.Repositories.SaveChangesHandlers.Base
+namespace GoldenEye.Context.SaveChangesHandlers.Base
 {
     public interface ISaveChangesHandler
     {

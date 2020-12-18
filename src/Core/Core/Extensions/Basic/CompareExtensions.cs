@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace GoldenEye.Core.Extensions.Basic
+namespace GoldenEye.Extensions.Basic
 {
     public static class CompareExtensions
     {

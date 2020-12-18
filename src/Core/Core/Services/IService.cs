@@ -1,6 +1,6 @@
 using System;
 
-namespace GoldenEye.Core.Services
+namespace GoldenEye.Services
 {
     public interface IService: IDisposable
     {

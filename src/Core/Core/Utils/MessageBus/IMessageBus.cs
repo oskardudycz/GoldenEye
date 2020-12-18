@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace GoldenEye.Core.Utils.MessageBus
+namespace GoldenEye.Utils.MessageBus
 {
     public interface IMessageBus
     {

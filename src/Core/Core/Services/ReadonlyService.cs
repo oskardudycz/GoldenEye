@@ -3,11 +3,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using GoldenEye.Core.Entities;
-using GoldenEye.Core.Entity;
-using GoldenEye.Core.Repositories;
+using GoldenEye.Entities;
+using GoldenEye.Repositories;
 
-namespace GoldenEye.Core.Services
+namespace GoldenEye.Services
 {
     public class ReadonlyService<TDto, TEntity, TRepository>: ReadonlyService<TDto, TEntity>
         where TDto : class

@@ -1,5 +1,5 @@
 using Backend.DDD.Sample.Contracts.Issues.Views;
-using GoldenEye.DDD.Queries;
+using GoldenEye.Queries;
 
 namespace Backend.DDD.Sample.Contracts.Issues.Queries
 {

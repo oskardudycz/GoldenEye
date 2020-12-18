@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFrameworks>netstandard2.1;net5.0</TargetFrameworks>
-        <Version>1.0.0-alpha.2</Version>
+        <Version>1.0.0-alpha.3</Version>
         <PackageId>GoldenEye.Marten</PackageId>
         <AssemblyName>GoldenEye.Marten</AssemblyName>
         <RootNamespace>GoldenEye.Marten</RootNamespace>
@@ -16,6 +16,5 @@
 
     <ItemGroup>
         <ProjectReference Include="..\..\Core\Core\Core.csproj" />
-        <ProjectReference Include="..\..\DDD\DDD\DDD.csproj" />
     </ItemGroup>
 </Project>

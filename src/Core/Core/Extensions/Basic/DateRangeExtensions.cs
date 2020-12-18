@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using GoldenEye.Core.Extensions.Collections;
-using GoldenEye.Core.Objects.Dates;
+using GoldenEye.Extensions.Collections;
+using GoldenEye.Objects.Dates;
 
-namespace GoldenEye.Core.Extensions.Basic
+namespace GoldenEye.Extensions.Basic
 {
     public static class DateRangeExtensions
     {

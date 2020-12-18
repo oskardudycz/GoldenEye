@@ -1,7 +1,6 @@
 using System.Collections.Generic;
-using GoldenEye.Core.Entities;
 
-namespace GoldenEye.Core.Entity
+namespace GoldenEye.Entities
 {
     public interface IProvidesAuditInfo
     {
