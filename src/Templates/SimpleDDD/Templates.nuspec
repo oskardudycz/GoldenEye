@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>GoldenEye.WebApi.Template.SimpleDDD</id>
-    <version>5.0.0</version>
+    <version>6.0.0</version>
     <authors>Oskar Dudycz</authors>
     <owners>Oskar Dudycz</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
