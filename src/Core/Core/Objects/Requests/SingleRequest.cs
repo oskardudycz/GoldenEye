@@ -8,7 +8,7 @@ namespace GoldenEye.Core.Objects.Requests
     /// </summary>
     [DataContract]
     //[Validator(typeof(SingleRequestValidator<>))]
-    public class SingleRequest<T>: RequestBase, ISingleRequest<T>
+    public class SingleRequest<T>: ISingleRequest<T>
     {
         /// <summary>
         ///     Constructor

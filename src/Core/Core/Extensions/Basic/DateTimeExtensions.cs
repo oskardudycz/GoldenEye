@@ -30,7 +30,7 @@ namespace GoldenEye.Core.Extensions.Basic
         /// </summary>
         public static List<DateTime> AllDatesInCurrentYear
         {
-            get { return _allDatesInCurrentYear ?? (_allDatesInCurrentYear = GetDates(DateTime.Today.Year)); }
+            get { return _allDatesInCurrentYear ??= GetDates(DateTime.Today.Year); }
         }
 
         /// <summary>

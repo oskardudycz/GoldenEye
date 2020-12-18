@@ -7,7 +7,7 @@ namespace GoldenEye.Core.Objects.Responses
     ///     Allows checkings of not null Item and inner data contract validation
     /// </summary>
     [DataContract]
-    public class SingleResponse<T>: ResponseBase, ISingleResponse<T>
+    public class SingleResponse<T>: ISingleResponse<T>
     {
         public SingleResponse()
         {
