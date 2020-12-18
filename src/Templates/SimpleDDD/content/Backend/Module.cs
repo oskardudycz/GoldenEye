@@ -1,9 +1,8 @@
 using System.Collections.Generic;
-using GoldenEye.DDD.Registration;
+using GoldenEye.Registration;
 using GoldenEye.Marten.Events.Storage;
 using GoldenEye.Marten.Registration;
-using GoldenEye.Core.Registration;
-using GoldenEye.Core.Modules;
+using GoldenEye.Modules;
 using GoldenEye.WebApi.Template.SimpleDDD.Backend.Issues;
 using GoldenEye.WebApi.Template.SimpleDDD.Backend.Issues.Handlers;
 using GoldenEye.WebApi.Template.SimpleDDD.Backend.Issues.Projections;

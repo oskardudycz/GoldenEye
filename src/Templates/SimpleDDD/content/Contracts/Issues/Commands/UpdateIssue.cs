@@ -1,6 +1,6 @@
 using System;
 using FluentValidation;
-using GoldenEye.DDD.Commands;
+using GoldenEye.Commands;
 
 namespace GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Commands
 {

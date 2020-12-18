@@ -1,5 +1,5 @@
 using System;
-using GoldenEye.DDD.Events;
+using GoldenEye.Events;
 
 namespace GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Events
 {

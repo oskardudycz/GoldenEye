@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using GoldenEye.DDD.Commands;
-using GoldenEye.DDD.Queries;
+using GoldenEye.Commands;
+using GoldenEye.Queries;
 using GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Commands;
 using GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Queries;
 using GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Views;

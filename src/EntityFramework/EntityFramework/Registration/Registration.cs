@@ -1,9 +1,8 @@
 ﻿using System;
 using GoldenEye.EntityFramework.Migrations;
-using GoldenEye.Core.Repositories;
+using GoldenEye.Repositories;
 using GoldenEye.Entities;
 using GoldenEye.Extensions.DependencyInjection;
-using GoldenEye.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;

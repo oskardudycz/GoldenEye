@@ -1,11 +1,11 @@
-﻿# GoldenEye.Core
+﻿# GoldenEye
 [![Stories in Ready](https://badge.waffle.io/oskardudycz/GoldenEye.png?label=ready&title=Ready)](https://waffle.io/oskardudycz/GoldenEye)
 [![Build status](https://ci.appveyor.com/api/projects/status/1mtm4h33cvur6kob?svg=true)](https://ci.appveyor.com/project/oskardudycz/goldeneye-core)
-[![NuGet version](https://badge.fury.io/nu/GoldenEye.Core.svg)](https://badge.fury.io/nu/GoldenEye.Core)
+[![NuGet version](https://badge.fury.io/nu/GoldenEye.svg)](https://badge.fury.io/nu/GoldenEye)
 
-What is GoldenEye.Core?
+What is GoldenEye?
 --------------------------------
-GoldenEye.Core is a library that brings you abstractions and implementations for common topics. It is written in .NET Core. It provides set of base and bootstrap classes that helps you to reduce boilerplate code and help you focus on writing business code.
+GoldenEye is a library that brings you abstractions and implementations for common topics. It is written in .NET Core. It provides set of base and bootstrap classes that helps you to reduce boilerplate code and help you focus on writing business code.
 
 What do I get?
 --------------------------------
@@ -137,9 +137,9 @@ You can also add all of your defined modules by calling `AddAllModules` extensio
 
 How do I get started?
 --------------------------------
-Create new project and add [nuget package](https://www.nuget.org/packages/GoldenEye.Core):
+Create new project and add [nuget package](https://www.nuget.org/packages/GoldenEye):
 
-`dotnet add package GoldenEye.Core`
+`dotnet add package GoldenEye`
 
 You can either go and check [Sample project](../../Sample/DDD/Backend.DDD.Sample/Readme.md),
 **Install the [project template](https://github.com/oskardudycz/GoldenEye/tree/main/src/Templates/SimpleDDD/content) by running**
@@ -151,9 +151,9 @@ You can either go and check [Sample project](../../Sample/DDD/Backend.DDD.Sample
 `dotnet new SimpleDDD -n NameOfYourProject`
 
 Or manually add packages to your project, eg:
-create new project and add [nuget package](https://www.nuget.org/packages/GoldenEye.DDD):
+create new project and add [nuget package](https://www.nuget.org/packages/GoldenEye):
 
-`dotnet add package GoldenEye.DDD`
+`dotnet add package GoldenEye`
 
 You can also check my **[Github Tutorial](https://github.com/oskardudycz/EventSourcing.NetCore)** about CQRS and Event Sourcing.
 

@@ -1,6 +1,6 @@
 using System;
-using GoldenEye.DDD.Queries;
-using GoldenEye.Core.Objects.General;
+using GoldenEye.Queries;
+using GoldenEye.Objects.General;
 using GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Events;
 
 namespace GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Views

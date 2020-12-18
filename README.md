@@ -37,9 +37,9 @@ How do I get started?
 
 Or manually add packages to your project, eg:
 
-* **[Core](src/Core/Core/Readme.md)** - GoldenEye.Core 
+* **[Core](src/Core/Core/Readme.md)** - GoldenEye 
   
-  `dotnet add package GoldenEye.Core` 
+  `dotnet add package GoldenEye` 
   
 * **[WebApi](src/WebApi/WebApi/Readme.md)** - GoldenEye.WebApi 
   
@@ -55,16 +55,16 @@ Where can I get it?
 Install packages from the Nuget package manager:
 
 **Core packages**:
-* [GoldenEye.Core](src/Core/Core/Readme.md) - base classes, Repositories, Services, CRUD, helpers, extensions that will boost your development
+* [GoldenEye](src/Core/Core/Readme.md) - base classes, Repositories, Services, CRUD, helpers, extensions that will boost your development
 * [GoldenEye.WebApi](src/WebApi/WebApi/Readme.md) - base classes for API development like CRUD controllers, registration helpers, and many more
-* [GoldenEye.EntityFramework](src/EntityFramework/EntityFramework/Readme.md) - extensions to GoldenEye.Core for EntityFramework development (EF repositories, etc.)
-* [GoldenEye.Dapper](src/Dapper/Dapper/Readme.md) - extensions to GoldenEye.Core for Dapper development (Dapper repositories, etc.)
+* [GoldenEye.EntityFramework](src/EntityFramework/EntityFramework/Readme.md) - extensions to GoldenEye for EntityFramework development (EF repositories, etc.)
+* [GoldenEye.Dapper](src/Dapper/Dapper/Readme.md) - extensions to GoldenEye for Dapper development (Dapper repositories, etc.)
 
 **Domain Driven Design package**:
-* [GoldenEye.DDD](src/DDD/DDD/Readme.md) - full DDD flow for CQRS, DDD development. Basing on [MediatR](https://github.com/jbogard/MediatR) library gives the Command, Queries, Events handling, routing
+* [GoldenEye](src/DDD/DDD/Readme.md) - full DDD flow for CQRS, DDD development. Basing on [MediatR](https://github.com/jbogard/MediatR) library gives the Command, Queries, Events handling, routing
 
 **Document database and Event Store with Marten package**:
-* [GoldenEye.Marten](src/Marten/Marten/Readme.md) - extension to GoldenEye.Core and GoldenEye.DDD that gives possibility to use Postgres as Document Database and Event Store - thanks to Marten library
+* [GoldenEye.Marten](src/Marten/Marten/Readme.md) - extension to GoldenEye and GoldenEye that gives possibility to use Postgres as Document Database and Event Store - thanks to Marten library
 
 I found an issue or I have a change request
 --------------------------------

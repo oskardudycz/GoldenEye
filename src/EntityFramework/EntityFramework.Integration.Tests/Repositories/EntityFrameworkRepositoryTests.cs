@@ -1,6 +1,6 @@
 using System.Linq;
 using FluentAssertions;
-using GoldenEye.Core.Repositories;
+using GoldenEye.Repositories;
 using GoldenEye.EntityFramework.Integration.Tests.Infrastructure;
 using GoldenEye.EntityFramework.Integration.Tests.TestData;
 using Microsoft.EntityFrameworkCore;

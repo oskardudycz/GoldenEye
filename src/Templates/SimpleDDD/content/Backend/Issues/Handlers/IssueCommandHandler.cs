@@ -1,9 +1,9 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using GoldenEye.DDD.Commands;
-using GoldenEye.DDD.Events;
-using GoldenEye.Core.Repositories;
+using GoldenEye.Commands;
+using GoldenEye.Events;
+using GoldenEye.Repositories;
 using GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Commands;
 using GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Events;
 using MediatR;

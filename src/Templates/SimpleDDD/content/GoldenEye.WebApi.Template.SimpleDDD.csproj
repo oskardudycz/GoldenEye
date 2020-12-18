@@ -12,10 +12,9 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
-    <PackageReference Include="GoldenEye.Core" Version="1.0.0-alpha.1" />
-    <PackageReference Include="GoldenEye.DDD" Version="1.0.0-alpha.1" />
-    <PackageReference Include="GoldenEye.Marten" Version="1.0.0-alpha.1" />
-    <PackageReference Include="GoldenEye.WebApi" Version="1.0.0-alpha.1" />
+    <PackageReference Include="GoldenEye" Version="1.0.0-alpha.3" />
+    <PackageReference Include="GoldenEye.Marten" Version="1.0.0-alpha.3" />
+    <PackageReference Include="GoldenEye.WebApi" Version="1.0.0-alpha.3" />
   </ItemGroup>
 
   <ItemGroup>

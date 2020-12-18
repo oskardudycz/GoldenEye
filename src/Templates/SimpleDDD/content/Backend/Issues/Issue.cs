@@ -1,6 +1,6 @@
 using System;
-using GoldenEye.DDD.Aggregates;
-using GoldenEye.Core.Objects.General;
+using GoldenEye.Aggregates;
+using GoldenEye.Objects.General;
 using GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues;
 
 namespace GoldenEye.WebApi.Template.SimpleDDD.Backend.Issues

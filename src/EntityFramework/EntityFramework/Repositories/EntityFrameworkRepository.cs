@@ -9,7 +9,7 @@ using GoldenEye.Objects.Versioning;
 using GoldenEye.Repositories;
 using Microsoft.EntityFrameworkCore;
 
-namespace GoldenEye.Core.Repositories
+namespace GoldenEye.Repositories
 {
     public class EntityFrameworkRepository<TDbContext, TEntity>: IRepository<TEntity>
         where TDbContext : DbContext where TEntity : class, IHaveId

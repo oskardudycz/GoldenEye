@@ -1,5 +1,5 @@
 using AutoMapper;
-using GoldenEye.Core.Mappings;
+using GoldenEye.Mappings;
 
 namespace GoldenEye.WebApi.Template.SimpleDDD.Backend.Issues.Mappings
 {
