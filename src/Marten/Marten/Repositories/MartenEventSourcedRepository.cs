@@ -25,7 +25,6 @@ namespace GoldenEye.Marten.Repositories
             this.eventStore = eventStore ?? throw new ArgumentException(nameof(eventStore));
         }
 
-
         public TEntity FindById(object id)
         {
             if (!(id is Guid guidId))
@@ -175,7 +174,7 @@ namespace GoldenEye.Marten.Repositories
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
 
-            await eventStore.StoreAsync(entity.Id, cancellationToken, entity.PendingEvents.ToArray());
+            await eventStore.AppendAsync(entity.Id, cancellationToken, entity.PendingEvents.ToArray());
 
             return entity;
         }

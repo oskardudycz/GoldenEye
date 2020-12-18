@@ -26,15 +26,15 @@ namespace GoldenEye.DDD.Tests.Events.Store
                 return Task.CompletedTask;
             }
 
-            public Guid Store(Guid streamId, params IEvent[] events)
+            public Guid Append(Guid streamId, params IEvent[] events)
             {
                 this.events.AddRange(events);
                 return streamId;
             }
 
-            public Task<Guid> StoreAsync(Guid streamId, params IEvent[] events)
+            public Task<Guid> AppendAsync(Guid streamId, params IEvent[] events)
             {
-                return Task.FromResult(Store(streamId, events));
+                return Task.FromResult(Append(streamId, events));
             }
 
             public TEntity Aggregate<TEntity>(Guid streamId, int version = 0, DateTime? timestamp = null)
@@ -50,14 +50,14 @@ namespace GoldenEye.DDD.Tests.Events.Store
                 return Task.FromResult(Aggregate<TEntity>(streamId));
             }
 
-            public Guid Store(Guid streamId, int version, params IEvent[] events)
+            public Guid Append(Guid streamId, int version, params IEvent[] events)
             {
-                return Store(streamId, events);
+                return Append(streamId, events);
             }
 
-            public Task<Guid> StoreAsync(Guid streamId, int version, params IEvent[] events)
+            public Task<Guid> AppendAsync(Guid streamId, int version, params IEvent[] events)
             {
-                return StoreAsync(streamId, events);
+                return AppendAsync(streamId, events);
             }
 
             public IList<IEvent> Query(Guid? streamId = null, int? version = null, DateTime? timestamp = null)
@@ -91,16 +91,16 @@ namespace GoldenEye.DDD.Tests.Events.Store
                 throw new NotImplementedException();
             }
 
-            public Task<Guid> StoreAsync(Guid streamId, CancellationToken cancellationToken = default,
+            public Task<Guid> AppendAsync(Guid streamId, CancellationToken cancellationToken = default,
                 params IEvent[] events)
             {
-                return StoreAsync(streamId, events);
+                return AppendAsync(streamId, events);
             }
 
-            public Task<Guid> StoreAsync(Guid streamId, int version, CancellationToken cancellationToken = default,
+            public Task<Guid> AppendAsync(Guid streamId, int version, CancellationToken cancellationToken = default,
                 params IEvent[] events)
             {
-                return StoreAsync(streamId, version, events);
+                return AppendAsync(streamId, version, events);
             }
 
             Task<TEvent> IEventStore.FindByIdAsync<TEvent>(Guid id, CancellationToken cancellationToken)

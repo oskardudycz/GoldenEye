@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using GoldenEye.Core.Objects.General;
@@ -9,19 +8,17 @@ namespace GoldenEye.DDD.Events.Store
 {
     public interface IEventStore
     {
-        IEventProjectionStore Projections { get; }
+        Guid Append(Guid streamId, params IEvent[] events);
 
-        Guid Store(Guid streamId, params IEvent[] events);
+        Guid Append(Guid streamId, int version, params IEvent[] events);
 
-        Guid Store(Guid streamId, int version, params IEvent[] events);
+        Task<Guid> AppendAsync(Guid streamId, params IEvent[] events);
 
-        Task<Guid> StoreAsync(Guid streamId, params IEvent[] events);
+        Task<Guid> AppendAsync(Guid streamId, CancellationToken cancellationToken = default, params IEvent[] events);
 
-        Task<Guid> StoreAsync(Guid streamId, CancellationToken cancellationToken = default, params IEvent[] events);
+        Task<Guid> AppendAsync(Guid streamId, int version, params IEvent[] events);
 
-        Task<Guid> StoreAsync(Guid streamId, int version, params IEvent[] events);
-
-        Task<Guid> StoreAsync(Guid streamId, int version, CancellationToken cancellationToken = default,
+        Task<Guid> AppendAsync(Guid streamId, int version, CancellationToken cancellationToken = default,
             params IEvent[] events);
 
         TEntity Aggregate<TEntity>(Guid streamId, int version = 0, DateTime? timestamp = null)
@@ -54,17 +51,5 @@ namespace GoldenEye.DDD.Events.Store
         void SaveChanges();
 
         Task SaveChangesAsync(CancellationToken token = default);
-    }
-
-    public interface IEventProjectionStore
-    {
-        TProjection GetById<TProjection>(Guid id) where TProjection : class, IHaveGuidId;
-
-        Task<TProjection> GetByIdAsync<TProjection>(Guid id, CancellationToken cancellationToken = default)
-            where TProjection : class, IHaveGuidId;
-
-        IQueryable<TProjection> Query<TProjection>();
-
-        IQueryable<TProjection> CustomQuery<TProjection>(string query);
     }
 }

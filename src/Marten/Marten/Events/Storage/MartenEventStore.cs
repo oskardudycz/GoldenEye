@@ -18,10 +18,7 @@ namespace GoldenEye.Marten.Events.Storage
         public MartenEventStore(IDocumentSession documentSession)
         {
             this.documentSession = documentSession ?? throw new ArgumentException(nameof(documentSession));
-            Projections = new EventProjectionStore(documentSession);
         }
-
-        public IEventProjectionStore Projections { get; }
 
         public void SaveChanges()
         {
@@ -33,36 +30,36 @@ namespace GoldenEye.Marten.Events.Storage
             return documentSession.SaveChangesAsync(token);
         }
 
-        public Guid Store(Guid streamId, params IEvent[] events)
+        public Guid Append(Guid streamId, params IEvent[] events)
         {
             return documentSession.Events.Append(streamId, events.Cast<object>().ToArray()).Id;
         }
 
-        public Guid Store(Guid streamId, int version, params IEvent[] events)
+        public Guid Append(Guid streamId, int version, params IEvent[] events)
         {
             return documentSession.Events.Append(streamId, version, events.Cast<object>().ToArray()).Id;
         }
 
-        public Task<Guid> StoreAsync(Guid streamId, params IEvent[] events)
+        public Task<Guid> AppendAsync(Guid streamId, params IEvent[] events)
         {
-            return Task.FromResult(Store(streamId, events));
+            return Task.FromResult(Append(streamId, events));
         }
 
-        public Task<Guid> StoreAsync(Guid streamId, int version, params IEvent[] events)
+        public Task<Guid> AppendAsync(Guid streamId, int version, params IEvent[] events)
         {
-            return Task.FromResult(Store(streamId, version, events));
+            return Task.FromResult(Append(streamId, version, events));
         }
 
-        public Task<Guid> StoreAsync(Guid streamId, CancellationToken cancellationToken = default,
+        public Task<Guid> AppendAsync(Guid streamId, CancellationToken cancellationToken = default,
             params IEvent[] events)
         {
-            return Task.FromResult(Store(streamId, events));
+            return Task.FromResult(Append(streamId, events));
         }
 
-        public Task<Guid> StoreAsync(Guid streamId, int version, CancellationToken cancellationToken = default,
+        public Task<Guid> AppendAsync(Guid streamId, int version, CancellationToken cancellationToken = default,
             params IEvent[] events)
         {
-            return Task.FromResult(Store(streamId, version, events));
+            return Task.FromResult(Append(streamId, version, events));
         }
 
         public TEntity Aggregate<TEntity>(Guid streamId, int version = 0, DateTime? timestamp = null)
