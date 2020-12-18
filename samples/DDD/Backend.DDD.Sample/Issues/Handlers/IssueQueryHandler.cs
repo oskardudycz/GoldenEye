@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -25,25 +26,28 @@ namespace Backend.DDD.Sample.Issues.Handlers
             IConfigurationProvider configurationProvider,
             IMapper mapper)
         {
-            this.repository = repository ?? throw new ArgumentException(nameof(repository));
+            this.repository = repository ?? throw new ArgumentException(null, nameof(repository));
             this.configurationProvider =
-                configurationProvider ?? throw new ArgumentException(nameof(configurationProvider));
-            this.mapper = mapper ?? throw new ArgumentException(nameof(mapper));
+                configurationProvider ?? throw new ArgumentException(null, nameof(configurationProvider));
+            this.mapper = mapper ?? throw new ArgumentException(null, nameof(mapper));
         }
 
         public async Task<IssueViews.IssueView> Handle(GetIssue message, CancellationToken cancellationToken)
         {
-            var entity = await repository.GetByIdAsync(message.Id);
+            var entity = await repository.GetByIdAsync(message.Id, cancellationToken);
 
             return mapper.Map<IssueViews.IssueView>(entity);
         }
 
-        public Task<IReadOnlyList<IssueViews.IssueView>> Handle(GetIssues message, CancellationToken cancellationToken)
+        public async Task<IReadOnlyList<IssueViews.IssueView>> Handle(GetIssues message, CancellationToken cancellationToken)
         {
-            return repository
+            var result = await repository
                 .Query()
+                .ToListAsync(token: cancellationToken);
+
+            return result.AsQueryable()
                 .ProjectTo<IssueViews.IssueView>(configurationProvider)
-                .ToListAsync();
+                .ToList();
         }
     }
 }

@@ -1,4 +1,4 @@
-namespace GoldenEye.Core.Entity
+namespace GoldenEye.Core.Entities
 {
     public interface IEntityEntry
     {

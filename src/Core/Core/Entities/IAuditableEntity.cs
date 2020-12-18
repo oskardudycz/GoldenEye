@@ -1,6 +1,6 @@
 using GoldenEye.Core.Objects.Audit;
 
-namespace GoldenEye.Core.Entity
+namespace GoldenEye.Core.Entities
 {
     internal interface IAuditableEntity: IAuditable, IEntity
     {
