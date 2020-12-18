@@ -1,7 +1,7 @@
 using System;
 using Backend.DDD.Sample.Contracts.Issues;
-using GoldenEye.Backend.Core.Entity;
-using GoldenEye.Shared.Core.Objects.General;
+using GoldenEye.Core.Entity;
+using GoldenEye.Core.Objects.General;
 
 namespace Backend.DDD.Sample.Issues
 {

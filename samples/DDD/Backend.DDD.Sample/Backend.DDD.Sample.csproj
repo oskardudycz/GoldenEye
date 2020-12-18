@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\src\Core\Backend.Core.Marten\Backend.Core.Marten.csproj" />
+    <ProjectReference Include="..\..\..\src\Marten\Marten\Marten.csproj" />
     <ProjectReference Include="..\Backend.DDD.Sample.Contracts\Backend.DDD.Sample.Contracts.csproj" />
   </ItemGroup>
 </Project>

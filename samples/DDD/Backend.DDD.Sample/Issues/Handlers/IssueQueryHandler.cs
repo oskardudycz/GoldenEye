@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Backend.DDD.Sample.Contracts.Issues.Queries;
-using GoldenEye.Backend.Core.DDD.Queries;
-using GoldenEye.Backend.Core.Repositories;
+using GoldenEye.DDD.Queries;
+using GoldenEye.Core.Repositories;
 using Marten;
 using IssueViews = Backend.DDD.Sample.Contracts.Issues.Views;
 
