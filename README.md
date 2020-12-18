@@ -12,14 +12,14 @@ What is GoldenEye?
 What do I get?
 --------------------------------
 Complete Solution bootstrap - bottom up:
-- [Entity Framework](https://github.com/aspnet/EntityFrameworkCore) (supports also [Dapper](https://github.com/StackExchange/Dapper), [Marten](https://github.com/JasperFx/marten))
+- CQRS and Domain Driven Development stack - sending and handling commands, queries, events (with usage of [MediatR](https://github.com/jbogard/MediatR) library)
 - [CRUD Repositories](https://github.com/oskardudycz/GoldenEye/tree/main/src/Core/Core/Repositories) and CRUD Application Services
+- [Entity Framework](https://github.com/aspnet/EntityFrameworkCore) (supports also [Dapper](https://github.com/StackExchange/Dapper), [Marten](https://github.com/JasperFx/marten))
 - WebApi REST controllers
 - complete set up of dependency injection with automatic naming convention binding
 - [AutoMapper](https://github.com/AutoMapper/AutoMapper) preconfigured and automatic mappings registration
 - Validation flow with [FluentValidation.NET](https://github.com/JeremySkinner/FluentValidation)
 - Examples of complete usage (Task list functionality)
-- CQRS and Domain Driven Development stack - sending and handling commands, queries, events (with usage of [MediatR](https://github.com/jbogard/MediatR) library)
 - document database and event store support in Postgres with [Marten](https://github.com/JasperFx/marten) framework
 - many more
 
@@ -37,34 +37,19 @@ How do I get started?
 
 Or manually add packages to your project, eg:
 
-* **[Core](src/Core/Core/Readme.md)** - GoldenEye 
-  
-  `dotnet add package GoldenEye` 
-  
-* **[WebApi](src/WebApi/WebApi/Readme.md)** - GoldenEye.WebApi 
-  
-  `dotnet add package GoldenEye.WebApi`
-  
-* **[Entity Framework](src/EntityFramework/EntityFramework/Readme.md)** - GoldenEye.EntityFramework 
-  
-  `dotnet add package GoldenEye.EntityFramework` 
+`dotnet add package GoldenEye`
   
 
 Where can I get it?
 --------------------------------
 Install packages from the Nuget package manager:
 
-**Core packages**:
-* [GoldenEye](src/Core/Core/Readme.md) - base classes, Repositories, Services, CRUD, helpers, extensions that will boost your development
+**Packages**:
+* [GoldenEye](src/Core/Core/Readme.md) - full DDD flow for CQRS, DDD development. Basing on [MediatR](https://github.com/jbogard/MediatR) library gives the Command, Queries, Events handling. Repositories, Services, CRUD, helpers, extensions that will boost your development
+* [GoldenEye.Marten](src/Marten/Marten/Readme.md) - extension to GoldenEye that gives possibility to use Postgres as Document Database and Event Store - thanks to Marten library
 * [GoldenEye.WebApi](src/WebApi/WebApi/Readme.md) - base classes for API development like CRUD controllers, registration helpers, and many more
 * [GoldenEye.EntityFramework](src/EntityFramework/EntityFramework/Readme.md) - extensions to GoldenEye for EntityFramework development (EF repositories, etc.)
 * [GoldenEye.Dapper](src/Dapper/Dapper/Readme.md) - extensions to GoldenEye for Dapper development (Dapper repositories, etc.)
-
-**Domain Driven Design package**:
-* [GoldenEye](src/DDD/DDD/Readme.md) - full DDD flow for CQRS, DDD development. Basing on [MediatR](https://github.com/jbogard/MediatR) library gives the Command, Queries, Events handling, routing
-
-**Document database and Event Store with Marten package**:
-* [GoldenEye.Marten](src/Marten/Marten/Readme.md) - extension to GoldenEye and GoldenEye that gives possibility to use Postgres as Document Database and Event Store - thanks to Marten library
 
 I found an issue or I have a change request
 --------------------------------
