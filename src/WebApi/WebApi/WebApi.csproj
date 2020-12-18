@@ -6,6 +6,7 @@
         <PackageId>GoldenEye.WebApi</PackageId>
         <AssemblyName>GoldenEye.WebApi</AssemblyName>
         <RootNamespace>GoldenEye.WebApi</RootNamespace>
+        <OpenApiGenerateDocumentsOnBuild>false</OpenApiGenerateDocumentsOnBuild>
     </PropertyGroup>
 
     <ItemGroup>
