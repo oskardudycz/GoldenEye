@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using FluentAssertions;
-using GoldenEye.Shared.Core.Extensions.Serialization;
+using GoldenEye.Core.Extensions.Serialization;
 using GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues;
 using GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Commands;
 using GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues.Views;
