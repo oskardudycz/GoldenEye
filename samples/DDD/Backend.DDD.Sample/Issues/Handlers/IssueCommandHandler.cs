@@ -3,8 +3,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using Backend.DDD.Sample.Contracts.Issues.Commands;
-using GoldenEye.Backend.Core.DDD.Commands;
-using GoldenEye.Backend.Core.Repositories;
+using GoldenEye.DDD.Commands;
+using GoldenEye.Core.Repositories;
 using MediatR;
 
 namespace Backend.DDD.Sample.Issues.Handlers

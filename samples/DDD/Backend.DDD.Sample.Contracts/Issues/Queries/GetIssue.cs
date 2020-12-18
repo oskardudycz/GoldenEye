@@ -1,6 +1,6 @@
 using System;
 using Backend.DDD.Sample.Contracts.Issues.Views;
-using GoldenEye.Backend.Core.DDD.Queries;
+using GoldenEye.DDD.Queries;
 
 namespace Backend.DDD.Sample.Contracts.Issues.Queries
 {

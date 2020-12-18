@@ -1,5 +1,5 @@
 using System;
-using GoldenEye.Backend.Core.DDD.Events;
+using GoldenEye.DDD.Events;
 
 namespace Backend.DDD.Sample.Contracts.Issues.Events
 {

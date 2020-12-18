@@ -3,7 +3,7 @@ using AutoMapper;
 using Backend.DDD.Sample.Contracts.Issues.Commands;
 using Backend.DDD.Sample.Contracts.Issues.Events;
 using Backend.DDD.Sample.Contracts.Issues.Views;
-using GoldenEye.Shared.Core.Mappings;
+using GoldenEye.Core.Mappings;
 using IssueContracts = Backend.DDD.Sample.Contracts.Issues;
 
 namespace Backend.DDD.Sample.Issues.Mappings
