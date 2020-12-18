@@ -159,8 +159,6 @@
             <e p="Registration.cs" t="Include" />
           </e>
           <e p="Context" t="Include">
-            <e p="ContextValuesProviderWrapper.cs" t="Include" />
-            <e p="IContextValuesProvider.cs" t="Include" />
             <e p="SaveChangesHandlers" t="Include">
               <e p="AuditInfoSaveChangesHandler.cs" t="Include" />
               <e p="Base" t="Include">
@@ -169,7 +167,6 @@
               <e p="ISaveChangesProcessor.cs" t="Include" />
               <e p="SaveChangesProcessor.cs" t="Include" />
             </e>
-            <e p="UserContext.cs" t="Include" />
           </e>
           <e p="Core.csproj" t="IncludeRecursive" />
           <e p="Entities" t="Include">
@@ -211,9 +208,6 @@
             <e p="Enums" t="Include">
               <e p="EnumExtensions.cs" t="Include" />
             </e>
-            <e p="Exceptions" t="Include">
-              <e p="ExceptionExtensions.cs" t="Include" />
-            </e>
             <e p="Lambda" t="Include">
               <e p="ExpressionExtensions.cs" t="Include" />
               <e p="ParameterRebinder.cs" t="Include" />
@@ -234,15 +228,6 @@
             <e p="Threading" t="Include">
               <e p="ThreadExtensions.cs" t="Include" />
             </e>
-          </e>
-          <e p="IOC" t="Include">
-            <e p="Attributes" t="Include">
-              <e p="InjectInRequestScopeAttribute.cs" t="Include" />
-              <e p="InjectInSingletonScopeAttribute.cs" t="Include" />
-              <e p="NotInjectedWithConventionsAttribute.cs" t="Include" />
-            </e>
-            <e p="IIOCContainer.cs" t="Include" />
-            <e p="IOCContainer.cs" t="Include" />
           </e>
           <e p="Mappings" t="Include">
             <e p="IMappingDefinition.cs" t="Include" />
@@ -288,7 +273,6 @@
               <e p="IRequest.cs" t="Include" />
               <e p="ISingleRequest.cs" t="Include" />
               <e p="ListRequest.cs" t="Include" />
-              <e p="RequestBase.cs" t="Include" />
               <e p="SingleRequest.cs" t="Include" />
             </e>
             <e p="Responses" t="Include">
@@ -298,7 +282,6 @@
               <e p="IResponse.cs" t="Include" />
               <e p="ISingleResponse.cs" t="Include" />
               <e p="ListResponse.cs" t="Include" />
-              <e p="ResponseBase.cs" t="Include" />
               <e p="SingleResponse.cs" t="Include" />
             </e>
             <e p="Versioning" t="Include">
@@ -341,7 +324,6 @@
               <e p="Encryption.cs" t="Include" />
             </e>
             <e p="Exceptions" t="Include">
-              <e p="ExceptionProvider.cs" t="Include" />
               <e p="Guard.cs" t="Include" />
               <e p="IExceptionHandler.cs" t="Include" />
               <e p="IExceptionProvider.cs" t="Include" />

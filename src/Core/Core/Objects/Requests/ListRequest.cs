@@ -5,7 +5,7 @@ namespace GoldenEye.Core.Objects.Requests
     /// <summary>
     ///     Class to send list of records from service
     /// </summary>
-    public class ListRequest<T>: RequestBase, IListRequest<T>
+    public class ListRequest<T>: IListRequest<T>
     {
         /// <summary>
         ///     Constructor

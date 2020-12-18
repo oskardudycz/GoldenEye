@@ -7,7 +7,7 @@ namespace GoldenEye.Core.Objects.Responses
     ///     Class to send list of records from service
     /// </summary>
     [DataContract]
-    public class ListResponse<T>: ResponseBase, IListResponse<T>
+    public class ListResponse<T>: IListResponse<T>
     {
         public ListResponse()
         {
