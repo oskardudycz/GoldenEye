@@ -36,13 +36,13 @@ namespace GoldenEye.Marten.Integration.Tests.Events.Storage
         {
             var userId = Guid.NewGuid();
             //Given
-            Sut.Store(userId,
+            Sut.Append(userId,
                 new UserCreated {UserId = userId, UserName = "john.sith"},
                 new UserUpdated {UserId = userId, UserName = "john.smith"}
             );
 
             var secondUserId = Guid.NewGuid();
-            Sut.Store(secondUserId,
+            Sut.Append(secondUserId,
                 new UserCreated {UserId = secondUserId, UserName = "adam.sandler"}
             );
 
