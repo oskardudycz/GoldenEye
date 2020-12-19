@@ -7,14 +7,17 @@ using GoldenEye.Repositories;
 
 namespace GoldenEye.Services
 {
-    public class CRUDService<TDto, TEntity, TRepository>: CRUDService<TDto, TEntity>
+    public class CRUDService<TDto, TEntity, TRepository, TReadonlyRepository>: CRUDService<TDto, TEntity>
         where TDto : class
         where TEntity : class, IEntity
         where TRepository : IRepository<TEntity>
+        where TReadonlyRepository: IReadonlyRepository<TEntity>
     {
         protected CRUDService(
             TRepository repository,
-            IMapper mapper): base(repository, mapper)
+            TReadonlyRepository readonlyRepository,
+            IMapper mapper
+        ): base(repository, readonlyRepository, mapper)
         {
         }
 
@@ -30,21 +33,19 @@ namespace GoldenEye.Services
     {
         protected readonly IValidator<TDto> DtoValidator;
         protected readonly IValidator<TEntity> EntityValidator;
+        protected readonly IRepository<TEntity> Repository;
 
         protected CRUDService(
             IRepository<TEntity> repository,
+            IReadonlyRepository<TEntity> readonlyRepository,
             IMapper mapper,
             IValidator<TDto> dtoValidator = null,
             IValidator<TEntity> entityValidator = null
-        ): base(repository, mapper)
+        ): base(readonlyRepository, mapper)
         {
+            Repository = repository;
             DtoValidator = dtoValidator;
             EntityValidator = entityValidator;
-        }
-
-        protected new IRepository<TEntity> Repository
-        {
-            get { return (IRepository<TEntity>)base.Repository; }
         }
 
         public virtual async Task<TDto> AddAsync(TDto dto, CancellationToken cancellationToken = default)

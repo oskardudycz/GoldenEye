@@ -14,9 +14,9 @@ namespace GoldenEye.Services
         where TRepository : IReadonlyRepository<TEntity>
     {
         protected ReadonlyService(
-            TRepository repository,
+            TRepository readonlyRepository,
             IMapper mapper
-        ): base(repository, mapper)
+        ): base(readonlyRepository, mapper)
         {
         }
     }
@@ -25,14 +25,14 @@ namespace GoldenEye.Services
         where TDto : class where TEntity : class, IEntity
     {
         protected readonly IMapper Mapper;
-        protected readonly IReadonlyRepository<TEntity> Repository;
+        protected readonly IReadonlyRepository<TEntity> ReadonlyRepository;
 
         protected ReadonlyService(
-            IReadonlyRepository<TEntity> repository,
+            IReadonlyRepository<TEntity> readonlyRepository,
             IMapper mapper
         )
         {
-            Repository = repository;
+            ReadonlyRepository = readonlyRepository;
             Mapper = mapper;
         }
 
@@ -40,12 +40,12 @@ namespace GoldenEye.Services
 
         public virtual IQueryable<TDto> Query()
         {
-            return Repository.Query().ProjectTo<TDto>(ConfigurationProvider);
+            return ReadonlyRepository.Query().ProjectTo<TDto>(ConfigurationProvider);
         }
 
         public virtual async Task<TDto> GetAsync(object id, CancellationToken cancellationToken = default)
         {
-            var entity = await Repository.GetByIdAsync(id, cancellationToken);
+            var entity = await ReadonlyRepository.GetByIdAsync(id, cancellationToken);
             return Mapper.Map<TDto>(entity);
         }
     }

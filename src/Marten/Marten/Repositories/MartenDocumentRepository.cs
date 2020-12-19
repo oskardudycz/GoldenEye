@@ -10,7 +10,10 @@ using Marten;
 
 namespace GoldenEye.Marten.Repositories
 {
-    public class MartenDocumentRepository<TEntity>: IRepository<TEntity> where TEntity : class, IHaveId
+    public class MartenDocumentRepository<TEntity>:
+        IRepository<TEntity>,
+        IReadonlyRepository<TEntity>
+        where TEntity : class, IHaveId
     {
         private readonly IDocumentSession documentSession;
 

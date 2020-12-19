@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 
-namespace GoldenEye.EntityFramework.Context
+namespace GoldenEye.EntityFramework.Repositories
 {
     public abstract class DesignTypeDbContextFactory<TDbContext>: IDesignTimeDbContextFactory<TDbContext>
         where TDbContext : DbContext

@@ -1,4 +1,4 @@
-using GoldenEye.EntityFramework.Context;
+using GoldenEye.EntityFramework.Repositories;
 using GoldenEye.Objects.General;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;

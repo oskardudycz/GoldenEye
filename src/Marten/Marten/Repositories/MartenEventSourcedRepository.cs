@@ -13,7 +13,9 @@ using Marten;
 
 namespace GoldenEye.Marten.Repositories
 {
-    public class MartenEventSourcedRepository<TEntity>: IRepository<TEntity>
+    public class MartenEventSourcedRepository<TEntity>:
+        IRepository<TEntity>,
+        IReadonlyRepository<TEntity>
         where TEntity : class, IHaveId, IEventSource, new()
     {
         private readonly IDocumentSession documentSession;

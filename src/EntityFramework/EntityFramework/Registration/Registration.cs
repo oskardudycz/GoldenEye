@@ -2,6 +2,7 @@
 using GoldenEye.EntityFramework.Migrations;
 using GoldenEye.Repositories;
 using GoldenEye.Entities;
+using GoldenEye.EntityFramework.Repositories;
 using GoldenEye.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;

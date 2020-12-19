@@ -5,8 +5,16 @@ using GoldenEye.Objects.General;
 
 namespace GoldenEye.Repositories
 {
-    public interface IRepository<TEntity>: IReadonlyRepository<TEntity> where TEntity : class, IHaveId
+    public interface IRepository<TEntity> where TEntity : class, IHaveId
     {
+        TEntity FindById(object id);
+
+        Task<TEntity> FindByIdAsync(object id, CancellationToken cancellationToken = default);
+
+        TEntity GetById(object id);
+
+        Task<TEntity> GetByIdAsync(object id, CancellationToken cancellationToken = default);
+        
         TEntity Add(TEntity entity);
 
         Task<TEntity> AddAsync(TEntity entity, CancellationToken cancellationToken);

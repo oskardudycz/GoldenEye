@@ -3,6 +3,7 @@ using FluentAssertions;
 using GoldenEye.Repositories;
 using GoldenEye.EntityFramework.Integration.Tests.Infrastructure;
 using GoldenEye.EntityFramework.Integration.Tests.TestData;
+using GoldenEye.EntityFramework.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Xunit;
