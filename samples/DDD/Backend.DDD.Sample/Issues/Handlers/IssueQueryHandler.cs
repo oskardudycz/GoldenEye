@@ -34,7 +34,7 @@ namespace Backend.DDD.Sample.Issues.Handlers
 
         public async Task<IssueViews.IssueView> Handle(GetIssue message, CancellationToken cancellationToken)
         {
-            var entity = await repository.GetByIdAsync(message.Id, cancellationToken);
+            var entity = await repository.GetById(message.Id, cancellationToken);
 
             return mapper.Map<IssueViews.IssueView>(entity);
         }

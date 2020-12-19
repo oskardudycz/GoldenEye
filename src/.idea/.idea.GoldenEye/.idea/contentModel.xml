@@ -215,6 +215,7 @@
               <e p="StringExtensions.cs" t="Include" />
             </e>
             <e p="Collections" t="Include">
+              <e p="ArrayExtensions.cs" t="Include" />
               <e p="CollectionExtensions.cs" t="Include" />
               <e p="DictionaryExtensions.cs" t="Include" />
               <e p="EnumerableExtensions.cs" t="Include" />
@@ -329,6 +330,7 @@
             <e p="InMemoryRepository.cs" t="Include" />
             <e p="IReadonlyRepository.cs" t="Include" />
             <e p="IRepository.cs" t="Include" />
+            <e p="RepositoryExtensions.cs" t="Include" />
           </e>
           <e p="Security" t="Include">
             <e p="IUserInfo.cs" t="Include" />

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Dapper;
 using Dapper.Contrib.Extensions;
 using GoldenEye.Dapper.Generators;
+using GoldenEye.Dapper.Mappings;
 using GoldenEye.Exceptions;
 using GoldenEye.Extensions.Basic;
 using GoldenEye.Objects.General;
@@ -26,40 +27,21 @@ namespace GoldenEye.Dapper.Repositories
             this.dapperSqlGenerator = dapperSqlGenerator;
         }
 
-
-        public TEntity FindById(object id)
+        public async Task<TEntity> FindById(object id, CancellationToken cancellationToken = default)
         {
             if (id == null)
-                throw new ArgumentNullException("Id needs to have value");
-
-            var sql = dapperSqlGenerator?.GetById<TEntity>(id);
-
-            return !sql.IsNullOrEmpty()
-                ? dbConnection.QuerySingleOrDefault<TEntity>(sql, new {Id = id})
-                : dbConnection.Get<TEntity>(id);
-        }
-
-        public async Task<TEntity> FindByIdAsync(object id, CancellationToken cancellationToken = default)
-        {
-            if (id == null)
-                throw new ArgumentNullException("Id needs to have value");
-
+                throw new ArgumentNullException(nameof(id), "Id needs to have value");
 
             var sql = dapperSqlGenerator?.GetById<TEntity>(id);
 
             if (!sql.IsNullOrEmpty())
                 return (await dbConnection.QuerySingleOrDefaultAsync<TEntity>(sql, new {Id = id}));
+
             return await dbConnection.GetAsync<TEntity>(id);
         }
-
-        public TEntity GetById(object id)
+        public async Task<TEntity> GetById(object id, CancellationToken cancellationToken = default)
         {
-            return FindById(id) ?? throw NotFoundException.For<TEntity>(id);
-        }
-
-        public async Task<TEntity> GetByIdAsync(object id, CancellationToken cancellationToken = default)
-        {
-            var entity = await FindByIdAsync(id, cancellationToken);
+            var entity = await FindById(id, cancellationToken);
 
             return entity ?? throw NotFoundException.For<TEntity>(id);
         }
@@ -73,19 +55,8 @@ namespace GoldenEye.Dapper.Repositories
                 : dbConnection.GetAll<TEntity>().AsQueryable();
         }
 
-        public IReadOnlyCollection<TEntity> Query(string query, params object[] queryParams)
-        {
-            if (query == null)
-                throw new ArgumentNullException(nameof(query));
-
-            if (queryParams == null)
-                throw new ArgumentNullException(nameof(queryParams));
-
-            return dbConnection.Query<TEntity>(query, queryParams.First()).ToList();
-        }
-
-        public async Task<IReadOnlyCollection<TEntity>> QueryAsync(string query,
-            CancellationToken cancellationToken = default, params object[] queryParams)
+        public async Task<IReadOnlyCollection<TEntity>> RawQuery(string query,
+            CancellationToken cancellationToken, params object[] queryParams)
         {
             if (query == null)
                 throw new ArgumentNullException(nameof(query));
@@ -96,22 +67,7 @@ namespace GoldenEye.Dapper.Repositories
             return (await dbConnection.QueryAsync<TEntity>(query, queryParams.First())).ToList();
         }
 
-        public TEntity Add(TEntity entity)
-        {
-            if (entity == null)
-                throw new ArgumentNullException(nameof(entity));
-
-            var sql = dapperSqlGenerator?.Add(entity);
-
-            if (!sql.IsNullOrEmpty())
-                dbConnection.Execute(sql, entity);
-            else
-                dbConnection.Insert(entity);
-
-            return entity;
-        }
-
-        public async Task<TEntity> AddAsync(TEntity entity, CancellationToken cancellationToken)
+        public async Task<TEntity> Add(TEntity entity, CancellationToken cancellationToken = default)
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
@@ -126,37 +82,11 @@ namespace GoldenEye.Dapper.Repositories
             return entity;
         }
 
-        public IReadOnlyCollection<TEntity> AddAll(params TEntity[] entities)
-        {
-            return entities.Select(Add).ToList();
-        }
-
-        public async Task<IReadOnlyCollection<TEntity>> AddAllAsync(CancellationToken cancellationToken = default,
-            params TEntity[] entities)
-        {
-            var result = new List<TEntity>();
-            foreach (var entity in entities) result.Add(await AddAsync(entity, cancellationToken));
-
-            return result;
-        }
-
-        public TEntity Update(TEntity entity)
+        public async Task<TEntity> Update(TEntity entity, CancellationToken cancellationToken = default)
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
 
-            var sql = dapperSqlGenerator?.Update(entity);
-
-            if (!sql.IsNullOrEmpty())
-                dbConnection.Execute(sql, entity);
-            else
-                dbConnection.Update(entity);
-
-            return entity;
-        }
-
-        public async Task<TEntity> UpdateAsync(TEntity entity, CancellationToken cancellationToken = default)
-        {
             var sql = dapperSqlGenerator?.Update(entity);
 
             if (!sql.IsNullOrEmpty())
@@ -167,21 +97,7 @@ namespace GoldenEye.Dapper.Repositories
             return entity;
         }
 
-        public TEntity Delete(TEntity entity)
-        {
-            if (entity == null)
-                throw new ArgumentNullException(nameof(entity));
-
-            var sql = dapperSqlGenerator?.Delete(entity);
-
-            if (!sql.IsNullOrEmpty())
-                dbConnection.Execute(sql, entity);
-            else
-                dbConnection.Delete(entity);
-            return entity;
-        }
-
-        public async Task<TEntity> DeleteAsync(TEntity entity, CancellationToken cancellationToken = default)
+        public async Task<TEntity> Delete(TEntity entity, CancellationToken cancellationToken = default)
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
@@ -192,25 +108,11 @@ namespace GoldenEye.Dapper.Repositories
                 await dbConnection.ExecuteAsync(sql, entity);
             else
                 await dbConnection.DeleteAsync(entity);
+
             return entity;
         }
 
-        public bool DeleteById(object id)
-        {
-            if (id == null)
-                throw new ArgumentNullException(nameof(id));
-
-            var sql = dapperSqlGenerator?.Delete(id);
-
-            if (!sql.IsNullOrEmpty())
-                dbConnection.Execute(sql, id);
-            else
-                throw new NotImplementedException();
-
-            return true;
-        }
-
-        public async Task<bool> DeleteByIdAsync(object id, CancellationToken cancellationToken = default)
+        public async Task<bool> DeleteById(object id, CancellationToken cancellationToken = default)
         {
             if (id == null)
                 throw new ArgumentNullException(nameof(id));
@@ -220,17 +122,12 @@ namespace GoldenEye.Dapper.Repositories
             if (!sql.IsNullOrEmpty())
                 await dbConnection.ExecuteAsync(sql, id);
             else
-                throw new NotImplementedException();
+                throw new NotImplementedException($"{nameof(DeleteById)} by convention is not supported - please provide sql script through {nameof(IDapperMapping)}");
 
             return true;
         }
 
-        public void SaveChanges()
-        {
-            //TODO: Add UnitOfWork
-        }
-
-        public Task SaveChangesAsync(CancellationToken cancellationToken = default)
+        public Task SaveChanges(CancellationToken cancellationToken = default)
         {
             //TODO: Add UnitOfWork
             return Task.CompletedTask;

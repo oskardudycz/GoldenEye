@@ -28,8 +28,8 @@ namespace Backend.DDD.Sample.Issues.Handlers
         {
             var aggregate = mapper.Map<Issue>(message);
 
-            await repository.AddAsync(aggregate, cancellationToken);
-            await repository.SaveChangesAsync(cancellationToken);
+            await repository.Add(aggregate, cancellationToken);
+            await repository.SaveChanges(cancellationToken);
 
             return Unit.Value;
         }

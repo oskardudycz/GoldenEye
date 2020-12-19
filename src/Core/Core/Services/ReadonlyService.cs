@@ -43,9 +43,9 @@ namespace GoldenEye.Services
             return ReadonlyRepository.Query().ProjectTo<TDto>(ConfigurationProvider);
         }
 
-        public virtual async Task<TDto> GetAsync(object id, CancellationToken cancellationToken = default)
+        public virtual async Task<TDto> Get(object id, CancellationToken cancellationToken = default)
         {
-            var entity = await ReadonlyRepository.GetByIdAsync(id, cancellationToken);
+            var entity = await ReadonlyRepository.GetById(id, cancellationToken);
             return Mapper.Map<TDto>(entity);
         }
     }

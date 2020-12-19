@@ -48,7 +48,7 @@ namespace GoldenEye.Services
             EntityValidator = entityValidator;
         }
 
-        public virtual async Task<TDto> AddAsync(TDto dto, CancellationToken cancellationToken = default)
+        public virtual async Task<TDto> Add(TDto dto, CancellationToken cancellationToken = default)
         {
             await ValidateAsync(dto, cancellationToken);
 
@@ -56,43 +56,43 @@ namespace GoldenEye.Services
 
             await ValidateAsync(entity, cancellationToken);
 
-            var added = Repository.AddAsync(entity, cancellationToken);
+            var added = Repository.Add(entity, cancellationToken);
 
-            await Repository.SaveChangesAsync(cancellationToken);
+            await Repository.SaveChanges(cancellationToken);
 
             return Mapper.Map<TDto>(added);
         }
 
-        public virtual async Task<TDto> UpdateAsync(object id, TDto dto, CancellationToken cancellationToken = default)
+        public virtual async Task<TDto> Update(object id, TDto dto, CancellationToken cancellationToken = default)
         {
             await ValidateAsync(dto, cancellationToken);
 
-            var fromDb = await Repository.GetByIdAsync(id, cancellationToken);
+            var fromDb = await Repository.GetById(id, cancellationToken);
 
             var entity = Mapper.Map(dto, fromDb);
 
             await ValidateAsync(entity, cancellationToken);
 
-            var updated = await Repository.UpdateAsync(entity, cancellationToken);
+            var updated = await Repository.Update(entity, cancellationToken);
 
-            await Repository.SaveChangesAsync(cancellationToken);
+            await Repository.SaveChanges(cancellationToken);
 
             return Mapper.Map<TDto>(updated);
         }
 
-        public virtual Task<bool> DeleteAsync(object id, CancellationToken cancellationToken = default)
+        public virtual Task<bool> Delete(object id, CancellationToken cancellationToken = default)
         {
-            return Repository.DeleteByIdAsync(id, cancellationToken);
+            return Repository.DeleteById(id, cancellationToken);
         }
 
         private async Task ValidateAsync(TDto dto, CancellationToken cancellationToken)
         {
-            await DtoValidator?.ValidateAsync(dto, null, cancellationToken);
+            await (DtoValidator?.ValidateAsync(dto, null, cancellationToken) ?? Task.CompletedTask);
         }
 
         private async Task ValidateAsync(TEntity entity, CancellationToken cancellationToken)
         {
-            await EntityValidator?.ValidateAsync(entity, null, cancellationToken);
+            await (EntityValidator?.ValidateAsync(entity, null, cancellationToken) ?? Task.CompletedTask);
         }
     }
 }
