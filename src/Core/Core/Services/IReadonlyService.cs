@@ -8,6 +8,6 @@ namespace GoldenEye.Services
     {
         IQueryable<TDto> Query();
 
-        Task<TDto> GetAsync(object id, CancellationToken cancellationToken = default);
+        Task<TDto> Get(object id, CancellationToken cancellationToken = default);
     }
 }

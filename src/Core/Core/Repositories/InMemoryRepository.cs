@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9,72 +10,32 @@ namespace GoldenEye.Repositories
     public class InMemoryRepository<TEntity>: InMemoryReadonlyRepository<TEntity>, IRepository<TEntity>
         where TEntity : class, IHaveId
     {
-        public TEntity Add(TEntity entity)
+        public Task<TEntity> Add(TEntity entity, CancellationToken cancellationToken)
         {
             Context.Add(entity);
-
-            return entity;
+            return Task.FromResult(entity);
         }
 
-        public Task<TEntity> AddAsync(TEntity entity, CancellationToken cancellationToken)
-        {
-            return Task.FromResult(Add(entity));
-        }
-
-        public IReadOnlyCollection<TEntity> AddAll(params TEntity[] entities)
-        {
-            Context.AddRange(entities);
-
-            return entities;
-        }
-
-        public Task<IReadOnlyCollection<TEntity>> AddAllAsync(CancellationToken cancellationToken = default,
-            params TEntity[] entities)
-        {
-            return Task.FromResult(AddAll(entities));
-        }
-
-        public TEntity Update(TEntity entity)
+        public Task<TEntity> Update(TEntity entity, CancellationToken cancellationToken)
         {
             Context.Replace(entity);
-
-            return entity;
+            return Task.FromResult(entity);
         }
 
-        public Task<TEntity> UpdateAsync(TEntity entity, CancellationToken cancellationToken)
-        {
-            return Task.FromResult(Update(entity));
-        }
-
-        public TEntity Delete(TEntity entity)
+        public Task<TEntity> Delete(TEntity entity, CancellationToken cancellationToken)
         {
             Context.RemoveById(entity.Id);
-
-            return entity;
+            return Task.FromResult(entity);
         }
 
-        public Task<TEntity> DeleteAsync(TEntity entity, CancellationToken cancellationToken)
-        {
-            return Task.FromResult(Delete(entity));
-        }
-
-        public bool DeleteById(object id)
+        public Task<bool> DeleteById(object id, CancellationToken cancellationToken)
         {
             Context.RemoveById(id);
 
-            return true;
+            return Task.FromResult(true);
         }
 
-        public Task<bool> DeleteByIdAsync(object id, CancellationToken cancellationToken)
-        {
-            return Task.FromResult(DeleteById(id));
-        }
-
-        public void SaveChanges()
-        {
-        }
-
-        public Task SaveChangesAsync(CancellationToken cancellationToken = default)
+        public Task SaveChanges(CancellationToken cancellationToken = default)
         {
             return Task.CompletedTask;
         }

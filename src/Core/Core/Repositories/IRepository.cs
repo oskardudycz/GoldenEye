@@ -7,37 +7,18 @@ namespace GoldenEye.Repositories
 {
     public interface IRepository<TEntity> where TEntity : class, IHaveId
     {
-        TEntity FindById(object id);
+        Task<TEntity> FindById(object id, CancellationToken cancellationToken = default);
 
-        Task<TEntity> FindByIdAsync(object id, CancellationToken cancellationToken = default);
+        Task<TEntity> GetById(object id, CancellationToken cancellationToken = default);
 
-        TEntity GetById(object id);
+        Task<TEntity> Add(TEntity entity, CancellationToken cancellationToken = default);
 
-        Task<TEntity> GetByIdAsync(object id, CancellationToken cancellationToken = default);
-        
-        TEntity Add(TEntity entity);
+        Task<TEntity> Update(TEntity entity, CancellationToken cancellationToken = default);
 
-        Task<TEntity> AddAsync(TEntity entity, CancellationToken cancellationToken);
+        Task<TEntity> Delete(TEntity entity, CancellationToken cancellationToken = default);
 
-        IReadOnlyCollection<TEntity> AddAll(params TEntity[] entities);
+        Task<bool> DeleteById(object id, CancellationToken cancellationToken = default);
 
-        Task<IReadOnlyCollection<TEntity>> AddAllAsync(CancellationToken cancellationToken = default,
-            params TEntity[] entities);
-
-        TEntity Update(TEntity entity);
-
-        Task<TEntity> UpdateAsync(TEntity entity, CancellationToken cancellationToken = default);
-
-        TEntity Delete(TEntity entity);
-
-        Task<TEntity> DeleteAsync(TEntity entity, CancellationToken cancellationToken = default);
-
-        bool DeleteById(object id);
-
-        Task<bool> DeleteByIdAsync(object id, CancellationToken cancellationToken = default);
-
-        void SaveChanges();
-
-        Task SaveChangesAsync(CancellationToken cancellationToken = default);
+        Task SaveChanges(CancellationToken cancellationToken = default);
     }
 }

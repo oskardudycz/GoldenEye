@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Threading.Tasks;
 using FluentAssertions;
 using GoldenEye.Repositories;
 using GoldenEye.EntityFramework.Integration.Tests.Infrastructure;
@@ -13,7 +14,7 @@ namespace GoldenEye.EntityFramework.Integration.Tests.Repositories
     public class EntityFrameworkRepositoryTests: EntityFrameworkTest
     {
         [Fact(Skip = "somehow it does not work on AppVeyor")]
-        public void GivenRepository_WhenFullCRUDFlowIsRun_ThenSucceed()
+        public async Task GivenRepository_WhenFullCRUDFlowIsRun_ThenSucceed()
         {
             var builder = new DbContextOptionsBuilder<UsersDbContext>();
             builder.UseNpgsql(ConnectionString,
@@ -21,18 +22,18 @@ namespace GoldenEye.EntityFramework.Integration.Tests.Repositories
                     HistoryRepository.DefaultTableName,
                     SchemaName));
 
-            User user = null;
-            using (var dbContext = new UsersDbContext(builder.Options))
+            User user;
+            await using (var dbContext = new UsersDbContext(builder.Options))
             {
                 var repository = new EntityFrameworkRepository<UsersDbContext, User>(dbContext);
 
-                dbContext.Database.Migrate();
+                await dbContext.Database.MigrateAsync();
 
                 user = new User {Id = 0, UserName = "john.doe@mail.com", FullName = null};
 
                 //1. Add
-                var result = repository.Add(user);
-                repository.SaveChanges();
+                var result = await repository.Add(user);
+                await repository.SaveChanges();
 
                 result.Should().NotBe(null);
                 result.Id.Should().BeGreaterThan(0);
@@ -41,63 +42,62 @@ namespace GoldenEye.EntityFramework.Integration.Tests.Repositories
             }
             //2. GetById
 
-            using (var dbContext = new UsersDbContext(builder.Options))
+            await using (var dbContext = new UsersDbContext(builder.Options))
             {
                 var repository = new EntityFrameworkRepository<UsersDbContext, User>(dbContext);
 
-                var recordFromDb = repository.FindById(user.Id);
+                var recordFromDb = await repository.FindById(user.Id);
 
                 recordFromDb.Should().BeEquivalentTo(user);
             }
 
             //3. Update
-            using (var dbContext = new UsersDbContext(builder.Options))
+            await using (var dbContext = new UsersDbContext(builder.Options))
             {
                 var repository = new EntityFrameworkRepository<UsersDbContext, User>(dbContext);
 
                 var userToUpdate = new User {Id = user.Id, UserName = "tom.smith@mail.com", FullName = "Tom Smith"};
 
                 repository = new EntityFrameworkRepository<UsersDbContext, User>(dbContext);
-                var result = repository.Update(userToUpdate);
-                repository.SaveChanges();
+                var result = await repository.Update(userToUpdate);
+                await repository.SaveChanges();
 
                 result.Should().NotBe(null);
                 result.Id.Should().Be(user.Id);
                 result.UserName.Should().Be("tom.smith@mail.com");
                 result.FullName.Should().Be("Tom Smith");
 
-                var recordFromDb = repository.FindById(userToUpdate.Id);
+                var recordFromDb = await repository.FindById(userToUpdate.Id);
 
                 recordFromDb.Should().BeEquivalentTo(result);
             }
 
-
-
             //4. Remove
-            using (var dbContext = new UsersDbContext(builder.Options))
+            await using (var dbContext = new UsersDbContext(builder.Options))
             {
                 var repository = new EntityFrameworkRepository<UsersDbContext, User>(dbContext);
 
-                var result = repository.DeleteById(user.Id);
-                repository.SaveChanges();
+                var result = await repository.DeleteById(user.Id);
+                await repository.SaveChanges();
 
                 result.Should().BeTrue();
 
-                var recordFromDb = repository.FindById(user.Id);
+                var recordFromDb = await repository.FindById(user.Id);
 
                 recordFromDb.Should().Be(null);
             }
             //5. Add Range
-            using (var dbContext = new UsersDbContext(builder.Options))
+            await using (var dbContext = new UsersDbContext(builder.Options))
             {
                 var repository = new EntityFrameworkRepository<UsersDbContext, User>(dbContext);
 
-                var results = repository.AddAll(
+                var results = (await repository.AddAll(
+                    default,
                     new User {UserName = "anna.frank@mail.com"},
                     new User {UserName = "anna.young@mail.com"},
                     new User {UserName = "anna.old@mail.com"}
-                )?.ToList();
-                repository.SaveChanges();
+                ))?.ToList();
+                await repository.SaveChanges();
 
                 results.Should().NotBeNull();
                 results.Should().HaveCount(3);
@@ -116,7 +116,7 @@ namespace GoldenEye.EntityFramework.Integration.Tests.Repositories
 
                 //6. Query
 
-                var queryResults = repository.Query().ToList();
+                var queryResults = await repository.Query().ToListAsync();
 
                 queryResults.Should().Contain(x => results.Select(u => u.Id).Contains(x.Id));
 

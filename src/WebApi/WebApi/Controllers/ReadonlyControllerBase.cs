@@ -26,7 +26,7 @@ namespace GoldenEye.WebApi.Controllers
 
         public virtual async Task<IActionResult> Get(object id)
         {
-            var dto = await Service.GetAsync(id);
+            var dto = await Service.Get(id);
             if (dto == null) return NotFound();
 
             return Ok(dto);

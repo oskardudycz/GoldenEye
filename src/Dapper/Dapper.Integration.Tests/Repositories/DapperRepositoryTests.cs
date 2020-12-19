@@ -1,8 +1,10 @@
 using System.Linq;
+using System.Threading.Tasks;
 using FluentAssertions;
 using GoldenEye.Dapper.Integration.Tests.Infrastructure;
 using GoldenEye.Dapper.Integration.Tests.TestData;
 using GoldenEye.Dapper.Repositories;
+using GoldenEye.Repositories;
 using Xunit;
 
 namespace GoldenEye.Dapper.Integration.Tests.Repositories
@@ -10,7 +12,7 @@ namespace GoldenEye.Dapper.Integration.Tests.Repositories
     public class DapperRepositoryTests: DapperTest
     {
         [Fact]
-        public void GivenRepository_WhenFullCRUDFlowIsRun_ThenSucceed()
+        public async Task GivenRepository_WhenFullCRUDFlowIsRun_ThenSucceed()
         {
             Execute(Structure.UsersCreateSql);
 
@@ -19,7 +21,7 @@ namespace GoldenEye.Dapper.Integration.Tests.Repositories
             var user = new User {Id = 0, UserName = "john.doe@mail.com", FullName = null};
 
             //1. Add
-            var result = repository.Add(user);
+            var result = await repository.Add(user);
 
             result.Should().NotBe(null);
             result.Id.Should().BeGreaterThan(0);
@@ -28,43 +30,44 @@ namespace GoldenEye.Dapper.Integration.Tests.Repositories
 
             //2. GetById
 
-            var recordFromDb = repository.FindById(user.Id);
+            var recordFromDb = await repository.FindById(user.Id);
 
             recordFromDb.Should().BeEquivalentTo(result);
 
             //3. Update
             var userToUpdate = new User {Id = user.Id, UserName = "tom.smith@mail.com", FullName = "Tom Smith"};
 
-            result = repository.Update(userToUpdate);
+            result = await repository.Update(userToUpdate);
 
             result.Should().NotBe(null);
             result.Id.Should().Be(user.Id);
             result.UserName.Should().Be("tom.smith@mail.com");
             result.FullName.Should().Be("Tom Smith");
 
-            recordFromDb = repository.FindById(userToUpdate.Id);
+            recordFromDb = await repository.FindById(userToUpdate.Id);
 
             recordFromDb.Should().BeEquivalentTo(result);
 
             //4. Remove
-            result = repository.Delete(userToUpdate);
+            result = await repository.Delete(userToUpdate);
 
             result.Should().NotBe(null);
             result.Id.Should().Be(user.Id);
             result.UserName.Should().Be("tom.smith@mail.com");
             result.FullName.Should().Be("Tom Smith");
 
-            recordFromDb = repository.FindById(userToUpdate.Id);
+            recordFromDb = await repository.FindById(userToUpdate.Id);
 
             recordFromDb.Should().Be(null);
 
             //5. Add Range
 
-            var results = repository.AddAll(
+            var results = (await repository.AddAll(
+                default,
                 new User {UserName = "anna.frank@mail.com"},
                 new User {UserName = "anna.young@mail.com"},
                 new User {UserName = "anna.old@mail.com"}
-            )?.ToList();
+            ))?.ToList();
 
             results.Should().NotBeNull();
             results.Should().HaveCount(3);

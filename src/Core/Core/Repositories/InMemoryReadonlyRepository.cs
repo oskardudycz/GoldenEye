@@ -10,31 +10,16 @@ namespace GoldenEye.Repositories
 {
     public class InMemoryReadonlyRepository<TEntity>: IReadonlyRepository<TEntity> where TEntity : class, IHaveId
     {
-        protected readonly IList<TEntity> Context;
+        protected readonly IList<TEntity> Context = new List<TEntity>();
 
-        public InMemoryReadonlyRepository()
+        public virtual Task<TEntity> FindById(object id, CancellationToken cancellationToken = default)
         {
-            Context = new List<TEntity>();
+            return Task.FromResult(Context.SingleOrDefault(r => r.Id == id));
         }
 
-        public virtual TEntity FindById(object id)
+        public virtual async Task<TEntity> GetById(object id, CancellationToken cancellationToken = default)
         {
-            return Context.SingleOrDefault(r => r.Id == id);
-        }
-
-        public virtual Task<TEntity> FindByIdAsync(object id, CancellationToken cancellationToken = default)
-        {
-            return Task.FromResult(FindById(id));
-        }
-
-        public virtual TEntity GetById(object id)
-        {
-            return FindById(id) ?? throw NotFoundException.For<TEntity>(id);
-        }
-
-        public virtual Task<TEntity> GetByIdAsync(object id, CancellationToken cancellationToken = default)
-        {
-            return Task.FromResult(GetById(id));
+            return await FindById(id, cancellationToken) ?? throw NotFoundException.For<TEntity>(id);
         }
 
         public virtual IQueryable<TEntity> Query()
@@ -42,13 +27,7 @@ namespace GoldenEye.Repositories
             return Context.AsQueryable();
         }
 
-        public IReadOnlyCollection<TEntity> Query(string query, params object[] queryParams)
-        {
-            throw new NotImplementedException(
-                $"Custom query is not supported for {typeof(InMemoryReadonlyRepository<>).Name}");
-        }
-
-        public Task<IReadOnlyCollection<TEntity>> QueryAsync(string query,
+        public Task<IReadOnlyCollection<TEntity>> RawQuery(string query,
             CancellationToken cancellationToken = default, params object[] queryParams)
         {
             throw new NotImplementedException(

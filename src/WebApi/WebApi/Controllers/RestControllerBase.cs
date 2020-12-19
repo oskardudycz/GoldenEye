@@ -21,7 +21,7 @@ namespace GoldenEye.WebApi.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var result = await Service.UpdateAsync(id, dto);
+            var result = await Service.Update(id, dto);
 
             return Ok(result);
         }
@@ -31,14 +31,14 @@ namespace GoldenEye.WebApi.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var result = await Service.AddAsync(dto);
+            var result = await Service.Add(dto);
 
             return Ok(result);
         }
 
         public async Task<IActionResult> Delete(object id)
         {
-            await Service.DeleteAsync(id);
+            await Service.Delete(id);
 
             return NoContent();
         }

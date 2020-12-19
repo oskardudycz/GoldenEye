@@ -5,12 +5,8 @@ using GoldenEye.WebApi.Template.SimpleDDD.Contracts.Issues;
 
 namespace GoldenEye.WebApi.Template.SimpleDDD.Backend.Issues
 {
-    public class Issue: IAggregate
+    public class Issue: Aggregate
     {
-        public Issue()
-        {
-        }
-
         public Issue(Guid id, IssueType type, string title, string description)
         {
             Id = id;
@@ -19,14 +15,11 @@ namespace GoldenEye.WebApi.Template.SimpleDDD.Backend.Issues
             Description = description;
         }
 
-        public IssueType Type { get; set; }
+        public IssueType Type { get; private set; }
 
-        public string Title { get; set; }
+        public string Title { get; private set; }
 
-        public string Description { get; set; }
-        object IHaveId.Id => Id;
-
-        public Guid Id { get; set; }
+        public string Description { get; private set; }
 
         public void Update(IssueType type, string title, string description)
         {
