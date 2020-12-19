@@ -154,6 +154,7 @@
       <e p="Core" t="Include">
         <e p="Core" t="IncludeRecursive">
           <e p="Aggregates" t="Include">
+            <e p="Aggregate.cs" t="Include" />
             <e p="IAggregate.cs" t="Include" />
           </e>
           <e p="bin" t="ExcludeRecursive" />
@@ -181,7 +182,7 @@
           <e p="Core.csproj" t="IncludeRecursive" />
           <e p="Entities" t="Include">
             <e p="AuditableEntity.cs" t="Include" />
-            <e p="EntityBase.cs" t="Include" />
+            <e p="Entity.cs" t="Include" />
             <e p="EntityEntry.cs" t="Include" />
             <e p="IAuditableEntity.cs" t="Include" />
             <e p="IEntity.cs" t="Include" />
@@ -189,7 +190,6 @@
           </e>
           <e p="Events" t="Include">
             <e p="EventBus.cs" t="Include" />
-            <e p="EventSource.cs" t="Include" />
             <e p="IEvent.cs" t="Include" />
             <e p="IEventBus.cs" t="Include" />
             <e p="IEventHandler.cs" t="Include" />

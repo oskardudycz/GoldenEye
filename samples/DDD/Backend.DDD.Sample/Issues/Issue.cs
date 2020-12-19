@@ -5,7 +5,7 @@ using GoldenEye.Objects.General;
 
 namespace Backend.DDD.Sample.Issues
 {
-    public class Issue: IEntity
+    public class Issue: Entity
     {
         public Issue()
         {
@@ -18,13 +18,10 @@ namespace Backend.DDD.Sample.Issues
             Title = title;
         }
 
-        public Guid Id { get; set; }
-
         public IssueType Type { get; set; }
 
         public string Title { get; set;  }
 
         public string Description { get; set; }
-        object IHaveId.Id => Id;
     }
 }

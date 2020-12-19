@@ -1,10 +1,14 @@
 using System;
-using GoldenEye.Objects.General;
+using GoldenEye.Entities;
+using GoldenEye.Events;
 
 namespace GoldenEye.Aggregates
 {
-    public interface IAggregate<TKey>: IHaveId<TKey>
+    public interface IAggregate<out TKey>: IEntity<TKey>
     {
+        int Version { get; }
+
+        IEvent[] DequeueUncommittedEvents();
     }
 
     public interface IAggregate: IAggregate<Guid>

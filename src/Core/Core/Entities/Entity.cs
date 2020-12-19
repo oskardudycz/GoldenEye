@@ -1,14 +1,19 @@
+using System;
 using GoldenEye.Objects.General;
 
 namespace GoldenEye.Entities
 {
-    public class EntityBase: IEntity
+    public class Entity<TKey>: IEntity<TKey>
     {
-        public virtual int Id { get; set; }
+        public virtual TKey Id { get; set; }
 
         object IHaveId.Id
         {
             get { return Id; }
         }
+    }
+
+    public class Entity: Entity<Guid>
+    {
     }
 }
