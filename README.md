@@ -3,7 +3,7 @@
 # GoldenEye
 
 ![Twitter Follow](https://img.shields.io/twitter/follow/oskar_at_net?style=social) [![Join the chat at https://gitter.im/oskardudycz/GoldenEye](https://badges.gitter.im/oskardudycz/GoldenEye.svg)](https://gitter.im/oskardudycz/GoldenEye?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Build status](https://ci.appveyor.com/api/projects/status/1mtm4h33cvur6kob/branch/main?svg=true)](https://ci.appveyor.com/project/oskardudycz/goldeneye-core/branch/main)
+[![Build status](https://ci.appveyor.com/api/projects/status/1mtm4h33cvur6kob/branch/main?svg=true)](https://ci.appveyor.com/project/oskardudycz/goldeneye-core/branch/main) [![blog](https://img.shields.io/badge/blog-event--driven.io-brightgreen)](https://event-driven.io/)
 
 What is GoldenEye?
 --------------------------------
@@ -62,4 +62,4 @@ Support
 👉 [Github Sponsors](https://github.com/sponsors/oskardudycz) 
 
 
-**GoldenEye** is Copyright &copy; 2015-2020 [Oskar Dudycz](http://oskar-dudycz.pl) and other contributors under the [MIT license](LICENSE.txt).
+**GoldenEye** is Copyright &copy; 2015-2020 [Oskar Dudycz](https://event-driven.io) and other contributors under the [MIT license](LICENSE.txt).
