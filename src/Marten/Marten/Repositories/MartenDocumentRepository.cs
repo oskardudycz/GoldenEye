@@ -81,6 +81,11 @@ namespace GoldenEye.Marten.Repositories
             return Task.FromResult(entity);
         }
 
+        public Task<TEntity> Update(TEntity entity, object expectedVersion, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<TEntity> Delete(TEntity entity, CancellationToken cancellationToken = default)
         {
             if (entity == null)
@@ -89,6 +94,11 @@ namespace GoldenEye.Marten.Repositories
             documentSession.Delete(entity);
 
             return Task.FromResult(entity);
+        }
+
+        public Task<TEntity> Delete(TEntity entity, object expectedVersion, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
         }
 
         public Task<bool> DeleteById(object id, CancellationToken cancellationToken = default)
@@ -113,6 +123,11 @@ namespace GoldenEye.Marten.Repositories
             }
 
             return Task.FromResult(true);
+        }
+
+        public Task<bool> DeleteById(object id, object expectedVersion, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
         }
 
         public Task SaveChanges(CancellationToken cancellationToken = default)

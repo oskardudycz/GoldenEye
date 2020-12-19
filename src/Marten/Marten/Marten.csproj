@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFrameworks>netstandard2.1;net5.0</TargetFrameworks>
-        <Version>1.0.0-alpha.5</Version>
+        <Version>1.0.0-alpha.6</Version>
         <PackageId>GoldenEye.Marten</PackageId>
         <AssemblyName>GoldenEye.Marten</AssemblyName>
         <RootNamespace>GoldenEye.Marten</RootNamespace>

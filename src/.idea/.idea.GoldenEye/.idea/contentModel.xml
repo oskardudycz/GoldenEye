@@ -306,6 +306,7 @@
               <e p="IResponse.cs" t="Include" />
               <e p="ISingleResponse.cs" t="Include" />
               <e p="ListResponse.cs" t="Include" />
+              <e p="PagedResponse.cs" t="Include" />
               <e p="SingleResponse.cs" t="Include" />
             </e>
             <e p="Versioning" t="Include">

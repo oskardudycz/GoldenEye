@@ -97,6 +97,11 @@ namespace GoldenEye.Dapper.Repositories
             return entity;
         }
 
+        public Task<TEntity> Update(TEntity entity, object expectedVersion, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<TEntity> Delete(TEntity entity, CancellationToken cancellationToken = default)
         {
             if (entity == null)
@@ -112,6 +117,11 @@ namespace GoldenEye.Dapper.Repositories
             return entity;
         }
 
+        public Task<TEntity> Delete(TEntity entity, object expectedVersion, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<bool> DeleteById(object id, CancellationToken cancellationToken = default)
         {
             if (id == null)
@@ -125,6 +135,11 @@ namespace GoldenEye.Dapper.Repositories
                 throw new NotImplementedException($"{nameof(DeleteById)} by convention is not supported - please provide sql script through {nameof(IDapperMapping)}");
 
             return true;
+        }
+
+        public Task<bool> DeleteById(object id, object expectedVersion, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
         }
 
         public Task SaveChanges(CancellationToken cancellationToken = default)

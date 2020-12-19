@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using GoldenEye.Aggregates;
 using GoldenEye.Extensions.Collections;
 using GoldenEye.Objects.General;
+using MediatR;
 
 namespace GoldenEye.Repositories
 {
@@ -30,6 +32,23 @@ namespace GoldenEye.Repositories
                 result.Add(await repository.Add(entity, cancellationToken));
             }
             return result;
+        }
+
+        public static async Task<Unit> GetAndUpdate<TEntity>(
+            this IRepository<TEntity> repository,
+            Guid id,
+            Action<TEntity> action,
+            CancellationToken cancellationToken = default
+        )
+            where TEntity : class, IHaveId
+        {
+            var entity = await repository.GetById(id, cancellationToken);
+
+            action(entity);
+
+            await repository.Update(entity, cancellationToken);
+
+            return Unit.Value;
         }
     }
 }

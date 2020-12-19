@@ -77,6 +77,11 @@ namespace GoldenEye.EntityFramework.Repositories
             return Task.FromResult(entry.Entity);
         }
 
+        public Task<TEntity> Update(TEntity entity, object expectedVersion, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<TEntity> Delete(TEntity entity, CancellationToken cancellationToken = default)
         {
             if (entity == null)
@@ -87,11 +92,21 @@ namespace GoldenEye.EntityFramework.Repositories
             return Task.FromResult(entry.Entity);
         }
 
+        public Task<TEntity> Delete(TEntity entity, object expectedVersion, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<bool> DeleteById(object id, CancellationToken cancellationToken = default)
         {
             await Delete(await GetById(id, cancellationToken), cancellationToken);
 
             return true;
+        }
+
+        public Task<bool> DeleteById(object id, object expectedVersion, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
         }
 
         public Task SaveChanges(CancellationToken cancellationToken = default)
