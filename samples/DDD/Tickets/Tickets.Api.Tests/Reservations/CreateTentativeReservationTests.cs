@@ -59,9 +59,9 @@ namespace Tickets.Api.Tests.Reservations
             createdId.Should().NotBeEmpty();
         }
 
-        [Fact]
+        [Fact(Skip = "Add decorator in Add to publish event to internal bus")]
         [Trait("Category", "Exercise")]
-        public async Task CreateCommand_ShouldPublish_MeetingCreateEvent()
+        public async Task CreateCommand_ShouldPublish_TentativeReservationCreatedEvent()
         {
             var createdReservationId = await fixture.CommandResponse.GetResultFromJSON<Guid>();
 

@@ -42,6 +42,8 @@ namespace Tickets.Reservations
 
             await repository.Add(reservation, cancellationToken);
 
+            await repository.SaveChanges(cancellationToken);
+
             return Unit.Value;
         }
 
@@ -54,6 +56,8 @@ namespace Tickets.Reservations
             reservation.ChangeSeat(command.SeatId);
 
             await repository.Update(reservation, cancellationToken);
+
+            await repository.SaveChanges(cancellationToken);
 
             return Unit.Value;
         }
@@ -68,6 +72,8 @@ namespace Tickets.Reservations
 
             await repository.Update(reservation, cancellationToken);
 
+            await repository.SaveChanges(cancellationToken);
+
             return Unit.Value;
         }
 
@@ -80,6 +86,8 @@ namespace Tickets.Reservations
             reservation.Cancel();
 
             await repository.Update(reservation, cancellationToken);
+
+            await repository.SaveChanges(cancellationToken);
 
             return Unit.Value;
         }

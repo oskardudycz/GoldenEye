@@ -12,7 +12,7 @@ namespace GoldenEye.Dapper.Integration.Tests.Repositories
     public class DapperRepositoryTests: DapperTest
     {
         [Fact]
-        public async Task GivenRepository_WhenFullCRUDFlowIsRun_ThenSucceed()
+        public async Task dGivenRepository_WhenFullCRUDFlowIsRun_ThenSucceed()
         {
             Execute(Structure.UsersCreateSql);
 
