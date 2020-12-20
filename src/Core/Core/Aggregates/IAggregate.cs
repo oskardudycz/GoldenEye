@@ -1,13 +1,12 @@
 using System;
 using GoldenEye.Entities;
 using GoldenEye.Events;
+using GoldenEye.Objects.Versioning;
 
 namespace GoldenEye.Aggregates
 {
-    public interface IAggregate<out TKey>: IEntity<TKey>
+    public interface IAggregate<out TKey>: IEntity<TKey>, IHaveVersion
     {
-        int Version { get; }
-
         IEvent[] DequeueUncommittedEvents();
     }
 

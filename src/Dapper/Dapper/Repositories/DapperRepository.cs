@@ -97,7 +97,7 @@ namespace GoldenEye.Dapper.Repositories
             return entity;
         }
 
-        public Task<TEntity> Update(TEntity entity, object expectedVersion, CancellationToken cancellationToken = default)
+        public Task<TEntity> Update(TEntity entity, int expectedVersion, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }
@@ -117,7 +117,7 @@ namespace GoldenEye.Dapper.Repositories
             return entity;
         }
 
-        public Task<TEntity> Delete(TEntity entity, object expectedVersion, CancellationToken cancellationToken = default)
+        public Task<TEntity> Delete(TEntity entity, int expectedVersion, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }
@@ -137,7 +137,7 @@ namespace GoldenEye.Dapper.Repositories
             return true;
         }
 
-        public Task<bool> DeleteById(object id, object expectedVersion, CancellationToken cancellationToken = default)
+        public Task<bool> DeleteById(object id, int expectedVersion, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }

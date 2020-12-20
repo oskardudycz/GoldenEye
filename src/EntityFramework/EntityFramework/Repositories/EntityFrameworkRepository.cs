@@ -77,7 +77,7 @@ namespace GoldenEye.EntityFramework.Repositories
             return Task.FromResult(entry.Entity);
         }
 
-        public Task<TEntity> Update(TEntity entity, object expectedVersion, CancellationToken cancellationToken = default)
+        public Task<TEntity> Update(TEntity entity, int expectedVersion, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }
@@ -92,7 +92,7 @@ namespace GoldenEye.EntityFramework.Repositories
             return Task.FromResult(entry.Entity);
         }
 
-        public Task<TEntity> Delete(TEntity entity, object expectedVersion, CancellationToken cancellationToken = default)
+        public Task<TEntity> Delete(TEntity entity, int expectedVersion, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }
@@ -104,7 +104,7 @@ namespace GoldenEye.EntityFramework.Repositories
             return true;
         }
 
-        public Task<bool> DeleteById(object id, object expectedVersion, CancellationToken cancellationToken = default)
+        public Task<bool> DeleteById(object id, int expectedVersion, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }
@@ -118,7 +118,7 @@ namespace GoldenEye.EntityFramework.Repositories
         //TODO: Add optimistic concurrency support
         private void CheckVersion(TEntity entity, long? originVersion)
         {
-            if (!originVersion.HasValue || !(entity is IVersioned versionedEntity))
+            if (!originVersion.HasValue || !(entity is IHaveVersion versionedEntity))
                 return;
 
             var readVersion = dbContext.Entry(versionedEntity).Property(x => x.Version).OriginalValue;

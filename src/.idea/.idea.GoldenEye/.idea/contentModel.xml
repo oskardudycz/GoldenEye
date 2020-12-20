@@ -310,7 +310,7 @@
               <e p="SingleResponse.cs" t="Include" />
             </e>
             <e p="Versioning" t="Include">
-              <e p="IVersioned.cs" t="Include" />
+              <e p="IHaveVersion.cs" t="Include" />
             </e>
           </e>
           <e p="Queries" t="Include">

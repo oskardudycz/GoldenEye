@@ -64,15 +64,15 @@ namespace GoldenEye.Marten.Repositories
 
         public Task<TEntity> Add(TEntity entity, CancellationToken cancellationToken)
         {
-            return Store(entity, cancellationToken);
+            return Store(entity, null, cancellationToken);
         }
 
         public Task<TEntity> Update(TEntity entity, CancellationToken cancellationToken = default)
         {
-            return Store(entity, cancellationToken);
+            return Store(entity,null, cancellationToken);
         }
 
-        public Task<TEntity> Update(TEntity entity, object expectedVersion, CancellationToken cancellationToken = default)
+        public Task<TEntity> Update(TEntity entity, int expectedVersion, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }
@@ -82,7 +82,7 @@ namespace GoldenEye.Marten.Repositories
             return Store(entity, null, cancellationToken);
         }
 
-        public Task<TEntity> Delete(TEntity entity, object expectedVersion, CancellationToken cancellationToken = default)
+        public Task<TEntity> Delete(TEntity entity, int expectedVersion, CancellationToken cancellationToken = default)
         {
             return Store(entity, expectedVersion, cancellationToken);
         }
@@ -93,7 +93,7 @@ namespace GoldenEye.Marten.Repositories
                 $"{nameof(DeleteById)} is not supported by Event Source repository. Use method with entity object.");
         }
 
-        public Task<bool> DeleteById(object id, object expectedVersion, CancellationToken cancellationToken = default)
+        public Task<bool> DeleteById(object id, int expectedVersion, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException(
                 $"{nameof(DeleteById)} is not supported by Event Source repository. Use method with entity object.");
@@ -104,21 +104,15 @@ namespace GoldenEye.Marten.Repositories
             return documentSession.SaveChangesAsync(cancellationToken);
         }
 
-        private async Task<TEntity> Store(TEntity entity, object expectedVersion, CancellationToken cancellationToken = default)
+        private async Task<TEntity> Store(TEntity entity, int? expectedVersion, CancellationToken cancellationToken = default)
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
 
-            if (expectedVersion != null)
-            {
-                if (!(expectedVersion is int intExpectedVersion))
-                    throw new ArgumentOutOfRangeException(nameof(expectedVersion),
-                        $"{nameof(MartenEventSourcedRepository<TEntity>)} supports only version of type int");
-
-                await eventStore.AppendAsync(entity.Id, intExpectedVersion, cancellationToken, entity.PendingEvents.ToArray());
-            }
-
-            await eventStore.AppendAsync(entity.Id, cancellationToken, entity.PendingEvents.ToArray());
+            if (expectedVersion.HasValue)
+                await eventStore.AppendAsync(entity.Id, expectedVersion.Value, cancellationToken, entity.PendingEvents.ToArray());
+            else
+                await eventStore.AppendAsync(entity.Id, cancellationToken, entity.PendingEvents.ToArray());
 
             return entity;
         }
