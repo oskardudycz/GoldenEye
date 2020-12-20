@@ -29,21 +29,21 @@ namespace Backend.DDD.WebApi.Sample.Controllers
         [HttpGet]
         public Task<IReadOnlyList<IssueView>> Get(GetIssues query)
         {
-            return queryBus.SendAsync<GetIssues, IReadOnlyList<IssueView>>(query);
+            return queryBus.Send<GetIssues, IReadOnlyList<IssueView>>(query);
         }
 
         // GET api/incidents
         [HttpGet("{id}")]
         public Task<IssueView> Get(Guid id)
         {
-            return queryBus.SendAsync<GetIssue, IssueView>(new GetIssue(id));
+            return queryBus.Send<GetIssue, IssueView>(new GetIssue(id));
         }
 
         // POST api/incidents
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CreateIssue command)
         {
-            await commandBus.SendAsync(command);
+            await commandBus.Send(command);
 
             return Ok();
         }

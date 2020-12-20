@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using GoldenEye.Events;
+using GoldenEye.Aggregates;
 using GoldenEye.Events.Store;
 using GoldenEye.Exceptions;
-using GoldenEye.Extensions.Collections;
 using GoldenEye.Marten.Events.Storage;
 using GoldenEye.Objects.General;
 using GoldenEye.Repositories;
@@ -17,7 +16,7 @@ namespace GoldenEye.Marten.Repositories
     public class MartenEventSourcedRepository<TEntity>:
         IRepository<TEntity>,
         IReadonlyRepository<TEntity>
-        where TEntity : class, IHaveId, IEventSource, new()
+        where TEntity : class, IHaveId, IAggregate, new()
     {
         private readonly IDocumentSession documentSession;
         private readonly IEventStore eventStore;
@@ -74,7 +73,7 @@ namespace GoldenEye.Marten.Repositories
 
         public Task<TEntity> Update(TEntity entity, int expectedVersion, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            return Store(entity, expectedVersion, cancellationToken);
         }
 
         public Task<TEntity> Delete(TEntity entity, CancellationToken cancellationToken = default)
@@ -110,9 +109,9 @@ namespace GoldenEye.Marten.Repositories
                 throw new ArgumentNullException(nameof(entity));
 
             if (expectedVersion.HasValue)
-                await eventStore.AppendAsync(entity.Id, expectedVersion.Value, cancellationToken, entity.PendingEvents.ToArray());
+                await eventStore.AppendAsync(entity.Id, expectedVersion.Value, cancellationToken, entity.DequeueUncommittedEvents());
             else
-                await eventStore.AppendAsync(entity.Id, cancellationToken, entity.PendingEvents.ToArray());
+                await eventStore.AppendAsync(entity.Id, cancellationToken, entity.DequeueUncommittedEvents());
 
             return entity;
         }

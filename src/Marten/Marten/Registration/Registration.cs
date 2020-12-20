@@ -1,14 +1,19 @@
 ﻿using System;
+using GoldenEye.Aggregates;
 using GoldenEye.Events;
 using GoldenEye.Extensions.Basic;
 using GoldenEye.Extensions.DependencyInjection;
+using GoldenEye.IdsGenerator;
 using GoldenEye.Marten.Repositories;
 using GoldenEye.Marten.Events.Storage;
+using GoldenEye.Marten.Ids;
 using GoldenEye.Objects.General;
 using GoldenEye.Registration;
 using GoldenEye.Repositories;
 using Marten;
 using Marten.Services;
+using Marten.Services.Events;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace GoldenEye.Marten.Registration
@@ -30,6 +35,46 @@ namespace GoldenEye.Marten.Registration
             services.AddEventStore<MartenEventStore>(serviceLifetime);
         }
 
+        public static IServiceCollection AddMarten(this IServiceCollection services, IConfiguration config,
+            Action<StoreOptions> configureOptions = null)
+        {
+            var martenConfig = config.GetSection(MartenConfig.DefaultConfigKey).Get<MartenConfig>();
+
+            services
+                .AddSingleton<IDocumentStore>(sp =>
+                {
+                    var documentStore =
+                        DocumentStore.For(options => SetStoreOptions(options, martenConfig, configureOptions));
+
+                    if (martenConfig.ShouldRecreateDatabase)
+                        documentStore.Advanced.Clean.CompletelyRemoveAll();
+
+                    documentStore.Schema.ApplyAllConfiguredChangesToDatabase();
+
+                    return documentStore;
+                })
+                .AddScoped(sp => sp.GetRequiredService<IDocumentStore>().OpenSession())
+                .AddScoped<IQuerySession>(sp => sp.GetRequiredService<IDocumentSession>())
+                .AddScoped<IIdGenerator, MartenIdGenerator>();;
+
+            return services;
+        }
+
+        private static void SetStoreOptions(StoreOptions options, MartenConfig config,
+            Action<StoreOptions> configureOptions = null)
+        {
+            options.Connection(config.ConnectionString);
+            options.AutoCreateSchemaObjects = AutoCreate.CreateOrUpdate;
+            options.Events.DatabaseSchemaName = config.WriteModelSchema;
+            options.DatabaseSchemaName = config.ReadModelSchema;
+            options.UseDefaultSerialization(nonPublicMembersStorage: NonPublicMembersStorage.NonPublicSetters,
+                enumStorage: EnumStorage.AsString);
+            options.PLV8Enabled = false;
+            options.Events.UseAggregatorLookup(AggregationLookupStrategy.UsePublicAndPrivateApply);
+
+            configureOptions?.Invoke(options);
+        }
+
         public static void AddMartenDocumentRepository<TEntity>(this IServiceCollection services,
             ServiceLifetime serviceLifetime = ServiceLifetime.Transient)
             where TEntity : class, IHaveId
@@ -45,7 +90,7 @@ namespace GoldenEye.Marten.Registration
 
         public static void AddMartenEventSourcedRepository<TEntity>(this IServiceCollection services,
             ServiceLifetime serviceLifetime = ServiceLifetime.Transient)
-            where TEntity : class, IEventSource, new()
+            where TEntity : class, IAggregate, new()
         {
             services.Add(sp => new MartenEventSourcedRepository<TEntity>(sp.GetService<IDocumentSession>(), sp.GetService<MartenEventStore>()),
                 serviceLifetime);

@@ -1,10 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using GoldenEye.Aggregates;
-using GoldenEye.Extensions.Collections;
+using GoldenEye.Exceptions;
 using GoldenEye.Objects.General;
 using MediatR;
 
@@ -32,6 +30,18 @@ namespace GoldenEye.Repositories
                 result.Add(await repository.Add(entity, cancellationToken));
             }
             return result;
+        }
+
+        public static async Task<TEntity> GetById<TEntity>(
+            this IRepository<TEntity> repository,
+            object id,
+            CancellationToken cancellationToken = default
+        )
+        where TEntity : class, IHaveId
+        {
+            var entity = await repository.FindById(id, cancellationToken);
+
+            return entity ?? throw NotFoundException.For<TEntity>(id);
         }
 
         public static async Task<Unit> GetAndUpdate<TEntity>(

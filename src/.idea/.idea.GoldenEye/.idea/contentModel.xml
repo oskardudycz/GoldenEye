@@ -127,6 +127,164 @@
       <e p="Startup.cs" t="Include" />
       <e p="wwwroot" t="Include" />
     </e>
+    <e p="D:\Repos\GoldenEye\Samples\DDD\Tickets\Tickets" t="IncludeRecursive">
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="Concerts" t="Include">
+        <e p="Concert.cs" t="Include" />
+        <e p="ConcertCommandHandler.cs" t="Include" />
+        <e p="ConcertQueryHandler.cs" t="Include" />
+      </e>
+      <e p="Config.cs" t="Include" />
+      <e p="Maintenance" t="Include">
+        <e p="Commands" t="Include">
+          <e p="RebuildProjection.cs" t="Include" />
+        </e>
+        <e p="Config.cs" t="Include" />
+        <e p="MaintenanceCommandHandler.cs" t="Include" />
+      </e>
+      <e p="obj" t="ExcludeRecursive">
+        <e p="Debug" t="Include">
+          <e p="netstandard2.1" t="Include">
+            <e p="Tickets.AssemblyInfo.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="Reservations" t="Include">
+        <e p="Commands" t="Include">
+          <e p="CancelReservation.cs" t="Include" />
+          <e p="ChangeReservationSeat.cs" t="Include" />
+          <e p="ConfirmReservation.cs" t="Include" />
+          <e p="CreateTentativeReservation.cs" t="Include" />
+        </e>
+        <e p="Events" t="Include">
+          <e p="ReservationCancelled.cs" t="Include" />
+          <e p="ReservationConfirmed.cs" t="Include" />
+          <e p="ReservationSeatChanged.cs" t="Include" />
+          <e p="TentativeReservationCreated.cs" t="Include" />
+        </e>
+        <e p="Projections" t="Include">
+          <e p="ReservationDetails.cs" t="Include" />
+          <e p="ReservationHistoryTransformation.cs" t="Include" />
+          <e p="ReservationShortInfo.cs" t="Include" />
+        </e>
+        <e p="Queries" t="Include">
+          <e p="GetReservationAtVersion.cs" t="Include" />
+          <e p="GetReservationById.cs" t="Include" />
+          <e p="GetReservationHistory.cs" t="Include" />
+          <e p="GetReservations.cs" t="Include" />
+        </e>
+        <e p="Reservation.cs" t="Include" />
+        <e p="ReservationCommandHandler.cs" t="Include" />
+        <e p="ReservationNumberGenerator.cs" t="Include" />
+        <e p="ReservationQueryHandler.cs" t="Include" />
+        <e p="ReservationsConfig.cs" t="Include" />
+        <e p="ReservationStatus.cs" t="Include" />
+      </e>
+      <e p="Seats" t="Include">
+        <e p="Seat.cs" t="Include" />
+        <e p="SeatCommandHandler.cs" t="Include" />
+        <e p="SeatQueryHandler.cs" t="Include" />
+      </e>
+      <e p="Tickets" t="Include">
+        <e p="Ticket.cs" t="Include" />
+        <e p="TicketCommandHandler.cs" t="Include" />
+        <e p="TicketQueryHandler.cs" t="Include" />
+      </e>
+      <e p="Tickets.csproj" t="IncludeRecursive" />
+    </e>
+    <e p="D:\Repos\GoldenEye\Samples\DDD\Tickets\Tickets.Api" t="IncludeRecursive">
+      <e p="appsettings.Development.json" t="Include" />
+      <e p="appsettings.json" t="Include" />
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="Controllers" t="Include">
+        <e p="ConcertsController.cs" t="Include" />
+        <e p="MaintenanceController.cs" t="Include" />
+        <e p="ReservationsController.cs" t="Include" />
+        <e p="SeatsController.cs" t="Include" />
+        <e p="TicketsController.cs" t="Include" />
+      </e>
+      <e p="Exceptions" t="Include">
+        <e p="ExceptionHandlingMiddleware.cs" t="Include" />
+        <e p="ExceptionToHttpStatusMapper.cs" t="Include" />
+        <e p="HttpExceptionWrapper.cs" t="Include" />
+      </e>
+      <e p="obj" t="ExcludeRecursive">
+        <e p="Debug" t="Include">
+          <e p="net5.0" t="Include">
+            <e p="Tickets.Api.AssemblyInfo.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="Program.cs" t="Include" />
+      <e p="Properties" t="Include">
+        <e p="launchSettings.json" t="Include" />
+      </e>
+      <e p="Requests" t="Include">
+        <e p="ChangeSeatRequest.cs" t="Include" />
+        <e p="CreateTentativeReservationRequest.cs" t="Include" />
+        <e p="GetReservationDetailsAtVersion.cs" t="Include" />
+        <e p="RebuildProjectionRequest.cs" t="Include" />
+      </e>
+      <e p="Responses" t="Include">
+        <e p="PagedListResponse.cs" t="Include" />
+      </e>
+      <e p="Startup.cs" t="Include" />
+      <e p="Tickets.Api.csproj" t="IncludeRecursive" />
+    </e>
+    <e p="D:\Repos\GoldenEye\Samples\DDD\Tickets\Tickets.Api.Tests" t="IncludeRecursive">
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="Config" t="Include">
+        <e p="TestConfiguration.cs" t="Include" />
+      </e>
+      <e p="obj" t="ExcludeRecursive">
+        <e p="Debug" t="Include">
+          <e p="net5.0" t="Include">
+            <e p="Tickets.Api.Tests.AssemblyInfo.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="Reservations" t="Include">
+        <e p="CreateTentativeReservationTests.cs" t="Include" />
+      </e>
+      <e p="Tickets.Api.Tests.csproj" t="IncludeRecursive" />
+    </e>
+    <e p="D:\Repos\GoldenEye\Samples\DDD\Tickets\Tickets.Tests" t="IncludeRecursive">
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="Builders" t="Include">
+        <e p="ReservationBuilder.cs" t="Include" />
+      </e>
+      <e p="Extensions" t="Include">
+        <e p="AggregateExtensions.cs" t="Include" />
+        <e p="Reservations" t="Include">
+          <e p="ReservationExtensions.cs" t="Include" />
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive">
+        <e p="Debug" t="Include">
+          <e p="net5.0" t="Include">
+            <e p="Tickets.Tests.AssemblyInfo.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="Reservations" t="Include">
+        <e p="CancelReservationTests.cs" t="Include" />
+        <e p="ChangeSeatTests.cs" t="Include" />
+        <e p="CommandHandlers" t="Include">
+          <e p="CreateTentativeReservationCommandHandlerTests.cs" t="Include" />
+        </e>
+        <e p="ConfirmReservationTests.cs" t="Include" />
+        <e p="CreateTentativeReservationTests.cs" t="Include" />
+      </e>
+      <e p="Stubs" t="Include">
+        <e p="Ids" t="Include">
+          <e p="FakeIdGenerator.cs" t="Include" />
+        </e>
+        <e p="Reservations" t="Include">
+          <e p="FakeReservationNumberGenerator.cs" t="Include" />
+        </e>
+      </e>
+      <e p="Tickets.Tests.csproj" t="IncludeRecursive" />
+    </e>
     <e p="D:\Repos\GoldenEye\Samples\GoldenEye.WebApi.Sample" t="IncludeRecursive">
       <e p="appsettings.Development.json" t="Include" />
       <e p="appsettings.json" t="Include" />
@@ -164,6 +322,7 @@
             <e p="ICommand.cs" t="Include" />
             <e p="ICommandBus.cs" t="Include" />
             <e p="ICommandHandler.cs" t="Include" />
+            <e p="IExternalCommandBus.cs" t="Include" />
             <e p="Readme.md" t="Include" />
           </e>
           <e p="Configuration" t="Include">
@@ -190,10 +349,15 @@
           </e>
           <e p="Events" t="Include">
             <e p="EventBus.cs" t="Include" />
+            <e p="External" t="Include">
+              <e p="IExternaEventProducer.cs" t="Include" />
+              <e p="IExternalEventConsumer.cs" t="Include" />
+              <e p="NulloExternalEventProducer.cs" t="Include" />
+            </e>
             <e p="IEvent.cs" t="Include" />
             <e p="IEventBus.cs" t="Include" />
             <e p="IEventHandler.cs" t="Include" />
-            <e p="IEventSource.cs" t="Include" />
+            <e p="IExternalEvent.cs" t="Include" />
             <e p="Store" t="Include">
               <e p="EventStorePipeline.cs" t="Include" />
               <e p="IEventProjectionStore.cs" t="Include" />
@@ -252,6 +416,9 @@
             <e p="Threading" t="Include">
               <e p="ThreadExtensions.cs" t="Include" />
             </e>
+          </e>
+          <e p="IdsGenerator" t="Include">
+            <e p="IIdGenerator.cs" t="Include" />
           </e>
           <e p="Mappings" t="Include">
             <e p="IMappingDefinition.cs" t="Include" />
@@ -573,6 +740,9 @@
               <e p="MartenEventStore.cs" t="Include" />
             </e>
           </e>
+          <e p="Ids" t="Include">
+            <e p="MartenIdGenerator.cs" t="Include" />
+          </e>
           <e p="Marten.csproj" t="IncludeRecursive" />
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
@@ -586,6 +756,7 @@
           </e>
           <e p="Readme.md" t="Include" />
           <e p="Registration" t="Include">
+            <e p="MartenConfig.cs" t="Include" />
             <e p="Registration.cs" t="Include" />
           </e>
           <e p="Repositories" t="Include">
@@ -617,7 +788,9 @@
       </e>
       <e p="packages" t="ExcludeRecursive" />
       <e p="Samples" t="Include">
-        <e p="DDD" t="Include" />
+        <e p="DDD" t="Include">
+          <e p="Tickets" t="Include" />
+        </e>
       </e>
       <e p="Solution Items" t="Include" />
       <e p="Templates" t="Include">
@@ -701,6 +874,32 @@
             <e p="WebApi.Template.SimpleDDD.IntegrationTests.csproj" t="IncludeRecursive" />
           </e>
           <e p="Templates.nuspec" t="Include" />
+        </e>
+      </e>
+      <e p="Testing" t="Include">
+        <e p="Testing" t="IncludeRecursive">
+          <e p="AggregateExtensions.cs" t="Include" />
+          <e p="ApiFixture.cs" t="Include" />
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="DummyExternalCommandBus.cs" t="Include" />
+          <e p="DummyExternalEventConsumer.cs" t="Include" />
+          <e p="DummyExternalEventPublisher.cs" t="Include" />
+          <e p="EventListener.cs" t="Include" />
+          <e p="FakeRepository.cs" t="Include" />
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="net5.0" t="Include">
+                <e p="Testing.AssemblyInfo.cs" t="Include" />
+              </e>
+              <e p="netcoreapp3.1" t="Include">
+                <e p="Testing.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="ResponseExtensions.cs" t="Include" />
+          <e p="SerializationExtensions.cs" t="Include" />
+          <e p="TestContext.cs" t="Include" />
+          <e p="Testing.csproj" t="IncludeRecursive" />
         </e>
       </e>
       <e p="WebApi" t="Include">

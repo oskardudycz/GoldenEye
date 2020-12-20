@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using GoldenEye.Commands;
 using GoldenEye.Events;
+using GoldenEye.Events.External;
 using GoldenEye.Events.Store;
 using GoldenEye.Extensions.DependencyInjection;
 using GoldenEye.Objects.General;
@@ -10,6 +11,7 @@ using GoldenEye.Validation;
 using MediatR;
 using MediatR.Pipeline;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace GoldenEye.Registration
 {
@@ -51,12 +53,17 @@ namespace GoldenEye.Registration
         public static IServiceCollection AddDDD(this IServiceCollection services,
             ServiceLifetime withLifetime = ServiceLifetime.Transient)
         {
-            return services.AddScoped<IMediator, Mediator>()
+            services.AddScoped<IMediator, Mediator>()
                 .Add<ServiceFactory>(sp => t => sp.GetService(t), withLifetime)
                 .Add(typeof(IPipelineBehavior<,>), typeof(RequestPreProcessorBehavior<,>), withLifetime)
                 .Add<ICommandBus, CommandBus>(withLifetime)
                 .Add<IQueryBus, QueryBus>(withLifetime)
                 .Add<IEventBus, EventBus>(withLifetime);
+
+            services.TryAddScoped<IExternalEventProducer, NulloExternalEventProducer>();
+            services.TryAddScoped<IExternalCommandBus, ExternalCommandBus>();
+
+            return services;
         }
 
         public static IServiceCollection AddEventStore<TEventStore>(this IServiceCollection services,

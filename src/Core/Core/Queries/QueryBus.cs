@@ -13,7 +13,7 @@ namespace GoldenEye.Queries
             _mediator = mediator;
         }
 
-        public Task<TResponse> SendAsync<TQuery, TResponse>(TQuery query, CancellationToken cancellationToken = default)
+        public Task<TResponse> Send<TQuery, TResponse>(TQuery query, CancellationToken cancellationToken = default)
             where TQuery : IQuery<TResponse>
         {
             return _mediator.Send(query, cancellationToken);
