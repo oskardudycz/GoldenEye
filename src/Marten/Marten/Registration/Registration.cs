@@ -57,6 +57,8 @@ namespace GoldenEye.Marten.Registration
                 .AddScoped<IQuerySession>(sp => sp.GetRequiredService<IDocumentSession>())
                 .AddScoped<IIdGenerator, MartenIdGenerator>();;
 
+            services.AddEventStore<MartenEventStore>(ServiceLifetime.Scoped);
+
             return services;
         }
 
