@@ -13,7 +13,7 @@ namespace GoldenEye.Commands
             _mediator = mediator;
         }
 
-        public Task SendAsync<TCommand>(TCommand command, CancellationToken cancellationToken = default)
+        public Task Send<TCommand>(TCommand command, CancellationToken cancellationToken = default)
             where TCommand : ICommand
         {
             return _mediator.Send(command, cancellationToken);

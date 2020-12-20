@@ -86,7 +86,7 @@ namespace GoldenEye.Tests.Validation
                     var command = new RemoveAllUsers();
 
                     //When
-                    await commandBus.SendAsync(command);
+                    await commandBus.Send(command);
 
                     //Then
                     var context = sp.GetService<DataContext>();
@@ -113,7 +113,7 @@ namespace GoldenEye.Tests.Validation
                     var commandBus = sp.GetService<ICommandBus>();
                     var invalidCommand = new CreateUser(null);
 
-                    Func<Task> sendCommandAsync = async () => await commandBus.SendAsync(invalidCommand);
+                    Func<Task> sendCommandAsync = async () => await commandBus.Send(invalidCommand);
                     //When
                     //Then
                     sendCommandAsync.Should().Throw<ValidationException>();
@@ -142,7 +142,7 @@ namespace GoldenEye.Tests.Validation
                     var command = new CreateUser("John Doe");
 
                     //When
-                    await commandBus.SendAsync(command);
+                    await commandBus.Send(command);
 
                     //Then
                     var context = sp.GetService<DataContext>();
@@ -220,7 +220,7 @@ namespace GoldenEye.Tests.Validation
                     var queryBus = sp.GetService<IQueryBus>();
                     var invalidQuery = new GetUser(-1);
 
-                    Func<Task> sendQueryAsync = async () => await queryBus.SendAsync<GetUser, string>(invalidQuery);
+                    Func<Task> sendQueryAsync = async () => await queryBus.Send<GetUser, string>(invalidQuery);
                     //When
                     //Then
                     sendQueryAsync.Should().Throw<ValidationException>();
@@ -245,7 +245,7 @@ namespace GoldenEye.Tests.Validation
                     var query = new GetAllUsers();
 
                     //When
-                    var result = await queryBus.SendAsync<GetAllUsers, IReadOnlyList<string>>(query);
+                    var result = await queryBus.Send<GetAllUsers, IReadOnlyList<string>>(query);
 
                     //Then
                     result.Should().HaveCount(1);
@@ -272,7 +272,7 @@ namespace GoldenEye.Tests.Validation
                     var query = new GetUser(0);
 
                     //When
-                    var result = await queryBus.SendAsync<GetUser, string>(query);
+                    var result = await queryBus.Send<GetUser, string>(query);
 
                     //Then
                     result.Should().NotBeNull();
@@ -299,7 +299,7 @@ namespace GoldenEye.Tests.Validation
                     var query = new GetUser(0);
 
                     //When
-                    var result = await queryBus.SendAsync<GetUser, string>(query);
+                    var result = await queryBus.Send<GetUser, string>(query);
 
                     //Then
                     result.Should().NotBeNull();

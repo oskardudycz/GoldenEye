@@ -39,12 +39,6 @@ namespace GoldenEye.Dapper.Repositories
 
             return await dbConnection.GetAsync<TEntity>(id);
         }
-        public async Task<TEntity> GetById(object id, CancellationToken cancellationToken = default)
-        {
-            var entity = await FindById(id, cancellationToken);
-
-            return entity ?? throw NotFoundException.For<TEntity>(id);
-        }
 
         public IQueryable<TEntity> Query()
         {

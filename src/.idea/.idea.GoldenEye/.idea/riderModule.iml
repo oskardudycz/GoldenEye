@@ -24,6 +24,10 @@
     <content url="file://$MODULE_DIR$/../../../samples/DDD/Backend.DDD.Sample.Contracts" />
     <content url="file://$MODULE_DIR$/../../../samples/DDD/Backend.DDD.Sample.IntegrationTests" />
     <content url="file://$MODULE_DIR$/../../../samples/DDD/Backend.DDD.WebApi.Sample" />
+    <content url="file://$MODULE_DIR$/../../../samples/DDD/Tickets/Tickets" />
+    <content url="file://$MODULE_DIR$/../../../samples/DDD/Tickets/Tickets.Api" />
+    <content url="file://$MODULE_DIR$/../../../samples/DDD/Tickets/Tickets.Api.Tests" />
+    <content url="file://$MODULE_DIR$/../../../samples/DDD/Tickets/Tickets.Tests" />
     <content url="file://$MODULE_DIR$/../../../samples/GoldenEye.WebApi.Sample" />
     <content url="file://$MODULE_DIR$/../.." />
     <orderEntry type="sourceFolder" forTests="false" />

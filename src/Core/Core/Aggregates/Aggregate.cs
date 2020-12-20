@@ -33,7 +33,7 @@ namespace GoldenEye.Aggregates
         }
     }
 
-    public abstract class Aggregate: Aggregate<Guid>
+    public abstract class Aggregate: Aggregate<Guid>, IAggregate
     {
 
     }

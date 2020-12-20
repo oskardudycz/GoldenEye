@@ -63,7 +63,7 @@ namespace GoldenEye.Tests.Registration
             var @event = new UserCreated(Guid.NewGuid());
 
             //When
-            await eventBus.PublishAsync(@event);
+            await eventBus.Publish(@event);
 
             //Then
             var usersCountHandler = sp.GetService<UsersCountHandler>();

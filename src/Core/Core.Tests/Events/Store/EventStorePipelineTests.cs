@@ -32,7 +32,7 @@ namespace GoldenEye.Tests.Events.Store
             var @event = new UserCreated();
 
             //When
-            await eventBus.PublishAsync(@event);
+            await eventBus.Publish(@event);
 
             //Then
             var eventStore = (EventStore)sp.GetService<IEventStore>();

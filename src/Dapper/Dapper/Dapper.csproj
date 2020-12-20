@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
-        <Version>1.0.0-alpha.6</Version>
+        <Version>1.0.0-alpha.7</Version>
         <PackageId>GoldenEye.Dapper</PackageId>
         <AssemblyName>GoldenEye.Dapper</AssemblyName>
         <RootNamespace>GoldenEye.Dapper</RootNamespace>

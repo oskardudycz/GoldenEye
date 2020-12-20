@@ -9,8 +9,6 @@ namespace GoldenEye.Repositories
     {
         Task<TEntity> FindById(object id, CancellationToken cancellationToken = default);
 
-        Task<TEntity> GetById(object id, CancellationToken cancellationToken = default);
-
         Task<TEntity> Add(TEntity entity, CancellationToken cancellationToken = default);
 
         Task<TEntity> Update(TEntity entity, CancellationToken cancellationToken = default);

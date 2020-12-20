@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFrameworks>netstandard2.1;net5.0</TargetFrameworks>
-        <Version>1.0.0-alpha.6</Version>
+        <Version>1.0.0-alpha.7</Version>
         <PackageId>GoldenEye.Marten</PackageId>
         <AssemblyName>GoldenEye.Marten</AssemblyName>
         <RootNamespace>GoldenEye.Marten</RootNamespace>
@@ -12,6 +12,7 @@
     <ItemGroup>
         <PackageReference Include="Marten" Version="[4.0.0-alpha.4,)" Condition="'$(TargetFramework)' == 'net5.0'" />
         <PackageReference Include="Marten" Version="3.13.3" Condition="'$(TargetFramework)' == 'netstandard2.1'" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="5.0.0" />
     </ItemGroup>
 
     <ItemGroup>

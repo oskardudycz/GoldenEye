@@ -1,12 +1,19 @@
 using System;
 using Backend.DDD.Sample.Contracts.Issues;
+using GoldenEye.Aggregates;
 using GoldenEye.Entities;
 using GoldenEye.Objects.General;
 
 namespace Backend.DDD.Sample.Issues
 {
-    public class Issue: Entity
+    public class Issue: Aggregate
     {
+        public IssueType Type { get; private set; }
+
+        public string Title { get; private set;  }
+
+        public string Description { get; private set; }
+        
         public Issue()
         {
         }
@@ -18,10 +25,5 @@ namespace Backend.DDD.Sample.Issues
             Title = title;
         }
 
-        public IssueType Type { get; set; }
-
-        public string Title { get; set;  }
-
-        public string Description { get; set; }
     }
 }
