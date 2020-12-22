@@ -2,6 +2,6 @@
 {
     public interface IHaveVersion
     {
-        long Version { get; }
+        int Version { get; }
     }
 }

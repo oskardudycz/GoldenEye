@@ -33,7 +33,7 @@ namespace GoldenEye.Marten.Repositories
                 throw new NotSupportedException("Id of the Event Sourced aggregate has to be Guid");
 
             return (await documentSession.Events.FetchStreamStateAsync(guidId, cancellationToken)) != null
-                ? await eventStore.AggregateAsync<TEntity>(guidId, cancellationToken: cancellationToken)
+                ? await eventStore.Aggregate<TEntity>(guidId, cancellationToken)
                 : null;
         }
 
@@ -109,9 +109,9 @@ namespace GoldenEye.Marten.Repositories
                 throw new ArgumentNullException(nameof(entity));
 
             if (expectedVersion.HasValue)
-                await eventStore.AppendAsync(entity.Id, expectedVersion.Value, cancellationToken, entity.DequeueUncommittedEvents());
+                await eventStore.Append(entity.Id, expectedVersion.Value, cancellationToken, entity.DequeueUncommittedEvents());
             else
-                await eventStore.AppendAsync(entity.Id, cancellationToken, entity.DequeueUncommittedEvents());
+                await eventStore.Append(entity.Id, cancellationToken, entity.DequeueUncommittedEvents());
 
             return entity;
         }

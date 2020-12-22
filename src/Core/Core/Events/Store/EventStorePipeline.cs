@@ -16,8 +16,8 @@ namespace GoldenEye.Events.Store
 
         public async Task Handle(TEvent @event, CancellationToken cancellationToken)
         {
-            await eventStore.AppendAsync(@event.StreamId, cancellationToken, @event);
-            await eventStore.SaveChangesAsync(cancellationToken);
+            await eventStore.Append(@event.StreamId, cancellationToken, @event);
+            await eventStore.SaveChanges(cancellationToken);
         }
     }
 }
