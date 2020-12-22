@@ -11,7 +11,7 @@ namespace GoldenEye.Aggregates
 
         object IHaveId.Id => Id;
 
-        public long Version { get; protected set; }
+        public int Version { get; protected set; }
 
         [NonSerialized] private readonly Queue<IEvent> uncommittedEvents = new Queue<IEvent>();
 

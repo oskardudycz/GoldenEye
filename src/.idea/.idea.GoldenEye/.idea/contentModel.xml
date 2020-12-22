@@ -360,7 +360,6 @@
             <e p="IExternalEvent.cs" t="Include" />
             <e p="Store" t="Include">
               <e p="EventStorePipeline.cs" t="Include" />
-              <e p="IEventProjectionStore.cs" t="Include" />
               <e p="IEventStore.cs" t="Include" />
             </e>
           </e>

@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using FluentAssertions;
 using GoldenEye.Events;
 using GoldenEye.Marten.Events.Storage;
@@ -32,28 +33,28 @@ namespace GoldenEye.Marten.Integration.Tests.Events.Storage
         }
 
         [Fact]
-        public void GivenEventStoreWithEvents_WhenQueried_ThenQueriedSuccessful()
+        public async Task GivenEventStoreWithEvents_WhenQueried_ThenQueriedSuccessful()
         {
             var userId = Guid.NewGuid();
             //Given
-            Sut.Append(userId,
+            await Sut.Append(userId,default,
                 new UserCreated {UserId = userId, UserName = "john.sith"},
                 new UserUpdated {UserId = userId, UserName = "john.smith"}
             );
 
             var secondUserId = Guid.NewGuid();
-            Sut.Append(secondUserId,
+            await Sut.Append(secondUserId,default,
                 new UserCreated {UserId = secondUserId, UserName = "adam.sandler"}
             );
 
-            Sut.SaveChanges();
+            await Sut.SaveChanges();
 
             //When
-            Sut.Query().OfType<UserCreated>().ToList().Should().HaveCount(2);
-            Sut.Query<UserCreated>().ToList().Should().HaveCount(2);
+            (await Sut.Query()).OfType<UserCreated>().ToList().Should().HaveCount(2);
+            (await Sut.Query<UserCreated>()).ToList().Should().HaveCount(2);
 
-            Sut.Query(userId).ToList().Should().HaveCount(2);
-            Sut.Query(userId).OfType<UserUpdated>().ToList().Should().HaveCount(1);
+            (await Sut.Query(streamId: userId)).ToList().Should().HaveCount(2);
+            (await Sut.Query(streamId: userId)).OfType<UserUpdated>().ToList().Should().HaveCount(1);
         }
     }
 }

@@ -36,7 +36,7 @@ namespace GoldenEye.Tests.Events.Store
 
             //Then
             var eventStore = (EventStore)sp.GetService<IEventStore>();
-            eventStore.Query().Should().Contain(@event);
+            (await eventStore.Query()).Should().Contain(@event);
         }
     }
 }
