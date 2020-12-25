@@ -22,6 +22,8 @@
     <e p="C:\Users\oskar\.nuget\packages\xunit.runner.visualstudio\2.4.3\build\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll" t="Include" />
     <e p="C:\Users\oskar\AppData\local\JetBrains\Rider2020.3\extResources" t="IncludeRecursive" />
     <e p="C:\Users\oskar\AppData\local\JetBrains\Rider2020.3\resharper-host\local\Transient\Rider\v203\SolutionCaches\_GoldenEye.-850631947.00" t="ExcludeRecursive" />
+    <e p="C:\Users\oskar\AppData\Roaming\JetBrains\Rider2020.3\consoles\db" t="IncludeRecursive" />
+    <e p="C:\Users\oskar\AppData\Roaming\JetBrains\Rider2020.3\Extensions" t="IncludeRecursive" />
     <e p="D:\Repos\GoldenEye\appveyor.yml" t="Include" />
     <e p="D:\Repos\GoldenEye\assets\GoldenEyeLogo.png" t="Include" />
     <e p="D:\Repos\GoldenEye\Docker\docker-compose.yml" t="Include" />
@@ -348,6 +350,11 @@
             <e p="IProvidesAuditInfo.cs" t="Include" />
           </e>
           <e p="Events" t="Include">
+            <e p="Aggregate" t="Include">
+              <e p="AggregateEventsPublisher.cs" t="Include" />
+              <e p="IAggregateEventsPublisher.cs" t="Include" />
+              <e p="NulloAggregateEventsPublisher.cs" t="Include" />
+            </e>
             <e p="EventBus.cs" t="Include" />
             <e p="External" t="Include">
               <e p="IExternaEventProducer.cs" t="Include" />
@@ -384,6 +391,7 @@
               <e p="EnumerableExtensions.cs" t="Include" />
               <e p="ListExtensions.cs" t="Include" />
               <e p="QueryableExtensions.cs" t="Include" />
+              <e p="QueueExtensions.cs" t="Include" />
             </e>
             <e p="DependencyInjection" t="Include">
               <e p="AssemblySelector.cs" t="Include" />

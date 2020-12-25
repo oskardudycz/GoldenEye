@@ -44,7 +44,6 @@ namespace Tickets.Api.Tests.Reservations
         }
 
         [Fact]
-        [Trait("Category", "Exercise")]
         public async Task CreateCommand_ShouldReturn_CreatedStatus_With_ReservationId()
         {
             var commandResponse = fixture.CommandResponse;
@@ -59,8 +58,7 @@ namespace Tickets.Api.Tests.Reservations
             createdId.Should().NotBeEmpty();
         }
 
-        [Fact(Skip = "Add decorator in Add to publish event to internal bus")]
-        [Trait("Category", "Exercise")]
+        [Fact]
         public async Task CreateCommand_ShouldPublish_TentativeReservationCreatedEvent()
         {
             var createdReservationId = await fixture.CommandResponse.GetResultFromJSON<Guid>();
@@ -76,7 +74,6 @@ namespace Tickets.Api.Tests.Reservations
         }
 
         [Fact]
-        [Trait("Category", "Exercise")]
         public async Task CreateCommand_ShouldCreate_ReservationDetailsReadModel()
         {
             var createdReservationId = await fixture.CommandResponse.GetResultFromJSON<Guid>();
@@ -98,7 +95,6 @@ namespace Tickets.Api.Tests.Reservations
         }
 
         [Fact]
-        [Trait("Category", "Exercise")]
         public async Task CreateCommand_ShouldCreate_ReservationList()
         {
             var createdReservationId = await fixture.CommandResponse.GetResultFromJSON<Guid>();
@@ -128,7 +124,6 @@ namespace Tickets.Api.Tests.Reservations
 
 
         [Fact]
-        [Trait("Category", "Exercise")]
         public async Task CreateCommand_ShouldCreate_ReservationHistory()
         {
             var createdReservationId = await fixture.CommandResponse.GetResultFromJSON<Guid>();

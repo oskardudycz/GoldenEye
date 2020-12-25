@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using GoldenEye.Events;
+using GoldenEye.Events.Aggregate;
 using GoldenEye.Exceptions;
 using GoldenEye.Objects.General;
 using GoldenEye.Objects.Versioning;
@@ -18,10 +20,12 @@ namespace GoldenEye.EntityFramework.Repositories
         where TEntity : class, IHaveId
     {
         private readonly TDbContext dbContext;
+        private readonly IAggregateEventsPublisher aggregateEventsPublisher;
 
-        public EntityFrameworkRepository(TDbContext dbContext)
+        public EntityFrameworkRepository(TDbContext dbContext, IAggregateEventsPublisher aggregateEventsPublisher)
         {
             this.dbContext = dbContext ?? throw new ArgumentException(nameof(dbContext));
+            this.aggregateEventsPublisher = aggregateEventsPublisher ?? throw new ArgumentException(nameof(aggregateEventsPublisher));
         }
 
         public async Task<TEntity> FindById(object id, CancellationToken cancellationToken = default)
@@ -64,6 +68,8 @@ namespace GoldenEye.EntityFramework.Repositories
 
             var entry = await dbContext.AddAsync(entity, cancellationToken);
 
+            aggregateEventsPublisher.TryEnqueueEventsFrom(entity, out var pendingEvents);
+
             return entry.Entity;
         }
 
@@ -73,6 +79,8 @@ namespace GoldenEye.EntityFramework.Repositories
                 throw new ArgumentNullException(nameof(entity));
 
             var entry = dbContext.Update(entity);
+
+            aggregateEventsPublisher.TryEnqueueEventsFrom(entity, out _);
 
             return Task.FromResult(entry.Entity);
         }
@@ -88,6 +96,8 @@ namespace GoldenEye.EntityFramework.Repositories
                 throw new ArgumentNullException(nameof(entity));
 
             var entry = dbContext.Remove(entity);
+
+            aggregateEventsPublisher.TryEnqueueEventsFrom(entity, out _);
 
             return Task.FromResult(entry.Entity);
         }
@@ -109,9 +119,11 @@ namespace GoldenEye.EntityFramework.Repositories
             throw new NotImplementedException();
         }
 
-        public Task SaveChanges(CancellationToken cancellationToken = default)
+        public async Task SaveChanges(CancellationToken cancellationToken = default)
         {
-            return dbContext.SaveChangesAsync(cancellationToken);
+            await dbContext.SaveChangesAsync(cancellationToken);
+
+            await aggregateEventsPublisher.Publish(cancellationToken);
         }
 
 

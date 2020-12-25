@@ -3,6 +3,8 @@ using GoldenEye.EntityFramework.Migrations;
 using GoldenEye.Repositories;
 using GoldenEye.Entities;
 using GoldenEye.EntityFramework.Repositories;
+using GoldenEye.Events;
+using GoldenEye.Events.Aggregate;
 using GoldenEye.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -34,7 +36,7 @@ namespace GoldenEye.EntityFramework.Registration
             where TDbContext : DbContext
             where TEntity : class, IEntity
         {
-            services.Add(sp => new EntityFrameworkRepository<TDbContext, TEntity>(sp.GetService<TDbContext>()),
+            services.Add(sp => new EntityFrameworkRepository<TDbContext, TEntity>(sp.GetService<TDbContext>(), sp.GetService<IAggregateEventsPublisher>()),
                 serviceLifetime);
 
             services.Add<IRepository<TEntity>>(sp => sp.GetService<EntityFrameworkRepository<TDbContext, TEntity>>(),
@@ -48,7 +50,7 @@ namespace GoldenEye.EntityFramework.Registration
             where TDbContext : DbContext
             where TEntity : class, IEntity
         {
-            services.Add(sp => new EntityFrameworkRepository<TDbContext, TEntity>(sp.GetService<TDbContext>()),
+            services.Add(sp => new EntityFrameworkRepository<TDbContext, TEntity>(sp.GetService<TDbContext>(), sp.GetService<IAggregateEventsPublisher>()),
                 serviceLifetime);
 
             services.Add<IReadonlyRepository<TEntity>>(

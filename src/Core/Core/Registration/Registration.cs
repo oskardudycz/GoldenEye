@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using GoldenEye.Commands;
 using GoldenEye.Events;
+using GoldenEye.Events.Aggregate;
 using GoldenEye.Events.External;
 using GoldenEye.Events.Store;
 using GoldenEye.Extensions.DependencyInjection;
@@ -58,7 +59,8 @@ namespace GoldenEye.Registration
                 .Add(typeof(IPipelineBehavior<,>), typeof(RequestPreProcessorBehavior<,>), withLifetime)
                 .Add<ICommandBus, CommandBus>(withLifetime)
                 .Add<IQueryBus, QueryBus>(withLifetime)
-                .Add<IEventBus, EventBus>(withLifetime);
+                .Add<IEventBus, EventBus>(withLifetime)
+                .Add<IAggregateEventsPublisher, AggregateEventsPublisher>(withLifetime);
 
             services.TryAddScoped<IExternalEventProducer, NulloExternalEventProducer>();
             services.TryAddScoped<IExternalCommandBus, ExternalCommandBus>();

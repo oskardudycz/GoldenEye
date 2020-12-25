@@ -8,7 +8,8 @@ using Dapper;
 using Dapper.Contrib.Extensions;
 using GoldenEye.Dapper.Generators;
 using GoldenEye.Dapper.Mappings;
-using GoldenEye.Exceptions;
+using GoldenEye.Events;
+using GoldenEye.Events.Aggregate;
 using GoldenEye.Extensions.Basic;
 using GoldenEye.Objects.General;
 using GoldenEye.Repositories;
@@ -20,10 +21,12 @@ namespace GoldenEye.Dapper.Repositories
     {
         private readonly IDapperSqlGenerator dapperSqlGenerator;
         private readonly IDbConnection dbConnection;
+        private readonly IAggregateEventsPublisher aggregateEventsPublisher;
 
-        public DapperRepository(IDbConnection dbConnection, IDapperSqlGenerator dapperSqlGenerator = null)
+        public DapperRepository(IDbConnection dbConnection, IAggregateEventsPublisher aggregateEventsPublisher, IDapperSqlGenerator dapperSqlGenerator = null)
         {
             this.dbConnection = dbConnection ?? throw new ArgumentNullException(nameof(dbConnection));
+            this.aggregateEventsPublisher = aggregateEventsPublisher;
             this.dapperSqlGenerator = dapperSqlGenerator;
         }
 
@@ -73,6 +76,8 @@ namespace GoldenEye.Dapper.Repositories
             else
                 await dbConnection.InsertAsync(entity);
 
+            aggregateEventsPublisher.TryEnqueueEventsFrom(entity, out _);
+
             return entity;
         }
 
@@ -87,6 +92,8 @@ namespace GoldenEye.Dapper.Repositories
                 await dbConnection.ExecuteAsync(sql, entity);
             else
                 await dbConnection.UpdateAsync(entity);
+
+            aggregateEventsPublisher.TryEnqueueEventsFrom(entity, out _);
 
             return entity;
         }
@@ -107,6 +114,8 @@ namespace GoldenEye.Dapper.Repositories
                 await dbConnection.ExecuteAsync(sql, entity);
             else
                 await dbConnection.DeleteAsync(entity);
+
+            aggregateEventsPublisher.TryEnqueueEventsFrom(entity, out _);
 
             return entity;
         }
@@ -136,10 +145,9 @@ namespace GoldenEye.Dapper.Repositories
             throw new NotImplementedException();
         }
 
-        public Task SaveChanges(CancellationToken cancellationToken = default)
+        public async Task SaveChanges(CancellationToken cancellationToken = default)
         {
-            //TODO: Add UnitOfWork
-            return Task.CompletedTask;
+            await aggregateEventsPublisher.Publish(cancellationToken);
         }
     }
 }

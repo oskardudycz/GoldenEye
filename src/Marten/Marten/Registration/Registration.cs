@@ -1,6 +1,7 @@
 ﻿using System;
 using GoldenEye.Aggregates;
 using GoldenEye.Events;
+using GoldenEye.Events.Aggregate;
 using GoldenEye.Extensions.Basic;
 using GoldenEye.Extensions.DependencyInjection;
 using GoldenEye.IdsGenerator;
@@ -81,7 +82,7 @@ namespace GoldenEye.Marten.Registration
             ServiceLifetime serviceLifetime = ServiceLifetime.Transient)
             where TEntity : class, IHaveId
         {
-            services.Add(sp => new MartenDocumentRepository<TEntity>(sp.GetService<IDocumentSession>()),
+            services.Add(sp => new MartenDocumentRepository<TEntity>(sp.GetService<IDocumentSession>(), sp.GetService<IAggregateEventsPublisher>()),
                 serviceLifetime);
 
             services.Add<IRepository<TEntity>>(sp => sp.GetService<MartenDocumentRepository<TEntity>>(),
@@ -94,7 +95,7 @@ namespace GoldenEye.Marten.Registration
             ServiceLifetime serviceLifetime = ServiceLifetime.Transient)
             where TEntity : class, IAggregate, new()
         {
-            services.Add(sp => new MartenEventSourcedRepository<TEntity>(sp.GetService<IDocumentSession>(), sp.GetService<MartenEventStore>()),
+            services.Add(sp => new MartenEventSourcedRepository<TEntity>(sp.GetService<IDocumentSession>(), sp.GetService<MartenEventStore>(), sp.GetService<IAggregateEventsPublisher>()),
                 serviceLifetime);
 
             services.Add<IRepository<TEntity>>(sp => sp.GetService<MartenEventSourcedRepository<TEntity>>(),
@@ -107,7 +108,7 @@ namespace GoldenEye.Marten.Registration
             ServiceLifetime serviceLifetime = ServiceLifetime.Transient)
             where TEntity : class, IHaveId
         {
-            services.Add(sp => new MartenDocumentRepository<TEntity>(sp.GetService<IDocumentSession>()),
+            services.Add(sp => new MartenDocumentRepository<TEntity>(sp.GetService<IDocumentSession>(), sp.GetService<IAggregateEventsPublisher>()),
                 serviceLifetime);
 
             services.Add<IReadonlyRepository<TEntity>>(sp => sp.GetService<MartenDocumentRepository<TEntity>>(),

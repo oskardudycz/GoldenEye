@@ -5,6 +5,7 @@ using GoldenEye.Repositories;
 using GoldenEye.EntityFramework.Integration.Tests.Infrastructure;
 using GoldenEye.EntityFramework.Integration.Tests.TestData;
 using GoldenEye.EntityFramework.Repositories;
+using GoldenEye.Events.Aggregate;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Xunit;
@@ -25,7 +26,7 @@ namespace GoldenEye.EntityFramework.Integration.Tests.Repositories
             User user;
             await using (var dbContext = new UsersDbContext(builder.Options))
             {
-                var repository = new EntityFrameworkRepository<UsersDbContext, User>(dbContext);
+                var repository = new EntityFrameworkRepository<UsersDbContext, User>(dbContext, new NulloAggregateEventsPublisher());
 
                 await dbContext.Database.MigrateAsync();
 
@@ -44,7 +45,7 @@ namespace GoldenEye.EntityFramework.Integration.Tests.Repositories
 
             await using (var dbContext = new UsersDbContext(builder.Options))
             {
-                var repository = new EntityFrameworkRepository<UsersDbContext, User>(dbContext);
+                var repository = new EntityFrameworkRepository<UsersDbContext, User>(dbContext, new NulloAggregateEventsPublisher());
 
                 var recordFromDb = await repository.FindById(user.Id);
 
@@ -54,11 +55,11 @@ namespace GoldenEye.EntityFramework.Integration.Tests.Repositories
             //3. Update
             await using (var dbContext = new UsersDbContext(builder.Options))
             {
-                var repository = new EntityFrameworkRepository<UsersDbContext, User>(dbContext);
+                var repository = new EntityFrameworkRepository<UsersDbContext, User>(dbContext, new NulloAggregateEventsPublisher());
 
                 var userToUpdate = new User {Id = user.Id, UserName = "tom.smith@mail.com", FullName = "Tom Smith"};
 
-                repository = new EntityFrameworkRepository<UsersDbContext, User>(dbContext);
+                repository = new EntityFrameworkRepository<UsersDbContext, User>(dbContext, new NulloAggregateEventsPublisher());
                 var result = await repository.Update(userToUpdate);
                 await repository.SaveChanges();
 
@@ -75,7 +76,7 @@ namespace GoldenEye.EntityFramework.Integration.Tests.Repositories
             //4. Remove
             await using (var dbContext = new UsersDbContext(builder.Options))
             {
-                var repository = new EntityFrameworkRepository<UsersDbContext, User>(dbContext);
+                var repository = new EntityFrameworkRepository<UsersDbContext, User>(dbContext, new NulloAggregateEventsPublisher());
 
                 var result = await repository.DeleteById(user.Id);
                 await repository.SaveChanges();
@@ -89,7 +90,7 @@ namespace GoldenEye.EntityFramework.Integration.Tests.Repositories
             //5. Add Range
             await using (var dbContext = new UsersDbContext(builder.Options))
             {
-                var repository = new EntityFrameworkRepository<UsersDbContext, User>(dbContext);
+                var repository = new EntityFrameworkRepository<UsersDbContext, User>(dbContext, new NulloAggregateEventsPublisher());
 
                 var results = (await repository.AddAll(
                     default,

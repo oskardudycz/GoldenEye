@@ -4,6 +4,7 @@ using FluentAssertions;
 using GoldenEye.Dapper.Integration.Tests.Infrastructure;
 using GoldenEye.Dapper.Integration.Tests.TestData;
 using GoldenEye.Dapper.Repositories;
+using GoldenEye.Events.Aggregate;
 using GoldenEye.Repositories;
 using Xunit;
 
@@ -12,11 +13,11 @@ namespace GoldenEye.Dapper.Integration.Tests.Repositories
     public class DapperRepositoryTests: DapperTest
     {
         [Fact]
-        public async Task dGivenRepository_WhenFullCRUDFlowIsRun_ThenSucceed()
+        public async Task GivenRepository_WhenFullCRUDFlowIsRun_ThenSucceed()
         {
             Execute(Structure.UsersCreateSql);
 
-            var repository = new DapperRepository<User>(DbConnection);
+            var repository = new DapperRepository<User>(DbConnection, new NulloAggregateEventsPublisher());
 
             var user = new User {Id = 0, UserName = "john.doe@mail.com", FullName = null};
 

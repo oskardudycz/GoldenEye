@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using GoldenEye.Events;
+using GoldenEye.Events.Aggregate;
 using GoldenEye.Exceptions;
 using GoldenEye.Extensions.Collections;
 using GoldenEye.Objects.General;
@@ -17,10 +19,12 @@ namespace GoldenEye.Marten.Repositories
         where TEntity : class, IHaveId
     {
         private readonly IDocumentSession documentSession;
+        private readonly IAggregateEventsPublisher aggregateEventsPublisher;
 
-        public MartenDocumentRepository(IDocumentSession documentSession)
+        public MartenDocumentRepository(IDocumentSession documentSession, IAggregateEventsPublisher aggregateEventsPublisher)
         {
             this.documentSession = documentSession ?? throw new ArgumentException(nameof(documentSession));
+            this.aggregateEventsPublisher = aggregateEventsPublisher;
         }
 
         public Task<TEntity> FindById(object id, CancellationToken cancellationToken = default)
@@ -67,6 +71,7 @@ namespace GoldenEye.Marten.Repositories
                 throw new ArgumentNullException(nameof(entity));
 
             documentSession.Insert(entity);
+            aggregateEventsPublisher.TryEnqueueEventsFrom(entity, out var pendingEvents);
 
             return Task.FromResult(entity);
         }
@@ -77,6 +82,7 @@ namespace GoldenEye.Marten.Repositories
                 throw new ArgumentNullException(nameof(entity));
 
             documentSession.Update(entity);
+            aggregateEventsPublisher.TryEnqueueEventsFrom(entity, out var pendingEvents);
 
             return Task.FromResult(entity);
         }
@@ -92,6 +98,7 @@ namespace GoldenEye.Marten.Repositories
                 throw new ArgumentNullException(nameof(entity));
 
             documentSession.Delete(entity);
+            aggregateEventsPublisher.TryEnqueueEventsFrom(entity, out var pendingEvents);
 
             return Task.FromResult(entity);
         }
@@ -130,9 +137,10 @@ namespace GoldenEye.Marten.Repositories
             throw new NotImplementedException();
         }
 
-        public Task SaveChanges(CancellationToken cancellationToken = default)
+        public async Task SaveChanges(CancellationToken cancellationToken = default)
         {
-            return documentSession.SaveChangesAsync(cancellationToken);
+            await documentSession.SaveChangesAsync(cancellationToken);
+            await aggregateEventsPublisher.Publish(cancellationToken);
         }
     }
 }

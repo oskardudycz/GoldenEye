@@ -4,12 +4,15 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using GoldenEye.Aggregates;
-using GoldenEye.Events.Store;
+using GoldenEye.Events;
+using GoldenEye.Events.Aggregate;
 using GoldenEye.Exceptions;
+using GoldenEye.Extensions.Collections;
 using GoldenEye.Marten.Events.Storage;
 using GoldenEye.Objects.General;
 using GoldenEye.Repositories;
 using Marten;
+using IEventStore = GoldenEye.Events.Store.IEventStore;
 
 namespace GoldenEye.Marten.Repositories
 {
@@ -20,11 +23,13 @@ namespace GoldenEye.Marten.Repositories
     {
         private readonly IDocumentSession documentSession;
         private readonly IEventStore eventStore;
+        private readonly IAggregateEventsPublisher aggregateEventsPublisher;
 
-        public MartenEventSourcedRepository(IDocumentSession documentSession, MartenEventStore eventStore)
+        public MartenEventSourcedRepository(IDocumentSession documentSession, MartenEventStore eventStore, IAggregateEventsPublisher aggregateEventsPublisher)
         {
             this.documentSession = documentSession ?? throw new ArgumentException(nameof(documentSession));
             this.eventStore = eventStore ?? throw new ArgumentException(nameof(eventStore));
+            this.aggregateEventsPublisher = aggregateEventsPublisher ?? throw new ArgumentException(nameof(aggregateEventsPublisher));
         }
 
         public async Task<TEntity> FindById(object id, CancellationToken cancellationToken = default)
@@ -98,9 +103,11 @@ namespace GoldenEye.Marten.Repositories
                 $"{nameof(DeleteById)} is not supported by Event Source repository. Use method with entity object.");
         }
 
-        public Task SaveChanges(CancellationToken cancellationToken = default)
+        public async Task SaveChanges(CancellationToken cancellationToken = default)
         {
-            return documentSession.SaveChangesAsync(cancellationToken);
+            await documentSession.SaveChangesAsync(cancellationToken);
+
+            await aggregateEventsPublisher.Publish(cancellationToken);
         }
 
         private async Task<TEntity> Store(TEntity entity, int? expectedVersion, CancellationToken cancellationToken = default)
@@ -108,10 +115,12 @@ namespace GoldenEye.Marten.Repositories
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
 
+            var entityEvents = aggregateEventsPublisher.EnqueueEventsFrom(entity);
+
             if (expectedVersion.HasValue)
-                await eventStore.Append(entity.Id, expectedVersion.Value, cancellationToken, entity.DequeueUncommittedEvents());
+                await eventStore.Append(entity.Id, expectedVersion.Value, cancellationToken, entityEvents);
             else
-                await eventStore.Append(entity.Id, cancellationToken, entity.DequeueUncommittedEvents());
+                await eventStore.Append(entity.Id, cancellationToken, entityEvents);
 
             return entity;
         }

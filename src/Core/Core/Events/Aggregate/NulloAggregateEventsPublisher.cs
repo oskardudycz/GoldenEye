@@ -1,0 +1,32 @@
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+using GoldenEye.Aggregates;
+
+namespace GoldenEye.Events.Aggregate
+{
+    public class NulloAggregateEventsPublisher: IAggregateEventsPublisher
+    {
+        public IEvent[] EnqueueEventsFrom(IAggregate aggregate)
+        {
+            return Array.Empty<IEvent>();
+        }
+
+        public bool TryEnqueueEventsFrom(object entity, out IEvent[] uncomittedEvents)
+        {
+            if (!(entity is IAggregate aggregate))
+            {
+                uncomittedEvents = null;
+                return false;
+            }
+
+            uncomittedEvents = aggregate.DequeueUncommittedEvents();
+            return true;
+        }
+
+        public Task Publish(CancellationToken cancellationToken = default)
+        {
+            return Task.CompletedTask;
+        }
+    }
+}
