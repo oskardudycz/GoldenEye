@@ -33,7 +33,6 @@ namespace GoldenEye.EntityFramework.Repositories
             if (id == null)
                 throw new ArgumentNullException(nameof(id), "Id needs to have value");
 
-
             return await dbContext.FindAsync<TEntity>(id);
         }
 
@@ -87,7 +86,9 @@ namespace GoldenEye.EntityFramework.Repositories
 
         public Task<TEntity> Update(TEntity entity, int expectedVersion, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            CheckVersion(entity, expectedVersion);
+
+            return Update(entity, cancellationToken);
         }
 
         public Task<TEntity> Delete(TEntity entity, CancellationToken cancellationToken = default)
@@ -104,7 +105,9 @@ namespace GoldenEye.EntityFramework.Repositories
 
         public Task<TEntity> Delete(TEntity entity, int expectedVersion, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            CheckVersion(entity, expectedVersion);
+
+            return Delete(entity, cancellationToken);
         }
 
         public async Task<bool> DeleteById(object id, CancellationToken cancellationToken = default)

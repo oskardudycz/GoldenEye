@@ -683,6 +683,46 @@
         <e p="postgres" t="Include" />
       </e>
       <e p="Docs" t="Include" />
+      <e p="ElasticSearch" t="Include">
+        <e p="ElasticSearch" t="IncludeRecursive">
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Changelog.md" t="Include" />
+          <e p="ElasticSearch.csproj" t="IncludeRecursive" />
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netstandard2.1" t="Include">
+                <e p="ElasticSearch.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Readme.md" t="Include" />
+          <e p="Repositories" t="Include">
+            <e p="ElasticSearchRepository.cs" t="Include" />
+          </e>
+        </e>
+        <e p="ElasticSearch.Integration.Tests" t="IncludeRecursive">
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="ElasticSearch.Integration.Tests.csproj" t="IncludeRecursive" />
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="net5.0" t="Include">
+                <e p="ElasticSearch.Integration.Tests.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
+        <e p="ElasticSearch.Tests" t="IncludeRecursive">
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="ElasticSearch.Tests.csproj" t="IncludeRecursive" />
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="net5.0" t="Include">
+                <e p="ElasticSearch.Tests.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
+      </e>
       <e p="EntityFramework" t="Include">
         <e p="EntityFramework" t="IncludeRecursive">
           <e p="bin" t="ExcludeRecursive" />
@@ -738,6 +778,43 @@
         </e>
       </e>
       <e p="GoldenEye.sln" t="IncludeFlat" />
+      <e p="Kafka" t="Include">
+        <e p="Kafka" t="IncludeRecursive">
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Changelog.md" t="Include" />
+          <e p="Kafka.csproj" t="IncludeRecursive" />
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netstandard2.1" t="Include">
+                <e p="Kafka.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Readme.md" t="Include" />
+        </e>
+        <e p="Kafka.Integration.Tests" t="IncludeRecursive">
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Kafka.Integration.Tests.csproj" t="IncludeRecursive" />
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="net5.0" t="Include">
+                <e p="Kafka.Integration.Tests.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
+        <e p="Kafka.Tests" t="IncludeRecursive">
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Kafka.Tests.csproj" t="IncludeRecursive" />
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="net5.0" t="Include">
+                <e p="Kafka.Tests.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
+      </e>
       <e p="Marten" t="Include">
         <e p="Marten" t="IncludeRecursive">
           <e p="bin" t="ExcludeRecursive" />

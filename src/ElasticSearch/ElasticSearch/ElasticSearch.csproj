@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <Version>1.0.0-alpha.8</Version>
+        <PackageId>GoldenEye.ElasticSearch</PackageId>
+        <AssemblyName>GoldenEye.ElasticSearch</AssemblyName>
+        <RootNamespace>GoldenEye.ElasticSearch</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\Core\Core\Core.csproj" />
+    </ItemGroup>
+</Project>
