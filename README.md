@@ -12,15 +12,16 @@ What is GoldenEye?
 What do I get?
 --------------------------------
 Complete Solution bootstrap - bottom up:
-- CQRS and Domain Driven Development stack - sending and handling commands, queries, events (with usage of [MediatR](https://github.com/jbogard/MediatR) library)
-- [CRUD Repositories](https://github.com/oskardudycz/GoldenEye/tree/main/src/Core/Core/Repositories) and CRUD Application Services
+- CQRS and Domain Driven Development stack - sending and handling commands, queries, events (with usage of [MediatR](https://github.com/jbogard/MediatR) library),
+- Messaging infrastructure - both internal based on [MediatR](https://github.com/jbogard/MediatR) and external with [Kafka](https://kafka.apache.org/),
+- [CRUD Repositories](https://github.com/oskardudycz/GoldenEye/tree/main/src/Core/Core/Repositories) and CRUD Application Services,
 - [Entity Framework](https://github.com/aspnet/EntityFrameworkCore) (supports also [Dapper](https://github.com/StackExchange/Dapper), [Marten](https://github.com/JasperFx/marten))
-- WebApi REST controllers
-- complete set up of dependency injection with automatic naming convention binding
-- [AutoMapper](https://github.com/AutoMapper/AutoMapper) preconfigured and automatic mappings registration
-- Validation flow with [FluentValidation.NET](https://github.com/JeremySkinner/FluentValidation)
-- Examples of complete usage (Task list functionality)
-- document database and event store support in Postgres with [Marten](https://github.com/JasperFx/marten) framework
+- WebApi REST controllers,
+- complete set up of dependency injection with automatic naming convention binding,
+- [AutoMapper](https://github.com/AutoMapper/AutoMapper) preconfigured and automatic mappings registration,
+- Validation flow with [FluentValidation.NET](https://github.com/JeremySkinner/FluentValidation),
+- Examples of complete usage (Task list functionality),
+- document database and event store support in Postgres with [Marten](https://github.com/JasperFx/marten) framework,
 - many more
 
 How do I get started?
@@ -50,6 +51,8 @@ Install packages from the Nuget package manager:
 * [GoldenEye.WebApi](src/WebApi/WebApi/Readme.md) - base classes for API development like CRUD controllers, registration helpers, and many more
 * [GoldenEye.EntityFramework](src/EntityFramework/EntityFramework/Readme.md) - extensions to GoldenEye for EntityFramework development (EF repositories, etc.)
 * [GoldenEye.Dapper](src/Dapper/Dapper/Readme.md) - extensions to GoldenEye for Dapper development (Dapper repositories, etc.)
+* [GoldenEye.ElasticSearch](src/ElasticSearch/ElasticSearch/Readme.md) - extensions to GoldenEye for ElasticSearch development (ElasticSearch repositories, etc.)
+* [GoldenEye.Kafka](src/Kafka/Kafka/Readme.md) - extensions to GoldenEye for Kafka development (Kafka producer, concumer, etc.)
 
 I found an issue or I have a change request
 --------------------------------
