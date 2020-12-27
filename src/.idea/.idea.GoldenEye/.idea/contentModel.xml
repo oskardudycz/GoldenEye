@@ -523,6 +523,7 @@
           <e p="Utils" t="Include">
             <e p="Assemblies" t="Include">
               <e p="AssembliesProvider.cs" t="Include" />
+              <e p="TypeProvider.cs" t="Include" />
             </e>
             <e p="Coding" t="Include">
               <e p="Switch.cs" t="Include" />
@@ -783,6 +784,10 @@
         <e p="Kafka" t="IncludeRecursive">
           <e p="bin" t="ExcludeRecursive" />
           <e p="Changelog.md" t="Include" />
+          <e p="Consumers" t="Include">
+            <e p="KafkaConsumer.cs" t="Include" />
+            <e p="KafkaConsumerConfig.cs" t="Include" />
+          </e>
           <e p="Kafka.csproj" t="IncludeRecursive" />
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
@@ -791,7 +796,14 @@
               </e>
             </e>
           </e>
+          <e p="Producers" t="Include">
+            <e p="KafkaProducer.cs" t="Include" />
+            <e p="KafkaProducerConfig.cs" t="Include" />
+          </e>
           <e p="Readme.md" t="Include" />
+          <e p="Registrations" t="Include">
+            <e p="Registration.cs" t="Include" />
+          </e>
         </e>
         <e p="Kafka.Integration.Tests" t="IncludeRecursive">
           <e p="bin" t="ExcludeRecursive" />
