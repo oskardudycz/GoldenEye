@@ -5,26 +5,38 @@ using System.Threading;
 using System.Threading.Tasks;
 using GoldenEye.Events.Aggregate;
 using GoldenEye.Objects.General;
-using GoldenEye.Repositories;
+using Nest;
 
 namespace GoldenEye.ElasticSearch.Repositories
 {
-    public class ElasticSearchRepository<TEntity>: IRepository<TEntity>
+    public class ElasticSearchRepository<TEntity>: GoldenEye.Repositories.IRepository<TEntity>
         where TEntity : class, IHaveId
     {
+        private readonly IElasticClient elasticClient;
         private readonly IAggregateEventsPublisher aggregateEventsPublisher;
 
-        public ElasticSearchRepository(IAggregateEventsPublisher aggregateEventsPublisher)
+        public ElasticSearchRepository(IElasticClient elasticClient, IAggregateEventsPublisher aggregateEventsPublisher)
         {
+            this.elasticClient = elasticClient;
             this.aggregateEventsPublisher = aggregateEventsPublisher;
         }
 
-        public Task<TEntity> FindById(object id, CancellationToken cancellationToken = default)
+        public async Task<TEntity> FindById(object id, CancellationToken cancellationToken = default)
         {
             if (id == null)
                 throw new ArgumentNullException(nameof(id), "Id needs to have value");
 
-            throw new NotImplementedException();
+            var result = id switch
+            {
+                string stringId => await elasticClient.GetAsync<TEntity>(stringId, ct: cancellationToken),
+                long longId => await elasticClient.GetAsync<TEntity>(longId, ct: cancellationToken),
+                int intId => await elasticClient.GetAsync<TEntity>(intId, ct: cancellationToken),
+                Guid guidId => await elasticClient.GetAsync<TEntity>(guidId, ct: cancellationToken),
+                _ => throw new ArgumentOutOfRangeException(nameof(id),
+                    $"{nameof(id)} has to be of type string, int, long or Guid")
+            };
+
+            return result?.Source;
         }
 
         public IQueryable<TEntity> Query()
@@ -44,20 +56,38 @@ namespace GoldenEye.ElasticSearch.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<TEntity> Add(TEntity entity, CancellationToken cancellationToken = default)
+        public async Task<TEntity> Add(TEntity entity, CancellationToken cancellationToken = default)
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
 
-            throw new NotImplementedException();
+            var result = entity.Id switch
+            {
+                string stringId => await elasticClient.IndexAsync(entity, i => i.Id(stringId), cancellationToken),
+                long longId =>  await elasticClient.IndexAsync(entity, i => i.Id(longId), cancellationToken),
+                int intId =>  await elasticClient.IndexAsync(entity, i => i.Id(intId), cancellationToken),
+                Guid guidId => await elasticClient.IndexAsync(entity, i => i.Id(guidId), cancellationToken),
+                _ => throw new ArgumentOutOfRangeException(nameof(entity.Id),
+                    $"{nameof(entity.Id)} has to be of type string, int, long or Guid")
+            };
+            return entity;
         }
 
-        public Task<TEntity> Update(TEntity entity, CancellationToken cancellationToken = default)
+        public async Task<TEntity> Update(TEntity entity, CancellationToken cancellationToken = default)
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
 
-            throw new NotImplementedException();
+            var result = entity.Id switch
+            {
+                string stringId => await elasticClient.UpdateAsync<TEntity>(stringId, i => i.Doc(entity), cancellationToken),
+                long longId =>  await elasticClient.UpdateAsync<TEntity>(longId, i => i.Doc(entity), cancellationToken),
+                int intId =>  await elasticClient.UpdateAsync<TEntity>(intId, i => i.Doc(entity), cancellationToken),
+                Guid guidId => await elasticClient.UpdateAsync<TEntity>(guidId, i => i.Doc(entity), cancellationToken),
+                _ => throw new ArgumentOutOfRangeException(nameof(entity.Id),
+                    $"{nameof(entity.Id)} has to be of type string, int, long or Guid")
+            };
+            return entity;
         }
 
         public Task<TEntity> Update(TEntity entity, int expectedVersion, CancellationToken cancellationToken = default)
@@ -65,12 +95,21 @@ namespace GoldenEye.ElasticSearch.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<TEntity> Delete(TEntity entity, CancellationToken cancellationToken = default)
+        public async Task<TEntity> Delete(TEntity entity, CancellationToken cancellationToken = default)
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
 
-            throw new NotImplementedException();
+            var result = entity.Id switch
+            {
+                string stringId => await elasticClient.DeleteAsync<TEntity>(stringId, ct:cancellationToken),
+                long longId =>  await elasticClient.DeleteAsync<TEntity>(longId, ct:cancellationToken),
+                int intId =>  await elasticClient.DeleteAsync<TEntity>(intId, ct:cancellationToken),
+                Guid guidId => await elasticClient.DeleteAsync<TEntity>(guidId, ct:cancellationToken),
+                _ => throw new ArgumentOutOfRangeException(nameof(entity.Id),
+                    $"{nameof(entity.Id)} has to be of type string, int, long or Guid")
+            };
+            return entity;
         }
 
         public Task<TEntity> Delete(TEntity entity, int expectedVersion, CancellationToken cancellationToken = default)
@@ -78,12 +117,21 @@ namespace GoldenEye.ElasticSearch.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<bool> DeleteById(object id, CancellationToken cancellationToken = default)
+        public async Task<bool> DeleteById(object id, CancellationToken cancellationToken = default)
         {
             if (id == null)
                 throw new ArgumentNullException(nameof(id));
 
-            throw new NotImplementedException();
+            var result = id switch
+            {
+                string stringId => await elasticClient.DeleteAsync<TEntity>(stringId, ct:cancellationToken),
+                long longId =>  await elasticClient.DeleteAsync<TEntity>(longId, ct:cancellationToken),
+                int intId =>  await elasticClient.DeleteAsync<TEntity>(intId, ct:cancellationToken),
+                Guid guidId => await elasticClient.DeleteAsync<TEntity>(guidId, ct:cancellationToken),
+                _ => throw new ArgumentOutOfRangeException(nameof(id),
+                    $"{nameof(id)} has to be of type string, int, long or Guid")
+            };
+            return result.IsValid;
         }
 
         public Task<bool> DeleteById(object id, int expectedVersion, CancellationToken cancellationToken = default)
@@ -94,7 +142,6 @@ namespace GoldenEye.ElasticSearch.Repositories
         public async Task SaveChanges(CancellationToken cancellationToken = default)
         {
             await aggregateEventsPublisher.Publish(cancellationToken);
-            throw new NotImplementedException();
         }
     }
 }
