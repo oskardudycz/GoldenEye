@@ -174,5 +174,10 @@ namespace GoldenEye.Registration
                 .AddAllQueryHandlers(withLifetime, from)
                 .AddAllEventHandlers(withLifetime, from);
         }
+
+        public static IServiceCollection AddExternalEventConsumerBackgroundWorker(this IServiceCollection services)
+        {
+            return services.AddHostedService<ExternalEventConsumerBackgroundWorker>();
+        }
     }
 }

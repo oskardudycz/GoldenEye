@@ -357,6 +357,7 @@
             </e>
             <e p="EventBus.cs" t="Include" />
             <e p="External" t="Include">
+              <e p="ExternalEventConsumerBackgroundWorker.cs" t="Include" />
               <e p="IExternaEventProducer.cs" t="Include" />
               <e p="IExternalEventConsumer.cs" t="Include" />
               <e p="NulloExternalEventProducer.cs" t="Include" />
