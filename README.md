@@ -65,4 +65,4 @@ Support
 👉 [Github Sponsors](https://github.com/sponsors/oskardudycz) 
 
 
-**GoldenEye** is Copyright &copy; 2015-2020 [Oskar Dudycz](https://event-driven.io) and other contributors under the [MIT license](LICENSE.txt).
+**GoldenEye** is Copyright &copy; 2015-2021 [Oskar Dudycz](https://event-driven.io) and other contributors under the [MIT license](LICENSE.txt).
