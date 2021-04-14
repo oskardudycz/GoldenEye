@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using GoldenEye.Events.External;
@@ -23,17 +24,35 @@ namespace GoldenEye.Events
         public Task Publish<TEvent>(TEvent @event, CancellationToken cancellationToken = default)
             where TEvent: IEvent
         {
-            return Publish(cancellationToken, @event);
+            return PublishInteral(@event, cancellationToken);
         }
 
         public async Task Publish(CancellationToken cancellationToken, params IEvent[] events)
         {
             foreach (var @event in events)
             {
-                await mediator.Publish(@event, cancellationToken);
+                await PublishInteral(@event, cancellationToken);
+            }
+        }
 
-                if (@event is IExternalEvent externalEvent)
-                    await externalEventProducer.Publish(externalEvent, cancellationToken);
+        public async Task PublishParallel(CancellationToken cancellationToken, params IEvent[] events)
+        {
+            var tasks = new List<Task>();
+            foreach (var @event in events)
+            {
+                tasks.Add(Task.Run(() => PublishInteral(@event, cancellationToken)));
+            }
+
+            await Task.WhenAll(tasks);
+        }
+
+        private async Task PublishInteral(IEvent @event, CancellationToken cancellationToken)
+        {
+            await mediator.Publish(@event, cancellationToken);
+
+            if (@event is IExternalEvent externalEvent)
+            {
+                await externalEventProducer.Publish(externalEvent, cancellationToken);
             }
         }
     }
