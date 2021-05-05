@@ -1,5 +1,5 @@
 using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using GoldenEye.Events.External;
@@ -21,32 +21,8 @@ namespace GoldenEye.Events
             this.externalEventProducer = externalEventProducer?? throw new ArgumentNullException(nameof(externalEventProducer));
         }
 
-        public Task Publish<TEvent>(TEvent @event, CancellationToken cancellationToken = default)
+        public async Task Publish<TEvent>(TEvent @event, CancellationToken cancellationToken = default)
             where TEvent: IEvent
-        {
-            return PublishInteral(@event, cancellationToken);
-        }
-
-        public async Task Publish(CancellationToken cancellationToken, params IEvent[] events)
-        {
-            foreach (var @event in events)
-            {
-                await PublishInteral(@event, cancellationToken);
-            }
-        }
-
-        public async Task PublishParallel(CancellationToken cancellationToken, params IEvent[] events)
-        {
-            var tasks = new List<Task>();
-            foreach (var @event in events)
-            {
-                tasks.Add(Task.Run(() => PublishInteral(@event, cancellationToken)));
-            }
-
-            await Task.WhenAll(tasks);
-        }
-
-        private async Task PublishInteral(IEvent @event, CancellationToken cancellationToken)
         {
             await mediator.Publish(@event, cancellationToken);
 
@@ -54,6 +30,21 @@ namespace GoldenEye.Events
             {
                 await externalEventProducer.Publish(externalEvent, cancellationToken);
             }
+        }
+
+        public async Task Publish(CancellationToken cancellationToken, params IEvent[] events)
+        {
+            foreach (var @event in events)
+            {
+                await Publish(@event, cancellationToken);
+            }
+        }
+
+        public Task PublishParallel(CancellationToken cancellationToken, params IEvent[] events)
+        {
+            var tasks = events.Select(@event => Publish(@event, cancellationToken)).ToList();
+
+            return Task.WhenAll(tasks);
         }
     }
 }
