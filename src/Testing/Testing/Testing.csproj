@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFrameworks>netcoreapp3.1;net5.0</TargetFrameworks>
-        <Version>1.0.0-alpha.9</Version>
+        <Version>1.0.0-alpha.10</Version>
         <PackageId>GoldenEye.Testing</PackageId>
         <AssemblyName>GoldenEye.Testing</AssemblyName>
         <RootNamespace>GoldenEye.Testing</RootNamespace>
