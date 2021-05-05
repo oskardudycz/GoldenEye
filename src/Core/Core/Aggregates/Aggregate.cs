@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using GoldenEye.Events;
-using GoldenEye.Objects.General;
 
 namespace GoldenEye.Aggregates
 {
@@ -9,14 +8,11 @@ namespace GoldenEye.Aggregates
     {
         public TKey Id { get; protected set; }
 
-        object IHaveId.Id => Id;
-
         public int Version { get; protected set; }
 
-        [NonSerialized] private readonly Queue<IEvent> uncommittedEvents = new Queue<IEvent>();
+        [NonSerialized] private readonly Queue<IEvent> uncommittedEvents = new();
 
-        //for serialization purposes
-        protected Aggregate() { }
+        public virtual void When() {}
 
         public IEvent[] DequeueUncommittedEvents()
         {

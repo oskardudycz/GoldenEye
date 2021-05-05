@@ -6,7 +6,7 @@ namespace GoldenEye.Dapper.Mappings
         string Update { get; }
         string Delete { get; }
         string Query { get; }
-        string GetById { get; }
+        string FindById { get; }
     }
 
     public interface IDapperMapping<TEntity>: IDapperMapping

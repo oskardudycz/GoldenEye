@@ -12,15 +12,15 @@ namespace GoldenEye.Events.Aggregate
             return Array.Empty<IEvent>();
         }
 
-        public bool TryEnqueueEventsFrom(object entity, out IEvent[] uncomittedEvents)
+        public bool TryEnqueueEventsFrom(object entity, out IEvent[] uncommittedEvents)
         {
-            if (!(entity is IAggregate aggregate))
+            if (entity is not IAggregate aggregate)
             {
-                uncomittedEvents = null;
+                uncommittedEvents = null;
                 return false;
             }
 
-            uncomittedEvents = aggregate.DequeueUncommittedEvents();
+            uncommittedEvents = aggregate.DequeueUncommittedEvents();
             return true;
         }
 

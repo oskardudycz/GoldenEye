@@ -16,38 +16,23 @@ namespace GoldenEye.Repositories
             return Task.FromResult(entity);
         }
 
-        public Task<TEntity> Update(TEntity entity, CancellationToken cancellationToken)
+        public Task<TEntity> Update(TEntity entity, int? expectedVersion, CancellationToken cancellationToken = default)
         {
             Context.Replace(entity);
             return Task.FromResult(entity);
         }
 
-        public Task<TEntity> Update(TEntity entity, int expectedVersion, CancellationToken cancellationToken = default)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<TEntity> Delete(TEntity entity, CancellationToken cancellationToken)
+        public Task<TEntity> Delete(TEntity entity, int? expectedVersion, CancellationToken cancellationToken = default)
         {
             Context.RemoveById(entity.Id);
             return Task.FromResult(entity);
         }
 
-        public Task<TEntity> Delete(TEntity entity, int expectedVersion, CancellationToken cancellationToken = default)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> DeleteById(object id, CancellationToken cancellationToken)
+        public Task<bool> DeleteById(object id, int? expectedVersion, CancellationToken cancellationToken = default)
         {
             Context.RemoveById(id);
 
             return Task.FromResult(true);
-        }
-
-        public Task<bool> DeleteById(object id, int expectedVersion, CancellationToken cancellationToken = default)
-        {
-            throw new NotImplementedException();
         }
 
         public Task SaveChanges(CancellationToken cancellationToken = default)

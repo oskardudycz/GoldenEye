@@ -11,17 +11,11 @@ namespace GoldenEye.Repositories
 
         Task<TEntity> Add(TEntity entity, CancellationToken cancellationToken = default);
 
-        Task<TEntity> Update(TEntity entity, CancellationToken cancellationToken = default);
+        Task<TEntity> Update(TEntity entity, int? expectedVersion, CancellationToken cancellationToken = default);
 
-        Task<TEntity> Update(TEntity entity, int expectedVersion, CancellationToken cancellationToken = default);
+        Task<TEntity> Delete(TEntity entity, int? expectedVersion, CancellationToken cancellationToken = default);
 
-        Task<TEntity> Delete(TEntity entity, CancellationToken cancellationToken = default);
-
-        Task<TEntity> Delete(TEntity entity, int expectedVersion, CancellationToken cancellationToken = default);
-
-        Task<bool> DeleteById(object id, CancellationToken cancellationToken = default);
-
-        Task<bool> DeleteById(object id, int expectedVersion, CancellationToken cancellationToken = default);
+        Task<bool> DeleteById(object id, int? expectedVersion, CancellationToken cancellationToken = default);
 
         Task SaveChanges(CancellationToken cancellationToken = default);
     }

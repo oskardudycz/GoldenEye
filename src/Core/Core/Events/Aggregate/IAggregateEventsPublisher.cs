@@ -8,7 +8,7 @@ namespace GoldenEye.Events.Aggregate
     {
         IEvent[] EnqueueEventsFrom(IAggregate aggregate);
 
-        bool TryEnqueueEventsFrom(object entity, out IEvent[] uncomittedEvents);
+        bool TryEnqueueEventsFrom(object entity, out IEvent[] uncommittedEvents);
 
         Task Publish(CancellationToken cancellationToken = default);
     }

@@ -26,7 +26,7 @@ namespace GoldenEye.Dapper.Tests.Mappings
 
             public string Query => "SELECT Id, Name FROM Users";
 
-            public string GetById => "SELECT Id, Name FROM Users WHERE Id = '{0}'";
+            public string FindById => "SELECT Id, Name FROM Users WHERE Id = '{0}'";
         }
 
         private class Address
@@ -45,7 +45,7 @@ namespace GoldenEye.Dapper.Tests.Mappings
 
             public string Query => "SELECT Id, Street FROM Addresses";
 
-            public string GetById => "SELECT Id, Street FROM Addresses WHERE Id = '{0}'";
+            public string FindById => "SELECT Id, Street FROM Addresses WHERE Id = '{0}'";
         }
 
         [Fact]

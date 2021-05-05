@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using GoldenEye.Events;
 using GoldenEye.Events.Aggregate;
-using GoldenEye.Exceptions;
-using GoldenEye.Extensions.Collections;
 using GoldenEye.Objects.General;
 using GoldenEye.Repositories;
 using Marten;
@@ -41,13 +38,6 @@ namespace GoldenEye.Marten.Repositories
             };
         }
 
-        public async Task<TEntity> GetById(object id, CancellationToken cancellationToken = default)
-        {
-            var entity = await FindById(id, cancellationToken);
-
-            return entity ?? throw NotFoundException.For<TEntity>(id);
-        }
-
         public IQueryable<TEntity> Query()
         {
             return documentSession.Query<TEntity>();
@@ -71,47 +61,46 @@ namespace GoldenEye.Marten.Repositories
                 throw new ArgumentNullException(nameof(entity));
 
             documentSession.Insert(entity);
-            aggregateEventsPublisher.TryEnqueueEventsFrom(entity, out var pendingEvents);
+            aggregateEventsPublisher.TryEnqueueEventsFrom(entity, out _);
 
             return Task.FromResult(entity);
         }
 
-        public Task<TEntity> Update(TEntity entity, CancellationToken cancellationToken = default)
+        public Task<TEntity> Update(TEntity entity, int? expectedVersion, CancellationToken cancellationToken = default)
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
+
+            if(expectedVersion.HasValue)
+                throw new NotImplementedException();
 
             documentSession.Update(entity);
-            aggregateEventsPublisher.TryEnqueueEventsFrom(entity, out var pendingEvents);
+            aggregateEventsPublisher.TryEnqueueEventsFrom(entity, out _);
 
             return Task.FromResult(entity);
         }
 
-        public Task<TEntity> Update(TEntity entity, int expectedVersion, CancellationToken cancellationToken = default)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<TEntity> Delete(TEntity entity, CancellationToken cancellationToken = default)
+        public Task<TEntity> Delete(TEntity entity, int? expectedVersion, CancellationToken cancellationToken = default)
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
 
+            if(!expectedVersion.HasValue)
+                throw new NotImplementedException();
+
             documentSession.Delete(entity);
-            aggregateEventsPublisher.TryEnqueueEventsFrom(entity, out var pendingEvents);
+            aggregateEventsPublisher.TryEnqueueEventsFrom(entity, out _);
 
             return Task.FromResult(entity);
         }
 
-        public Task<TEntity> Delete(TEntity entity, int expectedVersion, CancellationToken cancellationToken = default)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> DeleteById(object id, CancellationToken cancellationToken = default)
+        public Task<bool> DeleteById(object id, int? expectedVersion, CancellationToken cancellationToken = default)
         {
             if (id == null)
                 throw new ArgumentNullException(nameof(id));
+
+            if (expectedVersion.HasValue)
+                throw new NotImplementedException();
 
             switch (id)
             {
@@ -130,11 +119,6 @@ namespace GoldenEye.Marten.Repositories
             }
 
             return Task.FromResult(true);
-        }
-
-        public Task<bool> DeleteById(object id, int expectedVersion, CancellationToken cancellationToken = default)
-        {
-            throw new NotImplementedException();
         }
 
         public async Task SaveChanges(CancellationToken cancellationToken = default)

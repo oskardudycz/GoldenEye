@@ -73,8 +73,11 @@ namespace GoldenEye.ElasticSearch.Repositories
             return entity;
         }
 
-        public async Task<TEntity> Update(TEntity entity, CancellationToken cancellationToken = default)
+        public async Task<TEntity> Update(TEntity entity, int? expectedVersion, CancellationToken cancellationToken = default)
         {
+            if(expectedVersion.HasValue)
+                throw new NotImplementedException();
+
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
 
@@ -90,13 +93,11 @@ namespace GoldenEye.ElasticSearch.Repositories
             return entity;
         }
 
-        public Task<TEntity> Update(TEntity entity, int expectedVersion, CancellationToken cancellationToken = default)
+        public async Task<TEntity> Delete(TEntity entity, int? expectedVersion, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
-        }
+            if(expectedVersion.HasValue)
+                throw new NotImplementedException();
 
-        public async Task<TEntity> Delete(TEntity entity, CancellationToken cancellationToken = default)
-        {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
 
@@ -112,13 +113,11 @@ namespace GoldenEye.ElasticSearch.Repositories
             return entity;
         }
 
-        public Task<TEntity> Delete(TEntity entity, int expectedVersion, CancellationToken cancellationToken = default)
+        public async Task<bool> DeleteById(object id, int? expectedVersion, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
-        }
+            if(expectedVersion.HasValue)
+                throw new NotImplementedException();
 
-        public async Task<bool> DeleteById(object id, CancellationToken cancellationToken = default)
-        {
             if (id == null)
                 throw new ArgumentNullException(nameof(id));
 
@@ -134,14 +133,9 @@ namespace GoldenEye.ElasticSearch.Repositories
             return result.IsValid;
         }
 
-        public Task<bool> DeleteById(object id, int expectedVersion, CancellationToken cancellationToken = default)
+        public Task SaveChanges(CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
-        }
-
-        public async Task SaveChanges(CancellationToken cancellationToken = default)
-        {
-            await aggregateEventsPublisher.Publish(cancellationToken);
+            return aggregateEventsPublisher.Publish(cancellationToken);
         }
     }
 }

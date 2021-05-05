@@ -10,8 +10,6 @@ namespace GoldenEye.Repositories
     {
         Task<TEntity> FindById(object id, CancellationToken cancellationToken = default);
 
-        Task<TEntity> GetById(object id, CancellationToken cancellationToken = default);
-
         IQueryable<TEntity> Query();
 
         Task<IReadOnlyCollection<TEntity>> RawQuery(string query, CancellationToken cancellationToken = default,

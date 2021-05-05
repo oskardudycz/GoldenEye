@@ -27,37 +27,22 @@ namespace GoldenEye.Testing
             return Task.FromResult(aggregate);
         }
 
-        public Task<T> Update(T aggregate, CancellationToken cancellationToken = default)
+        public Task<T> Update(T aggregate, int? expectedVersion, CancellationToken cancellationToken = default)
         {
             Aggregates[aggregate.Id] = aggregate;
             return Task.FromResult(aggregate);
         }
 
-        public Task<T> Update(T entity, int expectedVersion, CancellationToken cancellationToken = default)
-        {
-            return Update(entity, cancellationToken);
-        }
-
-        public Task<T> Delete(T aggregate, CancellationToken cancellationToken = default)
+        public Task<T> Delete(T aggregate, int? expectedVersion, CancellationToken cancellationToken = default)
         {
             Aggregates.Remove(aggregate.Id);
             return Task.FromResult(aggregate);
         }
 
-        public Task<T> Delete(T entity, int expectedVersion, CancellationToken cancellationToken = default)
-        {
-            return Delete(entity, cancellationToken);
-        }
-
-        public Task<bool> DeleteById(object id, CancellationToken cancellationToken = default)
+        public Task<bool> DeleteById(object id, int? expectedVersion, CancellationToken cancellationToken = default)
         {
             Aggregates.Remove((Guid)id);
             return Task.FromResult(true);
-        }
-
-        public Task<bool> DeleteById(object id, int expectedVersion, CancellationToken cancellationToken = default)
-        {
-            return DeleteById(id, cancellationToken);
         }
 
         public Task SaveChanges(CancellationToken cancellationToken = default)

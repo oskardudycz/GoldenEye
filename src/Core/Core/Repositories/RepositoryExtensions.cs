@@ -15,7 +15,7 @@ namespace GoldenEye.Repositories
             CancellationToken cancellationToken = default,
             params TEntity[] entities
         )
-        where TEntity : class, IHaveId
+            where TEntity : class, IHaveId
         {
             if (entities == null)
                 throw new ArgumentNullException(nameof(entities));
@@ -32,12 +32,42 @@ namespace GoldenEye.Repositories
             return result;
         }
 
+        public static Task<TEntity> Update<TEntity>(
+            this IRepository<TEntity> repository,
+            TEntity entity,
+            CancellationToken cancellationToken = default
+        )
+            where TEntity : class, IHaveId
+        {
+            return repository.Update(entity, null, cancellationToken);
+        }
+
+        public static Task<TEntity> Delete<TEntity>(
+            this IRepository<TEntity> repository,
+            TEntity entity,
+            CancellationToken cancellationToken = default
+        )
+            where TEntity : class, IHaveId
+        {
+            return repository.Delete(entity, null, cancellationToken);
+        }
+
+        public static Task<bool> DeleteById<TEntity>(
+            this IRepository<TEntity> repository,
+            object id,
+            CancellationToken cancellationToken = default
+        )
+            where TEntity : class, IHaveId
+        {
+            return repository.DeleteById(id, null, cancellationToken);
+        }
+
         public static async Task<TEntity> GetById<TEntity>(
             this IRepository<TEntity> repository,
             object id,
             CancellationToken cancellationToken = default
         )
-        where TEntity : class, IHaveId
+            where TEntity : class, IHaveId
         {
             var entity = await repository.FindById(id, cancellationToken);
 

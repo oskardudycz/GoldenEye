@@ -10,7 +10,7 @@
 
         string Delete<TEntity>(object id);
 
-        string GetById<TEntity>(object id);
+        string FindById<TEntity>(object id);
 
         string Query<TEntity>();
     }

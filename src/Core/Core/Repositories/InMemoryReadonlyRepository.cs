@@ -17,11 +17,6 @@ namespace GoldenEye.Repositories
             return Task.FromResult(Context.SingleOrDefault(r => r.Id == id));
         }
 
-        public virtual async Task<TEntity> GetById(object id, CancellationToken cancellationToken = default)
-        {
-            return await FindById(id, cancellationToken) ?? throw NotFoundException.For<TEntity>(id);
-        }
-
         public virtual IQueryable<TEntity> Query()
         {
             return Context.AsQueryable();

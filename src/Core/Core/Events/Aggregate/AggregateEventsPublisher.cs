@@ -18,22 +18,22 @@ namespace GoldenEye.Events.Aggregate
 
         public IEvent[] EnqueueEventsFrom(IAggregate aggregate)
         {
-            var uncomittedEvents = aggregate.DequeueUncommittedEvents();
+            var uncommittedEvents = aggregate.DequeueUncommittedEvents();
 
-            pendingEvents.EnqueueRange(uncomittedEvents);
+            pendingEvents.EnqueueRange(uncommittedEvents);
 
-            return uncomittedEvents;
+            return uncommittedEvents;
         }
 
-        public bool TryEnqueueEventsFrom(object entity, out IEvent[] uncomittedEvents)
+        public bool TryEnqueueEventsFrom(object entity, out IEvent[] uncommittedEvents)
         {
-            if (!(entity is IAggregate aggregate))
+            if (entity is not IAggregate aggregate)
             {
-                uncomittedEvents = null;
+                uncommittedEvents = null;
                 return false;
             }
 
-            uncomittedEvents = EnqueueEventsFrom(aggregate);
+            uncommittedEvents = EnqueueEventsFrom(aggregate);
             return true;
         }
 

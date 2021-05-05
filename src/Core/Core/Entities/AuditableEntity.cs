@@ -2,7 +2,7 @@ using System;
 
 namespace GoldenEye.Entities
 {
-    public class AuditableEntity<TKey>: Entity<TKey>, IAuditableEntity<TKey>
+    public abstract class AuditableEntity<TKey>: Entity<TKey>, IAuditableEntity<TKey>
     {
         public DateTime Created { get; set; }
         public int? CreatedBy { get; set; }

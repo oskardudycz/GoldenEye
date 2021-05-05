@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using GoldenEye.Events;
 using GoldenEye.Events.Aggregate;
-using GoldenEye.Exceptions;
 using GoldenEye.Objects.General;
 using GoldenEye.Objects.Versioning;
 using GoldenEye.Repositories;
@@ -36,13 +34,6 @@ namespace GoldenEye.EntityFramework.Repositories
             return await dbContext.FindAsync<TEntity>(id);
         }
 
-        public async Task<TEntity> GetById(object id, CancellationToken cancellationToken = default)
-        {
-            var entity = await FindById(id, cancellationToken);
-
-            return entity ?? throw NotFoundException.For<TEntity>(id);
-        }
-
         public IQueryable<TEntity> Query()
         {
             return dbContext.Set<TEntity>();
@@ -67,15 +58,18 @@ namespace GoldenEye.EntityFramework.Repositories
 
             var entry = await dbContext.AddAsync(entity, cancellationToken);
 
-            aggregateEventsPublisher.TryEnqueueEventsFrom(entity, out var pendingEvents);
+            aggregateEventsPublisher.TryEnqueueEventsFrom(entity, out _);
 
             return entry.Entity;
         }
 
-        public Task<TEntity> Update(TEntity entity, CancellationToken cancellationToken = default)
+        public Task<TEntity> Update(TEntity entity, int? expectedVersion, CancellationToken cancellationToken = default)
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
+
+            if(expectedVersion.HasValue)
+                CheckVersion(entity, expectedVersion);
 
             var entry = dbContext.Update(entity);
 
@@ -84,17 +78,13 @@ namespace GoldenEye.EntityFramework.Repositories
             return Task.FromResult(entry.Entity);
         }
 
-        public Task<TEntity> Update(TEntity entity, int expectedVersion, CancellationToken cancellationToken = default)
-        {
-            CheckVersion(entity, expectedVersion);
-
-            return Update(entity, cancellationToken);
-        }
-
-        public Task<TEntity> Delete(TEntity entity, CancellationToken cancellationToken = default)
+        public Task<TEntity> Delete(TEntity entity, int? expectedVersion, CancellationToken cancellationToken = default)
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
+
+            if(expectedVersion.HasValue)
+                CheckVersion(entity, expectedVersion);
 
             var entry = dbContext.Remove(entity);
 
@@ -103,23 +93,10 @@ namespace GoldenEye.EntityFramework.Repositories
             return Task.FromResult(entry.Entity);
         }
 
-        public Task<TEntity> Delete(TEntity entity, int expectedVersion, CancellationToken cancellationToken = default)
+        public async Task<bool> DeleteById(object id, int? expectedVersion, CancellationToken cancellationToken = default)
         {
-            CheckVersion(entity, expectedVersion);
-
-            return Delete(entity, cancellationToken);
-        }
-
-        public async Task<bool> DeleteById(object id, CancellationToken cancellationToken = default)
-        {
-            await Delete(await GetById(id, cancellationToken), cancellationToken);
-
+            await Delete(await ReadonlyRepositoryExtensions.GetById(this, id, cancellationToken), expectedVersion, cancellationToken);
             return true;
-        }
-
-        public Task<bool> DeleteById(object id, int expectedVersion, CancellationToken cancellationToken = default)
-        {
-            throw new NotImplementedException();
         }
 
         public async Task SaveChanges(CancellationToken cancellationToken = default)

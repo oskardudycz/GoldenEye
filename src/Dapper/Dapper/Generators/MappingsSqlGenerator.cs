@@ -41,9 +41,9 @@ namespace GoldenEye.Dapper.Generators
             return mappings.OfType<IDapperMapping<TEntity>>().FirstOrDefault()?.Query;
         }
 
-        public string GetById<TEntity>(object id)
+        public string FindById<TEntity>(object id)
         {
-            return mappings.OfType<IDapperMapping<TEntity>>().FirstOrDefault()?.GetById;
+            return mappings.OfType<IDapperMapping<TEntity>>().FirstOrDefault()?.FindById;
         }
     }
 }

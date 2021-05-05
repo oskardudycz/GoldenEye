@@ -34,19 +34,12 @@ namespace GoldenEye.Marten.Repositories
 
         public async Task<TEntity> FindById(object id, CancellationToken cancellationToken = default)
         {
-            if (!(id is Guid guidId))
+            if (id is not Guid guidId)
                 throw new NotSupportedException("Id of the Event Sourced aggregate has to be Guid");
 
             return (await documentSession.Events.FetchStreamStateAsync(guidId, cancellationToken)) != null
                 ? await eventStore.Aggregate<TEntity>(guidId, cancellationToken)
                 : null;
-        }
-
-        public async Task<TEntity> GetById(object id, CancellationToken cancellationToken = default)
-        {
-            var entity = await FindById(id, cancellationToken);
-
-            return entity ?? throw NotFoundException.For<TEntity>(id);
         }
 
         public IQueryable<TEntity> Query()
@@ -71,33 +64,17 @@ namespace GoldenEye.Marten.Repositories
             return Store(entity, null, cancellationToken);
         }
 
-        public Task<TEntity> Update(TEntity entity, CancellationToken cancellationToken = default)
-        {
-            return Store(entity,null, cancellationToken);
-        }
-
-        public Task<TEntity> Update(TEntity entity, int expectedVersion, CancellationToken cancellationToken = default)
+        public Task<TEntity> Update(TEntity entity, int? expectedVersion, CancellationToken cancellationToken = default)
         {
             return Store(entity, expectedVersion, cancellationToken);
         }
 
-        public Task<TEntity> Delete(TEntity entity, CancellationToken cancellationToken = default)
-        {
-            return Store(entity, null, cancellationToken);
-        }
-
-        public Task<TEntity> Delete(TEntity entity, int expectedVersion, CancellationToken cancellationToken = default)
+        public Task<TEntity> Delete(TEntity entity, int? expectedVersion, CancellationToken cancellationToken = default)
         {
             return Store(entity, expectedVersion, cancellationToken);
         }
 
-        public Task<bool> DeleteById(object id, CancellationToken cancellationToken = default)
-        {
-            throw new NotImplementedException(
-                $"{nameof(DeleteById)} is not supported by Event Source repository. Use method with entity object.");
-        }
-
-        public Task<bool> DeleteById(object id, int expectedVersion, CancellationToken cancellationToken = default)
+        public Task<bool> DeleteById(object id, int? expectedVersion, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException(
                 $"{nameof(DeleteById)} is not supported by Event Source repository. Use method with entity object.");
