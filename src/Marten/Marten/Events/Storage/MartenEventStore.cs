@@ -20,15 +20,12 @@ namespace GoldenEye.Marten.Events.Storage
             this.documentSession = documentSession ?? throw new ArgumentException(nameof(documentSession));
         }
 
-        public Task Append(Guid streamId, CancellationToken cancellationToken = default, params IEvent[] events)
+        public Task Append(Guid streamId, int? version, CancellationToken cancellationToken = default, params IEvent[] events)
         {
-            documentSession.Events.Append(streamId, events.Cast<object>().ToArray());
-            return Task.CompletedTask;
-        }
-
-        public Task Append(Guid streamId, int version, CancellationToken cancellationToken = default, params IEvent[] events)
-        {
-            documentSession.Events.Append(streamId, version, events.Cast<object>().ToArray());
+            if(version.HasValue)
+                documentSession.Events.Append(streamId, version, events.Cast<object>().ToArray());
+            else
+                documentSession.Events.Append(streamId, events.Cast<object>().ToArray());
             return Task.CompletedTask;
         }
 
@@ -36,11 +33,6 @@ namespace GoldenEye.Marten.Events.Storage
             DateTime? timestamp = null) where TEntity : class, new()
         {
             return documentSession.Events.AggregateStreamAsync<TEntity>(streamId, version, timestamp, token: cancellationToken);
-        }
-
-        public async Task<TEvent> FindById<TEvent>(Guid eventId, CancellationToken cancellationToken = default) where TEvent : class, IEvent, IHaveGuidId
-        {
-            return (await documentSession.Events.LoadAsync<TEvent>(eventId, cancellationToken))?.Data;
         }
 
         public async Task<IReadOnlyList<IEvent>> Query(Guid? streamId = null,

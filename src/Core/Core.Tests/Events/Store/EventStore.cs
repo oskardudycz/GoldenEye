@@ -16,15 +16,10 @@ namespace GoldenEye.Tests.Events.Store
         {
             private readonly IList<IEvent> events = new List<IEvent>();
 
-            public Task Append(Guid streamId, CancellationToken cancellationToken = default, params IEvent[] events)
+            public Task Append(Guid streamId, int? version, CancellationToken cancellationToken = default, params IEvent[] events)
             {
                 this.events.AddRange(events);
                 return Task.CompletedTask;
-            }
-
-            public Task Append(Guid streamId, int version, CancellationToken cancellationToken = default, params IEvent[] events)
-            {
-                return Append(streamId, cancellationToken, events);
             }
 
             public Task<TEntity> Aggregate<TEntity>(Guid streamId, CancellationToken cancellationToken = default, int version = 0,

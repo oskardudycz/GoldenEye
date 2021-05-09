@@ -4,10 +4,8 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using GoldenEye.Aggregates;
-using GoldenEye.Events;
 using GoldenEye.Events.Aggregate;
-using GoldenEye.Exceptions;
-using GoldenEye.Extensions.Collections;
+using GoldenEye.Events.Store;
 using GoldenEye.Marten.Events.Storage;
 using GoldenEye.Objects.General;
 using GoldenEye.Repositories;
@@ -94,10 +92,7 @@ namespace GoldenEye.Marten.Repositories
 
             var entityEvents = aggregateEventsPublisher.EnqueueEventsFrom(entity);
 
-            if (expectedVersion.HasValue)
-                await eventStore.Append(entity.Id, expectedVersion.Value, cancellationToken, entityEvents);
-            else
-                await eventStore.Append(entity.Id, cancellationToken, entityEvents);
+            await eventStore.Append(entity.Id, expectedVersion, cancellationToken, entityEvents);
 
             return entity;
         }

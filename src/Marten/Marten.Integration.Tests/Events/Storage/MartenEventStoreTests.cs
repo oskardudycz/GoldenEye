@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
 using GoldenEye.Events;
+using GoldenEye.Events.Store;
 using GoldenEye.Marten.Events.Storage;
 using GoldenEye.Marten.Integration.Tests.Infrastructure;
 using Xunit;
