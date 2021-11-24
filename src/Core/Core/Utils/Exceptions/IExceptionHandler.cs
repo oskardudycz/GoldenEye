@@ -1,11 +1,10 @@
 ﻿using System;
 
-namespace GoldenEye.Utils.Exceptions
-{
-    public interface IExceptionHandler
-    {
-        bool CanHandleException(Exception e);
+namespace GoldenEye.Utils.Exceptions;
 
-        string GetFormattedMessage(Exception e);
-    }
+public interface IExceptionHandler
+{
+    bool CanHandleException(Exception e);
+
+    string GetFormattedMessage(Exception e);
 }

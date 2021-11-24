@@ -1,40 +1,39 @@
 using System;
 using System.Text;
 
-namespace GoldenEye.Extensions.Basic
+namespace GoldenEye.Extensions.Basic;
+
+public static class StringBuilderExtensions
 {
-    public static class StringBuilderExtensions
+    public static StringBuilder AppendDescriptionLine(this StringBuilder sb, EDescriptionGenerationInfo info,
+        string msg)
     {
-        public static StringBuilder AppendDescriptionLine(this StringBuilder sb, EDescriptionGenerationInfo info,
-            string msg)
+        switch (info)
         {
-            switch (info)
-            {
-                case EDescriptionGenerationInfo.OneLine:
-                    sb.Append(msg);
-                    break;
+            case EDescriptionGenerationInfo.OneLine:
+                sb.Append(msg);
+                break;
 
-                case EDescriptionGenerationInfo.MultiLine:
-                    sb.AppendLine(msg);
-                    break;
+            case EDescriptionGenerationInfo.MultiLine:
+                sb.AppendLine(msg);
+                break;
 
-                case EDescriptionGenerationInfo.MultiLineHtml:
-                    sb.AppendLine(
-                        string.Format("<p>{0}</p>", msg));
-                    break;
+            case EDescriptionGenerationInfo.MultiLineHtml:
+                sb.AppendLine(
+                    string.Format("<p>{0}</p>", msg));
+                break;
 
-                default:
-                    throw new ArgumentOutOfRangeException("info", info, null);
-            }
-
-            return sb;
+            default:
+                throw new ArgumentOutOfRangeException("info", info, null);
         }
-    }
 
-    public enum EDescriptionGenerationInfo
-    {
-        OneLine,
-        MultiLine,
-        MultiLineHtml
+        return sb;
     }
+}
+
+public enum EDescriptionGenerationInfo
+{
+    OneLine,
+    MultiLine,
+    MultiLineHtml
 }

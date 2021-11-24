@@ -3,33 +3,32 @@ using System.Threading.Tasks;
 using GoldenEye.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GoldenEye.WebApi.Controllers
+namespace GoldenEye.WebApi.Controllers;
+
+public abstract class ReadonlyControllerBase<TService, TDto>: ControllerBase
+    where TService : IReadonlyService<TDto> where TDto : class
 {
-    public abstract class ReadonlyControllerBase<TService, TDto>: ControllerBase
-        where TService : IReadonlyService<TDto> where TDto : class
+    protected TService Service;
+
+    protected ReadonlyControllerBase(TService service)
     {
-        protected TService Service;
+        Service = service;
+    }
 
-        protected ReadonlyControllerBase(TService service)
-        {
-            Service = service;
-        }
+    protected ReadonlyControllerBase()
+    {
+    }
 
-        protected ReadonlyControllerBase()
-        {
-        }
+    public virtual IQueryable<TDto> Get()
+    {
+        return Service.Query();
+    }
 
-        public virtual IQueryable<TDto> Get()
-        {
-            return Service.Query();
-        }
+    public virtual async Task<IActionResult> Get(object id)
+    {
+        var dto = await Service.Get(id);
+        if (dto == null) return NotFound();
 
-        public virtual async Task<IActionResult> Get(object id)
-        {
-            var dto = await Service.Get(id);
-            if (dto == null) return NotFound();
-
-            return Ok(dto);
-        }
+        return Ok(dto);
     }
 }

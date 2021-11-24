@@ -12,210 +12,209 @@ using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
-namespace GoldenEye.Tests.Registration
+namespace GoldenEye.Tests.Registration;
+
+public class QueryHandlerRegistrationTests
 {
-    public class QueryHandlerRegistrationTests
+    public QueryHandlerRegistrationTests()
     {
-        public QueryHandlerRegistrationTests()
+        services.AddAllQueryHandlers(ServiceLifetime.Scoped);
+    }
+
+    public class User
+    {
+    }
+
+    public class Account
+    {
+    }
+
+    public class GetUser: IQuery<User>
+    {
+    }
+
+    public class GetUserList: IQuery<IReadOnlyCollection<User>>
+    {
+    }
+
+    public class GetAccount: IQuery<Account>
+    {
+    }
+
+    public class GetAccountList: IQuery<IReadOnlyCollection<Account>>
+    {
+    }
+
+    public class GetMainAccount: IQuery<Account>
+    {
+    }
+
+    public class UserQueryHandler:
+        IQueryHandler<GetUser, User>,
+        IQueryHandler<GetUserList, IReadOnlyCollection<User>>
+    {
+        public Task<User> Handle(GetUser request, CancellationToken cancellationToken)
         {
-            services.AddAllQueryHandlers(ServiceLifetime.Scoped);
+            throw new NotImplementedException();
         }
 
-        public class User
+        public Task<IReadOnlyCollection<User>> Handle(GetUserList request, CancellationToken cancellationToken)
         {
+            throw new NotImplementedException();
+        }
+    }
+
+    public abstract class BaseAccountQueryHandler:
+        IQueryHandler<GetAccount, Account>,
+        IQueryHandler<GetAccountList, IReadOnlyCollection<Account>>
+    {
+        public abstract Task<Account> Handle(GetAccount request, CancellationToken cancellationToken);
+
+        public Task<IReadOnlyCollection<Account>> Handle(GetAccountList request,
+            CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class AccountQueryHandler:
+        BaseAccountQueryHandler,
+        IQueryHandler<GetMainAccount, Account>
+    {
+        public Task<Account> Handle(GetMainAccount request, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
         }
 
-        public class Account
+        public override Task<Account> Handle(GetAccount request, CancellationToken cancellationToken)
         {
+            throw new NotImplementedException();
         }
+    }
 
-        public class GetUser: IQuery<User>
+    public class DuplicatedGetMainAccountQueryHandler:
+        IQueryHandler<GetMainAccount, Account>
+    {
+        public Task<Account> Handle(GetMainAccount request, CancellationToken cancellationToken)
         {
+            throw new NotImplementedException();
         }
+    }
 
-        public class GetUserList: IQuery<IReadOnlyCollection<User>>
+    public abstract class AbstractQueryHandler:
+        IQueryHandler<GetMainAccount, Account>
+    {
+        public Task<Account> Handle(GetMainAccount request, CancellationToken cancellationToken)
         {
+            throw new NotImplementedException();
         }
+    }
 
-        public class GetAccount: IQuery<Account>
+    public class GenericQueryHandler<TQuery, TResponse>: IQueryHandler<TQuery, TResponse>
+        where TQuery : IQuery<TResponse>
+    {
+        public Task<TResponse> Handle(TQuery request, CancellationToken cancellationToken)
         {
+            throw new NotImplementedException();
         }
+    }
 
-        public class GetAccountList: IQuery<IReadOnlyCollection<Account>>
+    private readonly ServiceCollection services = new ServiceCollection();
+
+    [Fact]
+    public void GivenAbstractQueryHandler_WhenAddAllQueryHandlerCalled_ThenIsNotRegistered()
+    {
+        using (var sp = services.BuildServiceProvider())
         {
+            var getMainAccountHandlers = sp.GetServices<IRequestHandler<GetMainAccount, Account>>()
+                .Union(sp.GetServices<IQueryHandler<GetMainAccount, Account>>());
+
+            getMainAccountHandlers.Should().NotContain(x => x is AbstractQueryHandler);
         }
+    }
 
-        public class GetMainAccount: IQuery<Account>
+    [Fact]
+    public void GivenBaseQueryHandler_WhenAddAllQueryHandlerCalled_ThenOnlyDerivedClassIsRegistered()
+    {
+        using (var sp = services.BuildServiceProvider())
         {
+            var getAccountHandlers = sp.GetServices<IRequestHandler<GetAccount, Account>>()
+                .Union(sp.GetServices<IQueryHandler<GetAccount, Account>>());
+            var getAccountListHandlers = sp
+                .GetServices<IRequestHandler<GetAccountList, IReadOnlyCollection<Account>>>()
+                .Union(sp.GetServices<IQueryHandler<GetAccountList, IReadOnlyCollection<Account>>>());
+
+            getAccountHandlers.Should().ContainSingle();
+            getAccountHandlers.Should().AllBeOfType<AccountQueryHandler>();
+
+            getAccountListHandlers.Should().ContainSingle();
+            getAccountListHandlers.Should().AllBeOfType<AccountQueryHandler>();
         }
+    }
 
-        public class UserQueryHandler:
-            IQueryHandler<GetUser, User>,
-            IQueryHandler<GetUserList, IReadOnlyCollection<User>>
+    [Fact]
+    public void GivenDuplicatedQueryHandler_WhenAddAllQueryHandlerCalled_ThenBothAreRegistered()
+    {
+        using (var sp = services.BuildServiceProvider())
         {
-            public Task<User> Handle(GetUser request, CancellationToken cancellationToken)
-            {
-                throw new NotImplementedException();
-            }
+            var getMainAccountHandlers = sp.GetServices<IRequestHandler<GetMainAccount, Account>>()
+                .Union(sp.GetServices<IQueryHandler<GetMainAccount, Account>>());
 
-            public Task<IReadOnlyCollection<User>> Handle(GetUserList request, CancellationToken cancellationToken)
-            {
-                throw new NotImplementedException();
-            }
+            getMainAccountHandlers.Should().HaveCount(2);
+            getMainAccountHandlers.Should().Contain(x => x is AccountQueryHandler);
+            getMainAccountHandlers.Should().Contain(x => x is DuplicatedGetMainAccountQueryHandler);
         }
+    }
 
-        public abstract class BaseAccountQueryHandler:
-            IQueryHandler<GetAccount, Account>,
-            IQueryHandler<GetAccountList, IReadOnlyCollection<Account>>
+    [Fact]
+    public void GivenGenericQueryHandler_WhenAddAllQueryHandlerCalled_ThenIsNotRegistered()
+    {
+        using (var sp = services.BuildServiceProvider())
         {
-            public abstract Task<Account> Handle(GetAccount request, CancellationToken cancellationToken);
+            var genericHandler = sp.GetService<GenericQueryHandler<GetBankAccountDetails, BankAccountDetails>>();
 
-            public Task<IReadOnlyCollection<Account>> Handle(GetAccountList request,
-                CancellationToken cancellationToken)
-            {
-                throw new NotImplementedException();
-            }
+            genericHandler.Should().BeNull();
         }
+    }
 
-        public class AccountQueryHandler:
-            BaseAccountQueryHandler,
-            IQueryHandler<GetMainAccount, Account>
+    [Fact]
+    public void GivenMultipleQueryHandler_WhenAddAllQueryHandlerCalled_ThenAllQueryHandlersAreRegistered()
+    {
+        using (var sp = services.BuildServiceProvider())
         {
-            public Task<Account> Handle(GetMainAccount request, CancellationToken cancellationToken)
-            {
-                throw new NotImplementedException();
-            }
+            var getUserHandlers = sp.GetServices<IRequestHandler<GetUser, User>>()
+                .Union(sp.GetServices<IQueryHandler<GetUser, User>>()).ToList();
+            var getUserListHandlers = sp.GetServices<IRequestHandler<GetUserList, IReadOnlyCollection<User>>>()
+                .Union(sp.GetServices<IQueryHandler<GetUserList, IReadOnlyCollection<User>>>()).ToList();
 
-            public override Task<Account> Handle(GetAccount request, CancellationToken cancellationToken)
-            {
-                throw new NotImplementedException();
-            }
+            getUserHandlers.Should().ContainSingle();
+            getUserHandlers.Should().AllBeOfType<UserQueryHandler>();
+
+            getUserListHandlers.Should().ContainSingle();
+            getUserListHandlers.Should().AllBeOfType<UserQueryHandler>();
         }
+    }
 
-        public class DuplicatedGetMainAccountQueryHandler:
-            IQueryHandler<GetMainAccount, Account>
+    [Fact]
+    public void
+        GivenMultipleQueryHandlersFromApplicationDependencies_WhenAddAllQueryHandlerCalled_ThenBothAreRegistered()
+    {
+        using (var sp = services.BuildServiceProvider())
         {
-            public Task<Account> Handle(GetMainAccount request, CancellationToken cancellationToken)
-            {
-                throw new NotImplementedException();
-            }
-        }
+            var getBankAccountDetailsHandlers = sp
+                .GetServices<IRequestHandler<GetBankAccountDetails, BankAccountDetails>>()
+                .Union(sp.GetServices<IQueryHandler<GetBankAccountDetails, BankAccountDetails>>()).ToList();
+            var getBankAccountHistoryHandlers = sp
+                .GetServices<IRequestHandler<GetBankAccountHistory, IReadOnlyCollection<MoneyTransaction>>>()
+                .Union(
+                    sp.GetServices<IQueryHandler<GetBankAccountHistory, IReadOnlyCollection<MoneyTransaction>>>())
+                .ToList();
 
-        public abstract class AbstractQueryHandler:
-            IQueryHandler<GetMainAccount, Account>
-        {
-            public Task<Account> Handle(GetMainAccount request, CancellationToken cancellationToken)
-            {
-                throw new NotImplementedException();
-            }
-        }
+            getBankAccountDetailsHandlers.Should().ContainSingle();
+            getBankAccountDetailsHandlers.Should().AllBeOfType<QueryHandler>();
 
-        public class GenericQueryHandler<TQuery, TResponse>: IQueryHandler<TQuery, TResponse>
-            where TQuery : IQuery<TResponse>
-        {
-            public Task<TResponse> Handle(TQuery request, CancellationToken cancellationToken)
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        private readonly ServiceCollection services = new ServiceCollection();
-
-        [Fact]
-        public void GivenAbstractQueryHandler_WhenAddAllQueryHandlerCalled_ThenIsNotRegistered()
-        {
-            using (var sp = services.BuildServiceProvider())
-            {
-                var getMainAccountHandlers = sp.GetServices<IRequestHandler<GetMainAccount, Account>>()
-                    .Union(sp.GetServices<IQueryHandler<GetMainAccount, Account>>());
-
-                getMainAccountHandlers.Should().NotContain(x => x is AbstractQueryHandler);
-            }
-        }
-
-        [Fact]
-        public void GivenBaseQueryHandler_WhenAddAllQueryHandlerCalled_ThenOnlyDerivedClassIsRegistered()
-        {
-            using (var sp = services.BuildServiceProvider())
-            {
-                var getAccountHandlers = sp.GetServices<IRequestHandler<GetAccount, Account>>()
-                    .Union(sp.GetServices<IQueryHandler<GetAccount, Account>>());
-                var getAccountListHandlers = sp
-                    .GetServices<IRequestHandler<GetAccountList, IReadOnlyCollection<Account>>>()
-                    .Union(sp.GetServices<IQueryHandler<GetAccountList, IReadOnlyCollection<Account>>>());
-
-                getAccountHandlers.Should().ContainSingle();
-                getAccountHandlers.Should().AllBeOfType<AccountQueryHandler>();
-
-                getAccountListHandlers.Should().ContainSingle();
-                getAccountListHandlers.Should().AllBeOfType<AccountQueryHandler>();
-            }
-        }
-
-        [Fact]
-        public void GivenDuplicatedQueryHandler_WhenAddAllQueryHandlerCalled_ThenBothAreRegistered()
-        {
-            using (var sp = services.BuildServiceProvider())
-            {
-                var getMainAccountHandlers = sp.GetServices<IRequestHandler<GetMainAccount, Account>>()
-                    .Union(sp.GetServices<IQueryHandler<GetMainAccount, Account>>());
-
-                getMainAccountHandlers.Should().HaveCount(2);
-                getMainAccountHandlers.Should().Contain(x => x is AccountQueryHandler);
-                getMainAccountHandlers.Should().Contain(x => x is DuplicatedGetMainAccountQueryHandler);
-            }
-        }
-
-        [Fact]
-        public void GivenGenericQueryHandler_WhenAddAllQueryHandlerCalled_ThenIsNotRegistered()
-        {
-            using (var sp = services.BuildServiceProvider())
-            {
-                var genericHandler = sp.GetService<GenericQueryHandler<GetBankAccountDetails, BankAccountDetails>>();
-
-                genericHandler.Should().BeNull();
-            }
-        }
-
-        [Fact]
-        public void GivenMultipleQueryHandler_WhenAddAllQueryHandlerCalled_ThenAllQueryHandlersAreRegistered()
-        {
-            using (var sp = services.BuildServiceProvider())
-            {
-                var getUserHandlers = sp.GetServices<IRequestHandler<GetUser, User>>()
-                    .Union(sp.GetServices<IQueryHandler<GetUser, User>>()).ToList();
-                var getUserListHandlers = sp.GetServices<IRequestHandler<GetUserList, IReadOnlyCollection<User>>>()
-                    .Union(sp.GetServices<IQueryHandler<GetUserList, IReadOnlyCollection<User>>>()).ToList();
-
-                getUserHandlers.Should().ContainSingle();
-                getUserHandlers.Should().AllBeOfType<UserQueryHandler>();
-
-                getUserListHandlers.Should().ContainSingle();
-                getUserListHandlers.Should().AllBeOfType<UserQueryHandler>();
-            }
-        }
-
-        [Fact]
-        public void
-            GivenMultipleQueryHandlersFromApplicationDependencies_WhenAddAllQueryHandlerCalled_ThenBothAreRegistered()
-        {
-            using (var sp = services.BuildServiceProvider())
-            {
-                var getBankAccountDetailsHandlers = sp
-                    .GetServices<IRequestHandler<GetBankAccountDetails, BankAccountDetails>>()
-                    .Union(sp.GetServices<IQueryHandler<GetBankAccountDetails, BankAccountDetails>>()).ToList();
-                var getBankAccountHistoryHandlers = sp
-                    .GetServices<IRequestHandler<GetBankAccountHistory, IReadOnlyCollection<MoneyTransaction>>>()
-                    .Union(
-                        sp.GetServices<IQueryHandler<GetBankAccountHistory, IReadOnlyCollection<MoneyTransaction>>>())
-                    .ToList();
-
-                getBankAccountDetailsHandlers.Should().ContainSingle();
-                getBankAccountDetailsHandlers.Should().AllBeOfType<QueryHandler>();
-
-                getBankAccountHistoryHandlers.Should().ContainSingle();
-                getBankAccountHistoryHandlers.Should().AllBeOfType<QueryHandler>();
-            }
+            getBankAccountHistoryHandlers.Should().ContainSingle();
+            getBankAccountHistoryHandlers.Should().AllBeOfType<QueryHandler>();
         }
     }
 }

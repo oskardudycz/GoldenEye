@@ -3,39 +3,38 @@ using FluentAssertions;
 using GoldenEye.Extensions.Functions;
 using Xunit;
 
-namespace GoldenEye.Tests.Extensions.Functions.Memoize
+namespace GoldenEye.Tests.Extensions.Functions.Memoize;
+
+public class RecursionWithLocalFunctionTests
 {
-    public class RecursionWithLocalFunctionTests
+    [Fact]
+    public void LocalFunction_ShouldBeMemoized()
     {
-        [Fact]
-        public void LocalFunction_ShouldBeMemoized()
+        var numberOfCalls = 0;
+
+        Func<int, int> fibonacci = null;
+
+        fibonacci = n1 =>
         {
-            var numberOfCalls = 0;
+            numberOfCalls++;
 
-            Func<int, int> fibonacci = null;
+            if (n1 <= 2)
+                return 1;
 
-            fibonacci = n1 =>
-            {
-                numberOfCalls++;
+            return fibonacci(n1 - 1) + fibonacci(n1 - 2);
+        };
 
-                if (n1 <= 2)
-                    return 1;
+        fibonacci = fibonacci.Memoize();
 
-                return fibonacci(n1 - 1) + fibonacci(n1 - 2);
-            };
+        var result = fibonacci(3);
 
-            fibonacci = fibonacci.Memoize();
-
-            var result = fibonacci(3);
-
-            result.Should().Be(2);
-            numberOfCalls.Should().Be(3);
+        result.Should().Be(2);
+        numberOfCalls.Should().Be(3);
 
 
-            var secondResult = fibonacci(3);
+        var secondResult = fibonacci(3);
 
-            secondResult.Should().Be(2);
-            numberOfCalls.Should().Be(3);
-        }
+        secondResult.Should().Be(2);
+        numberOfCalls.Should().Be(3);
     }
 }

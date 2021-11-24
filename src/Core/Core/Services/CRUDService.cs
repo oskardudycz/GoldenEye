@@ -5,94 +5,93 @@ using FluentValidation;
 using GoldenEye.Entities;
 using GoldenEye.Repositories;
 
-namespace GoldenEye.Services
-{
-    public class CRUDService<TDto, TEntity, TRepository, TReadonlyRepository>: CRUDService<TDto, TEntity>
-        where TDto : class
-        where TEntity : class, IEntity
-        where TRepository : IRepository<TEntity>
-        where TReadonlyRepository: IReadonlyRepository<TEntity>
-    {
-        protected CRUDService(
-            TRepository repository,
-            TReadonlyRepository readonlyRepository,
-            IMapper mapper
-        ): base(repository, readonlyRepository, mapper)
-        {
-        }
+namespace GoldenEye.Services;
 
-        protected new TRepository Repository
-        {
-            get { return (TRepository)base.Repository; }
-        }
+public class CRUDService<TDto, TEntity, TRepository, TReadonlyRepository>: CRUDService<TDto, TEntity>
+    where TDto : class
+    where TEntity : class, IEntity
+    where TRepository : IRepository<TEntity>
+    where TReadonlyRepository: IReadonlyRepository<TEntity>
+{
+    protected CRUDService(
+        TRepository repository,
+        TReadonlyRepository readonlyRepository,
+        IMapper mapper
+    ): base(repository, readonlyRepository, mapper)
+    {
     }
 
-    public class CRUDService<TDto, TEntity>: ReadonlyService<TDto, TEntity>, ICRUDService<TDto>
-        where TDto : class
-        where TEntity : class, IEntity
+    protected new TRepository Repository
     {
-        protected readonly IValidator<TDto> DtoValidator;
-        protected readonly IValidator<TEntity> EntityValidator;
-        protected readonly IRepository<TEntity> Repository;
+        get { return (TRepository)base.Repository; }
+    }
+}
 
-        protected CRUDService(
-            IRepository<TEntity> repository,
-            IReadonlyRepository<TEntity> readonlyRepository,
-            IMapper mapper,
-            IValidator<TDto> dtoValidator = null,
-            IValidator<TEntity> entityValidator = null
-        ): base(readonlyRepository, mapper)
-        {
-            Repository = repository;
-            DtoValidator = dtoValidator;
-            EntityValidator = entityValidator;
-        }
+public class CRUDService<TDto, TEntity>: ReadonlyService<TDto, TEntity>, ICRUDService<TDto>
+    where TDto : class
+    where TEntity : class, IEntity
+{
+    protected readonly IValidator<TDto> DtoValidator;
+    protected readonly IValidator<TEntity> EntityValidator;
+    protected readonly IRepository<TEntity> Repository;
 
-        public virtual async Task<TDto> Add(TDto dto, CancellationToken cancellationToken = default)
-        {
-            await ValidateAsync(dto, cancellationToken);
+    protected CRUDService(
+        IRepository<TEntity> repository,
+        IReadonlyRepository<TEntity> readonlyRepository,
+        IMapper mapper,
+        IValidator<TDto> dtoValidator = null,
+        IValidator<TEntity> entityValidator = null
+    ): base(readonlyRepository, mapper)
+    {
+        Repository = repository;
+        DtoValidator = dtoValidator;
+        EntityValidator = entityValidator;
+    }
 
-            var entity = Mapper.Map<TEntity>(dto);
+    public virtual async Task<TDto> Add(TDto dto, CancellationToken cancellationToken = default)
+    {
+        await ValidateAsync(dto, cancellationToken);
 
-            await ValidateAsync(entity, cancellationToken);
+        var entity = Mapper.Map<TEntity>(dto);
 
-            var added = Repository.Add(entity, cancellationToken);
+        await ValidateAsync(entity, cancellationToken);
 
-            await Repository.SaveChanges(cancellationToken);
+        var added = Repository.Add(entity, cancellationToken);
 
-            return Mapper.Map<TDto>(added);
-        }
+        await Repository.SaveChanges(cancellationToken);
 
-        public virtual async Task<TDto> Update(object id, TDto dto, CancellationToken cancellationToken = default)
-        {
-            await ValidateAsync(dto, cancellationToken);
+        return Mapper.Map<TDto>(added);
+    }
 
-            var fromDb = await Repository.GetById(id, cancellationToken);
+    public virtual async Task<TDto> Update(object id, TDto dto, CancellationToken cancellationToken = default)
+    {
+        await ValidateAsync(dto, cancellationToken);
 
-            var entity = Mapper.Map(dto, fromDb);
+        var fromDb = await Repository.GetById(id, cancellationToken);
 
-            await ValidateAsync(entity, cancellationToken);
+        var entity = Mapper.Map(dto, fromDb);
 
-            var updated = await Repository.Update(entity, cancellationToken);
+        await ValidateAsync(entity, cancellationToken);
 
-            await Repository.SaveChanges(cancellationToken);
+        var updated = await Repository.Update(entity, cancellationToken);
 
-            return Mapper.Map<TDto>(updated);
-        }
+        await Repository.SaveChanges(cancellationToken);
 
-        public virtual Task<bool> Delete(object id, CancellationToken cancellationToken = default)
-        {
-            return Repository.DeleteById(id, cancellationToken);
-        }
+        return Mapper.Map<TDto>(updated);
+    }
 
-        private async Task ValidateAsync(TDto dto, CancellationToken cancellationToken)
-        {
-            await (DtoValidator?.ValidateAsync(dto, null, cancellationToken) ?? Task.CompletedTask);
-        }
+    public virtual Task<bool> Delete(object id, CancellationToken cancellationToken = default)
+    {
+        return Repository.DeleteById(id, cancellationToken);
+    }
 
-        private async Task ValidateAsync(TEntity entity, CancellationToken cancellationToken)
-        {
-            await (EntityValidator?.ValidateAsync(entity, null, cancellationToken) ?? Task.CompletedTask);
-        }
+    private async Task ValidateAsync(TDto dto, CancellationToken cancellationToken)
+    {
+        await (DtoValidator?.ValidateAsync(dto, null, cancellationToken) ?? Task.CompletedTask);
+    }
+
+    private async Task ValidateAsync(TEntity entity, CancellationToken cancellationToken)
+    {
+        await (EntityValidator?.ValidateAsync(entity, null, cancellationToken) ?? Task.CompletedTask);
     }
 }

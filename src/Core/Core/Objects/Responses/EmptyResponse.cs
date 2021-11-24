@@ -1,10 +1,9 @@
-namespace GoldenEye.Objects.Responses
+namespace GoldenEye.Objects.Responses;
+
+public class EmptyResponse: IEmptyResponse
 {
-    public class EmptyResponse: IEmptyResponse
+    public static EmptyResponse Create()
     {
-        public static EmptyResponse Create()
-        {
-            return new EmptyResponse();
-        }
+        return new EmptyResponse();
     }
 }

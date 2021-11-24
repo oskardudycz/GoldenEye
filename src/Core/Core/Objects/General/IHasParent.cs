@@ -1,7 +1,6 @@
-namespace GoldenEye.Objects.General
+namespace GoldenEye.Objects.General;
+
+public interface IHasParent
 {
-    public interface IHasParent
-    {
-        int? ParentId { get; set; }
-    }
+    int? ParentId { get; set; }
 }

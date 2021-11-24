@@ -4,58 +4,57 @@ using System.Runtime.Serialization;
 using GoldenEye.Extensions.Basic;
 using GoldenEye.Utils.Lambda;
 
-namespace GoldenEye.Utils.Localization
+namespace GoldenEye.Utils.Localization;
+
+[Serializable]
+[DataContract]
+public class ResourceQualifiedKey
 {
-    [Serializable]
-    [DataContract]
-    public class ResourceQualifiedKey
+    private Type _resourceType;
+
+    public ResourceQualifiedKey()
     {
-        private Type _resourceType;
+    }
 
-        public ResourceQualifiedKey()
+    public ResourceQualifiedKey(Type resourceType, string resourceId)
+    {
+        ResourceType = resourceType;
+        ResourceId = resourceId;
+    }
+
+    public Type ResourceType
+    {
+        get
         {
-        }
+            if (_resourceType == null && !ResourceTypeString.IsNullOrEmpty())
+                _resourceType = Type.GetType(ResourceTypeString);
 
-        public ResourceQualifiedKey(Type resourceType, string resourceId)
+            return _resourceType;
+        }
+        set
         {
-            ResourceType = resourceType;
-            ResourceId = resourceId;
+            _resourceType = value;
+
+            ResourceTypeString = _resourceType.SafeGet(t => t.AssemblyQualifiedName);
         }
+    }
 
-        public Type ResourceType
-        {
-            get
-            {
-                if (_resourceType == null && !ResourceTypeString.IsNullOrEmpty())
-                    _resourceType = Type.GetType(ResourceTypeString);
+    [DataMember] private string ResourceTypeString { get; set; }
 
-                return _resourceType;
-            }
-            set
-            {
-                _resourceType = value;
+    [DataMember] public string ResourceId { get; set; }
 
-                ResourceTypeString = _resourceType.SafeGet(t => t.AssemblyQualifiedName);
-            }
-        }
+    public static ResourceQualifiedKey For<TResource>(Expression<Func<TResource, object>> member)
+    {
+        return new ResourceQualifiedKey(typeof(TResource), PropertyName.For(member));
+    }
 
-        [DataMember] private string ResourceTypeString { get; set; }
+    public static ResourceQualifiedKey For<TResource>(Expression<Func<object>> member)
+    {
+        return new ResourceQualifiedKey(typeof(TResource), PropertyName.For(member));
+    }
 
-        [DataMember] public string ResourceId { get; set; }
-
-        public static ResourceQualifiedKey For<TResource>(Expression<Func<TResource, object>> member)
-        {
-            return new ResourceQualifiedKey(typeof(TResource), PropertyName.For(member));
-        }
-
-        public static ResourceQualifiedKey For<TResource>(Expression<Func<object>> member)
-        {
-            return new ResourceQualifiedKey(typeof(TResource), PropertyName.For(member));
-        }
-
-        public static ResourceQualifiedKey For<TResource>(string resourceId)
-        {
-            return new ResourceQualifiedKey(typeof(TResource), resourceId);
-        }
+    public static ResourceQualifiedKey For<TResource>(string resourceId)
+    {
+        return new ResourceQualifiedKey(typeof(TResource), resourceId);
     }
 }

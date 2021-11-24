@@ -1,7 +1,6 @@
-﻿namespace GoldenEye.Objects.Versioning
+﻿namespace GoldenEye.Objects.Versioning;
+
+public interface IHaveVersion
 {
-    public interface IHaveVersion
-    {
-        int Version { get; }
-    }
+    int Version { get; }
 }

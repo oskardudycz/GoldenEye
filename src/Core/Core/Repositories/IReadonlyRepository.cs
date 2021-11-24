@@ -4,15 +4,14 @@ using System.Threading;
 using System.Threading.Tasks;
 using GoldenEye.Objects.General;
 
-namespace GoldenEye.Repositories
+namespace GoldenEye.Repositories;
+
+public interface IReadonlyRepository<TEntity> where TEntity : class, IHaveId
 {
-    public interface IReadonlyRepository<TEntity> where TEntity : class, IHaveId
-    {
-        Task<TEntity> FindById(object id, CancellationToken cancellationToken = default);
+    Task<TEntity> FindById(object id, CancellationToken cancellationToken = default);
 
-        IQueryable<TEntity> Query();
+    IQueryable<TEntity> Query();
 
-        Task<IReadOnlyCollection<TEntity>> RawQuery(string query, CancellationToken cancellationToken = default,
-            params object[] queryParams);
-    }
+    Task<IReadOnlyCollection<TEntity>> RawQuery(string query, CancellationToken cancellationToken = default,
+        params object[] queryParams);
 }

@@ -2,13 +2,12 @@ using System.Linq;
 using GoldenEye.Aggregates;
 using GoldenEye.Events;
 
-namespace GoldenEye.Testing
+namespace GoldenEye.Testing;
+
+public static class AggregateExtensions
 {
-    public static class AggregateExtensions
+    public static T PublishedEvent<T>(this IAggregate aggregate) where T : class, IEvent
     {
-        public static T PublishedEvent<T>(this IAggregate aggregate) where T : class, IEvent
-        {
-            return aggregate.DequeueUncommittedEvents().LastOrDefault() as T;
-        }
+        return aggregate.DequeueUncommittedEvents().LastOrDefault() as T;
     }
 }

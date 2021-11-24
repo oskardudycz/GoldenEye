@@ -4,75 +4,74 @@ using System.Linq;
 using GoldenEye.Extensions.Collections;
 using GoldenEye.Objects.Dates;
 
-namespace GoldenEye.Extensions.Basic
+namespace GoldenEye.Extensions.Basic;
+
+public static class DateRangeExtensions
 {
-    public static class DateRangeExtensions
+    /// <summary>
+    ///     Consolidates ranges in collection by merging ones with difference less than or equal to 1 day between corresponding
+    ///     end and start dates.
+    ///     May modify elements in the collection.
+    /// </summary>
+    public static IEnumerable<DateRange> Consolidate(this IEnumerable<DateRange> ranges)
     {
-        /// <summary>
-        ///     Consolidates ranges in collection by merging ones with difference less than or equal to 1 day between corresponding
-        ///     end and start dates.
-        ///     May modify elements in the collection.
-        /// </summary>
-        public static IEnumerable<DateRange> Consolidate(this IEnumerable<DateRange> ranges)
+        if (ranges == null || !ranges.Any())
+            return ranges;
+
+        var consolidatedRanges = new List<DateRange>();
+
+        ranges = ranges.OrderBy(i => i.StartDate).ToList();
+
+        var range = ranges.First();
+        DateRange current;
+
+        for (var index = 1; index < ranges.Count(); ++index)
         {
-            if (ranges == null || !ranges.Any())
-                return ranges;
+            current = ranges.ElementAt(index);
 
-            var consolidatedRanges = new List<DateRange>();
-
-            ranges = ranges.OrderBy(i => i.StartDate).ToList();
-
-            var range = ranges.First();
-            DateRange current;
-
-            for (var index = 1; index < ranges.Count(); ++index)
+            if ((current.StartDate - range.EndDate).TotalDays <= 1)
             {
-                current = ranges.ElementAt(index);
-
-                if ((current.StartDate - range.EndDate).TotalDays <= 1)
-                {
-                    range.EndDate = current.EndDate;
-                }
-                else
-                {
-                    consolidatedRanges.Add(range);
-
-                    range = current;
-                }
+                range.EndDate = current.EndDate;
             }
+            else
+            {
+                consolidatedRanges.Add(range);
 
-            consolidatedRanges.Add(range);
-
-            return consolidatedRanges;
+                range = current;
+            }
         }
 
-        /// <summary>
-        ///     Method returns new collection of ranges, which occur after <paramref name="startDate" />.
-        ///     Every range containing the date is adjusted to occur after this date.
-        ///     May modify elements in the collection
-        /// </summary>
-        /// <param name="startDate">Date, to which every range in collection is adjusted</param>
-        /// <returns></returns>
-        public static IEnumerable<DateRange> AdjustToDate(this IEnumerable<DateRange> ranges, DateTime startDate)
-        {
-            if (ranges == null || !ranges.Any())
-                return ranges;
+        consolidatedRanges.Add(range);
 
-            startDate = startDate.Date;
+        return consolidatedRanges;
+    }
 
-            // first, sort the ranges, so manipulation is easier
-            var newRanges = ranges.OrderBy(i => i.StartDate).ToList();
+    /// <summary>
+    ///     Method returns new collection of ranges, which occur after <paramref name="startDate" />.
+    ///     Every range containing the date is adjusted to occur after this date.
+    ///     May modify elements in the collection
+    /// </summary>
+    /// <param name="startDate">Date, to which every range in collection is adjusted</param>
+    /// <returns></returns>
+    public static IEnumerable<DateRange> AdjustToDate(this IEnumerable<DateRange> ranges, DateTime startDate)
+    {
+        if (ranges == null || !ranges.Any())
+            return ranges;
 
-            // remove all ranges, which occur before startDate
-            // equality is not checked, because same-day range for startDate is allowed
-            newRanges.RemoveAll(i => i.EndDate.Date < startDate);
+        startDate = startDate.Date;
 
-            if (newRanges.Any())
-                newRanges.Where(i => i.Contains(startDate)).ForEach(i =>
-                    i.StartDate = startDate
-                );
+        // first, sort the ranges, so manipulation is easier
+        var newRanges = ranges.OrderBy(i => i.StartDate).ToList();
 
-            return newRanges;
-        }
+        // remove all ranges, which occur before startDate
+        // equality is not checked, because same-day range for startDate is allowed
+        newRanges.RemoveAll(i => i.EndDate.Date < startDate);
+
+        if (newRanges.Any())
+            newRanges.Where(i => i.Contains(startDate)).ForEach(i =>
+                i.StartDate = startDate
+            );
+
+        return newRanges;
     }
 }

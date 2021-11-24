@@ -1,11 +1,10 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace GoldenEye.Queries
+namespace GoldenEye.Queries;
+
+public interface IQueryBus
 {
-    public interface IQueryBus
-    {
-        Task<TResponse> Send<TQuery, TResponse>(TQuery query, CancellationToken cancellationToken = default)
-            where TQuery : IQuery<TResponse>;
-    }
+    Task<TResponse> Send<TQuery, TResponse>(TQuery query, CancellationToken cancellationToken = default)
+        where TQuery : IQuery<TResponse>;
 }

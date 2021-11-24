@@ -1,9 +1,8 @@
 using System;
 
-namespace GoldenEye.Modules.Attributes
+namespace GoldenEye.Modules.Attributes;
+
+[AttributeUsage(AttributeTargets.Assembly)]
+public class ProjectAssemblyAttribute: Attribute
 {
-    [AttributeUsage(AttributeTargets.Assembly)]
-    public class ProjectAssemblyAttribute: Attribute
-    {
-    }
 }

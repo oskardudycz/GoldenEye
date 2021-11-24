@@ -1,11 +1,10 @@
 using System;
 
-namespace GoldenEye.Security
-{
-    public interface IUserInfo
-    {
-        string UserName { get; }
+namespace GoldenEye.Security;
 
-        TId GetCurrentUserId<TId>() where TId : IConvertible;
-    }
+public interface IUserInfo
+{
+    string UserName { get; }
+
+    TId GetCurrentUserId<TId>() where TId : IConvertible;
 }

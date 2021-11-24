@@ -1,9 +1,8 @@
 using System;
 
-namespace GoldenEye.IdsGenerator
+namespace GoldenEye.IdsGenerator;
+
+public interface IIdGenerator
 {
-    public interface IIdGenerator
-    {
-        Guid New();
-    }
+    Guid New();
 }

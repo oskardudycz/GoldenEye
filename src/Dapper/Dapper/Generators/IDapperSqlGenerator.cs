@@ -1,17 +1,16 @@
-﻿namespace GoldenEye.Dapper.Generators
+﻿namespace GoldenEye.Dapper.Generators;
+
+public interface IDapperSqlGenerator
 {
-    public interface IDapperSqlGenerator
-    {
-        string Add<TEntity>(TEntity entity);
+    string Add<TEntity>(TEntity entity);
 
-        string Update<TEntity>(TEntity entity);
+    string Update<TEntity>(TEntity entity);
 
-        string Delete<TEntity>(TEntity entity);
+    string Delete<TEntity>(TEntity entity);
 
-        string Delete<TEntity>(object id);
+    string Delete<TEntity>(object id);
 
-        string FindById<TEntity>(object id);
+    string FindById<TEntity>(object id);
 
-        string Query<TEntity>();
-    }
+    string Query<TEntity>();
 }

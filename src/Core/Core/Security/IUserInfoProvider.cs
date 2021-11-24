@@ -1,9 +1,8 @@
-namespace GoldenEye.Security
-{
-    public interface IUserInfoProvider
-    {
-        IUserInfo UserInfo { set; }
+namespace GoldenEye.Security;
 
-        int? GetCurrenUserId();
-    }
+public interface IUserInfoProvider
+{
+    IUserInfo UserInfo { set; }
+
+    int? GetCurrenUserId();
 }

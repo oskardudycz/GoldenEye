@@ -1,37 +1,36 @@
 using System.Collections.Generic;
 
-namespace GoldenEye.Objects.Requests
+namespace GoldenEye.Objects.Requests;
+
+/// <summary>
+///     Class to send list of records from service
+/// </summary>
+public class ListRequest<T>: IListRequest<T>
 {
     /// <summary>
-    ///     Class to send list of records from service
+    ///     Constructor
     /// </summary>
-    public class ListRequest<T>: IListRequest<T>
+    /// <param name="items">List of records</param>
+    private ListRequest(IList<T> items)
     {
-        /// <summary>
-        ///     Constructor
-        /// </summary>
-        /// <param name="items">List of records</param>
-        private ListRequest(IList<T> items)
-        {
-            Items = items;
-        }
+        Items = items;
+    }
 
-        /// <summary>
-        ///     List of records
-        /// </summary>
-        public IList<T> Items { get; }
+    /// <summary>
+    ///     List of records
+    /// </summary>
+    public IList<T> Items { get; }
 
-        /// <summary>
-        ///     Creation metod of class object
-        /// </summary>
-        /// <param name="items">List of records</param>
-        /// <returns></returns>
-        public static ListRequest<T> Create(IList<T> items)
-        {
-            if (items == null)
-                items = new List<T>();
+    /// <summary>
+    ///     Creation metod of class object
+    /// </summary>
+    /// <param name="items">List of records</param>
+    /// <returns></returns>
+    public static ListRequest<T> Create(IList<T> items)
+    {
+        if (items == null)
+            items = new List<T>();
 
-            return new ListRequest<T>(items);
-        }
+        return new ListRequest<T>(items);
     }
 }

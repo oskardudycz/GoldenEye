@@ -1,10 +1,9 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace GoldenEye.Events.External
+namespace GoldenEye.Events.External;
+
+public interface IExternalEventProducer
 {
-    public interface IExternalEventProducer
-    {
-        Task Publish(IExternalEvent @event, CancellationToken cancellationToken = default);
-    }
+    Task Publish(IExternalEvent @event, CancellationToken cancellationToken = default);
 }

@@ -4,74 +4,73 @@ using GoldenEye.Modules;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
-namespace GoldenEye.Tests.Modules
+namespace GoldenEye.Tests.Modules;
+
+public class Registration
 {
-    public class Registration
+    public Registration()
     {
-        public Registration()
-        {
-            services.AddAllApplicationModules();
-        }
+        services.AddAllApplicationModules();
+    }
 
-        public class CustomModuleImplementingIModule: IModule
-        {
-            public void Configure(IServiceCollection services)
-            {
-            }
-
-            public void Use()
-            {
-            }
-        }
-
-        public class CustomModuleDerivedFromModule: Module
+    public class CustomModuleImplementingIModule: IModule
+    {
+        public void Configure(IServiceCollection services)
         {
         }
 
-        public class CustomModuleDerivingFromOtherCustomModule: CustomModuleDerivedFromModule
+        public void Use()
         {
         }
+    }
 
-        private readonly ServiceCollection services = new ServiceCollection();
+    public class CustomModuleDerivedFromModule: Module
+    {
+    }
 
-        [Fact]
-        public void GivenCustomModuleDerivedFromModule_WhenAddAllModulesCalled_ThenModuleIsRegistered()
+    public class CustomModuleDerivingFromOtherCustomModule: CustomModuleDerivedFromModule
+    {
+    }
+
+    private readonly ServiceCollection services = new ServiceCollection();
+
+    [Fact]
+    public void GivenCustomModuleDerivedFromModule_WhenAddAllModulesCalled_ThenModuleIsRegistered()
+    {
+        using (var sp = services.BuildServiceProvider())
         {
-            using (var sp = services.BuildServiceProvider())
-            {
-                sp.GetService<CustomModuleDerivedFromModule>().Should().NotBeNull();
-            }
+            sp.GetService<CustomModuleDerivedFromModule>().Should().NotBeNull();
         }
+    }
 
-        [Fact]
-        public void GivenCustomModuleDerivingFromOtherCustomModule_WhenAddAllModulesCalled_ThenModuleIsRegistered()
+    [Fact]
+    public void GivenCustomModuleDerivingFromOtherCustomModule_WhenAddAllModulesCalled_ThenModuleIsRegistered()
+    {
+        using (var sp = services.BuildServiceProvider())
         {
-            using (var sp = services.BuildServiceProvider())
-            {
-                sp.GetService<CustomModuleDerivingFromOtherCustomModule>().Should().NotBeNull();
-            }
+            sp.GetService<CustomModuleDerivingFromOtherCustomModule>().Should().NotBeNull();
         }
+    }
 
-        [Fact]
-        public void GivenCustomModuleImplementingIModule_WhenAddAllModulesCalled_ThenModuleIsRegistered()
+    [Fact]
+    public void GivenCustomModuleImplementingIModule_WhenAddAllModulesCalled_ThenModuleIsRegistered()
+    {
+        using (var sp = services.BuildServiceProvider())
         {
-            using (var sp = services.BuildServiceProvider())
-            {
-                sp.GetService<CustomModuleImplementingIModule>().Should().NotBeNull();
-            }
+            sp.GetService<CustomModuleImplementingIModule>().Should().NotBeNull();
         }
+    }
 
-        [Fact]
-        public void GivenMultipleCustomModules_WhenAddAllModulesCalled_ThenAllModulesAreRegisteredAsIModule()
+    [Fact]
+    public void GivenMultipleCustomModules_WhenAddAllModulesCalled_ThenAllModulesAreRegisteredAsIModule()
+    {
+        using (var sp = services.BuildServiceProvider())
         {
-            using (var sp = services.BuildServiceProvider())
-            {
-                var modules = sp.GetServices<IModule>().ToList();
+            var modules = sp.GetServices<IModule>().ToList();
 
-                modules.Should().Contain(x => x is CustomModuleImplementingIModule);
-                modules.Should().Contain(x => x is CustomModuleDerivedFromModule);
-                modules.Should().Contain(x => x is CustomModuleDerivingFromOtherCustomModule);
-            }
+            modules.Should().Contain(x => x is CustomModuleImplementingIModule);
+            modules.Should().Contain(x => x is CustomModuleDerivedFromModule);
+            modules.Should().Contain(x => x is CustomModuleDerivingFromOtherCustomModule);
         }
     }
 }

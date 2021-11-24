@@ -1,7 +1,6 @@
-namespace GoldenEye.Objects.Order
+namespace GoldenEye.Objects.Order;
+
+public interface IOrderable
 {
-    public interface IOrderable
-    {
-        int Position { get; set; }
-    }
+    int Position { get; set; }
 }

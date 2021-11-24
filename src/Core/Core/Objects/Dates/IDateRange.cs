@@ -1,11 +1,10 @@
 ﻿using System;
 
-namespace GoldenEye.Objects.Dates
-{
-    public interface IDateRange
-    {
-        DateTime? StartDate { get; }
+namespace GoldenEye.Objects.Dates;
 
-        DateTime? EndDate { get; }
-    }
+public interface IDateRange
+{
+    DateTime? StartDate { get; }
+
+    DateTime? EndDate { get; }
 }

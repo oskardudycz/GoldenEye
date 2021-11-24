@@ -1,8 +1,7 @@
 using System;
 
-namespace GoldenEye.Services
+namespace GoldenEye.Services;
+
+public interface IService: IDisposable
 {
-    public interface IService: IDisposable
-    {
-    }
 }

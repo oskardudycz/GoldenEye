@@ -1,6 +1,5 @@
-namespace GoldenEye.Events
+namespace GoldenEye.Events;
+
+public interface IExternalEvent: IEvent
 {
-    public interface IExternalEvent: IEvent
-    {
-    }
 }

@@ -1,28 +1,27 @@
 using System;
 using System.Threading;
 
-namespace GoldenEye.Utils.Threading
+namespace GoldenEye.Utils.Threading;
+
+public static class NoSynchronizationContextScope
 {
-    public static class NoSynchronizationContextScope
+    public static Disposable Enter()
     {
-        public static Disposable Enter()
+        var context = SynchronizationContext.Current;
+        SynchronizationContext.SetSynchronizationContext(null);
+        return new Disposable(context);
+    }
+
+    public struct Disposable: IDisposable
+    {
+        private readonly SynchronizationContext _synchronizationContext;
+
+        public Disposable(SynchronizationContext synchronizationContext)
         {
-            var context = SynchronizationContext.Current;
-            SynchronizationContext.SetSynchronizationContext(null);
-            return new Disposable(context);
+            _synchronizationContext = synchronizationContext;
         }
 
-        public struct Disposable: IDisposable
-        {
-            private readonly SynchronizationContext _synchronizationContext;
-
-            public Disposable(SynchronizationContext synchronizationContext)
-            {
-                _synchronizationContext = synchronizationContext;
-            }
-
-            public void Dispose() =>
-                SynchronizationContext.SetSynchronizationContext(_synchronizationContext);
-        }
+        public void Dispose() =>
+            SynchronizationContext.SetSynchronizationContext(_synchronizationContext);
     }
 }

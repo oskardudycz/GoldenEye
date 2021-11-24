@@ -1,15 +1,14 @@
 using System;
 using System.ComponentModel;
 
-namespace GoldenEye.Utils.Localization
+namespace GoldenEye.Utils.Localization;
+
+[AttributeUsage(AttributeTargets.Class | AttributeTargets.Method | AttributeTargets.Property |
+                AttributeTargets.Event)]
+public class DisplayNameLocalizedAttribute: DisplayNameAttribute
 {
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method | AttributeTargets.Property |
-                    AttributeTargets.Event)]
-    public class DisplayNameLocalizedAttribute: DisplayNameAttribute
-    {
-        //public DisplayNameLocalizedAttribute(Type resourceManagerProvider, string resourceKey)
-        //    : base(LocalizationUtils.Instance.LookupResource(resourceManagerProvider, resourceKey))
-        //{
-        //}
-    }
+    //public DisplayNameLocalizedAttribute(Type resourceManagerProvider, string resourceKey)
+    //    : base(LocalizationUtils.Instance.LookupResource(resourceManagerProvider, resourceKey))
+    //{
+    //}
 }

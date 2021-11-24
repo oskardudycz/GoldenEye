@@ -1,28 +1,27 @@
 using System;
 
-namespace GoldenEye.Objects.General
+namespace GoldenEye.Objects.General;
+
+public interface IHaveId
 {
-    public interface IHaveId
-    {
-        object Id { get; }
-    }
+    object Id { get; }
+}
 
-    public interface IHaveId<out T>: IHaveId
-    {
-        new T Id { get; }
+public interface IHaveId<out T>: IHaveId
+{
+    new T Id { get; }
 
-        object IHaveId.Id => Id;
-    }
+    object IHaveId.Id => Id;
+}
 
-    public interface IHaveGuidId: IHaveId<Guid>
-    {
-    }
+public interface IHaveGuidId: IHaveId<Guid>
+{
+}
 
-    public interface IHaveStringId: IHaveId<string>
-    {
-    }
+public interface IHaveStringId: IHaveId<string>
+{
+}
 
-    public interface IHaveIntId: IHaveId<int>
-    {
-    }
+public interface IHaveIntId: IHaveId<int>
+{
 }

@@ -2,14 +2,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using GoldenEye.Aggregates;
 
-namespace GoldenEye.Events.Aggregate
+namespace GoldenEye.Events.Aggregate;
+
+public interface IAggregateEventsPublisher
 {
-    public interface IAggregateEventsPublisher
-    {
-        IEvent[] EnqueueEventsFrom(IAggregate aggregate);
+    IEvent[] EnqueueEventsFrom(IAggregate aggregate);
 
-        bool TryEnqueueEventsFrom(object entity, out IEvent[] uncommittedEvents);
+    bool TryEnqueueEventsFrom(object entity, out IEvent[] uncommittedEvents);
 
-        Task Publish(CancellationToken cancellationToken = default);
-    }
+    Task Publish(CancellationToken cancellationToken = default);
 }

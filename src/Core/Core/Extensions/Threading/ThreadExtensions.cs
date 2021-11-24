@@ -2,21 +2,20 @@
 using System.Globalization;
 using System.Threading;
 
-namespace GoldenEye.Extensions.Threading
+namespace GoldenEye.Extensions.Threading;
+
+public static class ThreadExtensions
 {
-    public static class ThreadExtensions
+    public static T WithUiCulture<T>(this Thread currentThread, string culture, Func<T> doAction)
     {
-        public static T WithUiCulture<T>(this Thread currentThread, string culture, Func<T> doAction)
-        {
-            var currentUiCulture = currentThread.CurrentUICulture;
+        var currentUiCulture = currentThread.CurrentUICulture;
 
-            currentThread.CurrentUICulture = new CultureInfo(culture);
+        currentThread.CurrentUICulture = new CultureInfo(culture);
 
-            T returnValue = doAction();
+        T returnValue = doAction();
 
-            currentThread.CurrentUICulture = currentUiCulture;
+        currentThread.CurrentUICulture = currentUiCulture;
 
-            return returnValue;
-        }
+        return returnValue;
     }
 }

@@ -1,8 +1,7 @@
-﻿namespace GoldenEye.Extensions.DependencyInjection
+﻿namespace GoldenEye.Extensions.DependencyInjection;
+
+public enum AssemblySelector
 {
-    public enum AssemblySelector
-    {
-        ApplicationDependencies = 1,
-        CallingAssembly = 2
-    }
+    ApplicationDependencies = 1,
+    CallingAssembly = 2
 }
