@@ -1,10 +1,9 @@
 using System;
 using MediatR;
 
-namespace GoldenEye.Events
+namespace GoldenEye.Events;
+
+public interface IEvent: INotification
 {
-    public interface IEvent: INotification
-    {
-        Guid StreamId { get; }
-    }
+    Guid StreamId { get; }
 }

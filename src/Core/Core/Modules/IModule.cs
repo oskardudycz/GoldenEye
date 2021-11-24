@@ -1,11 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace GoldenEye.Modules
-{
-    public interface IModule
-    {
-        void Configure(IServiceCollection services);
+namespace GoldenEye.Modules;
 
-        void Use();
-    }
+public interface IModule
+{
+    void Configure(IServiceCollection services);
+
+    void Use();
 }

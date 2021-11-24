@@ -1,14 +1,13 @@
 using GoldenEye.Context.SaveChangesHandlers.Base;
 using GoldenEye.Entities;
 
-namespace GoldenEye.Context.SaveChangesHandlers
+namespace GoldenEye.Context.SaveChangesHandlers;
+
+public interface ISaveChangesProcessor
 {
-    public interface ISaveChangesProcessor
-    {
-        void Clear();
+    void Clear();
 
-        void Add(ISaveChangesHandler handler);
+    void Add(ISaveChangesHandler handler);
 
-        void RunAll(IProvidesAuditInfo context);
-    }
+    void RunAll(IProvidesAuditInfo context);
 }

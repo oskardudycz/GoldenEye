@@ -1,9 +1,8 @@
 using GoldenEye.Entities;
 
-namespace GoldenEye.Context.SaveChangesHandlers.Base
+namespace GoldenEye.Context.SaveChangesHandlers.Base;
+
+public interface ISaveChangesHandler
 {
-    public interface ISaveChangesHandler
-    {
-        void Handle(IProvidesAuditInfo context);
-    }
+    void Handle(IProvidesAuditInfo context);
 }

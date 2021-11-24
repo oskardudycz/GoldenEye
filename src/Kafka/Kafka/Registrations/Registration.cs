@@ -6,31 +6,30 @@ using GoldenEye.Registration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace GoldenEye.Kafka.Registrations
+namespace GoldenEye.Kafka.Registrations;
+
+public static class Config
 {
-    public static class Config
+
+    public static IServiceCollection AddKafkaProducer(this IServiceCollection services)
     {
+        //using TryAdd to support mocking, without that it won't be possible to override in tests
+        services.TryAddScoped<IExternalEventProducer, KafkaProducer>();
+        return services;
+    }
 
-        public static IServiceCollection AddKafkaProducer(this IServiceCollection services)
-        {
-            //using TryAdd to support mocking, without that it won't be possible to override in tests
-            services.TryAddScoped<IExternalEventProducer, KafkaProducer>();
-            return services;
-        }
+    public static IServiceCollection AddKafkaConsumer(this IServiceCollection services)
+    {
+        //using TryAdd to support mocking, without that it won't be possible to override in tests
+        services.TryAddSingleton<IExternalEventConsumer, KafkaConsumer>();
 
-        public static IServiceCollection AddKafkaConsumer(this IServiceCollection services)
-        {
-            //using TryAdd to support mocking, without that it won't be possible to override in tests
-            services.TryAddSingleton<IExternalEventConsumer, KafkaConsumer>();
+        return services.AddExternalEventConsumerBackgroundWorker();
+    }
 
-            return services.AddExternalEventConsumerBackgroundWorker();
-        }
-
-        public static IServiceCollection AddKafkaProducerAndConsumer(this IServiceCollection services)
-        {
-            return services
-                .AddKafkaProducer()
-                .AddKafkaConsumer();
-        }
+    public static IServiceCollection AddKafkaProducerAndConsumer(this IServiceCollection services)
+    {
+        return services
+            .AddKafkaProducer()
+            .AddKafkaConsumer();
     }
 }

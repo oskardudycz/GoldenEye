@@ -1,11 +1,10 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace GoldenEye.Commands
+namespace GoldenEye.Commands;
+
+public interface ICommandBus
 {
-    public interface ICommandBus
-    {
-        Task Send<TCommand>(TCommand command, CancellationToken cancellationToken = default)
-            where TCommand : ICommand;
-    }
+    Task Send<TCommand>(TCommand command, CancellationToken cancellationToken = default)
+        where TCommand : ICommand;
 }

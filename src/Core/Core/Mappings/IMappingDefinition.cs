@@ -1,6 +1,5 @@
-namespace GoldenEye.Mappings
+namespace GoldenEye.Mappings;
+
+public interface IMappingDefinition
 {
-    public interface IMappingDefinition
-    {
-    }
 }

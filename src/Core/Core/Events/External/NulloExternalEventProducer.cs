@@ -1,13 +1,12 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace GoldenEye.Events.External
+namespace GoldenEye.Events.External;
+
+public class NulloExternalEventProducer : IExternalEventProducer
 {
-    public class NulloExternalEventProducer : IExternalEventProducer
+    public Task Publish(IExternalEvent @event, CancellationToken cancellationToken = default)
     {
-        public Task Publish(IExternalEvent @event, CancellationToken cancellationToken = default)
-        {
-            return Task.CompletedTask;
-        }
+        return Task.CompletedTask;
     }
 }

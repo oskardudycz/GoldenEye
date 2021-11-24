@@ -1,6 +1,5 @@
-namespace GoldenEye.Objects.Responses
+namespace GoldenEye.Objects.Responses;
+
+public interface IEmptyResponse: IResponse
 {
-    public interface IEmptyResponse: IResponse
-    {
-    }
 }

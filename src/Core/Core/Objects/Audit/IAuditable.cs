@@ -1,12 +1,11 @@
 using System;
 
-namespace GoldenEye.Objects.Audit
+namespace GoldenEye.Objects.Audit;
+
+public interface IAuditable
 {
-    public interface IAuditable
-    {
-        DateTime Created { get; set; }
-        int? CreatedBy { get; set; }
-        DateTime? LastModified { get; set; }
-        int? LastModifiedBy { get; set; }
-    }
+    DateTime Created { get; set; }
+    int? CreatedBy { get; set; }
+    DateTime? LastModified { get; set; }
+    int? LastModifiedBy { get; set; }
 }

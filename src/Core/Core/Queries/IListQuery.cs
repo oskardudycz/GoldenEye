@@ -1,8 +1,7 @@
 using System.Collections.Generic;
 
-namespace GoldenEye.Queries
+namespace GoldenEye.Queries;
+
+public interface IListQuery<TResponse>: IQuery<IReadOnlyList<TResponse>>
 {
-    public interface IListQuery<TResponse>: IQuery<IReadOnlyList<TResponse>>
-    {
-    }
 }

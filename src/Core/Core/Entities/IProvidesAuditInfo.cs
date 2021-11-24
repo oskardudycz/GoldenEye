@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 
-namespace GoldenEye.Entities
+namespace GoldenEye.Entities;
+
+public interface IProvidesAuditInfo
 {
-    public interface IProvidesAuditInfo
-    {
-        IEnumerable<IEntityEntry> Changes { get; }
-    }
+    IEnumerable<IEntityEntry> Changes { get; }
 }

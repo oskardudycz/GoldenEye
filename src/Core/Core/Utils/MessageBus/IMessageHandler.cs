@@ -1,7 +1,6 @@
-namespace GoldenEye.Utils.MessageBus
+namespace GoldenEye.Utils.MessageBus;
+
+public interface IMessageHandler<TMessage> where TMessage : class, IMessage, new()
 {
-    public interface IMessageHandler<TMessage> where TMessage : class, IMessage, new()
-    {
-        void HandleMessage(TMessage message);
-    }
+    void HandleMessage(TMessage message);
 }

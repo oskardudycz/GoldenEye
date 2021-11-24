@@ -16,83 +16,82 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Xunit;
 
-namespace GoldenEye.WebApi.Tests.Exceptions
+namespace GoldenEye.WebApi.Tests.Exceptions;
+
+public class CreateUser
 {
-    public class CreateUser
+    public CreateUser(string userName)
     {
-        public CreateUser(string userName)
-        {
-            UserName = userName;
-        }
-
-        public string UserName { get; }
+        UserName = userName;
     }
 
-    [Route("api/Users")]
-    public class UsersController: Controller
-    {
-        [HttpPost]
-        public IActionResult Post([FromBody] CreateUser command)
-        {
-            if (command.UserName.IsNullOrEmpty())
-                throw new ValidationException("UserName is required");
+    public string UserName { get; }
+}
 
-            return Ok();
+[Route("api/Users")]
+public class UsersController: Controller
+{
+    [HttpPost]
+    public IActionResult Post([FromBody] CreateUser command)
+    {
+        if (command.UserName.IsNullOrEmpty())
+            throw new ValidationException("UserName is required");
+
+        return Ok();
+    }
+}
+
+public class ExceptionHandlingMiddlewareTests
+{
+    public class Startup
+    {
+        public Startup(IHostEnvironment env)
+        {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddEnvironmentVariables();
+            Configuration = builder.Build();
+        }
+
+        private IConfigurationRoot Configuration { get; }
+
+        // This method gets called by the runtime. Use this method to add services to the container.
+        public void ConfigureServices(IServiceCollection services)
+        {
+            var assembly = typeof(UsersController).GetTypeInfo().Assembly;
+            services.AddWebApiWithDefaultConfig()
+                .AddApplicationPart(assembly);
+        }
+
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            //Use ExceptionHandlingMiddleware needs to be registered before UseMvc
+            app.UseExceptionHandlingMiddleware()
+                .UseWebApi();
         }
     }
 
-    public class ExceptionHandlingMiddlewareTests
+    [Fact]
+    public async Task
+        GivenAppWithExceptionHandlingMiddleware_WhenExceptionWasThrown_ThenReturnsResultWithProperStatusCodeAndErrorInfo()
     {
-        public class Startup
-        {
-            public Startup(IHostEnvironment env)
-            {
-                var builder = new ConfigurationBuilder()
-                    .SetBasePath(env.ContentRootPath)
-                    .AddEnvironmentVariables();
-                Configuration = builder.Build();
-            }
+        //Given
+        var server = new TestServer(new WebHostBuilder()
+            .UseStartup<Startup>());
 
-            private IConfigurationRoot Configuration { get; }
+        var client = server.CreateClient();
 
-            // This method gets called by the runtime. Use this method to add services to the container.
-            public void ConfigureServices(IServiceCollection services)
-            {
-                var assembly = typeof(UsersController).GetTypeInfo().Assembly;
-                services.AddWebApiWithDefaultConfig()
-                    .AddApplicationPart(assembly);
-            }
+        var invalidCommand = new CreateUser(null);
 
-            public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-            {
-                //Use ExceptionHandlingMiddleware needs to be registered before UseMvc
-                app.UseExceptionHandlingMiddleware()
-                    .UseWebApi();
-            }
-        }
+        //When
+        var response = await client.PostAsync("/api/Users", invalidCommand.ToJsonStringContent());
 
-        [Fact]
-        public async Task
-            GivenAppWithExceptionHandlingMiddleware_WhenExceptionWasThrown_ThenReturnsResultWithProperStatusCodeAndErrorInfo()
-        {
-            //Given
-            var server = new TestServer(new WebHostBuilder()
-                .UseStartup<Startup>());
+        //Then
+        response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+        var resultJson = await response.Content.ReadAsStringAsync();
 
-            var client = server.CreateClient();
-
-            var invalidCommand = new CreateUser(null);
-
-            //When
-            var response = await client.PostAsync("/api/Users", invalidCommand.ToJsonStringContent());
-
-            //Then
-            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
-            var resultJson = await response.Content.ReadAsStringAsync();
-
-            var result = resultJson.FromJson<HttpExceptionWrapper>();
-            result.StatusCode.Should().Be((int)HttpStatusCode.BadRequest);
-            result.Error.Should().Be("UserName is required");
-        }
+        var result = resultJson.FromJson<HttpExceptionWrapper>();
+        result.StatusCode.Should().Be((int)HttpStatusCode.BadRequest);
+        result.Error.Should().Be("UserName is required");
     }
 }

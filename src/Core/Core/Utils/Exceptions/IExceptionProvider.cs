@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace GoldenEye.Utils.Exceptions
+namespace GoldenEye.Utils.Exceptions;
+
+public interface IExceptionProvider
 {
-    public interface IExceptionProvider
-    {
-        IEnumerable<IExceptionHandler> ExceptionHandlers { get; }
-        string HandleException(Exception e);
-    }
+    IEnumerable<IExceptionHandler> ExceptionHandlers { get; }
+    string HandleException(Exception e);
 }

@@ -2,15 +2,14 @@
 using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace GoldenEye.Mappings
+namespace GoldenEye.Mappings;
+
+public static class Registration
 {
-    public static class Registration
+    public static IServiceCollection AddAutoMapperForAllDependencies(
+        this IServiceCollection services
+    )
     {
-        public static IServiceCollection AddAutoMapperForAllDependencies(
-            this IServiceCollection services
-        )
-        {
-            return services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-        }
+        return services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
     }
 }

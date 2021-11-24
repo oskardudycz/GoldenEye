@@ -4,31 +4,30 @@ using Backend.DDD.WebApi.Sample;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 
-namespace Backend.DDD.Sample.IntegrationTests.Infrastructure
+namespace Backend.DDD.Sample.IntegrationTests.Infrastructure;
+
+public class TestContext: IDisposable
 {
-    public class TestContext: IDisposable
+    private TestServer _server;
+
+    public TestContext()
     {
-        private TestServer _server;
+        SetUpClient();
+    }
 
-        public TestContext()
-        {
-            SetUpClient();
-        }
+    public HttpClient Client { get; private set; }
 
-        public HttpClient Client { get; private set; }
+    public void Dispose()
+    {
+        _server?.Dispose();
+        Client?.Dispose();
+    }
 
-        public void Dispose()
-        {
-            _server?.Dispose();
-            Client?.Dispose();
-        }
+    private void SetUpClient()
+    {
+        _server = new TestServer(new WebHostBuilder()
+            .UseStartup<Startup>());
 
-        private void SetUpClient()
-        {
-            _server = new TestServer(new WebHostBuilder()
-                .UseStartup<Startup>());
-
-            Client = _server.CreateClient();
-        }
+        Client = _server.CreateClient();
     }
 }

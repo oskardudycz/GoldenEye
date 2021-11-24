@@ -2,13 +2,12 @@ using System.Threading;
 using System.Threading.Tasks;
 using GoldenEye.Events.External;
 
-namespace GoldenEye.Testing
+namespace GoldenEye.Testing;
+
+public class DummyExternalEventConsumer: IExternalEventConsumer
 {
-    public class DummyExternalEventConsumer: IExternalEventConsumer
+    public Task Start(CancellationToken cancellationToken)
     {
-        public Task Start(CancellationToken cancellationToken)
-        {
-            return Task.CompletedTask;
-        }
+        return Task.CompletedTask;
     }
 }

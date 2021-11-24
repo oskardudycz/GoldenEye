@@ -5,46 +5,45 @@ using System.Threading.Tasks;
 using GoldenEye.Events.External;
 using MediatR;
 
-namespace GoldenEye.Events
+namespace GoldenEye.Events;
+
+public class EventBus: IEventBus
 {
-    public class EventBus: IEventBus
+    private readonly IMediator mediator;
+    private readonly IExternalEventProducer externalEventProducer;
+
+    public EventBus(
+        IMediator mediator,
+        IExternalEventProducer externalEventProducer
+    )
     {
-        private readonly IMediator mediator;
-        private readonly IExternalEventProducer externalEventProducer;
+        this.mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+        this.externalEventProducer = externalEventProducer?? throw new ArgumentNullException(nameof(externalEventProducer));
+    }
 
-        public EventBus(
-            IMediator mediator,
-            IExternalEventProducer externalEventProducer
-        )
+    public async Task Publish<TEvent>(TEvent @event, CancellationToken cancellationToken = default)
+        where TEvent: IEvent
+    {
+        await mediator.Publish(@event, cancellationToken);
+
+        if (@event is IExternalEvent externalEvent)
         {
-            this.mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
-            this.externalEventProducer = externalEventProducer?? throw new ArgumentNullException(nameof(externalEventProducer));
+            await externalEventProducer.Publish(externalEvent, cancellationToken);
         }
+    }
 
-        public async Task Publish<TEvent>(TEvent @event, CancellationToken cancellationToken = default)
-            where TEvent: IEvent
+    public async Task Publish(CancellationToken cancellationToken, params IEvent[] events)
+    {
+        foreach (var @event in events)
         {
-            await mediator.Publish(@event, cancellationToken);
-
-            if (@event is IExternalEvent externalEvent)
-            {
-                await externalEventProducer.Publish(externalEvent, cancellationToken);
-            }
+            await Publish(@event, cancellationToken);
         }
+    }
 
-        public async Task Publish(CancellationToken cancellationToken, params IEvent[] events)
-        {
-            foreach (var @event in events)
-            {
-                await Publish(@event, cancellationToken);
-            }
-        }
+    public Task PublishParallel(CancellationToken cancellationToken, params IEvent[] events)
+    {
+        var tasks = events.Select(@event => Publish(@event, cancellationToken)).ToList();
 
-        public Task PublishParallel(CancellationToken cancellationToken, params IEvent[] events)
-        {
-            var tasks = events.Select(@event => Publish(@event, cancellationToken)).ToList();
-
-            return Task.WhenAll(tasks);
-        }
+        return Task.WhenAll(tasks);
     }
 }

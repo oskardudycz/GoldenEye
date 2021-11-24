@@ -1,9 +1,8 @@
 using MediatR;
 
-namespace GoldenEye.Commands
+namespace GoldenEye.Commands;
+
+public interface ICommandHandler<in T>: IRequestHandler<T>
+    where T : ICommand
 {
-    public interface ICommandHandler<in T>: IRequestHandler<T>
-        where T : ICommand
-    {
-    }
 }

@@ -1,6 +1,5 @@
-namespace GoldenEye.Objects.Requests
+namespace GoldenEye.Objects.Requests;
+
+public interface IEmptyRequest: IRequest
 {
-    public interface IEmptyRequest: IRequest
-    {
-    }
 }

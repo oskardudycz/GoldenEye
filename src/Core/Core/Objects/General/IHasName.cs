@@ -1,7 +1,6 @@
-namespace GoldenEye.Objects.General
+namespace GoldenEye.Objects.General;
+
+public interface IHasName
 {
-    public interface IHasName
-    {
-        string Name { get; set; }
-    }
+    string Name { get; set; }
 }
