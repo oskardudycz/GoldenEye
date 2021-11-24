@@ -1,61 +1,55 @@
 using System;
 using Marten.Events;
 using Marten.Events.Projections;
-using Tickets.Reservations.Events;
+using Tickets.Reservations.CancellingReservation;
+using Tickets.Reservations.ChangingReservationSeat;
+using Tickets.Reservations.ConfirmingReservation;
+using Tickets.Reservations.CreatingTentativeReservation;
 
-namespace Tickets.Reservations.Projections
+namespace Tickets.Reservations.GettingReservationHistory
 {
-    public class ReservationHistory
+    public record ReservationHistory(
+        Guid Id,
+        Guid ReservationId,
+        string Description
+    );
+
+    public class ReservationHistoryTransformation: EventProjection
     {
-        public Guid Id { get; set; }
-        public Guid ReservationId { get; set; }
-        public string Description { get; set; }
-    }
-
-    public class ReservationHistoryTransformation :
-        ITransform<TentativeReservationCreated, ReservationHistory>,
-        ITransform<ReservationSeatChanged, ReservationHistory>,
-        ITransform<ReservationConfirmed, ReservationHistory>,
-        ITransform<ReservationCancelled, ReservationHistory>
-    {
-        public ReservationHistory Transform(EventStream stream, Event<TentativeReservationCreated> input)
+        public ReservationHistory Transform(IEvent<TentativeReservationCreated> input)
         {
-            return new ReservationHistory
-            {
-                Id = Guid.NewGuid(),
-                ReservationId = input.Data.ReservationId,
-                Description = $"Created tentative reservation with number {input.Data.Number}"
-            };
+            return new(
+                Guid.NewGuid(),
+                input.Data.ReservationId,
+                $"Created tentative reservation with number {input.Data.Number}"
+            );
         }
 
-        public ReservationHistory Transform(EventStream stream, Event<ReservationSeatChanged> input)
+        public ReservationHistory Transform(IEvent<ReservationSeatChanged> input)
         {
-            return new ReservationHistory
-            {
-                Id = Guid.NewGuid(),
-                ReservationId = input.Data.ReservationId,
-                Description = $"Updated reservation seat to {input.Data.SeatId}"
-            };
+            return new(
+                Guid.NewGuid(),
+                input.Data.ReservationId,
+                $"Updated reservation seat to {input.Data.SeatId}"
+            );
         }
 
-        public ReservationHistory Transform(EventStream stream, Event<ReservationConfirmed> input)
+        public ReservationHistory Transform(IEvent<ReservationConfirmed> input)
         {
-            return new ReservationHistory
-            {
-                Id = Guid.NewGuid(),
-                ReservationId = input.Data.ReservationId,
-                Description = "Confirmed Reservation"
-            };
+            return new(
+                Guid.NewGuid(),
+                input.Data.ReservationId,
+                "Confirmed Reservation"
+            );
         }
 
-        public ReservationHistory Transform(EventStream stream, Event<ReservationCancelled> input)
+        public ReservationHistory Transform(IEvent<ReservationCancelled> input)
         {
-            return new ReservationHistory
-            {
-                Id = Guid.NewGuid(),
-                ReservationId = input.Data.ReservationId,
-                Description = "Cancelled Reservation"
-            };
+            return new(
+                Guid.NewGuid(),
+                input.Data.ReservationId,
+                "Cancelled Reservation"
+            );
         }
     }
 }

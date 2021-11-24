@@ -13,9 +13,10 @@ using GoldenEye.Registration;
 using GoldenEye.Repositories;
 using Marten;
 using Marten.Services;
-using Marten.Services.Events;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Weasel.Core;
+using Weasel.Postgresql;
 
 namespace GoldenEye.Marten.Registration
 {
@@ -50,7 +51,7 @@ namespace GoldenEye.Marten.Registration
                     if (martenConfig.ShouldRecreateDatabase)
                         documentStore.Advanced.Clean.CompletelyRemoveAll();
 
-                    documentStore.Schema.ApplyAllConfiguredChangesToDatabase();
+                    documentStore.Schema.ApplyAllConfiguredChangesToDatabaseAsync().Wait();
 
                     return documentStore;
                 })
@@ -72,8 +73,6 @@ namespace GoldenEye.Marten.Registration
             options.DatabaseSchemaName = config.ReadModelSchema;
             options.UseDefaultSerialization(nonPublicMembersStorage: NonPublicMembersStorage.NonPublicSetters,
                 enumStorage: EnumStorage.AsString);
-            options.PLV8Enabled = false;
-            options.Events.UseAggregatorLookup(AggregationLookupStrategy.UsePublicAndPrivateApply);
 
             configureOptions?.Invoke(options);
         }
@@ -122,7 +121,6 @@ namespace GoldenEye.Marten.Registration
             {
                 _.Connection(connectionString);
                 _.AutoCreateSchemaObjects = AutoCreate.CreateOrUpdate;
-                _.DdlRules.TableCreation = CreationStyle.CreateIfNotExists;
 
                 if (!moduleName.IsNullOrEmpty())
                     _.DatabaseSchemaName = _.Events.DatabaseSchemaName = moduleName.ToLower();

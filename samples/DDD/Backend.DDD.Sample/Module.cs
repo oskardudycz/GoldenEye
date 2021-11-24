@@ -40,8 +40,8 @@ namespace Backend.DDD.Sample
 
         private void SetupEventStore(StoreOptions options)
         {
-            options.Events.InlineProjections.AggregateStreamsWith<Issue>();
-            options.Events.InlineProjections.Add(new IssueProjection());
+            options.Projections.SelfAggregate<Issue>();
+            options.Projections.Add(new IssueProjection());
         }
 
         private void RegisterHandlers(IServiceCollection services)

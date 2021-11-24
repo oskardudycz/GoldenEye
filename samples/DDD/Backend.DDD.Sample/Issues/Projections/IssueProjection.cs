@@ -9,7 +9,8 @@ namespace Backend.DDD.Sample.Issues.Projections
     {
         public IssueProjection()
         {
-            ProjectEvent<IssueCreated>(ev => ev.IssueId, (item, @event) => item.Apply(@event));
+            Identity<IssueCreated>(ev => ev.IssueId);
+            ProjectEvent<IssueCreated>((item, @event) => item.Apply(@event));
         }
 
         private void Apply(IssueView item, IssueCreated @event)

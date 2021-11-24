@@ -1,8 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>netstandard2.1;net5.0</TargetFrameworks>
-        <Version>1.0.0-alpha.10</Version>
+        <TargetFrameworks>netstandard2.1;net6.0</TargetFrameworks>
         <PackageId>GoldenEye.Marten</PackageId>
         <AssemblyName>GoldenEye.Marten</AssemblyName>
         <RootNamespace>GoldenEye.Marten</RootNamespace>
@@ -10,9 +9,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Marten" Version="[4.0.0-alpha.4,)" Condition="'$(TargetFramework)' == 'net5.0'" />
-        <PackageReference Include="Marten" Version="3.13.3" Condition="'$(TargetFramework)' == 'netstandard2.1'" />
-        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="5.0.0" />
+        <PackageReference Include="Marten" Version="4.2.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
     </ItemGroup>
 
     <ItemGroup>

@@ -1,19 +1,14 @@
-using System;
-using System.Linq;
-using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using Ardalis.GuardClauses;
-using Baseline.Dates;
+using GoldenEye.Commands;
 using Marten;
-using Marten.Events.Projections.Async;
 using MediatR;
 using Tickets.Maintenance.Commands;
 
-namespace Tickets.Reservations
+namespace Tickets.Maintenance
 {
     public class MaintenanceCommandHandler:
-        IRequestHandler<RebuildProjection, Unit>
+        ICommandHandler<RebuildProjection>
     {
         private readonly IDocumentStore documentStore;
 
@@ -24,19 +19,8 @@ namespace Tickets.Reservations
 
         public async Task<Unit> Handle(RebuildProjection command, CancellationToken cancellationToken)
         {
-            Guard.Against.Null(command, nameof(command));
-
-            var viewType =  Assembly.GetExecutingAssembly().GetTypes().SingleOrDefault(t=>t.Name == command.ViewName);
-
-            using (var daemon = documentStore.BuildProjectionDaemon(
-                new [] { viewType },
-                settings: new DaemonSettings
-                {
-                    LeadingEdgeBuffer = 0.Seconds()
-                }))
-            {
-                await daemon.Rebuild(viewType, cancellationToken);
-            }
+            using var daemon = documentStore.BuildProjectionDaemon();
+            await daemon.RebuildProjection(command.ViewName, cancellationToken);
 
             return Unit.Value;
         }

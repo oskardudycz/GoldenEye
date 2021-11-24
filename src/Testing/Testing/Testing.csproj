@@ -1,8 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>netcoreapp3.1;net5.0</TargetFrameworks>
-        <Version>1.0.0-alpha.10</Version>
+        <TargetFramework>net6.0</TargetFramework>
         <PackageId>GoldenEye.Testing</PackageId>
         <AssemblyName>GoldenEye.Testing</AssemblyName>
         <RootNamespace>GoldenEye.Testing</RootNamespace>
@@ -10,16 +9,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
-        <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="5.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.3" />
-        <PackageReference Include="Microsoft.DotNet.InternalAbstractions" Version="1.0.500-preview2-1-003177" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="6.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
         <PackageReference Include="NSubstitute" Version="4.2.2" />
         <PackageReference Include="xunit" Version="2.4.1" />
-
-        <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="5.0.0" Condition="'$(TargetFramework)' == 'net5.0'" />
-        <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="3.1.10" Condition="'$(TargetFramework)' == 'netcoreapp3.1'" />
+        <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="6.0.0" />
     </ItemGroup>
 
     <ItemGroup>
