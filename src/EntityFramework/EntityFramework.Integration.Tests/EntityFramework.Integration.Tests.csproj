@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
         <RootNamespace>GoldenEye.EntityFramework.Integration.Tests</RootNamespace>
     </PropertyGroup>
@@ -13,21 +13,21 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="FluentAssertions" Version="5.10.3" />
-        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.1" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.1">
+        <PackageReference Include="FluentAssertions" Version="6.2.0" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.0">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.3" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
         <PackageReference Include="NSubstitute" Version="4.2.2" />
-        <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+        <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
         <PackageReference Include="xunit" Version="2.4.1" />
         <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Npgsql" Version="5.0.1.1" />
+        <PackageReference Include="Npgsql" Version="6.0.0" />
         <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="5.0.1" />
     </ItemGroup>
 

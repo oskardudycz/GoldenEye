@@ -96,7 +96,7 @@ namespace GoldenEye.Tests.Validation
             }
 
             [Fact]
-            public void
+            public async Task
                 GivenValidationPipelineSetUp_WhenInValidCommandWasSent_ThenCommandWasValidatedAndValidationExceptionWasThrown()
             {
                 //Given
@@ -116,7 +116,7 @@ namespace GoldenEye.Tests.Validation
                     Func<Task> sendCommandAsync = async () => await commandBus.Send(invalidCommand);
                     //When
                     //Then
-                    sendCommandAsync.Should().Throw<ValidationException>();
+                    await sendCommandAsync.Should().ThrowAsync<ValidationException>();
 
                     var context = sp.GetService<DataContext>();
                     context.Users.Should().BeEmpty();
@@ -203,7 +203,7 @@ namespace GoldenEye.Tests.Validation
             }
 
             [Fact]
-            public void
+            public async Task
                 GivenValidationPipelineSetUp_WhenInValidQueryWasSent_ThenQueryWasValidatedAndValidationExceptionWasThrown()
             {
                 //Given
@@ -223,7 +223,7 @@ namespace GoldenEye.Tests.Validation
                     Func<Task> sendQueryAsync = async () => await queryBus.Send<GetUser, string>(invalidQuery);
                     //When
                     //Then
-                    sendQueryAsync.Should().Throw<ValidationException>();
+                    await sendQueryAsync.Should().ThrowAsync<ValidationException>();
                 }
             }
 
