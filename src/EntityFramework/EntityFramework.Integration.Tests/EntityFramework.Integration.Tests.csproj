@@ -28,7 +28,7 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
         </PackageReference>
         <PackageReference Include="Npgsql" Version="6.0.0" />
-        <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="5.0.1" />
+        <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="6.0.0" />
     </ItemGroup>
 
     <ItemGroup>
