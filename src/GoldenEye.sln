@@ -17,10 +17,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DDD", "DDD", "{E7DF2D12-586
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C32CA805-3C3D-42CE-9479-20B2E5EEBD86}"
 	ProjectSection(SolutionItems) = preProject
-		..\appveyor.yml = ..\appveyor.yml
 		..\LICENSE.txt = ..\LICENSE.txt
 		..\README.md = ..\README.md
 		Directory.build.props = Directory.build.props
+		..\docker-compose.ci.yml = ..\docker-compose.ci.yml
+		..\docker-compose.pg.yml = ..\docker-compose.pg.yml
+		..\docker-compose.yml = ..\docker-compose.yml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoldenEye.WebApi.Template.SimpleDDD", "Templates\SimpleDDD\content\GoldenEye.WebApi.Template.SimpleDDD.csproj", "{592DD3EB-823E-4941-808A-7A42928748BD}"
@@ -115,6 +117,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tickets.Tests", "..\samples\DDD\Tickets\Tickets.Tests\Tickets.Tests.csproj", "{311E77E9-0616-4A21-A766-83D09673BCAC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tickets.Api.Tests", "..\samples\DDD\Tickets\Tickets.Api.Tests\Tickets.Api.Tests.csproj", "{3E783861-EFA4-4F0E-8B75-758ECFA927CD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{05D05369-B3A6-4578-A9BE-408CE4D021F6}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\workflows\build.dotnet.yml = ..\.github\workflows\build.dotnet.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -281,6 +288,7 @@ Global
 		{712DD731-7D1E-4F80-92A4-618C92CF9910} = {2C3AC12D-F52C-4D18-814E-D316F1150B7B}
 		{311E77E9-0616-4A21-A766-83D09673BCAC} = {2C3AC12D-F52C-4D18-814E-D316F1150B7B}
 		{3E783861-EFA4-4F0E-8B75-758ECFA927CD} = {2C3AC12D-F52C-4D18-814E-D316F1150B7B}
+		{05D05369-B3A6-4578-A9BE-408CE4D021F6} = {C32CA805-3C3D-42CE-9479-20B2E5EEBD86}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8F5394A0-8892-4A22-B6A0-7BBC209FF191}
