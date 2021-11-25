@@ -12,6 +12,17 @@ services:
             - "5432:5432"
         networks:
             - pg_network
+    
+    #######################################################
+    #  MSSQL
+    #######################################################
+    mssql:
+        image: "mcr.microsoft.com/mssql/server:2017-latest"
+        environment:
+          - ACCEPT_EULA=Y
+          - SA_PASSWORD=Password12!
+        ports:
+          - "1433:1433"
 
     #######################################################
     #  EventStoreDB
