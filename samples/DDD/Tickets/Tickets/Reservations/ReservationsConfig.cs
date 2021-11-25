@@ -1,77 +1,77 @@
 using GoldenEye.Marten.Repositories;
+using GoldenEye.Registration;
 using GoldenEye.Repositories;
 using Marten;
 using Marten.Pagination;
-using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using Tickets.Reservations.Commands;
-using Tickets.Reservations.Events;
-using Tickets.Reservations.Projections;
-using Tickets.Reservations.Queries;
+using Tickets.Reservations.CancellingReservation;
+using Tickets.Reservations.ChangingReservationSeat;
+using Tickets.Reservations.ConfirmingReservation;
+using Tickets.Reservations.CreatingTentativeReservation;
+using Tickets.Reservations.GettingReservationAtVersion;
+using Tickets.Reservations.GettingReservationById;
+using Tickets.Reservations.GettingReservationHistory;
+using Tickets.Reservations.GettingReservations;
+using Tickets.Reservations.NumberGeneration;
 
-namespace Tickets.Reservations
+namespace Tickets.Reservations;
+
+internal static class ReservationsConfig
 {
-    internal static class ReservationsConfig
+    internal static void AddReservations(this IServiceCollection services)
     {
+        services
+            .AddScoped<IReservationNumberGenerator, ReservationNumberGenerator>()
+            .AddScoped<IRepository<Reservation>, MartenEventSourcedRepository<Reservation>>()
+            .AddCommandHandlers()
+            .AddQueryHandlers();
+    }
 
-        internal static void AddReservations(this IServiceCollection services)
+    private static IServiceCollection AddCommandHandlers(this IServiceCollection services)
+    {
+        return services
+            .AddCommandHandler<CreateTentativeReservation, HandleCreateTentativeReservation>()
+            .AddCommandHandler<ChangeReservationSeat,HandleChangeReservationSeat>()
+            .AddCommandHandler<ConfirmReservation, HandleConfirmReservation>()
+            .AddCommandHandler<CancelReservation, HandleCancelReservation>();
+    }
+
+    private static IServiceCollection AddQueryHandlers(this IServiceCollection services)
+    {
+        return services
+            .AddQueryHandler<GetReservationById, ReservationDetails, HandleGetReservationById>()
+            .AddQueryHandler<GetReservationAtVersion, ReservationDetails, HandleGetReservationAtVersion>()
+            .AddQueryHandler<GetReservations, IPagedList<ReservationShortInfo>, HandleGetReservations>()
+            .AddQueryHandler<GetReservationHistory, IPagedList<ReservationHistory>, HandleGetReservationHistory>();
+    }
+
+    internal static void ConfigureReservations(this StoreOptions options)
+    {
+        // Snapshots
+        options.Projections.SelfAggregate<Reservation>();
+        options.Schema.For<Reservation>().Index(x => x.SeatId, x =>
         {
-            services.AddScoped<IReservationNumberGenerator, ReservationNumberGenerator>();
+            x.IsUnique = true;
 
-            services.AddScoped<IRepository<Reservation>, MartenEventSourcedRepository<Reservation>>();
-
-            AddCommandHandlers(services);
-            AddQueryHandlers(services);
-        }
-
-        private static void AddCommandHandlers(IServiceCollection services)
+            // Partial index by supplying a condition
+            x.Predicate = "(data ->> 'Status') != 'Cancelled'";
+        });
+        options.Schema.For<Reservation>().Index(x => x.Number, x =>
         {
-            services.AddScoped<IRequestHandler<CreateTentativeReservation, Unit>, ReservationCommandHandler>();
-            services.AddScoped<IRequestHandler<ChangeReservationSeat, Unit>, ReservationCommandHandler>();
-            services.AddScoped<IRequestHandler<ConfirmReservation, Unit>, ReservationCommandHandler>();
-            services.AddScoped<IRequestHandler<CancelReservation, Unit>, ReservationCommandHandler>();
-        }
+            x.IsUnique = true;
 
-        private static void AddQueryHandlers(IServiceCollection services)
-        {
-            services.AddScoped<IRequestHandler<GetReservationById, ReservationDetails>, ReservationQueryHandler>();
-            services.AddScoped<IRequestHandler<GetReservationAtVersion, ReservationDetails>, ReservationQueryHandler>();
-            services.AddScoped<IRequestHandler<GetReservations, IPagedList<ReservationShortInfo>>, ReservationQueryHandler>();
-            services
-                .AddScoped<IRequestHandler<GetReservationHistory, IPagedList<ReservationHistory>>, ReservationQueryHandler>();
-        }
-
-        internal static void ConfigureReservations(this StoreOptions options)
-        {
-            // Snapshots
-            options.Events.InlineProjections.AggregateStreamsWith<Reservation>();
-            options.Schema.For<Reservation>().Index(x => x.SeatId, x =>
-            {
-                x.IsUnique = true;
-
-                // Partial index by supplying a condition
-                x.Where = "(data ->> 'Status') != 'Cancelled'";
-            });
-            options.Schema.For<Reservation>().Index(x => x.Number, x =>
-            {
-                x.IsUnique = true;
-
-                // Partial index by supplying a condition
-                x.Where = "(data ->> 'Status') != 'Cancelled'";
-            });
+            // Partial index by supplying a condition
+            x.Predicate = "(data ->> 'Status') != 'Cancelled'";
+        });
 
 
-            // options.Schema.For<Reservation>().UniqueIndex(x => x.SeatId);
+        // options.Schema.For<Reservation>().UniqueIndex(x => x.SeatId);
 
-            // projections
-            options.Events.InlineProjections.Add<ReservationDetailsProjection>();
-            options.Events.InlineProjections.Add<ReservationShortInfoProjection>();
+        // projections
+        options.Projections.Add<ReservationDetailsProjection>();
+        options.Projections.Add<ReservationShortInfoProjection>();
 
-            // transformation
-            options.Events.InlineProjections.TransformEvents<TentativeReservationCreated, ReservationHistory>(new ReservationHistoryTransformation());
-            options.Events.InlineProjections.TransformEvents<ReservationSeatChanged, ReservationHistory>(new ReservationHistoryTransformation());
-            options.Events.InlineProjections.TransformEvents<ReservationConfirmed, ReservationHistory>(new ReservationHistoryTransformation());
-            options.Events.InlineProjections.TransformEvents<ReservationCancelled, ReservationHistory>(new ReservationHistoryTransformation());
-        }
+        // transformation
+        options.Projections.Add<ReservationHistoryTransformation>();
     }
 }
