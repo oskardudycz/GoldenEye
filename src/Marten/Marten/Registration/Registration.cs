@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using GoldenEye.Aggregates;
 using GoldenEye.Events;
 using GoldenEye.Events.Aggregate;
@@ -11,6 +12,7 @@ using GoldenEye.Marten.Ids;
 using GoldenEye.Objects.General;
 using GoldenEye.Registration;
 using GoldenEye.Repositories;
+using GoldenEye.Utils.Threading;
 using Marten;
 using Marten.Services;
 using Microsoft.Extensions.Configuration;
@@ -22,6 +24,8 @@ namespace GoldenEye.Marten.Registration;
 
 public static class Registration
 {
+    private const string DefaultConfigKey = "Marten";
+
     public static void AddMarten(this IServiceCollection services,
         Func<IServiceProvider, string> getConnectionString, Action<StoreOptions> setAdditionalOptions = null,
         string schemaName = null, ServiceLifetime serviceLifetime = ServiceLifetime.Transient)
@@ -38,30 +42,44 @@ public static class Registration
     }
 
     public static IServiceCollection AddMarten(this IServiceCollection services, IConfiguration config,
-        Action<StoreOptions> configureOptions = null)
+        Action<StoreOptions> configureOptions = null, string configKey = DefaultConfigKey)
     {
-        var martenConfig = config.GetSection(MartenConfig.DefaultConfigKey).Get<MartenConfig>();
+        var martenConfig = config.GetSection(configKey).Get<MartenConfig>();
 
         services
-            .AddSingleton<IDocumentStore>(sp =>
+            .AddScoped<IIdGenerator, MartenIdGenerator>();
+
+        var documentStore = services
+            .AddMarten(options =>
             {
-                var documentStore =
-                    DocumentStore.For(options => SetStoreOptions(options, martenConfig, configureOptions));
-
-                if (martenConfig.ShouldRecreateDatabase)
-                    documentStore.Advanced.Clean.CompletelyRemoveAll();
-
-                documentStore.Schema.ApplyAllConfiguredChangesToDatabaseAsync().Wait();
-
-                return documentStore;
+                SetStoreOptions(options, martenConfig, configureOptions);
             })
-            .AddScoped(sp => sp.GetRequiredService<IDocumentStore>().OpenSession())
-            .AddScoped<IQuerySession>(sp => sp.GetRequiredService<IDocumentSession>())
-            .AddScoped<IIdGenerator, MartenIdGenerator>();;
+            .InitializeStore();
 
-        services.AddEventStore<MartenEventStore>(ServiceLifetime.Scoped);
+        SetupSchema(documentStore, martenConfig, 1);
 
         return services;
+    }
+
+    private static void SetupSchema(IDocumentStore documentStore, MartenConfig martenConfig, int retryLeft = 1)
+    {
+        try
+        {
+            if (martenConfig.ShouldRecreateDatabase)
+                documentStore.Advanced.Clean.CompletelyRemoveAll();
+
+            using (NoSynchronizationContextScope.Enter())
+            {
+                documentStore.Schema.ApplyAllConfiguredChangesToDatabaseAsync().Wait();
+            }
+        }
+        catch
+        {
+            if (retryLeft == 0) throw;
+
+            Thread.Sleep(1000);
+            SetupSchema(documentStore, martenConfig, --retryLeft);
+        }
     }
 
     private static void SetStoreOptions(StoreOptions options, MartenConfig config,
@@ -69,10 +87,14 @@ public static class Registration
     {
         options.Connection(config.ConnectionString);
         options.AutoCreateSchemaObjects = AutoCreate.CreateOrUpdate;
-        options.Events.DatabaseSchemaName = config.WriteModelSchema;
-        options.DatabaseSchemaName = config.ReadModelSchema;
+
+        var schemaName = Environment.GetEnvironmentVariable("SchemaName");
+        options.Events.DatabaseSchemaName = schemaName ?? config.WriteModelSchema;
+        options.DatabaseSchemaName = schemaName ?? config.ReadModelSchema;
+
         options.UseDefaultSerialization(nonPublicMembersStorage: NonPublicMembersStorage.NonPublicSetters,
             enumStorage: EnumStorage.AsString);
+        options.Projections.AsyncMode = config.DaemonMode;
 
         configureOptions?.Invoke(options);
     }
