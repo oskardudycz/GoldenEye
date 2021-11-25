@@ -7,7 +7,7 @@ namespace GoldenEye.Dapper.Integration.Tests.Infrastructure;
 public abstract class DapperTest: IDisposable
 {
     public static string ConnectionString =
-        "Server=(local)\\SQL2017;Database=master;User ID=sa;Password=Password12!";
+        "Server=localhost;Database=master;User ID=sa;Password=Password12!";
 
     protected readonly IDbConnection DbConnection;
 
