@@ -88,7 +88,7 @@ public static class Registration
         return services.Add(typeof(IRequestPreProcessor<>), typeof(ValidationPipeline<>), withLifetime);
     }
 
-    public static IServiceCollection RegisterCommandHandler<TCommand, TCommandHandler>(
+    public static IServiceCollection AddCommandHandler<TCommand, TCommandHandler>(
         this IServiceCollection services, ServiceLifetime withLifetime = ServiceLifetime.Transient)
         where TCommand : ICommand
         where TCommandHandler : class, ICommandHandler<TCommand>
@@ -98,7 +98,7 @@ public static class Registration
             .Add<ICommandHandler<TCommand>>(sp => sp.GetService<TCommandHandler>(), withLifetime);
     }
 
-    public static IServiceCollection RegisterQueryHandler<TQuery, TResponse, TQueryHandler>(
+    public static IServiceCollection AddQueryHandler<TQuery, TResponse, TQueryHandler>(
         this IServiceCollection services, ServiceLifetime withLifetime = ServiceLifetime.Transient)
         where TQuery : IQuery<TResponse>
         where TQueryHandler : class, IQueryHandler<TQuery, TResponse>
@@ -108,7 +108,7 @@ public static class Registration
             .Add<IQueryHandler<TQuery, TResponse>>(sp => sp.GetService<TQueryHandler>(), withLifetime);
     }
 
-    public static IServiceCollection RegisterEventHandler<TEvent, TEventHandler>(
+    public static IServiceCollection AddEventHandler<TEvent, TEventHandler>(
         this IServiceCollection services,
         ServiceLifetime withLifetime = ServiceLifetime.Transient)
         where TEvent : IEvent

@@ -1,39 +1,35 @@
 using System;
 using System.Threading.Tasks;
-using Ardalis.GuardClauses;
 using GoldenEye.Commands;
 using Microsoft.AspNetCore.Mvc;
 using Tickets.Api.Requests;
 using Tickets.Maintenance.Commands;
-using Tickets.Reservations.Events;
 
-namespace Tickets.Api.Controllers
+namespace Tickets.Api.Controllers;
+
+[Route("api/[controller]")]
+public class MaintenanceController: Controller
 {
-    [Route("api/[controller]")]
-    public class MaintenanceController: Controller
+    private readonly ICommandBus commandBus;
+
+    public MaintenanceController(
+        ICommandBus commandBus)
     {
-        private readonly ICommandBus commandBus;
+        this.commandBus = commandBus;
+    }
 
-        public MaintenanceController(
-            ICommandBus commandBus)
-        {
-            Guard.Against.Null(commandBus, nameof(commandBus));
+    [HttpPost("projections/rebuild")]
+    public async Task<IActionResult> Rebuild([FromBody] RebuildProjectionRequest request)
+    {
+        if (request == null)
+            throw new ArgumentNullException(nameof(request));
 
-            this.commandBus = commandBus;
-        }
+        var command = RebuildProjection.Create(
+            request.ProjectionName
+        );
 
-        [HttpPost("projections/rebuild")]
-        public async Task<IActionResult> Rebuild([FromBody] RebuildProjectionRequest request)
-        {
-            Guard.Against.Null(request, nameof(request));
+        await commandBus.Send(command);
 
-            var command = RebuildProjection.Create(
-                request.ProjectionName
-            );
-
-            await commandBus.Send(command);
-
-            return Accepted();
-        }
+        return Accepted();
     }
 }

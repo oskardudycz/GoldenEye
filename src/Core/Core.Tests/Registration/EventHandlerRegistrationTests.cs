@@ -55,8 +55,8 @@ public class EventHandlerRegistrationTests
         //Given
         var services = new ServiceCollection();
         services.AddDDD();
-        services.RegisterEventHandler<UserCreated, UsersCountHandler>(ServiceLifetime.Singleton);
-        services.RegisterEventHandler<UserCreated, UsersIdsHandler>(ServiceLifetime.Singleton);
+        services.AddEventHandler<UserCreated, UsersCountHandler>(ServiceLifetime.Singleton);
+        services.AddEventHandler<UserCreated, UsersIdsHandler>(ServiceLifetime.Singleton);
 
         var sp = services.BuildServiceProvider();
         var eventBus = sp.GetService<IEventBus>();

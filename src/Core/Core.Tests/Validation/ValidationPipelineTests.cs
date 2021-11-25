@@ -77,7 +77,7 @@ public class ValidationPipelineTests
 
             services.AddValidationPipeline();
             services.AddSingleton(new DataContext {Users = new List<string> {"John Doe"}});
-            services.RegisterCommandHandler<RemoveAllUsers, UserCommandHandler>();
+            services.AddCommandHandler<RemoveAllUsers, UserCommandHandler>();
             //No validator Registered
 
             using (var sp = services.BuildServiceProvider())
@@ -105,7 +105,7 @@ public class ValidationPipelineTests
 
             services.AddValidationPipeline();
             services.AddSingleton<DataContext>();
-            services.RegisterCommandHandler<CreateUser, UserCommandHandler>();
+            services.AddCommandHandler<CreateUser, UserCommandHandler>();
             services.AddTransient<IValidator<CreateUser>, CreateUserValidator>();
 
             using (var sp = services.BuildServiceProvider())
@@ -133,7 +133,7 @@ public class ValidationPipelineTests
 
             services.AddValidationPipeline();
             services.AddSingleton<DataContext>();
-            services.RegisterCommandHandler<CreateUser, UserCommandHandler>();
+            services.AddCommandHandler<CreateUser, UserCommandHandler>();
             services.AddTransient<IValidator<CreateUser>, CreateUserValidator>();
 
             using (var sp = services.BuildServiceProvider())
@@ -212,7 +212,7 @@ public class ValidationPipelineTests
 
             services.AddValidationPipeline();
             services.AddSingleton(new DataContext {Users = new List<string> {"John Doe"}});
-            services.RegisterQueryHandler<GetUser, string, UserQueryHandler>();
+            services.AddQueryHandler<GetUser, string, UserQueryHandler>();
             services.AddTransient<IValidator<GetUser>, GetUserValidator>();
 
             using (var sp = services.BuildServiceProvider())
@@ -237,7 +237,7 @@ public class ValidationPipelineTests
 
             services.AddValidationPipeline();
             services.AddSingleton(new DataContext {Users = new List<string> {"John Doe"}});
-            services.RegisterQueryHandler<GetAllUsers, IReadOnlyList<string>, UserQueryHandler>();
+            services.AddQueryHandler<GetAllUsers, IReadOnlyList<string>, UserQueryHandler>();
 
             using (var sp = services.BuildServiceProvider())
             {
@@ -263,7 +263,7 @@ public class ValidationPipelineTests
 
             services.AddValidationPipeline();
             services.AddSingleton(new DataContext {Users = new List<string> {"John Doe"}});
-            services.RegisterQueryHandler<GetUser, string, UserQueryHandler>();
+            services.AddQueryHandler<GetUser, string, UserQueryHandler>();
             services.AddTransient<IValidator<GetUser>, GetUserValidator>();
 
             using (var sp = services.BuildServiceProvider())
@@ -290,7 +290,7 @@ public class ValidationPipelineTests
 
             services.AddValidationPipeline();
             services.AddSingleton(new DataContext {Users = new List<string> {"John Doe"}});
-            services.RegisterQueryHandler<GetUser, string, UserQueryHandler>();
+            services.AddQueryHandler<GetUser, string, UserQueryHandler>();
             services.AddTransient<IValidator<GetUser>, GetUserValidator>();
 
             using (var sp = services.BuildServiceProvider())

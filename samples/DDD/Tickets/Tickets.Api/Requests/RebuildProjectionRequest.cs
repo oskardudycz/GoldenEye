@@ -1,7 +1,5 @@
-namespace Tickets.Api.Requests
-{
-    public class RebuildProjectionRequest
-    {
-        public string ProjectionName { get; set; }
-    }
-}
+namespace Tickets.Api.Requests;
+
+public record RebuildProjectionRequest(
+    string? ProjectionName
+);
