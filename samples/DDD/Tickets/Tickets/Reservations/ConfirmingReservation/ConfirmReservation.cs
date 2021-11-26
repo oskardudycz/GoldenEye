@@ -47,6 +47,8 @@ internal class HandleConfirmReservation:
 
         await repository.Update(reservation, cancellationToken);
 
+        await repository.SaveChanges(cancellationToken);
+
         return Unit.Value;
     }
 }

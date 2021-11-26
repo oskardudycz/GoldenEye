@@ -23,11 +23,11 @@ public class TestContext<TStartup>: IDisposable
 
     private TestServer server;
 
-    private readonly EventsLog eventsLog = new EventsLog();
-    private readonly DummyExternalEventProducer externalEventProducer = new DummyExternalEventProducer();
-    private readonly DummyExternalCommandBus externalCommandBus = new DummyExternalCommandBus();
+    private readonly EventsLog eventsLog = new();
+    private readonly DummyExternalEventProducer externalEventProducer = new();
+    private readonly DummyExternalCommandBus externalCommandBus = new();
 
-    private readonly Func<string, Dictionary<string, string>> getConfiguration = fixtureName => new Dictionary<string, string>();
+    private readonly Func<string, Dictionary<string, string>> getConfiguration = _ => new Dictionary<string, string>();
 
     public TestContext(Func<string, Dictionary<string, string>> getConfiguration = null)
     {
@@ -40,7 +40,7 @@ public class TestContext<TStartup>: IDisposable
 
     private void SetUpClient()
     {
-        var fixtureName = new StackTrace().GetFrame(3).GetMethod().DeclaringType.Name;
+        var fixtureName = new StackTrace().GetFrame(3).GetMethod().DeclaringType.Name.ToLower();
 
         var configuration = getConfiguration(fixtureName);
         var projectDir = Directory.GetCurrentDirectory();

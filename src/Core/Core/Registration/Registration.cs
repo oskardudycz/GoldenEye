@@ -5,6 +5,7 @@ using GoldenEye.Events.Aggregate;
 using GoldenEye.Events.External;
 using GoldenEye.Events.Store;
 using GoldenEye.Extensions.DependencyInjection;
+using GoldenEye.IdsGenerator;
 using GoldenEye.Objects.General;
 using GoldenEye.Queries;
 using GoldenEye.Repositories;
@@ -55,13 +56,14 @@ public static class Registration
         ServiceLifetime withLifetime = ServiceLifetime.Transient)
     {
         services.AddScoped<IMediator, Mediator>()
-            .Add<ServiceFactory>(sp => t => sp.GetService(t), withLifetime)
+            .Add<ServiceFactory>(sp => sp.GetRequiredService, withLifetime)
             .Add(typeof(IPipelineBehavior<,>), typeof(RequestPreProcessorBehavior<,>), withLifetime)
             .Add<ICommandBus, CommandBus>(withLifetime)
             .Add<IQueryBus, QueryBus>(withLifetime)
             .Add<IEventBus, EventBus>(withLifetime)
             .Add<IAggregateEventsPublisher, AggregateEventsPublisher>(withLifetime);
 
+        services.TryAddScoped<IIdGenerator, NulloIdGenerator>();
         services.TryAddScoped<IExternalEventProducer, NulloExternalEventProducer>();
         services.TryAddScoped<IExternalCommandBus, ExternalCommandBus>();
 

@@ -1,3 +1,4 @@
+using GoldenEye.Marten.Registration;
 using GoldenEye.Marten.Repositories;
 using GoldenEye.Registration;
 using GoldenEye.Repositories;
@@ -22,7 +23,7 @@ internal static class ReservationsConfig
     {
         services
             .AddScoped<IReservationNumberGenerator, ReservationNumberGenerator>()
-            .AddScoped<IRepository<Reservation>, MartenEventSourcedRepository<Reservation>>()
+            .AddMartenEventSourcedRepository<Reservation>()
             .AddCommandHandlers()
             .AddQueryHandlers();
     }
