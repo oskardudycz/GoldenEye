@@ -55,6 +55,8 @@ internal class HandleCreateTentativeReservation:
 
         await repository.Add(reservation, cancellationToken);
 
+        await repository.SaveChanges(cancellationToken);
+
         return Unit.Value;
     }
 }

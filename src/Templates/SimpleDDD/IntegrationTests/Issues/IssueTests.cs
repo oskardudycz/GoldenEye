@@ -93,7 +93,7 @@ namespace WebApi.SimpleDDD.IntegrationTests.Issues
         }
 
         [Fact]
-        [Category("SkipCI")]
+        [Trait("Category", "SkipCI")]
         public async Task CreateIssueWithNotValidData_ShouldReturnBadRequest()
         {
             var command = new UpdateIssue(
@@ -109,7 +109,7 @@ namespace WebApi.SimpleDDD.IntegrationTests.Issues
         }
 
         [Fact]
-        [Category("SkipCI")]
+        [Trait("Category", "SkipCI")]
         public async Task DeleteIssueWithNotValidData_ShouldReturnBadRequest()
         {
             var id = Guid.Empty;
@@ -120,7 +120,7 @@ namespace WebApi.SimpleDDD.IntegrationTests.Issues
         }
 
         [Fact]
-        [Category("SkipCI")]
+        [Trait("Category", "SkipCI")]
         public async Task GetIssueWithNotValidData_ShouldReturnBadRequest()
         {
             var id = Guid.Empty;
@@ -131,7 +131,7 @@ namespace WebApi.SimpleDDD.IntegrationTests.Issues
         }
 
         [Fact]
-        [Category("SkipCI")]
+        [Trait("Category", "SkipCI")]
         public async Task IssueCRUDTest()
         {
             //Read
@@ -161,7 +161,7 @@ namespace WebApi.SimpleDDD.IntegrationTests.Issues
         }
 
         [Fact]
-        [Category("SkipCI")]
+        [Trait("Category", "SkipCI")]
         public async Task UpdateIssueWithNotValidData_ShouldReturnBadRequest()
         {
             var command = new CreateIssue(

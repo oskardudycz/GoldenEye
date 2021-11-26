@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Threading;
 using GoldenEye.Aggregates;
-using GoldenEye.Events;
 using GoldenEye.Events.Aggregate;
 using GoldenEye.Extensions.Basic;
 using GoldenEye.Extensions.DependencyInjection;
-using GoldenEye.IdsGenerator;
 using GoldenEye.Marten.Repositories;
 using GoldenEye.Marten.Events.Storage;
-using GoldenEye.Marten.Ids;
 using GoldenEye.Objects.General;
 using GoldenEye.Registration;
 using GoldenEye.Repositories;
@@ -26,9 +23,13 @@ public static class Registration
 {
     private const string DefaultConfigKey = "Marten";
 
-    public static void AddMarten(this IServiceCollection services,
-        Func<IServiceProvider, string> getConnectionString, Action<StoreOptions> setAdditionalOptions = null,
-        string schemaName = null, ServiceLifetime serviceLifetime = ServiceLifetime.Transient)
+    public static IServiceCollection AddMarten(
+        this IServiceCollection services,
+        Func<IServiceProvider, string> getConnectionString,
+        Action<StoreOptions> setAdditionalOptions = null,
+        string schemaName = null,
+        ServiceLifetime serviceLifetime = ServiceLifetime.Transient
+    )
     {
         services.AddScoped(sp => CreateDocumentStore(getConnectionString(sp), setAdditionalOptions, schemaName));
 
@@ -39,15 +40,18 @@ public static class Registration
         }, serviceLifetime);
 
         services.AddEventStore<MartenEventStore>(serviceLifetime);
+        return services;
     }
 
-    public static IServiceCollection AddMarten(this IServiceCollection services, IConfiguration config,
-        Action<StoreOptions> configureOptions = null, string configKey = DefaultConfigKey)
+    public static IServiceCollection AddMarten(
+        this IServiceCollection services,
+        IConfiguration config,
+        Action<StoreOptions> configureOptions = null,
+        string configKey = DefaultConfigKey,
+        ServiceLifetime serviceLifetime = ServiceLifetime.Transient
+    )
     {
         var martenConfig = config.GetSection(configKey).Get<MartenConfig>();
-
-        services
-            .AddScoped<IIdGenerator, MartenIdGenerator>();
 
         var documentStore = services
             .AddMarten(options =>
@@ -57,6 +61,8 @@ public static class Registration
             .InitializeStore();
 
         SetupSchema(documentStore, martenConfig, 1);
+
+        services.AddEventStore<MartenEventStore>(serviceLifetime);
 
         return services;
     }
@@ -73,8 +79,9 @@ public static class Registration
                 documentStore.Schema.ApplyAllConfiguredChangesToDatabaseAsync().Wait();
             }
         }
-        catch
+        catch(Exception ex)
         {
+            Console.WriteLine(ex);
             if (retryLeft == 0) throw;
 
             Thread.Sleep(1000);
@@ -99,7 +106,7 @@ public static class Registration
         configureOptions?.Invoke(options);
     }
 
-    public static void AddMartenDocumentRepository<TEntity>(this IServiceCollection services,
+    public static IServiceCollection AddMartenDocumentRepository<TEntity>(this IServiceCollection services,
         ServiceLifetime serviceLifetime = ServiceLifetime.Transient)
         where TEntity : class, IHaveId
     {
@@ -110,9 +117,10 @@ public static class Registration
             serviceLifetime);
         services.Add<IReadonlyRepository<TEntity>>(sp => sp.GetService<MartenDocumentRepository<TEntity>>(),
             serviceLifetime);
+        return services;
     }
 
-    public static void AddMartenEventSourcedRepository<TEntity>(this IServiceCollection services,
+    public static IServiceCollection AddMartenEventSourcedRepository<TEntity>(this IServiceCollection services,
         ServiceLifetime serviceLifetime = ServiceLifetime.Transient)
         where TEntity : class, IAggregate, new()
     {
@@ -123,9 +131,10 @@ public static class Registration
             serviceLifetime);
         services.Add<IReadonlyRepository<TEntity>>(sp => sp.GetService<MartenEventSourcedRepository<TEntity>>(),
             serviceLifetime);
+        return services;
     }
 
-    public static void AddMartenDocumentReadonlyRepository<TEntity>(this IServiceCollection services,
+    public static IServiceCollection AddMartenDocumentReadonlyRepository<TEntity>(this IServiceCollection services,
         ServiceLifetime serviceLifetime = ServiceLifetime.Transient)
         where TEntity : class, IHaveId
     {
@@ -134,6 +143,7 @@ public static class Registration
 
         services.Add<IReadonlyRepository<TEntity>>(sp => sp.GetService<MartenDocumentRepository<TEntity>>(),
             serviceLifetime);
+        return services;
     }
 
     public static DocumentStore CreateDocumentStore(string connectionString,

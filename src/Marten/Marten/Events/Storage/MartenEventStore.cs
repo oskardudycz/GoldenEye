@@ -5,7 +5,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using GoldenEye.Events;
 using GoldenEye.Events.Store;
-using GoldenEye.Objects.General;
 using Marten;
 using MartenEvents = Marten.Events;
 

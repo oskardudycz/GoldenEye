@@ -5,7 +5,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using GoldenEye.Aggregates;
 using GoldenEye.Events.Aggregate;
-using GoldenEye.Events.Store;
 using GoldenEye.Marten.Events.Storage;
 using GoldenEye.Objects.General;
 using GoldenEye.Repositories;

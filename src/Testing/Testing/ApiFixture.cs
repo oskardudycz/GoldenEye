@@ -14,8 +14,7 @@ public abstract class ApiFixture<TStartup>: IAsyncLifetime where TStartup : clas
 
     protected abstract string ApiUrl { get; }
 
-    protected virtual Dictionary<string,string> GetConfiguration(string fixtureName)
-        => new Dictionary<string, string>();
+    protected virtual Dictionary<string,string> GetConfiguration(string fixtureName) => new();
 
     protected ApiFixture()
     {
