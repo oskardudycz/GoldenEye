@@ -3,11 +3,11 @@
 # GoldenEye
 
 [![Twitter Follow](https://img.shields.io/twitter/follow/oskar_at_net?style=social)](https://twitter.com/oskar_at_net) [![Join the chat at https://gitter.im/oskardudycz/GoldenEye](https://badges.gitter.im/oskardudycz/GoldenEye.svg)](https://gitter.im/oskardudycz/GoldenEye?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Build status](https://ci.appveyor.com/api/projects/status/1mtm4h33cvur6kob/branch/main?svg=true)](https://ci.appveyor.com/project/oskardudycz/goldeneye-core/branch/main) [![blog](https://img.shields.io/badge/blog-event--driven.io-brightgreen)](https://event-driven.io/)
+![Github Actions](https://github.com/oskardudycz/GoldenEye/actions/workflows/build.dotnet.yml/badge.svg?branch=main) [![blog](https://img.shields.io/badge/blog-event--driven.io-brightgreen)](https://event-driven.io/)
 
 What is GoldenEye?
 --------------------------------
-**GoldenEye** is a Full Stack framework written in **.NET Core**. The main goal of **GoldenEye** is to speed up your development process. It gathers most widely used frameworks in .NET world and pack them into a simple bootstrap [Nuget packages](https://www.nuget.org/packages?q=GoldenEye). It also provide set of base classes, helpers, extensions that will help you with your daily work.
+**GoldenEye** is a Full Stack framework written in **.NET**. The main goal of **GoldenEye** is to speed up your development process. It gathers most widely used frameworks in .NET world and pack them into a simple bootstrap [Nuget packages](https://www.nuget.org/packages?q=GoldenEye). It also provide set of base classes, helpers, extensions that will help you with your daily work.
 
 What do I get?
 --------------------------------
@@ -20,23 +20,14 @@ Complete Solution bootstrap - bottom up:
 - complete set up of dependency injection with automatic naming convention binding,
 - [AutoMapper](https://github.com/AutoMapper/AutoMapper) preconfigured and automatic mappings registration,
 - Validation flow with [FluentValidation.NET](https://github.com/JeremySkinner/FluentValidation),
-- Examples of complete usage (Task list functionality),
+- [Examples of complete usage (Cinema Ticket Reservations)](./samples/DDD/Tickets),
 - document database and event store support in Postgres with [Marten](https://github.com/JasperFx/marten) framework,
 - many more
 
 How do I get started?
 --------------------------------
 
-**Install the [project template](https://github.com/oskardudycz/GoldenEye/tree/main/src/Templates/SimpleDDD/content) by running**
-
-`dotnet new -i GoldenEye.WebApi.Template.SimpleDDD`
-
-**and then create new project based on it:**
-
-`dotnet new SimpleDDD -n NameOfYourProject`
-
-
-Or manually add packages to your project, eg:
+Add package to your project:
 
 `dotnet add package GoldenEye`
   
