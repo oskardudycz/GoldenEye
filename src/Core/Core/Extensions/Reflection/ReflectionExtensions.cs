@@ -10,16 +10,15 @@ namespace GoldenEye.Extensions.Reflection;
 
 public static class ReflectionExtensions
 {
-    private static readonly object _lock = new object();
+    private static readonly object Lock = new object();
 
-    public static Dictionary<Type, Dictionary<string, PropertyInfo>> TypeProperties =
-        new Dictionary<Type, Dictionary<string, PropertyInfo>>();
+    private static Dictionary<Type, Dictionary<string, PropertyInfo>> TypeProperties = new();
 
-    private static IList<Assembly> _assemblies;
+    private static IList<Assembly>? assemblies;
 
     public static IEnumerable<Assembly> Assemblies
     {
-        get { return _assemblies ?? (_assemblies = AssembliesProvider.GetAll().ToList()); }
+        get { return assemblies ??= AssembliesProvider.GetAll().ToList(); }
     }
 
     public static bool HasProperty(this Type type, string propertyName)
@@ -27,9 +26,9 @@ public static class ReflectionExtensions
         return GetProperty(type, propertyName) != null;
     }
 
-    public static PropertyInfo GetProperty(Type type, string propertyName)
+    public static PropertyInfo? GetProperty(Type type, string propertyName)
     {
-        lock (_lock)
+        lock (Lock)
         {
             if (!TypeProperties.ContainsKey(type))
                 TypeProperties.Add(type, type.GetProperties().ToDictionary(ks => ks.Name, vs => vs));
@@ -40,7 +39,7 @@ public static class ReflectionExtensions
 
     public static IDictionary<string, PropertyInfo> GetProperties(Type type)
     {
-        lock (_lock)
+        lock (Lock)
         {
             if (!TypeProperties.ContainsKey(type))
                 TypeProperties.Add(type, type.GetProperties().ToDictionary(ks => ks.Name, vs => vs));
@@ -51,7 +50,7 @@ public static class ReflectionExtensions
 
     public static IDictionary<string, PropertyInfo> GetProperties(Type type, BindingFlags bindingAttr)
     {
-        lock (_lock)
+        lock (Lock)
         {
             if (!TypeProperties.ContainsKey(type))
                 TypeProperties.Add(type, type.GetProperties(bindingAttr).ToDictionary(ks => ks.Name, vs => vs));
@@ -62,7 +61,7 @@ public static class ReflectionExtensions
 
     public static Type GetPropertyType(this Type type, string propertyName)
     {
-        lock (_lock)
+        lock (Lock)
         {
             if (!TypeProperties.ContainsKey(type))
                 TypeProperties.Add(type, type.GetProperties().ToDictionary(ks => ks.Name, vs => vs));
@@ -76,20 +75,20 @@ public static class ReflectionExtensions
         return type.GetInterfaces().Contains(typeof(T));
     }
 
-    public static object InvokeStaticGeneric(this Type type, string methodName, Type[] types,
+    public static object? InvokeStaticGeneric(this Type type, string methodName, Type[] types,
         params object[] parameters)
     {
         return InvokeStaticGeneric(type, methodName, types, null, parameters);
     }
 
-    public static object InvokeStaticGeneric(this Type type, string methodName, Type[] types,
-        Type[] methodParameterTypes, params object[] parameters)
+    public static object? InvokeStaticGeneric(this Type type, string methodName, Type[] types,
+        Type[]? methodParameterTypes, params object[] parameters)
     {
         var method = methodParameterTypes == null
             ? type.GetMethod(methodName)
             : type.GetMethod(methodName, methodParameterTypes);
-        var generic = method.MakeGenericMethod(types);
-        return generic.Invoke(null, parameters);
+        var generic = method?.MakeGenericMethod(types);
+        return generic?.Invoke(null, parameters);
     }
 
     public static IEnumerable<PropertyInfo> GetAllInterfacesPropertiesWithAttribute<TAttribute>(this Type type)
@@ -100,15 +99,15 @@ public static class ReflectionExtensions
             .Where(x => x.GetCustomAttributes(typeof(TAttribute), true).Count() != 0);
     }
 
-    public static TAttribute GetAttribute<TAttribute>(this PropertyInfo propertyInfo)
+    public static TAttribute? GetAttribute<TAttribute>(this PropertyInfo propertyInfo)
         where TAttribute : Attribute
     {
-        return propertyInfo.GetCustomAttributes(typeof(TAttribute), true).FirstOrDefault().CastTo<TAttribute>();
+        return propertyInfo.GetCustomAttributes(typeof(TAttribute), true).FirstOrDefault().As<TAttribute>();
     }
 
-    public static Type GetTypeFromAllAssemblies(string typeName)
+    public static Type? GetTypeFromAllAssemblies(string typeName)
     {
-        if (!typeName.Contains("."))
+        if (!typeName.Contains('.'))
             return
                 Assemblies
                     .SelectMany(el => el.GetTypes())
@@ -124,7 +123,7 @@ public static class ReflectionExtensions
             .Where(selector).ToList();
     }
 
-    public static IList<Type> GetTypesFromAllProjectAssemblies(Func<Type, bool> selector = null)
+    public static IList<Type> GetTypesFromAllProjectAssemblies(Func<Type, bool>? selector = null)
     {
         var types = Assemblies
             .Where(el => el.GetCustomAttribute<ProjectAssemblyAttribute>() != null)
@@ -138,7 +137,7 @@ public static class ReflectionExtensions
         return Assemblies.Where(el => el.GetCustomAttribute<ProjectAssemblyAttribute>() != null).ToList();
     }
 
-    internal static T GetCustomAttribute<T>(this Assembly assembly) where T : Attribute
+    internal static T? GetCustomAttribute<T>(this Assembly assembly) where T : Attribute
     {
         return assembly.GetCustomAttributes<T>().FirstOrDefault();
     }

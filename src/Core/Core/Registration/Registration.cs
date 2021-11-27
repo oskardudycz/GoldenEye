@@ -24,8 +24,8 @@ public static class Registration
         where TEntity : class, IHaveId
     {
         services.Add(sp => new InMemoryRepository<TEntity>(), serviceLifetime);
-        services.Add<IRepository<TEntity>>(sp => sp.GetService<InMemoryRepository<TEntity>>(), serviceLifetime);
-        services.Add<IReadonlyRepository<TEntity>>(sp => sp.GetService<InMemoryRepository<TEntity>>(),
+        services.Add<IRepository<TEntity>>(sp => sp.GetRequiredService<InMemoryRepository<TEntity>>(), serviceLifetime);
+        services.Add<IReadonlyRepository<TEntity>>(sp => sp.GetRequiredService<InMemoryRepository<TEntity>>(),
             serviceLifetime);
         return services;
     }
@@ -35,7 +35,7 @@ public static class Registration
         where TEntity : class, IHaveId
     {
         services.Add(sp => new InMemoryReadonlyRepository<TEntity>(), serviceLifetime);
-        services.Add<IReadonlyRepository<TEntity>>(sp => sp.GetService<InMemoryReadonlyRepository<TEntity>>(),
+        services.Add<IReadonlyRepository<TEntity>>(sp => sp.GetRequiredService<InMemoryReadonlyRepository<TEntity>>(),
             serviceLifetime);
         return services;
     }
@@ -75,7 +75,7 @@ public static class Registration
         where TEventStore : class, IEventStore
     {
         return services.Add<TEventStore, TEventStore>(withLifetime)
-            .Add<IEventStore>(sp => sp.GetService<TEventStore>(), withLifetime);
+            .Add<IEventStore>(sp => sp.GetRequiredService<TEventStore>(), withLifetime);
     }
 
     public static IServiceCollection AddEventStorePipeline(this IServiceCollection services,
@@ -96,8 +96,8 @@ public static class Registration
         where TCommandHandler : class, ICommandHandler<TCommand>
     {
         return services.Add<TCommandHandler>(withLifetime)
-            .Add<IRequestHandler<TCommand, Unit>>(sp => sp.GetService<TCommandHandler>(), withLifetime)
-            .Add<ICommandHandler<TCommand>>(sp => sp.GetService<TCommandHandler>(), withLifetime);
+            .Add<IRequestHandler<TCommand, Unit>>(sp => sp.GetRequiredService<TCommandHandler>(), withLifetime)
+            .Add<ICommandHandler<TCommand>>(sp => sp.GetRequiredService<TCommandHandler>(), withLifetime);
     }
 
     public static IServiceCollection AddQueryHandler<TQuery, TResponse, TQueryHandler>(
@@ -106,8 +106,8 @@ public static class Registration
         where TQueryHandler : class, IQueryHandler<TQuery, TResponse>
     {
         return services.Add<TQueryHandler>(withLifetime)
-            .Add<IRequestHandler<TQuery, TResponse>>(sp => sp.GetService<TQueryHandler>(), withLifetime)
-            .Add<IQueryHandler<TQuery, TResponse>>(sp => sp.GetService<TQueryHandler>(), withLifetime);
+            .Add<IRequestHandler<TQuery, TResponse>>(sp => sp.GetRequiredService<TQueryHandler>(), withLifetime)
+            .Add<IQueryHandler<TQuery, TResponse>>(sp => sp.GetRequiredService<TQueryHandler>(), withLifetime);
     }
 
     public static IServiceCollection AddEventHandler<TEvent, TEventHandler>(
@@ -117,8 +117,8 @@ public static class Registration
         where TEventHandler : class, IEventHandler<TEvent>
     {
         return services.Add<TEventHandler>(withLifetime)
-            .Add<INotificationHandler<TEvent>>(sp => sp.GetService<TEventHandler>(), withLifetime)
-            .Add<IEventHandler<TEvent>>(sp => sp.GetService<TEventHandler>(), withLifetime);
+            .Add<INotificationHandler<TEvent>>(sp => sp.GetRequiredService<TEventHandler>(), withLifetime)
+            .Add<IEventHandler<TEvent>>(sp => sp.GetRequiredService<TEventHandler>(), withLifetime);
     }
 
     public static IServiceCollection AddAllCommandHandlers(

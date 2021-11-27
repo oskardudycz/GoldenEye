@@ -8,7 +8,7 @@ namespace GoldenEye.Utils.Serialization;
 
 public static class JsonSerializer
 {
-    public static bool TryDeserializeObject<T>(string json, out T result, CultureInfo culture = null)
+    public static bool TryDeserializeObject<T>(string? json, out T? result, CultureInfo? culture = null)
     {
         var jsonSerializerSettings = new JsonSerializerSettings {Culture = culture ?? CultureInfo.CurrentUICulture};
         var jsonSerializer = Newtonsoft.Json.JsonSerializer.Create(jsonSerializerSettings);
@@ -19,11 +19,11 @@ public static class JsonSerializer
             return false;
         }
 
-        result = (T)JToken.Parse("'" + json + "'").ToObject(typeof(T), jsonSerializer);
+        result = (T?)JToken.Parse("'" + json + "'").ToObject(typeof(T), jsonSerializer);
         return true;
     }
 
-    public static object DeserializeObject(string json, Type type, CultureInfo culture = null)
+    public static object? DeserializeObject(string? json, Type type, CultureInfo? culture = null)
     {
         var jsonSerializerSettings = new JsonSerializerSettings {Culture = culture ?? CultureInfo.CurrentUICulture};
         var jsonSerializer = Newtonsoft.Json.JsonSerializer.Create(jsonSerializerSettings);
@@ -33,7 +33,7 @@ public static class JsonSerializer
             : ObjectExtensions.GetDefault(type);
     }
 
-    public static string Serialize(object obj, CultureInfo culture = null)
+    public static string? Serialize(object? obj, CultureInfo? culture = null)
     {
         if (obj == null)
             return null;
@@ -46,7 +46,7 @@ public static class JsonSerializer
         return result;
     }
 
-    public static T Deserialize<T>(string json, CultureInfo culture = null)
+    public static T? Deserialize<T>(string json, CultureInfo? culture = null)
     {
         var jsonSerializerSettings = new JsonSerializerSettings {Culture = culture ?? CultureInfo.CurrentUICulture};
         return JsonConvert.DeserializeObject<T>(json, jsonSerializerSettings);

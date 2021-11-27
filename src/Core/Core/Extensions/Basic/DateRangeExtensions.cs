@@ -15,19 +15,15 @@ public static class DateRangeExtensions
     /// </summary>
     public static IEnumerable<DateRange> Consolidate(this IEnumerable<DateRange> ranges)
     {
-        if (ranges == null || !ranges.Any())
-            return ranges;
-
         var consolidatedRanges = new List<DateRange>();
 
         ranges = ranges.OrderBy(i => i.StartDate).ToList();
 
         var range = ranges.First();
-        DateRange current;
 
         for (var index = 1; index < ranges.Count(); ++index)
         {
-            current = ranges.ElementAt(index);
+            var current = ranges.ElementAt(index);
 
             if ((current.StartDate - range.EndDate).TotalDays <= 1)
             {
@@ -51,13 +47,11 @@ public static class DateRangeExtensions
     ///     Every range containing the date is adjusted to occur after this date.
     ///     May modify elements in the collection
     /// </summary>
+    /// <param name="ranges"></param>
     /// <param name="startDate">Date, to which every range in collection is adjusted</param>
     /// <returns></returns>
     public static IEnumerable<DateRange> AdjustToDate(this IEnumerable<DateRange> ranges, DateTime startDate)
     {
-        if (ranges == null || !ranges.Any())
-            return ranges;
-
         startDate = startDate.Date;
 
         // first, sort the ranges, so manipulation is easier

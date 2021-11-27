@@ -15,13 +15,12 @@ public static class ExpressionExtensions
     {
         var stack = new Stack<string>();
 
-        MemberExpression me;
+        MemberExpression? me;
         switch (expr.Body.NodeType)
         {
             case ExpressionType.Convert:
             case ExpressionType.ConvertChecked:
-                var ue = expr.Body as UnaryExpression;
-                me = ((ue != null) ? ue.Operand : null) as MemberExpression;
+                me = ((expr.Body is UnaryExpression ue) ? ue.Operand : null) as MemberExpression;
                 break;
 
             default:
@@ -42,13 +41,12 @@ public static class ExpressionExtensions
     {
         var stack = new Stack<string>();
 
-        MemberExpression me;
+        MemberExpression? me;
         switch (expr.Body.NodeType)
         {
             case ExpressionType.Convert:
             case ExpressionType.ConvertChecked:
-                var ue = expr.Body as UnaryExpression;
-                me = ((ue != null) ? ue.Operand : null) as MemberExpression;
+                me = ((expr.Body is UnaryExpression ue) ? ue.Operand : null) as MemberExpression;
                 break;
 
             default:
@@ -153,7 +151,7 @@ public static class ExpressionExtensions
     ///     Checks, whether underlying type of value returned by selector matches the underlying type of value.
     /// </summary>
     /// <param name="value"></param>
-    public static bool MatchesTypeOf<T>(this Expression<Func<T, object>> selector, object value,
+    public static bool MatchesTypeOf<T>(this Expression<Func<T, object>> selector, object? value,
         bool matchEnumAndInt = true)
     {
         var selectorType = selector.GetValueType();
@@ -173,7 +171,7 @@ public static class ExpressionExtensions
                || (selectorUnderlyingType != null &&
                    (value == null || selectorUnderlyingType == value.GetType())
                ) // selector is for Nullable<> and value is null or matches the underlying type
-               || selectorType == value.GetType() // selector is for value type and types have to match
+               || selectorType == value?.GetType() // selector is for value type and types have to match
                || enumMatch; // selector is for int or int? and value is Enum
     }
 }

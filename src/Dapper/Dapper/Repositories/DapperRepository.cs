@@ -8,7 +8,6 @@ using Dapper;
 using Dapper.Contrib.Extensions;
 using GoldenEye.Dapper.Generators;
 using GoldenEye.Dapper.Mappings;
-using GoldenEye.Events;
 using GoldenEye.Events.Aggregate;
 using GoldenEye.Extensions.Basic;
 using GoldenEye.Objects.General;
@@ -19,11 +18,11 @@ namespace GoldenEye.Dapper.Repositories;
 public class DapperRepository<TEntity>: IRepository<TEntity>
     where TEntity : class, IHaveId
 {
-    private readonly IDapperSqlGenerator dapperSqlGenerator;
+    private readonly IDapperSqlGenerator? dapperSqlGenerator;
     private readonly IDbConnection dbConnection;
     private readonly IAggregateEventsPublisher aggregateEventsPublisher;
 
-    public DapperRepository(IDbConnection dbConnection, IAggregateEventsPublisher aggregateEventsPublisher, IDapperSqlGenerator dapperSqlGenerator = null)
+    public DapperRepository(IDbConnection dbConnection, IAggregateEventsPublisher aggregateEventsPublisher, IDapperSqlGenerator? dapperSqlGenerator = null)
     {
         this.dbConnection = dbConnection ?? throw new ArgumentNullException(nameof(dbConnection));
         this.aggregateEventsPublisher = aggregateEventsPublisher;

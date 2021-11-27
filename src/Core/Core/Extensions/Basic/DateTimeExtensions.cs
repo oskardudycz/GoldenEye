@@ -8,7 +8,7 @@ namespace GoldenEye.Extensions.Basic;
 
 public static class DateTimeExtensions
 {
-    private static List<DateTime> _allDatesInCurrentYear;
+    private static List<DateTime>? _allDatesInCurrentYear;
 
     public static DateTime Today
     {
@@ -214,7 +214,7 @@ public static class DateTimeExtensions
     /// <param name="collection"></param>
     /// <param name="maxValue">Maximum value from collection taken for the generation of ranges</param>
     /// <returns>Sorted collection of date ranges</returns>
-    public static IOrderedEnumerable<DateRange> ToDateRanges(this IList<DateTime> collection,
+    public static IOrderedEnumerable<DateRange>? ToDateRanges(this IList<DateTime>? collection,
         DateTime? maxValue = null)
     {
         var ranges = new List<DateRange>();
@@ -229,23 +229,24 @@ public static class DateTimeExtensions
         var startDate = dateOnlyHashSet.Min();
         var endDate = maxValue.HasValue ? maxValue.Value.Date : dateOnlyHashSet.Max();
 
-        DateRange range = null;
+        DateRange? range = null;
         for (; startDate <= endDate; startDate = startDate.AddDays(1).Date)
         {
             var isIncollection = dateOnlyHashSet.Contains(startDate);
             var rangeStarted = range != null;
 
-            if (rangeStarted && !isIncollection)
+            switch (rangeStarted)
             {
-                range.EndDate = startDate.AddDays(-1).Date;
+                case true when !isIncollection:
+                    range.EndDate = startDate.AddDays(-1).Date;
 
-                ranges.Add(range);
+                    ranges.Add(range);
 
-                range = null;
-            }
-            else if (!rangeStarted && isIncollection)
-            {
-                range = new DateRange(startDate.Date, startDate.Date);
+                    range = null;
+                    break;
+                case false when isIncollection:
+                    range = new DateRange(startDate.Date, startDate.Date);
+                    break;
             }
         }
 
@@ -306,7 +307,7 @@ public static class DateTimeExtensions
     /// </summary>
     /// <param name="year">selected year</param>
     /// <returns>all dates in selected year</returns>
-    public static List<DateTime> GetDates(int year)
+    public static List<DateTime>? GetDates(int year)
     {
         return Enumerable.Range(1, 12) // Months: 1, 2 ... 12 etc.
             .SelectMany(month => GetDates(year, month))
@@ -328,9 +329,8 @@ public static class DateTimeExtensions
 
     public static DateTime Convert(string dateString, string format)
     {
-        DateTime result;
         if (DateTime.TryParseExact(dateString, format, CultureInfo.InvariantCulture,
-                DateTimeStyles.None, out result))
+                DateTimeStyles.None, out var result))
             return result;
 
         return DateTime.TryParse(dateString, CultureInfo.InvariantCulture,
@@ -362,16 +362,16 @@ public static class DateTimeExtensions
 
     public static string ToUserFriendlyTimePeriod(this TimeSpan timespan)
     {
-        string returnString = null;
-
-        if (timespan.TotalHours < 1)
-            returnString = string.Format("{0} minutes ago", timespan.Minutes);
-        else if (timespan.TotalHours < 24)
-            returnString = string.Format("{0} hours ago", timespan.Hours);
-        else if (timespan.TotalDays < 2)
-            returnString = string.Format("1 day and {0} hours ago", timespan.Hours);
-        else if (timespan.TotalDays > 2) returnString = string.Format("{0} days ago", timespan.Days);
-
-        return returnString;
+        return timespan.TotalHours switch
+        {
+            < 1 => $"{timespan.Minutes} minutes ago",
+            < 24 => $"{timespan.Hours} hours ago",
+            _ => timespan.TotalDays switch
+            {
+                <= 2 => $"1 day and {timespan.Hours} hours ago",
+                > 2 => $"{timespan.Days} days ago",
+                _ => throw new ArgumentOutOfRangeException()
+            }
+        };
     }
 }

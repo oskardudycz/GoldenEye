@@ -2,7 +2,7 @@
 <Project>
     <PropertyGroup>
         <LangVersion>10.0</LangVersion>
-<!--        <Nullable>enable</Nullable>-->
+        <Nullable>enable</Nullable>
         <Version>1.0.0-alpha.11</Version>
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
         <Authors>Oskar Dudycz</Authors>

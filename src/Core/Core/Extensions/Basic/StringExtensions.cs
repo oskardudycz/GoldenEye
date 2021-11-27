@@ -17,9 +17,7 @@ public static class StringExtensions
 
     public static string Limit(this string text, int limit)
     {
-        if (text.Length <= limit) return text;
-
-        return string.Format("{0}...", text.Substring(0, limit));
+        return text.Length <= limit ? text : $"{text[..limit]}...";
     }
 
     public static string TrimStringToDemandedLength(this string message, int length)
@@ -27,7 +25,7 @@ public static class StringExtensions
         return Limit(message, length);
     }
 
-    public static bool IsNullOrEmpty(this string str)
+    public static bool IsNullOrEmpty(this string? str)
     {
         return string.IsNullOrEmpty(str);
     }
@@ -54,7 +52,7 @@ public static class StringExtensions
                 openedQuotes = !openedQuotes;
             }
 
-        foundParts.Add(str.Substring(lastPart).Replace("\"", string.Empty));
+        foundParts.Add(str[lastPart..].Replace("\"", string.Empty));
 
         return foundParts;
     }
@@ -88,10 +86,9 @@ public static class StringExtensions
     {
         var needlePosition = str.IndexOf(needle, comparisonType);
         if (needlePosition < 0)
-            throw new ArgumentException(string.Format("Needle ({0}) not found in the source string ({1}).", needle,
-                str));
+            throw new ArgumentException($"Needle ({needle}) not found in the source string ({str}).");
 
-        return str.Substring(needlePosition);
+        return str[needlePosition..];
     }
 
     public static Stream ToStream(this string str)
@@ -122,19 +119,12 @@ public static class StringExtensions
         var letters = source.ToCharArray();
         // upper case the first char
 
-        switch (sizeChangeEnum)
+        letters[0] = sizeChangeEnum switch
         {
-            case SizeChangeEnum.Upper:
-                letters[0] = char.ToUpper(letters[0]);
-                break;
-
-            case SizeChangeEnum.Lower:
-                letters[0] = char.ToLower(letters[0]);
-                break;
-
-            default:
-                throw new ArgumentOutOfRangeException("sizeChangeEnum");
-        }
+            SizeChangeEnum.Upper => char.ToUpper(letters[0]),
+            SizeChangeEnum.Lower => char.ToLower(letters[0]),
+            _ => throw new ArgumentOutOfRangeException(nameof(sizeChangeEnum))
+        };
 
         // return the array made of the new char array
         return new string(letters);

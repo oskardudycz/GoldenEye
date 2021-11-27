@@ -30,12 +30,12 @@ public class DateRange: IEnumerable<DateTime>, IDateRange
     /// <summary>
     ///     Field representing starting day of range.
     /// </summary>
-    public DateTime StartDate { get; set; }
+    public DateTime StartDate { get; }
 
     /// <summary>
     ///     Field representing ending day of range.
     /// </summary>
-    public DateTime EndDate { get; set; }
+    public DateTime EndDate { get; }
 
     /// <summary>
     ///     Returns all dates in the range
@@ -106,7 +106,7 @@ public class DateRange: IEnumerable<DateTime>, IDateRange
         return new DateRange(start, end);
     }
 
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
         if (obj == null) return false;
 
@@ -121,16 +121,16 @@ public class DateRange: IEnumerable<DateTime>, IDateRange
         return this == obj;
     }
 
-    public static bool operator ==(DateRange left, DateRange right)
+    public static bool operator ==(DateRange? left, DateRange? right)
     {
         if (ReferenceEquals(left, right)) return true;
 
-        if ((object)left == null || (object)right == null) return false;
+        if (left == null || right == null) return false;
 
         return left.StartDate == right.StartDate && left.EndDate == right.EndDate;
     }
 
-    public static bool operator !=(DateRange left, DateRange right)
+    public static bool operator !=(DateRange? left, DateRange? right)
     {
         return !(left == right);
     }
@@ -142,6 +142,6 @@ public class DateRange: IEnumerable<DateTime>, IDateRange
 
     public override string ToString()
     {
-        return string.Format("Date range: {0:d} - {1:d}", StartDate, EndDate);
+        return $"Date range: {StartDate:d} - {EndDate:d}";
     }
 }

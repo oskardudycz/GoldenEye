@@ -14,7 +14,7 @@ public static class DictionaryExtensions
     public static ExpandoObject ToExpando(this IDictionary<string, object> dictionary)
     {
         var expando = new ExpandoObject();
-        var expandoDic = (IDictionary<string, object>)expando;
+        var expandoDic = (IDictionary<string, object>)expando!;
 
         // go through the items in the dictionary and copy over the key value pairs)
         foreach (var kvp in dictionary)
@@ -57,15 +57,14 @@ public static class DictionaryExtensions
     /// <param name="part1"></param>
     /// <param name="part2">Allows null - return part1 in case of part2 being null</param>
     /// <returns></returns>
-    public static IDictionary<T1, T2> Merge<T1, T2>(this IDictionary<T1, T2> part1, IDictionary<T1, T2> part2)
+    public static IDictionary<T1, T2> Merge<T1, T2>(this IDictionary<T1, T2> part1, IDictionary<T1, T2>? part2) where T1 : notnull
     {
-        return null == part2 ? part1 : part1.Union(part2).ToDictionary(x => x.Key, y => y.Value);
+        return part2 == null ? part1 : part1.Union(part2).ToDictionary(x => x.Key, y => y.Value);
     }
 
-    public static IDictionary<T1, T2> With<T1, T2>(this IDictionary<T1, T2> dictionary, T1 key, T2 value)
+    public static IDictionary<T1, T2> With<T1, T2>(this IDictionary<T1, T2>? dictionary, T1 key, T2 value) where T1 : notnull
     {
-        if (dictionary == null)
-            dictionary = new Dictionary<T1, T2>();
+        dictionary ??= new Dictionary<T1, T2>();
 
         dictionary.Add(key, value);
 
@@ -82,8 +81,8 @@ public static class DictionaryExtensions
         return dictionary;
     }
 
-    public static T2 GetValueOrDefault<T1, T2>(this IDictionary<T1, T2> dictionary, T1 key,
-        T2 defaultValue = default)
+    public static T2? GetValueOrDefault<T1, T2>(this IDictionary<T1, T2> dictionary, T1 key,
+        T2? defaultValue = default)
     {
         return dictionary.ContainsKey(key) ? dictionary[key] : defaultValue;
     }

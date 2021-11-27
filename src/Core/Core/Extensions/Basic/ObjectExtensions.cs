@@ -13,58 +13,48 @@ public static class ObjectExtensions
 {
     private static readonly Type[] EmptyTypes = { };
 
-    public static TReturn SafeGet<TObject, TReturn>(this TObject obj, Func<TObject, TReturn> getOperation)
-        where TObject : class
-    {
-        return obj != null ? getOperation(obj) : default;
-    }
-
-    public static TReturn SafeGet<TObject, TReturn>(this TObject obj,
-        Func<TObject, TReturn> getOperation,
-        TReturn defValue)
-        where TObject : class
-    {
-        return obj != null ? getOperation(obj) : defValue;
-    }
-
-    public static T CastTo<T>(this object obj)
+    public static T? As<T>(this object? obj)
     {
         var type = typeof(T);
         var underlyingType = Nullable.GetUnderlyingType(type);
         var isNullable = underlyingType != null;
         var realType = underlyingType ?? type;
 
-        if (obj == null && !isNullable && !type.GetTypeInfo().IsClass)
-            throw new InvalidCastException("Cannot assign null to non-reference type");
-
-        if (obj == null) return default;
+        switch (obj)
+        {
+            case null when !isNullable && !type.GetTypeInfo().IsClass:
+                throw new InvalidCastException("Cannot assign null to non-reference type");
+            case null:
+                return default;
+        }
 
         if (!realType.GetTypeInfo().IsEnum) return (T)obj;
 
-        //Commented out because of PCL
-        //if (!realType.IsEnumDefined(obj))
-        //{
-        //    throw new ArgumentOutOfRangeException("obj");
-        //}
+        if (!realType.IsEnumDefined(obj))
+        {
+            throw new ArgumentOutOfRangeException(nameof(obj));
+        }
         return (T)Enum.ToObject(realType, obj);
     }
 
-    public static T ConvertTo<T>(this object obj)
+    public static T? ConvertTo<T>(this object? obj)
     {
-        return (T)ConvertTo(obj, typeof(T));
+        var result = ConvertTo(obj, typeof(T));
+
+        if (result == default)
+            return default;
+
+        return (T)result;
     }
 
-    public static object ConvertTo(this object obj, Type t)
+    public static object? ConvertTo(this object? obj, Type t)
     {
         if (obj == null)
             return GetDefault(t);
 
         var u = Nullable.GetUnderlyingType(t);
 
-        if (u == null)
-            return Convert.ChangeType(obj, t, CultureInfo.CurrentCulture);
-
-        return Convert.ChangeType(obj, u, CultureInfo.CurrentCulture);
+        return Convert.ChangeType(obj, u ?? t, CultureInfo.CurrentCulture);
     }
 
     public static bool Is<T>(this object obj)
@@ -72,25 +62,30 @@ public static class ObjectExtensions
         return obj is T;
     }
 
-    public static T GetDefault<T>()
+    public static T? GetDefault<T>()
     {
-        return (T)GetDefault(typeof(T));
+        var result = GetDefault(typeof(T));
+
+        if (result == default)
+            return default;
+
+        return (T)result;
     }
 
-    public static T GetEmpty<T>()
+    public static T? GetEmpty<T>()
     {
         if (typeof(T) == typeof(string))
             return (T)(object)string.Empty;
 
-        return (T)GetDefault(typeof(T));
+        return default;
     }
 
-    public static object GetDefault(Type type, object defaultValue = null)
+    public static object? GetDefault(Type type, object? defaultValue = null)
     {
         return type.GetTypeInfo().IsValueType ? Activator.CreateInstance(type) : defaultValue;
     }
 
-    public static T CreateOrDefault<T>()
+    public static T? CreateOrDefault<T>()
     {
         var result = CreateOrDefault(typeof(T));
         var defaultValue = default(T);
@@ -98,15 +93,18 @@ public static class ObjectExtensions
         if (Equals(result, defaultValue))
             return defaultValue;
 
+        if (result == default)
+            return default;
+
         return (T)result;
     }
 
-    public static object CreateOrDefault(Type type)
+    public static object? CreateOrDefault(Type type)
     {
         return (type.GetConstructor(EmptyTypes) != null) ? Activator.CreateInstance(type) : GetDefault(type);
     }
 
-    public static object GetValue(this object obj, string propertyName, object defaultValue = null)
+    public static object? GetValue(this object obj, string propertyName, object? defaultValue = null)
     {
         var type = obj.GetType();
         var property = ReflectionExtensions.GetProperty(type, propertyName);
@@ -219,17 +217,7 @@ public static class ObjectExtensions
 
     public static bool IsNumber(this object value)
     {
-        return value is sbyte
-               || value is byte
-               || value is short
-               || value is ushort
-               || value is int
-               || value is uint
-               || value is long
-               || value is ulong
-               || value is float
-               || value is double
-               || value is decimal;
+        return value is sbyte or byte or short or ushort or int or uint or long or ulong or float or double or decimal;
     }
 
     public static object Invoke<T>(this Type type, T obj, string methodName, params object[] parameters)

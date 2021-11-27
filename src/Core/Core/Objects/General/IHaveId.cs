@@ -8,6 +8,7 @@ public interface IHaveId
 }
 
 public interface IHaveId<out T>: IHaveId
+    where T: notnull
 {
     new T Id { get; }
 
